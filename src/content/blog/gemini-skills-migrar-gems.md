@@ -5,7 +5,7 @@ category: "Inteligência Artificial"
 date: 2026-10-05T18:00:00-03:00
 readingTime: "6 min"
 image: "./images/gemini-skills-migrar-gems.webp"
-imageAlt: "Cartão com o texto: seus Gems viram Skills, como migrar no Gemini"
+imageAlt: "Notebook sobre uma mesa de madeira mostrando uma tela de configurações com uma lista de instruções"
 tags: ["Gemini", "Gemini Skills", "Gems", "Google"]
 related: ["como-usar-notebooklm", "google-ai-plus-para-estudantes"]
 ---

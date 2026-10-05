@@ -5,7 +5,7 @@ category: "Notícias"
 date: 2026-10-05T07:20:00-03:00
 readingTime: "3 min"
 image: "./images/nao-votou-primeiro-turno-pode-votar-segundo.webp"
-imageAlt: "Cartão com o texto: não votou no 1º turno? Pode votar no 2º?"
+imageAlt: "Mão segurando um documento de identidade com foto perto da urna em um local de votação"
 tags: ["Eleições 2026", "Segundo turno", "Justificativa eleitoral", "e-Título"]
 related: ["justificar-ausencia-multa-eleitoral-2026", "eleicoes-2026-onde-votar-o-que-levar"]
 ---
