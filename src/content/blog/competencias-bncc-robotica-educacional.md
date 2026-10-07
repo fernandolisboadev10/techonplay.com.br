@@ -3,7 +3,7 @@ title: "Como a robótica educacional trabalha as 10 competências da BNCC"
 description: "Veja como as 10 competências da BNCC aparecem na robótica educacional, com exemplos por etapa e o que muda com a obrigatoriedade em 2026."
 category: "Dicas"
 date: 2026-09-28
-updated: 2026-09-28
+updated: 2026-10-07T10:45:00-03:00
 readingTime: "5 min"
 image: "./images/BNCC-na-robotica-educacional.webp"
 imageAlt: "BNCC na robótica educacional"
@@ -66,7 +66,7 @@ Escolas com orçamento apertado têm alternativa viável: projetos com materiais
 
 As competências da BNCC deixam de ser texto abstrato quando viram código rodando em um robô físico, com erro visível e correção imediata. Escolas que já têm esta cultura não usam bloco pronto, usam a robótica como eixo transversal, ligando lógica, ética e trabalho em equipe numa aula só.
 
-O próximo passo natural é mapear qual competência falta reforçar na turma e escolher o projeto certo para trabalhar ela. Para entender como as dez competências se encaixam no restante do currículo, veja também o guia completo sobre [o que é BNCC](/o-que-e-bncc/). Para conhecer a IA que já entra nas salas de aula, veja também [o que significa GPT](/o-que-significa-gpt/).
+O próximo passo natural é mapear qual competência falta reforçar na turma e escolher o projeto certo para trabalhar ela. Para entender como as dez competências se encaixam no restante do currículo, veja também o guia completo sobre [o que é BNCC](/o-que-e-bncc/). Para conhecer a IA que já entra nas salas de aula, veja também [o que significa GPT](/o-que-significa-gpt/). Se você é professor, conte como isso chega à sua escola em [IA nas escolas e BNCC Computação](/ia-nas-escolas-bncc-computacao-professores/).
 
 ## Perguntas frequentes
 

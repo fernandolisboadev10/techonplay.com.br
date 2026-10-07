@@ -3,7 +3,7 @@ title: "O que é BNCC e o que muda com a Computação nas escolas em 2026"
 description: "O que é BNCC, como a Base Nacional Comum Curricular organiza cada etapa de ensino, as 10 competências gerais e as mudanças recentes com Computação."
 category: "Curiosidades"
 date: 2026-09-28
-updated: 2026-10-01T06:45:00-03:00
+updated: 2026-10-07T10:45:00-03:00
 readingTime: "5 min"
 image: "./images/BNCC.webp"
 imageAlt: "O que é BNCC"
@@ -77,7 +77,7 @@ No Ensino Médio, a Lei nº 14.945, sancionada em 31 de julho de 2024, elevou a 
 
 Saber o que é BNCC ajuda pais, professores e candidatos a concursos a entender por que a escola ensina o que ensina: a Base é o piso comum, e cada rede constrói o currículo por cima dele.
 
-As próximas mudanças devem vir da Computação e do novo Ensino Médio, ainda em fase de absorção pelas redes de ensino. Para ver a BNCC na prática, veja como a [robótica educacional trabalha as competências da BNCC](/competencias-bncc-robotica-educacional/), e, se você é universitário, confira o [Google AI Plus grátis para estudantes](/google-ai-plus-para-estudantes/).
+As próximas mudanças devem vir da Computação e do novo Ensino Médio, ainda em fase de absorção pelas redes de ensino. Para ver a BNCC na prática, veja como a [robótica educacional trabalha as competências da BNCC](/competencias-bncc-robotica-educacional/). Professor, participe da conversa sobre [IA nas escolas e BNCC Computação](/ia-nas-escolas-bncc-computacao-professores/). E, se você é universitário, confira o [Google AI Plus grátis para estudantes](/google-ai-plus-para-estudantes/).
 
 ## Perguntas frequentes
 
