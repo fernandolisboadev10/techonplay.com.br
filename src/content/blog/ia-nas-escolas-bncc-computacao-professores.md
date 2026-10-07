@@ -5,8 +5,8 @@ category: "Inteligência Artificial"
 date: 2026-10-07T10:15:00-03:00
 updated: 2026-10-07T10:15:00-03:00
 readingTime: "5 min"
-image: "./images/BNCC-na-robotica-educacional.webp"
-imageAlt: "IA nas escolas e a BNCC Computação"
+image: "./images/ia-nas-escolas-professores.webp"
+imageAlt: "Professora usando um assistente de IA no notebook em sala de aula"
 tags: ["BNCC", "IA nas escolas", "Computação", "Professores"]
 related: ["o-que-e-bncc", "competencias-bncc-robotica-educacional", "o-que-significa-gpt"]
 ---
