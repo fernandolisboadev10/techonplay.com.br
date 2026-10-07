@@ -2,8 +2,8 @@
 title: "IA nas escolas e BNCC Computação: professor, qual sua opinião?"
 description: "A BNCC Computação já vale em 2026 e o MEC publicou orientações sobre IA nas escolas. Professor, conte como isso chega à sua sala de aula."
 category: "Inteligência Artificial"
-date: 2026-10-07T17:30:00-03:00
-updated: 2026-10-07T17:30:00-03:00
+date: 2026-10-07T10:15:00-03:00
+updated: 2026-10-07T10:15:00-03:00
 readingTime: "5 min"
 image: "./images/BNCC-na-robotica-educacional.webp"
 imageAlt: "IA nas escolas e a BNCC Computação"
