@@ -1,4 +1,5 @@
 ---
+import { socials } from '../data/socials';
 ---
 <aside class="author-bio">
   <img
@@ -16,6 +17,16 @@
       por IA e robótica. Criei o TechOnPlay para separar o que é útil do que
       é ruído.
     </p>
+    <ul class="author-social" aria-label="Redes sociais de Fernando Lisboa">
+      {socials.map((s) => (
+        <li>
+          <a href={s.href} target="_blank" rel="noopener noreferrer me">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d={s.path} /></svg>
+            {s.label}
+          </a>
+        </li>
+      ))}
+    </ul>
   </div>
 </aside>
 
@@ -53,6 +64,29 @@
     .author-bio {
       align-items: flex-start;
     }
+  }
+
+  .author-social {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    margin: 12px 0 0;
+    padding: 0;
+  }
+
+  .author-social a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+
+  .author-social a:hover {
+    color: var(--teal);
   }
 
   .author-body p:not(.author-name) {

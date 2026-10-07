@@ -8,7 +8,7 @@ readingTime: "4 min"
 image: "./images/Urna-Eletronica-1.webp"
 imageAlt: "Urna eletrônica"
 tags: ["Urna eletrônica", "Eleições 2026", "TSE", "Curiosidades"]
-related: ["biometria-na-urna", "o-que-e-bncc", "iphone-duo-iphone-dobravel"]
+related: ["biometria-na-urna", "justificar-ausencia-multa-eleitoral-2026", "iphone-duo-iphone-dobravel"]
 ---
 
 A urna eletrônica faz 30 anos em 2026, ano em que o equipamento volta a ser protagonista nas eleições gerais, com o primeiro turno em 4 de outubro. Desde a estreia, em 1996, ela transformou o Brasil no país com a maior votação totalmente informatizada do mundo. Mas quantas dessas três décadas de história você realmente conhece?
