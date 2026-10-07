@@ -19,4 +19,32 @@ const blog = defineCollection({
     }),
 });
 
-export const collections = { blog };
+// Web Stories (AMP): 9 slides = capa + os itens de pages + fechamento com botão para o post.
+// post é o slug do artigo para onde o botão do último slide leva. Imagens ficam em public/web-stories/<slug>/.
+const stories = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/stories' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.coerce.date(),
+    updated: z.coerce.date().optional(),
+    post: z.string(),
+    poster: z.string(),
+    cover: z.string(),
+    coverKicker: z.string(),
+    coverAlt: z.string(),
+    draft: z.boolean().optional().default(false),
+    pages: z.array(
+      z.object({
+        kicker: z.string(),
+        title: z.string(),
+        text: z.string(),
+        tile: z.string().optional(),
+        alt: z.string().optional(),
+      }),
+    ),
+    closing: z.object({ kicker: z.string(), title: z.string(), text: z.string(), bg: z.string() }),
+  }),
+});
+
+export const collections = { blog, stories };

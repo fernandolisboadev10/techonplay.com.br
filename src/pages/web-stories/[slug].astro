@@ -1,0 +1,162 @@
+---
+import { getCollection } from 'astro:content';
+
+// Web Story (AMP). Não usa BaseLayout: o AMP proíbe o CSS e o JS do site, então esta página
+// tem o próprio <html>. Todo <script> e <style> precisa de is:inline para o Astro não reescrever.
+export async function getStaticPaths() {
+  const stories = await getCollection('stories', (s) => !s.data.draft && s.data.date.getTime() <= Date.now());
+  return stories.map((story) => ({ params: { slug: story.id }, props: { story } }));
+}
+
+const { story } = Astro.props;
+const { title, description, date, updated, post, poster, cover, coverKicker, coverAlt, pages, closing } = story.data;
+
+const site = Astro.site!.toString().replace(/\/$/, '');
+const canonical = `${site}/web-stories/${story.id}/`;
+const abs = (path: string) => `${site}${path}`;
+const postUrl = `${site}/${post}/`;
+const modified = updated ?? date;
+
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'NewsArticle',
+  mainEntityOfPage: canonical,
+  headline: title,
+  image: [abs(poster)],
+  datePublished: date.toISOString(),
+  dateModified: modified.toISOString(),
+  author: { '@type': 'Organization', name: 'TechOnPlay', url: `${site}/` },
+  publisher: { '@type': 'Organization', name: 'TechOnPlay', logo: { '@type': 'ImageObject', url: abs('/favicon.png'), width: 512, height: 512 } },
+};
+
+const boilerplate = `<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>`;
+
+// Gradiente de fundo dos slides de conteúdo, alternado por slide
+const grads = [
+  'linear-gradient(160deg,#2a1363,#180f2e 60%,#3a0d24)',
+  'linear-gradient(160deg,#3a0d24,#180f2e 60%,#2a1363)',
+  'linear-gradient(160deg,#0b3b3a,#180f2e 60%,#2a1363)',
+];
+
+const vh = 'var(--story-page-vh,1vh)';
+const css = `
+amp-story{font-family:Inter,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#fff}
+.pad{padding:calc(${vh}*6) 7%}
+.fillbg{width:100%;height:100%}
+.brand{margin:0 0 calc(${vh}*2);font-size:calc(${vh}*1.9);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#c4b5fd}
+.brand b{color:#fb7185}
+.kicker{display:block;justify-self:start;width:fit-content;margin:0 0 calc(${vh}*1.6);padding:calc(${vh}*.8) calc(${vh}*1.8);border-radius:99px;background:#e11d48;font-size:calc(${vh}*2);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+h1,h2{margin:0;font-weight:800;line-height:1.08;letter-spacing:-.01em}
+h1{font-size:calc(${vh}*4)}
+h1 .n{display:block;font-size:calc(${vh}*9);line-height:1;color:#fb7185}
+h2{font-size:calc(${vh}*4.4)}
+p.t{margin:calc(${vh}*2) 0 0;font-size:calc(${vh}*2.7);line-height:1.38;color:#ece8fb}
+.card{border-radius:calc(${vh}*2);overflow:hidden;margin:0 0 calc(${vh}*3);box-shadow:0 8px 30px rgba(0,0,0,.45)}
+.hint{margin:0;font-size:calc(${vh}*2.4);font-weight:600;color:#c4b5fd;text-align:center}
+.shade{width:100%;height:100%;background:linear-gradient(180deg,rgba(24,15,46,.35),rgba(24,15,46,.92) 70%)}
+`;
+
+const analytics = JSON.stringify({
+  vars: { gtag_id: 'G-6EQYV5G6JN', config: { 'G-6EQYV5G6JN': { groups: 'default' } } },
+  triggers: {
+    storyProgress: { on: 'story-page-visible', vars: { event_name: 'custom', event_action: 'story_progress', event_category: story.id } },
+    storyEnd: { on: 'story-last-page-visible', vars: { event_name: 'custom', event_action: 'story_complete', event_category: story.id } },
+  },
+});
+---
+<!doctype html>
+<html amp lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <script async src="https://cdn.ampproject.org/v0.js" is:inline></script>
+    <script async custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js" is:inline></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js" is:inline></script>
+    <title>{title}</title>
+    <link rel="canonical" href={canonical} />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="TechOnPlay" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={abs(poster)} />
+    <meta property="og:image:width" content="640" />
+    <meta property="og:image:height" content="853" />
+    <meta property="article:published_time" content={date.toISOString()} />
+    <meta property="article:modified_time" content={modified.toISOString()} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(ld)} />
+    <Fragment set:html={boilerplate} />
+    <style amp-custom is:inline set:html={css} />
+  </head>
+  <body>
+    <amp-story
+      standalone=""
+      title={title}
+      publisher="TechOnPlay"
+      publisher-logo-src={abs('/favicon.png')}
+      poster-portrait-src={abs(poster)}
+    >
+      <amp-story-page id="capa" auto-advance-after="7s">
+        <amp-story-grid-layer template="fill">
+          <amp-img src={cover} width="720" height="1280" layout="fill" alt={coverAlt}></amp-img>
+        </amp-story-grid-layer>
+        <amp-story-grid-layer template="vertical" class="pad" style="align-content:start">
+          <p class="brand" animate-in="fade-in">Tech<b>On</b>Play</p>
+          <span class="kicker" animate-in="fly-in-left">{coverKicker}</span>
+          <h1 animate-in="fly-in-bottom" animate-in-delay="0.2s"><span class="n">46</span>comandos do ChatGPT para criar imagens</h1>
+        </amp-story-grid-layer>
+        <amp-story-grid-layer template="vertical" class="pad" style="align-content:end">
+          <p class="hint" animate-in="fade-in" animate-in-delay="1s">Toque para ver os exemplos →</p>
+        </amp-story-grid-layer>
+      </amp-story-page>
+
+      {pages.map((p, i) => (
+        <amp-story-page id={`slide-${i + 2}`} auto-advance-after="7s">
+          <amp-story-grid-layer template="fill">
+            <div class="fillbg" style={`background:${grads[i % grads.length]}`}></div>
+          </amp-story-grid-layer>
+          <amp-story-grid-layer template="vertical" class="pad" style={`align-content:${p.tile ? 'start' : 'center'}`}>
+            <p class="brand">Tech<b>On</b>Play</p>
+            {p.tile && (
+              <div class="card" animate-in="fade-in" animate-in-duration="0.8s">
+                <amp-img src={p.tile} width="720" height="476" layout="responsive" alt={p.alt ?? p.title}></amp-img>
+              </div>
+            )}
+            <div>
+              <span class="kicker" animate-in="fly-in-left">{p.kicker}</span>
+            </div>
+            <h2 animate-in="fly-in-bottom" animate-in-delay="0.15s">{p.title}</h2>
+            <p class="t" animate-in="fade-in" animate-in-delay="0.5s">{p.text}</p>
+          </amp-story-grid-layer>
+        </amp-story-page>
+      ))}
+
+      <amp-story-page id="fechamento" auto-advance-after="9s">
+        <amp-story-grid-layer template="fill">
+          <amp-img src={closing.bg} width="720" height="476" layout="fill" alt=""></amp-img>
+        </amp-story-grid-layer>
+        <amp-story-grid-layer template="fill">
+          <div class="shade"></div>
+        </amp-story-grid-layer>
+        <amp-story-grid-layer template="vertical" class="pad" style="align-content:end">
+          <span class="kicker" animate-in="fly-in-left">{closing.kicker}</span>
+          <h2 animate-in="fly-in-bottom" animate-in-delay="0.15s">{closing.title}</h2>
+          <p class="t" animate-in="fade-in" animate-in-delay="0.5s">{closing.text}</p>
+        </amp-story-grid-layer>
+        <amp-story-page-outlink layout="nodisplay" cta-image={abs(poster)} theme="dark">
+          <a href={postUrl}>Ver os 46 comandos</a>
+        </amp-story-page-outlink>
+      </amp-story-page>
+
+      <amp-analytics type="gtag" data-credentials="include">
+        <script type="application/json" is:inline set:html={analytics} />
+      </amp-analytics>
+    </amp-story>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+{
+  "title": "46 comandos do ChatGPT para criar imagens impressionantes",
+  "description": "Veja em 9 telas os comandos do ChatGPT que mudam ângulo, perspectiva e efeito das suas imagens, prontos para copiar.",
+  "date": "2026-10-06T12:00:00-03:00",
+  "post": "46-comandos-do-chatgpt",
+  "poster": "/web-stories/46-comandos-chatgpt/poster-portrait.jpg",
+  "cover": "/web-stories/46-comandos-chatgpt/cover-bg.jpg",
+  "coverKicker": "Guia prático",
+  "coverAlt": "Grade com nove fotos de um homem de moletom preto em ângulos e efeitos diferentes, cada uma com o nome do comando",
+  "pages": [
+    {
+      "kicker": "O que são",
+      "title": "Atalhos de texto para suas imagens",
+      "text": "Termos como /lowangle definem ângulo, perspectiva ou efeito antes de a imagem ser gerada. Basta colar no prompt."
+    },
+    {
+      "kicker": "Ângulos de cima",
+      "title": "Visão aérea em um comando",
+      "text": "Use /overheadaction, /droneview ou /birdsview para fotografar de cima, como se fosse um drone.",
+      "tile": "/web-stories/46-comandos-chatgpt/tile-3.jpg",
+      "alt": "Homem de moletom preto olhando para cima, fotografado de cima em calçada de pedra"
+    },
+    {
+      "kicker": "Ângulos de baixo",
+      "title": "Mais presença na foto",
+      "text": "Com /lowangle, /wormview ou /cornerpov, a câmera fica abaixo ou na diagonal e o personagem ganha força.",
+      "tile": "/web-stories/46-comandos-chatgpt/tile-4.jpg",
+      "alt": "Homem de moletom preto encostado em uma coluna, fotografado de baixo para cima ao pôr do sol"
+    },
+    {
+      "kicker": "Reflexos",
+      "title": "Reflexo no chão molhado",
+      "text": "O /groundreflection duplica o personagem e a cidade no chão. O /mirrorportal transforma um espelho em portal.",
+      "tile": "/web-stories/46-comandos-chatgpt/tile-5.jpg",
+      "alt": "Homem em pé numa praça molhada ao entardecer, com a cidade refletida no chão"
+    },
+    {
+      "kicker": "Perspectiva",
+      "title": "Efeito de miniatura",
+      "text": "O /tiltshift deixa a cena com aparência de maquete. O /forcedperspective brinca com tamanho e escala.",
+      "tile": "/web-stories/46-comandos-chatgpt/tile-6.jpg",
+      "alt": "Homem andando em um jardim visto de cima com efeito tilt-shift de miniatura"
+    },
+    {
+      "kicker": "Profundidade",
+      "title": "Linhas que levam ao centro",
+      "text": "O /onepointperspective faz as linhas convergirem para um ponto e cria uma foto com muita profundidade.",
+      "tile": "/web-stories/46-comandos-chatgpt/tile-7.jpg",
+      "alt": "Homem caminhando em um corredor de colunas com linhas convergindo para o fundo"
+    },
+    {
+      "kicker": "Cinematográfico",
+      "title": "Silhueta contra o pôr do sol",
+      "text": "Com /silhouettepov, o personagem vira silhueta contra a luz forte. Funciona bem em fotos dramáticas.",
+      "tile": "/web-stories/46-comandos-chatgpt/tile-8.jpg",
+      "alt": "Silhueta de homem em pé diante do pôr do sol sobre a cidade"
+    }
+  ],
+  "closing": {
+    "kicker": "Lista completa",
+    "title": "Veja os 46 comandos",
+    "text": "Todos com botão de copiar, organizados por categoria. Combine no máximo 3 por imagem.",
+    "bg": "/web-stories/46-comandos-chatgpt/tile-9.jpg"
+  }
+}
