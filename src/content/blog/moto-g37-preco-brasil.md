@@ -5,7 +5,7 @@ category: "Notícias"
 date: 2026-10-07T07:00:00-03:00
 readingTime: "4 min"
 image: "./images/moto-g37-preco-brasil.webp"
-imageAlt: "Smartphone intermediário sobre uma mesa de madeira ao lado de um cabo de carregamento e uma xícara de café"
+imageAlt: "Smartphone intermediário de frente, com tela grande e papel de parede colorido, sobre fundo cinza claro"
 tags: ["Moto G37", "Motorola", "Celulares", "5G"]
 related: ["moto-watch-ultra-vale-a-pena", "review-galaxy-a57"]
 ---
