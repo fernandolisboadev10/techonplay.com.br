@@ -9,7 +9,7 @@ export async function getStaticPaths() {
 }
 
 const { story } = Astro.props;
-const { title, description, date, updated, post, poster, cover, coverKicker, coverAlt, pages, closing } = story.data;
+const { title, description, date, updated, post, poster, cover, coverKicker, coverNumber, coverTitle, coverAlt, cta, pages, closing } = story.data;
 
 const site = Astro.site!.toString().replace(/\/$/, '');
 const canonical = `${site}/web-stories/${story.id}/`;
@@ -109,7 +109,7 @@ const analytics = JSON.stringify({
         <amp-story-grid-layer template="vertical" class="pad" style="align-content:start">
           <p class="brand" animate-in="fade-in">Tech<b>On</b>Play</p>
           <span class="kicker" animate-in="fly-in-left">{coverKicker}</span>
-          <h1 animate-in="fly-in-bottom" animate-in-delay="0.2s"><span class="n">46</span>comandos do ChatGPT para criar imagens</h1>
+          <h1 animate-in="fly-in-bottom" animate-in-delay="0.2s"><span class="n">{coverNumber}</span>{coverTitle}</h1>
         </amp-story-grid-layer>
         <amp-story-grid-layer template="vertical" class="pad" style="align-content:end">
           <p class="hint" animate-in="fade-in" animate-in-delay="1s">Toque para ver os exemplos →</p>
@@ -150,7 +150,7 @@ const analytics = JSON.stringify({
           <p class="t" animate-in="fade-in" animate-in-delay="0.5s">{closing.text}</p>
         </amp-story-grid-layer>
         <amp-story-page-outlink layout="nodisplay" cta-image={abs(poster)} theme="dark">
-          <a href={postUrl}>Ver os 46 comandos</a>
+          <a href={postUrl}>{cta}</a>
         </amp-story-page-outlink>
       </amp-story-page>
 

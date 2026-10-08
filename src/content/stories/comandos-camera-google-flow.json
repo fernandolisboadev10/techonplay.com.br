@@ -1,0 +1,68 @@
+{
+  "title": "Comandos de câmera do Google Flow: 40 prompts para testar",
+  "description": "Veja em 9 telas os comandos de câmera do Google Flow que mudam ângulo, enquadramento e clima das suas fotos e vídeos com IA.",
+  "date": "2026-10-08T16:00:00-03:00",
+  "post": "comandos-camera-google-flow",
+  "poster": "/web-stories/comandos-camera-google-flow/poster-portrait.jpg",
+  "cover": "/web-stories/comandos-camera-google-flow/cover-bg.jpg",
+  "coverKicker": "Guia prático",
+  "coverNumber": "40",
+  "coverTitle": "comandos de câmera do Google Flow",
+  "cta": "Ver os 40 comandos",
+  "coverAlt": "Grade com nove fotos de uma mulher em uma sala com janelas grandes, cada uma em um ângulo e enquadramento de câmera diferente",
+  "pages": [
+    {
+      "kicker": "O que são",
+      "title": "Planos de diretor em texto",
+      "text": "Etiquetas como /LOWANGLE dizem à IA o ângulo, a distância e o movimento da câmera. Basta incluir no prompt."
+    },
+    {
+      "kicker": "Vista aérea",
+      "title": "A cena vista lá de cima",
+      "text": "Use /DRONEVIEW, /TOPDOWN ou /BIRDSEYE para fotografar do alto. Ótimo para mostrar o ambiente inteiro.",
+      "tile": "/web-stories/comandos-camera-google-flow/tile-3.jpg",
+      "alt": "Mulher em pé em uma sala ampla, fotografada de cima em vista aérea"
+    },
+    {
+      "kicker": "Ângulo baixo",
+      "title": "Mais poder na imagem",
+      "text": "Com /LOWANGLE, /WORMSVIEW ou /LOWUP, a câmera olha de baixo para cima e transmite confiança.",
+      "tile": "/web-stories/comandos-camera-google-flow/tile-4.jpg",
+      "alt": "Mulher tirando uma selfie, fotografada de baixo para cima"
+    },
+    {
+      "kicker": "Close",
+      "title": "O rosto em primeiro plano",
+      "text": "O /CLOSEUP foca no rosto. O /PORTRAIT e o /EYELEVEL dão um retrato clássico, sem distorção.",
+      "tile": "/web-stories/comandos-camera-google-flow/tile-5.jpg",
+      "alt": "Close do rosto sorridente de uma mulher"
+    },
+    {
+      "kicker": "Perfil",
+      "title": "De lado, com estilo",
+      "text": "Use /PROFILE ou /CLOSEPROFILE para mostrar a pessoa de lado. O /OVERSHOULDER olha por cima do ombro.",
+      "tile": "/web-stories/comandos-camera-google-flow/tile-6.jpg",
+      "alt": "Mulher de perfil olhando para o celular ao lado de uma janela"
+    },
+    {
+      "kicker": "Plano aberto",
+      "title": "Pessoa pequena, cenário grande",
+      "text": "O /LONGSHOT e o /WIDEANGLE abrem o quadro. O /FULLBODY mostra o corpo inteiro na cena.",
+      "tile": "/web-stories/comandos-camera-google-flow/tile-7.jpg",
+      "alt": "Mulher em pé no centro de uma sala, vista em plano aberto"
+    },
+    {
+      "kicker": "Clima",
+      "title": "Silhueta contra a luz",
+      "text": "Com /SILHOUETTE, a pessoa vira silhueta contra a janela. Combine com /CINEMATIC para um ar de filme.",
+      "tile": "/web-stories/comandos-camera-google-flow/tile-8.jpg",
+      "alt": "Silhueta de mulher contra uma janela ao pôr do sol"
+    }
+  ],
+  "closing": {
+    "kicker": "Lista completa",
+    "title": "Veja os 40 comandos",
+    "text": "Todos com botão de copiar. Para vídeo, teste /ORBIT e /PUSHIN. Combine no máximo 3 por geração.",
+    "bg": "/web-stories/comandos-camera-google-flow/tile-9.jpg"
+  }
+}

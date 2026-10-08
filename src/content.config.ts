@@ -32,6 +32,9 @@ const stories = defineCollection({
     poster: z.string(),
     cover: z.string(),
     coverKicker: z.string(),
+    coverNumber: z.string(),
+    coverTitle: z.string(),
+    cta: z.string(),
     coverAlt: z.string(),
     draft: z.boolean().optional().default(false),
     pages: z.array(
