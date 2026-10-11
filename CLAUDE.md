@@ -28,3 +28,19 @@ The home, `/blog/` and category pages sort posts by latest activity: the newer o
 ## Scheduling
 
 A post goes live when its `date` has passed (`isPublished` in `src/utils/posts.ts`). The deploy workflow rebuilds at 07:02, 11:02 and 18:02 (Brasília time), so to schedule a post set `date` to a future time such as `2026-10-02T07:00:00-03:00` and push; commit it before the slot. The `Notícias` category is for time-bound news; the topic goes in `tags`.
+
+**No posts on Sunday.** Never set a `date` that falls on a Sunday (Brasília time). The weekly calendar is Monday news 11:02, Wednesday article 18:02, Friday news 11:02 (see `blogs.json`). Exception: the two posts already scheduled for Sunday 2026-10-11 stay as they are, at the owner's request.
+
+## Images and Web Stories (cost rules)
+
+The OpenRouter key (`OPENROUTER_API_KEY` in `.env`) has a small balance reserved for **post cover images only**.
+
+- **Post cover:** `npm run image -- --name <slug> --prompt "..." --quality medium`. The output is 1200x800 WebP (3:2) and costs about $0.042. Generate once, open the file and check it; regenerate only if it has a logo or readable text. Never leave unused generated images in the repo.
+- **Web Stories: never generate images through the OpenRouter API or any paid key.** The owner generates the images in Gemini. The flow is:
+  1. Plan the story from the post (slide count, text per slide, title, order).
+  2. For each slide that needs a new image, give the owner a numbered prompt to paste into Gemini: portrait 9:16, editorial photographic style, no company logos, no readable text in the image, with the file name to use (for example `slide-3.png`). Also give a prompt for the 3:4 portrait poster, without the title, which is added later in code.
+  3. The owner returns the images in the conversation.
+  4. Convert them with `sharp` (JPG, 720 px wide, quality 88; poster 640x853), save them in `public/web-stories/<slug>/`, burn the title into the poster, build the story and run the build.
+  5. Show the result to the owner before any commit.
+- When the post cover already works as a source, crop tiles from it locally with `sharp` (as `scripts/story-images-*.mjs` do). That is free; ask Gemini only for the images that are still missing.
+- Web Stories are built by Claude (structure, text, code and build). The owner only generates and returns the images.
