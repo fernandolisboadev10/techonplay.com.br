@@ -43,6 +43,8 @@ const stories = defineCollection({
         title: z.string(),
         text: z.string(),
         tile: z.string().optional(),
+        bg: z.string().optional(),
+        big: z.string().optional(),
         alt: z.string().optional(),
       }),
     ),

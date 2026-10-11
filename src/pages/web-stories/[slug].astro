@@ -52,6 +52,8 @@ h1 .n{display:block;font-size:calc(${vh}*9);line-height:1;color:#fb7185}
 h2{font-size:calc(${vh}*4.4)}
 p.t{margin:calc(${vh}*2) 0 0;font-size:calc(${vh}*2.7);line-height:1.38;color:#ece8fb}
 .card{border-radius:calc(${vh}*2);overflow:hidden;margin:0 0 calc(${vh}*3);box-shadow:0 8px 30px rgba(0,0,0,.45)}
+.big{margin:0 0 calc(${vh}*2);font-size:calc(${vh}*13);font-weight:800;line-height:1;color:#fb7185;letter-spacing:-.02em}
+.shade-bottom{width:100%;height:100%;background:linear-gradient(180deg,rgba(24,15,46,.45) 0%,rgba(24,15,46,0) 25%,rgba(24,15,46,.55) 55%,rgba(24,15,46,.95) 100%)}
 .hint{margin:0;font-size:calc(${vh}*2.4);font-weight:600;color:#c4b5fd;text-align:center}
 .shade{width:100%;height:100%;background:linear-gradient(180deg,rgba(24,15,46,.35),rgba(24,15,46,.92) 70%)}
 `;
@@ -112,28 +114,54 @@ const analytics = JSON.stringify({
           <h1 animate-in="fly-in-bottom" animate-in-delay="0.2s"><span class="n">{coverNumber}</span>{coverTitle}</h1>
         </amp-story-grid-layer>
         <amp-story-grid-layer template="vertical" class="pad" style="align-content:end">
-          <p class="hint" animate-in="fade-in" animate-in-delay="1s">Toque para ver os exemplos →</p>
+          <p class="hint" animate-in="fade-in" animate-in-delay="1s">Toque para continuar →</p>
         </amp-story-grid-layer>
       </amp-story-page>
 
       {pages.map((p, i) => (
         <amp-story-page id={`slide-${i + 2}`} auto-advance-after="7s">
-          <amp-story-grid-layer template="fill">
-            <div class="fillbg" style={`background:${grads[i % grads.length]}`}></div>
-          </amp-story-grid-layer>
-          <amp-story-grid-layer template="vertical" class="pad" style={`align-content:${p.tile ? 'start' : 'center'}`}>
-            <p class="brand">Tech<b>On</b>Play</p>
-            {p.tile && (
-              <div class="card" animate-in="fade-in" animate-in-duration="0.8s">
-                <amp-img src={p.tile} width="720" height="476" layout="responsive" alt={p.alt ?? p.title}></amp-img>
-              </div>
-            )}
-            <div>
-              <span class="kicker" animate-in="fly-in-left">{p.kicker}</span>
-            </div>
-            <h2 animate-in="fly-in-bottom" animate-in-delay="0.15s">{p.title}</h2>
-            <p class="t" animate-in="fade-in" animate-in-delay="0.5s">{p.text}</p>
-          </amp-story-grid-layer>
+          {p.bg ? (
+            <>
+              <amp-story-grid-layer template="fill">
+                <amp-img src={p.bg} width="720" height="1280" layout="fill" alt={p.alt ?? p.title}></amp-img>
+              </amp-story-grid-layer>
+              <amp-story-grid-layer template="fill">
+                <div class="shade-bottom"></div>
+              </amp-story-grid-layer>
+              <amp-story-grid-layer template="vertical" class="pad" style="align-content:start">
+                <p class="brand">Tech<b>On</b>Play</p>
+              </amp-story-grid-layer>
+              <amp-story-grid-layer template="vertical" class="pad" style="align-content:end">
+                <div>
+                  <span class="kicker" animate-in="fly-in-left">{p.kicker}</span>
+                </div>
+                <h2 animate-in="fly-in-bottom" animate-in-delay="0.15s">{p.title}</h2>
+                <p class="t" animate-in="fade-in" animate-in-delay="0.5s">{p.text}</p>
+              </amp-story-grid-layer>
+            </>
+          ) : (
+            <>
+              <amp-story-grid-layer template="fill">
+                <div class="fillbg" style={`background:${grads[i % grads.length]}`}></div>
+              </amp-story-grid-layer>
+              <amp-story-grid-layer template="vertical" class="pad" style={`align-content:${p.tile ? 'start' : 'center'}`}>
+                <p class="brand">Tech<b>On</b>Play</p>
+                {p.tile && (
+                  <div class="card" animate-in="fade-in" animate-in-duration="0.8s">
+                    <amp-img src={p.tile} width="720" height="476" layout="responsive" alt={p.alt ?? p.title}></amp-img>
+                  </div>
+                )}
+                {p.big && (
+                  <p class="big" style={`font-size:calc(${vh}*${p.big.length > 4 ? 8.5 : 16})`} animate-in="fade-in">{p.big}</p>
+                )}
+                <div>
+                  <span class="kicker" animate-in="fly-in-left">{p.kicker}</span>
+                </div>
+                <h2 animate-in="fly-in-bottom" animate-in-delay="0.15s">{p.title}</h2>
+                <p class="t" animate-in="fade-in" animate-in-delay="0.5s">{p.text}</p>
+              </amp-story-grid-layer>
+            </>
+          )}
         </amp-story-page>
       ))}
 

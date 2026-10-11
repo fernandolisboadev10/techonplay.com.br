@@ -1,0 +1,68 @@
+{
+  "title": "Google Flow é grátis? Créditos, limites e preços no Brasil",
+  "description": "Veja em 9 telas se o Google Flow é grátis, quantos vídeos rendem os 50 créditos por dia e quanto custam os planos no Brasil.",
+  "date": "2026-10-12T16:00:00-03:00",
+  "post": "google-flow-gratis",
+  "poster": "/web-stories/google-flow-gratis/poster-portrait.jpg",
+  "cover": "/web-stories/google-flow-gratis/cover-bg.jpg",
+  "coverKicker": "Guia rápido",
+  "coverNumber": "É grátis?",
+  "coverTitle": "Google Flow: veja o que o plano gratuito rende",
+  "cta": "Ler o guia completo",
+  "coverAlt": "Notebook sobre uma mesa de madeira com a tela mostrando o nome Google Flow",
+  "pages": [
+    {
+      "kicker": "Resposta direta",
+      "title": "Sim, com limites",
+      "text": "O plano gratuito dá 50 créditos por dia e usa o Veo 3.1, o modelo de vídeo do Google. A conta Google comum já basta.",
+      "bg": "/web-stories/google-flow-gratis/slide-2.jpg",
+      "alt": "Homem sorrindo enquanto usa um notebook em uma mesa de madeira, em uma sala com plantas"
+    },
+    {
+      "kicker": "Quanto rende",
+      "title": "Uns 2 vídeos por dia",
+      "text": "O modo Fast gasta cerca de 20 créditos por vídeo. O Quality, cerca de 100. Os créditos renovam todo dia.",
+      "bg": "/web-stories/google-flow-gratis/slide-3.jpg",
+      "alt": "Mãos digitando em um notebook com um editor de vídeo aberto ao pôr do sol"
+    },
+    {
+      "kicker": "Áudio",
+      "title": "Vídeo já com som",
+      "text": "O Veo 3.1 cria efeitos e diálogos junto com a imagem, sem precisar sincronizar o áudio depois.",
+      "bg": "/web-stories/google-flow-gratis/slide-4.jpg",
+      "alt": "Homem de fones de ouvido olhando uma paisagem ao pôr do sol em um monitor"
+    },
+    {
+      "kicker": "Duração",
+      "title": "Clipes curtos, em cenas",
+      "text": "Cada geração rende um clipe de cerca de 8 segundos. Para vídeos maiores, estenda a cena ou junte vários clipes.",
+      "big": "8s"
+    },
+    {
+      "kicker": "Quanto custa no Brasil",
+      "title": "Planos pagos por mês",
+      "text": "Plus: R$ 24,99. Pro: R$ 96,99. Ultra: a partir de R$ 779,90. Confira os valores na página oficial antes de assinar.",
+      "big": "R$ 24,99"
+    },
+    {
+      "kicker": "Como começar",
+      "title": "Três passos para testar",
+      "text": "Entre com a conta Google, descreva a cena ou envie imagens de referência e escolha Fast para testar ou Quality para a versão final.",
+      "bg": "/web-stories/google-flow-gratis/slide-7.jpg",
+      "alt": "Criadora de conteúdo em pé diante de uma mesa com notebook, com tripé e câmera ao fundo"
+    },
+    {
+      "kicker": "Recursos",
+      "title": "Mais que um gerador",
+      "text": "Ingredientes, frames para vídeo e o Flow Agent ficam no mesmo lugar. Dá para manter personagens entre as cenas.",
+      "bg": "/web-stories/google-flow-gratis/slide-8.jpg",
+      "alt": "Fotografias impressas espalhadas em uma mesa de madeira ao lado de um notebook e um caderno"
+    }
+  ],
+  "closing": {
+    "kicker": "Guia completo",
+    "title": "Veja créditos, limites e preços",
+    "text": "No artigo: o que cabe no plano grátis, o ecossistema do Flow e quando vale assinar.",
+    "bg": "/web-stories/google-flow-gratis/closing-bg.jpg"
+  }
+}
