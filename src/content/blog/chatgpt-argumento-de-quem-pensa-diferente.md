@@ -4,7 +4,8 @@ description: "Peça ao ChatGPT o melhor argumento de quem pensa diferente antes 
 category: "Dicas"
 date: 2026-10-14T18:00:00-03:00
 readingTime: "4 min"
-imageAlt: "Pessoa segurando um celular com uma conversa de chatbot aberta, em frente a uma urna eletrônica desfocada"
+image: "./images/chatgpt-argumento-de-quem-pensa-diferente.webp"
+imageAlt: "Mão segurando um celular com uma conversa de chatbot aberta, em frente a uma urna eletrônica desfocada em uma seção eleitoral"
 tags: ["ChatGPT", "Eleições 2026", "Inteligência artificial", "Prompts"]
 related: ["46-comandos-do-chatgpt", "eleicoes-2026-onde-votar-o-que-levar", "chatgpt-gratis-ou-pago"]
 ---
