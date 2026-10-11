@@ -1,9 +1,9 @@
 ---
-title: "Plugin Higgsfield no ChatGPT: como gerar vídeos com 79 códigos"
-description: "O plugin Higgsfield no ChatGPT gera vídeos com IA direto no chat, sem sair da conversa. Veja como instalar, os créditos e os códigos mais usados agora."
+title: "Higgsfield no ChatGPT: 79 códigos de vídeo para copiar e colar"
+description: "Lista com 79 códigos do plugin Higgsfield no ChatGPT para copiar e colar, o que cada um faz, como instalar e quanto custa gerar um vídeo."
 category: "Apps"
 date: 2026-09-29
-updated: 2026-09-29
+updated: 2026-10-10T12:00:00-03:00
 readingTime: "12 min"
 image: "./images/Plugin-Higgsfield-no-ChatGPT.webp"
 imageAlt: "Plugin Higgsfield no ChatGPT"

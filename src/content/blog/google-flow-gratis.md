@@ -1,9 +1,9 @@
 ---
-title: "Google Flow grátis? Veja o que a IA de vídeo do Google oferece"
-description: "Google Flow tem versão grátis com 50 créditos por dia. Veja o que a IA de vídeo do Google faz, quanto custam os planos no Brasil e como começar a usar."
+title: "Google Flow é grátis? Créditos, limites e preços no Brasil"
+description: "O Google Flow é grátis, com 50 créditos por dia e o Veo 3.1. Veja o que o plano gratuito rende, os limites e quanto custam os planos pagos no Brasil."
 category: "Inteligência Artificial"
 date: 2026-09-29
-updated: 2026-09-29
+updated: 2026-10-10T12:00:00-03:00
 readingTime: "5 min"
 image: "./images/Google-Flow.webp"
 imageAlt: "Google Flow"
@@ -12,6 +12,17 @@ related: ["comandos-camera-google-flow", "google-ai-plus-para-estudantes", "plug
 ---
 
 O **Google Flow**, estúdio de vídeo com inteligência artificial (IA) do Google, tem versão gratuita com 50 créditos por dia e usa o Veo 3.1, modelo que gera vídeo com áudio nativo. Os planos pagos começam em R$ 24,99 por mês no Brasil e ampliam créditos e recursos.
+
+## O Google Flow é grátis? O que cabe no plano gratuito
+
+Sim. O plano gratuito dá **50 créditos por dia** e usa o Veo 3.1, o mesmo modelo de vídeo com áudio nativo. Os créditos renovam todo dia, e a conta Google comum já basta para entrar.
+
+| 🎬 Modo | 💳 Créditos por vídeo | 📅 Rende por dia no grátis |
+| --- | --- | --- |
+| Fast (testar ideias) | cerca de 20 | cerca de 2 vídeos |
+| Quality (versão final) | cerca de 100 | não cabe em um dia |
+
+O limite pesa para quem produz em volume. Quem só quer testar a ferramenta fica bem servido, e os planos pagos entram a partir de R$ 24,99 por mês (mais detalhes abaixo).
 
 ## O que é o Google Flow
 
@@ -89,6 +100,14 @@ _Sim, com limites. A versão gratuita oferece 50 créditos por dia e roda o Veo 
 ### Quanto custa o Google Flow no Brasil?
 
 _O acesso vem dentro dos planos Google AI. O Plus custa R$ 24,99 por mês, o Pro custa R$ 96,99 e o Ultra parte de R$ 779,90._
+
+### Quantos vídeos dá para fazer de graça no Google Flow?
+
+_Cerca de dois vídeos rápidos (modo Fast) por dia, já que cada um consome por volta de 20 dos 50 créditos diários. O modo Quality gasta cerca de 100 créditos por vídeo._
+
+### Onde ver os comandos do Google Flow?
+
+_Os comandos de câmera ficam reunidos em outro guia: veja os [comandos de câmera do Google Flow](/comandos-camera-google-flow/), com exemplos para cada movimento._
 
 ### Qual modelo o Google Flow usa?
 
