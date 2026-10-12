@@ -14,7 +14,7 @@ const out = 'public/web-stories/google-flow-gratis';
 const cover = 'src/content/blog/images/Google-Flow.webp';
 
 // arquivo recebido -> slide
-const slides = { '4.webp': 2, '1.webp': 3, '2.webp': 4, '3.webp': 7, '6.jpg': 8 };
+const slides = { '4.webp': 2, '1.webp': 3, '2.webp': 4, '7.jpg': 5, '8.webp': 6, '3.webp': 7, '6.jpg': 8 };
 for (const [file, n] of Object.entries(slides)) {
   await sharp(`${srcDir}/${file}`)
     .resize({ width: 720, height: 1280, fit: 'cover', position: 'attention' })

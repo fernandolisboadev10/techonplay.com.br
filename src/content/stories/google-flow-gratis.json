@@ -36,13 +36,17 @@
       "kicker": "Duração",
       "title": "Clipes curtos, em cenas",
       "text": "Cada geração rende um clipe de cerca de 8 segundos. Para vídeos maiores, estenda a cena ou junte vários clipes.",
-      "big": "8s"
+      "big": "8s",
+      "bg": "/web-stories/google-flow-gratis/slide-5.jpg",
+      "alt": "Tira de filme com cenas de pôr do sol ao lado de um cronômetro antigo sobre uma mesa de madeira"
     },
     {
       "kicker": "Quanto custa no Brasil",
       "title": "Planos pagos por mês",
       "text": "Plus: R$ 24,99. Pro: R$ 96,99. Ultra: a partir de R$ 779,90. Confira os valores na página oficial antes de assinar.",
-      "big": "R$ 24,99"
+      "big": "R$ 24,99",
+      "bg": "/web-stories/google-flow-gratis/slide-6.jpg",
+      "alt": "Mão segurando um cartão de crédito liso diante de um notebook sobre uma mesa de madeira"
     },
     {
       "kicker": "Como começar",

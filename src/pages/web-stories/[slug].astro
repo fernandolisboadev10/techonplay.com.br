@@ -132,6 +132,9 @@ const analytics = JSON.stringify({
                 <p class="brand">Tech<b>On</b>Play</p>
               </amp-story-grid-layer>
               <amp-story-grid-layer template="vertical" class="pad" style="align-content:end">
+                {p.big && (
+                  <p class="big" style={`font-size:calc(${vh}*${p.big.length > 4 ? 8.5 : 16})`} animate-in="fade-in">{p.big}</p>
+                )}
                 <div>
                   <span class="kicker" animate-in="fly-in-left">{p.kicker}</span>
                 </div>
