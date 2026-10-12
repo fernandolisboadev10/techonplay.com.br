@@ -2,7 +2,7 @@
 title: "Claude Haiku 5.5: Anthropic lança modelo mais rápido e barato"
 description: "A Anthropic lançou o Claude Haiku 5.5 com preço até 90% menor na API. Veja os valores, para que o modelo serve e o que os testes mostram."
 category: "Notícias"
-date: 2026-10-12T10:07:00-03:00
+date: 2026-10-12T10:03:00-03:00
 readingTime: "3 min"
 image: "./images/claude-haiku-5-5-anthropic-modelo-mais-rapido-barato.webp"
 imageAlt: "Circuito eletrônico iluminado em laranja sobre fundo escuro, representando um modelo de inteligência artificial rápido e barato"
