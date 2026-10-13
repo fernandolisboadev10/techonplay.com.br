@@ -7,7 +7,7 @@ readingTime: "6 min"
 image: "./images/deepseek-2026-guia-completo.webp"
 imageAlt: "Celular exibindo a tela inicial do aplicativo DeepSeek sobre uma mesa cinza"
 tags: ["DeepSeek", "DeepSeek V4", "Inteligência artificial", "IA chinesa"]
-related: ["gemini-4-argon", "chatgpt-gratis-ou-pago"]
+related: ["chatgpt-gratis-ou-pago"]
 ---
 
 Uma IA chinesa de uso pessoal gratuito passou a ser comparada em raciocínio a modelos de assinaturas caras, como o Claude e o ChatGPT. O nome é **DeepSeek**, e em 2026 a história ganhou capítulos novos: o modelo V4, uma disputa de benchmarks e, agora, uma alta de preços que muda a conta de quem usa a API.
@@ -76,7 +76,7 @@ São critérios gerais, não conclusões das reportagens:
 
 ## E as concorrentes?
 
-O mercado segue disputado. O Google apresentou o [Gemini 4 Argon](/gemini-4-argon/), ainda de acesso restrito, e quem quer comparar planos de assistentes pode ler sobre o [ChatGPT grátis ou pago](/chatgpt-gratis-ou-pago/). Para mais conteúdo do tema, acesse a página de [Inteligência Artificial](/categoria/inteligencia-artificial/).
+O mercado segue disputado. O Google apresentou o Gemini 4 Argon, ainda de acesso restrito, e quem quer comparar planos de assistentes pode ler sobre o [ChatGPT grátis ou pago](/chatgpt-gratis-ou-pago/). Para mais conteúdo do tema, acesse a página de [Inteligência Artificial](/categoria/inteligencia-artificial/).
 
 ## Perguntas frequentes sobre o DeepSeek
 

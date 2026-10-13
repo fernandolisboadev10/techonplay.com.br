@@ -98,7 +98,7 @@ A conta é simples. Se você vai usar o 4G, o GPS e a análise de treino com reg
 
 Vale para quem corre ou treina, usa Android e quer um relógio que funcione sozinho, com 4G e GPS preciso. Para esse público, a ficha técnica é competitiva. Para quem só quer notificações, o preço não se justifica.
 
-Se você está em dúvida, espere as primeiras análises de bateria e de precisão dos sensores e compare o preço em lojas. Para mais guias, acesse a página de [Reviews](/categoria/reviews/) e as [Notícias](/categoria/noticias/) do site.
+Se você está em dúvida, espere as primeiras análises de bateria e de precisão dos sensores e compare o preço em lojas. Para mais guias, acesse a página de [Reviews](/categoria/reviews/).
 
 ## Perguntas frequentes sobre o Moto Watch Ultra
 

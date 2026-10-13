@@ -232,10 +232,10 @@ function suggest(t, cat, isCovered) {
     return { type: 'Evergreen', title: `${name} vale a pena? O que muda e para quem serve`, search: `${t.term} vale a pena`, slot: '18h', note: '1.000-1.800 palavras, veredito no início' };
   }
   if (price) {
-    return { type: 'Notícia com ângulo de busca', title: `${name}: preço e data no Brasil`, search: `${t.term} preço brasil`, slot: '7h', note: '500-800 palavras, preço no primeiro parágrafo' };
+    return { type: 'Artigo com ângulo de busca', title: `${name}: preço e data no Brasil`, search: `${t.term} preço brasil`, slot: '7h', note: '500-800 palavras, preço no primeiro parágrafo' };
   }
   if (fresh) {
-    return { type: 'Notícia', title: `${name}: o que se sabe até agora`, search: t.term, slot: '7h', note: '300-500 palavras, categoria Notícias, tema em tags' };
+    return { type: 'Artigo quente', title: `${name}: o que se sabe até agora`, search: t.term, slot: '7h', note: '800-1.200 palavras, escolha a categoria pelo tema' };
   }
   return { type: 'Evergreen', title: `${name}: guia completo`, search: `o que é ${t.term}`, slot: '18h', note: '1.000-1.800 palavras' };
 }

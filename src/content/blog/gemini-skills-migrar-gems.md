@@ -76,7 +76,7 @@ Há outra novidade para quem usa o Gemini. De acordo com o [Olhar Digital](https
 | AI Pro | Sim | Sim | Sim |
 | AI Ultra | Sim | Sim | Sim |
 
-Segundo a reportagem, usuários gratuitos perdem acesso ao Gemini 3.6 Flash e ao 3.1 Pro, e assinantes do AI Plus perdem o acesso ao Pro. O AI Pro passa a ter o Deep Think, recurso de raciocínio avançado antes exclusivo do AI Ultra, e todos ganham três níveis de esforço: baixo, médio e alto. A reportagem lista preços em dólar (AI Plus a US$ 4,99 por mês, AI Pro a US$ 19,99 e AI Ultra de US$ 99,99 a US$ 199,99) e não informa valores em reais. O lugar do [Gemini 4 Argon](/gemini-4-argon/) nessa estrutura segue indefinido.
+Segundo a reportagem, usuários gratuitos perdem acesso ao Gemini 3.6 Flash e ao 3.1 Pro, e assinantes do AI Plus perdem o acesso ao Pro. O AI Pro passa a ter o Deep Think, recurso de raciocínio avançado antes exclusivo do AI Ultra, e todos ganham três níveis de esforço: baixo, médio e alto. A reportagem lista preços em dólar (AI Plus a US$ 4,99 por mês, AI Pro a US$ 19,99 e AI Ultra de US$ 99,99 a US$ 199,99) e não informa valores em reais. O lugar do Gemini 4 Argon nessa estrutura segue indefinido.
 
 Se você usa o AI Plus, como no [resgate gratuito para estudantes](/google-ai-plus-para-estudantes/), vale conferir no app o que muda no seu plano.
 

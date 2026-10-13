@@ -21,7 +21,6 @@ Criamos conteúdo para pessoas de verdade, com foco em:
 - **Guia de Compra**: reviews imparciais que mostram se aquele gadget novo realmente vale o seu dinheiro suado.
 - **Tutoriais Práticos**: passo a passo para você dominar seus dispositivos e aplicativos em minutos.
 - **Tecnologia Explicada**: simplificamos temas complexos — como IA e cibersegurança — em uma linguagem clara.
-- **Notícias Diárias**: as atualizações mais importantes do mundo da tecnologia, filtradas pelo que realmente importa para você.
 
 ## Por Que Confiar em Nós?
 

@@ -7,7 +7,7 @@ readingTime: "6 min"
 image: "./images/justificar-ausencia-multa-eleitoral-2026.webp"
 imageAlt: "Pessoa em uma mesa consultando o celular ao lado de um formulário e uma caneta"
 tags: ["Eleições 2026", "Justificativa eleitoral", "Multa eleitoral", "e-Título"]
-related: ["eleicoes-2026-onde-votar-o-que-levar"]
+related: []
 ---
 
 Quem não votou no primeiro turno de 2026 pode justificar a ausência até **3 de dezembro de 2026**. Se não justificar, a multa por ausência é de até R$ 3,51, e deixar a situação em aberto pode ter consequências maiores com o tempo. Este guia reúne os prazos, os caminhos para justificar, como consultar e pagar a multa e o que acontece em cada caso, com base em reportagens do Canaltech sobre as regras da Justiça Eleitoral.
@@ -102,7 +102,7 @@ Ou seja, a multa de poucos reais pode ficar cara se for ignorada. O ideal é res
 - **Pagar para o destinatário errado.** No Pix, o recebedor deve ser o Tesouro Nacional.
 - **Deixar para depois.** Depois do dia da votação, a justificativa exige motivo e comprovantes.
 
-Para mais passo a passos, acesse a categoria [Tutoriais](/categoria/tutoriais/). Se quiser ver o que fazer no dia da votação, leia [Eleições 2026 hoje: onde votar, o que levar e o que é proibido](/eleicoes-2026-onde-votar-o-que-levar/).
+Para mais passo a passos, acesse a categoria [Tutoriais](/categoria/tutoriais/). Se quiser ver o que fazer no dia da votação, leia Eleições 2026 hoje: onde votar, o que levar e o que é proibido.
 
 ## Perguntas frequentes
 

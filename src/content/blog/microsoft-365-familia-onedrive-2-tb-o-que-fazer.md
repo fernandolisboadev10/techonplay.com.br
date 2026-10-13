@@ -70,7 +70,7 @@ Depende do uso. Para quem usa o pacote Office e não guarda muitos arquivos, 2 T
 - Se os benefícios temporários de armazenamento chegam ao Brasil.
 - O que muda no plano Pessoal, que a reportagem não menciona.
 
-Para mais orientações sobre serviços e assinaturas, veja as páginas de [Dicas](/categoria/dicas/) e de [Notícias](/categoria/noticias/).
+Para mais orientações sobre serviços e assinaturas, veja a página de [Dicas](/categoria/dicas/).
 
 ## Perguntas frequentes
 

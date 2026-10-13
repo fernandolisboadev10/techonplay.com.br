@@ -8,12 +8,12 @@ readingTime: "13 min"
 image: "./images/melhores-ferramentas-de-ia-do-google-2026.webp"
 imageAlt: "Mesa de trabalho com notebook e monitor exibindo interfaces de ferramentas de IA do Google, com caderno e caneta em primeiro plano"
 tags: ["Google", "Gemini", "Ferramentas de IA", "Gemini Notebook", "Gemini 4 Argon"]
-related: ["gemini-4-argon", "como-usar-notebooklm", "google-ai-plus-para-estudantes", "google-flow-gratis"]
+related: ["como-usar-notebooklm", "google-ai-plus-para-estudantes", "google-flow-gratis"]
 ---
 
 O Google lançou três modelos Gemini Flash em seis semanas, trocou o nome do NotebookLM e colocou o app do Gemini no Windows. Se você procura as **melhores ferramentas de IA do Google** agora, a maioria das listas escritas antes do verão aponta para produtos que mudaram de nome, de modelo ou deixaram de existir.
 
-O ritmo acelerou depois do Google I/O, em 19 de maio. O Gemini Omni transformou o vídeo em uma conversa, o Gemini Spark virou um agente que trabalha 24 horas e o Antigravity substituiu o Gemini CLI. Em seguida vieram o Gemini 3.8 Flash, em 2 de setembro, e o Gemini 3.8 Live, em 15 de setembro. A novidade mais recente é o [Gemini 4 Argon](/gemini-4-argon/), o primeiro modelo de fronteira do Google desde o primeiro semestre, ainda restrito a testadores.
+O ritmo acelerou depois do Google I/O, em 19 de maio. O Gemini Omni transformou o vídeo em uma conversa, o Gemini Spark virou um agente que trabalha 24 horas e o Antigravity substituiu o Gemini CLI. Em seguida vieram o Gemini 3.8 Flash, em 2 de setembro, e o Gemini 3.8 Live, em 15 de setembro. A novidade mais recente é o Gemini 4 Argon, o primeiro modelo de fronteira do Google desde o primeiro semestre, ainda restrito a testadores.
 
 Este guia reúne as 10 ferramentas do Google que valem o seu tempo em outubro de 2026, com um olhar para o Brasil: preços em reais, o que funciona em português e o que ainda não chegou por aqui. [Nota editorial: os recursos e preços seguem o que o Google publicou até 2 de outubro de 2026. Confirme na página oficial antes de assinar.]
 
@@ -31,7 +31,7 @@ Três novidades dos últimos dias mexem na lista e merecem atenção antes de as
 
 ### Gemini 4 Argon: o próximo modelo de fronteira
 
-O [Gemini 4 Argon](/gemini-4-argon/) foi apresentado em 30 de setembro como a resposta do Google ao GPT-6 Astra e ao Claude Fable 5.1. Segundo o [Canaltech](https://canaltech.com.br/inteligencia-artificial/google-apresenta-gemini-4-argon-nova-ia-para-peitar-chatgpt-e-claude/), a janela de contexto sobe de 64 mil para 1 milhão de tokens, e o Google já usa o modelo internamente, inclusive em pesquisa de computação quântica.
+O Gemini 4 Argon foi apresentado em 30 de setembro como a resposta do Google ao GPT-6 Astra e ao Claude Fable 5.1. Segundo o [Canaltech](https://canaltech.com.br/inteligencia-artificial/google-apresenta-gemini-4-argon-nova-ia-para-peitar-chatgpt-e-claude/), a janela de contexto sobe de 64 mil para 1 milhão de tokens, e o Google já usa o modelo internamente, inclusive em pesquisa de computação quântica.
 
 ✅ É o primeiro modelo de fronteira do Google desde o primeiro semestre ❌ O acesso é restrito a um grupo de defensores cibernéticos e testadores ❌ Depois dos testes de segurança, ele vai primeiro para o plano Google AI Ultra, sem data nem preço no Brasil ❌ Não há testes independentes, e a comparação com os rivais é do próprio Google
 
@@ -170,7 +170,7 @@ O app Gemini é o melhor ponto de partida, porque reúne o Gemini 3.8 Flash, o N
 
 ### O que é o Gemini 4 Argon e quando chega?
 
-É o novo modelo de fronteira do Google, apresentado em 30 de setembro de 2026, com janela de 1 milhão de tokens. O acesso está restrito a testadores e defensores cibernéticos. Depois dos testes de segurança, ele será liberado aos assinantes do Google AI Ultra, sem data confirmada nem informação de preço para o Brasil. Veja os detalhes em [Gemini 4 Argon](/gemini-4-argon/).
+É o novo modelo de fronteira do Google, apresentado em 30 de setembro de 2026, com janela de 1 milhão de tokens. O acesso está restrito a testadores e defensores cibernéticos. Depois dos testes de segurança, ele será liberado aos assinantes do Google AI Ultra, sem data confirmada nem informação de preço para o Brasil. Veja os detalhes em Gemini 4 Argon.
 
 ### O que acontece com os Gems do Gemini?
 

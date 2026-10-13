@@ -54,7 +54,7 @@ export default defineConfig({
       filter(page) {
         const m = new URL(page).pathname.match(/^\/categoria\/([^/]+)\/?$/);
         if (!m) return true;
-        const names = { 'inteligencia-artificial': 'Inteligência Artificial', jogos: 'Jogos', tutoriais: 'Tutoriais', dicas: 'Dicas', curiosidades: 'Curiosidades', reviews: 'Reviews', apps: 'Apps', noticias: 'Notícias' };
+        const names = { 'inteligencia-artificial': 'Inteligência Artificial', jogos: 'Jogos', tutoriais: 'Tutoriais', dicas: 'Dicas', curiosidades: 'Curiosidades', reviews: 'Reviews', apps: 'Apps' };
         return (postsPerCategory.get(names[m[1]]) ?? 0) >= 2;
       },
       serialize(item) {

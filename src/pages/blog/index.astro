@@ -7,7 +7,6 @@ import { isPublished, sortByActivity } from '../../utils/posts';
 const posts = sortByActivity(await getCollection('blog', isPublished));
 
 const categories = [
-  'Notícias',
   'Inteligência Artificial',
   'Jogos',
   'Tutoriais',

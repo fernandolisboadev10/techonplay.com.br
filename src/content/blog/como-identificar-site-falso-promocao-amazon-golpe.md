@@ -7,7 +7,7 @@ readingTime: "6 min"
 image: "./images/como-identificar-site-falso-promocao-amazon-golpe.webp"
 imageAlt: "Pessoa olhando a tela de um celular com um aviso de alerta sobre uma compra online suspeita"
 tags: ["Golpes", "Segurança", "Compras online", "Amazon"]
-related: ["whatsapp-bloqueia-login-celular-desatualizado"]
+related: []
 ---
 
 Em períodos de promoção, como o evento Mega Oferta Amazon Prime (de 5 a 11 de outubro de 2026), cresce o número de **sites e mensagens falsos** que imitam a Amazon. Segundo a Check Point Research, citada pelo Canaltech, 6,5% dos domínios ligados à Amazon ou ao Prime Day registrados em setembro foram classificados como maliciosos ou suspeitos, cerca de um em cada 16. Este guia explica como o golpe funciona e como se proteger. As dicas valem para qualquer loja, e não só para a Amazon.
@@ -72,7 +72,7 @@ Estes passos são orientações gerais, e não vêm da reportagem:
 
 A reportagem do Canaltech trata de domínios ligados à Amazon e ao Prime Day, e não mede o total de golpes nem de vítimas. Os números mostram o tamanho da tentativa de fraude, e não quantas pessoas foram enganadas.
 
-Manter o celular atualizado também ajuda na proteção da conta. Veja como isso afeta o aplicativo no post sobre o [WhatsApp que bloqueia login em celulares desatualizados](/whatsapp-bloqueia-login-celular-desatualizado/). Para mais orientações, acesse as páginas de [Dicas](/categoria/dicas/) e [Notícias](/categoria/noticias/).
+Manter o celular atualizado também ajuda na proteção da conta. Veja como isso afeta o aplicativo no post sobre o WhatsApp que bloqueia login em celulares desatualizados. Para mais orientações, acesse a página de [Dicas](/categoria/dicas/).
 
 ## Perguntas frequentes
 

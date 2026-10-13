@@ -76,7 +76,7 @@ Estas dicas não vêm das reportagens, e servem para qualquer serviço de stream
 - O preço da mensalidade e as regras de migração para quem já assina.
 - Como a operação afeta o catálogo no Brasil.
 
-Para acompanhar mais dicas e novidades, veja as categorias [Dicas](/categoria/dicas/) e [Notícias](/categoria/noticias/).
+Para acompanhar mais dicas e novidades, veja a categoria [Dicas](/categoria/dicas/).
 
 ## Perguntas frequentes
 

@@ -7,7 +7,7 @@ readingTime: "6 min"
 image: "./images/oculos-inteligentes-2026-o-que-fazem-precos.webp"
 imageAlt: "Óculos inteligentes de armação escura sobre uma mesa de madeira ao lado de um celular"
 tags: ["Óculos inteligentes", "Ray-Ban Meta", "Android XR", "Wearables"]
-related: ["moto-watch-ultra-vale-a-pena", "gemini-4-argon"]
+related: ["moto-watch-ultra-vale-a-pena"]
 ---
 
 Os **óculos inteligentes** deixaram de ser curiosidade de feira de tecnologia e já têm modelos à venda no Brasil. O principal é o Ray-Ban Meta, que chegou à terceira geração, com bateria de até 9 horas e preço a partir de R$ 3.699. Samsung e Google preparam os seus, e a Meta lançou uma versão sem câmera por causa de críticas sobre privacidade.
@@ -84,7 +84,7 @@ Estes são critérios gerais, não conclusões das reportagens:
 
 Para quem quer câmera, áudio e assistente de IA no rosto, o Ray-Ban Meta Gen 3 é, hoje, a opção mais acessível de comprar no Brasil, mas custa o equivalente a um celular intermediário. Quem prefere esperar tem um bom motivo: Samsung e Google ainda não divulgaram preço, e o segmento muda rápido.
 
-Se você gosta de acessórios vestíveis, veja também a análise do [Moto Watch Ultra](/moto-watch-ultra-vale-a-pena/). Para saber mais sobre o assistente do Google que roda nos óculos Android XR, leia sobre o [Gemini 4 Argon](/gemini-4-argon/). Mais guias estão na página de [Reviews](/categoria/reviews/).
+Se você gosta de acessórios vestíveis, veja também a análise do [Moto Watch Ultra](/moto-watch-ultra-vale-a-pena/). Para saber mais sobre o assistente do Google que roda nos óculos Android XR, leia sobre o Gemini 4 Argon. Mais guias estão na página de [Reviews](/categoria/reviews/).
 
 ## Perguntas frequentes
 

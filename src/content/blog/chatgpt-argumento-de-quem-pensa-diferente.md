@@ -7,7 +7,7 @@ readingTime: "4 min"
 image: "./images/chatgpt-argumento-de-quem-pensa-diferente.webp"
 imageAlt: "Mão segurando um celular com uma conversa de chatbot aberta, em frente a uma urna eletrônica desfocada em uma seção eleitoral"
 tags: ["ChatGPT", "Eleições 2026", "Inteligência artificial", "Prompts"]
-related: ["46-comandos-do-chatgpt", "eleicoes-2026-onde-votar-o-que-levar", "chatgpt-gratis-ou-pago"]
+related: ["46-comandos-do-chatgpt", "chatgpt-gratis-ou-pago"]
 ---
 
 Antes de votar, peça ao ChatGPT o melhor argumento de quem pensa diferente de você. A pergunta serve para qualquer eleitor, de qualquer lado, e muda o que a IA faz por você: em vez de confirmar o que você já acredita, ela passa a explicar a posição contrária no melhor formato que ela tem.
@@ -50,7 +50,7 @@ Para checar, use fontes que não dependem de IA:
 2. **Notícias com data:** veículos diferentes, de linhas editoriais diferentes, sobre o mesmo fato.
 3. **Os próprios candidatos:** o que eles dizem em entrevistas e debates completos, não em recortes.
 
-Se você ainda vai votar, confira também o local e o que levar no post [Eleições 2026: onde votar, o que levar e o que é proibido](/eleicoes-2026-onde-votar-o-que-levar/).
+Se você ainda vai votar, confira também o local e o que levar no post Eleições 2026: onde votar, o que levar e o que é proibido.
 
 ## O ponto principal
 
