@@ -1,0 +1,150 @@
+---
+import { getCollection } from 'astro:content';
+
+const stories = (await getCollection('stories', (s) => !s.data.draft && s.data.date.getTime() <= Date.now()))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 8);
+---
+{stories.length > 0 && (
+  <section class="container stories" aria-labelledby="stories-title">
+    <div class="head">
+      <h2 id="stories-title">Web Stories</h2>
+      <span class="underline"></span>
+    </div>
+    <ul>
+      {stories.map((s) => (
+        <li>
+          <a href={`/web-stories/${s.id}/`} class="story" style={`background-image:url('${s.data.poster}')`}>
+            <span class="badge">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2" /><path d="M3 7v10M21 7v10" /></svg>
+              Web Story
+            </span>
+            <span class="shade"></span>
+            <span class="body">
+              <strong>{s.data.title}</strong>
+              <span class="foot">
+                <small>{s.data.pages.length + 2} páginas</small>
+                <span class="arrow" aria-hidden="true">→</span>
+              </span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
+
+<style>
+  .stories {
+    padding-block: 16px 56px;
+  }
+
+  .head {
+    margin-bottom: 24px;
+  }
+
+  h2 {
+    margin: 0;
+  }
+
+  .underline {
+    display: block;
+    width: 48px;
+    height: 4px;
+    margin-top: 10px;
+    border-radius: 2px;
+    background: linear-gradient(135deg, var(--violet), var(--rose));
+  }
+
+  ul {
+    display: flex;
+    gap: 16px;
+    margin: 0;
+    padding: 0 0 8px;
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+  }
+
+  li {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+  }
+
+  .story {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 200px;
+    aspect-ratio: 3 / 4;
+    padding: 14px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--ink-deep) center / cover no-repeat;
+    color: #fff;
+    text-decoration: none;
+    transition: transform 0.15s ease;
+  }
+
+  .story:hover {
+    transform: translateY(-3px);
+  }
+
+  .shade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(16, 10, 30, 0.25) 0%, rgba(16, 10, 30, 0) 30%, rgba(16, 10, 30, 0.9) 100%);
+  }
+
+  .badge,
+  .body {
+    position: relative;
+  }
+
+  .badge {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(16, 10, 30, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .body strong {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+
+  .foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+  }
+
+  small {
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+</style>

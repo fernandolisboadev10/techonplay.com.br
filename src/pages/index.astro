@@ -2,10 +2,14 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
+import FeaturedGrid from '../components/FeaturedGrid.astro';
+import StoriesStrip from '../components/StoriesStrip.astro';
 import { isPublished, sortByActivity } from '../utils/posts';
 
 const PAGE_SIZE = 6;
-const posts = sortByActivity(await getCollection('blog', isPublished));
+const all = sortByActivity(await getCollection('blog', isPublished));
+const featured = all.slice(0, 3);
+const posts = all.slice(3);
 ---
 <BaseLayout title="IA, Jogos, Tutoriais e Tecnologia" description="Guias, reviews e notícias sobre IA, jogos, tutoriais e curiosidades, em linguagem simples.">
   <section class="hero container">
@@ -13,10 +17,20 @@ const posts = sortByActivity(await getCollection('blog', isPublished));
     <p class="eyebrow">techonplay.com.br<span class="eyebrow-cursor">_</span></p>
   </section>
 
+  <section class="container featured-wrap">
+    <div class="recent-header">
+      <div>
+        <h2>Em destaque</h2>
+        <span class="underline"></span>
+      </div>
+    </div>
+    <FeaturedGrid posts={featured} />
+  </section>
+
   <section class="container recent">
     <div class="recent-header">
       <div>
-        <h2>Artigos recentes</h2>
+        <h2>Últimas publicações</h2>
         <span class="underline"></span>
       </div>
       <a href="/blog">Ver todos →</a>
@@ -44,6 +58,8 @@ const posts = sortByActivity(await getCollection('blog', isPublished));
       </div>
     )}
   </section>
+
+  <StoriesStrip />
 </BaseLayout>
 
 <script>
@@ -98,6 +114,10 @@ const posts = sortByActivity(await getCollection('blog', isPublished));
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+  }
+
+  .featured-wrap {
+    padding-block: 32px 8px;
   }
 
   .recent {

@@ -1,8 +1,9 @@
 ---
 interface Props {
   title: string;
+  variant?: 'top' | 'end';
 }
-const { title } = Astro.props;
+const { title, variant = 'top' } = Astro.props;
 
 const url = new URL(Astro.url.pathname, Astro.site).toString();
 const u = encodeURIComponent(url);
@@ -16,8 +17,16 @@ const links = [
   { name: 'Telegram', cls: 'telegram', href: `https://t.me/share/url?url=${u}&text=${t}`, path: 'M21.4 4.1 2.9 11.3c-1.26.5-1.25 1.2-.23 1.52l4.75 1.48 1.83 5.6c.22.6.12.85.75.85.49 0 .7-.22.97-.49l2.3-2.24 4.8 3.55c.88.49 1.52.24 1.74-.82l3.15-14.85c.32-1.29-.49-1.88-1.56-1.36ZM8.5 13.7l9.3-5.87c.44-.27.84-.12.51.18l-7.96 7.18-.31 3.3-1.54-4.79Z' },
 ];
 ---
-<div class="share" data-share-url={url}>
-  <span class="share-label">Compartilhe:</span>
+<div class={`share share-${variant}`} data-share-url={url}>
+  {variant === 'end' ? (
+    <div class="share-copy">
+      <p class="share-kicker">Compartilhe conhecimento</p>
+      <p class="share-title">Este conteúdo foi útil para você?</p>
+      <p class="share-sub">Envie para alguém que também pode aproveitar.</p>
+    </div>
+  ) : (
+    <span class="share-label">Compartilhe:</span>
+  )}
   <ul>
     {links.map((l) => (
       <li>
@@ -123,5 +132,66 @@ const links = [
   .share-status {
     font-size: 0.85rem;
     color: var(--teal);
+  }
+
+  .share-end {
+    justify-content: space-between;
+    gap: 20px 24px;
+    margin: 48px 0 32px;
+    padding: 28px 32px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--surface), var(--violet-soft) 260%);
+  }
+
+  .share-kicker {
+    margin: 0 0 6px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .share-title {
+    margin: 0 0 6px;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--ink-strong);
+  }
+
+  .share-sub {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+
+  .share-end ul {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .share-end .share-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+  }
+
+  .share-end .share-status {
+    flex-basis: 100%;
+    text-align: right;
+  }
+
+  @media (max-width: 600px) {
+    .share-end {
+      padding: 22px 20px;
+    }
+
+    .share-end .share-status {
+      text-align: left;
+    }
   }
 </style>
