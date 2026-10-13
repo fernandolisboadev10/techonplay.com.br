@@ -1,0 +1,87 @@
+---
+interface Props {
+  current: number;
+  total: number;
+}
+const { current, total } = Astro.props;
+
+const href = (n: number) => (n === 1 ? '/' : `/page/${n}/`);
+
+const wanted = new Set<number>([1, 2, current - 1, current, current + 1, total - 1, total]);
+if (current <= 3) [3, 4].forEach((n) => wanted.add(n));
+const pages = [...wanted].filter((n) => n >= 1 && n <= total).sort((a, b) => a - b);
+const items: (number | null)[] = [];
+pages.forEach((n, i) => {
+  if (i > 0 && n - pages[i - 1] > 1) items.push(null);
+  items.push(n);
+});
+---
+{total > 1 && (
+  <nav class="pagination" aria-label="Paginação">
+    {current > 1 && <a class="pg" href={href(current - 1)} rel="prev">Anterior</a>}
+    {items.map((n) =>
+      n === null ? (
+        <span class="pg gap" aria-hidden="true">…</span>
+      ) : n === current ? (
+        <span class="pg active" aria-current="page">{n}</span>
+      ) : (
+        <a class="pg" href={href(n)}>{n}</a>
+      ),
+    )}
+    {current < total && <a class="pg" href={href(current + 1)} rel="next">Próxima</a>}
+  </nav>
+)}
+
+<style>
+  .pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 44px;
+  }
+
+  .pg {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 46px;
+    height: 46px;
+    padding: 0 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--ink-strong);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  }
+
+  a.pg:hover {
+    border-color: var(--violet);
+    color: var(--violet);
+    transform: translateY(-2px);
+  }
+
+  .pg.active {
+    border-color: var(--violet);
+    background: var(--violet);
+    color: #fff;
+  }
+
+  .pg.gap {
+    border-color: transparent;
+    background: transparent;
+    min-width: 28px;
+    padding: 0;
+  }
+
+  @media (max-width: 480px) {
+    .pg {
+      min-width: 40px;
+      height: 40px;
+      padding: 0 10px;
+    }
+  }
+</style>
