@@ -18,7 +18,7 @@ pages.forEach((n, i) => {
 ---
 {total > 1 && (
   <nav class="pagination" aria-label="Paginação">
-    {current > 1 && <a class="pg" href={href(current - 1)} rel="prev">Anterior</a>}
+    {current > 1 && <a class="pg nav" href={href(current - 1)} rel="prev">Anterior</a>}
     {items.map((n) =>
       n === null ? (
         <span class="pg gap" aria-hidden="true">…</span>
@@ -28,7 +28,7 @@ pages.forEach((n, i) => {
         <a class="pg" href={href(n)}>{n}</a>
       ),
     )}
-    {current < total && <a class="pg" href={href(current + 1)} rel="next">Próxima</a>}
+    {current < total && <a class="pg nav" href={href(current + 1)} rel="next">Próxima</a>}
   </nav>
 )}
 
@@ -47,15 +47,19 @@ pages.forEach((n, i) => {
     justify-content: center;
     min-width: 46px;
     height: 46px;
-    padding: 0 14px;
+    padding: 0;
     border: 1px solid var(--line);
-    border-radius: 10px;
+    border-radius: 999px;
     background: var(--surface);
     color: var(--ink-strong);
     font-size: 0.95rem;
     font-weight: 500;
     text-decoration: none;
     transition: border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  }
+
+  .pg.nav {
+    padding: 0 20px;
   }
 
   a.pg:hover {
@@ -65,8 +69,8 @@ pages.forEach((n, i) => {
   }
 
   .pg.active {
-    border-color: var(--violet);
-    background: var(--violet);
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--violet), var(--rose));
     color: #fff;
   }
 
@@ -81,7 +85,10 @@ pages.forEach((n, i) => {
     .pg {
       min-width: 40px;
       height: 40px;
-      padding: 0 10px;
+    }
+
+    .pg.nav {
+      padding: 0 14px;
     }
   }
 </style>

@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
+import { categoryColor } from '../utils/categoryColor';
 
 interface Props {
   posts: CollectionEntry<'blog'>[];
@@ -16,7 +17,7 @@ const fmt = (d: Date) => d.toLocaleDateString('pt-BR', { day: '2-digit', month: 
       {main.data.image && <Image src={main.data.image} alt={main.data.imageAlt ?? main.data.title} width={960} height={640} quality={72} priority />}
       <div class="shade"></div>
       <div class="main-body">
-        <span class="chip chip-dark">{main.data.category}</span>
+        <span class="chip" style={`--chip:${categoryColor(main.data.category)}`}>{main.data.category}</span>
         <h3>{main.data.title}</h3>
         <p class="desc">{main.data.description}</p>
         <p class="by">Fernando Lisboa <span aria-hidden="true">•</span> {fmt(main.data.date)}</p>
@@ -29,7 +30,7 @@ const fmt = (d: Date) => d.toLocaleDateString('pt-BR', { day: '2-digit', month: 
             {p.data.image && <Image src={p.data.image} alt={p.data.imageAlt ?? p.data.title} width={300} height={300} quality={70} />}
           </div>
           <div class="mini-body">
-            <span class="chip">{p.data.category}</span>
+            <span class="chip" style={`--chip:${categoryColor(p.data.category)}`}>{p.data.category}</span>
             <h3>{p.data.title}</h3>
             <p class="by">Fernando Lisboa <span aria-hidden="true">•</span> {fmt(p.data.date)}</p>
           </div>
@@ -168,19 +169,13 @@ const fmt = (d: Date) => d.toLocaleDateString('pt-BR', { day: '2-digit', month: 
     align-self: flex-start;
     padding: 5px 10px;
     border-radius: 8px;
-    background: var(--violet-soft);
-    color: var(--violet-deep);
+    background: var(--chip, var(--violet-deep));
+    color: #fff;
     font-family: var(--font-mono);
     font-size: 0.68rem;
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-  }
-
-  .chip-dark {
-    background: rgba(255, 255, 255, 0.16);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.3);
   }
 
   @media (max-width: 860px) {
