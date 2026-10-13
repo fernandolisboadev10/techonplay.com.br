@@ -29,7 +29,6 @@ The home, `/blog/` and category pages sort posts by latest activity: the newer o
 
 A post goes live when its `date` has passed (`isPublished` in `src/utils/posts.ts`). The deploy workflow rebuilds at 07:02, 11:02 and 18:02 (Brasília time), so to schedule a post set `date` to a future time such as `2026-10-02T07:00:00-03:00` and push; commit it before the slot.
 
-**No posts on Sunday.** Never set a `date` that falls on a Sunday (Brasília time). The weekly calendar is Monday article 11:02, Wednesday article 18:02, Friday article 11:02 (see `blogs.json`). Exception: the two posts already scheduled for Sunday 2026-10-11 stay as they are, at the owner's request.
 
 ## Images and Web Stories (cost rules)
 
