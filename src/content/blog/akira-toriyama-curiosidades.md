@@ -2,7 +2,7 @@
 title: "Akira Toriyama: 10 curiosidades que poucos fãs conhecem"
 description: "Do emprego em agência ao slime de Dragon Quest: veja 10 curiosidades sobre Akira Toriyama, o criador de Dragon Ball, que poucos fãs conhecem."
 category: "Curiosidades"
-date: 2026-10-14T18:02:00-03:00
+date: 2026-10-13T18:20:00-03:00
 readingTime: "6 min"
 image: "./images/akira-toriyama-curiosidades.webp"
 imageAlt: "Ilustração gerada por IA de um desenhista japonês trabalhando à mesa de desenho, cercado de papéis e esboços de personagens de mangá"
