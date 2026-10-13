@@ -50,7 +50,7 @@ Toriyama foi o desenhista dos personagens de *Dragon Quest* desde o primeiro jog
 
 ## 9. Ele projetou um carro elétrico de um lugar só
 
-Apaixonado por carros e motos, hábito que vinha do pai, Toriyama desenhou o QVOLT, um microcarro elétrico de um lugar lançado em 2005 pela CQ Motors. Foram fabricadas apenas nove unidades. Ele também adorava modelos de plástico: chegou a desenhar kits e figuras para a fabricante japonesa Fine Molds, segundo registros do Kanzenshuu e da Wikipédia.
+Apaixonado por carros e motos, hábito que vinha do pai, Toriyama desenhou o QVOLT, um microcarro elétrico de um lugar fabricado pela CQ Motors, num projeto de 2004-2005. Foram fabricadas apenas nove unidades. Ele também adorava modelos de plástico: chegou a desenhar kits e figuras para a fabricante japonesa Fine Molds, segundo registros do Kanzenshuu e da Wikipédia.
 
 ## 10. Ele evitava aparecer e usava um robô no lugar
 
