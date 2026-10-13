@@ -49,7 +49,7 @@ const quickLinks = [
 
     <div>
       <p class="col-title">Categorias</p>
-      <ul>
+      <ul class="cats" style={`grid-template-rows: repeat(${Math.ceil(categories.length / 2)}, auto)`}>
         {categories.map((c) => (
           <li><a href={c.href}>{c.label}</a></li>
         ))}
@@ -78,7 +78,7 @@ const quickLinks = [
 
   .grid {
     display: grid;
-    grid-template-columns: 1.6fr 1fr 1fr;
+    grid-template-columns: 1.6fr 1fr 1.5fr;
     gap: 40px;
     padding-block: 56px 40px;
   }
@@ -132,6 +132,13 @@ const quickLinks = [
     display: flex;
     flex-direction: column;
     gap: 12px;
+  }
+
+  ul.cats {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 32px;
+    row-gap: 9px;
   }
 
   ul a {
