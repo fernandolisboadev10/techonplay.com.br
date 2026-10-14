@@ -2,7 +2,7 @@
 title: "WhatsApp libera ligação para quem não tem conta: como funciona"
 description: "O WhatsApp passou a aceitar convidados sem conta em chamadas por link, direto no navegador. Veja como ligar, quem pode entrar e os cuidados contra golpes."
 category: "Apps"
-date: 2026-10-14T17:05:00-03:00
+date: 2026-10-14T16:55:00-03:00
 readingTime: "4 min"
 image: "./images/whatsapp-ligacao-sem-conta.webp"
 imageAlt: "Pessoa em uma videochamada no navegador do notebook, com um celular com WhatsApp ao lado"
