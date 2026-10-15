@@ -4,8 +4,8 @@ description: "A trend que vira sua selfie em foto dos anos 80 bombou no Instagra
 category: "Tendências"
 date: 2026-10-15T14:20:00-03:00
 readingTime: "5 min"
-image: "./images/trend-anos-80-ia-foto.webp"
-imageAlt: "Celular exibindo um retrato de família no estilo anos 80, ao lado de fitas cassete e uma luminária de cor laranja"
+image: "./images/trend-anos-80-capa-brasil.webp"
+imageAlt: "Homem brasileiro em foto no estilo anos 80, de jaqueta colorida e jeans, em uma rua de bairro com fusca branco e orelhão"
 tags: ["Trend", "ChatGPT", "Gemini", "Foto com IA", "Instagram"]
 related: ["melhores-ferramentas-de-ia-do-google-2026", "como-identificar-site-falso-promocao-amazon-golpe"]
 ---
