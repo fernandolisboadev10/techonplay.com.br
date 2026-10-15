@@ -7,6 +7,7 @@ const COLORS: Record<string, string> = {
   "Tutoriais": '#0f766e',
   "Dicas": '#15803d',
   "Curiosidades": '#a21caf',
+  "Tendências": '#c2410c',
 };
 
 export const categoryColor = (category: string): string => COLORS[category] ?? '#6d28d9';

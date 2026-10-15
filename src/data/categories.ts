@@ -71,6 +71,15 @@ export const categories: Category[] = [
     intro:
       'Guias de aplicativos e plugins úteis, com instalação, custos e os erros mais comuns explicados.',
   },
+  {
+    slug: 'tendencias',
+    name: 'Tendências',
+    title: 'Tendências: o que viralizou e como fazer o seu',
+    description:
+      'Tendências virais da internet e da IA, como fotos, filtros e desafios, com o passo a passo e os prompts exatos para você fazer o seu.',
+    intro:
+      'O que está em alta nas redes e nas ferramentas de IA, explicado com o passo a passo, o prompt pronto e o que evitar para o resultado sair certo.',
+  },
 ];
 
 export const categoryHref = (name: string): string => {

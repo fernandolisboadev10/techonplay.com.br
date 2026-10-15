@@ -25,6 +25,7 @@ const CATEGORIES = {
   Tutoriais: ['como', 'tutorial', 'passo', 'configurar', 'instalar', 'windows', 'linux', 'android', 'ios', 'atualizacao', 'recurso'],
   Dicas: ['dica', 'dicas', 'truque', 'economizar', 'gratis', 'desconto', 'oferta', 'cupom', 'seguranca', 'golpe'],
   Curiosidades: ['curiosidade', 'descoberta', 'cientistas', 'pesquisa', 'estudo', 'nasa', 'espaco', 'historia', 'raro'],
+  Tendências: ['tendencia', 'viral', 'viraliza', 'viralizou', 'trend', 'desafio', 'filtro', 'meme', 'febre'],
 };
 
 const STOP = new Set(
