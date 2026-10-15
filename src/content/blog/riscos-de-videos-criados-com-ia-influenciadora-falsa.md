@@ -2,7 +2,7 @@
 title: "Riscos de vídeos criados com IA: o caso da mulher que não existia"
 description: "Um homem viajou 2 mil km por uma influenciadora criada com IA. Entenda os riscos de vídeos criados com IA, os sinais de alerta e como não cair."
 category: "Inteligência Artificial"
-date: 2026-10-16T07:00:00-03:00
+date: 2026-10-16T11:00:00-03:00
 readingTime: "6 min"
 image: "./images/riscos-videos-criados-com-ia-influenciadora-falsa.webp"
 imageAlt: "Pessoa olhando o celular com o vídeo de uma mulher sorrindo, com uma lupa sobre a tela destacando pequenas falhas na imagem"
