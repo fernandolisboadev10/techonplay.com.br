@@ -5,8 +5,9 @@ type Post = CollectionEntry<'blog'>;
 // Scheduling rule: a post goes live once its `date` has passed. The site is static, so a scheduled
 // workflow rebuilds it at the publishing hours (see .github/workflows/deploy.yml) and posts dated
 // in the future stay out of every listing, page, feed and sitemap until then.
+// In `astro dev` drafts and scheduled posts are shown so they can be previewed; builds are unchanged.
 export const isPublished = ({ data }: Pick<Post, 'data'>): boolean =>
-  !data.draft && data.date.getTime() <= Date.now();
+  import.meta.env.DEV || (!data.draft && data.date.getTime() <= Date.now());
 
 // Feed rule: a post's position is its latest activity, the newer of the creation date (`date`)
 // and the last edit (`updated`). Ties fall back to the creation date, then to the slug, so the
