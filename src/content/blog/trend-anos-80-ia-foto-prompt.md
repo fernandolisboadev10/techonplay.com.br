@@ -33,7 +33,13 @@ O acesso à geração de imagens e a quantidade de imagens por dia dependem do p
 
 ## Prompt pronto para copiar
 
-O prompt está em inglês, no mesmo modelo usado no TechOnPlay americano, e pode ser colado normalmente mesmo que você converse com a ferramenta em português. Cole junto com a sua foto:
+O prompt está em inglês, no mesmo modelo usado no TechOnPlay americano, e pode ser colado normalmente mesmo que você converse com a ferramenta em português.
+
+![Retrato no estilo de foto de família dos anos 80, com jovem de cabelo cacheado volumoso, jaqueta colorida e jeans de cintura alta em uma sala com painéis de madeira e TV de tubo](./images/trend-anos-80-resultado-exemplo.webp)
+
+*Exemplo gerado por IA (pessoa fictícia, texto para imagem). O resultado com a sua foto será diferente.*
+
+Cole o prompt abaixo junto com a sua foto:
 
 ```prompt
 Turn the attached photo into a real 1980s snapshot of this person, as if it had been taken in 1985. Keep the person's face, facial features and identity recognizable. Wardrobe: classic 1980s clothing in bold colors or high-waisted jeans, with period accessories. Hair: voluminous, typical of the decade. Setting: a 1980s living room or a family party, with period objects in the background. Camera and film quality: analog film photograph, visible film grain, slightly faded warm colors, direct on-camera flash, soft focus. Avoid: modern objects, smartphones, digital sharpness, studio lighting, airbrushed skin, logos, readable text.
