@@ -356,3 +356,63 @@ img {
 .prose p > .copy-btn {
   margin: 8px 0;
 }
+
+/* Prompt box: ```prompt fence rendered with a copy button, text in italics. */
+.prose .prompt-box {
+  margin: 24px 0;
+  border: 1px solid var(--violet-deep);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #14101f;
+}
+
+.prose .prompt-box-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px;
+  background: #2a2240;
+  color: #cfc6ee;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.prose .prompt-box .copy-btn,
+:root[data-theme='dark'] .prose .prompt-box .copy-btn {
+  color: #180f2e;
+  background: #ece7fb;
+  border-color: #ece7fb;
+}
+
+.prose .prompt-box .copy-btn.copied {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #04211d;
+}
+
+.prose .prompt-box .copy-btn.copy-error {
+  background: var(--rose);
+  border-color: var(--rose);
+  color: #ffffff;
+}
+
+.prose .prompt-box pre {
+  margin: 0;
+  padding: 16px;
+  border: 0;
+  border-radius: 0;
+  background: transparent !important;
+  color: #ece7fb;
+  font-style: italic;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow-x: visible;
+}
+
+.prose .prompt-box pre code,
+.prose .prompt-box pre span {
+  font-style: italic;
+  color: inherit !important;
+  white-space: pre-wrap;
+}

@@ -43,3 +43,7 @@ The OpenRouter key (`OPENROUTER_API_KEY` in `.env`) has a small balance reserved
   5. Show the result to the owner before any commit.
 - When the post cover already works as a source, crop tiles from it locally with `sharp` (as `scripts/story-images-*.mjs` do). That is free; ask Gemini only for the images that are still missing.
 - Web Stories are built by Claude (structure, text, code and build). The owner only generates and returns the images.
+
+## Prompts nos artigos
+
+Todo prompt entregue ao leitor vai num bloco com a linguagem `prompt` (tres crases + prompt). O plugin `src/plugins/remark-prompt-box.mjs` o transforma numa caixa com botao de copiar e texto em italico. Nao deixe prompt em paragrafo solto.

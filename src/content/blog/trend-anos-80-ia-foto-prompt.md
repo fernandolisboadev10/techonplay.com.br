@@ -35,7 +35,7 @@ O acesso à geração de imagens e a quantidade de imagens por dia dependem do p
 
 Este é um prompt em português baseado nos que os veículos brasileiros publicaram para a trend. Cole junto com a sua foto:
 
-```
+```prompt
 Com base na minha foto, crie uma imagem ultrarrealista de como eu seria se vivesse nos anos 80. Mantenha meu rosto, meus traços faciais e minha identidade reconhecíveis. Adicione um penteado volumoso típico da época, roupas clássicas dos anos 80 com cores marcantes ou jeans de cintura alta e acessórios da década. Use estética de fotografia analógica, com granulação de filme e cores levemente desbotadas. O cenário e os objetos também devem ser compatíveis com a época.
 ```
 
@@ -56,7 +56,7 @@ Depois da versão clássica, dá para explorar outros formatos com o mesmo méto
 
 - Foto de **anuário escolar** ou de formatura.
 - **Retrato de família** com todo mundo posando em um estúdio fotográfico, usando uma foto de cada pessoa (com autorização de todos).
-- Outras décadas, como os anos 70 ou os 90, trocando só o período no prompt.
+- Outras décadas, como os anos 70 ou os 90, trocando só o período no prompt. Para os anos 90, o TechOnPlay em inglês tem a [trend dos anos 90 com prompts para Gemini e ChatGPT](https://techonplay.com/90s-ai-photo-trend-gemini-prompt/).
 - Uma cena de **festa ou viagem** no lugar do retrato posado.
 
 ## Cuidados com a sua foto e seu rosto
