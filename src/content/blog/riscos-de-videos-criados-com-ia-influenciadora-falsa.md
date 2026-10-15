@@ -16,7 +16,7 @@ Um pedreiro de 49 anos saiu de Imperatriz, no Maranhão, e atravessou cerca de 2
 
 ![O pedreiro com mala e bolsa de ferramentas em Belo Horizonte, ao lado de imagem da personagem criada com IA](./images/riscos-videos-ia-caso-homem-viajou-2-mil-km.webp)
 
-*Montagem divulgada pela imprensa: o homem ao chegar a Belo Horizonte e imagem da personagem criada com IA. Reprodução de reportagens sobre o caso.*
+*Foto: o homem ao chegar a Belo Horizonte (esq.) e imagem da personagem criada com IA (dir.). Fonte: reprodução de reportagens da CNN Brasil e do Metrópoles, outubro de 2026.*
 
 Segundo os relatos, ele acompanhava o perfil de uma personagem que se apresentava como Jéssica, dona de uma fazenda em Minas Gerais, com mais de 300 mil seguidores. Nos vídeos, ela dizia procurar um homem para morar com ela. Ele teria passado a interagir com o perfil depois da morte da mãe, em um período de solidão, e viajou na expectativa de recomeçar a vida.
 
@@ -55,7 +55,7 @@ Existem também esforços para marcar o conteúdo na origem, como o [textGrain, 
 
 ![Três mulheres lado a lado em foto ultrarrealista gerada por IA, exemplo de rostos que não existem](./images/riscos-videos-ia-influencers-virtuais-alerta.webp)
 
-*Alerta: nenhuma das três mulheres desta imagem existe. Rostos assim, gerados por IA, já são indistinguíveis de fotos reais à primeira vista.*
+*Imagem ilustrativa gerada por IA para o TechOnPlay: nenhuma das três mulheres existe. Rostos assim já são difíceis de distinguir de fotos reais à primeira vista.*
 
 Nenhum sinal sozinho prova nada, e os geradores melhoram a cada mês. O que funciona é somar indícios:
 
