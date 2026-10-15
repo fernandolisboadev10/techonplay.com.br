@@ -1,36 +1,43 @@
 ---
-title: "Banco Master e Vorcaro: o caso que parece série de streaming"
+title: "Banco Master: o caso que parece série de streaming"
 description: "Liquidação, operação da PF, delação que não saiu e depoimentos: o caso Banco Master tem cara de série. Texto de opinião com humor, sobre fatos públicos."
 category: "Curiosidades"
-date: 2026-10-15T09:40:00-03:00
+date: 2026-10-15T11:00:00-03:00
 readingTime: "5 min"
 image: "./images/banco-master-serie-netflix-vorcaro.webp"
 imageAlt: "Pôster fictício de série em estilo cinematográfico com prédio comercial à noite, cadeira vazia em sala de reunião e notas flutuando"
-tags: ["Banco Master", "Daniel Vorcaro", "Streaming", "Curiosidades"]
+tags: ["Banco Master", "Streaming", "Curiosidades"]
 related: ["paramount-warner-hbo-max-paramount-plus"]
 ---
 
 Se você abriu o celular nos últimos meses, provavelmente esbarrou no assunto: Daniel Vorcaro e o Banco Master. Tem manchete nova quase toda semana, e a sensação é de que alguém apertou "próximo episódio" sem avisar. Este é um texto de opinião, com humor, baseado em informações públicas divulgadas pela imprensa e por órgãos oficiais. O caso é sério, segue em andamento e as pessoas citadas têm direito à presunção de inocência.
 
-O sarcasmo aqui mira o formato, não as pessoas: a história tem tanta cara de produção de streaming que dá para analisá-la como se analisa uma temporada.
+O sarcasmo aqui mira o formato, não as pessoas: a história tem tanta cara de produção de streaming que dá para analisá-la como se analisa uma temporada. As imagens deste texto são ilustrações criadas com inteligência artificial, com personagens fictícios, e não representam pessoas nem eventos reais.
 
 ## Episódio 1: o piloto que ninguém pediu
 
-Toda boa série começa com um gancho. Neste caso, o gancho veio em novembro de 2025, quando o Banco Central oficializou a liquidação extrajudicial de empresas ligadas ao grupo, como a Master Corretora, segundo a [Agência Brasil](https://agenciabrasil.ebc.com.br/economia/noticia/2025-11/banco-central-oficializa-liquidacao-da-master-corretora). A Polícia Federal conduz a Operação Compliance Zero sobre o caso, e Daniel Vorcaro, então dono do banco, acabou preso.
+Toda boa série começa com um gancho. Neste caso, o gancho veio em novembro de 2025, quando o Banco Central oficializou a liquidação extrajudicial de empresas ligadas ao grupo, como a Master Corretora, segundo a [Agência Brasil](https://agenciabrasil.ebc.com.br/economia/noticia/2025-11/banco-central-oficializa-liquidacao-da-master-corretora). A Polícia Federal conduz a Operação Compliance Zero sobre o caso, e Daniel Vorcaro, então dono do banco, foi preso em 4 de março de 2026, segundo a [CNN Brasil](https://www.cnnbrasil.com.br/blogs/matheus-teixeira/politica/pgr-rejeita-delacao-premiada-de-daniel-vorcaro/).
 
 Para o público acostumado a pular a abertura, foi um piloto e tanto: já começa com um desfecho que muita série deixaria para o último episódio.
+![Silhueta de um homem de terno, de costas, diante de uma janela com vista noturna da cidade, segurando um leque de cédulas de real](./images/banco-master-serie-protagonista.webp)
+
+*Imagem ilustrativa criada com IA. Personagem fictício, sem relação com pessoas reais.*
 
 ## Temporadas, fases e o "continua"
 
-A PF costuma dividir operações em fases, e a Compliance Zero já somava dez, segundo reportagem da [Gazeta do Povo](https://www.gazetadopovo.com.br/republica/por-que-a-pgr-e-a-pf-desistiram-da-delacao-de-daniel-vorcaro/). Em vocabulário de streaming, é série longa, com elenco que cresce a cada capítulo.
+A PF costuma dividir operações em fases, e cada nova etapa costuma trazer novos personagens para o enredo. Em vocabulário de streaming, é série longa, com elenco que cresce a cada capítulo.
 
 O problema de qualquer série longa é que o espectador novo chega no meio e não entende nada. Quem não acompanhou desde o início precisa de um "anteriormente em..." do tamanho de um livro. Nenhuma plataforma oferece o botão de pular recapitulação com tanta urgência.
 
+![Cena de uma festa de gala em cobertura de luxo à noite, com convidados fictícios de terno e vestido, taças, charutos e cédulas sobre a mesa](./images/banco-master-serie-festa.webp)
+
+*Imagem ilustrativa criada com IA. Cena fictícia, sem relação com pessoas ou eventos reais.*
+
 ## A reviravolta da delação
 
-Toda série tem aquele episódio em que todo mundo jura que a grande revelação vem aí. Aqui, foi a delação premiada. Segundo a Gazeta do Povo, em julho de 2026 a PGR e a PF encerraram as negociações depois de rejeitar duas propostas, por considerarem que não havia fatos ou provas novos que justificassem o benefício.
+Toda série tem aquele episódio em que todo mundo jura que a grande revelação vem aí. Aqui, foi a delação premiada. Segundo a CNN Brasil, a PGR informou ao STF, em junho de 2026, que rejeitou a segunda proposta de colaboração premiada apresentada por Vorcaro, seguindo o entendimento da PF, que já havia recusado propostas anteriores. De acordo com a reportagem, investigadores e procuradores avaliaram que as informações apresentadas não reuniam elementos suficientes para justificar os benefícios de um acordo.
 
-No STF, o ministro André Mendonça, relator do caso, afirmou ter recusado o que chamou de "delação seletiva", de acordo com a mesma reportagem. Ou seja: o spoiler que todo mundo esperava foi cancelado, e a produção seguiu sem ele. A investigação, segundo a reportagem, não depende da confissão do investigado, já que a PF reuniu material em celulares e documentos digitais.
+Ou seja: o spoiler que todo mundo esperava foi cancelado, e a produção seguiu sem ele. A relatoria no STF é do ministro André Mendonça, a quem coube decidir sobre o destino prisional do investigado, conforme a mesma reportagem.
 
 ## Depoimentos: quando o roteiro vira depoimento
 
@@ -56,4 +63,4 @@ Quanto ao final, ninguém sabe. E talvez seja o único spoiler honesto que dá p
 
 - [Agência Brasil: Banco Central oficializa liquidação da Master Corretora](https://agenciabrasil.ebc.com.br/economia/noticia/2025-11/banco-central-oficializa-liquidacao-da-master-corretora)
 - [Agência Brasil: Vorcaro depõe à PF e nega existência de grupo criminoso "A Turma"](https://agenciabrasil.ebc.com.br/justica/noticia/2026-09/vorcaro-depoe-pf-e-nega-existencia-de-grupo-criminoso-turma)
-- [Gazeta do Povo: Fim da delação de Daniel Vorcaro, PGR e PF descartam acordo](https://www.gazetadopovo.com.br/republica/por-que-a-pgr-e-a-pf-desistiram-da-delacao-de-daniel-vorcaro/)
+- [CNN Brasil: PGR rejeita segunda proposta de delação premiada de Daniel Vorcaro](https://www.cnnbrasil.com.br/blogs/matheus-teixeira/politica/pgr-rejeita-delacao-premiada-de-daniel-vorcaro/)
