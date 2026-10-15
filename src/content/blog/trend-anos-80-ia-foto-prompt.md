@@ -65,6 +65,22 @@ Depois da versão clássica, dá para explorar outros formatos com o mesmo méto
 - Outras décadas, como os anos 70 ou os 90, trocando só o período no prompt. Para os anos 90, o TechOnPlay em inglês tem a [trend dos anos 90 com prompts para Gemini e ChatGPT](https://techonplay.com/90s-ai-photo-trend-gemini-prompt/).
 - Uma cena de **festa ou viagem** no lugar do retrato posado.
 
+## A versão dos anos 90 também virou febre nos EUA
+
+A nostalgia não para na década de 80. Nos Estados Unidos, a versão anos 90 da trend também é uma febre entre quem usa o Gemini e o ChatGPT, e é o tema do nosso guia no [TechOnPlay americano](https://techonplay.com/90s-ai-photo-trend-gemini-prompt/). A diferença está no visual: em vez de cabelo volumoso e jaqueta colorida, a foto sai com cara de câmera compacta descartável, flash direto, suéter de tricô, sofá estampado e videogame na sala.
+
+![Foto de estilo anos 90 gerada por IA: homem sorrindo e jogando videogame em uma sala com painéis de madeira, pôsteres de games na parede e data impressa no canto da foto](./images/trend-anos-90-capa-us.webp)
+
+*Exemplo gerado por IA (pessoa fictícia), publicado no guia da trend dos anos 90 do TechOnPlay americano. O resultado com a sua foto será diferente.*
+
+Este é o prompt do guia americano para o Gemini. Troque a descrição da pessoa, a ação e o cenário pelos seus, e cole junto com a sua foto:
+
+```prompt
+Recreate this photo as a real 1990s point-and-shoot snapshot (not 1980s). Subject: an adult man with brown/tan skin tone, natural candid expression, sitting on a couch. Action: playing a classic gray home video game console, holding a boxy controller with both hands, eyes focused on the TV. Setting: 1990s living room, wood paneled walls, a warm yellow lamp, a bowl of popcorn and a mug nearby, generic vintage video game posters on the wall. Wardrobe: bold patterned knit sweater typical of the early-to-mid 1990s. Camera and film quality: visible film grain, warm amber-orange color cast, harsh direct on-camera flash, natural skin texture, slightly soft focus, minor motion blur, small timestamp in the corner. Avoid: modern consoles, modern furniture, digital sharpness, studio lighting, airbrushed skin, visible logos or brand names, anything from the 1980s specifically.
+```
+
+O guia completo, com a versão para o ChatGPT, a tabela de comparação entre as duas ferramentas e as respostas para as dúvidas mais comuns, está em inglês: [90s AI Photo Trend: Exact Prompts for Gemini and ChatGPT](https://techonplay.com/90s-ai-photo-trend-gemini-prompt/).
+
 ## Cuidados com a sua foto e seu rosto
 
 Para entrar na trend você entrega uma imagem do seu rosto a um serviço online. Alguns cuidados simples ajudam:
