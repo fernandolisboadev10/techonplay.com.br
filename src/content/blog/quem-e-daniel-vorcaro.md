@@ -2,7 +2,7 @@
 title: "Quem é Daniel Vorcaro: origem, carreira e ascensão do banqueiro"
 description: "Quem é Daniel Vorcaro: onde nasceu, como estudou, a origem da família nos negócios e o caminho até comandar o Banco Master, segundo a imprensa."
 category: "Curiosidades"
-date: 2026-10-16T11:00:00-03:00
+date: 2026-10-16T07:00:00-03:00
 readingTime: "4 min"
 image: "./images/quem-e-daniel-vorcaro.webp"
 imageAlt: "Ilustração criada com IA de um busto dourado de homem de terno e gravata sobre pedestal de mármore preto, em fundo escuro"
