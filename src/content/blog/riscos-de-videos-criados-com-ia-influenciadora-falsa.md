@@ -5,7 +5,7 @@ category: "Inteligência Artificial"
 date: 2026-10-16T11:00:00-03:00
 readingTime: "6 min"
 image: "./images/riscos-videos-criados-com-ia-influenciadora-falsa.webp"
-imageAlt: "Colagem com quatro selfies de mulheres jovens geradas por IA, tão realistas que parecem fotos de influenciadoras de verdade"
+imageAlt: "Colagem com quatro selfies de influenciadoras de biquíni na praia, todas geradas por IA e tão realistas que parecem fotos de perfis de verdade"
 tags: ["Deepfake", "Golpes", "Influenciadores virtuais", "Inteligência artificial", "Segurança"]
 related: ["como-identificar-site-falso-promocao-amazon-golpe", "marca-dagua-invisivel-textos-ia-textgrain", "trend-anos-80-ia-foto-prompt"]
 ---
@@ -53,9 +53,9 @@ Existem também esforços para marcar o conteúdo na origem, como o [textGrain, 
 
 ## Como saber se um vídeo ou perfil é feito com IA?
 
-![Três mulheres lado a lado em foto ultrarrealista gerada por IA, exemplo de rostos que não existem](./images/riscos-videos-ia-influencers-virtuais-alerta.webp)
+![Colagem de quatro mulheres em roupas de dormir e loungewear, geradas por IA, em fotos que imitam selfies de rede social](./images/riscos-videos-ia-influencers-virtuais-alerta.webp)
 
-*Imagem ilustrativa gerada por IA para o TechOnPlay: nenhuma das três mulheres existe. Rostos assim já são difíceis de distinguir de fotos reais à primeira vista.*
+*Imagem gerada por IA para o TechOnPlay: nenhuma das quatro mulheres existe. O prompt usado está na seção "Como essas imagens de influenciadoras foram criadas?"[^1]*
 
 Nenhum sinal sozinho prova nada, e os geradores melhoram a cada mês. O que funciona é somar indícios:
 
@@ -83,6 +83,24 @@ Se quiser uma segunda opinião antes de compartilhar um vídeo suspeito, peça a
 Vou colar a descrição de um vídeo e de um perfil de rede social. Liste sinais de que o conteúdo pode ter sido gerado ou alterado por IA, aponte o que eu devo conferir fora da plataforma e diga o que é só indício, sem afirmar que é falso.
 ```
 
+## Como essas imagens de influenciadoras foram criadas?
+
+Para mostrar como é fácil montar um "perfil" convincente, geramos duas colagens com IA, sem nenhuma pessoa real. A primeira, usada no meio do texto, nasceu deste prompt, em inglês:
+
+```prompt
+Create a horizontal 3:2 ultra-realistic image: a 2x2 collage of four candid-style smartphone photos separated by thin white grid lines, in the look of an online loungewear brand's Instagram content. Each photo shows a different adult woman (ages 25–32) modeling tasteful, everyday cotton or lace loungewear sets, in natural catalog poses. Fashion e-commerce style, elegant and non-explicit. 1) brunette with wavy hair, beige set, bright bedroom with soft window light; 2) freckled redhead, white set, close-up selfie angle; 3) curly blonde with round glasses, sage-green set, sitting on a bed with white linen sheets; 4) Black woman with long straight hair, burgundy set, mirror selfie holding a phone. Photorealism: modern smartphone camera look (24–26mm, f/1.8), natural skin texture with visible pores and freckles, realistic hands with correct fingers, natural eye catchlights, true-to-life color grading, light film grain. Each woman has a distinct face, body type and skin tone. No logos, no text, no watermarks.
+```
+
+A capa deste artigo veio de uma segunda etapa: a primeira imagem foi enviada de volta ao gerador com um pedido de edição, que mantém os mesmos rostos e troca apenas roupa e cenário:
+
+```prompt
+Use the uploaded image as reference. Keep the exact same 2x2 collage layout, the same four women (identical faces, hair, skin tones, freckles, glasses and body types), the same poses and the same thin white grid lines. Change only the outfits and the locations: place each woman on a beach, wearing a stylish, tasteful bikini or swimsuit, as if photographed for a beachwear brand's Instagram. Adult women, elegant and non-explicit. Keep the same ultra-realistic smartphone look and make sure the faces stay recognizable as the same four women. No logos, no text, no watermarks, no captions, no extra people.
+```
+
+O ponto não é ensinar a enganar ninguém: é mostrar que dois pedidos de texto bastam para criar a mesma "pessoa" em vários cenários, e é assim que perfis falsos ganham aparência de rotina real. Quem usa isso para criar personagens deveria avisar, no próprio perfil, que são imagens sintéticas.
+
 ## O que esse caso deixa de lição?
 
 A tecnologia não é o único problema. Um vídeo bonito e uma promessa de companhia explicam por que tanta gente confia sem checar. Criar personagens com IA é legal e pode ser criativo, mas apresentar essa personagem como uma pessoa real, para ganhar atenção ou dinheiro, é onde mora o risco. Desconfie do que parece bom demais, verifique fora da tela e, na dúvida, converse com alguém antes de pegar a estrada.
+
+[^1]: Imagem gerada por inteligência artificial, sem pessoas reais, a partir do primeiro prompt acima. Qualquer semelhança com pessoas reais é coincidência. A capa do artigo foi gerada pelo segundo prompt, a partir desta mesma imagem.
