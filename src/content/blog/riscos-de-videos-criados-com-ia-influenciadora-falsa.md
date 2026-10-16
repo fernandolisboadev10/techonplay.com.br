@@ -5,7 +5,7 @@ category: "Inteligência Artificial"
 date: 2026-10-16T11:00:00-03:00
 readingTime: "6 min"
 image: "./images/riscos-videos-criados-com-ia-influenciadora-falsa.webp"
-imageAlt: "Pessoa olhando o celular com o vídeo de uma mulher sorrindo, com uma lupa sobre a tela destacando pequenas falhas na imagem"
+imageAlt: "Colagem com quatro selfies de mulheres jovens geradas por IA, tão realistas que parecem fotos de influenciadoras de verdade"
 tags: ["Deepfake", "Golpes", "Influenciadores virtuais", "Inteligência artificial", "Segurança"]
 related: ["como-identificar-site-falso-promocao-amazon-golpe", "marca-dagua-invisivel-textos-ia-textgrain", "trend-anos-80-ia-foto-prompt"]
 ---
