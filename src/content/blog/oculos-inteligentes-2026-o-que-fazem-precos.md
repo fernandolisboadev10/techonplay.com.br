@@ -86,6 +86,8 @@ Para quem quer câmera, áudio e assistente de IA no rosto, o Ray-Ban Meta Gen 3
 
 Se você gosta de acessórios vestíveis, veja também a análise do [Moto Watch Ultra](/moto-watch-ultra-vale-a-pena/). Para saber mais sobre o assistente do Google que roda nos óculos Android XR, leia sobre o Gemini 4 Argon. Mais guias estão na página de [Reviews](/categoria/reviews/).
 
+Se você acompanha tecnologia que ainda está na fase de promessa, vale ver também o [Tesla Roadster](/tesla-roadster-novo-carro-preco-lancamento/), outro lançamento de 2026 cujos números por enquanto são só da fabricante.
+
 ## Perguntas frequentes
 
 **Quanto custa o Ray-Ban Meta Gen 3 no Brasil?**

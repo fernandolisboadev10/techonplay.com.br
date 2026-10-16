@@ -96,7 +96,7 @@ _Não. A Apple optou pelo Touch ID no botão lateral, já que o módulo do Face 
 
 _Vai funcionar com a Apple Pencil USB-C já existente, via atualização prevista para o fim de 2026. A versão magnética exclusiva foi cancelada._
 
-O iPhone Duo marca a entrada tardia, mas ambiciosa, da Apple num mercado já maduro. Se valeu a pena esperar, a resposta só vem com o uso real, quando o aparelho chegar às lojas em outubro. Para mais análises de celulares, acesse a página de [Reviews](/categoria/reviews/).
+O iPhone Duo marca a entrada tardia, mas ambiciosa, da Apple num mercado já maduro. Se valeu a pena esperar, a resposta só vem com o uso real, quando o aparelho chegar às lojas em outubro. Para mais análises de celulares, acesse a página de [Reviews](/categoria/reviews/). Outro lançamento caro e cheio de promessas que mexeu com as buscas esta semana é o [novo Tesla Roadster](/tesla-roadster-novo-carro-preco-lancamento/), que ainda não tem preço nem data de entrega.
 
 ## Referências
 

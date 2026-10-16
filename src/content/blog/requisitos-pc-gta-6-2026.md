@@ -100,4 +100,6 @@ Em resumo, ainda não existe tabela oficial de requisitos de PC para GTA 6, e qu
 
 Por fim, guarde esta página: atualizamos cada faixa assim que a Rockstar divulgar as specs oficiais. Enquanto isso, quem prefere jogar na TV pode conferir a [Steam Machine da Valve](/steam-machine/), e quem quer ganhar espaço e velocidade antes de instalar um jogo de 150 GB pode [limpar os arquivos temporários do Windows](/limpar-arquivos-temporarios-windows/).
 
+Gosta de acompanhar lançamentos que ainda não têm data nem preço fechados? Veja também o que se sabe do [Tesla Roadster](/tesla-roadster-novo-carro-preco-lancamento/), apresentado nesta semana com reservas abertas e produção só prevista para 2028.
+
 **Por Redação TechOnPlay**
