@@ -3,6 +3,7 @@ title: "Banco Master: o caso que parece série de streaming"
 description: "Liquidação, operação da PF, delação que não saiu e depoimentos: o caso Banco Master tem cara de série. Texto de opinião com humor, sobre fatos públicos."
 category: "Curiosidades"
 date: 2026-10-15T11:00:00-03:00
+updated: 2026-10-16T11:22:00-03:00
 readingTime: "5 min"
 image: "./images/banco-master-serie-netflix-vorcaro.webp"
 imageAlt: "Pôster fictício de série em estilo cinematográfico com prédio comercial à noite, cadeira vazia em sala de reunião e notas flutuando"
@@ -18,7 +19,7 @@ O sarcasmo aqui mira o formato, não as pessoas: a história tem tanta cara de p
 
 Toda boa série começa com um gancho. Neste caso, o gancho veio em novembro de 2025, quando o Banco Central oficializou a liquidação extrajudicial de empresas ligadas ao grupo, como a Master Corretora, segundo a [Agência Brasil](https://agenciabrasil.ebc.com.br/economia/noticia/2025-11/banco-central-oficializa-liquidacao-da-master-corretora). A Polícia Federal conduz a Operação Compliance Zero sobre o caso, e Daniel Vorcaro, então dono do banco, foi preso em 4 de março de 2026, segundo a [CNN Brasil](https://www.cnnbrasil.com.br/blogs/matheus-teixeira/politica/pgr-rejeita-delacao-premiada-de-daniel-vorcaro/).
 
-Para o público acostumado a pular a abertura, foi um piloto e tanto: já começa com um desfecho que muita série deixaria para o último episódio.
+Para o público acostumado a pular a abertura, foi um piloto e tanto: já começa com um desfecho que muita série deixaria para o último episódio. Se chegou agora e quer o resumo dos personagens, veja [quem é Daniel Vorcaro](/quem-e-daniel-vorcaro/).
 ![Silhueta de um homem de terno, de costas, diante de uma janela com vista noturna da cidade, segurando um leque de cédulas de real](./images/banco-master-serie-protagonista.webp)
 
 *Imagem ilustrativa criada com IA. Personagem fictício, sem relação com pessoas reais.*
