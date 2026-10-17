@@ -20,7 +20,7 @@
 
   --gradient: linear-gradient(135deg, var(--rose-soft), var(--rose));
 
-  --font-display: var(--f-fraunces);
+  --font-display: var(--f-archivo);
   --font-body: var(--f-inter);
   --font-mono: var(--f-plex-mono);
   --font-read: var(--f-lexend), var(--f-inter);
@@ -101,6 +101,8 @@ body {
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--ink-strong);
   line-height: 1.15;
   margin: 0;
@@ -161,6 +163,13 @@ img {
 .prose h2 {
   margin-top: 2.5em;
   font-size: 1.6rem;
+  letter-spacing: -0.015em;
+}
+
+/* Keep anchored headings clear of the sticky site header. */
+.prose h2,
+.prose h3 {
+  scroll-margin-top: 88px;
 }
 
 .prose h3 {

@@ -45,7 +45,7 @@ export default defineConfig({
   // Self-hosted fonts: no Google Fonts round trips, preloaded and with metric-matched fallbacks.
   fonts: [
     { provider: fontProviders.google(), name: 'Inter', cssVariable: '--f-inter', weights: [400, 500, 600, 700], styles: ['normal'], subsets: ['latin'], fallbacks: ['sans-serif'] },
-    { provider: fontProviders.google(), name: 'Fraunces', cssVariable: '--f-fraunces', weights: [400, 500, 600], styles: ['normal'], subsets: ['latin'], fallbacks: ['serif'] },
+    { provider: fontProviders.google(), name: 'Archivo', cssVariable: '--f-archivo', weights: [600, 700, 800], styles: ['normal'], subsets: ['latin'], fallbacks: ['sans-serif'] },
     { provider: fontProviders.google(), name: 'Lexend', cssVariable: '--f-lexend', weights: [300, 400], styles: ['normal'], subsets: ['latin'], fallbacks: ['sans-serif'] },
     { provider: fontProviders.google(), name: 'IBM Plex Mono', cssVariable: '--f-plex-mono', weights: [400, 500], styles: ['normal'], subsets: ['latin'], fallbacks: ['monospace'] },
   ],

@@ -1,0 +1,317 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+// H2 sections with their H3 subsections nested underneath.
+type Section = { slug: string; text: string; children: { slug: string; text: string }[] };
+const sections: Section[] = [];
+for (const h of Astro.props.headings) {
+  if (h.depth === 2) sections.push({ slug: h.slug, text: h.text, children: [] });
+  else if (h.depth === 3 && sections.length) sections[sections.length - 1].children.push({ slug: h.slug, text: h.text });
+}
+---
+{sections.length >= 3 && (
+  <nav class="toc" id="toc" aria-labelledby="toc-title">
+    <div class="toc-head">
+      <h2 id="toc-title">Neste guia</h2>
+      <span class="toc-count">{sections.length} seções</span>
+      <button type="button" class="toc-toggle" id="toc-toggle" aria-controls="toc-list">
+        <span class="toc-toggle-show">Mostrar</span>
+        <span class="toc-toggle-hide">Ocultar</span>
+      </button>
+    </div>
+    <ol class="toc-list" id="toc-list">
+      {sections.map((s) => (
+        <li class="toc-item" data-slug={s.slug}>
+          <a href={`#${s.slug}`}>{s.text}</a>
+          {s.children.length > 0 && (
+            <ul class="toc-sub">
+              {s.children.map((c) => (
+                <li data-slug={c.slug}><a href={`#${c.slug}`}>{c.text}</a></li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}
+
+<script>
+  const toc = document.getElementById('toc');
+  const toggle = document.getElementById('toc-toggle');
+  const list = document.getElementById('toc-list');
+
+  if (toc && toggle && list) {
+    const mobile = window.matchMedia('(max-width: 1099px)');
+    const setOpen = (open: boolean) => {
+      toc.dataset.open = String(open);
+      toggle.setAttribute('aria-expanded', String(open));
+    };
+    // Collapsed by default on mobile (CSS already hides it there, so nothing jumps), open on desktop.
+    toggle.setAttribute('aria-expanded', String(!mobile.matches));
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    list.addEventListener('click', (e) => {
+      if (mobile.matches && (e.target as HTMLElement).closest('a')) setOpen(false);
+    });
+
+    // Scroll-spy: the current section is the last H2 whose top has passed the reading line (a third down the screen).
+    const items = Array.from(list.querySelectorAll<HTMLLIElement>('.toc-item'));
+    const subs = Array.from(list.querySelectorAll<HTMLLIElement>('.toc-sub li'));
+    const target = (li: HTMLLIElement) => document.getElementById(li.dataset.slug ?? '');
+    const pairs = items.map((li) => ({ li, el: target(li) })).filter((p) => p.el);
+    const subPairs = subs.map((li) => ({ li, el: target(li) })).filter((p) => p.el);
+
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const line = Math.min(window.innerHeight * 0.35, 320);
+      let current = -1;
+      pairs.forEach((p, i) => {
+        if (p.el!.getBoundingClientRect().top <= line) current = i;
+      });
+      pairs.forEach((p, i) => {
+        p.li.classList.toggle('is-done', i < current);
+        p.li.classList.toggle('is-active', i === current);
+      });
+      let currentSub: HTMLLIElement | null = null;
+      subPairs.forEach((p) => {
+        if (p.el!.getBoundingClientRect().top <= line) currentSub = p.li;
+      });
+      subPairs.forEach((p) => p.li.classList.toggle('is-active', p.li === currentSub && p.li.closest('.is-active') !== null));
+      const active = pairs[current]?.li;
+      toc.style.setProperty('--fill', active ? `${active.offsetTop + 14}px` : '0px');
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+</script>
+
+<style>
+  .toc {
+    --rail-x: 5px;
+    font-family: var(--font-body);
+  }
+
+  .toc-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding-bottom: 14px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .toc-head h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .toc-count {
+    color: var(--ink-soft);
+    font-size: 0.8rem;
+  }
+
+  .toc-toggle {
+    margin-left: auto;
+    padding: 4px 10px;
+    font: 600 0.78rem var(--font-body);
+    color: var(--violet);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    cursor: pointer;
+  }
+
+  .toc-toggle:hover {
+    border-color: var(--violet);
+  }
+
+  /* Label follows the state; before any click the default is open on desktop, closed on mobile. */
+  .toc[data-open='true'] .toc-toggle-show,
+  .toc[data-open='false'] .toc-toggle-hide {
+    display: none;
+  }
+
+  /* The rail: a hairline track with a violet fill that grows to the current section. */
+  .toc-list {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 8px 0 4px;
+  }
+
+  .toc-list::before,
+  .toc-list::after {
+    content: '';
+    position: absolute;
+    left: var(--rail-x);
+    top: 22px;
+    width: 2px;
+    border-radius: 2px;
+  }
+
+  .toc-list::before {
+    bottom: 18px;
+    background: var(--line);
+  }
+
+  .toc-list::after {
+    height: max(0px, calc(var(--fill, 0px) - 22px));
+    background: var(--violet);
+    transition: height 0.25s ease;
+  }
+
+  .toc-item {
+    position: relative;
+    padding-left: 24px;
+  }
+
+  .toc-item::before {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 10px;
+    width: 12px;
+    height: 12px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: 2px solid var(--line);
+    background: var(--bg);
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .toc-item.is-done::before {
+    background: var(--violet);
+    border-color: var(--violet);
+  }
+
+  .toc-item.is-active::before {
+    border-color: var(--violet);
+    background: var(--bg);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--violet) 22%, transparent);
+  }
+
+  .toc-item > a {
+    display: block;
+    padding: 6px 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+
+  .toc-item.is-done > a {
+    color: var(--ink);
+  }
+
+  .toc-item.is-active > a {
+    color: var(--ink-strong);
+    font-weight: 600;
+  }
+
+  .toc-item > a:hover,
+  .toc-sub a:hover {
+    color: var(--violet);
+  }
+
+  .toc-sub {
+    list-style: none;
+    margin: 0 0 6px;
+    padding: 0;
+  }
+
+  .toc-sub a {
+    display: block;
+    padding: 4px 0 4px 12px;
+    border-left: 2px solid var(--line);
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+
+  .toc-sub li.is-active a {
+    color: var(--violet);
+    border-left-color: var(--violet);
+  }
+
+  /* Desktop: sticky beside the article, subsections open only for the section being read. */
+  @media (min-width: 1100px) {
+    .toc {
+      position: sticky;
+      top: 88px;
+      max-height: calc(100vh - 112px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      padding-right: 4px;
+    }
+
+    .toc-sub {
+      display: none;
+    }
+
+    .toc-item.is-active .toc-sub {
+      display: block;
+    }
+
+    .toc[data-open='false'] .toc-list {
+      display: none;
+    }
+  }
+
+  /* Mobile: a collapsible box between the cover and the text. */
+  @media (max-width: 1099px) {
+    .toc {
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+
+    .toc .toc-list {
+      display: none;
+    }
+
+    .toc[data-open='true'] .toc-list {
+      display: block;
+    }
+
+    .toc:not([data-open='true']) .toc-head {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .toc-item::before {
+      background: var(--surface);
+    }
+
+    .toc-item.is-active::before {
+      background: var(--surface);
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .toc:not([data-open]) .toc-toggle-show {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1099px) {
+    .toc:not([data-open]) .toc-toggle-hide {
+      display: none;
+    }
+  }
+</style>
