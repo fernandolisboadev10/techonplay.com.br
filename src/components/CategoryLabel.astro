@@ -1,0 +1,51 @@
+---
+import { categoryColor } from '../utils/categoryColor';
+
+interface Props {
+  category: string;
+  onImage?: boolean;
+}
+const { category, onImage = false } = Astro.props;
+---
+<span class:list={['cat', { 'on-image': onImage }]} style={`--cat:${categoryColor(category)}`}>{category}</span>
+
+<style>
+  /* Category as a small colour swatch plus plain text: readable on any background, no pill. */
+  .cat {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--ink-soft);
+  }
+
+  .cat::before {
+    content: '';
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--cat);
+  }
+
+  .on-image {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .on-image::before {
+    background: color-mix(in srgb, var(--cat) 55%, #fff);
+  }
+
+  :global(:root[data-theme='dark']) .cat::before {
+    background: color-mix(in srgb, var(--cat) 60%, #fff);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .cat::before {
+      background: color-mix(in srgb, var(--cat) 60%, #fff);
+    }
+  }
+</style>

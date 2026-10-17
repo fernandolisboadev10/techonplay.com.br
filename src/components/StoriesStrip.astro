@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import SectionHead from './SectionHead.astro';
 
 const stories = (await getCollection('stories', (s) => !s.data.draft && s.data.date.getTime() <= Date.now()))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
@@ -7,18 +8,11 @@ const stories = (await getCollection('stories', (s) => !s.data.draft && s.data.d
 ---
 {stories.length > 0 && (
   <section class="container stories" aria-labelledby="stories-title">
-    <div class="head">
-      <h2 id="stories-title">Web Stories</h2>
-      <span class="underline"></span>
-    </div>
+    <SectionHead title="Web Stories" id="stories-title" />
     <ul>
       {stories.map((s) => (
         <li>
           <a href={`/web-stories/${s.id}/`} class="story" style={`background-image:url('${s.data.poster}')`}>
-            <span class="badge">
-              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2" /><path d="M3 7v10M21 7v10" /></svg>
-              Web Story
-            </span>
             <span class="shade"></span>
             <span class="body">
               <strong>{s.data.title}</strong>
@@ -36,24 +30,7 @@ const stories = (await getCollection('stories', (s) => !s.data.draft && s.data.d
 
 <style>
   .stories {
-    padding-block: 16px 56px;
-  }
-
-  .head {
-    margin-bottom: 24px;
-  }
-
-  h2 {
-    margin: 0;
-  }
-
-  .underline {
-    display: block;
-    width: 48px;
-    height: 4px;
-    margin-top: 10px;
-    border-radius: 2px;
-    background: linear-gradient(135deg, var(--violet), var(--rose));
+    padding-block: 8px 48px;
   }
 
   ul {
@@ -75,7 +52,7 @@ const stories = (await getCollection('stories', (s) => !s.data.draft && s.data.d
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 200px;
     aspect-ratio: 3 / 4;
     padding: 14px;
@@ -97,24 +74,8 @@ const stories = (await getCollection('stories', (s) => !s.data.draft && s.data.d
     background: linear-gradient(180deg, rgba(16, 10, 30, 0.25) 0%, rgba(16, 10, 30, 0) 30%, rgba(16, 10, 30, 0.9) 100%);
   }
 
-  .badge,
   .body {
     position: relative;
-  }
-
-  .badge {
-    align-self: flex-start;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 10px;
-    border-radius: 999px;
-    background: rgba(16, 10, 30, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
   }
 
   .body strong {

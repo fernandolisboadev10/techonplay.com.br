@@ -2,101 +2,84 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
-import FeaturedGrid from '../components/FeaturedGrid.astro';
+import HomeLead from '../components/HomeLead.astro';
+import LatestList from '../components/LatestList.astro';
+import CategoryBlock from '../components/CategoryBlock.astro';
+import SectionHead from '../components/SectionHead.astro';
 import Pagination from '../components/Pagination.astro';
 import StoriesStrip from '../components/StoriesStrip.astro';
+import { categories, categoryHref } from '../data/categories';
 import { isPublished, sortByActivity } from '../utils/posts';
 
+// Page 1: lead (3 posts) + "Últimas" (the next 9). Pages 2+ continue from there as a card grid,
+// so /page/2/ starts exactly where the "Últimas" column ends.
 const PER_PAGE = 9;
 const page = Number(Astro.props.page ?? 1);
 const all = sortByActivity(await getCollection('blog', isPublished));
-const featured = page === 1 ? all.slice(0, 3) : [];
+const lead = all.slice(0, 3);
 const gridAll = all.slice(3);
 const totalPages = Math.max(1, Math.ceil(gridAll.length / PER_PAGE));
 const posts = gridAll.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+// One block per category with at least 4 posts outside the lead, biggest categories first.
+const blocks = categories
+  .map((c) => ({
+    name: c.name,
+    href: categoryHref(c.name),
+    total: all.filter((p) => p.data.category === c.name).length,
+    posts: gridAll.filter((p) => p.data.category === c.name).slice(0, 4),
+  }))
+  .filter((b) => b.posts.length >= 4)
+  .sort((a, b) => b.total - a.total);
 ---
 <BaseLayout title={page > 1 ? `IA, Jogos, Tutoriais e Tecnologia - Página ${page}` : "IA, Jogos, Tutoriais e Tecnologia"} description="Guias, reviews e notícias sobre IA, jogos, tutoriais e curiosidades, em linguagem simples.">
-  {page === 1 && (
-  <section class="hero container">
-    <h1 class="sr-only">Tecnologia sem complicação.</h1>
-    <p class="eyebrow">techonplay.com.br<span class="eyebrow-cursor">_</span></p>
-  </section>
-  )}
+  <h1 class="sr-only">TechOnPlay: tecnologia sem complicação</h1>
 
-  {page === 1 && (
-  <section class="container featured-wrap">
-    <div class="recent-header">
-      <div>
-        <h2>Em alta agora</h2>
-        <span class="underline"></span>
-      </div>
-    </div>
-    <FeaturedGrid posts={featured} />
-  </section>
-  )}
-
-  <section class="container recent">
-    <div class="recent-header">
-      <div>
-        <h2>Acabou de sair</h2>
-        <span class="underline"></span>
-      </div>
-      <a href="/blog">Ver todos →</a>
-    </div>
-    <div class="grid">
-      {posts.map((post, i) => (
-        <div class={'item'}>
-        <PostCard
-          slug={post.id}
-          title={post.data.title}
-          description={post.data.description}
-          category={post.data.category}
-          date={post.data.date}
-          readingTime={post.data.readingTime}
-          image={post.data.image}
-          imageAlt={post.data.imageAlt}
-          priority={i === 0}
-        />
+  {page === 1 ? (
+    <>
+      <section class="container top">
+        <div class="top-lead">
+          <HomeLead posts={lead} />
         </div>
-      ))}
-    </div>
-    <Pagination current={page} total={totalPages} />
-  </section>
+        <aside class="top-latest" aria-labelledby="latest-title">
+          <SectionHead title="Últimas" id="latest-title" />
+          <LatestList posts={posts} />
+          {totalPages > 1 && <a class="more-posts" href="/page/2/">Mais posts</a>}
+        </aside>
+      </section>
 
-  <StoriesStrip />
+      <StoriesStrip />
+
+      {blocks.length > 0 && (
+        <div class="container blocks">
+          {blocks.map((b) => <CategoryBlock {...b} />)}
+        </div>
+      )}
+    </>
+  ) : (
+    <section class="container recent">
+      <SectionHead title={`Todos os posts, página ${page}`} />
+      <div class="grid">
+        {posts.map((post, i) => (
+          <PostCard
+            slug={post.id}
+            title={post.data.title}
+            description={post.data.description}
+            category={post.data.category}
+            date={post.data.date}
+            readingTime={post.data.readingTime}
+            image={post.data.image}
+            imageAlt={post.data.imageAlt}
+            priority={i === 0}
+          />
+        ))}
+      </div>
+      <Pagination current={page} total={totalPages} />
+    </section>
+  )}
 </BaseLayout>
 
-
 <style>
-  .hero {
-    padding-block: 48px 0;
-  }
-
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    margin: 0;
-    background: linear-gradient(135deg, var(--violet), var(--rose));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  .eyebrow-cursor {
-    display: inline-block;
-    margin-left: 2px;
-    color: var(--rose);
-    animation: blink 1.1s steps(1) infinite;
-  }
-
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
-  }
-
   .sr-only {
     position: absolute;
     width: 1px;
@@ -109,85 +92,71 @@ const posts = gridAll.slice((page - 1) * PER_PAGE, page * PER_PAGE);
     border: 0;
   }
 
-  .featured-wrap {
-    padding-block: 32px 8px;
+  .top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 330px;
+    gap: 40px;
+    padding-block: 36px 48px;
+  }
+
+  .more-posts {
+    display: block;
+    margin-top: 12px;
+    padding: 11px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ink-strong);
+    text-decoration: none;
+  }
+
+  .more-posts:hover {
+    border-color: var(--violet);
+    color: var(--violet);
+  }
+
+  .blocks {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 48px 40px;
+    padding-block: 16px 64px;
   }
 
   .recent {
     padding-block: 40px;
   }
 
-  .recent-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 28px;
-  }
-
-  .underline {
-    display: block;
-    width: 48px;
-    height: 4px;
-    margin-top: 10px;
-    border-radius: 2px;
-    background: linear-gradient(135deg, var(--violet), var(--rose));
-  }
-
-  .recent-header a {
-    text-decoration: none;
-    color: var(--teal);
-    font-size: 0.9rem;
-    white-space: nowrap;
-  }
-
-  .item {
-    display: contents;
-  }
-
-  .item.extra:not(.show) {
-    display: none;
-  }
-
-  .more-wrap {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-  }
-
-  .more-btn {
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 0.95rem;
-    padding: 12px 28px;
-    border-radius: 999px;
-    border: 0;
-    color: #fff;
-    cursor: pointer;
-    background: linear-gradient(135deg, var(--violet), var(--rose));
-    transition: transform 0.15s ease, filter 0.15s ease;
-  }
-
-  .more-btn:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.1);
-  }
-
   .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
+  }
+
+  @media (max-width: 960px) {
+    .top {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 32px;
+    }
   }
 
   @media (max-width: 860px) {
     .grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 720px) {
+    .blocks {
+      grid-template-columns: minmax(0, 1fr);
     }
   }
 
   @media (max-width: 600px) {
     .grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0;
     }
   }
 </style>
-
