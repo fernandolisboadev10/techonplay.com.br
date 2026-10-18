@@ -101,9 +101,13 @@ Um exemplo de estrutura, em frase única: "O Ministério da Educação (agente) 
 
 Com o tempo curto, a rotina precisa ser simples. Este roteiro é uma sugestão do TechOnPlay, e não uma regra do MEC ou do Inep:
 
+<div class="callout callout-bar">
+
 -   **Semana 1:** leia a cartilha, estude as redações comentadas de 2025 e escreva um texto completo com tempo marcado.
 -   **Semana 2:** escreva mais dois textos à tinta preta, em até 30 linhas, e releia cada um com a tabela das competências ao lado.
 -   **Semana 3:** faça um simulado nas condições do dia (horário da tarde, sem consulta) e revise os erros que mais se repetem.
+
+</div>
 
 ![Estudante escrevendo uma redação à mão à tinta preta, em uma mesa de estudos com relógio de parede, luminária e livros ao fundo](./images/enem-2026-redacao-plano-de-treino.webp)
 
