@@ -178,6 +178,23 @@ img {
   color: var(--ink-strong);
 }
 
+/* Highlighted block: wrap markdown in <div class="callout"> (blank lines around the content). */
+.prose .callout {
+  margin: 32px 0;
+  padding: 4px 24px;
+  border-left: 5px solid #16a34a;
+  border-radius: 0 10px 10px 0;
+  background: color-mix(in srgb, #16a34a 8%, var(--surface));
+}
+
+.prose .callout > :first-child {
+  margin-top: 1em;
+}
+
+.prose .callout > :last-child {
+  margin-bottom: 1em;
+}
+
 .prose img {
   height: auto;
   border-radius: 10px;

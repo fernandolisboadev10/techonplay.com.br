@@ -23,10 +23,14 @@ Os portões abrem às 12h e fecham às 13h, e as provas começam às 13h30 (hor�
 
 O formato da redação é o mesmo de sempre:
 
+<div class="callout">
+
 -   texto **dissertativo-argumentativo**, em modalidade escrita formal da língua portuguesa;
 -   até **30 linhas**, a partir de uma frase temática e de textos motivadores;
 -   tema de ordem social, científica, cultural ou política;
 -   proposta de intervenção que respeite os direitos humanos.
+
+</div>
 
 Cada redação passa por **dois corretores**, que dão de 0 a 200 pontos em cada competência. A nota final é a média das duas notas totais, de acordo com a Cartilha da Redação do ENEM 2026.
 
