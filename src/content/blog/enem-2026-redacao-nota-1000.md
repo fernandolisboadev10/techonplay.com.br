@@ -6,7 +6,7 @@ date: 2026-10-18T10:30:00-03:00
 updated: 2026-10-18T10:30:00-03:00
 readingTime: "7 min"
 image: "./images/enem-2026-redacao-nota-1000.webp"
-imageAlt: "Estudante escrevendo uma redação à mão com caneta preta em uma mesa de estudos, com relógio de parede, luminária e livros ao fundo"
+imageAlt: "Estudante escrevendo uma redação à mão em folha pautada, à mesa de casa, com garrafa de água, caderno e celular ao lado e a luz do fim de tarde entrando pela janela"
 tags: ["ENEM 2026", "Redação", "Inep", "MEC", "Estudos"]
 related: ["o-que-e-bncc", "ia-para-professores", "google-ai-plus-para-estudantes"]
 ---
@@ -100,6 +100,8 @@ Com o tempo curto, a rotina precisa ser simples. Este roteiro é uma sugestão d
 -   **Semana 1:** leia a cartilha, estude as redações comentadas de 2025 e escreva um texto completo com tempo marcado.
 -   **Semana 2:** escreva mais dois textos à tinta preta, em até 30 linhas, e releia cada um com a tabela das competências ao lado.
 -   **Semana 3:** faça um simulado nas condições do dia (horário da tarde, sem consulta) e revise os erros que mais se repetem.
+
+![Estudante escrevendo uma redação à mão à tinta preta, em uma mesa de estudos com relógio de parede, luminária e livros ao fundo](./images/enem-2026-redacao-plano-de-treino.webp)
 
 Quem já está inscrito deve conferir o Cartão de Confirmação na Página do Participante, que traz o local de prova e que o Inep informou que divulgaria em outubro.
 
