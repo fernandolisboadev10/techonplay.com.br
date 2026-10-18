@@ -70,7 +70,7 @@ Confirme a lista atual no PDF da cartilha de 2026 e no edital.
 
 As orientações abaixo vêm da cartilha do Inep e do guia [Como estudar redação para o ENEM na prática](https://www.gov.br/mec/pt-br/enem/fique-por-dentro/como-estudar-redacao-para-o-enem-na-pratica), publicado pelo MEC.
 
-1.  **Leia a cartilha inteira antes de escrever.** Ela traz a Matriz de Referência e redações de alto desempenho do ENEM 2025, com comentários pedagógicos que mostram como os corretores avaliam.
+1.  **Leia a cartilha inteira antes de escrever.** Ela traz a Matriz de Referência e redações de alto desempenho do ENEM 2025, com comentários pedagógicos que mostram como os corretores avaliam. As redações comentadas estão na seção "Amostra de redações do Enem 2025", a partir da página 41 da [cartilha do Inep](https://www.gov.br/inep/pt-br/centrais-de-conteudo/acervo-linha-editorial/publicacoes-institucionais/avaliacoes-e-exames-da-educacao-basica/a-redacao-do-enem-2026-cartilha-do-a-participante). São textos de estudantes que tiraram boas notas, e vale ler o comentário que acompanha cada um.
 2.  **Leia a proposta e os textos motivadores com atenção.** Só depois defina o ponto de vista que você vai defender.
 3.  **Entenda o recorte do tema.** O MEC sugere separar o assunto geral do ângulo específico e identificar o problema social em jogo.
 4.  **Planeje antes de escrever.** O MEC propõe um plano de cerca de cinco minutos com a tese, dois argumentos diferentes e um esboço da intervenção. É sugestão de treino, e não regra do Inep.
