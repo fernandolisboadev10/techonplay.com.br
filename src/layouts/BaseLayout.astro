@@ -87,22 +87,31 @@ const organizationSchema = {
         gtag('js', new Date());
         gtag('config', 'G-6EQYV5G6JN');
 
-        // Third-party scripts (analytics and ads) load on the first interaction, or a few seconds
-        // after the page finished loading, so they never compete with the first paint.
-        var thirdPartyLoaded = false;
-        function loadThirdParty() {
-          if (thirdPartyLoaded) return;
-          thirdPartyLoaded = true;
+        // Analytics loads as soon as the page finished loading (or on the first interaction, if sooner),
+        // so short visits are still counted. Ads wait a few seconds so they never compete with the first paint.
+        var analyticsLoaded = false;
+        function loadAnalytics() {
+          if (analyticsLoaded) return;
+          analyticsLoaded = true;
           var g = document.createElement('script');
           g.async = true;
           g.src = 'https://www.googletagmanager.com/gtag/js?id=G-6EQYV5G6JN';
           document.head.appendChild(g);
+        }
+        var thirdPartyLoaded = false;
+        function loadThirdParty() {
+          if (thirdPartyLoaded) return;
+          thirdPartyLoaded = true;
+          loadAnalytics();
           if (state === 'granted') loadAds();
         }
         ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (ev) {
           window.addEventListener(ev, loadThirdParty, { once: true, passive: true });
         });
-        window.addEventListener('load', function () { setTimeout(loadThirdParty, 3500); });
+        window.addEventListener('load', function () {
+          loadAnalytics();
+          setTimeout(loadThirdParty, 3500);
+        });
 
         window.techonplayConsent = {
           hasChoice: function () { return stored === 'granted' || stored === 'denied'; },
