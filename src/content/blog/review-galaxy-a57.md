@@ -26,7 +26,7 @@ Este guia reúne a ficha técnica oficial, o comparativo com o A56 e o A55, os r
 
 ## Ficha técnica do Galaxy A57
 
-Segundo a [Samsung Brasil](https://www.samsung.com/br/smartphones/galaxy-a/galaxy-a57-5g-awesome-gray-128gb-sm-a576bzaezto/):
+Segundo a Samsung Brasil:
 
 | 🔍 Item | 📱 Galaxy A57 |
 | --- | --- |
@@ -45,7 +45,7 @@ Segundo a [Samsung Brasil](https://www.samsung.com/br/smartphones/galaxy-a/galax
 | Software | Android 16 com One UI 8.5; até 6 gerações de atualização do sistema e 6 anos de segurança |
 | Cores | Azul escuro, azul-claro, lilás e cinza |
 
-O lançamento no Brasil foi anunciado no [Samsung Newsroom Brasil](https://news.samsung.com/br/samsung-apresenta-galaxy-a57-5g-e-galaxy-a37-5g-no-brasil-com-recursos-de-nivel-profissional).
+O lançamento no Brasil foi anunciado no Samsung Newsroom Brasil.
 
 ## Galaxy A57 vs A56 vs A55: o que mudou
 
@@ -116,3 +116,5 @@ _Não. O aparelho não tem slot para cartão de memória._
 **Quando o Galaxy A57 chegou ao Brasil?**
 
 _Em 15 de abril de 2026, a partir de R$ 3.599 na versão de 128 GB, segundo a Samsung._
+
+Fontes: [Samsung Brasil](https://www.samsung.com/br/smartphones/galaxy-a/galaxy-a57-5g-awesome-gray-128gb-sm-a576bzaezto/) | [Samsung Newsroom Brasil](https://news.samsung.com/br/samsung-apresenta-galaxy-a57-5g-e-galaxy-a37-5g-no-brasil-com-recursos-de-nivel-profissional)

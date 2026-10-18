@@ -27,7 +27,7 @@ A inteligência artificial (IA) entra principalmente nos dois últimos eixos. A 
 
 ## O que o MEC disse sobre IA nas escolas
 
-Em abril de 2026, o MEC apresentou o documento [Inteligência Artificial na Educação Básica](https://www.gov.br/mec/pt-br/escolas-conectadas/documentos/ia-educacao-basica.pdf), com orientações para o uso pedagógico e ético da tecnologia. Segundo a [cobertura do jornal O Povo](https://www.opovo.com.br/noticias/brasil/2026/04/09/mec-apresenta-documento-para-uso-da-ia-nas-escolas-saiba.html), o texto cita usos como:
+Em abril de 2026, o MEC apresentou o documento Inteligência Artificial na Educação Básica, com orientações para o uso pedagógico e ético da tecnologia. Segundo a cobertura do jornal O Povo, o texto cita usos como:
 
 -   **Para o aluno:** tutores inteligentes, chatbots educacionais e ambientes de estudo personalizados
 -   **Para o professor:** apoio ao planejamento, geração de materiais e planos de aula, correção automatizada e mais acessibilidade nos conteúdos
@@ -86,3 +86,5 @@ _Sim. O documento do MEC cita o apoio ao planejamento, à criação de materiais
 ### Como enviar minha opinião como professor?
 
 _Por e-mail, para fernandolisboa.dev@gmail.com, ou por mensagem no Instagram @fernandolisboa.dev. Você pode pedir para não ser identificado._
+
+Fontes: [Inteligência Artificial na Educação Básica](https://www.gov.br/mec/pt-br/escolas-conectadas/documentos/ia-educacao-basica.pdf) | [cobertura do jornal O Povo](https://www.opovo.com.br/noticias/brasil/2026/04/09/mec-apresenta-documento-para-uso-da-ia-nas-escolas-saiba.html)

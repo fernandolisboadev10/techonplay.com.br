@@ -25,7 +25,7 @@ Este guia reúne a ficha técnica, os preços por tamanho, os pontos fortes e fr
 
 ## Ficha técnica da TCL C6K
 
-Segundo a [análise do TechTudo](https://www.techtudo.com.br/review/2026/09/tcl-c6k-de-75-e-uma-das-melhores-tvs-custo-beneficio-da-atualidade-review-edinfoeletro.ghtml), que testou a versão de 75 polegadas:
+Segundo a análise do TechTudo, que testou a versão de 75 polegadas:
 
 | 🔍 Item | 📺 TCL C6K |
 | --- | --- |
@@ -41,7 +41,7 @@ Segundo a [análise do TechTudo](https://www.techtudo.com.br/review/2026/09/tcl-
 | Outras conexões | 2 USB-A, saída óptica, Ethernet, Wi-Fi 5 e Bluetooth 5.4 |
 | Tamanhos | 55, 65, 75, 85 e 98 polegadas |
 
-As lojas brasileiras listam a linha como QD-Mini LED, com HDR10+, Dolby Vision IQ e FreeSync. Alguns anúncios, como o [da Amazon](https://www.amazon.com.br/TCL-Polegadas-Bluetooth-Google-65C6K/dp/B0F7K7B2PD), trazem os mesmos 144 Hz, quatro HDMI e Google TV. Como a especificação pode variar por tamanho e por loja, confira a ficha do modelo exato antes de comprar.
+As lojas brasileiras listam a linha como QD-Mini LED, com HDR10+, Dolby Vision IQ e FreeSync. Alguns anúncios, como o da Amazon, trazem os mesmos 144 Hz, quatro HDMI e Google TV. Como a especificação pode variar por tamanho e por loja, confira a ficha do modelo exato antes de comprar.
 
 ## O que é Mini LED e por que importa
 
@@ -122,3 +122,5 @@ _55, 65, 75, 85 e 98 polegadas, de acordo com a análise._
 **A TCL C6K é OLED?**
 
 _Não. Ela usa painel QLED com Mini LED, o que a deixa mais barata, mas sem o preto perfeito da OLED._
+
+Fontes: [análise do TechTudo](https://www.techtudo.com.br/review/2026/09/tcl-c6k-de-75-e-uma-das-melhores-tvs-custo-beneficio-da-atualidade-review-edinfoeletro.ghtml) | [da Amazon](https://www.amazon.com.br/TCL-Polegadas-Bluetooth-Google-65C6K/dp/B0F7K7B2PD)

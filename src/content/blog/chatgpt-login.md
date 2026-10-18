@@ -11,7 +11,7 @@ tags: ["ChatGPT", "ChatGPT login", "OpenAI", "Conta"]
 related: ["chatgpt-gratis-ou-pago", "o-que-significa-gpt", "46-comandos-do-chatgpt"]
 ---
 
-O **ChatGPT login** é feito no endereço [chatgpt.com](https://chatgpt.com), com e-mail e senha ou com uma conta Google, Microsoft ou Apple. A conta é gratuita, e o mesmo acesso vale no navegador do PC e no aplicativo do celular.
+O **ChatGPT login** é feito no endereço chatgpt.com, com e-mail e senha ou com uma conta Google, Microsoft ou Apple. A conta é gratuita, e o mesmo acesso vale no navegador do PC e no aplicativo do celular.
 
 Quando o login falha, quase sempre a causa é simples: método de acesso diferente do usado no cadastro, cache do navegador ou código de verificação que não chegou. Abaixo estão o passo a passo e as correções, uma a uma.
 
@@ -27,7 +27,7 @@ _No Google, o resultado oficial vem primeiro e mostra o endereço chatgpt.com. C
 
 O processo leva menos de um minuto:
 
-1.  Abra o navegador e acesse [chatgpt.com](https://chatgpt.com).
+1.  Abra o navegador e acesse chatgpt.com.
 2.  Clique em **Entrar**, no canto superior direito. Ao lado dele fica o botão **Cadastre-se grátis**, para quem ainda não tem conta.
 3.  Digite o e-mail da conta ou escolha **Continuar com Google**, **Microsoft** ou **Apple**.
 4.  Informe a senha ou o código de verificação enviado por e-mail, se a plataforma pedir.
@@ -108,3 +108,4 @@ _As causas mais comuns são o código na caixa de spam, bloqueio do remetente pe
 ### Menor de idade pode ter conta no ChatGPT?
 
 _Segundo a OpenAI, é preciso ter no mínimo 13 anos. Quem tem menos de 18 anos precisa da permissão de um responsável._
+

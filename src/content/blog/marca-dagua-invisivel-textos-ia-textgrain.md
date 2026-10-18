@@ -24,7 +24,7 @@ A OpenAI anunciou em 5 de outubro de 2026 o **textGrain**, uma marca-d'água inv
 
 ## Como a marca-d'água funciona
 
-Segundo o [Canaltech](https://canaltech.com.br/inteligencia-artificial/chatgpt-copia-o-claude-e-tambem-comeca-a-carimbar-textos-feitos-por-sua-ia/), o textGrain ajusta de leve o cálculo de probabilidade das palavras enquanto o modelo escreve. Isso cria um padrão estatístico que a pessoa não percebe, sem marcas visíveis nem caracteres ocultos. Depois, um detector da OpenAI consegue procurar esse padrão.
+Segundo o Canaltech, o textGrain ajusta de leve o cálculo de probabilidade das palavras enquanto o modelo escreve. Isso cria um padrão estatístico que a pessoa não percebe, sem marcas visíveis nem caracteres ocultos. Depois, um detector da OpenAI consegue procurar esse padrão.
 
 Em termos simples: a IA sempre escolhe a próxima palavra entre várias opções. A marca-d'água inclina essa escolha de um jeito discreto e repetido. Um texto longo carrega muitas dessas escolhas, e o detector verifica se o conjunto bate com o padrão.
 
@@ -92,3 +92,5 @@ _Reduz a chance de detecção: segundo o Canaltech, editar 10% das palavras derr
 _No início, não automaticamente: o lançamento é na União Europeia, e a API permite ativação voluntária._
 
 Para mais conteúdo sobre IA, veja a página de [Inteligência Artificial](/categoria/inteligencia-artificial/). Se quer entender os planos do assistente, leia [ChatGPT grátis ou pago](/chatgpt-gratis-ou-pago/), e para conhecer uma alternativa, o guia do [DeepSeek em 2026](/deepseek-2026-guia-completo/).
+
+Fontes: [Canaltech](https://canaltech.com.br/inteligencia-artificial/chatgpt-copia-o-claude-e-tambem-comeca-a-carimbar-textos-feitos-por-sua-ia/)

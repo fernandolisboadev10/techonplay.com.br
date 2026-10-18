@@ -24,11 +24,11 @@ Este guia reúne a ficha técnica oficial, o preço atual, a comparação com o 
 | Quer bateria de longa duração | Melhor olhar outros aparelhos: são 4.000 mAh |
 | Quer o mais novo | Compare com o Galaxy S26, que custa a partir de R$ 7.499 |
 
-Os valores de referência vêm do [Canaltech](https://canaltech.com.br/smartphone/quanto-vale-a-pena-pagar-no-galaxy-s25-em-julho-de-2026/), em análise de julho de 2026. O menor preço registrado foi de R$ 2.998, em uma promoção de abril.
+Os valores de referência vêm do Canaltech, em análise de julho de 2026. O menor preço registrado foi de R$ 2.998, em uma promoção de abril.
 
 ## Ficha técnica do Galaxy S25
 
-Segundo a [Samsung Brasil](https://www.samsung.com/br/smartphones/galaxy-s25/) e o comparativo do TechTudo:
+Segundo a Samsung Brasil e o comparativo do TechTudo:
 
 | 🔍 Item | 📱 Galaxy S25 |
 | --- | --- |
@@ -106,3 +106,5 @@ _A Samsung promete sete anos de atualizações de sistema para o aparelho._
 ### O Galaxy S25 é resistente à água?
 
 _Sim. Ele tem classificação IP68, com proteção contra água e poeira._
+
+Fontes: [Canaltech](https://canaltech.com.br/smartphone/quanto-vale-a-pena-pagar-no-galaxy-s25-em-julho-de-2026/) | [Samsung Brasil](https://www.samsung.com/br/smartphones/galaxy-s25/)

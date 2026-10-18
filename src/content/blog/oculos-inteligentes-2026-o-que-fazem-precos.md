@@ -39,7 +39,7 @@ Os modelos mais comuns não têm tela: a interação é por voz, câmera e áudi
 
 ## Ray-Ban Meta Gen 3: o que mudou
 
-A Meta apresentou a terceira geração em setembro. Segundo o [TechTudo](https://www.techtudo.com.br/noticias/2026/09/meta-lanca-oculos-inteligente-sem-camera-e-novos-ray-ban-meta-3-edmobile.ghtml), os destaques são:
+A Meta apresentou a terceira geração em setembro. Segundo o TechTudo, os destaques são:
 
 - **Bateria:** até 9 horas de uso.
 - **Câmera:** 12 megapixels, com vídeo em 3K Ultra HD.
@@ -105,3 +105,5 @@ _Não há previsão, de acordo com o TechTudo._
 **Quando saem os óculos da Samsung e do Google?**
 
 _Foram apresentados em julho, e as reportagens dizem que chegam em breve, sem data nem preço._
+
+Fontes: [TechTudo](https://www.techtudo.com.br/noticias/2026/09/meta-lanca-oculos-inteligente-sem-camera-e-novos-ray-ban-meta-3-edmobile.ghtml)

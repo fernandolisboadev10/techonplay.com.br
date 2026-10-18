@@ -23,7 +23,7 @@ O Gemini está trocando os **Gems** pelas **Skills**, instruções reutilizávei
 
 ## O que são as Skills
 
-De acordo com o [Canaltech](https://canaltech.com.br/inteligencia-artificial/guia-completo-como-substituir-gems-por-skills-gemini/), as Skills são instruções reutilizáveis que podem ser acionadas nas conversas. Servem para tarefas recorrentes, como manter um estilo de escrita, montar a pauta de uma reunião ou analisar um tema por vários ângulos. Elas também podem incluir arquivos de conhecimento.
+De acordo com o Canaltech, as Skills são instruções reutilizáveis que podem ser acionadas nas conversas. Servem para tarefas recorrentes, como manter um estilo de escrita, montar a pauta de uma reunião ou analisar um tema por vários ângulos. Elas também podem incluir arquivos de conhecimento.
 
 A diferença para os Gems, segundo a reportagem, é que os Gems funcionavam como miniaplicativos, enquanto as Skills são instruções personalizáveis dentro da conversa, pensadas para acesso e reuso mais fáceis.
 
@@ -111,3 +111,5 @@ _Em Configurações > Habilidades, com "Criar com o Gemini" ou "Criar manualment
 **O plano gratuito perde algum modelo?**
 
 _Segundo o Olhar Digital, a partir de 9 de outubro o plano gratuito fica só com o Flash-Lite._
+
+Fontes: [Canaltech](https://canaltech.com.br/inteligencia-artificial/guia-completo-como-substituir-gems-por-skills-gemini/)

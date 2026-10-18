@@ -17,7 +17,7 @@ O aparelho ainda não chegou às lojas, então este texto é uma análise de pre
 
 ## Quanto vai custar o iPhone Duo no Brasil e nos EUA
 
-Por versão de armazenamento, segundo levantamento do [Terra](https://www.terra.com.br/byte/celular/iphone-duo-veja-os-precos-no-brasil-e-nos-eua-do-celular-dobravel-da-apple-em-2026,52fcd4fb9d29708ed222f71cd2bb9f11gpf3x08q.html):
+Por versão de armazenamento, segundo levantamento do Terra:
 
 -   **256 GB:** US$ 1.999 nos EUA / R$ 21.999 no Brasil
 -   **512 GB:** US$ 2.199 nos EUA / R$ 23.499 no Brasil
@@ -30,7 +30,7 @@ A CG 160 lidera o ranking de motos mais vendidas de 2026, segundo o Motoo, com 3
 
 ## Ficha técnica completa do iPhone dobrável
 
-Especificações oficiais divulgadas pela [Apple](https://www.apple.com/iphone-duo/):
+Especificações oficiais divulgadas pela Apple:
 
 -   **Tela externa:** 5,4″ Super Retina XDR
 -   **Tela interna:** 7,6″ Super Retina XDR dobrável, ProMotion, acabamento nano-texture

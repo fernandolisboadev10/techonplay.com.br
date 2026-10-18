@@ -31,7 +31,7 @@ Três novidades dos últimos dias mexem na lista e merecem atenção antes de as
 
 ### Gemini 4 Argon: o próximo modelo de fronteira
 
-O Gemini 4 Argon foi apresentado em 30 de setembro como a resposta do Google ao GPT-6 Astra e ao Claude Fable 5.1. Segundo o [Canaltech](https://canaltech.com.br/inteligencia-artificial/google-apresenta-gemini-4-argon-nova-ia-para-peitar-chatgpt-e-claude/), a janela de contexto sobe de 64 mil para 1 milhão de tokens, e o Google já usa o modelo internamente, inclusive em pesquisa de computação quântica.
+O Gemini 4 Argon foi apresentado em 30 de setembro como a resposta do Google ao GPT-6 Astra e ao Claude Fable 5.1. Segundo o Canaltech, a janela de contexto sobe de 64 mil para 1 milhão de tokens, e o Google já usa o modelo internamente, inclusive em pesquisa de computação quântica.
 
 ✅ É o primeiro modelo de fronteira do Google desde o primeiro semestre ❌ O acesso é restrito a um grupo de defensores cibernéticos e testadores ❌ Depois dos testes de segurança, ele vai primeiro para o plano Google AI Ultra, sem data nem preço no Brasil ❌ Não há testes independentes, e a comparação com os rivais é do próprio Google
 
@@ -43,13 +43,13 @@ Em 4 de outubro chegam às lojas dos EUA os primeiros Googlebooks, uma nova cate
 
 ### Gems viram Skills
 
-A partir de 13 de outubro, não dá mais para criar nem editar Gems. No lugar entram as Skills, blocos reutilizáveis de instruções que você chama com "/" na conversa e que o Gemini também aciona sozinho quando fazem sentido. A conversão automática dos Gems existentes começa em 17 de novembro. As Skills exigem Google AI Pro ou Ultra, segundo o [Sempreupdate](https://sempreupdate.com.br/google-gemini-substituira-gems-por-skills/). Se você depende de Gems, revise as instruções e os arquivos anexados agora.
+A partir de 13 de outubro, não dá mais para criar nem editar Gems. No lugar entram as Skills, blocos reutilizáveis de instruções que você chama com "/" na conversa e que o Gemini também aciona sozinho quando fazem sentido. A conversão automática dos Gems existentes começa em 17 de novembro. As Skills exigem Google AI Pro ou Ultra, segundo o Sempreupdate. Se você depende de Gems, revise as instruções e os arquivos anexados agora.
 
-Também há novidade na música: o Lyria 3 Pro passou a gerar faixas de até 3 minutos para assinantes do Plus, do Pro e do Ultra, conforme a página de [Gemini Drops](https://gemini.google/br/gemini-drops/?hl=pt-BR).
+Também há novidade na música: o Lyria 3 Pro passou a gerar faixas de até 3 minutos para assinantes do Plus, do Pro e do Ultra, conforme a página de Gemini Drops.
 
 ## Planos Google AI no Brasil: quanto você paga em 2026
 
-Antes de escolher as ferramentas, conheça as assinaturas. Os valores abaixo vêm da [página de planos do Google Brasil](https://gemini.google/br/subscriptions/?hl=pt-BR):
+Antes de escolher as ferramentas, conheça as assinaturas. Os valores abaixo vêm da página de planos do Google Brasil:
 
 💰 **Gratuito (R$ 0):** Gemini 3.6 Flash, acesso limitado ao Gemini 3.1 Pro, Deep Research, Gemini Live, Gemini Notebook e 15 GB de armazenamento 💰 **Google AI Plus (R$ 24,99 por mês):** limites 2x maiores, geração de vídeo, 200 créditos do Flow e 400 GB 💰 **Google AI Pro (R$ 96,99 por mês):** limites 4x maiores, 1.000 créditos do Flow, Antigravity, YouTube Premium Lite e 5 TB 💰 **Google AI Ultra (R$ 779,90 ou R$ 999,90 por mês):** até 5x ou 20x os limites do Pro, Deep Think, até 25.000 créditos do Flow e 20 TB ou mais
 
@@ -197,3 +197,5 @@ Não por enquanto. A página de ajuda do Chrome diz que o recurso exige estar no
 O conjunto de IA do Google em 2026 vai muito além do chat do Gemini. Comece de graça com o app Gemini, o Modo IA, o Gemini Notebook e o Stitch. Suba para o Pro quando bater nos limites ou precisar do Gemini 3.8 Flash, do vídeo do Flow ou do Spark.
 
 Reserve o Ultra para trabalho pesado com vídeo ou para quando o Gemini 4 Argon for liberado e provar seu valor em testes independentes. Teste duas ferramentas desta lista em uma tarefa real nesta semana e conte nos comentários qual ganhou lugar na sua rotina. Se você é universitário, comece pelo [Google AI Plus grátis para estudantes](/google-ai-plus-para-estudantes/).
+
+Fontes: [Canaltech](https://canaltech.com.br/inteligencia-artificial/google-apresenta-gemini-4-argon-nova-ia-para-peitar-chatgpt-e-claude/) | [Sempreupdate](https://sempreupdate.com.br/google-gemini-substituira-gems-por-skills/) | [Gemini Drops](https://gemini.google/br/gemini-drops/?hl=pt-BR) | [página de planos do Google Brasil](https://gemini.google/br/subscriptions/?hl=pt-BR)

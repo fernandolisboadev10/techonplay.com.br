@@ -23,7 +23,7 @@ Para começar, veja o que cada palavra da sigla representa:
 -   **P de Pre-trained (pré-treinado):** antes de chegar ao usuário, o modelo lê uma quantidade gigantesca de textos e aprende os padrões da linguagem.
 -   **T de Transformer (transformador):** é o tipo de rede neural (sistema de computação inspirado no cérebro humano) que entende como as palavras se relacionam dentro de uma frase.
 
-Na sequência, vale conhecer a origem do “T”. A arquitetura Transformer nasceu em 2017, no estudo [Attention Is All You Need](https://arxiv.org/abs/1706.03762), de pesquisadores do Google. A OpenAI aproveitou a ideia e lançou o primeiro GPT em 2018.
+Na sequência, vale conhecer a origem do “T”. A arquitetura Transformer nasceu em 2017, no estudo Attention Is All You Need, de pesquisadores do Google. A OpenAI aproveitou a ideia e lançou o primeiro GPT em 2018.
 
 ## GPT e ChatGPT: qual é a diferença?
 
@@ -67,3 +67,5 @@ Tem o mesmo sentido: Generative Pre-trained Transformer. O “Chat” indica ape
 ### _O GPT é gratuito?_
 
 O ChatGPT tem uma versão gratuita, com modelos mais simples, e planos pagos com acesso aos modelos mais avançados. As regras mudam com frequência, então vale conferir no site da OpenAI.
+
+Fontes: [Attention Is All You Need](https://arxiv.org/abs/1706.03762)

@@ -36,7 +36,7 @@ A participação no Brasil ainda é pequena: 0,68% dos desktops, tablets e conso
 
 ## O Manifest V3 e o bloqueio nativo
 
-O Manifest V3 é o novo padrão de extensões do Chromium. Ele muda as regras que os complementos seguem para atuar nas páginas, segundo a [documentação para desenvolvedores do Google](https://developer.chrome.com/docs/extensions/develop/migrate/what-is-mv3).
+O Manifest V3 é o novo padrão de extensões do Chromium. Ele muda as regras que os complementos seguem para atuar nas páginas, segundo a documentação para desenvolvedores do Google.
 
 Para o usuário comum, o efeito aparece nos bloqueadores de anúncios, que precisaram se adaptar. Por isso, o bloqueio nativo ganha peso: o Brave não depende de extensão para filtrar anúncios e rastreadores.
 

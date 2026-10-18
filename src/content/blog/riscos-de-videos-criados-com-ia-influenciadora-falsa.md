@@ -10,7 +10,7 @@ tags: ["Deepfake", "Golpes", "Influenciadores virtuais", "Inteligência artifici
 related: ["como-identificar-site-falso-promocao-amazon-golpe", "marca-dagua-invisivel-textos-ia-textgrain", "trend-anos-80-ia-foto-prompt"]
 ---
 
-Um pedreiro de 49 anos saiu de Imperatriz, no Maranhão, e atravessou cerca de 2 mil quilômetros de ônibus até Belo Horizonte para encontrar uma mulher que conhecera pelas redes sociais. Ela não existia. O caso, que circulou em portais como [CNN Brasil](https://www.cnnbrasil.com.br/nacional/sudeste/mg/ma-para-mg-pedreiro-viaja-mais-de-2-mil-km-atras-de-mulher-criada-por-ia/) e Metrópoles, expõe de forma bem concreta os **riscos de vídeos criados com IA**: quando a imagem, a voz e o jeito de falar são sintéticos, a confiança que sentimos por uma "pessoa" vira o ponto mais fácil de atacar.
+Um pedreiro de 49 anos saiu de Imperatriz, no Maranhão, e atravessou cerca de 2 mil quilômetros de ônibus até Belo Horizonte para encontrar uma mulher que conhecera pelas redes sociais. Ela não existia. O caso, que circulou em portais como CNN Brasil e Metrópoles, expõe de forma bem concreta os **riscos de vídeos criados com IA**: quando a imagem, a voz e o jeito de falar são sintéticos, a confiança que sentimos por uma "pessoa" vira o ponto mais fácil de atacar.
 
 ## O que aconteceu com o homem que viajou 2 mil km?
 
@@ -104,3 +104,5 @@ O ponto não é ensinar a enganar ninguém: é mostrar que dois pedidos de texto
 A tecnologia não é o único problema. Um vídeo bonito e uma promessa de companhia explicam por que tanta gente confia sem checar. Criar personagens com IA é legal e pode ser criativo, mas apresentar essa personagem como uma pessoa real, para ganhar atenção ou dinheiro, é onde mora o risco. Desconfie do que parece bom demais, verifique fora da tela e, na dúvida, converse com alguém antes de pegar a estrada.
 
 [^1]: Imagem gerada por inteligência artificial, sem pessoas reais, a partir do primeiro prompt acima. Qualquer semelhança com pessoas reais é coincidência. A capa do artigo foi gerada pelo segundo prompt, a partir desta mesma imagem.
+
+Fontes: [CNN Brasil](https://www.cnnbrasil.com.br/nacional/sudeste/mg/ma-para-mg-pedreiro-viaja-mais-de-2-mil-km-atras-de-mulher-criada-por-ia/)

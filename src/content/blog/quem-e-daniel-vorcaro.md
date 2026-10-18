@@ -17,7 +17,7 @@ Daniel Vorcaro virou um dos nomes mais buscados do noticiário econômico, e mui
 
 Daniel Bueno Vorcaro é um banqueiro mineiro, nascido em Belo Horizonte. Ficou conhecido como controlador do Banco Master, instituição que, a partir de 2021, passou a crescer rápido no mercado de crédito e de investimentos.
 
-Segundo a [InfoMoney](https://www.infomoney.com.br/business/quem-e-daniel-vorcaro-dono-do-banco-master-que-foi-preso-pela-pf/), ele estudou na Fundação Torino, tradicional colégio de Belo Horizonte, e depois cursou economia no Ibmec da capital mineira. A [Wikipédia](https://en.wikipedia.org/wiki/Daniel_Vorcaro) descreve a graduação como administração, com MBA no mesmo Ibmec, concluído em 2007. As fontes divergem no nome do curso, mas apontam a mesma instituição.
+Segundo a InfoMoney, ele estudou na Fundação Torino, tradicional colégio de Belo Horizonte, e depois cursou economia no Ibmec da capital mineira. A Wikipédia descreve a graduação como administração, com MBA no mesmo Ibmec, concluído em 2007. As fontes divergem no nome do curso, mas apontam a mesma instituição.
 
 ## Idade e signo de Daniel Vorcaro
 

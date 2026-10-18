@@ -72,7 +72,7 @@ Estes passos são orientações gerais, e não vêm da reportagem:
 
 A reportagem do Canaltech trata de domínios ligados à Amazon e ao Prime Day, e não mede o total de golpes nem de vítimas. Os números mostram o tamanho da tentativa de fraude, e não quantas pessoas foram enganadas.
 
-Manter o celular atualizado também ajuda na proteção da conta. Veja como isso afeta o aplicativo no post sobre o WhatsApp que bloqueia login em celulares desatualizados. Para mais orientações, acesse a página de [Dicas](/categoria/dicas/).
+Golpes também chegam por aplicativos de mensagem, então vale conhecer as novidades do [WhatsApp para ligações sem conta](/whatsapp-ligacao-sem-conta/). E, antes de assinar qualquer serviço "em promoção", compare o preço no site oficial, como no caso do [CapCut Pro mais barato](/capcut-pro-mais-barato-como-economizar/). Para mais orientações, acesse a página de [Dicas](/categoria/dicas/).
 
 ## Perguntas frequentes
 

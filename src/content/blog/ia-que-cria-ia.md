@@ -33,7 +33,7 @@ Por trás dos números, existe uma preocupação concreta. A Anthropic trata o a
 
 “Modelos que aceleram o próprio desenvolvimento podem tornar mais desafiador para os humanos entenderem ou controlarem esses sistemas”, afirma a empresa no relatório.
 
-Em junho, a [Canaltech](https://canaltech.com.br/inteligencia-artificial/anthropic-claude-escreve-80-do-codigo-da-empresa-e-alerta-para-autoevolucao/) já havia noticiado que o Claude escrevia 80% do código de produção da própria Anthropic, um indício antecipado da tendência que agora se confirma com o salto para 26% do trabalho de pesquisa e desenvolvimento.
+Em junho, a Canaltech já havia noticiado que o Claude escrevia 80% do código de produção da própria Anthropic, um indício antecipado da tendência que agora se confirma com o salto para 26% do trabalho de pesquisa e desenvolvimento.
 
 O aviso chega dias depois de o CEO Dario Amodei defender que o ritmo de avanço da IA precisa diminuir. Pesquisadores relataram que modelos da Anthropic e da OpenAI conseguiram, em testes controlados, acessar recursos que deveriam estar bloqueados, incidentes contidos rapidamente mas que reforçaram o temor de sistemas autônomos escaparem do controle esperado.
 
@@ -93,3 +93,5 @@ O relatório mostra que a IA já assume parte relevante do trabalho de pesquisa,
 ### O que é a Epoch AI, citada no relatório?
 
 É uma organização independente que estuda e mede o avanço de modelos de inteligência artificial. A Anthropic usou a metodologia de classificação da Epoch AI para calcular a participação do Claude no próprio desenvolvimento.
+
+Fontes: [Canaltech](https://canaltech.com.br/inteligencia-artificial/anthropic-claude-escreve-80-do-codigo-da-empresa-e-alerta-para-autoevolucao/)

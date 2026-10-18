@@ -24,7 +24,7 @@ A **Paramount concluiu a compra da Warner Bros.** em 6 de outubro de 2026, em um
 
 ## O que foi comprado
 
-Segundo o [TechTudo](https://www.techtudo.com.br/noticias/2026/10/paramount-compra-a-warner-bros-entenda-como-isso-pode-afetar-voce-streaming.ghtml), a operação inclui marcas como HBO Max, CNN, CBS, Nickelodeon, TBS e Comedy Central. O Olhar Digital informa que a empresa é comandada por David Ellison, com Ynon Kreiz como co-CEO.
+Segundo o TechTudo, a operação inclui marcas como HBO Max, CNN, CBS, Nickelodeon, TBS e Comedy Central. O Olhar Digital informa que a empresa é comandada por David Ellison, com Ynon Kreiz como co-CEO.
 
 ## O que pode mudar no streaming
 
@@ -76,7 +76,7 @@ Estas dicas não vêm das reportagens, e servem para qualquer serviço de stream
 - O preço da mensalidade e as regras de migração para quem já assina.
 - Como a operação afeta o catálogo no Brasil.
 
-Para acompanhar mais dicas e novidades, veja a categoria [Dicas](/categoria/dicas/).
+Para aproveitar melhor o streaming na sala, veja as [funções da Smart TV que você provavelmente não usa](/funcoes-smart-tv-que-voce-nao-usa/) e como o [Microsoft 365 Família](/microsoft-365-familia-onedrive-2-tb-o-que-fazer/) também mexeu em assinaturas. Para acompanhar mais dicas e novidades, veja a categoria [Dicas](/categoria/dicas/).
 
 ## Perguntas frequentes
 
@@ -95,3 +95,5 @@ _Analistas preveem aumento, segundo o TechTudo, mas não há valores divulgados.
 **Preciso fazer algo agora?**
 
 _Nas reportagens consultadas, não há ação obrigatória. Acompanhe os avisos oficiais do seu serviço._
+
+Fontes: [TechTudo](https://www.techtudo.com.br/noticias/2026/10/paramount-compra-a-warner-bros-entenda-como-isso-pode-afetar-voce-streaming.ghtml)

@@ -23,7 +23,7 @@ Quem não votou no primeiro turno de 2026 pode justificar a ausência até **3 d
 
 ## Prazos para justificar
 
-Segundo o [Canaltech](https://canaltech.com.br/mercado/como-justificar-ausencia-nas-eleicoes-2026/), os prazos são:
+Segundo o Canaltech, os prazos são:
 
 - **Primeiro turno (4 de outubro):** até 3 de dezembro de 2026.
 - **Segundo turno (25 de outubro):** até 8 de janeiro de 2027.
@@ -102,7 +102,7 @@ Ou seja, a multa de poucos reais pode ficar cara se for ignorada. O ideal é res
 - **Pagar para o destinatário errado.** No Pix, o recebedor deve ser o Tesouro Nacional.
 - **Deixar para depois.** Depois do dia da votação, a justificativa exige motivo e comprovantes.
 
-Para mais passo a passos, acesse a categoria [Tutoriais](/categoria/tutoriais/). Se quiser ver o que fazer no dia da votação, leia Eleições 2026 hoje: onde votar, o que levar e o que é proibido.
+Para mais passo a passos, acesse a categoria [Tutoriais](/categoria/tutoriais/). Se quiser se preparar para o dia da votação, veja o que acontece com a [biometria na urna](/biometria-na-urna/) e algumas [curiosidades sobre a urna eletrônica](/urna-eletronica-curiosidades/).
 
 ## Perguntas frequentes
 
@@ -125,3 +125,5 @@ _Não, segundo o Canaltech. Depois da eleição, é preciso informar o motivo e 
 **Três faltas cancelam o título?**
 
 _O Canaltech informa que três ausências consecutivas sem justificativa podem levar ao cancelamento do título._
+
+Fontes: [Canaltech](https://canaltech.com.br/mercado/como-justificar-ausencia-nas-eleicoes-2026/)

@@ -19,7 +19,7 @@ Homologada entre 2017 e 2018, a Base orienta currículos, material didático e p
 
 ## Definição e base legal da BNCC
 
-A BNCC é um documento normativo, ou seja, de aplicação obrigatória, que reúne as aprendizagens essenciais de toda a Educação Básica, segundo o [site oficial da Base, mantido pelo MEC](https://basenacionalcomum.mec.gov.br/). A Lei de Diretrizes e Bases da Educação Nacional (LDB, Lei nº 9.394/1996) determina que a Base oriente os currículos das redes de ensino e as propostas pedagógicas de todas as escolas.
+A BNCC é um documento normativo, ou seja, de aplicação obrigatória, que reúne as aprendizagens essenciais de toda a Educação Básica, segundo o site oficial da Base, mantido pelo MEC. A Lei de Diretrizes e Bases da Educação Nacional (LDB, Lei nº 9.394/1996) determina que a Base oriente os currículos das redes de ensino e as propostas pedagógicas de todas as escolas.
 
 Vale reforçar: a BNCC não é um currículo pronto. Estados, municípios e escolas montam o próprio currículo, com a parte regional que julgarem necessária, desde que respeitem o piso comum definido pela Base.
 
@@ -104,3 +104,5 @@ _Conhecimento, pensamento científico, crítico e criativo, repertório cultural
 ### Quais são as etapas cobertas pela BNCC?
 
 _A BNCC cobre três etapas: Educação Infantil, Ensino Fundamental e Ensino Médio. A Infantil usa campos de experiências, o Fundamental se divide em cinco áreas do conhecimento e o Médio, em quatro. O complemento de Computação vale para toda a Educação Básica._
+
+Fontes: [site oficial da Base, mantido pelo MEC](https://basenacionalcomum.mec.gov.br/)

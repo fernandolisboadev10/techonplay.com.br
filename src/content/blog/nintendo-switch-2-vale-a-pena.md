@@ -10,7 +10,7 @@ tags: ["Nintendo Switch 2", "Nintendo", "Console portátil", "Review"]
 related: ["steam-machine"]
 ---
 
-O **Nintendo Switch 2** vale a pena para quem quer um console híbrido, que roda na TV e na mão, e gosta dos jogos da Nintendo. O ponto contra é o preço no Brasil: no lançamento, em 5 de junho de 2025, o console custava R$ 4.499,90, segundo o [Tecnoblog](https://tecnoblog.net/noticias/nintendo-switch-2-chega-ao-brasil-em-junho-confira-os-precos/). Este texto se baseia na ficha técnica e em reportagens de terceiros, não em teste próprio.
+O **Nintendo Switch 2** vale a pena para quem quer um console híbrido, que roda na TV e na mão, e gosta dos jogos da Nintendo. O ponto contra é o preço no Brasil: no lançamento, em 5 de junho de 2025, o console custava R$ 4.499,90, segundo o Tecnoblog. Este texto se baseia na ficha técnica e em reportagens de terceiros, não em teste próprio.
 
 Abaixo estão a ficha técnica, o que mudou em relação ao Switch original, o preço e uma regra simples para decidir.
 
@@ -25,7 +25,7 @@ Abaixo estão a ficha técnica, o que mudou em relação ao Switch original, o p
 
 ## Ficha técnica do Nintendo Switch 2
 
-De acordo com o [guia do TechTudo](https://www.techtudo.com.br/guia/2025/05/nintendo-switch-2-veja-jogos-ficha-tecnica-novidades-e-preco-no-brasil-edjogos.ghtml):
+De acordo com o guia do TechTudo:
 
 | 🔍 Item | 🎮 Nintendo Switch 2 |
 | --- | --- |
@@ -114,3 +114,5 @@ _Apenas microSD Express, que não é compatível com microSD comum._
 **Quanto dura a bateria do Switch 2?**
 
 _De 2 a 6,5 horas de jogo, conforme o guia de lançamento._
+
+Fontes: [Tecnoblog](https://tecnoblog.net/noticias/nintendo-switch-2-chega-ao-brasil-em-junho-confira-os-precos/) | [guia do TechTudo](https://www.techtudo.com.br/guia/2025/05/nintendo-switch-2-veja-jogos-ficha-tecnica-novidades-e-preco-no-brasil-edjogos.ghtml)

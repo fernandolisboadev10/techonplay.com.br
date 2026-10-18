@@ -58,7 +58,7 @@ Primeiramente, os comandos de consulta, que não alteram nada no sistema:
 
 -   **systeminfo**: mostra versão do Windows, data de instalação, memória e atualizações aplicadas
 -   **tasklist**: lista os processos ativos com o número de identificação (PID) de cada um
--   **taskkill /f /im notepad.exe**: encerra à força um programa travado, como o [Canaltech explica com o exemplo da calculadora](https://canaltech.com.br/windows/Conheca-alguns-comandos-do-Prompt-do-Windows-que-lhe-ajudarao-muito/)
+-   **taskkill /f /im notepad.exe**: encerra à força um programa travado, como o Canaltech explica com o exemplo da calculadora
 -   **shutdown /r /t 300**: reinicia o computador em cinco minutos
 -   **ipconfig /all**: exibe IP, gateway e DNS de cada adaptador
 -   **ipconfig /flushdns**: limpa o cache de DNS quando um site não abre
@@ -151,3 +151,5 @@ _Em geral não. O chkdsk corrige erros na estrutura do sistema de arquivos, mas 
 ### O cmd substitui o antivírus?
 
 _Não. O MpCmdRun apenas controla o Microsoft Defender pela linha de comando, e o netstat e o attrib ajudam na investigação. A proteção em tempo real continua vindo do antivírus instalado, que precisa ficar ativo e atualizado._
+
+Fontes: [Canaltech explica com o exemplo da calculadora](https://canaltech.com.br/windows/Conheca-alguns-comandos-do-Prompt-do-Windows-que-lhe-ajudarao-muito/)

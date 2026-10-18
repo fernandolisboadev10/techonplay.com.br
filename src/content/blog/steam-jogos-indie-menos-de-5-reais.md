@@ -16,7 +16,7 @@ Os preços abaixo são os informados na reportagem naquele horário. Promoções
 
 ## Os 5 jogos e os preços
 
-Segundo a [matéria do Voxel](https://www.estadao.com.br/amp/tecmundo/voxel/quase-de-graca-5-jogos-independentes-por-menos-de-r-5-na-promocao-da-steam/), os preços são estes:
+Segundo a matéria do Voxel, os preços são estes:
 
 | 🎮 Jogo | 🏷️ Preço normal | ✅ Na promoção | Estilo |
 | --- | --- | --- | --- |
@@ -70,3 +70,5 @@ _Não. Todos custam entre R$ 3,29 e R$ 4,99 na promoção, com 90% de desconto._
 **Os preços podem mudar?**
 
 _Sim. Os valores são os da reportagem de 5 de outubro às 14h15. Confira na Steam antes de comprar._
+
+Fontes: [matéria do Voxel](https://www.estadao.com.br/amp/tecmundo/voxel/quase-de-graca-5-jogos-independentes-por-menos-de-r-5-na-promocao-da-steam/)

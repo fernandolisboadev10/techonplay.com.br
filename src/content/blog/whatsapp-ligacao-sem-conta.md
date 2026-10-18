@@ -10,7 +10,7 @@ tags: ["WhatsApp", "Chamadas de vídeo", "Meta", "Privacidade"]
 related: ["como-identificar-site-falso-promocao-amazon-golpe", "melhor-navegador-para-pc"]
 ---
 
-O WhatsApp começou a liberar a **ligação para quem não tem conta**. Com o recurso de chamadas para convidados, uma pessoa sem o aplicativo entra numa chamada de voz ou vídeo por um link, direto no navegador do computador. A novidade foi noticiada em 14 de outubro de 2026 por veículos como o [Canaltech](https://canaltech.com.br/apps/whatsapp-libera-ligacoes-para-qualquer-pessoa-ate-quem-nao-tem-conta/) e o [MacRumors](https://www.macrumors.com/2026/10/14/whatsapp-guest-calls/).
+O WhatsApp começou a liberar a **ligação para quem não tem conta**. Com o recurso de chamadas para convidados, uma pessoa sem o aplicativo entra numa chamada de voz ou vídeo por um link, direto no navegador do computador. A novidade foi noticiada em 14 de outubro de 2026 por veículos como o Canaltech e o MacRumors.
 
 ## O que mudou
 
@@ -76,3 +76,5 @@ O WhatsApp afirmou que pretende integrar as chamadas ao Google Agenda e ao Outlo
 **Quem paga?** Ninguém: as chamadas são gratuitas.
 
 **Funciona em chamada individual e em grupo?** Sim, segundo o Canaltech.
+
+Fontes: [Canaltech](https://canaltech.com.br/apps/whatsapp-libera-ligacoes-para-qualquer-pessoa-ate-quem-nao-tem-conta/) | [MacRumors](https://www.macrumors.com/2026/10/14/whatsapp-guest-calls/)

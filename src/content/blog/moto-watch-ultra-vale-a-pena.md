@@ -10,7 +10,7 @@ tags: ["Moto Watch Ultra", "Motorola", "Smartwatch", "Wear OS"]
 related: []
 ---
 
-O **Moto Watch Ultra** chegou ao Brasil em 1º de outubro de 2026 com preço sugerido de R$ 4.999, segundo o [Canaltech](https://canaltech.com.br/smartwatch/motorola-lanca-moto-watch-ultra-no-brasil-com-esim-e-tecnologia-da-polar/) e o [Mundo Conectado](https://www.mundoconectado.com.br/smartphones/motorola-lanca-moto-watch-ultra-no-brasil-com-monitoramento-da-polar-e-esim/). Este texto se baseia na ficha técnica e nas informações do lançamento: ainda não há análises independentes de uso prolongado, então a pergunta "vale a pena?" fica respondida por critérios, e não por teste.
+O **Moto Watch Ultra** chegou ao Brasil em 1º de outubro de 2026 com preço sugerido de R$ 4.999, segundo o Canaltech e o Mundo Conectado. Este texto se baseia na ficha técnica e nas informações do lançamento: ainda não há análises independentes de uso prolongado, então a pergunta "vale a pena?" fica respondida por critérios, e não por teste.
 
 Em resumo, ele faz sentido para quem quer um relógio Wear OS com eSIM 4G, GPS de dupla frequência e recursos de saúde da Polar, e aceita pagar perto de R$ 5 mil por isso. Para quem só quer ver notificações e contar passos, é caro demais.
 
@@ -40,7 +40,7 @@ Segundo a reportagem que cobriu o lançamento no Brasil, o relógio tem:
 | Saúde | Sensores contínuos, Polar Flow, Health Insights, Running Coach e Sleep Plus Stages |
 | Preço sugerido | R$ 4.999 |
 
-O [Canaltech](https://canaltech.com.br/smartwatch/motorola-lanca-moto-watch-ultra-para-desafiar-apple-e-samsung-no-segmento-ultra/) acrescenta, em outra reportagem, que a pulseira padrão é de 22 mm e pode ser trocada, e que o modelo é posicionado contra o Apple Watch Ultra e o Galaxy Watch Ultra 2.
+O Canaltech acrescenta, em outra reportagem, que a pulseira padrão é de 22 mm e pode ser trocada, e que o modelo é posicionado contra o Apple Watch Ultra e o Galaxy Watch Ultra 2.
 
 ## eSIM e 4G: o grande diferencial
 
@@ -98,7 +98,7 @@ A conta é simples. Se você vai usar o 4G, o GPS e a análise de treino com reg
 
 Vale para quem corre ou treina, usa Android e quer um relógio que funcione sozinho, com 4G e GPS preciso. Para esse público, a ficha técnica é competitiva. Para quem só quer notificações, o preço não se justifica.
 
-Se você está em dúvida, espere as primeiras análises de bateria e de precisão dos sensores e compare o preço em lojas. Para mais guias, acesse a página de [Reviews](/categoria/reviews/).
+Se você está em dúvida, espere as primeiras análises de bateria e de precisão dos sensores e compare o preço em lojas. Se o interesse é vestir tecnologia, veja também o que fazem e quanto custam os [óculos inteligentes em 2026](/oculos-inteligentes-2026-o-que-fazem-precos/). Para mais guias, acesse a página de [Reviews](/categoria/reviews/).
 
 ## Perguntas frequentes sobre o Moto Watch Ultra
 
@@ -121,3 +121,5 @@ _Wear OS, com acesso à Play Store._
 **O Moto Watch Ultra é resistente à água?**
 
 _Tem classificação IP68 e 5 ATM, conforme a ficha técnica._
+
+Fontes: [Canaltech](https://canaltech.com.br/smartwatch/motorola-lanca-moto-watch-ultra-no-brasil-com-esim-e-tecnologia-da-polar/) | [Mundo Conectado](https://www.mundoconectado.com.br/smartphones/motorola-lanca-moto-watch-ultra-no-brasil-com-monitoramento-da-polar-e-esim/) | [Canaltech](https://canaltech.com.br/smartwatch/motorola-lanca-moto-watch-ultra-para-desafiar-apple-e-samsung-no-segmento-ultra/)

@@ -70,7 +70,7 @@ Depende do uso. Para quem usa o pacote Office e não guarda muitos arquivos, 2 T
 - Se os benefícios temporários de armazenamento chegam ao Brasil.
 - O que muda no plano Pessoal, que a reportagem não menciona.
 
-Para mais orientações sobre serviços e assinaturas, veja a página de [Dicas](/categoria/dicas/).
+Se a parte de IA do plano pesa na sua decisão, compare com o [ChatGPT grátis ou pago](/chatgpt-gratis-ou-pago/) e com o [Google AI Plus para estudantes](/google-ai-plus-para-estudantes/). Para mais orientações sobre serviços e assinaturas, veja a página de [Dicas](/categoria/dicas/).
 
 ## Perguntas frequentes
 

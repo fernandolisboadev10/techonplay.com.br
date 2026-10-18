@@ -47,3 +47,12 @@ The OpenRouter key (`OPENROUTER_API_KEY` in `.env`) has a small balance reserved
 ## Prompts nos artigos
 
 Todo prompt entregue ao leitor vai num bloco com a linguagem `prompt` (tres crases + prompt). O plugin `src/plugins/remark-prompt-box.mjs` o transforma numa caixa com botao de copiar e texto em italico. Nao deixe prompt em paragrafo solto.
+
+## Regras de links nos artigos
+
+Valem para todo post novo e para qualquer reformulação. `node scripts/audit-discover.mjs` confere (regras em `scripts/link-rules.mjs`).
+
+- **Links internos primeiro.** O texto abre com links internos (mínimo 2 no corpo, com anchor descritivo e só para slugs que existem). Nenhum link externo no primeiro terço do corpo.
+- **No máximo 3 links externos no corpo**, do meio para o fim, só para a fonte que sustenta o dado ou a ferramenta oficial do assunto. Mesma URL repetida conta uma vez.
+- **Referências no fim sem limite**: o que passar de 3 vai para o bloco final (`Fontes: [A](url) | [B](url)`, `## Fontes consultadas` ou `## Referências`). No corpo, a fonte vira texto simples ("segundo o Canaltech").
+- Link da ferramenta oficial (ex.: deepseek.com) entra como um dos 3 externos, no meio do texto, nunca na abertura.

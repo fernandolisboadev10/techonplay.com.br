@@ -13,11 +13,11 @@ related: ["iphone-duo-iphone-dobravel", "galaxy-s25", "review-galaxy-a57"]
 
 O **iPhone 18 Pro** e o **iPhone 18 Pro Max** têm o mesmo chip, as mesmas três câmeras de 48 MP e o mesmo desenho. A diferença está no tamanho da tela (6,3 e 6,9 polegadas), na bateria e no preço. No Brasil, o Pro começa em R$ 11.999 e o Pro Max em R$ 12.999, e os dois chegaram às lojas em 18 de setembro de 2026.
 
-Na prática, a escolha é sobre tamanho e autonomia, não sobre desempenho ou câmera. Veja a comparação completa, com dados da [Apple Brasil](https://www.apple.com/br/iphone-18-pro/specs/).
+Na prática, a escolha é sobre tamanho e autonomia, não sobre desempenho ou câmera. Veja a comparação completa, com dados da Apple Brasil.
 
 ## Preços do iPhone 18 Pro e Pro Max no Brasil
 
-Os valores abaixo são os divulgados no lançamento, segundo o [Showmetech](https://www.showmetech.com.br/iphone-18-pro-pro-max-vendas-brasil-precos/):
+Os valores abaixo são os divulgados no lançamento, segundo o Showmetech:
 
 | 💾 Armazenamento | 📱 iPhone 18 Pro | 📱 iPhone 18 Pro Max |
 | --- | --- | --- |
@@ -103,3 +103,5 @@ _Sim. O carregamento sem fio MagSafe chega a 25 W, e o cabo USB-C com adaptador 
 ### Quantas câmeras tem o iPhone 18 Pro?
 
 _Três câmeras traseiras de 48 MP (principal, ultra-angular e teleobjetiva) e uma frontal de 18 MP, com zoom óptico de até 8x._
+
+Fontes: [Apple Brasil](https://www.apple.com/br/iphone-18-pro/specs/) | [Showmetech](https://www.showmetech.com.br/iphone-18-pro-pro-max-vendas-brasil-precos/)

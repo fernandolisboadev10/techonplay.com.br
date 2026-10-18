@@ -17,11 +17,11 @@ A Higgsfield, startup de vídeo com inteligência artificial (IA), recebeu US$ 4
 
 É uma plataforma que transforma texto e fotos em vídeos curtos, no estilo dos que circulam em TikTok, Reels e anúncios. O usuário envia uma imagem, escolhe um movimento de câmera ou um efeito pronto e recebe a cena animada.
 
-Ela usa modelos próprios e também integra modelos de terceiros, como os de OpenAI, Google e Alibaba, segundo o [comunicado oficial da rodada de investimento](https://www.prnewswire.com/news-releases/higgsfield-announces-130m-series-a-and-reports-200m-annual-run-rate-302661805.html). Ela também chegou ao ChatGPT como plugin, tema do guia sobre o [plugin Higgsfield no ChatGPT](/plugin-higgsfield-chatgpt/).
+Ela usa modelos próprios e também integra modelos de terceiros, como os de OpenAI, Google e Alibaba, segundo o comunicado oficial da rodada de investimento. Ela também chegou ao ChatGPT como plugin, tema do guia sobre o [plugin Higgsfield no ChatGPT](/plugin-higgsfield-chatgpt/).
 
 ## Quem está por trás
 
-O fundador é Alex Mashrabov, ex-chefe de IA generativa do Snap. Antes disso, ele criou a AI Factory, startup de vídeo com realidade aumentada que o Snap comprou em 2020 por US$ 166 milhões, segundo o [Yahoo Finance](https://finance.yahoo.com/news/ai-video-startup-higgsfield-founded-192845310.html).
+O fundador é Alex Mashrabov, ex-chefe de IA generativa do Snap. Antes disso, ele criou a AI Factory, startup de vídeo com realidade aumentada que o Snap comprou em 2020 por US$ 166 milhões, segundo o Yahoo Finance.
 
 Ou seja, o criador já tinha vendido uma startup de vídeo para uma gigante antes de abrir a Higgsfield.
 

@@ -23,7 +23,7 @@ Um comando de câmera funciona como uma lista de planos de diretor, só que em t
 
 É a diferença entre pedir “tira uma foto bonita” e pedir “fotografa de baixo para cima, em close, com fundo desfocado”. A primeira instrução gera algo aleatório. A segunda entrega um resultado definido.
 
-Vale um alerta: as etiquetas listadas aqui não constam como recurso oficial na [documentação do Google Flow](https://labs.google/flow/about). Elas se popularizaram em publicações nas redes sociais, e o modelo as interpreta como parte comum do prompt. Por isso, o resultado pode variar entre uma geração e outra.
+Vale um alerta: as etiquetas listadas aqui não constam como recurso oficial na documentação do Google Flow. Elas se popularizaram em publicações nas redes sociais, e o modelo as interpreta como parte comum do prompt. Por isso, o resultado pode variar entre uma geração e outra.
 
 ## Ângulo e vista aérea: para fotos de destaque
 
@@ -133,3 +133,5 @@ _Sim, e rendem melhor ali. Comandos de movimento como /ORBIT, /PUSHIN e /DRONERE
 ### Usar minha própria foto muda a qualidade do resultado?
 
 _Não. O comando controla a câmera, não a pessoa. Uma foto nítida e bem iluminada funciona tão bem quanto qualquer outra, seja sua ou de outra pessoa._
+
+Fontes: [documentação do Google Flow](https://labs.google/flow/about)

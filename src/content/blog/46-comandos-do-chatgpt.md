@@ -23,7 +23,7 @@ Um comando do ChatGPT para imagens funciona como instrução técnica de fotogra
 
 É a diferença entre pedir “uma foto legal de mim” e pedir “câmera de baixo para cima, silhueta contra o pôr do sol”. A primeira instrução gera algo genérico. A segunda entrega enquadramento definido.
 
-O [Canaltech já reuniu uma lista parecida](https://canaltech.com.br/inteligencia-artificial/12-comandos-para-criar-ou-editar-imagens-no-chatgpt/), o que confirma a tendência: estes atalhos não são recurso oficial do ChatGPT, apenas convenção popular entre usuários, e podem variar a cada geração.
+O Canaltech já reuniu uma lista parecida, o que confirma a tendência: estes atalhos não são recurso oficial do ChatGPT, apenas convenção popular entre usuários, e podem variar a cada geração.
 
 ## Ângulos de câmera: a categoria mais versátil
 
@@ -42,7 +42,7 @@ Depois do ângulo, a perspectiva define a escala. Comandos como **/forcedperspec
 
 Os comandos de movimento, como **/freezeaction** e **/motionblur**, congelam ou borram a cena para simular ação real. Rendem bem em fotos de esporte, dança ou qualquer cena com deslocamento.
 
-Já os comandos de reflexo aproveitam vidros, espelhos e poças d’água. O **/groundreflection** duplica o personagem no chão molhado, e o **/mirrorportal** transforma um espelho comum em portal para outra cena. A [Canaltech também mostrou como prompts de iluminação e reflexo melhoram fotos de produto](https://canaltech.com.br/inteligencia-artificial/prompts-para-editar-fotos-de-produto-profissional/), lógica que vale para retratos.
+Já os comandos de reflexo aproveitam vidros, espelhos e poças d’água. O **/groundreflection** duplica o personagem no chão molhado, e o **/mirrorportal** transforma um espelho comum em portal para outra cena. A Canaltech também mostrou como prompts de iluminação e reflexo melhoram fotos de produto, lógica que vale para retratos.
 
 ## Efeitos cinematográficos para conteúdo viral
 
@@ -165,3 +165,5 @@ _Sim, até dois ou três. Combinações como ângulo mais efeito de luz funciona
 **Os comandos mudam a identidade da pessoa na foto?**
 
 _Não. Eles controlam câmera, perspectiva e efeito visual, não as características do personagem. Uma foto de referência nítida ajuda a manter a semelhança em qualquer ângulo escolhido._
+
+Fontes: [Canaltech já reuniu uma lista parecida](https://canaltech.com.br/inteligencia-artificial/12-comandos-para-criar-ou-editar-imagens-no-chatgpt/) | [Canaltech também mostrou como prompts de iluminação e reflexo melhoram fotos de produto](https://canaltech.com.br/inteligencia-artificial/prompts-para-editar-fotos-de-produto-profissional/)

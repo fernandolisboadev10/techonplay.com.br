@@ -10,7 +10,7 @@ tags: ["Trend", "ChatGPT", "Gemini", "Foto com IA", "Instagram"]
 related: ["melhores-ferramentas-de-ia-do-google-2026", "como-identificar-site-falso-promocao-amazon-golpe"]
 ---
 
-A **trend dos anos 80 com IA** tomou os Stories e o feed do Instagram: você envia uma selfie para o ChatGPT ou o Gemini e recebe de volta uma foto de como seria se tivesse vivido na década de 1980, com permanente volumoso, jeans de cintura alta e aquele ar de álbum de família. O [Olhar Digital](https://olhardigital.com.br/2026/09/08/internet-e-redes-sociais/como-criar-sua-foto-no-estilo-anos-80-usando-o-chatgpt-e-gemini/) registrou que a brincadeira começou nos Stories, passou para o feed e chegou ao TikTok. Dá para fazer em poucos minutos, em casa, só com o celular.
+A **trend dos anos 80 com IA** tomou os Stories e o feed do Instagram: você envia uma selfie para o ChatGPT ou o Gemini e recebe de volta uma foto de como seria se tivesse vivido na década de 1980, com permanente volumoso, jeans de cintura alta e aquele ar de álbum de família. O Olhar Digital registrou que a brincadeira começou nos Stories, passou para o feed e chegou ao TikTok. Dá para fazer em poucos minutos, em casa, só com o celular.
 
 ## O que você precisa para entrar na trend
 
@@ -94,3 +94,5 @@ Para entrar na trend você entrega uma imagem do seu rosto a um serviço online.
 ## Vale a pena?
 
 A trend é gratuita ou barata, rápida e não exige nenhum conhecimento técnico. O que decide o resultado é a foto de partida e a clareza do prompt. Teste a versão acima, ajuste o cenário ao seu gosto e, se publicar, lembre de marcar quem aparece na imagem.
+
+Fontes: [Olhar Digital](https://olhardigital.com.br/2026/09/08/internet-e-redes-sociais/como-criar-sua-foto-no-estilo-anos-80-usando-o-chatgpt-e-gemini/)

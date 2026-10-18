@@ -26,7 +26,7 @@ O limite pesa para quem produz em volume. Quem só quer testar a ferramenta fica
 
 ## O que é o Google Flow
 
-O Google apresentou o Flow em maio de 2025, [no Google I/O](https://blog.google/innovation-and-ai/products/google-flow-veo-ai-filmmaking-tool/), como evolução do VideoFX, experimento do Google Labs. A ferramenta transforma textos e imagens em clipes, cenas e histórias completas.
+O Google apresentou o Flow em maio de 2025, no Google I/O, como evolução do VideoFX, experimento do Google Labs. A ferramenta transforma textos e imagens em clipes, cenas e histórias completas.
 
 Diferente de um gerador comum, o Flow funciona como espaço de trabalho. O usuário cria personagens, controla a câmera, estende cenas e organiza os arquivos em um só lugar.
 
@@ -120,3 +120,5 @@ _Sim. O Google anunciou o editor de vídeo do Flow em app dedicado, com estreia 
 ### Quanto tempo dura um vídeo do Google Flow?
 
 _Cada geração rende clipes de cerca de 8 segundos. Para vídeos maiores, o usuário estende a cena ou junta vários clipes._
+
+Fontes: [no Google I/O](https://blog.google/innovation-and-ai/products/google-flow-veo-ai-filmmaking-tool/)

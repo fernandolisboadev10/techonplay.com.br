@@ -2,9 +2,9 @@
 // Usage: node scripts/audit-discover.mjs   (exit code 1 when any post fails)
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { MAX_BODY_EXTERNAL, EARLY_ZONE, splitBody, bodyLinks, isExternal } from './link-rules.mjs';
 
 const DIR = 'src/content/blog';
-const MAX_EXTERNAL = 3;
 const MIN_INTERNAL = 2; // inline links; RelatedPosts adds 3 more cards per post
 
 function frontmatter(text) {
@@ -33,17 +33,22 @@ for (const slug of slugs) {
   if (data.image && !data.imageAlt) issues.push('no imageAlt');
   if (!data.tags) issues.push('no tags');
 
-  const links = [...body.matchAll(/(?<!!)\[[^\]]*\]\(([^)\s]+)/g)].map((m) => m[1]);
-  const internal = links.filter((u) => u.startsWith('/'));
-  const external = [...new Set(links)].filter((u) => /^https?:\/\//.test(u) && !/^https?:\/\/(www\.)?techonplay\.com\.br/.test(u));
+  const { main } = splitBody(body);
+  const all = bodyLinks(body);
+  const mainLinks = bodyLinks(main);
+  const links = all.map((l) => l.url);
+  const internal = mainLinks.filter((l) => l.url.startsWith('/')).map((l) => l.url);
+  const externalLinks = mainLinks.filter((l) => isExternal(l.url));
+  const external = [...new Set(externalLinks.map((l) => l.url))];
   const stale = links.filter((u) => /^https?:\/\/(www\.)?techonplay\.com(?!\.br)/.test(u));
 
   if (internal.length < MIN_INTERNAL) issues.push(`${internal.length} internal links (min ${MIN_INTERNAL})`);
-  if (external.length > MAX_EXTERNAL) issues.push(`${external.length} external links (max ${MAX_EXTERNAL})`);
+  if (external.length > MAX_BODY_EXTERNAL) issues.push(`${external.length} external links in body (max ${MAX_BODY_EXTERNAL}; extras go to Fontes at the end)`);
+  if (externalLinks.some((l) => l.pos < EARLY_ZONE)) issues.push('external link in the first third (internal links first)');
   if (links.some((u) => /^https?:\/\/(www\.)?techonplay\.com\.br/.test(u)))
     issues.push('absolute internal link (use relative /slug/)');
   if (stale.length) issues.push('link to old domain techonplay.com');
-  for (const u of internal) {
+  for (const u of all.map((l) => l.url).filter((x) => x.startsWith('/'))) {
     const target = u.replace(/^\/|\/?(#.*)?$/g, '');
     const isSitePage = /^(blog|categoria\/[a-z-]+|sobre-nos|contate-nos|anuncie)$/.test(target);
     if (target && !isSitePage && !slugs.includes(target)) issues.push(`broken internal link ${u}`);

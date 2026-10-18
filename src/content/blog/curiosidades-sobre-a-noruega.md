@@ -23,7 +23,7 @@ O oposto também acontece. Nas cidades do extremo norte, o inverno traz a noite 
 
 ## 3. Quase todo carro novo é elétrico
 
-Esta é a curiosidade mais tecnológica. Em agosto de 2026, os carros elétricos a bateria responderam por 98,7% dos emplacamentos de carros novos, um recorde, segundo o [electrive](https://www.electrive.com/2026/09/01/electric-cars-reach-record-98-7-percent-share-in-norway/). No acumulado do ano até agosto, a fatia ficou em 97,8%. Incentivos do governo, como isenção de impostos na compra, ajudaram a chegar a esse patamar.
+Esta é a curiosidade mais tecnológica. Em agosto de 2026, os carros elétricos a bateria responderam por 98,7% dos emplacamentos de carros novos, um recorde, segundo o electrive. No acumulado do ano até agosto, a fatia ficou em 97,8%. Incentivos do governo, como isenção de impostos na compra, ajudaram a chegar a esse patamar.
 
 ## 4. O fundo soberano vale trilhões
 
@@ -80,3 +80,5 @@ _Em geral, de setembro a março, no norte do país, em noites escuras e com céu
 ### Que porcentagem dos carros novos da Noruega é elétrica?
 
 _Em agosto de 2026, 98,7% dos carros novos emplacados eram elétricos, e no acumulado do ano até agosto a fatia foi de 97,8%, segundo o electrive._
+
+Fontes: [electrive](https://www.electrive.com/2026/09/01/electric-cars-reach-record-98-7-percent-share-in-norway/)

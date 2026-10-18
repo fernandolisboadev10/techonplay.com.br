@@ -19,7 +19,7 @@ Para entender a base legal completa por trás dessas mudanças, veja o guia [o q
 
 ## Por que a robótica trabalha as competências da BNCC
 
-A robótica funciona como ponte entre teoria e prática dos três eixos da BNCC Computação: Pensamento Computacional, Mundo Digital e Cultura Digital, segundo análise da [Siminova](https://siminova.com.br/blog/2026/02/como-a-robotica-educacional-se-conecta-com-a-bncc-computacao/). Ao programar um robô, o aluno cria sequências lógicas, identifica padrões e corrige erros, algo bem diferente de decorar conceito de tecnologia no quadro.
+A robótica funciona como ponte entre teoria e prática dos três eixos da BNCC Computação: Pensamento Computacional, Mundo Digital e Cultura Digital, segundo análise da Siminova. Ao programar um robô, o aluno cria sequências lógicas, identifica padrões e corrige erros, algo bem diferente de decorar conceito de tecnologia no quadro.
 
 Um estudo publicado na revista Educitec, do Instituto Federal do Amazonas, reforça este ponto: egressos de equipes de robótica relatam ganhos concretos nas competências previstas na Base, principalmente em pensamento computacional e trabalho em equipe, conforme aponta a pesquisa acadêmica sobre o tema.
 
@@ -85,3 +85,5 @@ _Não. Projetos com materiais reciclados e microcontroladores simples já trabal
 ### Robótica educacional serve para a Educação Infantil?
 
 _Sim, com brinquedos robóticos simples e sem tela, focados em sequência e padrão. A complexidade cresce no Ensino Fundamental, com blocos de programação, e chega a projetos abertos no Ensino Médio._
+
+Fontes: [Siminova](https://siminova.com.br/blog/2026/02/como-a-robotica-educacional-se-conecta-com-a-bncc-computacao/)

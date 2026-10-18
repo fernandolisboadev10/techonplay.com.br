@@ -12,7 +12,7 @@ related: ["iphone-duo-iphone-dobravel", "oculos-inteligentes-2026-o-que-fazem-pr
 
 "Novo carro da Tesla", "novo Tesla", "Elon Musk" e até "Tesla stock" dispararam nas buscas do Brasil nesta quinta-feira. O motivo é o novo Roadster, que a empresa finalmente mostrou ao vivo em 15 de outubro de 2026, depois de anos de promessa. Reunimos o que foi confirmado, o que ficou no ar e o que isso significa para quem está no Brasil. Este texto é a versão pensada para o público brasileiro; quem lê em inglês e mora nos EUA pode seguir a [versão em inglês, para o público dos EUA](https://techonplay.com/tesla-roadster-price-specs-release-date/).
 
-As informações vêm da cobertura da [Electrek sobre a apresentação](https://electrek.co/2026/10/15/tesla-unveils-cyberfied-new-roadster-kickflip/). Um ponto vale para o texto inteiro: os números de desempenho são todos da própria Tesla e não foram verificados de forma independente.
+As informações vêm da cobertura da Electrek sobre a apresentação. Um ponto vale para o texto inteiro: os números de desempenho são todos da própria Tesla e não foram verificados de forma independente.
 
 ## Três versões, e só uma parece carro de rua
 
@@ -62,3 +62,5 @@ O que dá para explicar é o mecanismo. Carros elétricos importados pagam impos
 Com produção apontada para 2028, o cenário realista é de muita espera. Nos próximos meses, os sinais que valem atenção são: preço oficial de cada versão, confirmação de quais mercados recebem o carro, testes independentes dos números de desempenho e qualquer mudança no calendário de produção.
 
 Se você pretende reservar, lembre que o depósito de US$ 5.000 é reembolsável segundo a Tesla, mas leia as condições na página oficial antes de pagar. Para os demais, o Roadster funciona melhor como vitrine tecnológica: um carro que mostra para onde a Tesla quer apontar a imaginação do público, enquanto os modelos de rua seguem em outro ritmo.
+
+Fontes: [Electrek sobre a apresentação](https://electrek.co/2026/10/15/tesla-unveils-cyberfied-new-roadster-kickflip/)
