@@ -64,6 +64,8 @@ Duas observações importantes. Primeiro, linhas copiadas dos textos motivadores
 
 Confirme a lista atual no PDF da cartilha de 2026 e no edital.
 
+![Folha de caderno pautado com as 10 dicas para a redação do ENEM escritas à mão: ler a cartilha, ler a proposta e os textos motivadores, entender o recorte do tema, planejar, organizar os parágrafos, fugir do repertório de bolso, evitar modelos prontos, escrever uma proposta de intervenção concreta, treinar no formato real e reescrever com feedback](./images/enem-2026-redacao-10-dicas.webp)
+
 ## 10 dicas do MEC e do Inep para a redação nota 1000
 
 As orientações abaixo vêm da cartilha do Inep e do guia [Como estudar redação para o ENEM na prática](https://www.gov.br/mec/pt-br/enem/fique-por-dentro/como-estudar-redacao-para-o-enem-na-pratica), publicado pelo MEC.
