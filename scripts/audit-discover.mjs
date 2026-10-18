@@ -40,14 +40,12 @@ for (const slug of slugs) {
   const internal = mainLinks.filter((l) => l.url.startsWith('/')).map((l) => l.url);
   const externalLinks = mainLinks.filter((l) => isExternal(l.url));
   const external = [...new Set(externalLinks.map((l) => l.url))];
-  const stale = links.filter((u) => /^https?:\/\/(www\.)?techonplay\.com(?!\.br)/.test(u));
 
   if (internal.length < MIN_INTERNAL) issues.push(`${internal.length} internal links (min ${MIN_INTERNAL})`);
   if (external.length > MAX_BODY_EXTERNAL) issues.push(`${external.length} external links in body (max ${MAX_BODY_EXTERNAL}; extras go to Fontes at the end)`);
   if (externalLinks.some((l) => l.pos < EARLY_ZONE)) issues.push('external link in the first third (internal links first)');
   if (links.some((u) => /^https?:\/\/(www\.)?techonplay\.com\.br/.test(u)))
     issues.push('absolute internal link (use relative /slug/)');
-  if (stale.length) issues.push('link to old domain techonplay.com');
   for (const u of all.map((l) => l.url).filter((x) => x.startsWith('/'))) {
     const target = u.replace(/^\/|\/?(#.*)?$/g, '');
     const isSitePage = /^(blog|categoria\/[a-z-]+|sobre-nos|contate-nos|anuncie)$/.test(target);

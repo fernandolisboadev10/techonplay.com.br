@@ -9,7 +9,7 @@ const REFS_RE = /^(?:#{1,6}\s+)?\**(?:Fontes|Referências)(?:\s+consultadas)?\s*
 const LINK_RE = /(?<!!)\[([^\]]*)\]\(([^)\s]+)\)/g;
 
 export const isExternal = (u) =>
-  /^https?:\/\//.test(u) && !/^https?:\/\/(www\.)?techonplay\.com(\.br)?(\/|$)/.test(u);
+  /^https?:\/\//.test(u) && !/^https?:\/\/(www\.)?techonplay\.com\.br(\/|$)/.test(u);
 
 export function splitBody(body) {
   const i = body.search(REFS_RE);

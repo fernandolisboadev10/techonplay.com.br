@@ -62,7 +62,7 @@ Depois da versão clássica, dá para explorar outros formatos com o mesmo méto
 
 - Foto de **anuário escolar** ou de formatura.
 - **Retrato de família** com todo mundo posando em um estúdio fotográfico, usando uma foto de cada pessoa (com autorização de todos).
-- Outras décadas, como os anos 70 ou os 90, trocando só o período no prompt. Para os anos 90, o TechOnPlay em inglês tem a [trend dos anos 90 com prompts para Gemini e ChatGPT](https://techonplay.com/90s-ai-photo-trend-gemini-prompt/).
+- Outras décadas, como os anos 70 ou os 90, trocando só o período no prompt. Para os anos 90, o TechOnPlay em inglês tem a trend dos anos 90 com prompts para Gemini e ChatGPT, comentada mais abaixo.
 - Uma cena de **festa ou viagem** no lugar do retrato posado.
 
 ## A versão dos anos 90 também virou febre nos EUA
