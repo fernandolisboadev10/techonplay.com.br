@@ -14,7 +14,9 @@
     {
       "kicker": "O que são",
       "title": "Atalhos de texto para suas imagens",
-      "text": "Termos como /lowangle definem ângulo, perspectiva ou efeito antes de a imagem ser gerada. Basta colar no prompt."
+      "text": "Termos como /lowangle definem ângulo, perspectiva ou efeito antes de a imagem ser gerada. Basta colar no prompt.",
+      "bg": "/web-stories/46-comandos-chatgpt/slide-2.jpg",
+      "alt": "Close de um homem de moletom preto em ângulo inclinado, com a cidade ao pôr do sol ao fundo"
     },
     {
       "kicker": "Ângulos de cima",

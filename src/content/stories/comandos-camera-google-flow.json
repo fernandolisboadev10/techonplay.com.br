@@ -14,7 +14,9 @@
     {
       "kicker": "O que são",
       "title": "Planos de diretor em texto",
-      "text": "Etiquetas como /LOWANGLE dizem à IA o ângulo, a distância e o movimento da câmera. Basta incluir no prompt."
+      "text": "Etiquetas como /LOWANGLE dizem à IA o ângulo, a distância e o movimento da câmera. Basta incluir no prompt.",
+      "bg": "/web-stories/comandos-camera-google-flow/slide-2.jpg",
+      "alt": "Retrato de uma mulher sorrindo em uma sala com cortinas claras e janelas ao fundo"
     },
     {
       "kicker": "Vista aérea",
