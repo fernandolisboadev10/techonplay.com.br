@@ -99,6 +99,8 @@ for (const h of Astro.props.headings) {
 <style>
   .toc {
     --rail-x: 5px;
+    /* Verde-limão de marca-texto para a seção em que o leitor está. */
+    --toc-now: #c6ff00;
     font-family: var(--font-body);
   }
 
@@ -198,9 +200,9 @@ for (const h of Astro.props.headings) {
   }
 
   .toc-item.is-active::before {
-    border-color: var(--violet);
-    background: var(--bg);
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--violet) 22%, transparent);
+    border-color: color-mix(in srgb, var(--toc-now) 65%, #3d5200);
+    background: var(--toc-now);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--toc-now) 35%, transparent), 0 0 12px color-mix(in srgb, var(--toc-now) 65%, transparent);
   }
 
   .toc-item > a {
@@ -299,7 +301,7 @@ for (const h of Astro.props.headings) {
     }
 
     .toc-item.is-active::before {
-      background: var(--surface);
+      background: var(--toc-now);
     }
   }
 

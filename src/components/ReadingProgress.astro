@@ -13,13 +13,15 @@
 
   if (bar && fill && start) {
     const end = start;
+    // Começa a contar no topo do artigo (título e imagem), para a barra andar desde a primeira rolagem.
+    const origin = document.querySelector<HTMLElement>('.post-shell') ?? start;
     let ticking = false;
     let last = -1;
 
     const update = () => {
       ticking = false;
       // Do começo do texto até o fim do conteúdo (a última tela inclusa), não da página inteira.
-      const top = start.getBoundingClientRect().top + window.scrollY;
+      const top = origin.getBoundingClientRect().top + window.scrollY;
       const bottom = end.getBoundingClientRect().bottom + window.scrollY;
       const total = bottom - top - window.innerHeight;
       const ratio = total > 0 ? (window.scrollY - top) / total : 1;
