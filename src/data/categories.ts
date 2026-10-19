@@ -40,9 +40,9 @@ export const categories: Category[] = [
     name: 'Dicas',
     title: 'Dicas de tecnologia para o dia a dia',
     description:
-      'Dicas para escolher e usar melhor a tecnologia: navegadores, planos de IA para estudantes, educação e ferramentas úteis do dia a dia.',
+      'Dicas para escolher e usar melhor a tecnologia: navegadores, assinaturas, golpes online e ferramentas úteis do dia a dia.',
     intro:
-      'Comparativos e recomendações para decidir melhor: qual navegador usar, como aproveitar ofertas para estudantes e como a tecnologia entra na escola.',
+      'Comparativos e recomendações para decidir melhor: qual navegador usar, como economizar em assinaturas e como se proteger de golpes online.',
   },
   {
     slug: 'curiosidades',
@@ -58,7 +58,7 @@ export const categories: Category[] = [
     name: 'Reviews',
     title: 'Reviews de celulares e gadgets: preço e ficha técnica',
     description:
-      'Reviews e análises de celulares e gadgets, com ficha técnica, preço no Brasil e se vale a pena: Galaxy A57, iPhone Duo e mais.',
+      'Reviews e análises de celulares, gadgets e lançamentos, com ficha técnica, preço no Brasil e se vale a pena: Galaxy A57, iPhone Duo, Tesla Roadster e mais.',
     intro:
       'Análises com ficha técnica, comparativos com a geração anterior e preço atualizado no Brasil, para você decidir se o aparelho vale o investimento.',
   },
@@ -70,6 +70,15 @@ export const categories: Category[] = [
       'Aplicativos, plugins e ferramentas para usar no dia a dia, com guias de instalação e uso, como o plugin Higgsfield no ChatGPT.',
     intro:
       'Guias de aplicativos e plugins úteis, com instalação, custos e os erros mais comuns explicados.',
+  },
+  {
+    slug: 'educacao',
+    name: 'Educação',
+    title: 'Educação: IA na escola, BNCC, ENEM e ferramentas para estudar',
+    description:
+      'IA na escola, BNCC Computação, redação do ENEM e ferramentas gratuitas para professores e estudantes, explicadas em português e com passo a passo.',
+    intro:
+      'Conteúdo para quem ensina e para quem estuda: o que muda com a BNCC Computação, como usar IA em sala de aula, como se preparar para a redação do ENEM e quais planos e ferramentas estudantes podem resgatar de graça.',
   },
   {
     slug: 'tendencias',

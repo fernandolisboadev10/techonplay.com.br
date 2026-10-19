@@ -1,7 +1,7 @@
 ---
 title: "Melhores ferramentas de IA do Google em 2026 (10 no Brasil)"
 description: "As 10 melhores ferramentas de IA do Google em 2026, com preços em reais, o que é grátis e o que ainda não funciona no Brasil, como o Chrome auto browse."
-category: "Inteligência Artificial"
+category: "Apps"
 date: 2026-10-02T15:20:00-03:00
 updated: 2026-10-02T17:30:00-03:00
 readingTime: "13 min"

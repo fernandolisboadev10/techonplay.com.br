@@ -1,7 +1,7 @@
 ---
 title: "Tesla Roadster: o que se sabe do novo carro, preço e quando chega"
 description: "A Tesla apresentou o novo Roadster em três versões, com reserva de US$ 50 mil e produção só em 2028. Veja o que foi confirmado e se ele chega ao Brasil."
-category: "Tendências"
+category: "Reviews"
 date: 2026-10-16T15:25:00-03:00
 readingTime: "5 min"
 image: "./images/tesla-roadster-novo-carro-preco-lancamento.webp"
