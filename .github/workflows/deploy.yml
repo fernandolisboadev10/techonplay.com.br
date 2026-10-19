@@ -4,13 +4,6 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-  schedule:
-    # Publishing hours in Brasília time (UTC-3): 07:02, 11:02 and 18:02. Posts dated in the future go live on the next run.
-    # GitHub often delays or skips scheduled runs, so each slot has two retries (+30 min and +1 h). A run that is
-    # not needed just rebuilds the same site, and the "pages" concurrency group keeps runs from overlapping.
-    - cron: '2 10,14,21 * * *'
-    - cron: '32 10,14,21 * * *'
-    - cron: '2 11,15,22 * * *'
 
 permissions:
   contents: read
