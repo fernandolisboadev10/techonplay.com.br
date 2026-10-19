@@ -1,0 +1,77 @@
+---
+// Barra fina no topo que mostra quanto do artigo já foi lido.
+---
+<div class="reading-progress" id="reading-progress" role="progressbar" aria-label="Progresso de leitura" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+  <div class="reading-progress-fill"></div>
+</div>
+
+<script>
+  const bar = document.getElementById('reading-progress');
+  const fill = bar?.querySelector<HTMLElement>('.reading-progress-fill');
+  // `.post` vira `display: contents` no mobile, então medimos o texto (.prose).
+  const start = document.querySelector<HTMLElement>('.prose');
+
+  if (bar && fill && start) {
+    const end = start;
+    let ticking = false;
+    let last = -1;
+
+    const update = () => {
+      ticking = false;
+      // Do começo do texto até o fim do conteúdo (a última tela inclusa), não da página inteira.
+      const top = start.getBoundingClientRect().top + window.scrollY;
+      const bottom = end.getBoundingClientRect().bottom + window.scrollY;
+      const total = bottom - top - window.innerHeight;
+      const ratio = total > 0 ? (window.scrollY - top) / total : 1;
+      const clamped = Math.min(1, Math.max(0, ratio));
+      const pct = Math.round(clamped * 100);
+      fill.style.transform = `scaleX(${clamped})`;
+      bar.classList.toggle('is-visible', clamped > 0);
+      if (pct !== last) {
+        last = pct;
+        bar.setAttribute('aria-valuenow', String(pct));
+      }
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+</script>
+
+<style>
+  .reading-progress {
+    position: fixed;
+    inset: 0 0 auto 0;
+    height: 3px;
+    z-index: 30;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .reading-progress.is-visible {
+    opacity: 1;
+  }
+
+  .reading-progress-fill {
+    height: 100%;
+    /* Degradê da marca: verde-água, violeta e rosa. */
+    background: linear-gradient(90deg, var(--teal), var(--violet), var(--rose));
+    box-shadow: 0 0 8px color-mix(in srgb, var(--violet) 55%, transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reading-progress {
+      transition: none;
+    }
+  }
+</style>
