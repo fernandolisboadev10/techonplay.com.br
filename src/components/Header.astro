@@ -131,6 +131,7 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     justify-content: space-between;
     gap: 20px;
     padding-block: 16px;
+    max-width: 1200px;
   }
 
   .brand {
@@ -139,12 +140,14 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     gap: 8px;
     text-decoration: none;
     white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .brand-logo {
     display: block;
     height: 30px;
     width: auto;
+    max-width: none;
   }
 
   .nav {
@@ -163,7 +166,7 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--ink-soft);
-    padding: 8px 12px;
+    padding: 8px 10px;
     border-radius: 20px;
     white-space: nowrap;
     transition: color 0.18s ease, background-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
@@ -349,7 +352,7 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     color: var(--violet-deep);
   }
 
-  @media (max-width: 960px) {
+  @media (max-width: 1160px) {
     .nav {
       display: none;
     }
