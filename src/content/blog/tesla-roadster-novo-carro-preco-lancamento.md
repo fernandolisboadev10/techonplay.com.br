@@ -1,18 +1,29 @@
 ---
-title: "Tesla Roadster: o que se sabe do novo carro, preço e quando chega"
-description: "A Tesla apresentou o novo Roadster em três versões, com reserva de US$ 50 mil e produção só em 2028. Veja o que foi confirmado e se ele chega ao Brasil."
+title: "Roadster, o carro de Musk que \"voa\" com propulsores da SpaceX"
+description: "O novo Tesla Roadster saltou sobre uma Cybertruck e dirigiu de cabeça para baixo. Veja o que o carro de Elon Musk fez, o preço e quando chega."
 category: "Reviews"
 date: 2026-10-16T15:25:00-03:00
+updated: 2026-10-19T18:40:00-03:00
 readingTime: "5 min"
-image: "./images/tesla-roadster-novo-carro-preco-lancamento.webp"
-imageAlt: "Carro esportivo elétrico branco e futurista em pista de testes ao amanhecer, com propulsores soltando névoa fria na traseira"
-tags: ["Tesla", "Roadster", "Elon Musk", "Carro elétrico", "Tendências"]
+image: "./images/tesla-roadster-voando-propulsores-spacex.webp"
+imageAlt: "Carro esportivo elétrico branco no ar, em pleno salto sobre uma picape e um caminhão, com jatos de gás saindo dos propulsores ao pôr do sol no deserto"
+tags: ["Tesla", "Roadster", "Elon Musk", "SpaceX", "Carro elétrico"]
 related: ["iphone-duo-iphone-dobravel", "oculos-inteligentes-2026-o-que-fazem-precos", "requisitos-pc-gta-6-2026"]
 ---
 
-"Novo carro da Tesla", "novo Tesla", "Elon Musk" e até "Tesla stock" dispararam nas buscas do Brasil nesta quinta-feira. O motivo é o novo Roadster, que a empresa finalmente mostrou ao vivo em 15 de outubro de 2026, depois de anos de promessa. Reunimos o que foi confirmado, o que ficou no ar e o que isso significa para quem está no Brasil. Este texto é a versão pensada para o público brasileiro.
+Um carro que dirige de cabeça para baixo, gira no ar e salta por cima de uma Cybertruck. Foi isso que Elon Musk mostrou em 15 de outubro de 2026, quando a Tesla apresentou ao vivo o novo Roadster, anos depois da primeira promessa. "Novo carro da Tesla" e "Elon Musk" dispararam nas buscas do Brasil, e a pergunta que todo mundo faz é se o carro realmente voa. A resposta curta: não como um drone, mas os propulsores de gás frio, tecnologia da SpaceX, fazem o Roadster saltar e girar pelo ar. Aqui está o que foi confirmado, o que ficou no ar e o que muda para quem está no Brasil.
 
-As informações vêm da cobertura da Electrek sobre a apresentação. Um ponto vale para o texto inteiro: os números de desempenho são todos da própria Tesla e não foram verificados de forma independente.
+As informações vêm da cobertura da Electrek e do Ubergizmo sobre a apresentação (links no fim do texto). Um ponto vale para o texto inteiro: os números de desempenho são todos da própria Tesla e não foram verificados de forma independente.
+
+## O que o Roadster fez no palco
+
+A demonstração aconteceu no sítio de testes da SpaceX, em McGregor, no Texas, e teve três momentos principais:
+
+- **De cabeça para baixo:** o carro ficou invertido em uma rampa. Ventiladores e uma vedação junto ao solo criam sucção suficiente para segurá-lo assim, mesmo parado, segundo a Tesla.
+- **Giros no ar:** com os propulsores, o Roadster fez cambalhotas e giros em espiral, e a Electrek descreve o carro dando um kickflip no ar.
+- **Salto sobre outros carros:** o protótipo pulou por cima de um Cybercab, uma Cybertruck, um caminhão Semi, um Model Y e um Model 3.
+
+A Tesla também divulgou um teste ao vivo de 0 a 60 mph (cerca de 97 km/h) em 0,81 segundo, com ajuda dos propulsores. O tempo veio do relógio da própria empresa, e Musk disse esperar um resultado ainda melhor na versão de produção. Então vale dizer com todas as letras: o Roadster salta e gira, mas não voa de verdade. A altura dos saltos não foi divulgada, e tudo o que se viu foi um protótipo.
 
 ## Três versões, e só uma parece carro de rua
 
@@ -65,4 +76,4 @@ Se você pretende reservar, lembre que o depósito de US$ 5.000 é reembolsável
 
 Quem lê em inglês e mora nos EUA pode seguir a [versão em inglês, para o público dos EUA](https://techonplay.com/tesla-roadster-price-specs-release-date/).
 
-Fontes: [Electrek sobre a apresentação](https://electrek.co/2026/10/15/tesla-unveils-cyberfied-new-roadster-kickflip/)
+Fontes: [Electrek sobre a apresentação](https://electrek.co/2026/10/15/tesla-unveils-cyberfied-new-roadster-kickflip/) | [Ubergizmo sobre a demonstração](https://www.ubergizmo.com/2026/10/tesla-roadster-demo-upside-down-suction-mid-air-corkscrews-and-a-thruster-assisted-0-81s-0-60/)
