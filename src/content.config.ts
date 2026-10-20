@@ -6,6 +6,8 @@ const blog = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      // Optional <title>/og:title/twitter:title when "title" + " · TechOnPlay" would pass 60 characters.
+      seoTitle: z.string().max(60).optional(),
       description: z.string(),
       category: z.string(),
       date: z.date(),
@@ -16,6 +18,8 @@ const blog = defineCollection({
       draft: z.boolean().optional().default(false),
       image: image().optional(),
       imageAlt: z.string().optional(),
+      // Visible FAQ lives in the body; this list feeds the FAQPage JSON-LD and must match it word for word.
+      faq: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
     }),
 });
 

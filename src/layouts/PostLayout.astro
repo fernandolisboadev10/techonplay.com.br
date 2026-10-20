@@ -13,6 +13,8 @@ import { categoryHref } from '../data/categories';
 
 interface Props {
   title: string;
+  seoTitle?: string;
+  faq?: { question: string; answer: string }[];
   description: string;
   category: string;
   date: Date;
@@ -27,7 +29,7 @@ interface Props {
   next?: { slug: string; title: string };
   headings?: MarkdownHeading[];
 }
-const { title, description, category, date, updated, related, tags, readingTime, image, imageAlt, prev, next, headings = [] } = Astro.props;
+const { title, seoTitle, faq, description, category, date, updated, related, tags, readingTime, image, imageAlt, prev, next, headings = [] } = Astro.props;
 
 const formattedDate = date.toLocaleDateString('pt-BR', {
   day: '2-digit',
@@ -66,6 +68,18 @@ const articleSchema = {
   },
 };
 
+const faqSchema = faq?.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      })),
+    }
+  : undefined;
+
 // Same threshold as TableOfContents: the side guide only shows up for posts with 3+ sections.
 const hasGuide = headings.filter((h) => h.depth === 2).length >= 3;
 
@@ -79,9 +93,10 @@ const breadcrumbSchema = {
   ],
 };
 ---
-<BaseLayout title={title} description={description} image={image?.src} type="article" published={date} modified={updated ?? date}>
+<BaseLayout title={title} seoTitle={seoTitle} description={description} image={image?.src} type="article" published={date} modified={updated ?? date}>
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
   <ReadingProgress />
   <div class:list={['container post-shell', { 'no-guide': !hasGuide }]}>
     <article class="post">

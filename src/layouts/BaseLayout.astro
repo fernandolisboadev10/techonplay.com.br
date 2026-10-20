@@ -7,6 +7,7 @@ import '../styles/global.css';
 
 interface Props {
   title: string;
+  seoTitle?: string;
   description?: string;
   image?: string;
   type?: 'website' | 'article';
@@ -17,7 +18,8 @@ interface Props {
 
 const {
   title,
-  description = 'Guias, reviews e notícias sobre IA, jogos, tutoriais e curiosidades, em linguagem simples.',
+  seoTitle,
+  description ='Guias, reviews e notícias sobre IA, jogos, tutoriais e curiosidades, em linguagem simples.',
   image = '/images/og-default.webp',
   type = 'website',
   noindex = false,
@@ -128,12 +130,12 @@ const organizationSchema = {
     </script>
     <link rel="canonical" href={canonicalURL} />
     <link rel="alternate" type="application/rss+xml" title={siteName} href={new URL('/rss.xml', Astro.site)} />
-    <title>{title} · TechOnPlay</title>
+    <title>{seoTitle ?? `${title} · ${siteName}`}</title>
 
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content={siteName} />
     <meta property="og:type" content={type} />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={seoTitle ?? title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={imageURL} />
     {type === 'article' && <meta property="og:image:width" content="1200" />}
@@ -143,7 +145,7 @@ const organizationSchema = {
     <meta property="og:url" content={canonicalURL} />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:title" content={seoTitle ?? title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={imageURL} />
 

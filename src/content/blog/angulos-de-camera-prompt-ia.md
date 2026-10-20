@@ -1,5 +1,6 @@
 ---
 title: "Ângulos de câmera com IA: como mudar o ângulo da sua foto"
+seoTitle: "Ângulos de câmera com IA: mude o ângulo da sua foto"
 description: "Envie sua foto ao ChatGPT ou ao Gemini, cole um comando como low angle ou high angle e veja a imagem em outro ângulo. Passo a passo para iniciantes."
 category: "Inteligência Artificial"
 date: 2026-10-20T07:15:00-03:00
@@ -9,9 +10,18 @@ image: "./images/angulos-de-camera-prompt-ia.webp"
 imageAlt: "Fotógrafo agachado na rua aponta a câmera para cima, na direção de um arranha-céu de vidro, em ângulo baixo"
 tags: ["Prompts", "Ângulos de câmera", "Imagens com IA", "IA"]
 related: ["46-comandos-do-chatgpt", "comandos-camera-google-flow", "comandos-chatgpt-editar-fotos", "google-flow-gratis"]
+faq:
+  - question: "A IA muda o meu rosto quando troco o ângulo da foto?"
+    answer: "Pode mudar, sim. A IA não gira a câmera da foto original: ela desenha uma nova imagem parecida com a sua, vista de outro lugar. Por isso, confira o rosto, as roupas e o fundo e, se não parecer você, peça de novo ou tente outra foto."
+  - question: "Qual IA é melhor para mudar o ângulo da foto: ChatGPT ou Gemini?"
+    answer: "Nenhuma é melhor em todos os casos, porque cada uma interpreta o pedido de um jeito. No meu teste com o comando low angle, o ChatGPT deu um efeito mais forte e o Gemini, um mais suave. Se uma não agradar, teste a outra."
+  - question: "Preciso pagar para mudar o ângulo da foto com IA?"
+    answer: "Não é obrigatório. O ChatGPT e o Gemini têm versão gratuita com limite de imagens por dia, e esse limite muda com o tempo. Se um deles avisar que acabou, tente o outro ou volte no dia seguinte."
+  - question: "Posso usar o mesmo comando para criar uma imagem do zero?"
+    answer: "Pode. Nesse caso, ponha o ângulo no começo do prompt e descreva a cena. Depois, troque só o termo do ângulo para comparar os resultados."
 ---
 
-Dá para pegar uma foto sua, enviar para uma IA e pedir que ela apareça como se tivesse sido tirada de outro ângulo: de baixo para cima, de cima para baixo, de drone. Basta **enviar a foto e escrever um comando de ângulo**, como `low angle` ou `high angle`. Este guia mostra qual IA usar, o passo a passo e os textos prontos para copiar. Se você prefere atalhos com barra, como `/lowangle`, veja os [46 comandos do ChatGPT para imagens](/46-comandos-do-chatgpt/); para câmera em foto e vídeo do Google, os [40 comandos de câmera do Flow](/comandos-camera-google-flow/).
+Dá para pegar uma foto sua, enviar para uma IA e pedir que ela apareça como se tivesse sido tirada de outro ângulo: de baixo para cima, de cima para baixo, de drone. Basta **enviar a foto e escrever um comando de ângulo**, como `low angle` ou `high angle`. Este guia mostra como mudar o ângulo da foto com IA: qual ferramenta usar, o passo a passo e os textos prontos para copiar. Se você prefere atalhos com barra, como `/lowangle`, veja os [46 comandos do ChatGPT para imagens](/46-comandos-do-chatgpt/); para câmera em foto e vídeo do Google, os [40 comandos de câmera do Flow](/comandos-camera-google-flow/).
 
 Duas coisas para ter em mente desde já. A IA não "gira a câmera" da foto original: ela **desenha uma nova imagem** parecida com a sua, vista de outro lugar. Por isso o rosto, as roupas e o fundo podem mudar um pouco, e às vezes é preciso tentar duas ou três vezes. Além disso, os textos deste artigo são sugestões minhas, escritas a partir de guias publicados. Testei o comando `low angle` no ChatGPT e no Gemini com uma foto de exemplo, e os prints estão logo abaixo; os demais prompts não foram testados, e o resultado varia conforme a ferramenta e a versão. Pesquisa e testes feitos em 20/10/2026.
 
@@ -19,7 +29,7 @@ Duas coisas para ter em mente desde já. A IA não "gira a câmera" da foto orig
 
 Para testar, usei esta foto de exemplo, de uma personagem fictícia criada por IA nas Cataratas do Iguaçu, em Foz do Iguaçu, tirada na altura dos olhos:
 
-![Foto de exemplo de uma jovem de boné, jaqueta jeans e mochila na passarela das Cataratas do Iguaçu, fotografada na altura dos olhos](./images/angulos-camera-ia-foto-original.webp)
+![Jovem de boné, jaqueta jeans e mochila na passarela das Cataratas do Iguaçu, em foto na altura dos olhos](./images/angulos-camera-ia-foto-original.webp)
 
 O teste foi simples: **enviei a foto e escrevi só `low angle`**, sem nenhuma frase de apoio. Mesma foto, mesmo comando, duas ferramentas.
 
@@ -27,7 +37,7 @@ O teste foi simples: **enviei a foto e escrevi só `low angle`**, sem nenhuma fr
 
 Enviei a foto pelo clipe de papel e digitei `low angle`. O print abaixo mostra a conversa: a foto enviada (miniatura no alto), o comando e o resultado.
 
-![Print do ChatGPT com a foto enviada, o comando low angle e a imagem devolvida, com a câmera abaixo da jovem olhando para cima e o céu azul ocupando boa parte do fundo](./images/angulos-camera-ia-chatgpt-low-angle.webp)
+![Print do ChatGPT com a foto enviada, o comando low angle e a imagem devolvida em ângulo baixo](./images/angulos-camera-ia-chatgpt-low-angle.webp)
 
 O ChatGPT entendeu o ângulo com clareza: a câmera foi para baixo, olhando para cima, a personagem ficou em primeiro plano e o céu ganhou espaço no fundo. Ele ainda explicou em texto o que fez ("ângulo baixo, destacando a turista em primeiro plano").
 
@@ -35,7 +45,7 @@ O ChatGPT entendeu o ângulo com clareza: a câmera foi para baixo, olhando para
 
 Fiz o mesmo no Gemini: enviei a foto pelo botão de "+" e digitei `low angle`, no modo Flash.
 
-![Print do Gemini com a foto enviada, o comando low angle e a imagem devolvida, com plano mais aberto mostrando a passarela das Cataratas do Iguaçu e a jovem em pé no centro](./images/angulos-camera-ia-gemini-low-angle.webp)
+![Print do Gemini com a foto enviada, o comando low angle e a imagem devolvida em plano mais aberto](./images/angulos-camera-ia-gemini-low-angle.webp)
 
 O resultado do Gemini foi **mais suave**: ele abriu o plano, mostrando mais da passarela e do céu, e a câmera ficou um pouco mais baixa, mas a diferença para a foto original é menor do que no ChatGPT.
 
@@ -82,7 +92,7 @@ O quadro mostra o que cada ângulo faz com a foto e para que serve. A coluna "Co
 
 Esses efeitos são convenções do cinema e da fotografia, descritas no guia da Runway, e não regras técnicas da IA.
 
-## Prompts prontos para colar com a sua foto
+## Prompts prontos: low angle, high angle e outros ângulos para colar
 
 Envie a foto primeiro e depois cole um destes textos. Cada caixa tem o botão de copiar.
 
@@ -140,6 +150,24 @@ Low angle shot de uma barista de avental verde servindo um café numa cafeteria 
 ```
 
 Troque só `Low angle shot` por `Top-down shot` ou `Eye-level shot` e compare os resultados. A Runway sugere colocar o termo de câmera no começo, porque, segundo a empresa, as primeiras palavras pesam mais. Para editar fotos de outras maneiras, como trocar o fundo ou melhorar a luz, os comandos de [edição de fotos no ChatGPT](/comandos-chatgpt-editar-fotos/) são um bom próximo passo.
+
+## Perguntas frequentes
+
+### A IA muda o meu rosto quando troco o ângulo da foto?
+
+Pode mudar, sim. A IA não gira a câmera da foto original: ela desenha uma nova imagem parecida com a sua, vista de outro lugar. Por isso, confira o rosto, as roupas e o fundo e, se não parecer você, peça de novo ou tente outra foto.
+
+### Qual IA é melhor para mudar o ângulo da foto: ChatGPT ou Gemini?
+
+Nenhuma é melhor em todos os casos, porque cada uma interpreta o pedido de um jeito. No meu teste com o comando `low angle`, o ChatGPT deu um efeito mais forte e o Gemini, um mais suave. Se uma não agradar, teste a outra.
+
+### Preciso pagar para mudar o ângulo da foto com IA?
+
+Não é obrigatório. O ChatGPT e o Gemini têm versão gratuita com limite de imagens por dia, e esse limite muda com o tempo. Se um deles avisar que acabou, tente o outro ou volte no dia seguinte.
+
+### Posso usar o mesmo comando para criar uma imagem do zero?
+
+Pode. Nesse caso, ponha o ângulo no começo do prompt e descreva a cena. Depois, troque só o termo do ângulo para comparar os resultados.
 
 ## Resumo para guardar
 
