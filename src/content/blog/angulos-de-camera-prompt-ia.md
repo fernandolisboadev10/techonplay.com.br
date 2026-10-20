@@ -1,8 +1,9 @@
 ---
-title: "Ângulos de câmera em prompts de IA: guia com exemplos"
-description: "Aprenda a pedir ângulo baixo, alto, aéreo, POV e mais em prompts de IA para imagem. Veja quando usar cada um, o mesmo prompt em 3 ângulos e os erros."
+title: "Ângulos de câmera com IA: como mudar o ângulo da sua foto"
+description: "Envie sua foto ao ChatGPT ou ao Gemini, cole um comando como low angle ou high angle e veja a imagem em outro ângulo. Passo a passo para iniciantes."
 category: "Inteligência Artificial"
 date: 2026-10-20T07:15:00-03:00
+updated: 2026-10-20T09:00:00-03:00
 readingTime: "6 min"
 image: "./images/angulos-de-camera-prompt-ia.webp"
 imageAlt: "Fotógrafo agachado na rua aponta a câmera para cima, na direção de um arranha-céu de vidro, em ângulo baixo"
@@ -10,95 +11,113 @@ tags: ["Prompts", "Ângulos de câmera", "Imagens com IA", "IA"]
 related: ["46-comandos-do-chatgpt", "comandos-camera-google-flow", "comandos-chatgpt-editar-fotos", "google-flow-gratis"]
 ---
 
-Quem pede uma imagem à IA sem dizer de onde a câmera olha costuma receber a mesma foto de frente, na altura dos olhos, com cara de banco de imagens. O **ângulo de câmera no prompt** é a forma mais barata de mudar isso: uma ou duas palavras decidem se o assunto parece heroico, frágil ou apenas comum. Este guia vale para qualquer ferramenta. Para a lista de atalhos prontos, veja os [46 comandos do ChatGPT para imagens](/46-comandos-do-chatgpt/); para a versão em vídeo e foto do Google, os [40 comandos de câmera do Flow](/comandos-camera-google-flow/).
+Dá para pegar uma foto sua, enviar para uma IA e pedir que ela apareça como se tivesse sido tirada de outro ângulo: de baixo para cima, de cima para baixo, de drone. Basta **enviar a foto e escrever um comando de ângulo**, como `low angle` ou `high angle`. Este guia mostra qual IA usar, o passo a passo e os textos prontos para copiar. Se você prefere atalhos com barra, como `/lowangle`, veja os [46 comandos do ChatGPT para imagens](/46-comandos-do-chatgpt/); para câmera em foto e vídeo do Google, os [40 comandos de câmera do Flow](/comandos-camera-google-flow/).
 
-Um aviso: os atalhos com barra (como `/lowangle`) são uma convenção informal da internet, não um recurso oficial de nenhuma ferramenta. Aqui o foco é o que funciona em texto comum, que é o que todo modelo entende. Os prompts abaixo são sugestões minhas, escritas a partir da documentação e de guias publicados. Eu não rodei esses exemplos, e o resultado varia conforme o modelo e a versão. Pesquisa feita em 20/10/2026.
+Duas coisas para ter em mente desde já. A IA não "gira a câmera" da foto original: ela **desenha uma nova imagem** parecida com a sua, vista de outro lugar. Por isso o rosto, as roupas e o fundo podem mudar um pouco, e às vezes é preciso tentar duas ou três vezes. Além disso, os textos deste artigo são sugestões minhas, escritas a partir de guias publicados. Eu não os testei, e o resultado varia conforme a ferramenta e a versão. Pesquisa feita em 20/10/2026.
 
-## Ângulo, distância e lente são coisas diferentes
+## Qual IA usar
 
-Três ajustes costumam ser misturados num prompt só:
+Você precisa de uma IA que aceite **enviar uma foto e pedir uma alteração**. Duas opções comuns, que funcionam no celular e no computador:
 
-- **Ângulo**: onde a câmera está em relação ao assunto (abaixo, acima, na altura dos olhos).
-- **Enquadramento**: quanto do assunto aparece (close, plano médio, plano aberto).
-- **Lente**: o quanto a imagem esticar ou comprimir (grande angular, 50 mm).
+- **ChatGPT**: no aplicativo ou em chatgpt.com, envie a foto pelo clipe de papel (ou botão de "+") e escreva o pedido.
+- **Gemini**: no aplicativo ou em gemini.google.com, envie a foto e peça a edição no mesmo formato.
 
-O guia de ângulos da Runway recomenda combinar o ângulo, que diz onde a câmera fica, com o tipo de plano, que diz quanto do assunto preenche a imagem. Separar os dois no prompt deixa o pedido mais claro para o modelo.
+Os dois têm versão gratuita com limite de imagens por dia, e esse limite muda com o tempo. Se um deles avisar que acabou, tente o outro ou volte no dia seguinte. Se ainda não conhece o ChatGPT, veja [como funciona a versão gratuita e a paga](/chatgpt-gratis-ou-pago/).
 
-## Os ângulos principais e o efeito de cada um
+## Passo a passo: da sua foto ao novo ângulo
 
-O quadro resume os ângulos descritos no guia da Runway, com o efeito que a empresa atribui a cada um. Trata-se de convenção do cinema e da fotografia, não de regra técnica da IA.
+1. **Escolha uma foto boa para o teste.** Uma foto em que a pessoa ou o objeto aparece inteiro, bem iluminado e sem nada na frente funciona melhor.
+2. **Abra o ChatGPT ou o Gemini** e comece uma conversa nova.
+3. **Envie a foto** pelo clipe de papel ou pelo botão de "+".
+4. **Cole o prompt** do ângulo que você quer (os textos prontos estão mais abaixo).
+5. **Envie e aguarde.** A imagem nova aparece na própria conversa.
+6. **Se não ficou como queria, peça o ajuste** na mesma conversa, dizendo o que mudar. Há exemplos na seção "Não ficou como queria?".
 
-| Ângulo | Como pedir | Efeito costumeiro | Quando usar |
-|---|---|---|---|
-| Altura dos olhos | *eye-level shot* | Neutro, natural | Retrato, perfil, cena do dia a dia |
-| Baixo | *low angle* | Poder, autoridade | Retrato "de líder", prédio, produto de destaque |
-| Alto | *high angle* | Fragilidade, isolamento | Cena de solidão, visão geral de ambiente |
-| Aéreo/zenital | *bird's eye view, top-down* | Distanciamento, padrões | Mesa, comida, mapa, composição simétrica |
-| Rente ao chão | *worm's eye view* | Imponência, estranheza | Uso raro, para cenas monumentais |
-| Ponto de vista | *POV* | Imersão | Cena vista pelos olhos de alguém |
-| Inclinado | *Dutch angle* | Tensão, desconforto | Suspense, cena fora de eixo |
+O segredo está no passo 4. Em vez de escrever só `low angle`, o ideal é dizer três coisas: **qual ângulo você quer, o que deve continuar igual e que a imagem enviada é a base**. Assim a IA muda a posição da câmera sem trocar quem aparece na foto.
 
-Esses termos estão em inglês porque a maior parte dos modelos foi treinada com legendas em inglês. Misturar o resto do prompt em português costuma funcionar, mas ao menos o termo da câmera vale a pena manter em inglês. Isso é uma observação prática, não uma garantia.
+## Os 7 ângulos: qual comando escolher
 
-## O mesmo prompt em três ângulos
+O quadro mostra o que cada ângulo faz com a foto e para que serve. A coluna "Comando" é o termo que você coloca no prompt (em inglês, porque a maior parte dos modelos foi treinada com legendas em inglês). Clique em "Copiar" para guardar o termo.
 
-Para comparar, mantenha tudo igual e troque só o ângulo. Comece com este prompt-base, que serve de teste em qualquer gerador.
+| Ângulo | Comando | O que muda na foto | Bom para | Copiar |
+|---|---|---|---|---|
+| Altura dos olhos | `eye-level shot` | Fica neutra e natural | Retrato, foto do dia a dia | 📋 Copiar |
+| De baixo para cima | `low angle` | Passa força e autoridade | Retrato "de líder", prédio, produto de destaque | 📋 Copiar |
+| De cima para baixo | `high angle` | Passa delicadeza ou solidão | Mostrar o ambiente todo, cena de solidão | 📋 Copiar |
+| Totalmente de cima | `bird's eye view` | Vista de passarinho, como um mapa | Mesa, comida, mapa (também chamada de *top-down*) | 📋 Copiar |
+| Rente ao chão | `worm's eye view` | Efeito monumental, de baixíssimo | Uso raro, para cenas grandiosas | 📋 Copiar |
+| Visão da própria pessoa | `POV` | Parece visto pelos olhos de quem está lá | Cena em primeira pessoa | 📋 Copiar |
+| Inclinado | `Dutch angle` | Horizonte torto, sensação de tensão | Suspense, foto "fora de eixo" | 📋 Copiar |
+
+Esses efeitos são convenções do cinema e da fotografia, descritas no guia da Runway, e não regras técnicas da IA.
+
+## Prompts prontos para colar com a sua foto
+
+Envie a foto primeiro e depois cole um destes textos. Cada caixa tem o botão de copiar.
+
+**Para a foto parecer tirada de baixo para cima:**
 
 ```prompt
-Eye-level shot de uma barista de avental verde servindo um café numa cafeteria pequena, luz natural da janela, fundo levemente desfocado, foto realista.
+Use a foto que enviei como base. Mude só o ângulo da câmera: faça um low angle, com a câmera um pouco abaixo de mim, olhando para cima. Mantenha meu rosto, meu cabelo, minhas roupas e o cenário como estão na foto original.
 ```
 
-Agora troque só o começo:
+**Para a foto parecer tirada de cima para baixo:**
+
+```prompt
+Use a foto que enviei como base. Mude só o ângulo da câmera: faça um high angle, com a câmera acima de mim, olhando para baixo. Mantenha meu rosto, meu cabelo, minhas roupas e o cenário como estão na foto original.
+```
+
+**Para uma vista totalmente de cima (boa para mesa, comida ou objetos):**
+
+```prompt
+Use a foto que enviei como base. Mostre a mesma cena em bird's eye view, com a câmera diretamente acima, olhando reto para baixo. Mantenha os objetos, as cores e a luz como estão na foto original.
+```
+
+**Modelo para qualquer outro ângulo.** Troque só o termo no meio do texto pelo comando da tabela (por exemplo `Dutch angle` ou `POV`):
+
+```prompt
+Use a foto que enviei como base. Mude só o ângulo da câmera para worm's eye view. Mantenha a pessoa, as roupas, a luz e o cenário como estão na foto original.
+```
+
+Repare que todos seguem o mesmo molde: **"use minha foto" + "mude só o ângulo" + "mantenha o resto"**. A OpenAI recomenda, na documentação dos seus modelos de imagem, dizer o enquadramento e o ponto de vista, e avisa que detalhes técnicos de câmera são interpretados de forma solta. Use o ângulo para dar o clima geral da imagem, não como medida exata.
+
+## Não ficou como queria? Peça o ajuste
+
+Não comece outra conversa. Responda na mesma, pedindo uma coisa por vez:
+
+- "Parece outra pessoa. Mantenha exatamente o meu rosto da foto original."
+- "Deixe a câmera mais baixa, quase no nível do chão."
+- "O ângulo ficou exagerado. Faça uma versão mais suave."
+- "Mantenha o fundo igual ao da foto original."
+
+Se continuar longe do que você quer, tente enviar a foto de novo junto do pedido, ou teste a mesma foto na outra ferramenta (do ChatGPT para o Gemini, ou o contrário). Um guia da Adobe sobre o modelo de imagem do Gemini nota que às vezes é preciso lembrar a IA de manter a pose.
+
+## O que esperar (e o que não esperar)
+
+- **Mudanças pequenas funcionam melhor.** Pedir um ângulo um pouco mais baixo ou mais alto costuma dar resultado mais fiel do que virar a cena inteira.
+- **O rosto pode mudar.** Como a imagem é redesenhada, confira se ainda parece você. Se não, peça de novo ou tente outra foto.
+- **O que não aparece na foto original é inventado.** Se você enviou uma foto só do rosto e pediu uma vista de cima do corpo todo, a IA vai criar o que falta.
+- **Ângulos extremos distorcem mais.** `worm's eye view` e `Dutch angle` têm efeito forte; use com moderação.
+- **Não use graus.** "Câmera a 30 graus" é interpretado de forma aproximada. As palavras do cinema (baixo, alto, de cima) funcionam melhor.
+
+## E se eu não tiver uma foto?
+
+O mesmo comando também funciona para criar uma imagem do zero. Nesse caso, ponha o ângulo no começo e descreva a cena:
 
 ```prompt
 Low angle shot de uma barista de avental verde servindo um café numa cafeteria pequena, luz natural da janela, fundo levemente desfocado, foto realista.
 ```
 
-```prompt
-Top-down shot, câmera diretamente acima, de uma barista de avental verde servindo um café numa cafeteria pequena, luz natural da janela, foto realista.
-```
-
-O esperado, segundo a lógica descrita acima: o primeiro dá uma cena neutra, o segundo deixa a barista mais imponente, e o terceiro transforma o balcão num desenho de formas vistas de cima. Teste nas suas ferramentas e compare, porque cada plataforma interpreta ângulos de forma diferente. A própria Runway recomenda testar os prompts em mais de uma ferramenta.
-
-## Como escrever o ângulo no prompt
-
-A documentação oficial da OpenAI para os modelos de imagem aconselha especificar o enquadramento e o ponto de vista (close, plano aberto, visão de cima) e o ângulo (altura dos olhos, ângulo baixo). Ela dá este exemplo de fotografia: "shot like a 35mm film photograph, medium close-up at eye level, using a 50mm lens". O mesmo guia avisa que especificações detalhadas de câmera podem ser interpretadas de forma solta, então use-as para o clima geral e a composição, não como medida exata.
-
-A Runway sugere colocar o termo de câmera no começo do prompt, porque, segundo a empresa, as primeiras palavras pesam mais. Nos testes de outras pessoas isso aparece com frequência, mas não é garantido em todo modelo.
-
-Um modelo de frase que ajuda:
-
-```prompt
-[ângulo] + [enquadramento] de [assunto fazendo uma ação], [lugar], [luz], foto realista
-```
-
-Exemplo preenchido:
-
-```prompt
-Low angle, plano médio de um chef de jaqueta branca empratando um risoto, cozinha profissional, luz quente de cima, foto realista.
-```
-
-## Quando usar cada ângulo
-
-- **Retrato para LinkedIn ou currículo**: altura dos olhos, ou apenas um pouco abaixo, para passar confiança. Se o rosto distorcer, diminua a inclinação.
-- **Foto de produto**: ângulo levemente alto para mostrar a embalagem inteira; ângulo baixo quando o produto precisa parecer grande, como um tênis ou uma garrafa.
-- **Comida**: zenital para pratos e mesas; 45 graus para sanduíches e bolos, em que a altura conta.
-- **Paisagem e prédio**: ângulo baixo com grande angular para dar altura; aéreo para mostrar a cidade ou o terreno.
-- **Cena de tensão**: ângulo inclinado, em pequena dose.
-
-Para editar uma foto que você já tem, em vez de criar do zero, os comandos de [edição de fotos no ChatGPT](/comandos-chatgpt-editar-fotos/) incluem atalhos como `/closeup` e `/droneview`, que trocam o enquadramento da imagem enviada.
-
-## Erros comuns
-
-1. **Pedir dois ângulos que se contradizem.** "Bird's eye e eye-level" confunde o modelo. Escolha uma perspectiva só, como recomenda a Runway.
-2. **Usar o ângulo sem descrever a cena.** Com só "low angle", o modelo escolhe um assunto qualquer. O ângulo complementa o prompt, não o substitui.
-3. **Empilhar termos.** Ângulo, lente, plano, estilo e cinco adjetivos de uma vez diluem o que importa. Fique com um ângulo, um enquadramento e, no máximo, uma lente.
-4. **Esperar precisão geométrica.** "Câmera a 30 graus" é interpretado de forma aproximada. Use as palavras do cinema, que o modelo conhece melhor.
-5. **Abusar do ângulo rente ao chão.** Segundo a Runway, vale usar com moderação, pelo efeito forte.
-6. **Não iterar.** Comece com um ângulo, teste em vários assuntos e só depois combine com plano e lente. Se o resultado não vier como esperado, ajuste só uma coisa por vez, para saber o que mudou.
+Troque só `Low angle shot` por `Top-down shot` ou `Eye-level shot` e compare os resultados. A Runway sugere colocar o termo de câmera no começo, porque, segundo a empresa, as primeiras palavras pesam mais. Para editar fotos de outras maneiras, como trocar o fundo ou melhorar a luz, os comandos de [edição de fotos no ChatGPT](/comandos-chatgpt-editar-fotos/) são um bom próximo passo.
 
 ## Resumo para guardar
 
-Escolha o ângulo pelo sentimento que a cena precisa: neutro (altura dos olhos), forte (baixo), frágil (alto), organizado (zenital). Escreva-o no começo do prompt, em inglês, e complete com assunto, lugar e luz. Teste a mesma frase em mais de um ângulo antes de decidir. Se você está começando no Google Flow, vale conferir antes [como funcionam créditos e limites](/google-flow-gratis/).
+1. Abra o ChatGPT ou o Gemini e envie a sua foto.
+2. Cole o prompt do ângulo que você quer: baixo (força), alto (delicadeza), de cima (organização).
+3. Mantenha sempre o molde: "use minha foto, mude só o ângulo, mantenha o resto".
+4. Se não ficou bom, peça o ajuste na mesma conversa, uma coisa por vez.
+5. Confira o rosto e o fundo antes de usar a imagem.
 
-Fontes: [Runway: ângulos de câmera e tipos de plano](https://runway.com/resources/ai-camera-angle-shot-type-tips) | [OpenAI Cookbook: guia de prompts para modelos de imagem](https://developers.openai.com/cookbook/examples/multimodal/image-gen-models-prompting-guide)
+Se você está começando no Google Flow, vale conferir antes [como funcionam créditos e limites](/google-flow-gratis/).
+
+Fontes: [Runway: ângulos de câmera e tipos de plano](https://runway.com/resources/ai-camera-angle-shot-type-tips) | [OpenAI Cookbook: guia de prompts para modelos de imagem](https://developers.openai.com/cookbook/examples/multimodal/image-gen-models-prompting-guide) | [Adobe: edições generativas com Nano Banana](https://www.adobe.com/learn/photoshop/web/nano-banana-generative-edits)
