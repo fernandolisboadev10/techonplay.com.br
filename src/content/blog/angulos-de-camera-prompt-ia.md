@@ -13,7 +13,19 @@ related: ["46-comandos-do-chatgpt", "comandos-camera-google-flow", "comandos-cha
 
 Dá para pegar uma foto sua, enviar para uma IA e pedir que ela apareça como se tivesse sido tirada de outro ângulo: de baixo para cima, de cima para baixo, de drone. Basta **enviar a foto e escrever um comando de ângulo**, como `low angle` ou `high angle`. Este guia mostra qual IA usar, o passo a passo e os textos prontos para copiar. Se você prefere atalhos com barra, como `/lowangle`, veja os [46 comandos do ChatGPT para imagens](/46-comandos-do-chatgpt/); para câmera em foto e vídeo do Google, os [40 comandos de câmera do Flow](/comandos-camera-google-flow/).
 
-Duas coisas para ter em mente desde já. A IA não "gira a câmera" da foto original: ela **desenha uma nova imagem** parecida com a sua, vista de outro lugar. Por isso o rosto, as roupas e o fundo podem mudar um pouco, e às vezes é preciso tentar duas ou três vezes. Além disso, os textos deste artigo são sugestões minhas, escritas a partir de guias publicados. Eu não os testei, e o resultado varia conforme a ferramenta e a versão. Pesquisa feita em 20/10/2026.
+Duas coisas para ter em mente desde já. A IA não "gira a câmera" da foto original: ela **desenha uma nova imagem** parecida com a sua, vista de outro lugar. Por isso o rosto, as roupas e o fundo podem mudar um pouco, e às vezes é preciso tentar duas ou três vezes. Além disso, os textos deste artigo são sugestões minhas, escritas a partir de guias publicados. Testei o pedido de ângulo baixo numa foto de exemplo, que você vê logo abaixo; os demais prompts não foram testados, e o resultado varia conforme a ferramenta e a versão. Pesquisa feita em 20/10/2026.
+
+## Veja na prática: antes e depois
+
+Esta é a foto de exemplo, de uma personagem fictícia criada por IA nas Cataratas do Iguaçu, em Foz do Iguaçu, na altura dos olhos:
+
+![Foto de exemplo de uma jovem de boné, jaqueta jeans e mochila na passarela das Cataratas do Iguaçu, fotografada na altura dos olhos](./images/angulos-camera-ia-foto-original.webp)
+
+Depois de enviar a foto e pedir um `low angle`, a IA devolveu a mesma cena com a câmera um pouco mais baixa:
+
+![A mesma jovem nas Cataratas do Iguaçu depois do pedido de low angle, com a câmera mais baixa, o rosto maior no quadro e mais céu ao fundo](./images/angulos-camera-ia-angulo-baixo.webp)
+
+Compare as duas: o rosto, o boné, a jaqueta, o corrimão verde e as quedas d'água continuam iguais, mas a câmera desceu, o rosto ganhou presença e entrou mais céu atrás. A mudança é **sutil**, e alguns detalhes mudaram sem ninguém pedir, como o pingente do colar, o desenho da bolsa e a posição da pessoa ao fundo. É o que acontece quando a IA redesenha a imagem. Se você quiser um efeito mais forte, peça uma câmera bem baixa, "quase na altura da cintura, olhando para cima".
 
 ## Qual IA usar
 
