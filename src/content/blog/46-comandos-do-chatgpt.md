@@ -3,7 +3,7 @@ title: "46 Comandos do ChatGPT para Criar Imagens Impressionantes"
 description: "46 comandos do ChatGPT para criar imagens mais criativas: ângulos de câmera, perspectiva, movimento e efeitos prontos para copiar."
 category: "Inteligência Artificial"
 date: 2026-09-26
-updated: 2026-10-19T20:58:00-03:00
+updated: 2026-10-20T07:20:00-03:00
 readingTime: "10 min"
 image: "./images/46-Comandos-do-ChatGPT-para-Criar-Imagens.webp"
 imageAlt: "46 Comandos do ChatGPT para Criar Imagens"
@@ -35,6 +35,8 @@ Este grupo controla a altura e a posição da câmera. É o ponto de partida mai
 -   **/highangle** e **/lowangle**: acima ou abaixo da linha dos olhos
 -   **/dutchangle**: horizonte inclinado, composição diagonal
 -   **/fisheyepov**: lente olho de peixe, campo de visão amplo e distorcido
+
+Guia completo: para entender quando usar cada ângulo em qualquer ferramenta, veja [ângulos de câmera em prompts de IA](/angulos-de-camera-prompt-ia/), com o mesmo prompt em três ângulos.
 
 ## Perspectiva, movimento e reflexos
 

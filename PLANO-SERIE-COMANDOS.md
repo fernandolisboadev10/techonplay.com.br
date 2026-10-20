@@ -19,7 +19,7 @@ Origem da estratégia: pilares `46-comandos-do-chatgpt` e `comandos-camera-googl
 - [x] **1.** (2026-10-19, `comandos-chatgpt-editar-fotos`) 12 comandos do ChatGPT para editar fotos: /proshot, /newbg e mais
   - Palavra-chave: comandos chatgpt editar foto · Intenção: como fazer · Link: `46-comandos-do-chatgpt`
   - Diferencial: comandos de edição (`/proshot`, `/hdreal`, `/newbg`, `/fog`, `/goldenhour`, `/closeup`, `/together`, `/hairstyles`, `/sunglassestryon`, `/blueprint`, `/chibi`, `/droneview`), com prompt completo e resultado por comando. Fonte para conferir: https://www.schieb.de/?p=814488 (04/09/2026).
-- [ ] **2.** Ângulos de câmera em prompts de IA: guia com exemplos e fotos
+- [x] **2.** (2026-10-20, `angulos-de-camera-prompt-ia`) Ângulos de câmera em prompts de IA: guia com exemplos e fotos
   - Palavra-chave: ângulos de câmera prompt IA · Intenção: aprender · Link: os dois pilares
   - Diferencial: independente de ferramenta; o mesmo prompt em 3 ângulos; quando usar cada um; erros.
 - [ ] **3.** Comandos que viralizam no ChatGPT: /chibi, /blueprint, /together

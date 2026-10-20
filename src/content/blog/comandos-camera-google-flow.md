@@ -3,7 +3,7 @@ title: "Comandos de Câmera do Google Flow: 40 Prompts para Testar"
 description: "Veja os comandos de câmera do Google Flow: 40 prompts para fotos e vídeos com IA, do drone ao close-up, com exemplos prontos para copiar."
 category: "Inteligência Artificial"
 date: 2026-09-24
-updated: 2026-09-29
+updated: 2026-10-20T07:20:00-03:00
 readingTime: "8 min"
 image: "./images/Comandos-de-Camera-do-Google-Flow.webp"
 imageAlt: "Comandos de Câmera do Google Flow"
@@ -34,6 +34,8 @@ Este grupo define a altura da câmera em relação à pessoa. Funciona bem em fo
 -   ✅ **/WORMSVIEW**: ângulo extremamente baixo e dramático
 -   **/TOPDOWN**, **/BIRDSEYE**, **/OVERHEAD**, **/EXTREMETOPDOWN**: variações de vista direto de cima
 -   **/DRONE3Q**, **/HIGHANGLE**, **/GROUNDLEVEL**, **/LOWUP**: ângulos diagonais e rasteiros
+
+Guia completo: para entender o efeito de cada ângulo em qualquer ferramenta, veja [ângulos de câmera em prompts de IA](/angulos-de-camera-prompt-ia/).
 
 ## Movimento de câmera: para vídeos curtos
 
