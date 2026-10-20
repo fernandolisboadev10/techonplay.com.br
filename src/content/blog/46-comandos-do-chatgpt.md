@@ -9,6 +9,16 @@ image: "./images/46-Comandos-do-ChatGPT-para-Criar-Imagens.webp"
 imageAlt: "46 Comandos do ChatGPT para Criar Imagens"
 tags: ["ChatGPT", "Comandos", "Geração de imagens", "IA"]
 related: ["comandos-camera-google-flow", "plugin-higgsfield-chatgpt", "o-que-significa-gpt"]
+seoTitle: "46 comandos do ChatGPT para criar imagens: copie e cole"
+faq:
+  - question: "Os 46 comandos do ChatGPT para criar imagens funcionam em outras ferramentas de IA?"
+    answer: "Parcialmente. Eles não são recurso oficial do ChatGPT, então a interpretação pode variar em outros modelos, como Midjourney ou Gemini, mesmo que o efeito geral se mantenha."
+  - question: "Preciso pagar para usar os comandos?"
+    answer: "Não. São apenas texto dentro do prompt, sem custo adicional. O limite de gerações por mês depende da assinatura da ferramenta usada, não dos comandos em si."
+  - question: "Posso combinar vários comandos no mesmo prompt?"
+    answer: "Sim, até dois ou três. Combinações como ângulo mais efeito de luz funcionam bem. Acima disso, o modelo tende a ignorar parte das instruções."
+  - question: "Os comandos mudam a identidade da pessoa na foto?"
+    answer: "Não. Eles controlam câmera, perspectiva e efeito visual, não as características do personagem. Uma foto de referência nítida ajuda a manter a semelhança em qualquer ângulo escolhido."
 ---
 
 Os **46 comandos do ChatGPT para criar imagens** são atalhos de texto que definem ângulo, perspectiva, movimento ou efeito visual antes mesmo da geração começar. Basta colar o termo no prompt e completar com o restante da cena.

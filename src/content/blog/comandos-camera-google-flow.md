@@ -9,6 +9,16 @@ image: "./images/Comandos-de-Camera-do-Google-Flow.webp"
 imageAlt: "Comandos de Câmera do Google Flow"
 tags: ["Google Flow", "Prompts de câmera", "IA de vídeo", "Google"]
 related: ["google-flow-gratis", "46-comandos-do-chatgpt", "plugin-higgsfield-chatgpt"]
+seoTitle: "Comandos de Câmera do Google Flow: 40 Prompts para Testar"
+faq:
+  - question: "Preciso de plano pago para usar comandos de câmera no Google Flow?"
+    answer: "Não. Os comandos são apenas texto dentro do prompt, sem custo adicional. O número de gerações disponíveis por mês, porém, depende da sua assinatura da ferramenta."
+  - question: "Posso usar mais de um comando no mesmo prompt?"
+    answer: "Sim. Combinar um comando de ângulo com um de clima costuma funcionar bem, como /PORTRAIT e /CINEMATIC. Usar três ou mais ao mesmo tempo tende a confundir o modelo."
+  - question: "Os comandos funcionam em vídeo, além de foto?"
+    answer: "Sim, e rendem melhor ali. Comandos de movimento como /ORBIT, /PUSHIN e /DRONEREVEAL foram pensados para deslocamento no espaço, algo que uma imagem parada não mostra."
+  - question: "Usar minha própria foto muda a qualidade do resultado?"
+    answer: "Não. O comando controla a câmera, não a pessoa. Uma foto nítida e bem iluminada funciona tão bem quanto qualquer outra, seja sua ou de outra pessoa."
 ---
 
 Os **comandos de câmera do Google Flow** são etiquetas curtas que dizem à IA como enquadrar a cena, do drone lá de cima ao close no rosto. O resultado muda na hora: sai a selfie genérica, entra a foto com cara de produção.

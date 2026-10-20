@@ -9,6 +9,22 @@ image: "./images/Google-Flow.webp"
 imageAlt: "Google Flow"
 tags: ["Google Flow", "Veo 3.1", "IA de vídeo", "Google"]
 related: ["comandos-camera-google-flow", "google-ai-plus-para-estudantes", "plugin-higgsfield-chatgpt"]
+seoTitle: "Google Flow é grátis ou pago? Créditos e preços no Brasil"
+faq:
+  - question: "O Google Flow é grátis?"
+    answer: "Sim, com limites. A versão gratuita oferece 50 créditos por dia e roda o Veo 3.1. Os planos pagos aumentam o saldo mensal e liberam mais recursos."
+  - question: "Quanto custa o Google Flow no Brasil?"
+    answer: "O acesso vem dentro dos planos Google AI. O Plus custa R$ 24,99 por mês, o Pro custa R$ 96,99 e o Ultra parte de R$ 779,90."
+  - question: "Quantos vídeos dá para fazer de graça no Google Flow?"
+    answer: "Cerca de dois vídeos rápidos (modo Fast) por dia, já que cada um consome por volta de 20 dos 50 créditos diários. O modo Quality gasta cerca de 100 créditos por vídeo."
+  - question: "Onde ver os comandos do Google Flow?"
+    answer: "Os comandos de câmera ficam reunidos em outro guia: veja os comandos de câmera do Google Flow, com exemplos para cada movimento."
+  - question: "Qual modelo o Google Flow usa?"
+    answer: "O Flow usa o Veo 3.1 para vídeo com áudio nativo, o Nano Banana para imagens e o Gemini Omni Flash para edição por conversa."
+  - question: "O Google Flow funciona no celular?"
+    answer: "Sim. O Google anunciou o editor de vídeo do Flow em app dedicado, com estreia em beta no Android e chegada posterior ao iOS. A versão web continua disponível."
+  - question: "Quanto tempo dura um vídeo do Google Flow?"
+    answer: "Cada geração rende clipes de cerca de 8 segundos. Para vídeos maiores, o usuário estende a cena ou junta vários clipes."
 ---
 
 O **Google Flow**, estúdio de vídeo com inteligência artificial (IA) do Google, tem versão gratuita com 50 créditos por dia e usa o Veo 3.1, modelo que gera vídeo com áudio nativo. Os planos pagos começam em R$ 24,99 por mês no Brasil e ampliam créditos e recursos.
