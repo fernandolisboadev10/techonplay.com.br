@@ -3,7 +3,7 @@ title: "46 Comandos do ChatGPT para Criar Imagens Impressionantes"
 description: "46 comandos do ChatGPT para criar imagens mais criativas: ângulos de câmera, perspectiva, movimento e efeitos prontos para copiar."
 category: "Inteligência Artificial"
 date: 2026-09-26
-updated: 2026-09-27
+updated: 2026-10-19T20:58:00-03:00
 readingTime: "10 min"
 image: "./images/46-Comandos-do-ChatGPT-para-Criar-Imagens.webp"
 imageAlt: "46 Comandos do ChatGPT para Criar Imagens"
@@ -139,6 +139,8 @@ Veja abaixo os 46 comandos com botão de copiar em cada linha, prontos para cola
 | 44 | `/viralshot` | Composição incomum e chamativa para capturar atenção | 📋 Copiar |
 | 45 | `/scrollstopper` | Composição extremamente chamativa para interromper o scroll | 📋 Copiar |
 | 46 | `/behindthescene` | Mostra câmera, fotógrafo ou equipamento na imagem | 📋 Copiar |
+
+Guia completo: para editar uma foto sua, veja os [12 comandos do ChatGPT para editar fotos](/comandos-chatgpt-editar-fotos/), com prompt sugerido para cada um.
 
 Cole o comando no fim do seu prompt e complete com a descrição da cena. Combine no máximo dois ou três comandos por geração.
 
