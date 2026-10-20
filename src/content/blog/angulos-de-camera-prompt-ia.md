@@ -3,7 +3,7 @@ title: "Ângulos de câmera com IA: como mudar o ângulo da sua foto"
 description: "Envie sua foto ao ChatGPT ou ao Gemini, cole um comando como low angle ou high angle e veja a imagem em outro ângulo. Passo a passo para iniciantes."
 category: "Inteligência Artificial"
 date: 2026-10-20T07:15:00-03:00
-updated: 2026-10-20T09:00:00-03:00
+updated: 2026-10-20T09:40:00-03:00
 readingTime: "6 min"
 image: "./images/angulos-de-camera-prompt-ia.webp"
 imageAlt: "Fotógrafo agachado na rua aponta a câmera para cima, na direção de um arranha-céu de vidro, em ângulo baixo"
@@ -13,19 +13,38 @@ related: ["46-comandos-do-chatgpt", "comandos-camera-google-flow", "comandos-cha
 
 Dá para pegar uma foto sua, enviar para uma IA e pedir que ela apareça como se tivesse sido tirada de outro ângulo: de baixo para cima, de cima para baixo, de drone. Basta **enviar a foto e escrever um comando de ângulo**, como `low angle` ou `high angle`. Este guia mostra qual IA usar, o passo a passo e os textos prontos para copiar. Se você prefere atalhos com barra, como `/lowangle`, veja os [46 comandos do ChatGPT para imagens](/46-comandos-do-chatgpt/); para câmera em foto e vídeo do Google, os [40 comandos de câmera do Flow](/comandos-camera-google-flow/).
 
-Duas coisas para ter em mente desde já. A IA não "gira a câmera" da foto original: ela **desenha uma nova imagem** parecida com a sua, vista de outro lugar. Por isso o rosto, as roupas e o fundo podem mudar um pouco, e às vezes é preciso tentar duas ou três vezes. Além disso, os textos deste artigo são sugestões minhas, escritas a partir de guias publicados. Testei o pedido de ângulo baixo numa foto de exemplo, que você vê logo abaixo; os demais prompts não foram testados, e o resultado varia conforme a ferramenta e a versão. Pesquisa feita em 20/10/2026.
+Duas coisas para ter em mente desde já. A IA não "gira a câmera" da foto original: ela **desenha uma nova imagem** parecida com a sua, vista de outro lugar. Por isso o rosto, as roupas e o fundo podem mudar um pouco, e às vezes é preciso tentar duas ou três vezes. Além disso, os textos deste artigo são sugestões minhas, escritas a partir de guias publicados. Testei o comando `low angle` no ChatGPT e no Gemini com uma foto de exemplo, e os prints estão logo abaixo; os demais prompts não foram testados, e o resultado varia conforme a ferramenta e a versão. Pesquisa e testes feitos em 20/10/2026.
 
-## Veja na prática: antes e depois
+## Veja na prática: o mesmo comando no ChatGPT e no Gemini
 
-Esta é a foto de exemplo, de uma personagem fictícia criada por IA nas Cataratas do Iguaçu, em Foz do Iguaçu, na altura dos olhos:
+Para testar, usei esta foto de exemplo, de uma personagem fictícia criada por IA nas Cataratas do Iguaçu, em Foz do Iguaçu, tirada na altura dos olhos:
 
 ![Foto de exemplo de uma jovem de boné, jaqueta jeans e mochila na passarela das Cataratas do Iguaçu, fotografada na altura dos olhos](./images/angulos-camera-ia-foto-original.webp)
 
-Depois de enviar a foto e pedir um `low angle`, a IA devolveu a mesma cena com a câmera um pouco mais baixa:
+O teste foi simples: **enviei a foto e escrevi só `low angle`**, sem nenhuma frase de apoio. Mesma foto, mesmo comando, duas ferramentas.
 
-![A mesma jovem nas Cataratas do Iguaçu depois do pedido de low angle, com a câmera mais baixa, o rosto maior no quadro e mais céu ao fundo](./images/angulos-camera-ia-angulo-baixo.webp)
+### No ChatGPT
 
-Compare as duas: o rosto, o boné, a jaqueta, o corrimão verde e as quedas d'água continuam iguais, mas a câmera desceu, o rosto ganhou presença e entrou mais céu atrás. A mudança é **sutil**, e alguns detalhes mudaram sem ninguém pedir, como o pingente do colar, o desenho da bolsa e a posição da pessoa ao fundo. É o que acontece quando a IA redesenha a imagem. Se você quiser um efeito mais forte, peça uma câmera bem baixa, "quase na altura da cintura, olhando para cima".
+Enviei a foto pelo clipe de papel e digitei `low angle`. O print abaixo mostra a conversa: a foto enviada (miniatura no alto), o comando e o resultado.
+
+![Print do ChatGPT com a foto enviada, o comando low angle e a imagem devolvida, com a câmera abaixo da jovem olhando para cima e o céu azul ocupando boa parte do fundo](./images/angulos-camera-ia-chatgpt-low-angle.webp)
+
+O ChatGPT entendeu o ângulo com clareza: a câmera foi para baixo, olhando para cima, a personagem ficou em primeiro plano e o céu ganhou espaço no fundo. Ele ainda explicou em texto o que fez ("ângulo baixo, destacando a turista em primeiro plano").
+
+### No Gemini
+
+Fiz o mesmo no Gemini: enviei a foto pelo botão de "+" e digitei `low angle`, no modo Flash.
+
+![Print do Gemini com a foto enviada, o comando low angle e a imagem devolvida, com plano mais aberto mostrando a passarela das Cataratas do Iguaçu e a jovem em pé no centro](./images/angulos-camera-ia-gemini-low-angle.webp)
+
+O resultado do Gemini foi **mais suave**: ele abriu o plano, mostrando mais da passarela e do céu, e a câmera ficou um pouco mais baixa, mas a diferença para a foto original é menor do que no ChatGPT.
+
+### O que esse teste ensina
+
+- **Um comando curto já funciona.** Para começar, basta enviar a foto e escrever o ângulo.
+- **Cada ferramenta interpreta de um jeito.** O mesmo `low angle` virou um efeito forte numa e suave na outra. Se uma não agradar, teste a outra.
+- **Se o ângulo vier fraco, exagere o pedido.** Escreva, por exemplo, "câmera quase no chão, olhando para cima, céu ocupando o fundo".
+- **Confira os detalhes.** Como a IA redesenha a imagem, vale comparar rosto, roupas e fundo com a foto original antes de usar.
 
 ## Qual IA usar
 
@@ -41,11 +60,11 @@ Os dois têm versão gratuita com limite de imagens por dia, e esse limite muda 
 1. **Escolha uma foto boa para o teste.** Uma foto em que a pessoa ou o objeto aparece inteiro, bem iluminado e sem nada na frente funciona melhor.
 2. **Abra o ChatGPT ou o Gemini** e comece uma conversa nova.
 3. **Envie a foto** pelo clipe de papel ou pelo botão de "+".
-4. **Cole o prompt** do ângulo que você quer (os textos prontos estão mais abaixo).
+4. **Escreva o ângulo.** A versão mais simples é só o comando, como `low angle`, que foi o que usei no teste acima. Para ter mais controle, cole um dos prompts prontos que estão mais abaixo.
 5. **Envie e aguarde.** A imagem nova aparece na própria conversa.
 6. **Se não ficou como queria, peça o ajuste** na mesma conversa, dizendo o que mudar. Há exemplos na seção "Não ficou como queria?".
 
-O segredo está no passo 4. Em vez de escrever só `low angle`, o ideal é dizer três coisas: **qual ângulo você quer, o que deve continuar igual e que a imagem enviada é a base**. Assim a IA muda a posição da câmera sem trocar quem aparece na foto.
+O comando curto basta para testar. Quando quiser mais controle, o ideal é dizer três coisas: **qual ângulo você quer, o que deve continuar igual e que a imagem enviada é a base**. Assim a IA muda a posição da câmera sem trocar quem aparece na foto.
 
 ## Os 7 ângulos: qual comando escolher
 
