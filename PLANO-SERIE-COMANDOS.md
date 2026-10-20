@@ -14,6 +14,18 @@ Origem da estratégia: pilares `46-comandos-do-chatgpt` e `comandos-camera-googl
 - `date` com horário e offset, antes das 21h (ex.: `2026-10-21T07:10:00-03:00`).
 - Rodar `node scripts/audit-discover.mjs`, `node scripts/audit-links.mjs` se existir, e `npm run build`. **Só commitar e dar push se tudo passar.**
 
+## Padrão didático (aprovado pelo dono em 20/10/2026, modelo: `angulos-de-camera-prompt-ia`)
+
+Vale para todos os itens abaixo que ensinam a usar um comando ou prompt de imagem.
+
+- **Público: iniciante brasileiro** que quer enviar a própria foto, escrever o comando e ver o resultado. O artigo diz **qual IA usar** (ChatGPT e/ou Gemini), onde enviar a foto (clipe de papel no ChatGPT, "+" no Gemini) e traz **passo a passo numerado**. Nunca deixar o leitor sem saber onde colar o comando.
+- **Versão mais simples primeiro** (foto + comando curto, como `low angle`), depois o prompt completo como opção para mais controle. Molde do prompt completo: "use minha foto, mude só X, mantenha o resto".
+- **Prova real com prints**: mesma foto base e mesmo comando nas duas ferramentas, com o print da conversa de cada uma (foto enviada, comando, resultado) e uma descrição **honesta** do que saiu, inclusive quando o efeito é fraco ou difere entre as ferramentas. Nunca descrever um efeito que não se vê na imagem. Só afirmar "testei" para o que o dono de fato testou.
+- **Personagem de exemplo**: brasileiro(a) de cerca de 20 anos, visual descolado (boné etc.), cenário brasileiro (ex.: Cataratas do Iguaçu, em Foz do Iguaçu), sempre dito como personagem fictícia criada por IA. Reaproveitar a foto base já publicada (`angulos-camera-ia-foto-original.webp`) quando servir, para o leitor comparar entre artigos.
+- **Tabela de comandos com coluna "Copiar"** (coluna "Comando" com o termo em `código` e a célula `📋 Copiar`) e prompts em bloco ```prompt.
+- Seções fixas úteis: "Veja na prática" (prints), "Não ficou como queria? Peça o ajuste" (frases prontas para pedir correção na mesma conversa), "O que esperar" (limites: a IA redesenha a imagem, rosto e detalhes podem mudar, efeito às vezes sutil) e resumo em passos.
+- **Prints são do dono**: a rotina não tem acesso ao ChatGPT nem ao Gemini e não gera essas imagens. Ao publicar, escrever o artigo com a nota "não testei" e, no resumo final, entregar ao dono os dois prompts de teste (foto base + comando) para ele gerar e devolver os prints. Quando os prints chegarem, acrescentar a seção "Veja na prática", trocar a nota de teste e atualizar `updated`. Prints: recortar só a conversa (sem barra do navegador), converter para WebP e nomear `<tema>-chatgpt-<comando>.webp` e `<tema>-gemini-<comando>.webp`.
+
 ## Fila
 
 - [x] **1.** (2026-10-19, `comandos-chatgpt-editar-fotos`) 12 comandos do ChatGPT para editar fotos: /proshot, /newbg e mais
