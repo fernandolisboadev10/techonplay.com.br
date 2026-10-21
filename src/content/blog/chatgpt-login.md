@@ -85,7 +85,7 @@ Se a conta tiver sido suspensa ou desativada, o acesso fica bloqueado. Nesse cas
 
 ## O que fazer depois de entrar
 
-Com a conta ativa, veja [o que muda entre o ChatGPT grátis e os planos pagos](/chatgpt-gratis-ou-pago/) antes de assinar qualquer coisa. O próximo passo é aprender a pedir melhor. Se você ainda não sabe [o que significa GPT](/o-que-significa-gpt/), vale entender a tecnologia por trás do chat. Para praticar, teste os [46 comandos do ChatGPT para criar imagens](/comandos-do-chatgpt/) ou veja como gerar vídeo direto na conversa com o [plugin Higgsfield](/plugin-higgsfield-chatgpt/).
+Com a conta ativa, veja [o que muda entre o ChatGPT grátis e os planos pagos](/chatgpt-gratis-ou-pago/) antes de assinar qualquer coisa. O próximo passo é aprender a pedir melhor. Se você ainda não sabe [o que significa GPT](/o-que-significa-gpt/), vale entender a tecnologia por trás do chat. Para praticar, teste os [100 comandos do ChatGPT para criar imagens](/comandos-do-chatgpt/) ou veja como gerar vídeo direto na conversa com o [plugin Higgsfield](/plugin-higgsfield-chatgpt/).
 
 ## Perguntas frequentes
 

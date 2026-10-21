@@ -19,7 +19,7 @@ faq:
 
 Se você vende pela internet, sabe que a foto decide boa parte da venda. Um **prompt para foto de produto no ChatGPT** serve para pegar aquela foto tirada no celular, em cima da mesa da cozinha, e transformá-la em uma imagem de catálogo, de anúncio ou de rede social, sem contratar estúdio. O princípio é o mesmo dos [comandos do ChatGPT para editar fotos](/comandos-chatgpt-editar-fotos/): você envia a imagem e diz o que mudar e o que manter.
 
-Este guia é para iniciante e para pequeno comércio. São 8 cenários com comando curto e prompt completo, e a lista maior de atalhos de imagem fica nos [46 comandos do ChatGPT](/comandos-do-chatgpt/). Os prompts são sugestões minhas, adaptadas a uma lógica que a imprensa já descreveu: não os testei, então trate o primeiro resultado como rascunho. Consulta feita em 21/10/2026.
+Este guia é para iniciante e para pequeno comércio. São 8 cenários com comando curto e prompt completo, e a lista maior de atalhos de imagem fica nos [100 comandos do ChatGPT](/comandos-do-chatgpt/). Os prompts são sugestões minhas, adaptadas a uma lógica que a imprensa já descreveu: não os testei, então trate o primeiro resultado como rascunho. Consulta feita em 21/10/2026.
 
 ## Qual IA usar e onde colar o prompt
 

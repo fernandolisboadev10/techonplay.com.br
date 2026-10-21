@@ -79,7 +79,7 @@ Não vale para quem precisa de modelos de raciocínio mais avançados, análise 
 5.  **É estudante universitário:** compare com a oferta do Google, que dá [1 ano grátis de Google AI Plus para estudantes](/google-ai-plus-para-estudantes/).
 6.  **Quer testar sem pagar nada:** veja também o [DeepSeek, que tem chat gratuito](/deepseek-2026-guia-completo/) e é uma alternativa para comparar.
 
-Antes de pagar, aproveite o plano gratuito para aprender a pedir melhor. Os [46 comandos do ChatGPT para criar imagens](/comandos-do-chatgpt/) mostram como um pedido bem escrito rende mais do que um plano caro. E, se a sigla ainda gera dúvida, veja [o que significa GPT](/o-que-significa-gpt/).
+Antes de pagar, aproveite o plano gratuito para aprender a pedir melhor. Os [100 comandos do ChatGPT para criar imagens](/comandos-do-chatgpt/) mostram como um pedido bem escrito rende mais do que um plano caro. E, se a sigla ainda gera dúvida, veja [o que significa GPT](/o-que-significa-gpt/).
 
 ## Cuidado com ChatGPT Plus "baratinho"
 

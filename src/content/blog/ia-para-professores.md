@@ -90,7 +90,7 @@ O uso responsável vem antes da economia de tempo. Quatro cuidados valem para qu
 
 ## Qual ferramenta usar
 
-Para começar, qualquer assistente conversacional resolve. O [ChatGPT](/chatgpt-gratis-ou-pago/) e o Gemini têm planos gratuitos que dão conta da maioria das tarefas acima. Se você quer ideias de comandos para testar, a lista de [46 comandos do ChatGPT](/comandos-do-chatgpt/) tem boas inspirações.
+Para começar, qualquer assistente conversacional resolve. O [ChatGPT](/chatgpt-gratis-ou-pago/) e o Gemini têm planos gratuitos que dão conta da maioria das tarefas acima. Se você quer ideias de comandos para testar, a lista de [100 comandos do ChatGPT](/comandos-do-chatgpt/) tem boas inspirações.
 
 Teste com uma única tarefa por semana. Quando um prompt funcionar bem, salve-o e reutilize.
 

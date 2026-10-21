@@ -57,4 +57,4 @@ Se você ainda vai votar, veja também como [justificar a ausência e pagar a mu
 
 O objetivo do exercício não é mudar o seu voto. É chegar à urna sabendo explicar por que você pensa o que pensa, e o que as pessoas que discordam de você realmente dizem. Se o seu voto continuar o mesmo, ele agora tem mais consistência. Se mudar, mudou por um argumento que você entendeu.
 
-Quer aproveitar melhor o chatbot em outros temas? Veja os [46 comandos do ChatGPT](/comandos-do-chatgpt/) a comparação entre os [planos grátis e pagos](/chatgpt-gratis-ou-pago/) e as [ferramentas de IA do Google](/melhores-ferramentas-de-ia-do-google-2026/), que também servem para esse tipo de pesquisa.
+Quer aproveitar melhor o chatbot em outros temas? Veja os [100 comandos do ChatGPT](/comandos-do-chatgpt/) a comparação entre os [planos grátis e pagos](/chatgpt-gratis-ou-pago/) e as [ferramentas de IA do Google](/melhores-ferramentas-de-ia-do-google-2026/), que também servem para esse tipo de pesquisa.

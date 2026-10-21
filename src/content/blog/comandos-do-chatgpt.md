@@ -1,10 +1,10 @@
 ---
 title: "Comandos do ChatGPT: uma palavra no prompt muda sua foto"
-description: "Comandos do ChatGPT para imagens: 46 atalhos de ângulo, perspectiva e efeito. Copie, cole no prompt e veja sua foto mudar já na primeira tentativa."
+description: "Comandos do ChatGPT para imagens: 100 atalhos de ângulo, luz, lente e efeito. Copie, cole no prompt e veja sua foto mudar já na primeira tentativa."
 category: "Inteligência Artificial"
 date: 2026-09-26
-updated: 2026-10-21T19:00:00-03:00
-readingTime: "10 min"
+updated: 2026-10-21T19:11:00-03:00
+readingTime: "13 min"
 image: "./images/comandos-do-chatgpt.webp"
 imageAlt: "Grade com nove fotos de uma jovem de moletom preto em ângulos e efeitos diferentes, cada uma com o nome do comando do ChatGPT"
 tags: ["ChatGPT", "Comandos", "Geração de imagens", "Prompts", "IA"]
@@ -29,7 +29,7 @@ Os **comandos do ChatGPT para criar imagens** são atalhos de texto que definem 
 
 O resultado aparece na primeira tentativa: uma selfie comum vira foto de capa de revista só com a troca do comando de câmera.
 
-Este guia reúne os 46 comandos do ChatGPT organizados por categoria, com tabela comparativa e lista completa para copiar.
+Este guia reúne os 100 comandos do ChatGPT organizados por categoria, com tabela comparativa e lista completa para copiar.
 
 ## O que são os comandos do ChatGPT para imagens e por que funcionam
 
@@ -72,7 +72,17 @@ A última leva de comandos foi pensada para redes sociais, onde a imagem precisa
 -   **/scrollstopper**: composição propositalmente chamativa
 -   **/behindthescene**: mostra câmera e equipamento de produção na foto
 
-A tabela abaixo resume as sete categorias e quando usar cada uma.
+## Comandos de iluminação, lentes e estilo
+
+Além de câmera e efeito, a lista ganhou atalhos que mexem na luz, na lente e no visual da foto. São os que mais mudam o clima da imagem sem alterar a cena.
+
+-   **/goldenhour** e **/bluehour**: luz quente de fim de tarde ou azulada depois do pôr do sol
+-   **/bokeh** e **/portraitlens**: fundo desfocado e retrato com lente de 85 mm
+-   **/closeup** e **/fullbody**: rosto preenchendo o quadro ou corpo inteiro visível
+-   **/film35mm** e **/polaroid**: granulação de filme analógico ou moldura de foto instantânea
+-   **/doubleexposure** e **/zoomburst**: duas imagens sobrepostas ou zoom radial com linhas de velocidade
+
+A tabela abaixo resume as treze categorias e quando usar cada uma.
 
 | 📊 Categoria | 🎬 Exemplos | ✅ Melhor uso | ⏱️ Dificuldade | 📈 Impacto |
 | --- | --- | --- | --- | --- |
@@ -83,8 +93,14 @@ A tabela abaixo resume as sete categorias e quando usar cada uma.
 | 🚪 Revelação e transições | /revealshot, /doorreveal, /matchcut | Sequências e carrosséis | Avançada | Médio |
 | 🎞️ Cinematográficos e surreais | /portalshot, /cloneeffect, /silhouettepov | Posts dramáticos e artísticos | Média | Alto |
 | 🔥 Conteúdo viral | /viralshot, /scrollstopper, /behindthescene | Reels e posts para redes sociais | Fácil | Alto |
+| 💡 Iluminação e atmosfera | /goldenhour, /neonglow, /rimlight | Retratos com clima e profundidade | Fácil | Alto |
+| 🔍 Lentes e foco | /bokeh, /macro, /telephoto | Retratos e fotos de produto | Média | Médio |
+| 🖼️ Enquadramento e composição | /closeup, /fullbody, /negativespace | Fotos de perfil e feed | Fácil | Alto |
+| 🎨 Estilo e época | /film35mm, /polaroid, /vintage80s | Estética para redes sociais | Fácil | Alto |
+| 🌧️ Clima e ambiente | /fog, /snow, /nightcity | Cenas dramáticas e sazonais | Fácil | Médio |
+| ✨ Cenas criativas | /doubleexposure, /papercut, /zoomburst | Posts artísticos e capas | Avançada | Alto |
 
-Comandos testados como texto livre dentro do prompt de geração de imagem. Combine no máximo dois ou três por geração.
+Os comandos funcionam como texto livre dentro do prompt de geração de imagem e o resultado varia a cada geração. Combine no máximo dois ou três por geração.
 
 ## Como usar os comandos do ChatGPT no prompt
 
@@ -122,11 +138,11 @@ Use a foto anexada como referência e mantenha meu rosto e meu cabelo. Cena: [se
 
 Quando o resultado agradar, repita o mesmo prompt trocando só o comando e compare. É a forma mais rápida de descobrir qual atalho combina com o seu estilo.
 
-## Lista completa dos 46 comandos para copiar
+## Lista completa dos 100 comandos para copiar
 
-Veja abaixo os 46 comandos com botão de copiar em cada linha, prontos para colar direto no prompt.
+Veja abaixo os 100 comandos com botão de copiar em cada linha, prontos para colar direto no prompt.
 
-📋 Copiar todos os 46
+📋 Copiar todos os 100
 
 | # | 🏷️ Comando | 📝 O que faz | ⚡ Ação |
 | --- | --- | --- | --- |
@@ -183,6 +199,66 @@ Veja abaixo os 46 comandos com botão de copiar em cada linha, prontos para cola
 | 44 | `/viralshot` | Composição incomum e chamativa para capturar atenção | 📋 Copiar |
 | 45 | `/scrollstopper` | Composição extremamente chamativa para interromper o scroll | 📋 Copiar |
 | 46 | `/behindthescene` | Mostra câmera, fotógrafo ou equipamento na imagem | 📋 Copiar |
+| Iluminação e atmosfera |
+| 47 | `/goldenhour` | Luz dourada de fim de tarde, tons quentes e sombras longas | 📋 Copiar |
+| 48 | `/bluehour` | Luz azulada logo após o pôr do sol, clima calmo | 📋 Copiar |
+| 49 | `/backlight` | Luz forte atrás do personagem, com contorno brilhante no cabelo | 📋 Copiar |
+| 50 | `/rimlight` | Contorno fino de luz nas bordas do personagem, fundo escuro | 📋 Copiar |
+| 51 | `/neonglow` | Luzes de neon coloridas refletindo no rosto e no ambiente | 📋 Copiar |
+| 52 | `/softbox` | Luz suave e difusa de estúdio, sem sombras duras | 📋 Copiar |
+| 53 | `/dramaticlight` | Contraste alto e sombras marcadas, clima de cinema | 📋 Copiar |
+| 54 | `/lensflare` | Reflexos de luz na lente quando o sol aparece no quadro | 📋 Copiar |
+| 55 | `/volumetriclight` | Raios de luz visíveis atravessando fumaça ou névoa | 📋 Copiar |
+| 56 | `/moonlight` | Cena noturna iluminada pela lua, em tons frios | 📋 Copiar |
+| Lentes e foco |
+| 57 | `/macro` | Detalhe extremo de perto, textura nítida e fundo borrado | 📋 Copiar |
+| 58 | `/bokeh` | Fundo desfocado com pontos de luz arredondados | 📋 Copiar |
+| 59 | `/telephoto` | Lente longa, fundo comprimido e personagem em destaque | 📋 Copiar |
+| 60 | `/wideangle` | Lente grande-angular, ambiente amplo e linhas esticadas | 📋 Copiar |
+| 61 | `/anamorphic` | Aparência de lente de cinema, reflexos horizontais e tela larga | 📋 Copiar |
+| 62 | `/rackfocus` | Primeiro plano nítido e personagem desfocado ao fundo | 📋 Copiar |
+| 63 | `/deepfocus` | Tudo nítido, do primeiro plano ao horizonte | 📋 Copiar |
+| 64 | `/portraitlens` | Retrato com lente de 85 mm, rosto nítido e fundo suave | 📋 Copiar |
+| Enquadramento e composição |
+| 65 | `/closeup` | Rosto e ombros preenchendo o quadro | 📋 Copiar |
+| 66 | `/extremecloseup` | Foco em um detalhe do rosto, como olhos ou lábios | 📋 Copiar |
+| 67 | `/fullbody` | Corpo inteiro visível, do cabelo aos pés | 📋 Copiar |
+| 68 | `/overtheshoulder` | Câmera atrás do ombro, mostrando o que o personagem olha | 📋 Copiar |
+| 69 | `/centeredframe` | Personagem no centro do quadro, composição simétrica | 📋 Copiar |
+| 70 | `/ruleofthirds` | Personagem em um terço do quadro, com espaço livre ao lado | 📋 Copiar |
+| 71 | `/negativespace` | Muito espaço vazio ao redor, personagem pequeno e minimalista | 📋 Copiar |
+| 72 | `/symmetry` | Cenário espelhado, simetria perfeita dos dois lados | 📋 Copiar |
+| 73 | `/frameinframe` | Personagem enquadrado por porta, janela ou arco | 📋 Copiar |
+| 74 | `/leadinglines` | Linhas do cenário levam o olhar até o personagem | 📋 Copiar |
+| Estilo e época |
+| 75 | `/film35mm` | Granulação e cores de filme analógico de 35 mm | 📋 Copiar |
+| 76 | `/polaroid` | Moldura branca e cores desbotadas de foto instantânea | 📋 Copiar |
+| 77 | `/vintage80s` | Estética dos anos 80, cores saturadas e visual retrô | 📋 Copiar |
+| 78 | `/blackandwhite` | Preto e branco com contraste forte | 📋 Copiar |
+| 79 | `/cinematicteal` | Tons de azul-petróleo e laranja, como em filmes | 📋 Copiar |
+| 80 | `/editorial` | Pose e iluminação de revista de moda | 📋 Copiar |
+| 81 | `/streetphoto` | Foto espontânea de rua, estilo urbano e documental | 📋 Copiar |
+| 82 | `/documentary` | Visual cru e realista, como registro de reportagem | 📋 Copiar |
+| 83 | `/vhsstyle` | Ruído, cores borradas e aparência de fita VHS | 📋 Copiar |
+| 84 | `/y2kstyle` | Estética do início dos anos 2000, flash direto e brilho | 📋 Copiar |
+| Clima e ambiente |
+| 85 | `/fog` | Névoa baixa, atmosfera misteriosa e sensação de profundidade | 📋 Copiar |
+| 86 | `/snow` | Neve caindo, cenário branco e frio | 📋 Copiar |
+| 87 | `/storm` | Céu carregado, vento e clima de tempestade | 📋 Copiar |
+| 88 | `/nightcity` | Cidade à noite, com luzes, trânsito e reflexos | 📋 Copiar |
+| 89 | `/sunrise` | Amanhecer com luz suave e céu rosado | 📋 Copiar |
+| 90 | `/heatwave` | Calor intenso, luz forte de verão e ar tremido | 📋 Copiar |
+| Cenas criativas |
+| 91 | `/doubleexposure` | Duas imagens sobrepostas, silhueta preenchida por paisagem | 📋 Copiar |
+| 92 | `/floatingobject` | Objetos flutuando ao redor do personagem, sem gravidade | 📋 Copiar |
+| 93 | `/splitscreen` | Tela dividida em duas cenas ou dois ângulos | 📋 Copiar |
+| 94 | `/beforeafter` | Comparação lado a lado, antes e depois | 📋 Copiar |
+| 95 | `/papercut` | Cena montada em camadas de papel recortado | 📋 Copiar |
+| 96 | `/liquidmotion` | Água ou líquido congelado em movimento ao redor | 📋 Copiar |
+| 97 | `/smokeeffect` | Fumaça colorida envolvendo o personagem | 📋 Copiar |
+| 98 | `/glitcheffect` | Distorção digital, falhas de pixel e cores deslocadas | 📋 Copiar |
+| 99 | `/dreamscape` | Cenário onírico, cores suaves e elementos impossíveis | 📋 Copiar |
+| 100 | `/zoomburst` | Zoom radial, com linhas de velocidade saindo do centro | 📋 Copiar |
 
 Guia completo: para editar uma foto sua, veja os [12 comandos do ChatGPT para editar fotos](/comandos-chatgpt-editar-fotos/), com prompt sugerido para cada um.
 
@@ -192,7 +268,7 @@ Cole o comando no fim do seu prompt e complete com a descrição da cena. Combin
 
 ## Conclusão
 
-Os 46 comandos do ChatGPT para criar imagens parecem muita coisa, mas cinco ou seis já bastam para mudar o padrão do que sai do ChatGPT. Comece por **/lowangle**, **/groundreflection** e **/silhouettepov** e compare com um prompt sem comando.
+Os 100 comandos do ChatGPT para criar imagens parecem muita coisa, mas cinco ou seis já bastam para mudar o padrão do que sai do ChatGPT. Comece por **/lowangle**, **/groundreflection** e **/silhouettepov** e compare com um prompt sem comando.
 
 A tendência é que as ferramentas de geração de imagem ampliem este tipo de controle por texto nas próximas atualizações. Vale salvar a lista e revisitar a cada novo modelo testado. Para quem trabalha também com vídeo, confira o guia de [comandos de câmera do Google Flow](/comandos-camera-google-flow/), com 40 atalhos para movimento de câmera, e o [plugin Higgsfield no ChatGPT](/plugin-higgsfield-chatgpt/), que gera vídeo direto no chat. Se a sigla ainda confunde, veja [o que significa GPT](/o-que-significa-gpt/).
 
