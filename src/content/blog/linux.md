@@ -1,7 +1,7 @@
 ---
 title: "O que é Linux? Distribuições, comandos, atalhos e segurança"
 description: "O que é Linux e por que roda servidores e celulares. Veja distribuições, comandos, atalhos, segurança e como testar sem apagar o Windows."
-category: "Tutoriais"
+category: "Sistemas"
 date: 2026-09-30T09:45:00-03:00
 updated: 2026-09-30
 readingTime: "10 min"

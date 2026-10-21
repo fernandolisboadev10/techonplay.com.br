@@ -8,6 +8,7 @@ import CategoryBlock from '../components/CategoryBlock.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Pagination from '../components/Pagination.astro';
 import StoriesStrip from '../components/StoriesStrip.astro';
+import ThemeCloud from '../components/ThemeCloud.astro';
 import { categories, categoryHref } from '../data/categories';
 import { isPublished, sortByActivity } from '../utils/posts';
 
@@ -49,6 +50,11 @@ const blocks = categories
       </section>
 
       <StoriesStrip />
+
+      <section class="container themes" aria-labelledby="themes-title">
+        <SectionHead title="Temas em alta" id="themes-title" />
+        <ThemeCloud variant="home" />
+      </section>
 
       {blocks.length > 0 && (
         <div class="container blocks">
@@ -115,6 +121,10 @@ const blocks = categories
   .more-posts:hover {
     border-color: var(--violet);
     color: var(--violet);
+  }
+
+  .themes {
+    padding-block: 8px 40px;
   }
 
   .blocks {

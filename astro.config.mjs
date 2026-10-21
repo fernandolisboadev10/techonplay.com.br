@@ -5,17 +5,21 @@ import sitemap from '@astrojs/sitemap';
 import { unified } from '@astrojs/markdown-remark';
 import rehypeExternalLinks from 'rehype-external-links';
 import remarkPromptBox from './src/plugins/remark-prompt-box.mjs';
+import { themes, matchesTheme, MIN_THEME_POSTS } from './src/data/themes.mjs';
 
 const blogDir = new URL('./src/content/blog/', import.meta.url);
 const dateBySlug = new Map();
 const postsPerCategory = new Map();
+const livePosts = [];
 
 for (const file of readdirSync(blogDir)) {
   if (!file.endsWith('.md')) continue;
   const content = readFileSync(new URL(file, blogDir), 'utf-8');
   const match = content.match(/^updated:\s*(\S+)/m) ?? content.match(/^date:\s*(\S+)/m);
-  if (new Date(content.match(/^date:s*(S+)/m)?.[1] ?? 0) > new Date()) continue; // scheduled, not live yet
+  if (new Date(content.match(/^date:\s*(\S+)/m)?.[1] ?? 0) > new Date()) continue; // scheduled, not live yet
   const cat = content.match(/^category:\s*"([^"\r\n]+)"/m);
+  const tagLine = content.match(/^tags:\s*\[(.*)\]/m);
+  livePosts.push({ id: file.replace(/\.md$/, ''), tags: tagLine ? tagLine[1].split(',').map((t) => t.trim().replace(/^["']|["']$/g, '')) : [] });
   if (cat) postsPerCategory.set(cat[1].trim(), (postsPerCategory.get(cat[1].trim()) ?? 0) + 1);
   if (match) {
     dateBySlug.set(file.replace(/\.md$/, ''), new Date(match[1]));
@@ -51,11 +55,16 @@ export default defineConfig({
   ],
   integrations: [
     sitemap({
-      // Category pages with fewer than 2 posts are noindex, so keep them out of the sitemap.
+      // Category pages with fewer than 2 posts (and theme pages with fewer than MIN_THEME_POSTS) are noindex, so keep them out of the sitemap.
       filter(page) {
+        const th = new URL(page).pathname.match(/^\/tema\/([^/]+)\/?$/);
+        if (th) {
+          const theme = themes.find((x) => x.slug === th[1]);
+          return !!theme && livePosts.filter((p) => matchesTheme(theme, p.id, p.tags)).length >= MIN_THEME_POSTS;
+        }
         const m = new URL(page).pathname.match(/^\/categoria\/([^/]+)\/?$/);
         if (!m) return true;
-        const names = { 'inteligencia-artificial': 'Inteligência Artificial', jogos: 'Jogos', tutoriais: 'Tutoriais', dicas: 'Dicas', curiosidades: 'Curiosidades', reviews: 'Reviews', apps: 'Apps', tendencias: 'Tendências' };
+        const names = { 'inteligencia-artificial': 'Inteligência Artificial', jogos: 'Jogos', tutoriais: 'Tutoriais', dicas: 'Dicas', curiosidades: 'Curiosidades', reviews: 'Reviews', sistemas: 'Sistemas', apps: 'Apps', tendencias: 'Tendências', educacao: 'Educação' };
         return (postsPerCategory.get(names[m[1]]) ?? 0) >= 2;
       },
       serialize(item) {

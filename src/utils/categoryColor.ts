@@ -3,6 +3,7 @@ const COLORS: Record<string, string> = {
   "Inteligência Artificial": '#6d28d9',
   "Jogos": '#be123c',
   "Reviews": '#b45309',
+  "Sistemas": '#4d7c0f',
   "Apps": '#2563eb',
   "Tutoriais": '#0f766e',
   "Dicas": '#15803d',

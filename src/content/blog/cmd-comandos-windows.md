@@ -1,7 +1,7 @@
 ---
 title: "CMD do Windows: 20 comandos para disco, vírus e tarefas agendadas"
 description: "Veja 20 comandos do cmd do Windows para checar o disco, varrer vírus e criar tarefas agendadas com script. Todos prontos para copiar."
-category: "Tutoriais"
+category: "Sistemas"
 date: 2026-09-28
 updated: 2026-09-28
 readingTime: "7 min"

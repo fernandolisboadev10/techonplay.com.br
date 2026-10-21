@@ -1,7 +1,7 @@
 ---
 title: "Atalho para limpar arquivos temporários do Windows (%temp%)"
 description: "Qual o atalho para apagar arquivos temporários do PC ou notebook? Digite %temp% no Win+R, apague tudo em 1 minuto e libere gigabytes sem programas."
-category: "Tutoriais"
+category: "Sistemas"
 date: 2026-09-22
 updated: 2026-10-10T12:00:00-03:00
 readingTime: "5 min"

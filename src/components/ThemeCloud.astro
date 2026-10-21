@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+import { isPublished } from '../utils/posts';
+import { themes, themeHref, matchesTheme, MIN_THEME_POSTS } from '../data/themes.mjs';
+
+interface Props {
+  // home: faixa "Temas em alta"; post: só os temas do artigo; footer: lista compacta.
+  variant?: 'home' | 'post' | 'footer';
+  slug?: string;
+  tags?: string[];
+  limit?: number;
+}
+const { variant = 'home', slug = '', tags = [], limit } = Astro.props;
+
+const all = await getCollection('blog', isPublished);
+let list = themes
+  .map((theme) => ({
+    theme,
+    count: all.filter((p) => matchesTheme(theme, p.id, p.data.tags ?? [])).length,
+  }))
+  .filter((x) => x.count >= MIN_THEME_POSTS);
+if (variant === 'post') list = list.filter((x) => matchesTheme(x.theme, slug, tags));
+list.sort((a, b) => b.count - a.count || a.theme.name.localeCompare(b.theme.name));
+if (limit) list = list.slice(0, limit);
+
+const max = Math.max(...list.map((x) => x.count), 1);
+const size = (count: number) => (count >= max * 0.66 ? 'lg' : count >= max * 0.4 ? 'md' : 'sm');
+---
+{list.length > 0 && (
+  <nav class:list={['cloud', variant]} aria-label={variant === 'post' ? 'Temas deste artigo' : 'Temas do blog'}>
+    {list.map(({ theme, count }) => (
+      <a class={size(count)} href={themeHref(theme.slug)} title={`${count} artigos`}>
+        {theme.name}{variant === 'home' && <span class="n">{count}</span>}
+      </a>
+    ))}
+  </nav>
+)}
+
+<style>
+  .cloud {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 10px;
+  }
+
+  .cloud a {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-weight: 600;
+    line-height: 1.2;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+  }
+
+  .cloud a:hover {
+    color: var(--violet);
+    border-color: var(--violet);
+  }
+
+  .cloud a.sm { font-size: 0.82rem; }
+  .cloud a.md { font-size: 0.95rem; }
+  .cloud a.lg { font-size: 1.1rem; color: var(--ink-strong); }
+
+  .n {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+
+  /* Rodapé e artigo: botões menores e sem variação de tamanho. */
+  .footer a,
+  .post a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    padding: 6px 12px;
+    color: var(--ink-soft);
+  }
+</style>

@@ -1,7 +1,7 @@
 ---
 title: "Linux Mint 23: leitor de ebooks e calendário próprios em dezembro"
 description: "Linux Mint 23 chega no Natal de 2026 com o leitor Xepub e o calendário Clockenstein. Veja o que muda para quem usa Windows e como testar sem instalar."
-category: "Apps"
+category: "Sistemas"
 date: 2026-09-16
 updated: 2026-09-30T16:10:00-03:00
 readingTime: "5 min"

@@ -1,0 +1,122 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import ThemeCloud from '../../components/ThemeCloud.astro';
+import { isPublished, sortByActivity } from '../../utils/posts';
+import { themes, matchesTheme, MIN_THEME_POSTS } from '../../data/themes.mjs';
+
+export async function getStaticPaths() {
+  const all = sortByActivity(await getCollection('blog', isPublished));
+  return themes.map((theme) => ({
+    params: { slug: theme.slug },
+    props: { theme, posts: all.filter((p) => matchesTheme(theme, p.id, p.data.tags ?? [])) },
+  }));
+}
+
+const { theme, posts } = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: theme.title,
+  description: theme.description,
+  url: new URL(Astro.url.pathname, Astro.site).toString(),
+  inLanguage: 'pt-BR',
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: posts.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: new URL(`/${p.id}/`, Astro.site).toString(),
+      name: p.data.title,
+    })),
+  },
+};
+---
+<BaseLayout
+  title={theme.title}
+  description={theme.description}
+  image={posts[0]?.data.image?.src}
+  noindex={posts.length < MIN_THEME_POSTS}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <div class="container">
+    <header class="page-header">
+      <p class="crumbs"><a href="/">Início</a> / Temas / {theme.name}</p>
+      <h1>{theme.name}</h1>
+      <p>{theme.intro}</p>
+    </header>
+
+    <div class="posts">
+      {posts.map((post) => (
+        <PostCard
+          slug={post.id}
+          title={post.data.title}
+          description={post.data.description}
+          category={post.data.category}
+          date={post.data.date}
+          readingTime={post.data.readingTime}
+          image={post.data.image}
+          imageAlt={post.data.imageAlt}
+        />
+      ))}
+    </div>
+
+    <section class="other" aria-labelledby="other-title">
+      <h2 id="other-title">Outros temas</h2>
+      <ThemeCloud variant="footer" />
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    padding-block: 48px 24px;
+    max-width: 60ch;
+  }
+
+  .crumbs {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin: 0 0 8px;
+  }
+
+  .crumbs a {
+    color: var(--violet);
+    text-decoration: none;
+  }
+
+  .page-header p:not(.crumbs) {
+    color: var(--ink-soft);
+    margin-top: 8px;
+  }
+
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding-bottom: 16px;
+  }
+
+  .other {
+    padding-block: 32px 48px;
+  }
+
+  .other h2 {
+    font-size: 1.1rem;
+    margin: 0 0 14px;
+  }
+
+  @media (max-width: 860px) {
+    .posts {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .posts {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

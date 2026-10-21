@@ -1,5 +1,6 @@
 ---
 import { socials } from '../data/socials';
+import ThemeCloud from './ThemeCloud.astro';
 const categories = [
   { label: 'Início', href: '/' },
   { label: 'Inteligência Artificial', href: '/categoria/inteligencia-artificial/' },
@@ -8,6 +9,7 @@ const categories = [
   { label: 'Dicas', href: '/categoria/dicas/' },
   { label: 'Curiosidades', href: '/categoria/curiosidades/' },
   { label: 'Reviews', href: '/categoria/reviews/' },
+  { label: 'Sistemas', href: '/categoria/sistemas/' },
   { label: 'Apps', href: '/categoria/apps/' },
   { label: 'Tendências', href: '/categoria/tendencias/' },
   { label: 'Educação', href: '/categoria/educacao/' },
@@ -58,6 +60,11 @@ const quickLinks = [
       </ul>
     </div>
 
+    <div>
+      <p class="col-title">Temas</p>
+      <ThemeCloud variant="footer" limit={8} />
+    </div>
+
   </div>
 
   <div class="bottom">
@@ -80,7 +87,7 @@ const quickLinks = [
 
   .grid {
     display: grid;
-    grid-template-columns: 1.6fr 1fr 1.5fr;
+    grid-template-columns: 1.6fr 1fr 1.5fr 1.4fr;
     gap: 40px;
     padding-block: 56px 40px;
   }

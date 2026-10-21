@@ -29,11 +29,11 @@ export const categories: Category[] = [
   {
     slug: 'tutoriais',
     name: 'Tutoriais',
-    title: 'Tutoriais: passo a passo para Windows e tecnologia',
+    title: 'Tutoriais: passo a passo de IA, contas e serviços',
     description:
-      'Passo a passo para Windows e tecnologia do dia a dia: comandos do CMD, limpeza do PC e dicas práticas para resolver problemas sem complicação.',
+      'Passo a passo para entrar e configurar serviços do dia a dia: login do ChatGPT, NotebookLM, Skills do Gemini e justificativa eleitoral, sem complicação.',
     intro:
-      'Guias práticos, com etapas numeradas, para resolver problemas comuns no computador sem instalar programas nem depender de terceiros.',
+      'Guias práticos, com etapas numeradas, para resolver tarefas do dia a dia. Para Windows e Linux, veja a categoria Sistemas.',
   },
   {
     slug: 'dicas',
@@ -61,6 +61,15 @@ export const categories: Category[] = [
       'Reviews e análises de celulares, gadgets e lançamentos, com ficha técnica, preço no Brasil e se vale a pena: Galaxy A57, iPhone Duo, Tesla Roadster e mais.',
     intro:
       'Análises com ficha técnica, comparativos com a geração anterior e preço atualizado no Brasil, para você decidir se o aparelho vale o investimento.',
+  },
+  {
+    slug: 'sistemas',
+    name: 'Sistemas',
+    title: 'Sistemas: Windows, Linux, comandos e configuração',
+    description:
+      'Windows e Linux explicados do básico ao avançado: comandos do CMD e do terminal, atalhos, limpeza do PC, distribuições e configuração, com passo a passo.',
+    intro:
+      'Tecnologia pura e raiz: guias de Windows e Linux com comandos, atalhos e configurações explicados passo a passo, para você entender o que o sistema está fazendo e ter controle da máquina.',
   },
   {
     slug: 'apps',

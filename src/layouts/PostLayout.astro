@@ -5,6 +5,7 @@ import BaseLayout from './BaseLayout.astro';
 import AuthorBio from '../components/AuthorBio.astro';
 import ShareButtons from '../components/ShareButtons.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
+import ThemeCloud from '../components/ThemeCloud.astro';
 import PostNav from '../components/PostNav.astro';
 import TableOfContents from '../components/TableOfContents.astro';
 import ReadingProgress from '../components/ReadingProgress.astro';
@@ -129,6 +130,7 @@ const breadcrumbSchema = {
         <PostNav prev={prev} next={next} />
 
         <AuthorBio />
+        <ThemeCloud variant="post" slug={Astro.props.slug} tags={tags} />
         <RelatedPosts slug={Astro.props.slug} category={category} tags={tags} related={related} />
       </div>
     </article>
