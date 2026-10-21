@@ -2,7 +2,7 @@
 title: "Prompt para foto de produto no ChatGPT: 8 cenários prontos"
 description: "Envie a foto do seu produto ao ChatGPT e use 8 prompts prontos: fundo branco, lifestyle, mesa, embalagem e mais, com passo a passo para pequeno comércio."
 category: "Inteligência Artificial"
-date: 2026-10-21T09:20:00-03:00
+date: 2026-10-22T07:00:00-03:00
 readingTime: "7 min"
 image: "./images/prompt-foto-de-produto-chatgpt.webp"
 imageAlt: "Lojista fotografa uma caneca de cerâmica artesanal com o celular num tripé, diante de um fundo branco, com o notebook ao lado"
