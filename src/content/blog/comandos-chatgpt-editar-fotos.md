@@ -4,10 +4,10 @@ seoTitle: "Editar foto com ChatGPT: 12 comandos como /proshot e /newbg"
 description: "Envie sua foto ao ChatGPT e cole um comando como /proshot ou /newbg para melhorar o retrato ou trocar o fundo. Passo a passo e 12 comandos prontos."
 category: "Inteligência Artificial"
 date: 2026-10-19T20:55:00-03:00
-updated: 2026-10-21T09:21:00-03:00
+updated: 2026-10-21T16:31:00-03:00
 readingTime: "7 min"
 image: "./images/comandos-chatgpt-editar-fotos.webp"
-imageAlt: "Homem edita um retrato no notebook e no celular, com a foto da mulher antes e depois da troca de fundo"
+imageAlt: "Montagem dividida ao meio com uma mulher loira em Copacabana: à esquerda a foto comum de celular, com sol forte; à direita a mesma foto editada, com luz dourada de fim de tarde e fundo desfocado"
 tags: ["ChatGPT", "Comandos", "Editar fotos", "IA"]
 related: ["46-comandos-do-chatgpt", "angulos-de-camera-prompt-ia", "trend-anos-80-ia-foto-prompt", "comandos-camera-google-flow"]
 faq:
@@ -23,7 +23,55 @@ faq:
 
 Dá para enviar uma foto sua ao ChatGPT e pedir uma mudança com **uma palavra só**: melhorar o retrato, trocar o fundo, mudar a luz. Basta **enviar a foto e escrever um comando com barra**, como `/proshot` ou `/newbg`. Este guia mostra como editar foto com o ChatGPT: o passo a passo, os 12 comandos e os textos prontos para copiar. Se você procura os atalhos de ângulo e perspectiva, veja os [46 comandos do ChatGPT para imagens](/46-comandos-do-chatgpt/); para mudar só o ângulo da câmera, o [guia de ângulos de câmera com IA](/angulos-de-camera-prompt-ia/) explica com exemplos.
 
-Duas coisas para ter em mente desde já. Esses comandos **não são um recurso oficial** do ChatGPT: são uma convenção popular, e o modelo lê a palavra e entende o pedido, então o resultado muda de uma geração para outra. E a IA **redesenha** a imagem em vez de só retocá-la, por isso o rosto e os detalhes podem mudar um pouco. Os textos deste artigo são sugestões, escritas a partir de guias publicados, e ainda não testei cada comando por conta própria. Consulta feita em 21/10/2026, e a fonte não informa qual versão do modelo foi usada.
+Duas coisas para ter em mente desde já. Esses comandos **não são um recurso oficial** do ChatGPT: são uma convenção popular, e o modelo lê a palavra e entende o pedido, então o resultado muda de uma geração para outra. E a IA **redesenha** a imagem em vez de só retocá-la, por isso o rosto e os detalhes podem mudar um pouco. Os textos deste artigo são sugestões, escritas a partir de guias publicados. Testei `/proshot`, `/newbg`, `/hairstyles` e `/chibi` no ChatGPT com uma foto de exemplo, e os prints estão logo abaixo; os demais comandos não foram testados, e o resultado varia conforme a versão do modelo, que a fonte não informa. Pesquisa e testes feitos em 21/10/2026.
+
+## Veja na prática: quatro comandos no ChatGPT
+
+Para testar, usei esta foto de exemplo, de uma personagem fictícia criada por IA, no calçadão de Copacabana, no Rio de Janeiro. De propósito, ela tem cara de foto comum de celular: sol forte de meio-dia, sombras marcadas e um fundo movimentado.
+
+![Mulher loira de cabelo ondulado, camisa azul-clara e regata branca no calçadão de Copacabana, em foto comum de celular com sol forte](./images/editar-fotos-foto-original.webp)
+
+O teste foi simples: **enviei a foto pelo clipe de papel e escrevi só o comando**, sem frase de apoio. Cada comando em uma conversa nova.
+
+### `/proshot` no ChatGPT
+
+Escrevi apenas `/proshot`. O print mostra a conversa: a foto enviada (miniatura no alto), o comando e o resultado.
+
+![Print do ChatGPT com a foto enviada, o comando /proshot e a imagem devolvida com a foto original à esquerda e a versão editada à direita](./images/editar-fotos-chatgpt-proshot.webp)
+
+O ChatGPT devolveu uma imagem **lado a lado**: a foto original à esquerda e a versão editada à direita. Na editada, a luz ficou dourada, como num fim de tarde, o fundo ficou desfocado com o morro ao pôr do sol, e o rosto, o cabelo e as roupas parecem os mesmos da original. Repare que o resultado não foi bem um retrato de estúdio: o ChatGPT interpretou o `/proshot` como uma versão mais polida da mesma cena. Se você quer o fundo neutro de estúdio, use o prompt completo mais abaixo.
+
+### `/newbg` no ChatGPT
+
+Escrevi `/newbg escritório moderno com luz de janela`, dizendo qual fundo eu queria.
+
+![Print do ChatGPT com a foto enviada, o comando /newbg escritório moderno com luz de janela e a imagem devolvida com a mulher em um escritório](./images/editar-fotos-chatgpt-newbg.webp)
+
+Aqui o efeito foi mais claro: a mulher continuou com o mesmo cabelo, a mesma camisa e quase a mesma pose, mas o fundo virou um escritório moderno, com janelas grandes, prédios ao longe, plantas e mesas desfocadas. A imagem veio na vertical, como a original. Vale conferir o rosto e os detalhes com a foto de origem, porque a IA redesenha a imagem inteira.
+
+### `/hairstyles` no ChatGPT
+
+Escrevi apenas `/hairstyles`, sem dizer quais cortes eu queria.
+
+![Print do ChatGPT com a foto enviada, o comando /hairstyles e uma colagem de seis quadros com cortes de cabelo diferentes](./images/editar-fotos-chatgpt-hairstyles.webp)
+
+O ChatGPT devolveu uma **colagem com seis quadros**, todos com o mesmo fundo do calçadão e a mesma camisa. O que muda é o cabelo, e cada quadro vem com uma legenda em português, como "ondas naturais", "liso", "coque", "long bob" e "franja cortina" (duas legendas ficaram parcialmente escondidas pelos botões do ChatGPT no print). O rosto parece o mesmo da foto original nos seis quadros, mas vale conferir um a um antes de usar.
+
+### `/chibi` no ChatGPT
+
+Escrevi apenas `/chibi`.
+
+![Print do ChatGPT com a foto enviada, o comando /chibi e a imagem devolvida como um retrato em estilo de desenho, com olhos grandes](./images/editar-fotos-chatgpt-chibi.webp)
+
+O resultado virou um **retrato em estilo de desenho**, com olhos grandes e traços suavizados, mantendo o cabelo loiro ondulado, a camisa azul-clara, a regata branca, os brincos e o fundo do calçadão, tudo ilustrado. Mas não saiu o boneco clássico de corpo pequeno e cabeça grande: como o enquadramento ficou do peito para cima, o corpo nem aparece. Para ter o boneco de corpo inteiro, peça isso no prompt, como no texto pronto mais abaixo.
+
+### O que esses testes ensinam
+
+- **Um comando curto já funciona.** Enviar a foto e escrever o comando bastou nos quatro testes.
+- **O mesmo comando pode virar coisas diferentes.** O `/proshot` deu uma comparação lado a lado com luz dourada, e não o retrato de estúdio que muita gente espera. Se vier outra coisa, peça o ajuste.
+- **Diga o que você quer no comando.** O `/newbg` com o nome do fundo deu um resultado direto. Sem isso, o ChatGPT escolhe o cenário.
+- **Efeitos de estilo dependem do enquadramento.** O `/chibi` virou um retrato em desenho, e não o boneco de corpo inteiro. Se quiser o corpo, peça "corpo inteiro, de pé".
+- **Confira os detalhes.** Compare rosto, roupas e fundo com a foto original antes de usar.
 
 ## Qual IA usar
 
@@ -155,10 +203,10 @@ As medidas que aparecem são inventadas pelo modelo.
 **`/chibi`: boneco de cabeça grande**
 
 ```prompt
-/chibi Use a foto que enviei como base e transforme a pessoa num personagem chibi: corpo pequeno, cabeça grande, olhos grandes e as mesmas roupas e cores da foto.
+/chibi Use a foto que enviei como base e transforme a pessoa num personagem chibi de corpo inteiro, de pé: corpo pequeno, cabeça grande, olhos grandes e as mesmas roupas e cores da foto.
 ```
 
-Boa opção para avatar ou figurinha.
+Boa opção para avatar ou figurinha. No meu teste com só `/chibi`, o resultado foi um retrato em desenho; pedir "corpo inteiro, de pé" é a forma de tentar o boneco completo.
 
 ## Não ficou como queria? Peça o ajuste
 
