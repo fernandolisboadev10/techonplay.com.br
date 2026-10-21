@@ -8,7 +8,7 @@ readingTime: "5 min"
 image: "./images/chatgpt-login.webp"
 imageAlt: "Notebook exibindo o site da OpenAI com a página de apresentação do ChatGPT"
 tags: ["ChatGPT", "ChatGPT login", "OpenAI", "Conta"]
-related: ["chatgpt-gratis-ou-pago", "o-que-significa-gpt", "46-comandos-do-chatgpt"]
+related: ["chatgpt-gratis-ou-pago", "o-que-significa-gpt", "comandos-do-chatgpt"]
 ---
 
 O **ChatGPT login** é feito no endereço chatgpt.com, com e-mail e senha ou com uma conta Google, Microsoft ou Apple. A conta é gratuita, e o mesmo acesso vale no navegador do PC e no aplicativo do celular.
@@ -85,7 +85,7 @@ Se a conta tiver sido suspensa ou desativada, o acesso fica bloqueado. Nesse cas
 
 ## O que fazer depois de entrar
 
-Com a conta ativa, veja [o que muda entre o ChatGPT grátis e os planos pagos](/chatgpt-gratis-ou-pago/) antes de assinar qualquer coisa. O próximo passo é aprender a pedir melhor. Se você ainda não sabe [o que significa GPT](/o-que-significa-gpt/), vale entender a tecnologia por trás do chat. Para praticar, teste os [46 comandos do ChatGPT para criar imagens](/46-comandos-do-chatgpt/) ou veja como gerar vídeo direto na conversa com o [plugin Higgsfield](/plugin-higgsfield-chatgpt/).
+Com a conta ativa, veja [o que muda entre o ChatGPT grátis e os planos pagos](/chatgpt-gratis-ou-pago/) antes de assinar qualquer coisa. O próximo passo é aprender a pedir melhor. Se você ainda não sabe [o que significa GPT](/o-que-significa-gpt/), vale entender a tecnologia por trás do chat. Para praticar, teste os [46 comandos do ChatGPT para criar imagens](/comandos-do-chatgpt/) ou veja como gerar vídeo direto na conversa com o [plugin Higgsfield](/plugin-higgsfield-chatgpt/).
 
 ## Perguntas frequentes
 

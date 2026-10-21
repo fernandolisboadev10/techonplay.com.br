@@ -9,7 +9,7 @@ readingTime: "6 min"
 image: "./images/angulos-de-camera-prompt-ia.webp"
 imageAlt: "Fotógrafo agachado na rua aponta a câmera para cima, na direção de um arranha-céu de vidro, em ângulo baixo"
 tags: ["Prompts", "Ângulos de câmera", "Imagens com IA", "IA"]
-related: ["46-comandos-do-chatgpt", "comandos-camera-google-flow", "comandos-chatgpt-editar-fotos", "google-flow-gratis"]
+related: ["comandos-do-chatgpt", "comandos-camera-google-flow", "comandos-chatgpt-editar-fotos", "google-flow-gratis"]
 faq:
   - question: "A IA muda o meu rosto quando troco o ângulo da foto?"
     answer: "Pode mudar, sim. A IA não gira a câmera da foto original: ela desenha uma nova imagem parecida com a sua, vista de outro lugar. Por isso, confira o rosto, as roupas e o fundo e, se não parecer você, peça de novo ou tente outra foto."
@@ -21,7 +21,7 @@ faq:
     answer: "Pode. Nesse caso, ponha o ângulo no começo do prompt e descreva a cena. Depois, troque só o termo do ângulo para comparar os resultados."
 ---
 
-Dá para pegar uma foto sua, enviar para uma IA e pedir que ela apareça como se tivesse sido tirada de outro ângulo: de baixo para cima, de cima para baixo, de drone. Basta **enviar a foto e escrever um comando de ângulo**, como `low angle` ou `high angle`. Este guia mostra como mudar o ângulo da foto com IA: qual ferramenta usar, o passo a passo e os textos prontos para copiar. Se você prefere atalhos com barra, como `/lowangle`, veja os [46 comandos do ChatGPT para imagens](/46-comandos-do-chatgpt/); para câmera em foto e vídeo do Google, os [40 comandos de câmera do Flow](/comandos-camera-google-flow/).
+Dá para pegar uma foto sua, enviar para uma IA e pedir que ela apareça como se tivesse sido tirada de outro ângulo: de baixo para cima, de cima para baixo, de drone. Basta **enviar a foto e escrever um comando de ângulo**, como `low angle` ou `high angle`. Este guia mostra como mudar o ângulo da foto com IA: qual ferramenta usar, o passo a passo e os textos prontos para copiar. Se você prefere atalhos com barra, como `/lowangle`, veja os [46 comandos do ChatGPT para imagens](/comandos-do-chatgpt/); para câmera em foto e vídeo do Google, os [40 comandos de câmera do Flow](/comandos-camera-google-flow/).
 
 Duas coisas para ter em mente desde já. A IA não "gira a câmera" da foto original: ela **desenha uma nova imagem** parecida com a sua, vista de outro lugar. Por isso o rosto, as roupas e o fundo podem mudar um pouco, e às vezes é preciso tentar duas ou três vezes. Além disso, os textos deste artigo são sugestões minhas, escritas a partir de guias publicados. Testei o comando `low angle` no ChatGPT e no Gemini com uma foto de exemplo, e os prints estão logo abaixo; os demais prompts não foram testados, e o resultado varia conforme a ferramenta e a versão. Pesquisa e testes feitos em 20/10/2026.
 

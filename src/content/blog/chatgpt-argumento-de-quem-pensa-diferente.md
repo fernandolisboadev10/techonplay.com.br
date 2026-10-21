@@ -8,7 +8,7 @@ readingTime: "4 min"
 image: "./images/chatgpt-argumento-de-quem-pensa-diferente.webp"
 imageAlt: "Mão segurando um celular com uma conversa de chatbot aberta, em frente a uma urna eletrônica desfocada em uma seção eleitoral"
 tags: ["ChatGPT", "Eleições 2026", "Inteligência artificial", "Prompts"]
-related: ["46-comandos-do-chatgpt", "chatgpt-gratis-ou-pago", "justificar-ausencia-multa-eleitoral-2026", "biometria-na-urna"]
+related: ["comandos-do-chatgpt", "chatgpt-gratis-ou-pago", "justificar-ausencia-multa-eleitoral-2026", "biometria-na-urna"]
 ---
 
 Antes de votar, peça ao ChatGPT o melhor argumento de quem pensa diferente de você. A pergunta serve para qualquer eleitor, de qualquer lado, e muda o que a IA faz por você: em vez de confirmar o que você já acredita, ela passa a explicar a posição contrária no melhor formato que ela tem.
@@ -57,4 +57,4 @@ Se você ainda vai votar, veja também como [justificar a ausência e pagar a mu
 
 O objetivo do exercício não é mudar o seu voto. É chegar à urna sabendo explicar por que você pensa o que pensa, e o que as pessoas que discordam de você realmente dizem. Se o seu voto continuar o mesmo, ele agora tem mais consistência. Se mudar, mudou por um argumento que você entendeu.
 
-Quer aproveitar melhor o chatbot em outros temas? Veja os [46 comandos do ChatGPT](/46-comandos-do-chatgpt/) a comparação entre os [planos grátis e pagos](/chatgpt-gratis-ou-pago/) e as [ferramentas de IA do Google](/melhores-ferramentas-de-ia-do-google-2026/), que também servem para esse tipo de pesquisa.
+Quer aproveitar melhor o chatbot em outros temas? Veja os [46 comandos do ChatGPT](/comandos-do-chatgpt/) a comparação entre os [planos grátis e pagos](/chatgpt-gratis-ou-pago/) e as [ferramentas de IA do Google](/melhores-ferramentas-de-ia-do-google-2026/), que também servem para esse tipo de pesquisa.

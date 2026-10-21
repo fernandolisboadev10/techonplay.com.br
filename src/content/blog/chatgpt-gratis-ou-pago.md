@@ -8,7 +8,7 @@ readingTime: "6 min"
 image: "./images/chatgpt-gratis-ou-pago.webp"
 imageAlt: "Mão segurando um celular com o logotipo do ChatGPT na tela em um ambiente escuro com luz roxa"
 tags: ["ChatGPT", "ChatGPT Plus", "ChatGPT Go", "Planos"]
-related: ["chatgpt-login", "46-comandos-do-chatgpt", "google-ai-plus-para-estudantes", "deepseek-2026-guia-completo"]
+related: ["chatgpt-login", "comandos-do-chatgpt", "google-ai-plus-para-estudantes", "deepseek-2026-guia-completo"]
 ---
 
 O **ChatGPT** é grátis para quem quer conversar, pesquisar e tirar dúvidas, mas tem planos pagos com mais limites e recursos. No Brasil, o plano Go sai por cerca de R$ 39,99 por mês e o Plus por cerca de R$ 99,99, enquanto o Pro passa de R$ 500. Para a maioria das pessoas, o plano gratuito ou o Go já resolvem: o Go custa cerca de R$ 480 por ano, menos da metade dos cerca de R$ 1.200 anuais do Plus.
@@ -79,7 +79,7 @@ Não vale para quem precisa de modelos de raciocínio mais avançados, análise 
 5.  **É estudante universitário:** compare com a oferta do Google, que dá [1 ano grátis de Google AI Plus para estudantes](/google-ai-plus-para-estudantes/).
 6.  **Quer testar sem pagar nada:** veja também o [DeepSeek, que tem chat gratuito](/deepseek-2026-guia-completo/) e é uma alternativa para comparar.
 
-Antes de pagar, aproveite o plano gratuito para aprender a pedir melhor. Os [46 comandos do ChatGPT para criar imagens](/46-comandos-do-chatgpt/) mostram como um pedido bem escrito rende mais do que um plano caro. E, se a sigla ainda gera dúvida, veja [o que significa GPT](/o-que-significa-gpt/).
+Antes de pagar, aproveite o plano gratuito para aprender a pedir melhor. Os [46 comandos do ChatGPT para criar imagens](/comandos-do-chatgpt/) mostram como um pedido bem escrito rende mais do que um plano caro. E, se a sigla ainda gera dúvida, veja [o que significa GPT](/o-que-significa-gpt/).
 
 ## Cuidado com ChatGPT Plus "baratinho"
 

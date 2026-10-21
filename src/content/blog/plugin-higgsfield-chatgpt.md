@@ -8,7 +8,7 @@ readingTime: "12 min"
 image: "./images/Plugin-Higgsfield-no-ChatGPT.webp"
 imageAlt: "Plugin Higgsfield no ChatGPT"
 tags: ["Higgsfield", "ChatGPT", "IA de vídeo", "Plugins"]
-related: ["google-flow-gratis", "comandos-camera-google-flow", "46-comandos-do-chatgpt"]
+related: ["google-flow-gratis", "comandos-camera-google-flow", "comandos-do-chatgpt"]
 ---
 
 O plugin Higgsfield no ChatGPT já não é mais teste fechado: a Higgsfield confirmou a integração oficial dentro do aplicativo do ChatGPT. Com ele, qualquer foto enviada no chat vira vídeo, sem precisar abrir outro site.

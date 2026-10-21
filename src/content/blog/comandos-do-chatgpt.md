@@ -1,17 +1,17 @@
 ---
-title: "Uma palavra no prompt muda sua foto no ChatGPT: 46 comandos"
-description: "46 comandos do ChatGPT para criar imagens mais criativas: ângulos de câmera, perspectiva, movimento e efeitos prontos para copiar."
+title: "Comandos do ChatGPT: uma palavra no prompt muda sua foto"
+description: "Comandos do ChatGPT para imagens: 46 atalhos de ângulo, perspectiva e efeito. Copie, cole no prompt e veja sua foto mudar já na primeira tentativa."
 category: "Inteligência Artificial"
 date: 2026-09-26
-updated: 2026-10-21T18:37:00-03:00
+updated: 2026-10-21T19:00:00-03:00
 readingTime: "10 min"
-image: "./images/46-Comandos-do-ChatGPT-para-Criar-Imagens.webp"
-imageAlt: "46 Comandos do ChatGPT para Criar Imagens"
-tags: ["ChatGPT", "Comandos", "Geração de imagens", "IA"]
+image: "./images/comandos-do-chatgpt.webp"
+imageAlt: "Grade com nove fotos de uma jovem de moletom preto em ângulos e efeitos diferentes, cada uma com o nome do comando do ChatGPT"
+tags: ["ChatGPT", "Comandos", "Geração de imagens", "Prompts", "IA"]
 related: ["comandos-camera-google-flow", "plugin-higgsfield-chatgpt", "o-que-significa-gpt"]
-seoTitle: "Uma palavra muda sua foto no ChatGPT: 46 comandos"
+seoTitle: "Comandos do ChatGPT para imagens: uma palavra muda a foto"
 faq:
-  - question: "Os 46 comandos do ChatGPT para criar imagens funcionam em outras ferramentas de IA?"
+  - question: "Os comandos do ChatGPT para criar imagens funcionam em outras ferramentas de IA?"
     answer: "Parcialmente. Eles não são recurso oficial do ChatGPT, então a interpretação pode variar em outros modelos, como Midjourney ou Gemini, mesmo que o efeito geral se mantenha."
   - question: "Preciso pagar para usar os comandos?"
     answer: "Não. São apenas texto dentro do prompt, sem custo adicional. O limite de gerações por mês depende da assinatura da ferramenta usada, não dos comandos em si."
@@ -19,9 +19,13 @@ faq:
     answer: "Sim, até dois ou três. Combinações como ângulo mais efeito de luz funcionam bem. Acima disso, o modelo tende a ignorar parte das instruções."
   - question: "Os comandos mudam a identidade da pessoa na foto?"
     answer: "Não. Eles controlam câmera, perspectiva e efeito visual, não as características do personagem. Uma foto de referência nítida ajuda a manter a semelhança em qualquer ângulo escolhido."
+  - question: "O que significa a barra (/) antes do nome do comando?"
+    answer: "É só uma convenção de escrita, como em /lowangle. O ChatGPT não tem um menu oficial de comandos de imagem, então a barra funciona como marcação visual e o modelo costuma ler a palavra como instrução de estilo."
+  - question: "Qual é o melhor comando para começar?"
+    answer: "O /lowangle é o mais seguro: muda a presença da foto sem alterar o cenário. Depois teste /groundreflection e /silhouettepov, que dão os resultados mais diferentes de um prompt comum."
 ---
 
-Os **46 comandos do ChatGPT para criar imagens** são atalhos de texto que definem ângulo, perspectiva, movimento ou efeito visual antes mesmo da geração começar. Basta colar o termo no prompt e completar com o restante da cena.
+Os **comandos do ChatGPT para criar imagens** são atalhos de texto que definem ângulo, perspectiva, movimento ou efeito visual antes mesmo da geração começar. Basta colar o termo no prompt e completar com o restante da cena.
 
 O resultado aparece na primeira tentativa: uma selfie comum vira foto de capa de revista só com a troca do comando de câmera.
 
@@ -33,9 +37,11 @@ Um comando do ChatGPT para imagens funciona como instrução técnica de fotogra
 
 É a diferença entre pedir “uma foto legal de mim” e pedir “câmera de baixo para cima, silhueta contra o pôr do sol”. A primeira instrução gera algo genérico. A segunda entrega enquadramento definido.
 
+![Comparação lado a lado da mesma jovem de moletom preto ao pôr do sol: à esquerda foto comum sem comando, à direita foto em ângulo baixo com o comando /lowangle](./images/comandos-chatgpt-sem-comando-vs-lowangle.webp)
+
 O Canaltech já reuniu uma lista parecida, o que confirma a tendência: estes atalhos não são recurso oficial do ChatGPT, apenas convenção popular entre usuários, e podem variar a cada geração.
 
-## Ângulos de câmera: a categoria mais versátil
+## Comandos de ângulo de câmera: a categoria mais versátil
 
 Este grupo controla a altura e a posição da câmera. É o ponto de partida mais simples para sair da foto genérica.
 
@@ -48,7 +54,7 @@ Este grupo controla a altura e a posição da câmera. É o ponto de partida mai
 
 Guia completo: para entender quando usar cada ângulo em qualquer ferramenta, veja [ângulos de câmera em prompts de IA](/angulos-de-camera-prompt-ia/), com o mesmo prompt em três ângulos.
 
-## Perspectiva, movimento e reflexos
+## Comandos de perspectiva, movimento e reflexo no ChatGPT
 
 Depois do ângulo, a perspectiva define a escala. Comandos como **/forcedperspective** e **/giantperspective** fazem o personagem parecer maior ou menor que o ambiente, útil para fotos com pegada cinematográfica.
 
@@ -80,7 +86,7 @@ A tabela abaixo resume as sete categorias e quando usar cada uma.
 
 Comandos testados como texto livre dentro do prompt de geração de imagem. Combine no máximo dois ou três por geração.
 
-## Como aplicar os comandos no seu prompt
+## Como usar os comandos do ChatGPT no prompt
 
 Envie uma foto nítida e bem iluminada como referência, descreva o cenário e finalize com o comando escolhido.
 
@@ -89,6 +95,32 @@ Exemplo: _“Pessoa em pé num terraço ao entardecer, /lowangle, luz dourada, r
 Segundo o [Centro de Ajuda da OpenAI sobre geração de imagens no ChatGPT](https://help.openai.com/en/articles/9055440-image-generation-in-chatgpt), o modelo interpreta instruções de estilo e composição como parte natural do prompt, o que explica por que o truque funciona tão bem.
 
 Combinar dois comandos costuma funcionar, como **/dutchangle** com **/rain**. Acima de três termos, o modelo tende a ignorar parte das instruções. Erros comuns: usar o comando sem descrever a cena, misturar efeitos opostos como **/wormview** e **/birdsview** no mesmo prompt, ou partir de foto de referência borrada.
+
+![Jovem de capuz molhado numa rua à noite sob chuva, com horizonte inclinado, resultado da combinação dos comandos /dutchangle e /rain](./images/comandos-chatgpt-dutchangle-rain.webp)
+
+## Prompts prontos com comando para testar hoje
+
+Três exemplos completos, um para cada objetivo. Troque a cena entre colchetes pela sua e anexe uma foto sua nítida como referência.
+
+**Foto de perfil com mais presença:**
+
+```prompt
+Use a foto anexada como referência e mantenha meu rosto e meu cabelo. Cena: [em pé num terraço ao entardecer, roupa casual]. /lowangle, luz dourada, textura de pele realista, sem texto na imagem.
+```
+
+**Foto com efeito de reflexo:**
+
+```prompt
+Use a foto anexada como referência e mantenha meu rosto e meu cabelo. Cena: [caminhando numa praça depois da chuva]. /groundreflection, reflexo nítido no chão molhado, luz do pôr do sol.
+```
+
+**Foto de bastidores para Reels:**
+
+```prompt
+Use a foto anexada como referência e mantenha meu rosto e meu cabelo. Cena: [sentado num banco de praça, olhando para a câmera]. /behindthescene, câmera num tripé aparecendo em primeiro plano, estilo bastidores.
+```
+
+Quando o resultado agradar, repita o mesmo prompt trocando só o comando e compare. É a forma mais rápida de descobrir qual atalho combina com o seu estilo.
 
 ## Lista completa dos 46 comandos para copiar
 
@@ -166,7 +198,7 @@ A tendência é que as ferramentas de geração de imagem ampliem este tipo de c
 
 ## Perguntas frequentes
 
-**Os 46 comandos do ChatGPT para criar imagens funcionam em outras ferramentas de IA?**
+**Os comandos do ChatGPT para criar imagens funcionam em outras ferramentas de IA?**
 
 _Parcialmente. Eles não são recurso oficial do ChatGPT, então a interpretação pode variar em outros modelos, como Midjourney ou Gemini, mesmo que o efeito geral se mantenha._
 
@@ -181,5 +213,13 @@ _Sim, até dois ou três. Combinações como ângulo mais efeito de luz funciona
 **Os comandos mudam a identidade da pessoa na foto?**
 
 _Não. Eles controlam câmera, perspectiva e efeito visual, não as características do personagem. Uma foto de referência nítida ajuda a manter a semelhança em qualquer ângulo escolhido._
+
+**O que significa a barra (/) antes do nome do comando?**
+
+_É só uma convenção de escrita, como em /lowangle. O ChatGPT não tem um menu oficial de comandos de imagem, então a barra funciona como marcação visual e o modelo costuma ler a palavra como instrução de estilo._
+
+**Qual é o melhor comando para começar?**
+
+_O /lowangle é o mais seguro: muda a presença da foto sem alterar o cenário. Depois teste /groundreflection e /silhouettepov, que dão os resultados mais diferentes de um prompt comum._
 
 Fontes: [Canaltech já reuniu uma lista parecida](https://canaltech.com.br/inteligencia-artificial/12-comandos-para-criar-ou-editar-imagens-no-chatgpt/) | [Canaltech também mostrou como prompts de iluminação e reflexo melhoram fotos de produto](https://canaltech.com.br/inteligencia-artificial/prompts-para-editar-fotos-de-produto-profissional/)

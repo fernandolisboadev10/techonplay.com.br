@@ -31,6 +31,7 @@ export default defineConfig({
   site: 'https://techonplay.com.br',
   // URLs herdadas do WordPress (categorias, feed e sitemaps do Yoast)
   redirects: {
+    '/46-comandos-do-chatgpt': '/comandos-do-chatgpt/',
     '/category/inteligencia-artificial': '/categoria/inteligencia-artificial/',
     '/category/jogos': '/categoria/jogos/',
     '/category/tutoriais': '/categoria/tutoriais/',

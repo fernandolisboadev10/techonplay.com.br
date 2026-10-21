@@ -8,7 +8,7 @@ readingTime: "3 min"
 image: "./images/o-que-significa-gpt.webp"
 imageAlt: "GPT significa Generative Pre-trained Transformer"
 tags: ["GPT", "ChatGPT", "OpenAI", "Inteligência artificial"]
-related: ["46-comandos-do-chatgpt", "ia-que-cria-ia", "plugin-higgsfield-chatgpt"]
+related: ["comandos-do-chatgpt", "ia-que-cria-ia", "plugin-higgsfield-chatgpt"]
 ---
 
 GPT significa Generative Pre-trained Transformer, ou Transformador Pré-treinado Generativo, em português. É a tecnologia de inteligência artificial (IA) que permite ao ChatGPT conversar, escrever textos e responder perguntas.
@@ -48,7 +48,7 @@ A sigla também aparece em outros contextos. Por outro lado, o sentido muda por 
 -   **GPT de disco:** significa GUID Partition Table. É o padrão que organiza as partições de HDs e SSDs e substitui o antigo MBR, com suporte a discos acima de 2 TB.
 -   **GPTs personalizados:** são versões do ChatGPT que os usuários montam para tarefas específicas, como um assistente de estudos ou de atendimento.
 
-Em resumo, **GPT** significa Generative Pre-trained Transformer e nomeia a tecnologia que dá vida ao ChatGPT. Com a chegada do GPT-6, a tendência é que a sigla apareça em ainda mais aplicativos, do celular ao escritório. Para aproveitar essa tecnologia no dia a dia, veja os [46 comandos do ChatGPT para criar imagens](/46-comandos-do-chatgpt/) e como [a IA já ajuda a criar novos modelos de IA](/ia-que-cria-ia/).
+Em resumo, **GPT** significa Generative Pre-trained Transformer e nomeia a tecnologia que dá vida ao ChatGPT. Com a chegada do GPT-6, a tendência é que a sigla apareça em ainda mais aplicativos, do celular ao escritório. Para aproveitar essa tecnologia no dia a dia, veja os [46 comandos do ChatGPT para criar imagens](/comandos-do-chatgpt/) e como [a IA já ajuda a criar novos modelos de IA](/ia-que-cria-ia/).
 
 ## Perguntas frequentes sobre GPT
 

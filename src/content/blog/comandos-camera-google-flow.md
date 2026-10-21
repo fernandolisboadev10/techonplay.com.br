@@ -8,7 +8,7 @@ readingTime: "8 min"
 image: "./images/Comandos-de-Camera-do-Google-Flow.webp"
 imageAlt: "Comandos de Câmera do Google Flow"
 tags: ["Google Flow", "Prompts de câmera", "IA de vídeo", "Google"]
-related: ["google-flow-gratis", "46-comandos-do-chatgpt", "plugin-higgsfield-chatgpt"]
+related: ["google-flow-gratis", "comandos-do-chatgpt", "plugin-higgsfield-chatgpt"]
 seoTitle: "Comandos de Câmera do Google Flow: 40 Prompts para Testar"
 faq:
   - question: "Preciso de plano pago para usar comandos de câmera no Google Flow?"
@@ -126,7 +126,7 @@ Clique em “Copiar” para colar o comando direto no prompt do Google Flow. Com
 
 Quarenta comandos parecem muita coisa, mas cinco ou seis já bastam para mudar o padrão do que sai do Google Flow. Comece por /LOWANGLE, /PORTRAIT e /CINEMATIC em uma única foto e compare com o resultado sem etiqueta nenhuma: a diferença fica óbvia no primeiro teste.
 
-A tendência é que o Google amplie este tipo de controle por texto nas próximas atualizações do Flow, então vale salvar a lista e voltar a ela quando o modelo mudar. Antes de sair testando os 40 comandos, vale conferir quanto dá para gerar sem pagar nada: em [Google Flow grátis? Veja o que a IA de vídeo do Google oferece](/google-flow-gratis/) explicamos os limites do plano gratuito e quando compensa migrar para uma assinatura paga. Para o mesmo truque no ChatGPT, veja os [46 comandos do ChatGPT para criar imagens](/46-comandos-do-chatgpt/), e para gerar vídeo dentro do chat, o [plugin Higgsfield](/plugin-higgsfield-chatgpt/).
+A tendência é que o Google amplie este tipo de controle por texto nas próximas atualizações do Flow, então vale salvar a lista e voltar a ela quando o modelo mudar. Antes de sair testando os 40 comandos, vale conferir quanto dá para gerar sem pagar nada: em [Google Flow grátis? Veja o que a IA de vídeo do Google oferece](/google-flow-gratis/) explicamos os limites do plano gratuito e quando compensa migrar para uma assinatura paga. Para o mesmo truque no ChatGPT, veja os [46 comandos do ChatGPT para criar imagens](/comandos-do-chatgpt/), e para gerar vídeo dentro do chat, o [plugin Higgsfield](/plugin-higgsfield-chatgpt/).
 
 ## Perguntas frequentes
 

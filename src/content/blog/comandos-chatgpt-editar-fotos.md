@@ -9,7 +9,7 @@ readingTime: "7 min"
 image: "./images/comandos-chatgpt-editar-fotos.webp"
 imageAlt: "Antes e depois de foto editada com o ChatGPT: à esquerda sol forte de meio-dia, à direita luz dourada e fundo desfocado"
 tags: ["ChatGPT", "Comandos", "Editar fotos", "IA"]
-related: ["46-comandos-do-chatgpt", "angulos-de-camera-prompt-ia", "trend-anos-80-ia-foto-prompt", "comandos-camera-google-flow"]
+related: ["comandos-do-chatgpt", "angulos-de-camera-prompt-ia", "trend-anos-80-ia-foto-prompt", "comandos-camera-google-flow"]
 faq:
   - question: "Os comandos do ChatGPT para editar fotos são oficiais?"
     answer: "Não. Segundo o jornalista Jörg Schieb, a OpenAI nunca criou uma lista, uma documentação nem uma configuração para eles. São atalhos populares nas redes, que o ChatGPT interpreta como um pedido comum. Por isso o resultado muda de uma tentativa para outra."
@@ -21,7 +21,7 @@ faq:
     answer: "Pode. Como os comandos são só palavras que o ChatGPT interpreta, você pode inventar os seus. Schieb cita exemplos como /vintagefilm, /polaroid, /noir e /isometric. Descreva o efeito no mesmo pedido para a IA entender o que você quer."
 ---
 
-Dá para enviar uma foto sua ao ChatGPT e pedir uma mudança com **uma palavra só**: melhorar o retrato, trocar o fundo, mudar a luz. Basta **enviar a foto e escrever um comando com barra**, como `/proshot` ou `/newbg`. Este guia mostra como editar foto com o ChatGPT: o passo a passo, os 12 comandos e os textos prontos para copiar. Se você procura os atalhos de ângulo e perspectiva, veja os [46 comandos do ChatGPT para imagens](/46-comandos-do-chatgpt/); para mudar só o ângulo da câmera, o [guia de ângulos de câmera com IA](/angulos-de-camera-prompt-ia/) explica com exemplos.
+Dá para enviar uma foto sua ao ChatGPT e pedir uma mudança com **uma palavra só**: melhorar o retrato, trocar o fundo, mudar a luz. Basta **enviar a foto e escrever um comando com barra**, como `/proshot` ou `/newbg`. Este guia mostra como editar foto com o ChatGPT: o passo a passo, os 12 comandos e os textos prontos para copiar. Se você procura os atalhos de ângulo e perspectiva, veja os [46 comandos do ChatGPT para imagens](/comandos-do-chatgpt/); para mudar só o ângulo da câmera, o [guia de ângulos de câmera com IA](/angulos-de-camera-prompt-ia/) explica com exemplos.
 
 Duas coisas para ter em mente desde já. Esses comandos **não são um recurso oficial** do ChatGPT: são uma convenção popular, e o modelo lê a palavra e entende o pedido, então o resultado muda de uma geração para outra. E a IA **redesenha** a imagem em vez de só retocá-la, por isso o rosto e os detalhes podem mudar um pouco. Os textos deste artigo são sugestões, escritas a partir de guias publicados. Testei `/proshot`, `/newbg`, `/hairstyles` e `/chibi` no ChatGPT com uma foto de exemplo, e os prints estão logo abaixo; os demais comandos não foram testados, e o resultado varia conforme a versão do modelo, que a fonte não informa. Pesquisa e testes feitos em 21/10/2026.
 
