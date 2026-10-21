@@ -7,7 +7,7 @@ date: 2026-10-19T20:55:00-03:00
 updated: 2026-10-21T16:31:00-03:00
 readingTime: "7 min"
 image: "./images/comandos-chatgpt-editar-fotos.webp"
-imageAlt: "Montagem dividida ao meio com uma mulher loira em Copacabana: à esquerda a foto comum de celular, com sol forte; à direita a mesma foto editada, com luz dourada de fim de tarde e fundo desfocado"
+imageAlt: "Antes e depois de foto editada com o ChatGPT: à esquerda sol forte de meio-dia, à direita luz dourada e fundo desfocado"
 tags: ["ChatGPT", "Comandos", "Editar fotos", "IA"]
 related: ["46-comandos-do-chatgpt", "angulos-de-camera-prompt-ia", "trend-anos-80-ia-foto-prompt", "comandos-camera-google-flow"]
 faq:
