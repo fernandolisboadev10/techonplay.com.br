@@ -3,6 +3,7 @@ title: "12 comandos do ChatGPT para editar fotos: /proshot, /newbg e mais"
 description: "Veja 12 comandos do ChatGPT para editar fotos, como /proshot, /newbg e /goldenhour, com um prompt sugerido para cada um e os cuidados ao usar."
 category: "Inteligência Artificial"
 date: 2026-10-19T20:55:00-03:00
+updated: 2026-10-21T09:35:00-03:00
 readingTime: "6 min"
 image: "./images/comandos-chatgpt-editar-fotos.webp"
 imageAlt: "Homem edita um retrato no notebook e no celular, com a foto da mulher antes e depois da troca de fundo"
@@ -152,5 +153,7 @@ _Segundo o artigo de Schieb, uma conta gratuita funciona, com número limitado d
 **Posso criar meus próprios comandos?**
 
 _Sim. A fonte cita exemplos como `/vintagefilm`, `/polaroid`, `/noir` e `/isometric`, também sem caráter oficial._
+
+Guia completo: para foto de produto, veja os [8 prompts para foto de produto no ChatGPT](/prompt-foto-de-produto-chatgpt/).
 
 Fontes: [Jörg Schieb, ChatGPT-Bildbefehle (schieb.de, 04/09/2026)](https://www.schieb.de/?p=814488) | [Canaltech, 12 comandos para criar ou editar imagens no ChatGPT](https://canaltech.com.br/inteligencia-artificial/12-comandos-para-criar-ou-editar-imagens-no-chatgpt/)

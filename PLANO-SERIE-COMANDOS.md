@@ -38,7 +38,7 @@ Vale para todos os itens abaixo que ensinam a usar um comando ou prompt de image
   - Palavra-chave: comandos chatgpt viral · Intenção: descoberta (Discover) · Link: `46-comandos-do-chatgpt`
   - Diferencial: formato de tendência, com imagem forte e curiosidade; evitar sobreposição com o item 1 (focar em efeitos divertidos).
   - Motivo do [~]: `/chibi`, `/blueprint` e `/together` (os três do título) já têm prompt e explicação em `comandos-chatgpt-editar-fotos`, e os demais efeitos divertidos estão na lista do pilar `46-comandos-do-chatgpt`. A única fonte aberta que os chama de virais (Schieb, 04/09/2026) é a mesma do item 1; o resto da busca tratou chibi como trend em linguagem natural, não como comando. Um satélite repetiria o conteúdo.
-- [ ] **4.** Prompts do ChatGPT para foto de produto: 8 cenários prontos
+- [x] **4.** (2026-10-21, `prompt-foto-de-produto-chatgpt`) Prompts do ChatGPT para foto de produto: 8 cenários prontos
   - Palavra-chave: prompt foto de produto chatgpt · Intenção: aplicar · Link: `46-comandos-do-chatgpt`
   - Diferencial: cenários prontos (fundo branco, lifestyle, mesa, embalagem), foco em pequeno comércio.
 - [ ] **5.** Comandos de luz para fotos com IA: /goldenhour, /fog e mais
