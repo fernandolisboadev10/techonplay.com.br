@@ -1,6 +1,18 @@
 # Série: comandos e prompts para imagens com IA (TechOnPlay PT)
 
-Fila lida pela rotina diária das 7h (Brasília). **Um artigo por execução**, sempre o **primeiro item sem `[x]`**. Ao terminar um artigo, a rotina marca o item aqui (`[x]`, data e slug) no mesmo commit.
+Fila lida pela rotina diária das 7h (Brasília). **Um artigo por execução**, sempre o **primeiro item sem `[x]`**. Ao terminar um artigo, a rotina marca o item aqui (`[x]`, data de publicação e slug) no mesmo commit.
+
+## Cadência: 1 artigo por dia, toda manhã às 7h (regra do dono, 22/10/2026)
+
+**Nunca dois artigos novos no mesmo dia.** A rotina roda **na nuvem** (sessão remota): não acessa o computador do dono, o ChatGPT nem o Gemini, e só pode confiar no que está no repositório. Por isso, antes de escrever qualquer coisa:
+
+1. Atualizar o repositório (`git pull`/`git fetch origin`) e calcular a data de **hoje em Brasília** (UTC-3).
+2. Listar os posts de `src/content/blog` cujo `date` seja **hoje ou futuro** (inclui artigos agendados pelo dono para hoje às 7h, escritos no dia anterior): `grep -l "^date: <AAAA-MM-DD>" src/content/blog/*.md` e conferir `git log -5 -- src/content/blog`.
+3. Se já existir um post com `date` de **hoje** (publicado, agendado ou escrito pelo dono em conversa), **não escrever outro**: não mexer na fila, não marcar item e informar "já há artigo de hoje: <slug>". Reexecução manual no mesmo dia também não cria artigo novo.
+4. Se não houver, escrever **um** artigo com `date` de **hoje**, no horário da execução (ex.: `T07:00`-`T07:15`, antes das 21h). **Nunca datar para o dia seguinte nem "agendar"**, salvo pedido explícito do dono.
+5. Ao marcar `[x]`, usar a **data de publicação** (o `date` do post), não o dia em que foi escrito. Se o dono adiantar um artigo, ele ocupa o dia da data dele e a rotina daquele dia o pula.
+
+Incidente que originou a regra: em 21/10 o item 4 (foto de produto) foi escrito e o dono o agendou para 22/10 às 07:00; a rotina de 22/10 não viu esse post agendado e publicou o item 5 (luz) às 06:53, saindo dois artigos no mesmo dia.
 
 Origem da estratégia: pilares `46-comandos-do-chatgpt` e `comandos-camera-google-flow`; ponte `google-flow-gratis`. Todas as palavras-chave abaixo são hipóteses (sem volume validado). Os comandos são convenção informal, não recurso oficial: cada artigo deve dizer isso, informar a data do teste e a versão do modelo.
 
@@ -11,7 +23,8 @@ Origem da estratégia: pilares `46-comandos-do-chatgpt` e `comandos-camera-googl
 - **Link para o pilar** nos dois primeiros parágrafos, com anchor diferente do título do pilar. Depois de publicar, **adicionar no pilar** uma linha "Guia completo: ..." com link para o novo artigo, no fim da categoria mais próxima, sem mexer em título nem URL do pilar, e preencher `updated` com horário.
 - Fatos só de fonte aberta na hora. Nunca citar comando, preço, versão ou recurso sem conferir. Atribuir afirmações contestáveis.
 - Sem rótulos "Resposta rápida" ou "Aviso de método". Prompts entregues ao leitor vão em bloco ```prompt.
-- `date` com horário e offset, antes das 21h (ex.: `2026-10-21T07:10:00-03:00`).
+- `date` com horário e offset, antes das 21h (ex.: `2026-10-21T07:10:00-03:00`), sempre no dia de hoje (ver "Cadência").
+- **Imagens (padrão do projeto, definido em 22/10/2026):** todas em **WebP 1200x800** (3:2), capa e corpo; **mínimo de 4 imagens por artigo** (capa + ao menos 3 de exemplo, sendo a foto base e resultados). Em artigos de prompt, o **resultado vem logo abaixo do prompt**. Como a rotina na nuvem não gera imagens, publicar com o texto e a nota "não testei" e entregar ao dono os prompts em inglês; ele devolve as imagens e a rotina ou a sessão encaixa e atualiza `updated`.
 - Rodar `node scripts/audit-discover.mjs`, `node scripts/audit-links.mjs` se existir, e `npm run build`. **Só commitar e dar push se tudo passar.**
 
 ## Padrão didático (aprovado pelo dono em 20/10/2026, modelo: `angulos-de-camera-prompt-ia`)
@@ -39,7 +52,7 @@ Vale para todos os itens abaixo que ensinam a usar um comando ou prompt de image
   - Palavra-chave: comandos chatgpt viral · Intenção: descoberta (Discover) · Link: `46-comandos-do-chatgpt`
   - Diferencial: formato de tendência, com imagem forte e curiosidade; evitar sobreposição com o item 1 (focar em efeitos divertidos).
   - Motivo do [~]: `/chibi`, `/blueprint` e `/together` (os três do título) já têm prompt e explicação em `comandos-chatgpt-editar-fotos`, e os demais efeitos divertidos estão na lista do pilar `46-comandos-do-chatgpt`. A única fonte aberta que os chama de virais (Schieb, 04/09/2026) é a mesma do item 1; o resto da busca tratou chibi como trend em linguagem natural, não como comando. Um satélite repetiria o conteúdo.
-- [x] **4.** (2026-10-21, `prompt-foto-de-produto-chatgpt`) Prompts do ChatGPT para foto de produto: 8 cenários prontos
+- [x] **4.** (escrito em 21/10, publicado em 2026-10-22 07:00, `prompt-foto-de-produto-chatgpt`) Prompts do ChatGPT para foto de produto: 8 cenários prontos
   - Palavra-chave: prompt foto de produto chatgpt · Intenção: aplicar · Link: `46-comandos-do-chatgpt`
   - Diferencial: cenários prontos (fundo branco, lifestyle, mesa, embalagem), foco em pequeno comércio.
 - [x] **5.** (2026-10-22, `comandos-iluminacao-ia-foto`) Comandos de luz para fotos com IA: /goldenhour, /fog e mais

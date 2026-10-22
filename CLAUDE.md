@@ -29,6 +29,8 @@ The home, `/blog/` and category pages sort posts by latest activity: the newer o
 
 A post goes live when its `date` has passed (`isPublished` in `src/utils/posts.ts`). There is no scheduled rebuild: the deploy workflow runs on every push to `main` (or by hand), so a push publishes right away. A post with a future `date` only appears in the first deploy after that date.
 
+**Cadence: one new article per day, every morning at 7h (Brasília).** The daily routine runs in the cloud (remote session, no access to the owner's computer, ChatGPT or Gemini). Never publish two new articles on the same day. Before writing, `git pull` and check for any post whose `date` is today or later (including one the owner scheduled for today at 07:00 the day before); if one exists, do not write another, just report it. Date the new article today, never tomorrow. Full rules: `PLANO-SERIE-COMANDOS.md`, section "Cadência".
+
 
 ## Images and Web Stories (cost rules)
 
