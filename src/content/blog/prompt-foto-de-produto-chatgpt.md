@@ -49,7 +49,7 @@ Por isso toda frase abaixo traz "preserve a caneca e o logotipo". Se o seu produ
 
 ## Os 8 cenários prontos
 
-A tabela resume cada cenário e mostra quais eu testei. Cada prompt fica numa caixa com botão de copiar.
+A tabela resume cada cenário e mostra quais eu testei. Cada prompt fica numa caixa com botão de copiar. As imagens do ChatGPT vieram quadradas ou em 4:3; para seguir o padrão de imagens do blog (3:2), as laterais das quadradas foram preenchidas com um desfoque do próprio fundo, e as de 4:3 tiveram um pequeno corte em cima e embaixo.
 
 | Cenário | Bom para | Testei |
 |---|---|---|
@@ -74,7 +74,7 @@ Use a foto anexa e crie uma imagem de catálogo desta caneca com fundo branco li
 
 ![Caneca branca com o logotipo do TechOnPlay centralizada em fundo branco liso, em formato quadrado](./images/foto-produto-fundo-branco.webp)
 
-O ChatGPT devolveu a caneca centralizada, em formato quadrado, sobre fundo branco liso. A forma, a alça à esquerda e as letras do logotipo (TechOn, o símbolo de play e Play) parecem iguais às da foto de partida. Dois detalhes: quase não há sombra sob a caneca, o que dá o aspecto de "recorte" comum em catálogo, e o "Play" ficou num rosa-lilás um pouco mais claro do que na foto de partida. Se quiser a caneca mais "apoiada", peça uma sombra suave no ajuste.
+O ChatGPT devolveu uma imagem quadrada, com a caneca centralizada sobre fundo branco liso. A forma, a alça à esquerda e as letras do logotipo (TechOn, o símbolo de play e Play) parecem iguais às da foto de partida. Dois detalhes: quase não há sombra sob a caneca, o que dá o aspecto de "recorte" comum em catálogo, e o "Play" ficou num rosa-lilás um pouco mais claro do que na foto de partida. Se quiser a caneca mais "apoiada", peça uma sombra suave no ajuste.
 
 ### 2. Fundo neutro premium
 
