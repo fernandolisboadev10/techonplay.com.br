@@ -3,10 +3,10 @@ title: "Prompt para foto de produto no ChatGPT: 8 cenários prontos"
 description: "Envie a foto do seu produto ao ChatGPT e use 8 prompts prontos: fundo branco, lifestyle, mesa, foto de venda e mais, com o resultado de quatro testes."
 category: "Inteligência Artificial"
 date: 2026-10-22T07:00:00-03:00
-updated: 2026-10-22T08:58:00-03:00
+updated: 2026-10-22T09:05:00-03:00
 readingTime: "8 min"
 image: "./images/prompt-foto-de-produto-chatgpt.webp"
-imageAlt: "Antes e depois de foto de produto feita com o ChatGPT: à esquerda a caneca branca com logotipo numa bancada de cozinha, à direita a mesma caneca em foto de venda com fundo azul-claro"
+imageAlt: "Pessoa fotografa com o celular num tripé uma caneca branca com o logotipo do TechOnPlay, diante de um fundo de papel branco, com o notebook ao lado mostrando a mesma foto"
 tags: ["ChatGPT", "Foto de produto", "Prompts", "Pequeno comércio"]
 related: ["comandos-do-chatgpt", "comandos-chatgpt-editar-fotos", "angulos-de-camera-prompt-ia", "chatgpt-gratis-ou-pago"]
 faq:
