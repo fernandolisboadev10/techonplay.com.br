@@ -42,7 +42,7 @@ Vale para todos os itens abaixo que ensinam a usar um comando ou prompt de image
 - [x] **4.** (2026-10-21, `prompt-foto-de-produto-chatgpt`) Prompts do ChatGPT para foto de produto: 8 cenários prontos
   - Palavra-chave: prompt foto de produto chatgpt · Intenção: aplicar · Link: `46-comandos-do-chatgpt`
   - Diferencial: cenários prontos (fundo branco, lifestyle, mesa, embalagem), foco em pequeno comércio.
-- [ ] **5.** Comandos de luz para fotos com IA: /goldenhour, /fog e mais
+- [x] **5.** (2026-10-22, `comandos-iluminacao-ia-foto`) Comandos de luz para fotos com IA: /goldenhour, /fog e mais
   - Palavra-chave: comandos de iluminação ia foto · Intenção: como fazer · Link: `46-comandos-do-chatgpt`
   - Diferencial: luz como assunto próprio, com comparação lado a lado.
 - [ ] **6.** Google Flow: como controlar a câmera de verdade (guia oficial)

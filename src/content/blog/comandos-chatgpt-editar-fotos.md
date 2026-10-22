@@ -4,7 +4,7 @@ seoTitle: "Editar foto com ChatGPT: 12 comandos como /proshot e /newbg"
 description: "Envie sua foto ao ChatGPT e cole um comando como /proshot ou /newbg para melhorar o retrato ou trocar o fundo. Passo a passo e 12 comandos prontos."
 category: "Inteligência Artificial"
 date: 2026-10-19T20:55:00-03:00
-updated: 2026-10-21T16:31:00-03:00
+updated: 2026-10-22T06:53:00-03:00
 readingTime: "7 min"
 image: "./images/comandos-chatgpt-editar-fotos.webp"
 imageAlt: "Antes e depois de foto editada com o ChatGPT: à esquerda sol forte de meio-dia, à direita luz dourada e fundo desfocado"
@@ -259,5 +259,7 @@ Pode. Como os comandos são só palavras que o ChatGPT interpreta, você pode in
 5. Confira o rosto e os detalhes antes de usar a imagem.
 
 Guia completo: para foto de produto, veja os [8 prompts para foto de produto no ChatGPT](/prompt-foto-de-produto-chatgpt/).
+
+Guia completo: para mudar só a luz da sua foto, veja os [comandos de luz para fotos com IA](/comandos-iluminacao-ia-foto/), com prompts prontos de golden hour, neblina e contraluz.
 
 Fontes: [Jörg Schieb, ChatGPT-Bildbefehle (schieb.de, 04/09/2026)](https://www.schieb.de/?p=814488) | [Canaltech, 12 comandos para criar ou editar imagens no ChatGPT](https://canaltech.com.br/inteligencia-artificial/12-comandos-para-criar-ou-editar-imagens-no-chatgpt/) | [OpenAI: geração de imagens no ChatGPT](https://help.openai.com/en/articles/9055440-image-generation-in-chatgpt)

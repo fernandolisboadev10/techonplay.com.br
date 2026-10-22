@@ -3,7 +3,7 @@ title: "Comandos do ChatGPT: uma palavra no prompt muda sua foto"
 description: "Comandos do ChatGPT para imagens: 100 atalhos de ângulo, luz, lente e efeito. Copie, cole no prompt e veja sua foto mudar já na primeira tentativa."
 category: "Inteligência Artificial"
 date: 2026-09-26
-updated: 2026-10-21T19:11:00-03:00
+updated: 2026-10-22T06:53:00-03:00
 readingTime: "13 min"
 image: "./images/comandos-do-chatgpt.webp"
 imageAlt: "Grade com nove fotos de uma jovem de moletom preto em ângulos e efeitos diferentes, cada uma com o nome do comando do ChatGPT"
@@ -263,6 +263,8 @@ Veja abaixo os 100 comandos com botão de copiar em cada linha, prontos para col
 Guia completo: para editar uma foto sua, veja os [12 comandos do ChatGPT para editar fotos](/comandos-chatgpt-editar-fotos/), com prompt sugerido para cada um.
 
 Guia completo: para fotos de loja e anúncio, veja os [8 prompts para foto de produto no ChatGPT](/prompt-foto-de-produto-chatgpt/), com cenários prontos para pequeno comércio.
+
+Guia completo: para mudar a luz da foto, veja os [comandos de luz para fotos com IA](/comandos-iluminacao-ia-foto/).
 
 Cole o comando no fim do seu prompt e complete com a descrição da cena. Combine no máximo dois ou três comandos por geração.
 
