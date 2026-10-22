@@ -27,7 +27,7 @@ The home, `/blog/` and category pages sort posts by latest activity: the newer o
 
 ## Scheduling
 
-A post goes live when its `date` has passed (`isPublished` in `src/utils/posts.ts`). The deploy workflow rebuilds at 07:02, 11:02 and 18:02 (Brasília time), so to schedule a post set `date` to a future time such as `2026-10-02T07:00:00-03:00` and push; commit it before the slot.
+A post goes live when its `date` has passed (`isPublished` in `src/utils/posts.ts`). There is no scheduled rebuild: the deploy workflow runs on every push to `main` (or by hand), so a push publishes right away. A post with a future `date` only appears in the first deploy after that date.
 
 
 ## Images and Web Stories (cost rules)
