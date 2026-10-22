@@ -369,6 +369,70 @@ const breadcrumbSchema = {
     object-fit: cover;
   }
 
+  :global(.download-box) {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 28px 0;
+    padding: 18px 20px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: linear-gradient(120deg, var(--code-bg), var(--surface));
+    box-shadow: 0 16px 32px -22px rgba(91, 33, 182, 0.45);
+  }
+
+  :global(.download-box-icon) {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  :global(.download-box-text) {
+    flex: 1;
+    min-width: 0;
+  }
+
+  :global(.download-box-text strong) {
+    display: block;
+    color: var(--ink-strong);
+    font-size: 1.05rem;
+    margin-bottom: 2px;
+  }
+
+  :global(.download-box-text span) {
+    display: block;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  :global(.download-box a.download-box-btn) {
+    flex: none;
+    padding: 11px 20px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--violet), #c026d3);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  :global(.download-box a.download-box-btn:hover) {
+    filter: brightness(1.1);
+  }
+
+  @media (max-width: 640px) {
+    :global(.download-box) {
+      flex-direction: column;
+      align-items: stretch;
+      text-align: left;
+    }
+
+    :global(.download-box a.download-box-btn) {
+      text-align: center;
+    }
+  }
+
   :global(.prompt-card) {
     margin: 24px 0;
     border-radius: 10px;
