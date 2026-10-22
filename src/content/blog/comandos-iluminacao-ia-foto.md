@@ -4,10 +4,10 @@ seoTitle: "Comandos de luz para foto com IA: /goldenhour, /fog e mais"
 description: "Envie sua foto ao ChatGPT ou ao Gemini e mude a luz com um comando como golden hour ou fog. Passo a passo, 8 comandos de luz e prompts prontos."
 category: "Inteligência Artificial"
 date: 2026-10-22T06:53:00-03:00
-updated: 2026-10-22T09:50:00-03:00
+updated: 2026-10-22T09:56:00-03:00
 readingTime: "8 min"
 image: "./images/comandos-iluminacao-ia-foto.webp"
-imageAlt: "Pessoa de costas fotografa com o celular uma rua de paralelepípedos ao pôr do sol, com luz dourada contornando os cabelos"
+imageAlt: "Jovem ruiva de boné branco com o logotipo do TechOnPlay tira uma selfie com o celular numa rua de areia de vila de praia, com luz dourada de pôr do sol contornando o cabelo"
 tags: ["Iluminação", "Prompts", "Editar fotos", "Imagens com IA"]
 related: ["comandos-do-chatgpt", "comandos-chatgpt-editar-fotos", "angulos-de-camera-prompt-ia", "comandos-camera-google-flow"]
 faq:
