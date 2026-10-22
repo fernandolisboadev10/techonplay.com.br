@@ -31,15 +31,6 @@ O resultado aparece na primeira tentativa: uma selfie comum vira foto de capa de
 
 Este guia reúne os 100 comandos do ChatGPT organizados por categoria, com tabela comparativa e lista completa para copiar.
 
-<aside class="download-box">
-<div class="download-box-icon" aria-hidden="true">📘</div>
-<div class="download-box-text">
-<strong>Apostila gratuita em PDF</strong>
-<span>Os 100 comandos em versão para guardar e imprimir, com prompts prontos, exemplos e combinações para testar.</span>
-</div>
-<a class="download-box-btn" href="/guias/apostila-100-comandos-chatgpt-techonplay.pdf" download>Baixar grátis (PDF, 1,7 MB)</a>
-</aside>
-
 ## O que são os comandos do ChatGPT para imagens e por que funcionam
 
 Um comando do ChatGPT para imagens funciona como instrução técnica de fotografia em formato de atalho. Termos como **/lowangle** ou **/tiltshift** dizem ao modelo onde posicionar a câmera e que efeito aplicar, sem exigir um parágrafo de descrição.
