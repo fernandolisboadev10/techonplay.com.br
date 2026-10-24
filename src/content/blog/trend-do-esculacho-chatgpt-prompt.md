@@ -58,6 +58,10 @@ Outro motivo para o resultado variar é o tipo de conta e as configurações de 
 
 Aqui está a parte que a graça da trend costuma esconder. Um esculacho personalizado só funciona porque o ChatGPT reúne pistas sobre a sua vida, e essas pistas podem aparecer no texto: profissão, cidade, horários, relacionamentos, dinheiro, hábitos. A reportagem do Metrópoles não trata de privacidade, mas o exemplo da própria Gabriela Pugliesi mostra o risco, porque a piada citava uma rotina de manhã bem específica e uma briga de valores em moeda estrangeira. Ela é figura pública e escolheu divulgar, mas você talvez não queira o mesmo.
 
+![Homem sentado à mesa da cozinha à noite, com ar de dúvida e a mão no queixo, olhando o celular antes de decidir se posta o resultado](./images/trend-do-esculacho-privacidade.webp)
+
+*Imagem ilustrativa gerada por IA (pessoa fictícia).*
+
 Antes de publicar, faça este pente-fino rápido:
 
 - Leia o texto procurando nomes de pessoas, empresas, escola, bairro ou rotina que identifiquem você ou terceiros.
