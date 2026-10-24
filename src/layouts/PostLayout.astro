@@ -39,6 +39,15 @@ const formattedDate = date.toLocaleDateString('pt-BR', {
   timeZone: 'UTC',
 });
 
+// "Atualizado em" só aparece quando o artigo foi editado em um dia depois da publicação.
+const formattedUpdated = updated?.toLocaleDateString('pt-BR', {
+  day: '2-digit',
+  month: 'long',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+const showUpdated = !!formattedUpdated && formattedUpdated !== formattedDate && updated!.getTime() > date.getTime();
+
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -109,7 +118,7 @@ const breadcrumbSchema = {
         </nav>
         <h1>{title}</h1>
         <p class="meta">
-          Por <a href="/sobre-nos">Fernando Lisboa</a> | {formattedDate}{readingTime && `, ${readingTime} de leitura`}
+          Por <a href="/sobre-nos">Fernando Lisboa</a> | <time datetime={date.toISOString()}>{formattedDate}</time>{showUpdated && <> | Atualizado em <time datetime={updated!.toISOString()}>{formattedUpdated}</time></>}{readingTime && `, ${readingTime} de leitura`}
         </p>
         <ShareButtons title={title} />
 
