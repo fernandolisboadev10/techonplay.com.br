@@ -3,10 +3,10 @@ title: "Higgsfield no ChatGPT: 79 códigos de vídeo para copiar e colar"
 description: "Lista com 79 códigos do plugin Higgsfield no ChatGPT para copiar e colar, o que cada um faz, como instalar e quanto custa gerar um vídeo."
 category: "Apps"
 date: 2026-09-29
-updated: 2026-10-10T12:00:00-03:00
+updated: 2026-10-26T14:22:00-03:00
 readingTime: "12 min"
 image: "./images/Plugin-Higgsfield-no-ChatGPT.webp"
-imageAlt: "Plugin Higgsfield no ChatGPT"
+imageAlt: "Mão segurando um celular com uma foto de tênis virando vídeo com órbita de câmera, em um estúdio com ring light"
 tags: ["Higgsfield", "ChatGPT", "IA de vídeo", "Plugins"]
 related: ["google-flow-gratis", "comandos-camera-google-flow", "comandos-do-chatgpt"]
 ---
