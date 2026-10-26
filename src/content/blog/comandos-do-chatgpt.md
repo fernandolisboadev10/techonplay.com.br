@@ -3,7 +3,7 @@ title: "Comandos do ChatGPT: uma palavra no prompt muda sua foto"
 description: "Comandos do ChatGPT para imagens: 100 atalhos de ângulo, luz, lente e efeito. Copie, cole no prompt e veja sua foto mudar já na primeira tentativa."
 category: "Inteligência Artificial"
 date: 2026-09-26
-updated: 2026-10-22T06:53:00-03:00
+updated: 2026-10-26T15:20:00-03:00
 readingTime: "13 min"
 image: "./images/comandos-do-chatgpt.webp"
 imageAlt: "Grade com nove fotos de uma jovem de moletom preto em ângulos e efeitos diferentes, cada uma com o nome do comando do ChatGPT"
@@ -108,9 +108,9 @@ Envie uma foto nítida e bem iluminada como referência, descreva o cenário e f
 
 Exemplo: _“Pessoa em pé num terraço ao entardecer, /lowangle, luz dourada, roupa casual.”_
 
-Segundo o [Centro de Ajuda da OpenAI sobre geração de imagens no ChatGPT](https://help.openai.com/en/articles/9055440-image-generation-in-chatgpt), o modelo interpreta instruções de estilo e composição como parte natural do prompt, o que explica por que o truque funciona tão bem.
-
 Combinar dois comandos costuma funcionar, como **/dutchangle** com **/rain**. Acima de três termos, o modelo tende a ignorar parte das instruções. Erros comuns: usar o comando sem descrever a cena, misturar efeitos opostos como **/wormview** e **/birdsview** no mesmo prompt, ou partir de foto de referência borrada.
+
+Segundo o [Centro de Ajuda da OpenAI sobre geração de imagens no ChatGPT](https://help.openai.com/en/articles/9055440-image-generation-in-chatgpt), o modelo interpreta instruções de estilo e composição como parte natural do prompt, o que explica por que o truque funciona tão bem.
 
 ![Jovem de capuz molhado numa rua à noite sob chuva, com horizonte inclinado, resultado da combinação dos comandos /dutchangle e /rain](./images/comandos-chatgpt-dutchangle-rain.webp)
 
@@ -265,6 +265,8 @@ Guia completo: para editar uma foto sua, veja os [12 comandos do ChatGPT para ed
 Guia completo: para fotos de loja e anúncio, veja os [8 prompts para foto de produto no ChatGPT](/prompt-foto-de-produto-chatgpt/), com cenários prontos para pequeno comércio.
 
 Guia completo: para mudar a luz da foto, veja os [comandos de luz para fotos com IA](/comandos-iluminacao-ia-foto/).
+
+Guia completo: para foto de perfil, veja os [10 prompts de foto profissional](/prompt-foto-profissional-chatgpt/).
 
 Cole o comando no fim do seu prompt e complete com a descrição da cena. Combine no máximo dois ou três comandos por geração.
 

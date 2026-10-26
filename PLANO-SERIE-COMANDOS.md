@@ -58,12 +58,12 @@ Vale para todos os itens abaixo que ensinam a usar um comando ou prompt de image
 - [x] **5.** (2026-10-22, `comandos-iluminacao-ia-foto`) Comandos de luz para fotos com IA: /goldenhour, /fog e mais
   - Palavra-chave: comandos de iluminação ia foto · Intenção: como fazer · Link: `46-comandos-do-chatgpt`
   - Diferencial: luz como assunto próprio, com comparação lado a lado.
-- [ ] **6.** Google Flow: como controlar a câmera de verdade (guia oficial)
-  - Palavra-chave: controles de câmera google flow · Intenção: como fazer · Link: `comandos-camera-google-flow`, `google-flow-gratis`
-  - Diferencial: recurso oficial da interface (conferir na documentação do Google Flow), que o pilar só cita de longe.
-- [ ] **7.** Prompt para foto profissional no ChatGPT: 10 modelos por área
+- [x] **6.** (escrito em 26/10, data 2026-10-27 07:00, `prompt-foto-profissional-chatgpt`) Prompt de foto profissional no ChatGPT: 10 modelos por área
   - Palavra-chave: prompt foto profissional chatgpt · Intenção: aplicar · Link: `46-comandos-do-chatgpt`
   - Diferencial: por profissão, com checklist contra rosto "de plástico". Tema muito disputado: só publicar com diferencial real.
+- [ ] **7.** Google Flow: como controlar a câmera de verdade (guia oficial)
+  - Palavra-chave: controles de câmera google flow · Intenção: como fazer · Link: `comandos-camera-google-flow`, `google-flow-gratis`
+  - Diferencial: recurso oficial da interface (conferir na documentação do Google Flow), que o pilar só cita de longe.
 - [ ] **8.** Como criar seus próprios comandos de imagem no ChatGPT
   - Palavra-chave: criar comandos personalizados chatgpt imagem · Intenção: como fazer · Link: `46-comandos-do-chatgpt`
   - Diferencial: receita para criar `/polaroid`, `/noir`, `/isometric` e variações.
