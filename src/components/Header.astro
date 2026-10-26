@@ -1,5 +1,10 @@
 ---
+import { getCollection } from 'astro:content';
 import { categories as categoryList } from '../data/categories';
+import { themes, themeHref, matchesTheme, MIN_THEME_POSTS } from '../data/themes.mjs';
+import { isPublished } from '../utils/posts';
+
+const posts = await getCollection('blog', isPublished);
 
 const categories = [
   { label: 'IA', category: 'Inteligência Artificial' },
@@ -14,12 +19,19 @@ const categories = [
   { label: 'Educação', category: 'Educação' },
 ];
 
+// Subcategorias (temas) que abrem ao passar o mouse sobre a categoria.
+const subsOf = (cat?: { subthemes?: string[] }) =>
+  (cat?.subthemes ?? [])
+    .map((s) => themes.find((x) => x.slug === s))
+    .filter((x) => x && posts.filter((p) => matchesTheme(x, p.id, p.data.tags ?? [])).length >= MIN_THEME_POSTS)
+    .map((x) => ({ label: x.name, href: themeHref(x.slug) }));
+
 const nav = [
-  { label: 'Início', href: '/' },
-  ...categories.map((c) => ({
-    label: c.label,
-    href: `/categoria/${categoryList.find((x) => x.name === c.category)?.slug}/`,
-  })),
+  { label: 'Início', href: '/', subs: [] },
+  ...categories.map((c) => {
+    const cat = categoryList.find((x) => x.name === c.category);
+    return { label: c.label, href: `/categoria/${cat?.slug}/`, subs: subsOf(cat) };
+  }),
 ];
 
 const currentHref = Astro.url.pathname + Astro.url.search;
@@ -37,9 +49,18 @@ const currentHref = Astro.url.pathname + Astro.url.search;
       <img class="brand-logo" src="/images/logo.webp" alt="TechOnPlay" width="197" height="30" />
     </a>
     <nav class="nav">
-      {nav.map((item) => (
-        <a href={item.href} class:list={{ active: item.href === currentHref }}>{item.label}</a>
-      ))}
+      {nav.map((item) =>
+        item.subs.length ? (
+          <div class="dd">
+            <a href={item.href} class:list={{ active: item.href === currentHref }}>{item.label}</a>
+            <div class="dd-menu">
+              {item.subs.map((s) => <a href={s.href}>{s.label}</a>)}
+            </div>
+          </div>
+        ) : (
+          <a href={item.href} class:list={{ active: item.href === currentHref }}>{item.label}</a>
+        ),
+      )}
     </nav>
     <div class="right-controls">
       <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Alternar tema escuro">
@@ -73,7 +94,10 @@ const currentHref = Astro.url.pathname + Astro.url.search;
   </div>
   <nav class="mobile-nav" id="mobile-nav">
     {nav.map((item) => (
-      <a href={item.href} class:list={{ active: item.href === currentHref }}>{item.label}</a>
+      <>
+        <a href={item.href} class:list={{ active: item.href === currentHref }}>{item.label}</a>
+        {item.subs.map((s) => <a href={s.href} class="sub">{s.label}</a>)}
+      </>
     ))}
   </nav>
 </header>
@@ -179,6 +203,49 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     background: color-mix(in srgb, var(--violet) 14%, transparent);
     box-shadow: 0 4px 12px color-mix(in srgb, var(--violet) 22%, transparent);
     transform: translateY(-2px);
+  }
+
+  .dd {
+    position: relative;
+  }
+
+  .dd-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 240px;
+    padding: 8px;
+    flex-direction: column;
+    gap: 2px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: 0 12px 28px color-mix(in srgb, var(--ink-strong) 18%, transparent);
+    z-index: 20;
+  }
+
+  /* Ponte invisível para o menu não fechar ao cruzar o espaço entre o item e a lista. */
+  .dd-menu::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    height: 10px;
+  }
+
+  .dd:hover .dd-menu,
+  .dd:focus-within .dd-menu {
+    display: flex;
+  }
+
+  .dd-menu a {
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 0.9rem;
+    border-radius: 10px;
   }
 
   .nav a:active {
@@ -347,6 +414,12 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     color: var(--violet-deep);
     background: color-mix(in srgb, var(--violet) 10%, transparent);
     padding-left: 32px;
+  }
+
+  .mobile-nav a.sub {
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding-left: 44px;
   }
 
   .mobile-nav a.active {
