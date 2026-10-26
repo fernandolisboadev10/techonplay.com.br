@@ -19,6 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Datar atualizações dos artigos pelo Git
+        run: node scripts/derive-updated.mjs
       - uses: withastro/action@v3
         with:
           node-version: '22'
