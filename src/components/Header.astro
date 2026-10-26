@@ -93,12 +93,22 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     </div>
   </div>
   <nav class="mobile-nav" id="mobile-nav">
-    {nav.map((item) => (
-      <>
+    {nav.map((item) =>
+      item.subs.length ? (
+        <div class:list={['m-group', { open: item.href === currentHref || item.subs.some((s) => s.href === currentHref) }]}>
+          <button type="button" class="m-toggle" aria-expanded={item.href === currentHref || item.subs.some((s) => s.href === currentHref) ? 'true' : 'false'}>
+            <span>{item.label}</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg>
+          </button>
+          <div class="m-subs">
+            <a href={item.href} class:list={['sub', 'all', { active: item.href === currentHref }]}>Ver tudo em {item.label}</a>
+            {item.subs.map((s) => <a href={s.href} class="sub">{s.label}</a>)}
+          </div>
+        </div>
+      ) : (
         <a href={item.href} class:list={{ active: item.href === currentHref }}>{item.label}</a>
-        {item.subs.map((s) => <a href={s.href} class="sub">{s.label}</a>)}
-      </>
-    ))}
+      ),
+    )}
   </nav>
 </header>
 
@@ -131,6 +141,14 @@ const currentHref = Astro.url.pathname + Astro.url.search;
   menuToggle?.addEventListener('click', () => {
     const open = mobileNav?.classList.toggle('open');
     menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+
+  mobileNav?.querySelectorAll('.m-toggle').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const group = btn.closest('.m-group');
+      const open = group?.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
   });
 
   mobileNav?.querySelectorAll('a').forEach((link) => {
@@ -388,9 +406,54 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     background: var(--bg);
   }
 
+  .m-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 14px 24px;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+    color: var(--ink-soft);
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .m-toggle svg {
+    transition: transform 0.2s ease;
+  }
+
+  .m-group.open > .m-toggle {
+    color: var(--ink-strong);
+    box-shadow: inset 2px 0 0 var(--violet);
+  }
+
+  .m-group.open > .m-toggle svg {
+    transform: rotate(180deg);
+  }
+
+  .m-subs {
+    display: none;
+    flex-direction: column;
+  }
+
+  .m-group.open > .m-subs {
+    display: flex;
+  }
+
   .mobile-nav a.sub {
     font-size: 0.72rem;
     padding-left: 44px;
+  }
+
+  .mobile-nav a.sub.all {
+    color: var(--link-text);
   }
 
   .mobile-nav a.active {
