@@ -10,14 +10,16 @@ const { category, onImage = false } = Astro.props;
 <span class:list={['cat', { 'on-image': onImage }]} style={`--cat:${categoryColor(category)}`}>{category}</span>
 
 <style>
-  /* Category as a small colour swatch plus plain text: readable on any background, no pill. */
+  /* Categoria em mono maiúsculo, com um quadrado de cor: legível sobre qualquer fundo. */
   .cat {
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    font-family: var(--font-body);
-    font-size: 0.78rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
     font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     line-height: 1.2;
     color: var(--ink-soft);
   }
@@ -32,7 +34,7 @@ const { category, onImage = false } = Astro.props;
   }
 
   .on-image {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.92);
   }
 
   .on-image::before {

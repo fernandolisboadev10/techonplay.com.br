@@ -8,7 +8,7 @@ interface Props {
 const { title, href, linkLabel, id } = Astro.props;
 ---
 <div class="section-head">
-  <h2 id={id}>{href ? <a href={href}>{title}</a> : title}</h2>
+  <h2 id={id}><span class="mark" aria-hidden="true">//</span>{href ? <a href={href}>{title}</a> : title}</h2>
   <span class="rule" aria-hidden="true"></span>
   {href && linkLabel && <a class="more" href={href}>{linkLabel}</a>}
 </div>
@@ -16,16 +16,27 @@ const { title, href, linkLabel, id } = Astro.props;
 <style>
   .section-head {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
   }
 
   h2 {
-    font-size: 1.35rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
     white-space: nowrap;
+  }
+
+  .mark {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--link-text);
   }
 
   h2 a {
@@ -34,26 +45,27 @@ const { title, href, linkLabel, id } = Astro.props;
   }
 
   h2 a:hover {
-    color: var(--violet);
+    color: var(--link-text);
   }
 
-  /* The rule separates sections and carries the eye to the section link. */
+  /* A linha separa as seções e leva o olho até o link da seção. */
   .rule {
     flex: 1;
-    align-self: center;
     height: 1px;
     background: var(--line);
   }
 
   .more {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--violet);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
     text-decoration: none;
     white-space: nowrap;
   }
 
   .more:hover {
-    text-decoration: underline;
+    color: var(--link-text);
   }
 </style>

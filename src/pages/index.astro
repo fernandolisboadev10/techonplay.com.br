@@ -6,6 +6,7 @@ import HomeLead from '../components/HomeLead.astro';
 import LatestList from '../components/LatestList.astro';
 import CategoryBlock from '../components/CategoryBlock.astro';
 import SectionHead from '../components/SectionHead.astro';
+import TrendBar from '../components/TrendBar.astro';
 import Pagination from '../components/Pagination.astro';
 import StoriesStrip from '../components/StoriesStrip.astro';
 import ThemeCloud from '../components/ThemeCloud.astro';
@@ -38,7 +39,9 @@ const blocks = categories
 
   {page === 1 ? (
     <>
-      <section class="container top">
+      <TrendBar posts={all.slice(0, 6)} />
+
+      <section class="container top grid-bg">
         <div class="top-lead">
           <HomeLead posts={lead} />
         </div>
@@ -110,9 +113,12 @@ const blocks = categories
     margin-top: 12px;
     padding: 11px;
     border: 1px solid var(--line);
-    border-radius: 8px;
+    border-radius: 4px;
     text-align: center;
-    font-size: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     font-weight: 600;
     color: var(--ink-strong);
     text-decoration: none;
@@ -120,7 +126,7 @@ const blocks = categories
 
   .more-posts:hover {
     border-color: var(--violet);
-    color: var(--violet);
+    color: var(--link-text);
   }
 
   .themes {

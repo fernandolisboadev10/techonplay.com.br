@@ -101,13 +101,16 @@ const stamp = (post: CollectionEntry<'blog'>) => {
   }
 
   .day {
-    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
     font-weight: 600;
+    text-transform: uppercase;
     color: var(--ink);
   }
 
   .time {
-    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
     color: var(--ink-soft);
   }
 
@@ -127,7 +130,7 @@ const stamp = (post: CollectionEntry<'blog'>) => {
   }
 
   li a:hover .title {
-    color: var(--violet);
+    color: var(--link-text);
   }
 
   li a:hover::before {

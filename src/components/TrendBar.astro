@@ -1,0 +1,94 @@
+---
+// Faixa fina sob o header com os posts mais recentes (sem dados inventados).
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+const { posts } = Astro.props;
+---
+<div class="trend">
+  <div class="container trend-in">
+    <div class="trend-l"><span class="live-dot"></span>Últimas</div>
+    <div class="trend-items">
+      {posts.map((p, i) => (
+        <a href={`/${p.id}`}><b>{String(i + 1).padStart(2, '0')}</b><span>{p.data.title}</span></a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .trend {
+    border-bottom: 1px solid var(--line);
+    background: var(--surface);
+  }
+
+  .trend-in {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 44px;
+  }
+
+  .trend-l {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-strong);
+  }
+
+  .trend-items {
+    display: flex;
+    gap: 28px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(90deg, #000 90%, transparent);
+    mask-image: linear-gradient(90deg, #000 90%, transparent);
+  }
+
+  .trend-items::-webkit-scrollbar {
+    display: none;
+  }
+
+  .trend-items a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    max-width: 340px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    transition: color 0.15s ease;
+  }
+
+  .trend-items a:hover {
+    color: var(--ink-strong);
+  }
+
+  .trend-items b {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 500;
+    color: var(--link-text);
+  }
+
+  .trend-items span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 600px) {
+    .trend-l {
+      font-size: 0.6rem;
+    }
+  }
+</style>

@@ -144,7 +144,9 @@ const currentHref = Astro.url.pathname + Astro.url.search;
 <style>
   .site-header {
     border-bottom: 1px solid var(--line);
-    background: var(--bg);
+    background: color-mix(in srgb, var(--bg) 84%, transparent);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -155,7 +157,8 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    padding-block: 16px;
+    height: 64px;
+    padding-block: 0;
     max-width: 1200px;
   }
 
@@ -177,36 +180,58 @@ const currentHref = Astro.url.pathname + Astro.url.search;
 
   .nav {
     display: flex;
-    align-items: center;
-    gap: 2px;
+    align-items: stretch;
+    align-self: stretch;
+    gap: 0;
     flex: 1;
     justify-content: center;
   }
 
   .nav a {
+    position: relative;
+    display: flex;
+    align-items: center;
     text-decoration: none;
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 0.78rem;
-    letter-spacing: 0.04em;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.68rem;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--ink-soft);
-    padding: 8px 10px;
-    border-radius: 20px;
+    padding: 0 9px;
     white-space: nowrap;
-    transition: color 0.18s ease, background-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+    transition: color 0.15s ease;
+  }
+
+  .nav a::after {
+    content: '';
+    position: absolute;
+    left: 9px;
+    right: 9px;
+    bottom: -1px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--violet), var(--rose));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.2s ease;
   }
 
   .nav a:hover,
-  .nav a:focus-visible {
-    color: var(--violet-deep);
-    background: color-mix(in srgb, var(--violet) 14%, transparent);
-    box-shadow: 0 4px 12px color-mix(in srgb, var(--violet) 22%, transparent);
-    transform: translateY(-2px);
+  .nav a:focus-visible,
+  .nav a.active {
+    color: var(--ink-strong);
+  }
+
+  .nav a.active::after,
+  .nav a:hover::after,
+  .nav a:focus-visible::after {
+    transform: scaleX(1);
   }
 
   .dd {
     position: relative;
+    display: flex;
+    align-items: stretch;
   }
 
   .dd-menu {
@@ -216,24 +241,15 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     left: 50%;
     transform: translateX(-50%);
     min-width: 240px;
-    padding: 8px;
+    padding: 6px;
     flex-direction: column;
-    gap: 2px;
-    background: var(--bg);
+    gap: 0;
+    background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 14px;
-    box-shadow: 0 12px 28px color-mix(in srgb, var(--ink-strong) 18%, transparent);
+    border-top: 2px solid var(--violet);
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 12px 28px color-mix(in srgb, var(--ink-strong) 14%, transparent);
     z-index: 20;
-  }
-
-  /* Ponte invisível para o menu não fechar ao cruzar o espaço entre o item e a lista. */
-  .dd-menu::before {
-    content: '';
-    position: absolute;
-    top: -10px;
-    left: 0;
-    right: 0;
-    height: 10px;
   }
 
   .dd:hover .dd-menu,
@@ -241,63 +257,58 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     display: flex;
   }
 
-  .dd-menu a {
-    text-transform: none;
-    letter-spacing: 0;
-    font-size: 0.9rem;
-    border-radius: 10px;
+  .nav .dd-menu a {
+    padding: 10px 12px;
+    border-radius: 4px;
   }
 
-  .nav a:active {
-    transform: translateY(0);
-    box-shadow: none;
+  .nav .dd-menu a::after {
+    display: none;
   }
 
-  .nav a.active {
-    color: var(--violet-deep);
-    background: var(--line);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .nav a,
-    .mobile-nav a {
-      transition: none;
-    }
-
-    .nav a:hover,
-    .nav a:focus-visible {
-      transform: none;
-    }
+  .nav .dd-menu a:hover {
+    background: color-mix(in srgb, var(--violet) 8%, var(--surface));
+    color: var(--link-text);
   }
 
   .right-controls {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 4px;
   }
 
-  .menu-toggle {
-    display: none;
+  .menu-toggle,
+  .search-toggle,
+  .theme-toggle {
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 4px;
+    border: 1px solid transparent;
     background: transparent;
     color: var(--ink-strong);
     cursor: pointer;
     flex-shrink: 0;
+    transition: border-color 0.15s ease, color 0.15s ease;
   }
 
-  .menu-toggle:hover {
-    color: var(--violet);
+  .menu-toggle {
+    display: none;
+  }
+
+  .menu-toggle:hover,
+  .search-toggle:hover,
+  .theme-toggle:hover {
+    color: var(--link-text);
+    border-color: var(--line);
   }
 
   .search-wrap {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
   }
 
   .search-form {
@@ -308,59 +319,24 @@ const currentHref = Astro.url.pathname + Astro.url.search;
   }
 
   .search-wrap.open .search-form {
-    width: 180px;
+    width: 190px;
     opacity: 1;
   }
 
   .search-form input {
     width: 100%;
-    padding: 8px 12px;
+    height: 36px;
+    padding: 0 12px;
     border: 1px solid var(--line);
-    border-radius: 20px;
-    font-family: var(--font-body);
-    font-size: 0.85rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
     background: var(--surface);
     color: var(--ink);
   }
 
   .search-form input:focus {
     border-color: var(--violet);
-  }
-
-  .search-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    border: none;
-    background: transparent;
-    color: var(--ink-strong);
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-
-  .search-toggle:hover {
-    color: var(--violet);
-  }
-
-  .theme-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    border: none;
-    background: transparent;
-    color: var(--ink-strong);
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-
-  .theme-toggle:hover {
-    color: var(--violet);
   }
 
   .theme-toggle .icon-moon {
@@ -394,36 +370,31 @@ const currentHref = Astro.url.pathname + Astro.url.search;
   }
 
   .mobile-nav.open {
-    max-height: 480px;
+    max-height: 640px;
     border-top-color: var(--line);
   }
 
   .mobile-nav a {
     text-decoration: none;
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 0.9rem;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--ink-soft);
     padding: 14px 24px;
     border-bottom: 1px solid var(--line);
-    transition: color 0.18s ease, background-color 0.18s ease, padding-left 0.18s ease;
-  }
-
-  .mobile-nav a:hover,
-  .mobile-nav a:focus-visible {
-    color: var(--violet-deep);
-    background: color-mix(in srgb, var(--violet) 10%, transparent);
-    padding-left: 32px;
+    background: var(--bg);
   }
 
   .mobile-nav a.sub {
-    font-weight: 500;
-    font-size: 0.85rem;
+    font-size: 0.72rem;
     padding-left: 44px;
   }
 
   .mobile-nav a.active {
-    color: var(--violet-deep);
+    color: var(--ink-strong);
+    box-shadow: inset 2px 0 0 var(--violet);
   }
 
   @media (max-width: 1160px) {
@@ -443,7 +414,7 @@ const currentHref = Astro.url.pathname + Astro.url.search;
       width: 130px;
     }
 
-    /* Mobile: menu button on the left, logo centered, theme and search on the right. */
+    /* Menu à esquerda, logo centralizada, tema e busca à direita. */
     .bar {
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
@@ -452,20 +423,11 @@ const currentHref = Astro.url.pathname + Astro.url.search;
 
     .menu-toggle {
       justify-self: start;
+      margin-left: -8px;
     }
 
     .brand {
       justify-self: center;
-    }
-
-    .brand-logo {
-      height: 30px;
-    }
-
-    .theme-toggle,
-    .search-toggle {
-      width: 32px;
-      height: 32px;
     }
 
     .search-wrap {
@@ -479,11 +441,11 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     .right-controls {
       justify-self: end;
       gap: 0;
+      margin-right: -8px;
       position: relative;
       z-index: 1;
       background: var(--bg);
     }
-
   }
 
   @media (max-width: 400px) {

@@ -83,6 +83,8 @@ const quickLinks = [
 <style>
   .site-footer {
     margin-top: 80px;
+    border-top: 1px solid var(--line);
+    background: var(--surface);
   }
 
   .grid {
@@ -114,23 +116,18 @@ const quickLinks = [
   }
 
   .col-title {
-    position: relative;
-    font-size: 0.95rem;
+    margin: 0 0 18px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     color: var(--ink-strong);
-    font-weight: 700;
-    margin: 0 0 20px;
-    padding-bottom: 12px;
   }
 
-  .col-title::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 32px;
-    height: 3px;
-    border-radius: 2px;
-    background: linear-gradient(135deg, var(--violet), var(--rose));
+  .col-title::before {
+    content: '// ';
+    color: var(--link-text);
   }
 
 
@@ -157,7 +154,7 @@ const quickLinks = [
   }
 
   ul a:hover {
-    color: var(--teal);
+    color: var(--link-text);
   }
 
   ul.socials {
@@ -171,15 +168,15 @@ const quickLinks = [
     justify-content: center;
     width: 38px;
     height: 38px;
-    border-radius: 50%;
-    border: 1px solid var(--ink-soft);
+    border-radius: 4px;
+    border: 1px solid var(--line);
     color: var(--ink-soft);
     transition: color 0.15s, border-color 0.15s;
   }
 
   ul.socials a:hover {
-    color: var(--teal);
-    border-color: var(--teal);
+    color: var(--link-text);
+    border-color: var(--violet);
   }
 
   .bottom {
@@ -197,18 +194,23 @@ const quickLinks = [
 
   .bottom-inner p {
     margin: 0;
-    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
     color: rgba(255, 255, 255, 0.75);
   }
 
   .legal-links {
     display: flex;
-    gap: 24px;
+    flex-wrap: wrap;
+    gap: 8px 24px;
   }
 
   .legal-links a {
     text-decoration: none;
-    font-size: 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
     color: rgba(255, 255, 255, 0.75);
   }
 
