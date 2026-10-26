@@ -9,7 +9,7 @@ const { posts } = Astro.props;
 ---
 <div class="trend">
   <div class="container trend-in">
-    <div class="trend-l"><span class="live-dot"></span>Últimas</div>
+    <div class="trend-l"><span class="live-dot"></span>Agora</div>
     <div class="trend-items">
       {posts.map((p, i) => (
         <a href={`/${p.id}`}><b>{String(i + 1).padStart(2, '0')}</b><span>{p.data.title}</span></a>
@@ -20,15 +20,21 @@ const { posts } = Astro.props;
 
 <style>
   .trend {
-    border-bottom: 1px solid var(--line);
-    background: var(--surface);
+    background: var(--inverse);
+    color: var(--on-inverse);
   }
 
   .trend-in {
     display: flex;
     align-items: center;
     gap: 20px;
-    height: 44px;
+    min-height: 48px;
+  }
+
+  .trend-l :global(.live-dot) {
+    background: #fb7185;
+    box-shadow: 0 0 0 4px rgba(251, 113, 133, 0.22);
+    animation: none;
   }
 
   .trend-l {
@@ -41,7 +47,7 @@ const { posts } = Astro.props;
     font-weight: 500;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--ink-strong);
+    color: #fda4af;
   }
 
   .trend-items {
@@ -64,20 +70,21 @@ const { posts } = Astro.props;
     flex-shrink: 0;
     max-width: 340px;
     text-decoration: none;
-    font-size: 0.82rem;
-    color: var(--ink-soft);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ddd3fd;
     transition: color 0.15s ease;
   }
 
   .trend-items a:hover {
-    color: var(--ink-strong);
+    color: #fff;
   }
 
   .trend-items b {
     font-family: var(--font-mono);
     font-size: 0.66rem;
     font-weight: 500;
-    color: var(--link-text);
+    color: #a99fd0;
   }
 
   .trend-items span {

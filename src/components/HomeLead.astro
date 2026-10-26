@@ -11,11 +11,12 @@ const [main, ...side] = Astro.props.posts;
 {main && (
   <div class="lead">
     <a href={`/${main.id}`} class="top zoom">
-      {main.data.image && <Image src={main.data.image} alt={main.data.imageAlt ?? main.data.title} width={960} height={600} quality={72} priority />}
-      <span class="shade" aria-hidden="true"></span>
+      <span class="top-media">
+        {main.data.image && <Image src={main.data.image} alt={main.data.imageAlt ?? main.data.title} width={960} height={600} quality={72} priority />}
+      </span>
       <span class="top-body rise">
-        <CategoryLabel category={main.data.category} onImage />
-        <h2>{main.data.title}</h2>
+        <CategoryLabel category={main.data.category} />
+        <h2><span class="link-title">{main.data.title}</span></h2>
         <p>{main.data.description}</p>
       </span>
     </a>
@@ -44,16 +45,18 @@ const [main, ...side] = Astro.props.posts;
   }
 
   .top {
-    position: relative;
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    color: inherit;
+  }
+
+  .top-media {
+    position: relative;
+    display: block;
     aspect-ratio: 16 / 10;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
     overflow: hidden;
-    box-shadow: var(--shadow-md);
-    background: var(--ink-deep);
-    color: #fff;
+    background: var(--surface-2);
   }
 
   .top img {
@@ -65,12 +68,6 @@ const [main, ...side] = Astro.props.posts;
     animation: settle 700ms var(--ease-standard) both;
   }
 
-  .shade {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(13, 10, 26, 0) 35%, rgba(13, 10, 26, 0.9) 100%);
-  }
-
   /* Headline block rises in once; the image is never faded (LCP). */
   .rise > :nth-child(1) { animation: rise 450ms var(--ease-standard) 80ms both; }
   .rise > :nth-child(2) { animation: rise 450ms var(--ease-standard) 140ms both; }
@@ -80,17 +77,17 @@ const [main, ...side] = Astro.props.posts;
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 28px 32px;
+    gap: 12px;
+    padding: 22px 0 0;
     max-width: 44rem;
   }
 
   .top h2 {
-    font-size: clamp(1.6rem, 3.2vw, 2.4rem);
-    font-weight: 700;
-    letter-spacing: -0.035em;
-    line-height: 1.08;
-    color: #fff;
+    font-size: clamp(2rem, 4.2vw, 3.4rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    color: var(--ink-strong);
   }
 
   .top h2 {
@@ -99,7 +96,9 @@ const [main, ...side] = Astro.props.posts;
 
   .top p {
     margin: 0;
-    color: rgba(255, 255, 255, 0.82);
+    color: var(--ink-soft);
+    font-size: 1.15rem;
+    line-height: 1.5;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -122,7 +121,7 @@ const [main, ...side] = Astro.props.posts;
   .thumb {
     display: block;
     aspect-ratio: 16 / 10;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
     overflow: hidden;
     background: var(--line);
   }
@@ -154,12 +153,8 @@ const [main, ...side] = Astro.props.posts;
   }
 
   @media (max-width: 640px) {
-    .top {
-      aspect-ratio: 4 / 5;
-    }
-
-    .top-body {
-      padding: 22px;
+    .top-media {
+      aspect-ratio: 4 / 3;
     }
 
     /* Secondary stories become compact rows on phones. */

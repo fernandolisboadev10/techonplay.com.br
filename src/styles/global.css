@@ -685,3 +685,294 @@ kbd {
     transform: none !important;
   }
 }
+
+/* ---------- TechOnPlay 2.0: redesign visual (camada de apresentação; não toca no conteúdo) ----------
+   Marcador Play (triângulo antes de cada categoria), "aba" nas imagens, faixas "band", tipografia de revista. */
+
+:root {
+  --container: 1280px;
+  --primary: var(--violet);
+  --surface-2: color-mix(in srgb, var(--violet) 6%, var(--bg));
+  --line-strong: color-mix(in srgb, var(--violet) 22%, var(--line));
+  --inverse: #180f2e;
+  --on-inverse: #f5f3ff;
+}
+
+:root[data-theme='dark'] {
+  --surface-2: #1a2030;
+  --line-strong: #444c56;
+  --inverse: #0a0d12;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --surface-2: #1a2030;
+    --line-strong: #444c56;
+    --inverse: #0a0d12;
+  }
+}
+
+.container {
+  max-width: var(--container);
+  padding-inline: 32px;
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding-inline: 20px;
+  }
+}
+
+h1, h2, h3, h4 {
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+:focus-visible {
+  outline: 3px solid var(--violet);
+  outline-offset: 3px;
+}
+
+/* Sublinhado que cresce no título ao passar o mouse (cards e listas) */
+.link-title {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
+  transition: background-size 0.22s;
+}
+
+a:hover > .link-title,
+a:hover .link-title,
+.link-title:hover {
+  background-size: 100% 2px;
+}
+
+/* Botões */
+.button {
+  min-height: 44px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+}
+
+.button-primary {
+  background: var(--violet);
+  color: #fff;
+}
+
+:root[data-theme='dark'] .button-primary {
+  color: #180f2e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .button-primary {
+    color: #180f2e;
+  }
+}
+
+/* ---------- Artigo ---------- */
+
+.prose p,
+.prose ul,
+.prose ol {
+  font-size: 1.1625rem;
+  line-height: 1.78;
+  font-weight: 400;
+  letter-spacing: 0.003em;
+}
+
+.prose > * + * {
+  margin-top: 1.35em;
+}
+
+.prose h2 {
+  font-size: clamp(1.65rem, 2.6vw, 2.1rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-top: 2.2em;
+}
+
+.prose h2::before {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 4px;
+  background: var(--rose);
+  margin-bottom: 16px;
+}
+
+.prose h3 {
+  font-size: 1.45rem;
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+  margin-top: 1.9em;
+}
+
+.prose a {
+  color: var(--link);
+  background: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  background: none;
+  text-decoration-thickness: 3px;
+}
+
+.prose blockquote {
+  position: relative;
+  padding: 4px 0 4px 28px;
+  border-left: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+}
+
+.prose blockquote::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  background: linear-gradient(var(--rose), var(--violet));
+}
+
+.prose code {
+  background: var(--surface-2);
+  color: var(--violet-deep);
+  border: 1px solid var(--line);
+}
+
+:root[data-theme='dark'] .prose code {
+  color: var(--violet-soft);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .prose code {
+    color: var(--violet-soft);
+  }
+}
+
+.prose pre code {
+  border: 0;
+  background: none;
+  color: inherit;
+}
+
+.prose pre {
+  background: var(--inverse);
+  line-height: 1.7;
+  padding: 20px 22px;
+  border-radius: var(--radius-sm);
+}
+
+.prose img {
+  box-shadow: none;
+  border-radius: var(--radius-sm);
+}
+
+.prose table {
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.prose th {
+  background: var(--surface-2);
+  color: var(--ink-soft);
+  border-color: var(--line-strong);
+}
+
+.prose td {
+  border-color: var(--line);
+}
+
+.prose tbody tr:nth-child(even) td {
+  background: transparent;
+}
+
+.prose td:first-child {
+  font-weight: 600;
+  color: var(--ink-strong);
+}
+
+.prose .callout {
+  border-left: 0;
+  border: 1px solid color-mix(in srgb, #16a34a 35%, transparent);
+  border-radius: var(--radius-sm);
+  padding: 4px 22px;
+}
+
+/* Caixa de prompt: bilhete com cabeçalho e botão de copiar */
+.prose .prompt-box {
+  border: 1.5px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.prose .prompt-box-bar {
+  background: var(--surface-2);
+  color: var(--ink-soft);
+  border-bottom: 2px dashed var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.prose .prompt-box pre,
+.prose .prompt-box pre code,
+.prose .prompt-box pre span {
+  color: var(--ink) !important;
+  font-family: var(--font-read);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.prose .prompt-box .copy-btn,
+:root[data-theme='dark'] .prose .prompt-box .copy-btn {
+  background: var(--violet);
+  border-color: var(--violet);
+  color: #fff;
+}
+
+:root[data-theme='dark'] .prose .prompt-box .copy-btn {
+  color: #180f2e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .prose .prompt-box .copy-btn {
+    background: var(--violet);
+    border-color: var(--violet);
+    color: #180f2e;
+  }
+}
+
+.prose .prompt-box .copy-btn.copied {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #04211d;
+}
+
+.prose .prompt-box .copy-btn.copy-error {
+  background: var(--rose);
+  border-color: var(--rose);
+  color: #fff;
+}
+
+/* Faixa (band): fundo de superfície com linhas finas, para separar blocos da home */
+.band {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+}
+
+/* Marcador Play reutilizável */
+.kicker-play::before {
+  content: '';
+  width: 8px;
+  height: 9px;
+  background: currentColor;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
