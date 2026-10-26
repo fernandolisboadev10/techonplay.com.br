@@ -370,7 +370,8 @@ const currentHref = Astro.url.pathname + Astro.url.search;
   }
 
   .mobile-nav.open {
-    max-height: 640px;
+    max-height: calc(100dvh - 64px);
+    overflow-y: auto;
     border-top-color: var(--line);
   }
 

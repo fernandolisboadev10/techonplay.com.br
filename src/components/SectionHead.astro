@@ -8,7 +8,7 @@ interface Props {
 const { title, href, linkLabel, id } = Astro.props;
 ---
 <div class="section-head">
-  <h2 id={id}><span class="mark" aria-hidden="true">//</span>{href ? <a href={href}>{title}</a> : title}</h2>
+  <h2 id={id}>{href ? <a href={href}>{title}</a> : title}</h2>
   <span class="rule" aria-hidden="true"></span>
   {href && linkLabel && <a class="more" href={href}>{linkLabel}</a>}
 </div>
@@ -22,21 +22,10 @@ const { title, href, linkLabel, id } = Astro.props;
   }
 
   h2 {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
     font-size: 1.4rem;
     font-weight: 700;
     letter-spacing: -0.03em;
     white-space: nowrap;
-  }
-
-  .mark {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    font-weight: 500;
-    letter-spacing: 0;
-    color: var(--link-text);
   }
 
   h2 a {

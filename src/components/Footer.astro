@@ -116,7 +116,9 @@ const quickLinks = [
   }
 
   .col-title {
+    position: relative;
     margin: 0 0 18px;
+    padding-bottom: 12px;
     font-family: var(--font-mono);
     font-size: 0.7rem;
     font-weight: 500;
@@ -125,10 +127,16 @@ const quickLinks = [
     color: var(--ink-strong);
   }
 
-  .col-title::before {
-    content: '// ';
-    color: var(--link-text);
+  .col-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 28px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--violet), var(--rose));
   }
+
 
 
   ul {
