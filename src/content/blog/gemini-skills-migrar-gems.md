@@ -1,7 +1,7 @@
 ---
 title: "Skills do Gemini: como migrar seus Gems passo a passo"
 description: "O Gemini troca os Gems pelas Skills. Veja o que muda, os prazos de migração, como criar uma Skill do zero e a mudança de acesso por plano em 9 de outubro."
-category: "Tutoriais"
+category: "Inteligência Artificial"
 date: 2026-10-05T18:00:00-03:00
 readingTime: "6 min"
 image: "./images/gemini-skills-migrar-gems.webp"

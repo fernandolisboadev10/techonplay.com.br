@@ -1,7 +1,7 @@
 ---
 title: "Biometria na urna: o que acontece se o dedo não for aceito"
 description: "Se a biometria não reconhecer sua digital, você ainda vota. Veja as 4 tentativas, o que o mesário faz, os documentos aceitos e como atualizar depois."
-category: "Dicas"
+category: "Tendências"
 date: 2026-09-30T10:15:00-03:00
 updated: 2026-09-30
 readingTime: "5 min"

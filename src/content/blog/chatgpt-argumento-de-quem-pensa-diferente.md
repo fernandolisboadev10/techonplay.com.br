@@ -1,7 +1,7 @@
 ---
 title: "Antes de votar, peça ao ChatGPT o melhor argumento do outro lado"
 description: "Peça ao ChatGPT o melhor argumento de quem pensa diferente antes de votar. Veja o prompt pronto, os limites da IA e como conferir o que ela disse."
-category: "Dicas"
+category: "Inteligência Artificial"
 date: 2026-10-12T10:02:00-03:00
 updated: 2026-10-15T11:30:00-03:00
 readingTime: "4 min"

@@ -1,7 +1,7 @@
 ---
 title: "Google AI Plus grátis para estudantes: resgate 1 ano no Brasil"
 description: "Google AI Plus para estudantes grátis com 400 GB e mais acesso ao Gemini. Veja quem pode resgatar, as regras e o prazo da oferta no Brasil."
-category: "Educação"
+category: "Inteligência Artificial"
 date: 2026-09-20
 updated: 2026-09-30T10:30:00-03:00
 readingTime: "6 min"

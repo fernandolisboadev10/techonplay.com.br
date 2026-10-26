@@ -1,7 +1,7 @@
 ---
 title: "O que é BNCC e o que muda com a Computação nas escolas em 2026"
 description: "O que é BNCC, como a Base Nacional Comum Curricular organiza cada etapa de ensino, as 10 competências gerais e as mudanças recentes com Computação."
-category: "Educação"
+category: "Curiosidades"
 date: 2026-09-28
 updated: 2026-10-07T10:45:00-03:00
 readingTime: "5 min"

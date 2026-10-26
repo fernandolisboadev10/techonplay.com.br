@@ -1,7 +1,7 @@
 ---
 title: "Redação do ENEM 2026: o que o MEC manda fazer para tirar 1000"
 description: "Dicas do MEC e do Inep para a redação do ENEM 2026: as 5 competências, o que zera a nota, a proposta de intervenção e como treinar até 8 de novembro."
-category: "Educação"
+category: "Tendências"
 date: 2026-10-18T10:30:00-03:00
 updated: 2026-10-18T10:30:00-03:00
 readingTime: "7 min"

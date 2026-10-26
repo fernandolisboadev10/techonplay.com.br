@@ -1,7 +1,7 @@
 ---
 title: "ChatGPT login: como entrar, criar conta e resolver erros"
 description: "ChatGPT login: veja como entrar em chatgpt.com, criar conta grátis e o que fazer quando o acesso falha. Passo a passo para PC e celular."
-category: "Tutoriais"
+category: "Inteligência Artificial"
 date: 2026-09-30T07:30:00-03:00
 updated: 2026-09-30
 readingTime: "5 min"

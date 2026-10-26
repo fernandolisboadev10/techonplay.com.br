@@ -1,7 +1,7 @@
 ---
 title: "Como identificar site falso em promoção: guia contra golpes"
 description: "Golpistas imitam a Amazon em épocas de promoção. Veja como funcionam os sites e mensagens falsos, os sinais de alerta e 8 passos para comprar seguro."
-category: "Dicas"
+category: "Curiosidades"
 date: 2026-10-08T18:00:00-03:00
 readingTime: "6 min"
 image: "./images/como-identificar-site-falso-promocao-amazon-golpe.webp"
@@ -72,7 +72,7 @@ Estes passos são orientações gerais, e não vêm da reportagem:
 
 A reportagem do Canaltech trata de domínios ligados à Amazon e ao Prime Day, e não mede o total de golpes nem de vítimas. Os números mostram o tamanho da tentativa de fraude, e não quantas pessoas foram enganadas.
 
-Golpes também chegam por aplicativos de mensagem, então vale conhecer as novidades do [WhatsApp para ligações sem conta](/whatsapp-ligacao-sem-conta/). E, antes de assinar qualquer serviço "em promoção", compare o preço no site oficial, como no caso do [CapCut Pro mais barato](/capcut-pro-mais-barato-como-economizar/). Para mais orientações, acesse a página de [Dicas](/categoria/dicas/).
+Golpes também chegam por aplicativos de mensagem, então vale conhecer as novidades do [WhatsApp para ligações sem conta](/whatsapp-ligacao-sem-conta/). E, antes de assinar qualquer serviço "em promoção", compare o preço no site oficial, como no caso do [CapCut Pro mais barato](/capcut-pro-mais-barato-como-economizar/). Para mais orientações, acesse o tema [Segurança e golpes](/tema/seguranca-e-golpes/).
 
 ## Perguntas frequentes
 

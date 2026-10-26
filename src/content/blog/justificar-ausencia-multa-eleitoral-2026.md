@@ -1,7 +1,7 @@
 ---
 title: "Como justificar ausência e pagar multa eleitoral em 2026"
 description: "Não votou ou está fora da sua cidade? Veja prazos, como justificar pelo e-Título, quanto custa a multa, como pagar por Pix e o risco de cancelar o título."
-category: "Tutoriais"
+category: "Tendências"
 date: 2026-10-04T18:00:00-03:00
 readingTime: "6 min"
 image: "./images/justificar-ausencia-multa-eleitoral-2026.webp"
@@ -102,7 +102,7 @@ Ou seja, a multa de poucos reais pode ficar cara se for ignorada. O ideal é res
 - **Pagar para o destinatário errado.** No Pix, o recebedor deve ser o Tesouro Nacional.
 - **Deixar para depois.** Depois do dia da votação, a justificativa exige motivo e comprovantes.
 
-Para mais passo a passos, acesse a categoria [Tutoriais](/categoria/tutoriais/). Se quiser se preparar para o dia da votação, veja o que acontece com a [biometria na urna](/biometria-na-urna/) e algumas [curiosidades sobre a urna eletrônica](/urna-eletronica-curiosidades/).
+Para mais passo a passos, acesse a página de [Tendências](/categoria/tendencias/). Se quiser se preparar para o dia da votação, veja o que acontece com a [biometria na urna](/biometria-na-urna/) e algumas [curiosidades sobre a urna eletrônica](/urna-eletronica-curiosidades/).
 
 ## Perguntas frequentes
 

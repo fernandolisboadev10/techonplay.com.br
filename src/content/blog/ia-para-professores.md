@@ -1,7 +1,7 @@
 ---
 title: "IA para professores: 7 tarefas que você pode tirar das costas"
 description: "Veja 7 tarefas em que a IA ajuda o professor: plano de aula, prova, adaptação de texto e mais, com prompts prontos e cuidados com a BNCC."
-category: "Educação"
+category: "Inteligência Artificial"
 date: 2026-10-15T17:55:00-03:00
 updated: 2026-10-15T17:55:00-03:00
 readingTime: "7 min"
