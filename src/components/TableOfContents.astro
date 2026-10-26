@@ -98,7 +98,7 @@ for (const h of Astro.props.headings) {
 
 <style>
   .toc {
-    --rail-x: 5px;
+    --rail-x: 0px;
     /* Verde-limão de marca-texto para a seção em que o leitor está. */
     --toc-now: #c6ff00;
     font-family: var(--font-body);
@@ -108,35 +108,44 @@ for (const h of Astro.props.headings) {
     display: flex;
     align-items: baseline;
     gap: 10px;
-    padding-bottom: 14px;
+    padding-bottom: 12px;
     margin-bottom: 6px;
     border-bottom: 1px solid var(--line);
   }
 
   .toc-head h2 {
-    font-size: 1.05rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-strong);
   }
 
   .toc-count {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--ink-soft);
-    font-size: 0.8rem;
   }
 
   .toc-toggle {
     margin-left: auto;
     padding: 4px 10px;
-    font: 600 0.78rem var(--font-body);
-    color: var(--violet);
+    font: 500 0.66rem var(--font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
     background: transparent;
     border: 1px solid var(--line);
-    border-radius: 999px;
+    border-radius: 4px;
     cursor: pointer;
   }
 
   .toc-toggle:hover {
     border-color: var(--violet);
+    color: var(--link-text);
   }
 
   /* Label follows the state; before any click the default is open on desktop, closed on mobile. */
@@ -145,7 +154,7 @@ for (const h of Astro.props.headings) {
     display: none;
   }
 
-  /* The rail: a hairline track with a violet fill that grows to the current section. */
+  /* Trilho: linha fina com preenchimento violeta até a seção atual. */
   .toc-list {
     position: relative;
     list-style: none;
@@ -158,60 +167,61 @@ for (const h of Astro.props.headings) {
     content: '';
     position: absolute;
     left: var(--rail-x);
-    top: 22px;
-    width: 2px;
-    border-radius: 2px;
+    top: 8px;
+    width: 1px;
   }
 
   .toc-list::before {
-    bottom: 18px;
+    bottom: 4px;
     background: var(--line);
   }
 
   .toc-list::after {
-    height: max(0px, calc(var(--fill, 0px) - 22px));
+    width: 2px;
+    margin-left: -0.5px;
+    height: max(0px, calc(var(--fill, 0px) - 8px));
     background: var(--violet);
     transition: height 0.25s ease;
   }
 
   .toc-item {
     position: relative;
-    padding-left: 24px;
+    padding-left: 16px;
   }
 
   .toc-item::before {
     content: '';
     position: absolute;
     z-index: 1;
-    left: 0;
-    top: 10px;
+    left: -6px;
+    top: 11px;
     width: 12px;
     height: 12px;
     box-sizing: border-box;
     border-radius: 50%;
-    border: 2px solid var(--line);
-    background: var(--bg);
-    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .toc-item.is-done::before {
-    background: var(--violet);
-    border-color: var(--violet);
+    border: 2px solid transparent;
+    background: transparent;
+    transform: scale(0.4);
+    opacity: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
   }
 
   .toc-item.is-active::before {
     border-color: color-mix(in srgb, var(--toc-now) 65%, #3d5200);
     background: var(--toc-now);
     box-shadow: 0 0 0 4px color-mix(in srgb, var(--toc-now) 35%, transparent), 0 0 12px color-mix(in srgb, var(--toc-now) 65%, transparent);
+    transform: scale(1);
+    opacity: 1;
   }
 
   .toc-item > a {
     display: block;
     padding: 6px 0;
-    font-size: 0.9rem;
-    line-height: 1.4;
+    font-size: 0.84rem;
+    line-height: 1.35;
     color: var(--ink-soft);
     text-decoration: none;
+    transition: color 0.15s ease;
   }
 
   .toc-item.is-done > a {
@@ -225,7 +235,7 @@ for (const h of Astro.props.headings) {
 
   .toc-item > a:hover,
   .toc-sub a:hover {
-    color: var(--violet);
+    color: var(--link-text);
   }
 
   .toc-sub {
@@ -237,15 +247,15 @@ for (const h of Astro.props.headings) {
   .toc-sub a {
     display: block;
     padding: 4px 0 4px 12px;
-    border-left: 2px solid var(--line);
-    font-size: 0.82rem;
+    border-left: 1px solid var(--line);
+    font-size: 0.8rem;
     line-height: 1.4;
     color: var(--ink-soft);
     text-decoration: none;
   }
 
   .toc-sub li.is-active a {
-    color: var(--violet);
+    color: var(--link-text);
     border-left-color: var(--violet);
   }
 
@@ -276,9 +286,9 @@ for (const h of Astro.props.headings) {
   /* Mobile: a collapsible box between the cover and the text. */
   @media (max-width: 1099px) {
     .toc {
-      padding: 16px 18px;
+      padding: 14px 18px;
       border: 1px solid var(--line);
-      border-radius: 12px;
+      border-radius: 6px;
       background: var(--surface);
     }
 
@@ -288,20 +298,13 @@ for (const h of Astro.props.headings) {
 
     .toc[data-open='true'] .toc-list {
       display: block;
+      margin-left: 6px;
     }
 
     .toc:not([data-open='true']) .toc-head {
       padding-bottom: 0;
       margin-bottom: 0;
       border-bottom: 0;
-    }
-
-    .toc-item::before {
-      background: var(--surface);
-    }
-
-    .toc-item.is-active::before {
-      background: var(--toc-now);
     }
   }
 

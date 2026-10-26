@@ -322,8 +322,11 @@ const breadcrumbSchema = {
     flex-wrap: wrap;
     align-items: center;
     gap: 8px;
-    margin: 0 0 16px;
-    font-size: 0.85rem;
+    margin: 0 0 18px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--ink-soft);
   }
 
@@ -333,41 +336,47 @@ const breadcrumbSchema = {
   }
 
   .crumbs a:last-child {
-    color: var(--violet);
-    font-weight: 600;
+    color: var(--ink-strong);
   }
 
   .crumbs a:hover {
-    text-decoration: underline;
+    color: var(--link-text);
   }
 
   h1 {
-    font-size: clamp(1.9rem, 4.2vw, 2.75rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.08;
-    margin-bottom: 14px;
+    font-size: clamp(2rem, 4.6vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+    text-wrap: balance;
+    margin-bottom: 18px;
   }
 
   .meta {
-    color: var(--ink-soft);
-    font-size: 0.9rem;
     margin: 0 0 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
   }
 
   .meta a {
-    color: var(--violet);
+    color: var(--ink-strong);
     text-decoration: none;
     font-weight: 600;
   }
 
   .meta a:hover {
-    text-decoration: underline;
+    color: var(--link-text);
   }
 
   .hero-image {
     aspect-ratio: 3 / 2;
-    border-radius: 10px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
     overflow: hidden;
     margin-bottom: 40px;
   }
@@ -384,7 +393,7 @@ const breadcrumbSchema = {
     gap: 16px;
     margin: 28px 0;
     padding: 18px 20px;
-    border-radius: 14px;
+    border-radius: 6px;
     border: 1px solid var(--line);
     background: linear-gradient(120deg, var(--code-bg), var(--surface));
     box-shadow: 0 16px 32px -22px rgba(91, 33, 182, 0.45);
@@ -417,7 +426,7 @@ const breadcrumbSchema = {
   :global(.download-box a.download-box-btn) {
     flex: none;
     padding: 11px 20px;
-    border-radius: 999px;
+    border-radius: 4px;
     background: linear-gradient(135deg, var(--violet), #c026d3);
     color: #fff;
     font-weight: 700;
@@ -444,7 +453,7 @@ const breadcrumbSchema = {
 
   :global(.prompt-card) {
     margin: 24px 0;
-    border-radius: 10px;
+    border-radius: 6px;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 16px 32px -20px rgba(91, 33, 182, 0.35);
@@ -486,11 +495,13 @@ const breadcrumbSchema = {
   }
 
   :global(.copy-btn) {
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 0.78rem;
-    padding: 5px 12px;
-    border-radius: 5px;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 11px;
+    border-radius: 4px;
     border: 1px solid rgba(255, 255, 255, 0.15);
     background: rgba(255, 255, 255, 0.06);
     color: #ece7fb;
