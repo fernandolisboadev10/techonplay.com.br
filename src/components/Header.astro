@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import Logo from './Logo.astro';
 import { categories as categoryList } from '../data/categories';
 import { themes, themeHref, matchesTheme, MIN_THEME_POSTS } from '../data/themes.mjs';
 import { isPublished } from '../utils/posts';
@@ -48,7 +47,7 @@ const currentHref = Astro.url.pathname + Astro.url.search;
       </svg>
     </button>
     <a href="/" class="brand" aria-label="TechOnPlay - Início">
-      <Logo />
+      <img class="brand-logo" src="/images/logo.webp" alt="TechOnPlay" width="197" height="30" />
     </a>
     <nav class="nav">
       {nav.map((item) =>
