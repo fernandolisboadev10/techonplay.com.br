@@ -4,6 +4,8 @@ export interface Category {
   title: string;
   description: string;
   intro: string;
+  // Temas (/tema/<slug>/) mostrados como subcategorias na página da categoria.
+  subthemes?: string[];
 }
 
 // Category pages are real, indexable URLs (/categoria/<slug>/). `name` must match the `category` field in the posts' frontmatter.
@@ -16,6 +18,7 @@ export const categories: Category[] = [
       'Notícias, tutoriais e guias sobre ChatGPT, Gemini, Claude e ferramentas de IA de vídeo e imagem, em português e com passo a passo simples.',
     intro:
       'Tudo sobre IA em linguagem simples: como entrar e usar o ChatGPT, comandos prontos para gerar imagens e vídeos, novidades do Google e da Anthropic e explicações sobre como essas ferramentas funcionam.',
+    subthemes: ['comandos-e-prompts', 'ferramentas-planos-e-precos', 'ia-para-estudar-e-ensinar', 'chatgpt', 'google-e-gemini', 'openai', 'ia-de-video'],
   },
   {
     slug: 'jogos',
@@ -61,6 +64,7 @@ export const categories: Category[] = [
       'Reviews e análises de celulares, gadgets e lançamentos, com ficha técnica, preço no Brasil e se vale a pena: Galaxy A57, iPhone Duo, Tesla Roadster e mais.',
     intro:
       'Análises com ficha técnica, comparativos com a geração anterior e preço atualizado no Brasil, para você decidir se o aparelho vale o investimento.',
+    subthemes: ['celulares'],
   },
   {
     slug: 'sistemas',
@@ -79,6 +83,7 @@ export const categories: Category[] = [
       'Aplicativos, plugins e ferramentas para usar no dia a dia, com guias de instalação e uso, como o plugin Higgsfield no ChatGPT.',
     intro:
       'Guias de aplicativos e plugins úteis, com instalação, custos e os erros mais comuns explicados.',
+    subthemes: ['assinaturas-e-economia'],
   },
   {
     slug: 'educacao',

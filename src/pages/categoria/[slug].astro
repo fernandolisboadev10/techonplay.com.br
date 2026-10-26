@@ -3,18 +3,27 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostCard from '../../components/PostCard.astro';
 import { categories } from '../../data/categories';
+import { themes, matchesTheme, MIN_THEME_POSTS, themeHref } from '../../data/themes.mjs';
 import { isPublished, sortByActivity } from '../../utils/posts';
 
 export async function getStaticPaths() {
   const all = sortByActivity(await getCollection('blog', isPublished));
   return categories.map((category) => ({
     params: { slug: category.slug },
-    props: { category, posts: all.filter((p) => p.data.category === category.name) },
+    props: {
+      category,
+      posts: all.filter((p) => p.data.category === category.name),
+      subs: (category.subthemes ?? [])
+        .map((s) => themes.find((t) => t.slug === s))
+        .filter((t) => t)
+        .map((t) => ({ name: t.name, href: themeHref(t.slug), count: all.filter((p) => matchesTheme(t, p.id, p.data.tags ?? [])).length }))
+        .filter((s) => s.count >= MIN_THEME_POSTS),
+    },
   }));
 }
 
 const PAGE_SIZE = 6;
-const { category, posts } = Astro.props;
+const { category, posts, subs } = Astro.props;
 
 const schema = {
   '@context': 'https://schema.org',
@@ -47,6 +56,12 @@ const schema = {
       <h1>{category.name}</h1>
       <p>{category.intro}</p>
     </header>
+
+    {subs.length > 0 && (
+      <nav class="subs" aria-label="Subcategorias">
+        {subs.map((s) => <a href={s.href}>{s.name} <span>{s.count}</span></a>)}
+      </nav>
+    )}
 
     <div class="posts">
       {posts.map((post, i) => (
@@ -91,6 +106,37 @@ const schema = {
 </script>
 
 <style>
+  .subs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-bottom: 24px;
+  }
+
+  .subs a {
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--violet);
+    color: var(--violet);
+    text-decoration: none;
+  }
+
+  .subs a span {
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+
+  .subs a:hover {
+    background: var(--violet);
+    color: #fff;
+  }
+
+  .subs a:hover span {
+    color: #fff;
+  }
+
   .item {
     display: contents;
   }
