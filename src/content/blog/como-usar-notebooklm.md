@@ -1,7 +1,7 @@
 ---
 title: "NotebookLM agora é Gemini Notebook: como usar e quanto custa"
 description: "NotebookLM mudou de nome para Gemini Notebook. Veja como usar em 5 passos, se funciona em português, o que é grátis e quanto custam os planos no Brasil."
-category: "Inteligência Artificial"
+category: "Tutoriais"
 date: 2026-10-02T15:10:00-03:00
 updated: 2026-10-02T15:10:00-03:00
 readingTime: "8 min"

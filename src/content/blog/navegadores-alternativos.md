@@ -1,7 +1,7 @@
 ---
 title: "Navegadores alternativos em 2026: Brave, Opera, Vivaldi e mais"
 description: "Brave, Opera, Vivaldi, Arc ou DuckDuckGo? Conheça os melhores navegadores alternativos em 2026 por privacidade, recursos e personalização."
-category: "Apps"
+category: "Dicas"
 date: 2026-09-29
 updated: 2026-10-01T06:45:00-03:00
 readingTime: "5 min"

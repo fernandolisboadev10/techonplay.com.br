@@ -1,7 +1,7 @@
 ---
 title: "Como a robótica educacional trabalha as 10 competências da BNCC"
 description: "Veja como as 10 competências da BNCC aparecem na robótica educacional, com exemplos por etapa e o que muda com a obrigatoriedade em 2026."
-category: "Curiosidades"
+category: "Educação"
 date: 2026-09-28
 updated: 2026-10-07T10:45:00-03:00
 readingTime: "5 min"

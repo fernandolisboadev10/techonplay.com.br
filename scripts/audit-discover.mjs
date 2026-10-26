@@ -48,7 +48,7 @@ for (const slug of slugs) {
     issues.push('absolute internal link (use relative /slug/)');
   for (const u of all.map((l) => l.url).filter((x) => x.startsWith('/'))) {
     const target = u.replace(/^\/|\/?(#.*)?$/g, '');
-    const isSitePage = /^(blog|(categoria|tema)\/[a-z-]+|sobre-nos|contate-nos|anuncie)$/.test(target);
+    const isSitePage = /^(blog|categoria\/[a-z-]+|sobre-nos|contate-nos|anuncie)$/.test(target);
     if (target && !isSitePage && !slugs.includes(target)) issues.push(`broken internal link ${u}`);
   }
 

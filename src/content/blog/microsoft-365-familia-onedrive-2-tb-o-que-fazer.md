@@ -1,7 +1,7 @@
 ---
 title: "Microsoft 365 Família vai de 6 TB para 2 TB: o que fazer"
 description: "A Microsoft reduz o OneDrive do plano Família de 6 TB para 2 TB compartilhados. Veja datas, quem é afetado e passos para organizar seus arquivos a tempo."
-category: "Apps"
+category: "Dicas"
 date: 2026-10-10T18:00:00-03:00
 readingTime: "6 min"
 image: "./images/microsoft-365-familia-onedrive-2-tb-o-que-fazer.webp"
@@ -70,7 +70,7 @@ Depende do uso. Para quem usa o pacote Office e não guarda muitos arquivos, 2 T
 - Se os benefícios temporários de armazenamento chegam ao Brasil.
 - O que muda no plano Pessoal, que a reportagem não menciona.
 
-Se a parte de IA do plano pesa na sua decisão, compare com o [ChatGPT grátis ou pago](/chatgpt-gratis-ou-pago/) e com o [Google AI Plus para estudantes](/google-ai-plus-para-estudantes/). Para mais orientações sobre serviços e assinaturas, veja o tema [Assinaturas e economia](/tema/assinaturas-e-economia/).
+Se a parte de IA do plano pesa na sua decisão, compare com o [ChatGPT grátis ou pago](/chatgpt-gratis-ou-pago/) e com o [Google AI Plus para estudantes](/google-ai-plus-para-estudantes/). Para mais orientações sobre serviços e assinaturas, veja a página de [Dicas](/categoria/dicas/).
 
 ## Perguntas frequentes
 

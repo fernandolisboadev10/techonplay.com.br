@@ -1,7 +1,7 @@
 ---
 title: "CapCut Pro vitalício existe? Preços oficiais e como pagar menos"
 description: "CapCut Pro vitalício ou conta barata é seguro? Veja os preços oficiais no Brasil, o plano anual, descontos de entrada, teste grátis e o plano de estudante."
-category: "Apps"
+category: "Dicas"
 date: 2026-10-11T18:00:00-03:00
 updated: 2026-10-18T11:00:00-03:00
 readingTime: "7 min"
@@ -114,7 +114,7 @@ Estas dicas são gerais e não vêm da reportagem:
 
 O TechTudo não lista os recursos do CapCut Pro e não traz preços em dólar. Os valores são de 9 de outubro de 2026 e as ofertas de entrada podem mudar. Outra análise da App Store brasileira, de 8 de outubro, listou R$ 234,90 como plano anual "Standard", o mesmo valor que a reportagem atribui ao plano de estudante. Por isso, antes de assinar, confirme na tela de pagamento qual plano aquele preço representa e o que está incluído.
 
-Para mais orientações sobre aplicativos e assinaturas, veja o tema [Assinaturas e economia](/tema/assinaturas-e-economia/) e a página de [Apps](/categoria/apps/).
+Para mais orientações sobre aplicativos e assinaturas, veja as páginas de [Dicas](/categoria/dicas/) e de [Apps](/categoria/apps/).
 
 ## Perguntas frequentes
 

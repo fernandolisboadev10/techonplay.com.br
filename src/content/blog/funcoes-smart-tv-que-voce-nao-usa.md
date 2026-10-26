@@ -1,7 +1,7 @@
 ---
 title: "6 funções da Smart TV que você provavelmente não usa"
 description: "Espelhamento de tela, celular como controle, comandos de voz, casa inteligente, Gaming Hub e modo jogo: veja o que cada função faz e como começar a usar."
-category: "Reviews"
+category: "Dicas"
 date: 2026-10-09T18:00:00-03:00
 readingTime: "6 min"
 image: "./images/funcoes-smart-tv-que-voce-nao-usa.webp"
@@ -81,7 +81,7 @@ Estes passos são orientações gerais, e não vêm da reportagem.
 
 ## E se a minha TV não tiver essas funções?
 
-Nem todo modelo oferece tudo: o Gaming Hub, por exemplo, é da Samsung, e o AirPlay depende da compatibilidade da TV. Ao comprar uma nova, confira a ficha técnica do modelo. Para um exemplo de análise de ficha técnica e preço, veja o guia [TCL C6K: vale a pena?](/tcl-c6k-vale-a-pena/). Mais conteúdo está nas página de [Reviews](/categoria/reviews/).
+Nem todo modelo oferece tudo: o Gaming Hub, por exemplo, é da Samsung, e o AirPlay depende da compatibilidade da TV. Ao comprar uma nova, confira a ficha técnica do modelo. Para um exemplo de análise de ficha técnica e preço, veja o guia [TCL C6K: vale a pena?](/tcl-c6k-vale-a-pena/). Mais conteúdo está nas páginas de [Dicas](/categoria/dicas/) e de [Reviews](/categoria/reviews/).
 
 ## Perguntas frequentes
 

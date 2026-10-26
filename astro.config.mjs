@@ -34,11 +34,8 @@ export default defineConfig({
     '/46-comandos-do-chatgpt': '/comandos-do-chatgpt/',
     '/category/inteligencia-artificial': '/categoria/inteligencia-artificial/',
     '/category/jogos': '/categoria/jogos/',
-    '/category/tutoriais': '/categoria/inteligencia-artificial/',
-    '/categoria/tutoriais': '/categoria/inteligencia-artificial/',
-    '/categoria/educacao': '/categoria/inteligencia-artificial/',
-    '/category/dicas': '/categoria/apps/',
-    '/categoria/dicas': '/categoria/apps/',
+    '/category/tutoriais': '/categoria/tutoriais/',
+    '/category/dicas': '/categoria/dicas/',
     '/category/curiosidades': '/categoria/curiosidades/',
     '/category/reviews': '/categoria/reviews/',
     '/category/apps': '/categoria/apps/',
@@ -68,7 +65,7 @@ export default defineConfig({
         }
         const m = new URL(page).pathname.match(/^\/categoria\/([^/]+)\/?$/);
         if (!m) return true;
-        const names = { 'inteligencia-artificial': 'Inteligência Artificial', jogos: 'Jogos', curiosidades: 'Curiosidades', reviews: 'Reviews', sistemas: 'Sistemas', apps: 'Apps', tendencias: 'Tendências' };
+        const names = { 'inteligencia-artificial': 'Inteligência Artificial', jogos: 'Jogos', tutoriais: 'Tutoriais', dicas: 'Dicas', curiosidades: 'Curiosidades', reviews: 'Reviews', sistemas: 'Sistemas', apps: 'Apps', tendencias: 'Tendências', educacao: 'Educação' };
         return (postsPerCategory.get(names[m[1]]) ?? 0) >= 2;
       },
       serialize(item) {

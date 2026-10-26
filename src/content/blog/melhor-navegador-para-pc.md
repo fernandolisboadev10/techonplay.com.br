@@ -1,7 +1,7 @@
 ---
 title: "Melhor navegador para PC em 2026: Chrome, Edge ou Firefox?"
 description: "Chrome, Edge ou Firefox: qual é o melhor navegador para PC em 2026? Compare motor, extensões, privacidade e memória e veja qual combina com você hoje."
-category: "Apps"
+category: "Dicas"
 date: 2026-09-29
 updated: 2026-10-01T06:45:00-03:00
 readingTime: "4 min"

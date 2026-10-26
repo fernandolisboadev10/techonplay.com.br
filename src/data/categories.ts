@@ -15,7 +15,7 @@ export const categories: Category[] = [
     description:
       'Notícias, tutoriais e guias sobre ChatGPT, Gemini, Claude e ferramentas de IA de vídeo e imagem, em português e com passo a passo simples.',
     intro:
-      'Tudo sobre IA em linguagem simples: prompts e comandos prontos, planos e preços das ferramentas em reais, IA para estudar e ensinar e as novidades de ChatGPT, Gemini e Claude.',
+      'Tudo sobre IA em linguagem simples: como entrar e usar o ChatGPT, comandos prontos para gerar imagens e vídeos, novidades do Google e da Anthropic e explicações sobre como essas ferramentas funcionam.',
   },
   {
     slug: 'jogos',
@@ -25,6 +25,24 @@ export const categories: Category[] = [
       'Lançamentos, requisitos de PC, hardware e novidades do mundo dos games, como Steam Machine, GTA 6 e Subway Surfers, com preço e data no Brasil.',
     intro:
       'Notícias e guias para quem joga no PC, no console e no celular: requisitos, preços em reais, ficha técnica de hardware e o que muda em cada atualização.',
+  },
+  {
+    slug: 'tutoriais',
+    name: 'Tutoriais',
+    title: 'Tutoriais: passo a passo de IA, contas e serviços',
+    description:
+      'Passo a passo para entrar e configurar serviços do dia a dia: login do ChatGPT, NotebookLM, Skills do Gemini e justificativa eleitoral, sem complicação.',
+    intro:
+      'Guias práticos, com etapas numeradas, para resolver tarefas do dia a dia. Para Windows e Linux, veja a categoria Sistemas.',
+  },
+  {
+    slug: 'dicas',
+    name: 'Dicas',
+    title: 'Dicas de tecnologia para o dia a dia',
+    description:
+      'Dicas para escolher e usar melhor a tecnologia: navegadores, assinaturas, golpes online e ferramentas úteis do dia a dia.',
+    intro:
+      'Comparativos e recomendações para decidir melhor: qual navegador usar, como economizar em assinaturas e como se proteger de golpes online.',
   },
   {
     slug: 'curiosidades',
@@ -60,7 +78,16 @@ export const categories: Category[] = [
     description:
       'Aplicativos, plugins e ferramentas para usar no dia a dia, com guias de instalação e uso, como o plugin Higgsfield no ChatGPT.',
     intro:
-      'Guias de aplicativos, navegadores e assinaturas: instalação, custos, como pagar menos e os erros mais comuns explicados.',
+      'Guias de aplicativos e plugins úteis, com instalação, custos e os erros mais comuns explicados.',
+  },
+  {
+    slug: 'educacao',
+    name: 'Educação',
+    title: 'Educação: IA na escola, BNCC, ENEM e ferramentas para estudar',
+    description:
+      'IA na escola, BNCC Computação, redação do ENEM e ferramentas gratuitas para professores e estudantes, explicadas em português e com passo a passo.',
+    intro:
+      'Conteúdo para quem ensina e para quem estuda: o que muda com a BNCC Computação, como usar IA em sala de aula, como se preparar para a redação do ENEM e quais planos e ferramentas estudantes podem resgatar de graça.',
   },
   {
     slug: 'tendencias',

@@ -1,7 +1,7 @@
 ---
 title: "Paramount compra a Warner: o que muda para quem assina streaming"
 description: "A Paramount concluiu a compra da Warner Bros. por cerca de US$ 110 bilhões. Veja o que pode mudar no HBO Max e no Paramount+, preços, catálogo e demissões."
-category: "Tendências"
+category: "Dicas"
 date: 2026-10-07T18:00:00-03:00
 readingTime: "6 min"
 image: "./images/paramount-warner-hbo-max-paramount-plus.webp"
@@ -76,7 +76,7 @@ Estas dicas não vêm das reportagens, e servem para qualquer serviço de stream
 - O preço da mensalidade e as regras de migração para quem já assina.
 - Como a operação afeta o catálogo no Brasil.
 
-Para aproveitar melhor o streaming na sala, veja as [funções da Smart TV que você provavelmente não usa](/funcoes-smart-tv-que-voce-nao-usa/) e como o [Microsoft 365 Família](/microsoft-365-familia-onedrive-2-tb-o-que-fazer/) também mexeu em assinaturas. Para acompanhar mais dicas e novidades, veja o tema [Assinaturas e economia](/tema/assinaturas-e-economia/).
+Para aproveitar melhor o streaming na sala, veja as [funções da Smart TV que você provavelmente não usa](/funcoes-smart-tv-que-voce-nao-usa/) e como o [Microsoft 365 Família](/microsoft-365-familia-onedrive-2-tb-o-que-fazer/) também mexeu em assinaturas. Para acompanhar mais dicas e novidades, veja a categoria [Dicas](/categoria/dicas/).
 
 ## Perguntas frequentes
 

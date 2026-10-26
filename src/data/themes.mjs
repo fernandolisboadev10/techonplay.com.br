@@ -59,7 +59,7 @@ export const themes = [
   },
   {
     slug: 'comandos-e-prompts',
-    name: 'Prompts e comandos',
+    name: 'Comandos e Prompts',
     title: 'Comandos e prompts de IA prontos para copiar',
     description:
       'Comandos e prompts prontos para ChatGPT, Gemini e Google Flow: editar fotos, mudar ângulos de câmera, foto de produto e mais, com passo a passo.',
@@ -67,52 +67,6 @@ export const themes = [
       'Comandos curtos e prompts completos para copiar e colar, com o passo a passo de onde usar cada um e o que esperar do resultado.',
     tags: ['Comandos', 'Prompts', 'Prompts de câmera'],
     slugs: ['trend-anos-80-ia-foto-prompt', 'plugin-higgsfield-chatgpt'],
-  },
-  {
-    slug: 'ferramentas-planos-e-precos',
-    name: 'Ferramentas, planos e preços',
-    title: 'Ferramentas de IA: planos, preços em reais e como usar',
-    description:
-      'ChatGPT, Gemini, NotebookLM, DeepSeek e Google Flow: o que é grátis, quanto custam os planos no Brasil e como entrar e começar a usar.',
-    intro:
-      'Antes de assinar ou instalar, veja o que cada ferramenta de IA oferece de graça, quanto custa o plano em reais e como começar, passo a passo.',
-    tags: [],
-    slugs: [
-      'chatgpt-gratis-ou-pago',
-      'chatgpt-login',
-      'google-flow-gratis',
-      'deepseek-2026-guia-completo',
-      'como-usar-notebooklm',
-      'gemini-skills-migrar-gems',
-      'google-ai-plus-para-estudantes',
-    ],
-  },
-  {
-    slug: 'ia-para-estudar-e-ensinar',
-    name: 'IA para estudar e ensinar',
-    title: 'IA para estudar e ensinar: guias para alunos e professores',
-    description:
-      'Como usar IA para estudar e dar aula: NotebookLM, Google AI Plus grátis para estudantes, tarefas que professores podem delegar e IA nas escolas.',
-    intro:
-      'Ferramentas e ideias para quem estuda e para quem ensina: o que é grátis para estudantes, como usar o NotebookLM e como a IA entra na sala de aula.',
-    tags: [],
-    slugs: [
-      'ia-para-professores',
-      'google-ai-plus-para-estudantes',
-      'como-usar-notebooklm',
-      'ia-nas-escolas-bncc-computacao-professores',
-    ],
-  },
-  {
-    slug: 'assinaturas-e-economia',
-    name: 'Assinaturas e economia',
-    title: 'Assinaturas e economia: como pagar menos por apps e serviços',
-    description:
-      'CapCut Pro, Microsoft 365, ChatGPT e streaming: preços oficiais, o que muda nos planos e como pagar menos nas assinaturas do dia a dia.',
-    intro:
-      'Antes de renovar ou assinar, veja quanto custa de verdade, o que mudou nos planos e como economizar sem cair em golpe.',
-    tags: ['Assinaturas'],
-    slugs: ['chatgpt-gratis-ou-pago', 'paramount-warner-hbo-max-paramount-plus'],
   },
   {
     slug: 'bncc',
