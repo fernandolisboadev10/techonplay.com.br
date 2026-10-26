@@ -138,9 +138,9 @@ const breadcrumbSchema = {
 
         <PostNav prev={prev} next={next} />
 
-        <AuthorBio />
+        <div data-reveal="up"><AuthorBio /></div>
         <ThemeCloud variant="post" slug={Astro.props.slug} tags={tags} />
-        <RelatedPosts slug={Astro.props.slug} category={category} tags={tags} related={related} />
+        <div data-reveal="up"><RelatedPosts slug={Astro.props.slug} category={category} tags={tags} related={related} /></div>
       </div>
     </article>
 

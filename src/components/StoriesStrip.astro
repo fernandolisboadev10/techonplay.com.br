@@ -12,7 +12,7 @@ const stories = (await getCollection('stories', (s) => !s.data.draft && s.data.d
     <ul>
       {stories.map((s) => (
         <li>
-          <a href={`/web-stories/${s.id}/`} class="story" style={`background-image:url('${s.data.poster}')`}>
+          <a href={`/web-stories/${s.id}/`} class="story lift" style={`background-image:url('${s.data.poster}')`}>
             <span class="shade"></span>
             <span class="body">
               <strong>{s.data.title}</strong>
@@ -41,6 +41,20 @@ const stories = (await getCollection('stories', (s) => !s.data.draft && s.data.d
     list-style: none;
     overflow-x: auto;
     scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (max-width: 600px) {
+    ul {
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: var(--space-lg);
+      margin-inline: calc(var(--space-lg) * -1);
+      padding-inline: var(--space-lg);
+    }
   }
 
   li {
@@ -56,17 +70,12 @@ const stories = (await getCollection('stories', (s) => !s.data.draft && s.data.d
     width: 200px;
     aspect-ratio: 3 / 4;
     padding: 14px;
-    border-radius: 20px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
+    box-shadow: var(--shadow-sm);
     background: var(--ink-deep) center / cover no-repeat;
     color: #fff;
     text-decoration: none;
-    transition: transform 0.15s ease;
-  }
-
-  .story:hover {
-    transform: translateY(-3px);
-  }
 
   .shade {
     position: absolute;

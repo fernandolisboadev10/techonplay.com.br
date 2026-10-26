@@ -48,6 +48,10 @@ const organizationSchema = {
         document.documentElement.setAttribute('data-theme', storedTheme);
       }
     </script>
+    <script is:inline>
+      // Scroll reveal is opt-in: only when the visitor accepts motion. Without JS this class never exists.
+      if (!matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("js-motion");
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="google-adsense-account" content="ca-pub-1196503092730158" />
@@ -165,5 +169,8 @@ const organizationSchema = {
     </main>
     <Footer />
     <CookieBanner />
+    <script>
+      import '../scripts/motion';
+    </script>
   </body>
 </html>

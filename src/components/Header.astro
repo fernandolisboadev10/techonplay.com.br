@@ -36,7 +36,8 @@ const nav = [
 
 const currentHref = Astro.url.pathname + Astro.url.search;
 ---
-<header class="site-header">
+<div class="scroll-sentinel" aria-hidden="true"></div>
+<header class="site-header" id="site-header">
   <div class="container bar">
     <button type="button" class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-nav">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -111,6 +112,7 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     )}
   </nav>
 </header>
+<div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 
 <script>
   const searchToggle = document.getElementById('search-toggle');
@@ -138,10 +140,31 @@ const currentHref = Astro.url.pathname + Astro.url.search;
   const menuToggle = document.getElementById('menu-toggle');
   const mobileNav = document.getElementById('mobile-nav');
 
-  menuToggle?.addEventListener('click', () => {
-    const open = mobileNav?.classList.toggle('open');
-    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  const backdrop = document.getElementById('nav-backdrop');
+
+  const setMenu = (open: boolean) => {
+    mobileNav?.classList.toggle('open', open);
+    backdrop?.classList.toggle('open', open);
+    menuToggle?.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+
+  menuToggle?.addEventListener('click', () => setMenu(!mobileNav?.classList.contains('open')));
+  backdrop?.addEventListener('click', () => setMenu(false));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNav?.classList.contains('open')) {
+      setMenu(false);
+      menuToggle?.focus();
+    }
   });
+
+  // The header gets its scrolled look from an IntersectionObserver, not a scroll listener.
+  const sentinel = document.querySelector('.scroll-sentinel');
+  const header = document.getElementById('site-header');
+  if (sentinel && header && 'IntersectionObserver' in window) {
+    new IntersectionObserver(([entry]) => {
+      header.classList.toggle('is-scrolled', !entry.isIntersecting);
+    }).observe(sentinel);
+  }
 
   mobileNav?.querySelectorAll('.m-toggle').forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -152,22 +175,46 @@ const currentHref = Astro.url.pathname + Astro.url.search;
   });
 
   mobileNav?.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      mobileNav.classList.remove('open');
-      menuToggle?.setAttribute('aria-expanded', 'false');
-    });
+    link.addEventListener('click', () => setMenu(false));
   });
 </script>
 
 <style>
   .site-header {
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid color-mix(in srgb, var(--line) 55%, transparent);
     background: color-mix(in srgb, var(--bg) 84%, transparent);
-    -webkit-backdrop-filter: blur(14px);
-    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 10;
+    transition: border-color var(--dur-slow) ease, box-shadow var(--dur-slow) ease, background var(--dur-slow) ease;
+  }
+
+  /* One pixel at the top of the page: when it leaves the viewport the header turns "scrolled". */
+  .scroll-sentinel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+  }
+
+  .site-header.is-scrolled {
+    border-bottom-color: var(--line);
+    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Height stays fixed (no layout shift); the logo scales instead. */
+  .brand-logo {
+    transform-origin: left center;
+    transition: transform var(--dur-slow) var(--ease-standard);
+  }
+
+  .site-header.is-scrolled .brand-logo {
+    transform: scale(0.92);
   }
 
   .bar {
@@ -218,7 +265,7 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     color: var(--ink-soft);
     padding: 0 9px;
     white-space: nowrap;
-    transition: color 0.15s ease;
+    transition: color var(--dur-fast) ease;
   }
 
   .nav a::after {
@@ -231,7 +278,7 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     background: linear-gradient(90deg, var(--violet), var(--rose));
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.2s ease;
+    transition: transform var(--dur-normal) var(--ease-standard);
   }
 
   .nav a:hover,
@@ -253,11 +300,15 @@ const currentHref = Astro.url.pathname + Astro.url.search;
   }
 
   .dd-menu {
-    display: none;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--dur-normal) ease, transform var(--dur-normal) var(--ease-standard), visibility 0s linear var(--dur-normal);
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -4px);
     min-width: 240px;
     padding: 6px;
     flex-direction: column;
@@ -265,19 +316,24 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     background: var(--surface);
     border: 1px solid var(--line);
     border-top: 2px solid var(--violet);
-    border-radius: 0 0 6px 6px;
-    box-shadow: 0 12px 28px color-mix(in srgb, var(--ink-strong) 14%, transparent);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    box-shadow: var(--shadow-md);
     z-index: 20;
   }
 
   .dd:hover .dd-menu,
   .dd:focus-within .dd-menu {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+    transition-delay: 0s;
   }
 
   .nav .dd-menu a {
     padding: 10px 12px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
+    transition: background var(--dur-fast) ease, color var(--dur-fast) ease;
   }
 
   .nav .dd-menu a::after {
@@ -301,15 +357,21 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 4px;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
     border: 1px solid transparent;
     background: transparent;
     color: var(--ink-strong);
     cursor: pointer;
     flex-shrink: 0;
-    transition: border-color 0.15s ease, color 0.15s ease;
+    transition: border-color var(--dur-fast) ease, color var(--dur-fast) ease, background var(--dur-fast) ease;
+  }
+
+  .menu-toggle:active,
+  .search-toggle:active,
+  .theme-toggle:active {
+    background: var(--surface-secondary);
   }
 
   .menu-toggle {
@@ -333,7 +395,10 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     width: 0;
     overflow: hidden;
     opacity: 0;
-    transition: width 0.2s ease, opacity 0.2s ease;
+    transition: width var(--dur-slow) var(--ease-standard), opacity var(--dur-normal) ease;
+    /* Room for the focus ring, which overflow would otherwise clip. */
+    margin: -4px;
+    padding: 4px;
   }
 
   .search-wrap.open .search-form {
@@ -343,10 +408,11 @@ const currentHref = Astro.url.pathname + Astro.url.search;
 
   .search-form input {
     width: 100%;
-    height: 36px;
+    height: 40px;
     padding: 0 12px;
     border: 1px solid var(--line);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
+    transition: border-color var(--dur-fast) ease, box-shadow var(--dur-fast) ease;
     font-family: var(--font-mono);
     font-size: 0.78rem;
     background: var(--surface);
@@ -354,7 +420,9 @@ const currentHref = Astro.url.pathname + Astro.url.search;
   }
 
   .search-form input:focus {
-    border-color: var(--violet);
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
   }
 
   .theme-toggle .icon-moon {
@@ -378,19 +446,47 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     display: block;
   }
 
+  /* Drawer: floats under the bar (does not push the page) and fades/slides in. */
   .mobile-nav {
     display: none;
     flex-direction: column;
-    max-height: 0;
-    overflow: hidden;
-    border-top: 1px solid transparent;
-    transition: max-height 0.25s ease;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: calc(100dvh - 64px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow-md);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity var(--dur-normal) ease, transform var(--dur-normal) var(--ease-standard), visibility 0s linear var(--dur-normal);
   }
 
   .mobile-nav.open {
-    max-height: calc(100dvh - 64px);
-    overflow-y: auto;
-    border-top-color: var(--line);
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition-delay: 0s;
+  }
+
+  .nav-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 9;
+    background: rgb(var(--shadow-color) / 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--dur-normal) ease, visibility 0s linear var(--dur-normal);
+  }
+
+  .nav-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
   }
 
   .mobile-nav a {
@@ -402,6 +498,7 @@ const currentHref = Astro.url.pathname + Astro.url.search;
     text-transform: uppercase;
     color: var(--ink-soft);
     padding: 14px 24px;
+    min-height: 48px;
     border-bottom: 1px solid var(--line);
     background: var(--bg);
   }
@@ -426,7 +523,7 @@ const currentHref = Astro.url.pathname + Astro.url.search;
   }
 
   .m-toggle svg {
-    transition: transform 0.2s ease;
+    transition: transform var(--dur-normal) var(--ease-standard);
   }
 
   .m-group.open > .m-toggle {

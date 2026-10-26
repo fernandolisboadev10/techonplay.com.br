@@ -45,30 +45,30 @@ const blocks = categories
         <div class="top-lead">
           <HomeLead posts={lead} />
         </div>
-        <aside class="top-latest" aria-labelledby="latest-title">
+        <aside class="top-latest" aria-labelledby="latest-title" data-reveal="fade">
           <SectionHead title="Últimas" id="latest-title" />
           <LatestList posts={posts} />
           {totalPages > 1 && <a class="more-posts" href="/page/2/">Mais posts</a>}
         </aside>
       </section>
 
-      <StoriesStrip />
+      <div data-reveal="up"><StoriesStrip /></div>
 
-      <section class="container themes" aria-labelledby="themes-title">
+      <section class="container themes" aria-labelledby="themes-title" data-reveal="up">
         <SectionHead title="Temas em alta" id="themes-title" />
         <ThemeCloud variant="home" />
       </section>
 
       {blocks.length > 0 && (
         <div class="container blocks">
-          {blocks.map((b) => <CategoryBlock {...b} />)}
+          {blocks.map((b) => <div data-reveal="up"><CategoryBlock {...b} /></div>)}
         </div>
       )}
     </>
   ) : (
     <section class="container recent">
       <SectionHead title={`Todos os posts, página ${page}`} />
-      <div class="grid">
+      <div class="grid" data-reveal="group">
         {posts.map((post, i) => (
           <PostCard
             slug={post.id}
@@ -113,8 +113,9 @@ const blocks = categories
     margin-top: 12px;
     padding: 11px;
     border: 1px solid var(--line);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     text-align: center;
+    transition: border-color var(--dur-normal) ease, color var(--dur-normal) ease;
     font-family: var(--font-mono);
     font-size: 0.74rem;
     letter-spacing: 0.08em;

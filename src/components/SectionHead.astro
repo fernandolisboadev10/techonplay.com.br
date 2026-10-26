@@ -22,7 +22,7 @@ const { title, href, linkLabel, id } = Astro.props;
   }
 
   h2 {
-    font-size: 1.4rem;
+    font-size: clamp(1.25rem, 1.1rem + 0.7vw, 1.6rem);
     font-weight: 700;
     letter-spacing: -0.03em;
     white-space: nowrap;

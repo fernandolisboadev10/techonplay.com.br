@@ -23,7 +23,7 @@ const formattedDate = date?.toLocaleDateString('pt-BR', {
   timeZone: 'UTC',
 });
 ---
-<a href={`/${slug}`} class="card">
+<a href={`/${slug}`} class="card lift zoom">
   <span class="thumb">
     {image && <Image src={image} alt={imageAlt ?? title} width={480} height={320} quality={70} priority={priority} />}
   </span>
@@ -50,9 +50,10 @@ const formattedDate = date?.toLocaleDateString('pt-BR', {
     text-decoration: none;
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 6px;
+    border-radius: var(--radius-md);
     overflow: hidden;
-    transition: border-color 0.18s ease, transform 0.18s ease;
+    box-shadow: var(--shadow-sm);
+    transition: border-color var(--dur-normal) ease;
   }
 
   .card::after {
@@ -63,12 +64,11 @@ const formattedDate = date?.toLocaleDateString('pt-BR', {
     background: linear-gradient(90deg, var(--violet), var(--rose));
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.25s ease;
+    transition: transform var(--dur-slow) var(--ease-standard);
   }
 
   .card:hover {
-    border-color: var(--violet);
-    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
   }
 
   .card:hover::after {
@@ -102,6 +102,7 @@ const formattedDate = date?.toLocaleDateString('pt-BR', {
     line-height: 1.28;
     letter-spacing: -0.015em;
     color: var(--ink-strong);
+    transition: color var(--dur-normal) ease;
   }
 
   .card:hover h3 {
@@ -145,8 +146,10 @@ const formattedDate = date?.toLocaleDateString('pt-BR', {
       display: none;
     }
 
+    .card,
     .card:hover {
       transform: none;
+      box-shadow: none;
     }
 
     .body {

@@ -160,6 +160,10 @@ img {
   background-size: 100% 100%;
 }
 
+.prose a:focus-visible {
+  border-radius: 2px;
+}
+
 .prose h2 {
   margin-top: 2.5em;
   font-size: 1.6rem;
@@ -204,7 +208,7 @@ img {
 
 .prose img {
   height: auto;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   margin: 32px 0;
 }
 
@@ -466,9 +470,10 @@ img {
   }
 }
 
+/* clip, not hidden: overflow-x hidden on html + body turns body into a scroll container and silently breaks position: sticky on the header. */
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 h1, h2, h3, h4 {
@@ -548,8 +553,9 @@ kbd {
 }
 
 .prose img {
-  border-radius: 6px;
+  border-radius: var(--radius-md);
   border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
 }
 
 .prose hr {
@@ -595,10 +601,107 @@ kbd {
 }
 
 .button {
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
+  transition: transform var(--dur-fast) ease, opacity var(--dur-fast) ease, border-color var(--dur-fast) ease, color var(--dur-fast) ease;
 }
 
 .button-ghost:hover {
   border-color: var(--violet);
   color: var(--link-text);
+}
+
+/* ---------- Design tokens (2026) ----------
+   Semantic aliases over the palette above. New CSS should use these instead of raw values. */
+
+:root {
+  --background: var(--bg);
+  --surface-secondary: color-mix(in srgb, var(--violet) 5%, var(--bg));
+  --text-primary: var(--ink-strong);
+  --text-secondary: var(--ink-soft);
+  --border: var(--line);
+  --accent: var(--violet);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --shadow-color: 24 15 46;
+  --shadow-sm: 0 1px 2px rgb(var(--shadow-color) / 0.05), 0 1px 1px rgb(var(--shadow-color) / 0.03);
+  --shadow-md: 0 8px 24px -8px rgb(var(--shadow-color) / 0.16), 0 2px 6px rgb(var(--shadow-color) / 0.05);
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 48px;
+
+  /* Motion (CSS side; JS side is src/scripts/motion-tokens.ts). */
+  --dur-fast: 150ms;
+  --dur-normal: 220ms;
+  --dur-slow: 320ms;
+  --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root[data-theme='dark'] {
+  --shadow-color: 0 0 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --shadow-color: 0 0 0;
+  }
+}
+
+/* ---------- Scroll reveal (see src/scripts/motion.ts) ----------
+   Hidden only while `html.js-motion` is set (JS on, reduced motion off). If Motion fails to load,
+   `motion-failed` brings everything back, so no content depends on the animation. */
+
+.js-motion:not(.motion-failed) [data-reveal]:not([data-reveal='group']):not(.is-in) {
+  opacity: 0;
+}
+
+.js-motion:not(.motion-failed) [data-reveal='group']:not(.is-in) > *:not(.is-in) {
+  opacity: 0;
+}
+
+/* Hover/focus feedback shared by every card-like link. Hover only where a real pointer exists. */
+@media (hover: hover) {
+  .lift {
+    transition: transform var(--dur-slow) var(--ease-standard), box-shadow var(--dur-slow) var(--ease-standard), border-color var(--dur-normal) ease;
+  }
+
+  .lift:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .zoom img {
+    transition: transform var(--dur-slow) var(--ease-standard);
+  }
+
+  .zoom:hover img {
+    transform: scale(1.025);
+  }
+}
+
+/* Hero intro: content only (never the LCP image), one short CSS animation. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@keyframes settle {
+  from {
+    transform: scale(1.02);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lift,
+  .lift:hover,
+  .zoom:hover img {
+    transform: none !important;
+  }
 }

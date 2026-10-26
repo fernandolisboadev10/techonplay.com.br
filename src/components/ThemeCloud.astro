@@ -51,16 +51,25 @@ const size = (count: number) => (count >= max * 0.66 ? 'lg' : count >= max * 0.4
     padding: 7px 14px;
     border-radius: 999px;
     border: 1px solid var(--line);
+    min-height: 32px;
     color: var(--ink-soft);
     text-decoration: none;
     font-weight: 600;
     line-height: 1.2;
-    transition: color 0.15s, border-color 0.15s, background 0.15s;
+    background: var(--surface);
+    transition: color var(--dur-fast), border-color var(--dur-fast), background var(--dur-fast), transform var(--dur-normal) var(--ease-standard);
   }
 
   .cloud a:hover {
-    color: var(--violet);
-    border-color: var(--violet);
+    color: var(--link-text);
+    border-color: var(--accent);
+    background: var(--surface-secondary);
+  }
+
+  @media (hover: hover) {
+    .cloud a:hover {
+      transform: translateY(-1px);
+    }
   }
 
   .cloud a.sm { font-size: 0.82rem; }
