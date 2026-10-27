@@ -3,7 +3,7 @@ title: "LEGO EV3 na sala de aula: robótica e BNCC Computação"
 description: "Veja como o kit LEGO MINDSTORMS EV3 ajuda a trabalhar a BNCC Computação, com 5 projetos de programação, habilidades por código e um passo a passo de aula."
 category: "Educação"
 date: 2026-10-27T16:35:00-03:00
-updated: 2026-10-27T17:35:00-03:00
+updated: 2026-10-27T17:38:00-03:00
 readingTime: "7 min"
 image: "./images/lego-ev3-capa-sala-de-aula.webp"
 imageAlt: "Professora e dois alunos observando um robô de peças de montar com garra em uma sala de aula"
@@ -89,6 +89,21 @@ Uma aula com o EV3 pode seguir sempre o mesmo roteiro, o que dá segurança ao p
 6. **Comparação:** os grupos mostram suas soluções e explicam o que mudaram.
 
 O erro, nesse roteiro, deixa de ser falha e vira dado. É isso que faz a robótica diferente de uma aula tradicional.
+
+## E as 10 competências gerais da BNCC?
+
+Além das habilidades de Computação, a mesma aula com o EV3 trabalha várias das **competências gerais** da Base. Cada etapa do roteiro acima ativa uma delas:
+
+| Competência geral | Onde aparece na aula com o EV3 |
+| --- | --- |
+| 2. Pensamento científico, crítico e criativo | Testar, observar o erro, formular uma nova hipótese e ajustar o programa |
+| 4. Comunicação | Explicar à turma como o robô foi montado e programado |
+| 5. Cultura digital | Programar em blocos e usar sensores e motores com um propósito |
+| 7. Argumentação | Defender a solução do grupo ao compará-la com as dos colegas |
+| 8. Autoconhecimento e autocuidado | Lidar com a frustração quando o robô não faz o esperado e persistir |
+| 9. Empatia e cooperação | Dividir funções na montagem e ouvir as ideias do grupo |
+
+As outras quatro (conhecimento, repertório cultural, trabalho e projeto de vida, responsabilidade e cidadania) aparecem de forma mais indireta e dependem do desafio proposto. Para ver as dez com exemplos por etapa de ensino, leia o guia sobre como a [robótica educacional trabalha as competências da BNCC](/competencias-bncc-robotica-educacional/).
 
 ## Indo além com o kit de expansão
 
