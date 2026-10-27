@@ -3,11 +3,11 @@ title: "LEGO EV3 na sala de aula: robótica e BNCC Computação"
 description: "Veja como o kit LEGO MINDSTORMS EV3 ajuda a trabalhar a BNCC Computação, com 5 projetos de programação, habilidades por código e um passo a passo de aula."
 category: "Educação"
 date: 2026-10-27T16:35:00-03:00
-updated: 2026-10-27T17:30:00-03:00
-readingTime: "6 min"
+updated: 2026-10-27T17:35:00-03:00
+readingTime: "7 min"
 image: "./images/lego-ev3-capa-sala-de-aula.webp"
 imageAlt: "Professora e dois alunos observando um robô de peças de montar com garra em uma sala de aula"
-tags: ["LEGO EV3", "Robótica educacional", "BNCC", "Pensamento computacional", "Pedagogia"]
+tags: ["LEGO EV3", "SPIKE Prime", "Arduino", "Robótica educacional", "BNCC", "Pensamento computacional", "Pedagogia"]
 related: ["o-que-e-bncc", "competencias-bncc-robotica-educacional", "ia-nas-escolas-bncc-computacao-professores"]
 ---
 
@@ -100,7 +100,37 @@ A variedade mostra a ideia central do kit: as mesmas peças viram um animal, um 
 
 ## O EV3 saiu de linha
 
-A LEGO Education encerrou a linha EV3 e indica o SPIKE Prime como sucessor. Mesmo assim, muitas escolas e laboratórios ainda têm o kit, e os conceitos que ele ensina (sequência, repetição, condição, medição) valem para qualquer plataforma de robótica que venha depois.
+A LEGO Education encerrou a linha EV3 e indica o SPIKE Prime como sucessor. Mesmo assim, muitas escolas e laboratórios ainda têm o kit, e os conceitos que ele ensina (sequência, repetição, condição, medição) valem para qualquer plataforma de robótica que venha depois. Quem ainda usa o EV3 encontra a documentação dos blocos e dos sensores na [ajuda online oficial da LEGO Education](https://ev3-help-online.api.education.lego.com/Education/hu-hu/index.html).
+
+## Além do EV3: SPIKE Prime e Arduino
+
+O EV3 não é o único kit que uso. Trabalho também com o **Conjunto de Expansão do LEGO Education SPIKE Prime** e com um **kit de Arduino**. Cada um mostra um lado diferente da computação.
+
+### SPIKE Prime: o sucessor do EV3
+
+O Conjunto de Expansão do SPIKE Prime complementa o kit principal com mais peças, para montar modelos maiores e mais variados. A indicação do fabricante também é a partir de 10 anos, e a lógica de aula é a mesma do EV3: montar, programar, testar e ajustar.
+
+![Conjunto de Expansão LEGO Education SPIKE Prime com a caixa, as peças coloridas, rodas, sensor e motor](./images/lego-spike-prime-conjunto-expansao.webp)
+
+A diferença está nas peças, mais compactas e coloridas, e no ambiente de programação, que combina blocos e Python. Para o professor, é o caminho natural de quem já domina o EV3 e quer atualizar o material.
+
+### Arduino: a computação por dentro
+
+O kit de Arduino muda o foco. Em vez de um robô de montar, o aluno monta um **circuito** com a placa, a protoboard, LEDs, botões, resistores, buzzer, sensores de luz e temperatura, display de 7 segmentos e cabos.
+
+![Kit Arduino com placa UNO, protoboard, LEDs vermelho, amarelo e verde, botões, resistores, sensores e cabos](./images/kit-arduino-uno-componentes.webp)
+
+Um projeto simples é o **semáforo**: três LEDs acendem em sequência (vermelho, verde e amarelo), com tempo de espera entre cada cor. Com um botão de pedestre, o semáforo passa a ter uma condição. Isso trabalha as mesmas ideias do EV3, como sequência, repetição e seleção condicional (EF05CO04), e reforça a noção de dispositivos de entrada e saída (EF03CO06). Aqui o aluno vê a eletrônica que fica escondida dentro do robô pronto.
+
+### Qual kit escolher
+
+| Kit | O que o aluno faz | Programação | Combina melhor com |
+| --- | --- | --- | --- |
+| LEGO EV3 | Monta e programa um robô com motores e sensores | Blocos | Projetos de robô e desafios em grupo |
+| LEGO SPIKE Prime | Monta e programa robôs com peças mais novas | Blocos e Python | Escolas que querem atualizar o material |
+| Arduino | Monta circuitos com LEDs, botões e sensores | Código (Arduino IDE) | Turmas mais velhas, com foco em eletrônica |
+
+Não existe kit certo para todas as turmas. A escolha depende da idade, do tempo de aula e do que o professor quer ensinar: robô, circuito ou os dois.
 
 ## Perguntas frequentes
 
