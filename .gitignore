@@ -30,3 +30,6 @@ pnpm-debug.log*
 
 # Topic radar reports
 radar/
+
+# Configuracao local do Claude Code
+.claude/settings.json
