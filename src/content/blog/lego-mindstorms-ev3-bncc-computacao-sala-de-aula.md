@@ -3,7 +3,7 @@ title: "LEGO EV3 na sala de aula: robótica e BNCC Computação"
 description: "Veja como o kit LEGO MINDSTORMS EV3 ajuda a trabalhar a BNCC Computação, com 5 projetos de programação, habilidades por código e um passo a passo de aula."
 category: "Educação"
 date: 2026-10-27T16:35:00-03:00
-updated: 2026-10-27T17:27:00-03:00
+updated: 2026-10-27T17:30:00-03:00
 readingTime: "6 min"
 image: "./images/lego-ev3-capa-sala-de-aula.webp"
 imageAlt: "Professora e dois alunos observando um robô de peças de montar com garra em uma sala de aula"
