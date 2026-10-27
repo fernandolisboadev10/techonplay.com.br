@@ -40,6 +40,7 @@ export default defineConfig({
     '/category/reviews': '/categoria/reviews/',
     '/category/apps': '/categoria/apps/',
     '/category/sem-categoria': '/blog',
+    '/lego-mindstorms-ev3-bncc-computacao-sala-de-aula': '/lego-ev3-bncc-computacao/',
     '/feed': '/rss.xml',
     '/sitemap_index.xml': '/sitemap-index.xml',
     '/wp-sitemap.xml': '/sitemap-index.xml',

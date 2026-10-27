@@ -50,11 +50,11 @@ A apostila traz cinco projetos curtos. Eles formam uma escada de conceitos, e ca
 
 | Projeto | O que o robô faz | Conceito | Habilidade BNCC |
 | --- | --- | --- | --- |
-| 1 | Anda duas vezes para a frente e gira um quarto de volta à esquerda | Sequência | EF01CO03 |
-| 2 | Repete a sequência quatro vezes e desenha um quadrado | Laço (repetição) | EF02CO02 |
-| 3 | Anda até achar um obstáculo a menos de 30 cm | Sensor ultrassônico e espera por condição | EF03CO06 |
-| 4 | Ao achar obstáculo a menos de 20 cm, inverte o sentido e continua | Repetição com condição | EF03CO02 |
-| 5 | Sempre que acha obstáculo a menos de 20 cm, gira à esquerda e continua | Condicional dentro de um laço | EF05CO04 |
+| 1 | Anda duas vezes para a frente e gira um quarto de volta à esquerda | Sequência | <mark class="bncc-code">EF01CO03</mark> |
+| 2 | Repete a sequência quatro vezes e desenha um quadrado | Laço (repetição) | <mark class="bncc-code">EF02CO02</mark> |
+| 3 | Anda até achar um obstáculo a menos de 30 cm | Sensor ultrassônico e espera por condição | <mark class="bncc-code">EF03CO06</mark> |
+| 4 | Ao achar obstáculo a menos de 20 cm, inverte o sentido e continua | Repetição com condição | <mark class="bncc-code">EF03CO02</mark> |
+| 5 | Sempre que acha obstáculo a menos de 20 cm, gira à esquerda e continua | Condicional dentro de um laço | <mark class="bncc-code">EF05CO04</mark> |
 
 O mapeamento é uma proposta de uso: a apostila não cita a BNCC, e quem faz a ligação é o professor ao planejar a aula.
 
@@ -62,17 +62,17 @@ O mapeamento é uma proposta de uso: a apostila não cita a BNCC, e quem faz a l
 
 Os códigos da tabela acima vêm do complemento de Computação à BNCC. Em resumo:
 
-- **EF01CO03:** reorganizar e criar sequências de passos, ligando-as à ideia de algoritmo.
-- **EF02CO02:** criar e simular algoritmos com repetições simples e perceber como a precisão da instrução muda o resultado.
-- **EF03CO02:** criar algoritmos com repetição condicionada, de forma independente e em colaboração.
-- **EF03CO06:** entender que o computador se comunica com o mundo por dispositivos de entrada e saída, como os sensores.
-- **EF05CO04:** combinar sequências, repetições e seleções condicionais.
+- **<mark class="bncc-code">EF01CO03</mark>:** reorganizar e criar sequências de passos, ligando-as à ideia de algoritmo.
+- **<mark class="bncc-code">EF02CO02</mark>:** criar e simular algoritmos com repetições simples e perceber como a precisão da instrução muda o resultado.
+- **<mark class="bncc-code">EF03CO02</mark>:** criar algoritmos com repetição condicionada, de forma independente e em colaboração.
+- **<mark class="bncc-code">EF03CO06</mark>:** entender que o computador se comunica com o mundo por dispositivos de entrada e saída, como os sensores.
+- **<mark class="bncc-code">EF05CO04</mark>:** combinar sequências, repetições e seleções condicionais.
 
 Além delas, o robô ajuda a trabalhar outras habilidades que atravessam todos os projetos:
 
-- **Decompor o problema** (EF03CO03): para desenhar o quadrado, o aluno primeiro percebe que ele é feito de quatro lados iguais e quatro giros.
-- **Depurar** (EF07CO02, dos Anos Finais): quando o robô não faz o esperado, o aluno analisa o programa, testa e corrige.
-- **Comparar soluções** (EI03CO05, da Educação Infantil): grupos diferentes resolvem o mesmo desafio e comparam os caminhos.
+- **Decompor o problema** (<mark class="bncc-code">EF03CO03</mark>): para desenhar o quadrado, o aluno primeiro percebe que ele é feito de quatro lados iguais e quatro giros.
+- **Depurar** (<mark class="bncc-code">EF07CO02</mark>, dos Anos Finais): quando o robô não faz o esperado, o aluno analisa o programa, testa e corrige.
+- **Comparar soluções** (<mark class="bncc-code">EI03CO05</mark>, da Educação Infantil): grupos diferentes resolvem o mesmo desafio e comparam os caminhos.
 - **Trabalhar em equipe:** as competências específicas de Computação (C4, C5 e C6 do Ensino Fundamental) falam em criar soluções de forma cooperativa, avaliar processos e desenvolver projetos baseados em problemas.
 
 A faixa etária recomendada pelo fabricante é a partir de 10 anos. Para a Educação Infantil, o documento da BNCC Computação traz exemplos de atividades plugadas e desplugadas (sem computador), e o robô pode entrar como complemento.
@@ -135,7 +135,7 @@ O kit de Arduino muda o foco. Em vez de um robô de montar, o aluno monta um **c
 
 ![Kit Arduino com placa UNO, protoboard, LEDs vermelho, amarelo e verde, botões, resistores, sensores e cabos](./images/kit-arduino-uno-componentes.webp)
 
-Um projeto simples é o **semáforo**: três LEDs acendem em sequência (vermelho, verde e amarelo), com tempo de espera entre cada cor. Com um botão de pedestre, o semáforo passa a ter uma condição. Isso trabalha as mesmas ideias do EV3, como sequência, repetição e seleção condicional (EF05CO04), e reforça a noção de dispositivos de entrada e saída (EF03CO06). Aqui o aluno vê a eletrônica que fica escondida dentro do robô pronto.
+Um projeto simples é o **semáforo**: três LEDs acendem em sequência (vermelho, verde e amarelo), com tempo de espera entre cada cor. Com um botão de pedestre, o semáforo passa a ter uma condição. Isso trabalha as mesmas ideias do EV3, como sequência, repetição e seleção condicional (<mark class="bncc-code">EF05CO04</mark>), e reforça a noção de dispositivos de entrada e saída (<mark class="bncc-code">EF03CO06</mark>). Aqui o aluno vê a eletrônica que fica escondida dentro do robô pronto.
 
 ### Qual kit escolher
 
