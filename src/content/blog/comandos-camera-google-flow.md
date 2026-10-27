@@ -3,7 +3,7 @@ title: "Comandos de Câmera do Google Flow: 40 Prompts para Testar"
 description: "Veja os comandos de câmera do Google Flow: 40 prompts para fotos e vídeos com IA, do drone ao close-up, com exemplos prontos para copiar."
 category: "Inteligência Artificial"
 date: 2026-09-24
-updated: 2026-10-20T07:20:00-03:00
+updated: 2026-10-27T18:01:00-03:00
 readingTime: "8 min"
 image: "./images/Comandos-de-Camera-do-Google-Flow.webp"
 imageAlt: "Comandos de Câmera do Google Flow"

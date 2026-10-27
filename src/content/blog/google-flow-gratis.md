@@ -3,10 +3,10 @@ title: "Google Flow é grátis? Sim: 50 créditos por dia rendem 5 vídeos"
 description: "Sim, o Google Flow é grátis: 50 créditos por dia, sem assinatura, rendem até 5 vídeos no Veo 3.1 Lite. Veja os limites e os preços no Brasil."
 category: "Inteligência Artificial"
 date: 2026-09-29
-updated: 2026-10-27T16:20:00-03:00
+updated: 2026-10-27T18:01:00-03:00
 readingTime: "5 min"
 image: "./images/Google-Flow.webp"
-imageAlt: "Google Flow"
+imageAlt: "Criador de conteúdo editando vídeos no Google Flow, com cinco fichas luminosas representando os créditos diários"
 tags: ["Google Flow", "Veo 3.1", "IA de vídeo", "Google"]
 related: ["comandos-camera-google-flow", "google-ai-plus-para-estudantes", "plugin-higgsfield-chatgpt"]
 seoTitle: "Google Flow grátis: 50 créditos por dia rendem 5 vídeos"
@@ -128,7 +128,7 @@ Com 50 créditos por dia, o desperdício é o que mais pesa. Três hábitos esti
 -   **Escreva o prompt com cena, câmera e áudio.** Um prompt específico evita regerar o mesmo clipe duas vezes.
 -   **Use ingredientes.** Reaproveitar o mesmo personagem entre cenas poupa as tentativas de acertar o visual.
 
-<!-- IMAGEM 2: print do seletor de modelo do Flow com o custo em créditos de cada opção (alt: "Seletor de modelos do Google Flow com o custo em créditos de Veo 3.1 Lite, Fast e Quality") -->
+![Fichas luminosas representando os 50 créditos diários do Google Flow, metade já gasta, diante de uma linha do tempo de vídeo](./images/google-flow-economizar-creditos.webp)
 
 Um prompt mais detalhado costuma gastar menos tentativas, e os [comandos de câmera do Google Flow](/comandos-camera-google-flow/) ajudam a definir o enquadramento já na primeira geração.
 
