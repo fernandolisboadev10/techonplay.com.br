@@ -3,9 +3,10 @@ title: "LEGO EV3 na sala de aula: robótica e BNCC Computação"
 description: "Veja como o kit LEGO MINDSTORMS EV3 ajuda a trabalhar a BNCC Computação, com 5 projetos de programação, habilidades por código e um passo a passo de aula."
 category: "Educação"
 date: 2026-10-27T16:35:00-03:00
+updated: 2026-10-27T17:27:00-03:00
 readingTime: "6 min"
-image: "./images/lego-ev3-robo-com-garra.webp"
-imageAlt: "Robô LEGO MINDSTORMS EV3 com garra, montado com o kit de robótica educacional"
+image: "./images/lego-ev3-capa-sala-de-aula.webp"
+imageAlt: "Professora e dois alunos observando um robô de peças de montar com garra em uma sala de aula"
 tags: ["LEGO EV3", "Robótica educacional", "BNCC", "Pensamento computacional", "Pedagogia"]
 related: ["o-que-e-bncc", "competencias-bncc-robotica-educacional", "ia-nas-escolas-bncc-computacao-professores"]
 ---
@@ -17,6 +18,8 @@ Este guia apresenta o kit, uma sequência de cinco projetos de programação e a
 ## O que é o LEGO MINDSTORMS EV3
 
 O EV3 chegou em 2013 e reúne peças de montar, motores, sensores e um pequeno computador programável. O valor pedagógico está no ciclo completo: levantar uma hipótese, montar, programar, testar, errar e ajustar. É a aprendizagem pela experiência, com resposta imediata do robô.
+
+![Robô LEGO MINDSTORMS EV3 com garra, montado com o kit de robótica educacional](./images/lego-ev3-robo-com-garra.webp)
 
 O kit educacional (set 45544) tem 541 peças e quatro grupos de componentes:
 
