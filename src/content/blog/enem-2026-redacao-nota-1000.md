@@ -3,17 +3,17 @@ title: "Redação do ENEM 2026: o que o MEC manda fazer para tirar 1000"
 description: "Dicas do MEC e do Inep para a redação do ENEM 2026: as 5 competências, o que zera a nota, a proposta de intervenção e como treinar até 8 de novembro."
 category: "Educação"
 date: 2026-10-18T10:30:00-03:00
-updated: 2026-10-18T10:30:00-03:00
+updated: 2026-10-28T16:50:00-03:00
 readingTime: "7 min"
 image: "./images/enem-2026-redacao-nota-1000.webp"
-imageAlt: "Estudante escrevendo uma redação à mão em folha pautada, à mesa de casa, com garrafa de água, caderno e celular ao lado e a luz do fim de tarde entrando pela janela"
+imageAlt: "Mãos de um estudante escrevendo uma redação à caneta em caderno pautado, em uma mesa de madeira com despertador, copo d'água, post-its, livros e laptop fechado sob a luz da tarde"
 tags: ["ENEM 2026", "Redação", "Inep", "MEC", "Estudos"]
 related: ["o-que-e-bncc", "ia-para-professores", "google-ai-plus-para-estudantes"]
 ---
 
-A redação do ENEM 2026 acontece no primeiro dia de provas, **8 de novembro**, e faltam apenas três semanas. Quem quer chegar perto da **redação nota 1000** tem um material oficial atualizado para estudar: a Cartilha do Participante, que o Inep publicou em 18 de setembro de 2026.
+A redação do ENEM 2026 acontece no primeiro dia de provas, **8 de novembro**, e faltam só 11 dias. Quem quer chegar perto da **redação nota 1000** tem um material oficial atualizado para estudar: a Cartilha do Participante, que o Inep publicou em 18 de setembro de 2026.
 
-Este guia reúne o que o MEC e o Inep orientam, sem atalhos de cursinho: as cinco competências, o que pode zerar o texto, como montar a proposta de intervenção e um plano de treino para as próximas semanas.
+Este guia reúne o que o MEC e o Inep orientam, sem atalhos de cursinho: as cinco competências, o que pode zerar o texto, como montar a proposta de intervenção e um plano de treino para a reta final. Se você usa IA para estudar, veja também o [Google AI Plus grátis para estudantes](/google-ai-plus-para-estudantes/).
 
 ## Datas e regras da prova de redação no ENEM 2026
 
@@ -60,7 +60,7 @@ Segundo o Inep, a nota zero ou a anulação podem acontecer nestes casos:
 -   **trecho deliberadamente desconectado** do tema;
 -   **desrespeito à seriedade do exame**, além de situações como texto ilegível ou escrito predominantemente em língua estrangeira, que também levam à nota zero ou à anulação.
 
-Duas observações importantes. Primeiro, linhas copiadas dos textos motivadores não ajudam a bater o mínimo, porque, segundo a cartilha, linhas copiadas da prova não são contadas. Segundo, propostas que desrespeitam os direitos humanos, como a defesa de tortura ou de "justiça com as próprias mãos", são penalizadas na competência 5. Nas edições anteriores, a nota nessa competência era zero.
+Duas observações importantes. Primeiro, linhas copiadas dos textos motivadores não ajudam a bater o mínimo, porque, segundo a cartilha, linhas copiadas da prova não são contadas. Segundo, propostas que desrespeitam os direitos humanos, como a defesa de tortura ou de "justiça com as próprias mãos", são penalizadas na competência 5. Pelos critérios das edições anteriores, a nota nessa competência é zero nesses casos.
 
 Confirme a lista atual no PDF da cartilha de 2026 e no edital.
 
@@ -99,21 +99,22 @@ A ação é o centro da proposta. Uma constatação, como "o problema é grave",
 
 Um exemplo de estrutura, em frase única: "O Ministério da Educação (agente) deve incluir oficinas de leitura crítica nas escolas (ação), por meio de parcerias com bibliotecas públicas (modo/meio), a fim de reduzir a desinformação entre os jovens (finalidade)". O detalhamento entra com uma frase que explique como as oficinas funcionariam. O exemplo é inventado, só para ilustrar a estrutura.
 
-## Um plano de treino para as próximas 3 semanas
+## Um plano de treino para os 11 dias que faltam
 
 Com o tempo curto, a rotina precisa ser simples. Este roteiro é uma sugestão do TechOnPlay, e não uma regra do MEC ou do Inep:
 
 <div class="callout callout-bar">
 
--   **Semana 1:** leia a cartilha, estude as redações comentadas de 2025 e escreva um texto completo com tempo marcado.
--   **Semana 2:** escreva mais dois textos à tinta preta, em até 30 linhas, e releia cada um com a tabela das competências ao lado.
--   **Semana 3:** faça um simulado nas condições do dia (horário da tarde, sem consulta) e revise os erros que mais se repetem.
+-   **Dias 1 a 3:** leia a cartilha, estude as redações comentadas de 2025 e escreva um texto completo com tempo marcado.
+-   **Dias 4 a 8:** escreva mais dois ou três textos à tinta preta, em até 30 linhas, e releia cada um com a tabela das competências ao lado.
+-   **Dias 9 e 10:** faça um simulado nas condições do dia (horário da tarde, sem consulta) e revise os erros que mais se repetem.
+-   **Véspera:** não escreva texto novo. Releia seus erros mais comuns, separe o material e descanse.
 
 </div>
 
 ![Estudante escrevendo uma redação à mão à tinta preta, em uma mesa de estudos com relógio de parede, luminária e livros ao fundo](./images/enem-2026-redacao-plano-de-treino.webp)
 
-Quem já está inscrito deve conferir o Cartão de Confirmação na Página do Participante, que traz o local de prova e que o Inep informou que divulgaria em outubro.
+Quem já está inscrito deve conferir o Cartão de Confirmação na Página do Participante, que traz o local de prova. Leve também documento oficial com foto e a caneta esferográfica de tinta preta e material transparente, e chegue antes de os portões fecharem, às 13h.
 
 ## Como usar IA para treinar redação sem se prejudicar
 
