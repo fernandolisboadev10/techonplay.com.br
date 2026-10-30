@@ -64,7 +64,7 @@ Vale para todos os itens abaixo que ensinam a usar um comando ou prompt de image
 - [ ] **7.** Google Flow: como controlar a câmera de verdade (guia oficial)
   - Palavra-chave: controles de câmera google flow · Intenção: como fazer · Link: `comandos-camera-google-flow`, `google-flow-gratis`
   - Diferencial: recurso oficial da interface (conferir na documentação do Google Flow), que o pilar só cita de longe.
-- [ ] **8.** Como criar seus próprios comandos de imagem no ChatGPT
+- [x] **8.** (2026-10-29, `criar-comandos-de-imagem-chatgpt`) Como criar seus próprios comandos de imagem no ChatGPT
   - Palavra-chave: criar comandos personalizados chatgpt imagem · Intenção: como fazer · Link: `46-comandos-do-chatgpt`
   - Diferencial: receita para criar `/polaroid`, `/noir`, `/isometric` e variações.
 - [ ] **9.** Prompts para vídeo no Google Flow: estrutura e 10 exemplos
