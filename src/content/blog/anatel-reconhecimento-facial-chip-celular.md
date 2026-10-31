@@ -1,6 +1,6 @@
 ---
 title: "Anatel vai exigir rosto para manter seu chip: o que muda"
-seoTitle: "Anatel e reconhecimento facial no chip: prazos e como se proteger"
+seoTitle: "Anatel e reconhecimento facial no chip: prazos e proteção"
 description: "A Anatel aprovou o reconhecimento facial para ativar e manter linhas de celular. Veja quem é afetado, os prazos, a LGPD e como fugir de golpes."
 category: "Dicas"
 date: 2026-10-30T07:00:00-03:00
