@@ -1,16 +1,17 @@
 ---
-title: "Como ficaria meu cabelo curto com IA: corte, franja, cor e barba"
-description: "A trend do cabelo curto com IA viralizou: envie sua foto ao ChatGPT ou Gemini e veja cortes, franja, cor e barba antes de ir ao salão. Prompts prontos."
+title: "Como ficaria meu cabelo curto com IA: corte, franja e cor"
+description: "A trend do cabelo curto com IA viralizou: envie sua foto ao ChatGPT ou Gemini e veja cortes, franja e cor antes do salão. Prompts prontos para copiar."
 category: "Tendências"
 date: 2026-10-31T09:10:00-03:00
-readingTime: "6 min"
+updated: 2026-11-02T09:10:00-03:00
+readingTime: "5 min"
 image: "./images/cabelo-curto-ia-capa.webp"
-imageAlt: "Mulher sorrindo em comparação lado a lado, à esquerda com cabelo longo e à direita com corte chanel curto, em fundo neutro de estúdio"
+imageAlt: "Comparação lado a lado da mesma mulher de óculos, à esquerda com cabelo longo e ondulado e à direita com corte chanel curto"
 tags: ["Trend", "ChatGPT", "Gemini", "Foto com IA", "Cabelo"]
 related: ["trend-anos-80-ia-foto-prompt", "comandos-chatgpt-editar-fotos"]
 ---
 
-Quem nunca ficou na dúvida se um **cabelo curto** combinaria com o próprio rosto? A trend que viralizou nas redes responde isso em segundos: você envia uma selfie para uma IA e ela mostra **como ficaria seu cabelo curto**, sem tesoura e sem arrependimento. Dá para fazer no ChatGPT ou no Gemini, e o mesmo método serve para testar franja, cor e até barba.
+Quem nunca ficou na dúvida se um **cabelo curto** combinaria com o próprio rosto? A trend que viralizou nas redes responde isso em segundos: você envia uma selfie para uma IA e ela mostra **como ficaria seu cabelo curto**, sem tesoura e sem arrependimento. Dá para fazer no ChatGPT ou no Gemini, e o mesmo método serve para testar franja e cor. Abaixo estão os prompts prontos: é só anexar sua foto, copiar e colar.
 
 ## Como a trend funciona
 
@@ -24,28 +25,28 @@ Um detalhe importante: as matérias brasileiras variam na ferramenta. Algumas fa
 
 1. **Escolha uma foto boa.** Rosto de frente, bem iluminado, sem óculos escuros, boné ou mão cobrindo o cabelo.
 2. **Abra uma conversa nova** no ChatGPT ou no Gemini e ative a geração de imagens.
-3. **Anexe a foto** e cole um dos prompts abaixo.
+3. **Anexe a foto como referência** e cole um dos prompts abaixo na mesma mensagem. Todos eles já pedem para usar a foto anexada.
 4. **Compare e peça ajustes** na mesma conversa, mudando só um detalhe por vez.
 5. **Salve as versões** que mais gostou para mostrar ao cabeleireiro.
 
 O acesso à geração de imagens e o limite diário dependem do seu plano e mudam com frequência, então confira na própria ferramenta o que a sua conta permite.
 
-![Grade com quatro versões do mesmo rosto feminino com cortes diferentes: chanel, pixie, long bob e shaggy, todas em fundo neutro](./images/cabelo-curto-ia-cortes.webp)
+![Grade com quatro versões da mesma mulher de óculos com cortes curtos diferentes: pixie cut, classic bob, french bob e wolf cut](./images/cabelo-curto-ia-cortes.webp)
 
-*Exemplo gerado por IA (pessoa fictícia). O resultado com a sua foto será diferente.*
+*Exemplo feito com IA a partir de uma foto autorizada. O resultado com a sua foto será diferente.*
 
 ## Prompt principal: testar cortes curtos
 
 Este é o prompt base. A frase para não alterar o rosto é a mais importante, porque evita que a IA troque seus traços:
 
 ```prompt
-Edit the attached photo without changing my face, skin tone, expression or identity. Change only my hair. Give me a short chanel bob cut (chin length, straight, with a clean blunt edge), keeping my natural hair color. Keep the same background, lighting and clothes. Photorealistic result, natural hair texture, no filters, no beauty retouching.
+Using the attached photo as the reference, edit it without changing my face, skin tone, expression or identity. Change only my hair. Give me a short chanel bob cut (chin length, straight, with a clean blunt edge), keeping my natural hair color. Keep the same background, lighting, clothes and accessories. Photorealistic result, natural hair texture, no filters, no beauty retouching.
 ```
 
 Para comparar vários cortes de uma vez, peça uma grade:
 
 ```prompt
-Using the attached photo, create a 2x2 grid showing the same person, with the same face and identity, in four different short haircuts: pixie cut, classic bob, french bob and wolf cut. Keep the same background and lighting in all four. Photorealistic, natural hair texture, label each cut with a small caption.
+Using the attached photo as the reference, create a photorealistic 2x2 grid of this same person, with the same face and identity, in four different short haircuts: pixie cut, classic bob, french bob and wolf cut. Change only the hair. Keep the same clothes, accessories, background and lighting in all four. Natural hair texture and natural hair color, no beauty retouching, label each cut with a small caption.
 ```
 
 Os nomes dos cortes funcionam melhor em inglês, como recomenda o BNews, porque os modelos reconhecem esses termos com mais precisão. Você pode escrever o resto do pedido em português sem problema.
@@ -55,41 +56,33 @@ Os nomes dos cortes funcionam melhor em inglês, como recomenda o BNews, porque 
 Franja é a mudança que mais dá medo, e por isso é a que mais vale testar:
 
 ```prompt
-Edit the attached photo without changing my face or identity. Change only my hair by adding curtain bangs (long, parted in the middle, blending into the sides), keeping my current hair length and color. Same background and lighting. Photorealistic, natural texture.
+Using the attached photo as the reference, edit it without changing my face or identity. Change only my hair by adding curtain bangs (long, parted in the middle, blending into the sides), keeping my current hair length and color. Keep the same clothes, accessories, background and lighting. Photorealistic, natural texture.
 ```
 
 Troque "curtain bangs" por "blunt bangs" (franja reta) ou "side-swept bangs" (franja lateral) para ver as variações. Se o seu cabelo é cacheado ou crespo, avise no prompt, pois a franja se comporta de outro jeito nesses fios.
 
 ## Cor: do loiro ao cobre
 
-A cor muda a percepção do corte inteiro, então teste em separado:
+A cor muda a percepção do corte inteiro, então teste em separado. Para ver uma cor só:
 
 ```prompt
-Edit the attached photo without changing my face or identity. Keep my current haircut and change only the hair color to a warm copper red, with a natural gradient and realistic shine. Same background and lighting. Photorealistic, no filters.
+Using the attached photo as the reference, edit it without changing my face or identity. Keep my current haircut and change only the hair color to a warm copper red, with a natural gradient and realistic shine. Keep the same clothes, accessories, background and lighting. Photorealistic, no filters.
 ```
 
-![Grade com quatro versões do mesmo rosto feminino com o mesmo corte em cores diferentes: loiro acinzentado, castanho chocolate, ruivo acobreado e caramelo mel](./images/cabelo-curto-ia-cor.webp)
+Para comparar quatro cores de uma vez, peça uma grade:
+
+```prompt
+Using the attached photo as the reference, create a photorealistic 2x2 grid of this same person with the same haircut in four hair colors: ash blonde, chocolate brown, warm copper red and honey caramel. Change only the hair color. Keep the face, identity, clothes, accessories, background, lighting and framing identical in all four. Natural shine, no beauty retouching, no text.
+```
+
+![Grade com quatro versões da mesma mulher de óculos com o mesmo corte em cores diferentes: loiro acinzentado, castanho chocolate, ruivo acobreado e caramelo mel](./images/cabelo-curto-ia-cor.webp)
 
 Tons como "ash blonde", "chocolate brown" e "honey caramel" costumam render bem. Lembre que a IA mostra o resultado ideal: a cor real depende do seu fio de partida, de descoloração e da mão do profissional.
-
-## Barba: a versão masculina
-
-Para quem quer saber se a barba cai bem, o método é o mesmo. O melhor é pedir o estilo pelo nome e pelo comprimento:
-
-```prompt
-Edit the attached photo without changing my face shape, skin tone or identity. Change only the facial hair: add a short, well-groomed full beard (about 1 cm, clean neckline and cheek line), matching my hair color. Keep my haircut, background and lighting. Photorealistic skin texture, no retouching.
-```
-
-Para testar sem barba, peça "completely clean-shaven" no lugar. Barba por fazer, cavanhaque e bigode também funcionam trocando a descrição.
-
-![Homem em três versões lado a lado: sem barba, com barba curta bem aparada e com cavanhaque, fundo neutro e mesma iluminação](./images/cabelo-curto-ia-barba.webp)
-
-*Exemplo gerado por IA (pessoa fictícia). O resultado com a sua foto será diferente.*
 
 ## Dicas para o resultado ficar parecido com você
 
 - **Uma mudança por vez.** Pedir corte, cor e franja juntos aumenta o risco de o rosto mudar. Se quiser aprender a montar pedidos assim, veja nosso guia de [comandos do ChatGPT para editar fotos](/comandos-chatgpt-editar-fotos/).
-- **Repita a ordem de não alterar o rosto** quando pedir um ajuste novo na mesma conversa.
+- **Mantenha a foto anexada** e repita a ordem de não alterar o rosto quando pedir um ajuste novo na mesma conversa.
 - **Gere mais de uma versão.** Cada tentativa varia, e a segunda costuma ser melhor.
 - **Use a imagem como referência, não como promessa.** O comprimento, o volume e a textura reais dependem do seu cabelo.
 - **Leve o resultado ao cabeleireiro.** É o uso mais útil da trend: mostrar a imagem e conversar sobre o que é viável no seu fio.
@@ -100,6 +93,6 @@ Para entrar na trend, você entrega uma imagem do seu rosto a um serviço online
 
 ## Vale a pena?
 
-Para curiosidade e para ter um ponto de partida na conversa com o cabeleireiro, sim. Como decisão final, não: a IA suaviza o que na vida real depende de textura, densidade e crescimento do cabelo. Teste o chanel, a franja, a cor e a barba, escolha seus favoritos e depois leve ao profissional. Se quiser outras ideias do tipo, vale também conferir o que os [melhores prompts de foto profissional](/prompt-foto-profissional-chatgpt/) fazem pelo seu retrato.
+Para curiosidade e para ter um ponto de partida na conversa com o cabeleireiro, sim. Como decisão final, não: a IA suaviza o que na vida real depende de textura, densidade e crescimento do cabelo. Teste o chanel, a franja e a cor, escolha seus favoritos e depois leve ao profissional. Se quiser outras ideias do tipo, vale também conferir o que os [melhores prompts de foto profissional](/prompt-foto-profissional-chatgpt/) fazem pelo seu retrato.
 
 Fontes: [Caraca FM](https://caracafm.com.br/trend-de-cabelo-curto-com-ia-viraliza-nas-redes-sociais/) | [DCI](https://www.dci.com.br/industria/beleza/trend-do-cabelo-curto-com-ia-veja-passo-a-passo-para-fazer/) | [BNews São Paulo](https://www.bnewssaopaulo.com.br/noticias/entretenimento/nova-trend-do-gemini-promete-transformar-seu-visual-teste-cortes-de-cabelo-que-estao-bombando.html)
