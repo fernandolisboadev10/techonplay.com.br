@@ -3,6 +3,7 @@ title: "TCL C6K vale a pena? Ficha técnica, preço e para quem serve"
 description: "TCL C6K vale a pena em 2026? Veja ficha técnica, 144 Hz, Mini LED, preços por tamanho, pontos fracos e para quem a TV faz mais sentido."
 category: "Reviews"
 date: 2026-10-01T18:00:00-03:00
+updated: 2026-11-05T17:20:00-03:00
 readingTime: "7 min"
 image: "./images/tcl-c6k-vale-a-pena.webp"
 imageAlt: "TV TCL C6K Mini LED na sala com controle de videogame em primeiro plano"
@@ -53,11 +54,17 @@ Isso não equivale a uma OLED, em que cada pixel acende e apaga sozinho. Em cena
 
 ## Preço da TCL C6K no Brasil
 
-Os valores mudam bastante por loja e por promoção, e os números abaixo são os que as reportagens citavam no fim de setembro de 2026 (30/09/2026), sem checagem diária nas lojas. Na análise, a versão de 55 polegadas aparece entre R$ 3.180 e R$ 3.799, a de 65 polegadas por cerca de R$ 4.651 e a de 75 polegadas a partir de R$ 6.000.
+Os valores mudam bastante por loja, cupom e promoção. Esta seção foi atualizada em 05/11/2026 com anúncios e reportagens de ofertas, sem checagem diária nas lojas, então confirme o preço na hora de comprar. A Black Friday é em 27/11/2026, e os preços de pré-promoção já começaram a cair.
 
-Em um levantamento de preços feito em lojas, a de 55 polegadas aparecia a partir de R$ 3.279, e a de 65 polegadas, a partir de R$ 3.963. Também houve promoções fortes: o [Tecnoblog](https://tecnoblog.net/achados/tv-tcl-c6k-com-mini-led-de-55-tem-melhor-preco-em-meses-em-oferta-na-amazon/) noticiou que o modelo de 55 polegadas chegou a cair quase R$ 1 mil em uma oferta do Magalu.
+**55 polegadas.** Em setembro, a análise do TechTudo citava a versão de 55 polegadas entre R$ 3.180 e R$ 3.799. Em novembro, o [Canaltech](https://canaltech.com.br/tv/tv-mini-led-de-55-com-144-hz-entra-em-oferta-e-surpreende-no-preco/) noticiou o modelo por R$ 2.744,05 no Pix, com o cupom INFLU200 no Magazine Luiza e frete grátis (cupons mudam rápido e podem já ter acabado). Na página da Amazon, a 55C6K aparecia por cerca de R$ 3.006 à vista no Pix, com preço sugerido de R$ 3.999 na mesma página.
 
-A regra é pesquisar o histórico de preço antes de fechar a compra. Quando a TV está perto do piso de mercado, o custo-benefício melhora bastante.
+**65 polegadas.** A faixa de setembro era de cerca de R$ 4.651 na análise. Nas ofertas recentes, o Tecnoblog registrou a de 65 polegadas por R$ 3.784 no Pix com cupom no Magazine Luiza em 7 de outubro de 2026 (oferta já encerrada), contra R$ 4.999 de preço cheio. A Amazon exibia a 65C6K por cerca de R$ 3.810 no Pix. Não achei, até esta data, oferta confirmada de 65 polegadas específica de novembro.
+
+**75 polegadas e maiores.** A análise do TechTudo citava a partir de R$ 6.000 para a de 75 polegadas. Não encontrei preço novo confiável para 75, 85 e 98 polegadas.
+
+Compare com a alternativa barata: o próprio Canaltech lembra que TVs 4K de 50 polegadas com painel de 60 Hz, como uma AOC Roku TV (R$ 2.029) e uma Samsung Crystal UHD (R$ 2.419), custam menos, mas ficam atrás em imagem e fluidez. A diferença para a C6K de 55 polegadas em oferta é pequena.
+
+A regra é pesquisar o histórico de preço antes de fechar a compra. Se a C6K de 55 polegadas está perto de R$ 2.700 a R$ 3.000, já é um bom preço pelo que se viu nas ofertas recentes. Vale esperar a Black Friday só se você não tem pressa: não há como garantir que o preço vá cair mais.
 
 ## Para jogos: 144 Hz, VRR e HDMI 2.1
 
@@ -88,6 +95,7 @@ O sistema é Google TV, com acesso aos aplicativos de streaming. Para rede, há 
 - Não é OLED, então o preto e o ângulo de visão não alcançam essa tecnologia.
 - Wi-Fi 5, e não Wi-Fi 6.
 - Os preços variam muito, e os tamanhos maiores custam bem mais.
+- Segundo o [Hardware.com.br](https://www.hardware.com.br/noticias/tcl-c6k-55-polegadas-oferta-amazon/amp/), que cita o teste do TechRadar (abril de 2026), há perda de detalhe em cenas muito escuras, uniformidade irregular nas bordas e queda de contraste a partir de cerca de 45 graus de ângulo.
 
 ## TCL C6K ou OLED: qual escolher?
 
@@ -99,13 +107,17 @@ Se você assiste a filmes no escuro e quer o melhor preto possível, vale pagar 
 
 Sim, para a maioria das pessoas que buscam uma TV de 55 a 75 polegadas com boa imagem e recursos para jogos. A análise concluiu que ela é uma excelente opção para quem quer Mini LED de qualidade sem pagar o preço de uma OLED.
 
-Só não compensa se você exige preto absoluto ou paga um valor muito acima do que as lojas praticam. Antes de comprar, compare preços, confirme o tamanho do móvel e da sala e veja a ficha técnica do modelo exato. Para outras análises, acesse a página de [Reviews](/categoria/reviews/).
+Só não compensa se você exige preto absoluto ou paga um valor muito acima do que as lojas praticam. Em 05/11/2026, com ofertas da versão de 55 polegadas perto de R$ 2.700 a R$ 3.000, o custo-benefício melhorou em relação a setembro. Se a sua compra não é urgente, acompanhe a pré-Black Friday (27/11/2026), mas não compre só por expectativa de queda. Antes de comprar, compare preços, confirme o tamanho do móvel e da sala e veja a ficha técnica do modelo exato. Para outras análises, acesse a página de [Reviews](/categoria/reviews/).
 
 ## Perguntas frequentes sobre a TCL C6K
 
 **A TCL C6K vale a pena em 2026?**
 
-_Vale, principalmente para quem quer Mini LED e recursos de jogos sem pagar o preço de uma OLED. A nota da análise foi 4,4 de 5._
+_Vale, principalmente para quem quer Mini LED e recursos de jogos sem pagar o preço de uma OLED. A nota da análise do TechTudo foi 4,4 de 5, e a versão de 55 polegadas foi vista em oferta por cerca de R$ 2.744 no Pix no início de novembro de 2026._
+
+**Quanto custa a TCL C6K hoje?**
+
+_Em 05/11/2026, ofertas da de 55 polegadas ficavam entre cerca de R$ 2.744 (com cupom) e R$ 3.006 (Amazon, Pix), e a de 65 polegadas aparecia perto de R$ 3.810 na Amazon. Os preços mudam e não há garantia de queda na Black Friday._
 
 **A TCL C6K tem 144 Hz?**
 
@@ -123,4 +135,4 @@ _55, 65, 75, 85 e 98 polegadas, de acordo com a análise._
 
 _Não. Ela usa painel QLED com Mini LED, o que a deixa mais barata, mas sem o preto perfeito da OLED._
 
-Fontes: [análise do TechTudo](https://www.techtudo.com.br/review/2026/09/tcl-c6k-de-75-e-uma-das-melhores-tvs-custo-beneficio-da-atualidade-review-edinfoeletro.ghtml) | [da Amazon](https://www.amazon.com.br/TCL-Polegadas-Bluetooth-Google-65C6K/dp/B0F7K7B2PD)
+Fontes: [análise do TechTudo](https://www.techtudo.com.br/review/2026/09/tcl-c6k-de-75-e-uma-das-melhores-tvs-custo-beneficio-da-atualidade-review-edinfoeletro.ghtml) | [Amazon 65C6K](https://www.amazon.com.br/TCL-Polegadas-Bluetooth-Google-65C6K/dp/B0F7K7B2PD) | [Amazon 55C6K](https://www.amazon.com.br/TCL-Polegadas-Bluetooth-Google-55C6K/dp/B0F7JZMVKF) | [Tecnoblog, oferta de 65 polegadas (outubro/2026)](https://tecnoblog.net/achados/smart-tv-tcl-c6k-de-65-fica-mais-barata-com-o-cupom-do-tecnoblog/) | [Tecnoblog, oferta de 55 polegadas](https://tecnoblog.net/achados/tv-tcl-c6k-com-mini-led-de-55-tem-melhor-preco-em-meses-em-oferta-na-amazon/)
