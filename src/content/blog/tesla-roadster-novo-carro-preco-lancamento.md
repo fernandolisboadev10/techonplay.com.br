@@ -3,7 +3,7 @@ title: "Roadster, o carro de Musk que \"voa\" com propulsores da SpaceX"
 description: "O novo Tesla Roadster saltou sobre uma Cybertruck e dirigiu de cabeça para baixo. Veja o que o carro de Elon Musk fez, o preço e quando chega."
 category: "Reviews"
 date: 2026-10-16T15:25:00-03:00
-updated: 2026-10-19T18:40:00-03:00
+updated: 2026-11-05T17:40:00-03:00
 readingTime: "5 min"
 image: "./images/tesla-roadster-voando-propulsores-spacex.webp"
 imageAlt: "Carro esportivo elétrico branco no ar, em pleno salto sobre uma picape e um caminhão, com jatos de gás saindo dos propulsores ao pôr do sol no deserto"
@@ -52,7 +52,9 @@ A autonomia anunciada é "acima de 300 milhas", algo como 480 km, segundo a Tesl
 
 Aqui está a parte que mais gera busca, e a resposta honesta é curta: **não há preço divulgado para nenhuma versão**. O que a Tesla abriu foi a reserva. Dá para entrar na fila com US$ 5.000 na hora, reembolsáveis segundo a empresa, e mais US$ 45.000 em até 10 dias, somando US$ 50.000. É o mesmo valor pedido na reserva de 2017.
 
-Esse total é um depósito para entrar na fila, não o preço final do carro. Como nenhuma versão teve valor definido, qualquer número que circule por aí como "preço do Roadster" é palpite.
+Para a Thrust, a conta é outra. O Trending Topics (16/10/2026) e o jornal O Povo (21/10/2026) informam que, nos EUA, o depósito dela chega a US$ 250.000 (cerca de R$ 1,2 milhão na conversão do próprio O Povo). A Rocket segue só por convite, sem depósito informado. Fora dos EUA os valores mudam: na Alemanha e na Áustria, por exemplo, a reserva do Performance é de € 50.000, com € 5.000 na hora e € 45.000 em até 10 dias, e só os primeiros € 5.000 aparecem como totalmente reembolsáveis.
+
+Esse total é um depósito para entrar na fila, não o preço final do carro. O Trending Topics também registra que a Tesla não dá data firme de entrega. Como nenhuma versão teve valor definido, qualquer número que circule por aí como "preço do Roadster" é palpite.
 
 ## Quando chega: a data ainda é um "talvez"
 
@@ -76,4 +78,4 @@ Se você pretende reservar, lembre que o depósito de US$ 5.000 é reembolsável
 
 Quem lê em inglês e mora nos EUA pode seguir a [versão em inglês, para o público dos EUA](https://techonplay.com/tesla-roadster-price-specs-release-date/).
 
-Fontes: [Electrek sobre a apresentação](https://electrek.co/2026/10/15/tesla-unveils-cyberfied-new-roadster-kickflip/) | [Ubergizmo sobre a demonstração](https://www.ubergizmo.com/2026/10/tesla-roadster-demo-upside-down-suction-mid-air-corkscrews-and-a-thruster-assisted-0-81s-0-60/)
+Fontes: [Electrek sobre a apresentação](https://electrek.co/2026/10/15/tesla-unveils-cyberfied-new-roadster-kickflip/) | [Ubergizmo sobre a demonstração](https://www.ubergizmo.com/2026/10/tesla-roadster-demo-upside-down-suction-mid-air-corkscrews-and-a-thruster-assisted-0-81s-0-60/) | [Trending Topics sobre a reserva](https://www.trendingtopics.eu/tesla-roadster-reservation-50000-euro-deposit/) | [O Povo sobre os valores de reserva](https://www.opovo.com.br/trends/tesla-cobra-ate-r12-milhao-so-para-reservar-roadster-que-ainda-nem-tem-preco-final/)
