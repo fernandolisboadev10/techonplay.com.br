@@ -5,13 +5,9 @@ interface Props {
   headings: MarkdownHeading[];
 }
 
-// H2 sections with their H3 subsections nested underneath.
-type Section = { slug: string; text: string; children: { slug: string; text: string }[] };
-const sections: Section[] = [];
-for (const h of Astro.props.headings) {
-  if (h.depth === 2) sections.push({ slug: h.slug, text: h.text, children: [] });
-  else if (h.depth === 3 && sections.length) sections[sections.length - 1].children.push({ slug: h.slug, text: h.text });
-}
+// Só as seções H2: o guia fica logo abaixo da capa, então precisa ser curto de ler.
+const sections = Astro.props.headings.filter((h) => h.depth === 2);
+const pad = (n: number) => String(n).padStart(2, '0');
 ---
 {sections.length >= 3 && (
   <nav class="toc" id="toc" aria-labelledby="toc-title">
@@ -24,17 +20,8 @@ for (const h of Astro.props.headings) {
       </button>
     </div>
     <ol class="toc-list" id="toc-list">
-      {sections.map((s) => (
-        <li class="toc-item" data-slug={s.slug}>
-          <a href={`#${s.slug}`}>{s.text}</a>
-          {s.children.length > 0 && (
-            <ul class="toc-sub">
-              {s.children.map((c) => (
-                <li data-slug={c.slug}><a href={`#${c.slug}`}>{c.text}</a></li>
-              ))}
-            </ul>
-          )}
-        </li>
+      {sections.map((s, i) => (
+        <li><a href={`#${s.slug}`}><span class="toc-n">{pad(i + 1)}</span><span>{s.text}</span></a></li>
       ))}
     </ol>
   </nav>
@@ -46,61 +33,28 @@ for (const h of Astro.props.headings) {
   const list = document.getElementById('toc-list');
 
   if (toc && toggle && list) {
-    const mobile = window.matchMedia('(max-width: 1099px)');
+    const mobile = window.matchMedia('(max-width: 719px)');
     const setOpen = (open: boolean) => {
       toc.dataset.open = String(open);
       toggle.setAttribute('aria-expanded', String(open));
     };
-    // Collapsed by default on mobile (CSS already hides it there, so nothing jumps), open on desktop.
+    // Aberto no desktop, fechado no celular (o CSS já esconde a lista lá, então nada pula).
     toggle.setAttribute('aria-expanded', String(!mobile.matches));
     toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
     list.addEventListener('click', (e) => {
       if (mobile.matches && (e.target as HTMLElement).closest('a')) setOpen(false);
     });
-
-    // Scroll-spy: the current section is the last H2 whose top has passed the reading line (a third down the screen).
-    const items = Array.from(list.querySelectorAll<HTMLLIElement>('.toc-item'));
-    const subs = Array.from(list.querySelectorAll<HTMLLIElement>('.toc-sub li'));
-    const target = (li: HTMLLIElement) => document.getElementById(li.dataset.slug ?? '');
-    const pairs = items.map((li) => ({ li, el: target(li) })).filter((p) => p.el);
-    const subPairs = subs.map((li) => ({ li, el: target(li) })).filter((p) => p.el);
-
-    let ticking = false;
-    const update = () => {
-      ticking = false;
-      const line = Math.min(window.innerHeight * 0.35, 320);
-      let current = -1;
-      pairs.forEach((p, i) => {
-        if (p.el!.getBoundingClientRect().top <= line) current = i;
-      });
-      pairs.forEach((p, i) => {
-        p.li.classList.toggle('is-done', i < current);
-        p.li.classList.toggle('is-active', i === current);
-      });
-      let currentSub: HTMLLIElement | null = null;
-      subPairs.forEach((p) => {
-        if (p.el!.getBoundingClientRect().top <= line) currentSub = p.li;
-      });
-      subPairs.forEach((p) => p.li.classList.toggle('is-active', p.li === currentSub && p.li.closest('.is-active') !== null));
-      const active = pairs[current]?.li;
-      toc.style.setProperty('--fill', active ? `${active.offsetTop + 14}px` : '0px');
-    };
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(update);
-      }
-    }, { passive: true });
-    window.addEventListener('resize', update);
-    update();
   }
 </script>
 
 <style>
+  /* Guia em caixa entre a capa e o texto, em todas as telas. */
   .toc {
-    --rail-x: 0px;
-    /* Verde-limão de marca-texto para a seção em que o leitor está. */
-    --toc-now: #c6ff00;
+    margin: 0 0 40px;
+    padding: 18px 22px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface);
     font-family: var(--font-body);
   }
 
@@ -108,213 +62,102 @@ for (const h of Astro.props.headings) {
     display: flex;
     align-items: baseline;
     gap: 10px;
-    padding-bottom: 12px;
-    margin-bottom: 6px;
-    border-bottom: 1px solid var(--line);
   }
 
   .toc-head h2 {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
     color: var(--ink-strong);
   }
 
   .toc-count {
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    font-size: 0.82rem;
     color: var(--ink-soft);
   }
 
   .toc-toggle {
     margin-left: auto;
-    padding: 4px 10px;
-    font: 500 0.66rem var(--font-mono);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    padding: 4px 12px;
+    font: 600 0.78rem var(--font-body);
     color: var(--ink-soft);
     background: transparent;
     border: 1px solid var(--line);
-    border-radius: 4px;
+    border-radius: 999px;
     cursor: pointer;
   }
 
   .toc-toggle:hover {
     border-color: var(--violet);
-    color: var(--link-text);
+    color: var(--ink-strong);
   }
 
-  /* Label follows the state; before any click the default is open on desktop, closed on mobile. */
   .toc[data-open='true'] .toc-toggle-show,
   .toc[data-open='false'] .toc-toggle-hide {
     display: none;
   }
 
-  /* Trilho: linha fina com preenchimento violeta até a seção atual. */
   .toc-list {
-    position: relative;
     list-style: none;
-    margin: 0;
-    padding: 8px 0 4px;
+    margin: 14px 0 0;
+    padding: 14px 0 0;
+    border-top: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 28px;
   }
 
-  .toc-list::before,
-  .toc-list::after {
-    content: '';
-    position: absolute;
-    left: var(--rail-x);
-    top: 8px;
-    width: 1px;
-  }
-
-  .toc-list::before {
-    bottom: 4px;
-    background: var(--line);
-  }
-
-  .toc-list::after {
-    width: 2px;
-    margin-left: -0.5px;
-    height: max(0px, calc(var(--fill, 0px) - 8px));
-    background: var(--violet);
-    transition: height 0.25s ease;
-  }
-
-  .toc-item {
-    position: relative;
-    padding-left: 16px;
-  }
-
-  .toc-item::before {
-    content: '';
-    position: absolute;
-    z-index: 1;
-    left: -6px;
-    top: 11px;
-    width: 12px;
-    height: 12px;
-    box-sizing: border-box;
-    border-radius: 50%;
-    border: 2px solid transparent;
-    background: transparent;
-    transform: scale(0.4);
-    opacity: 0;
-    transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .toc-item.is-active::before {
-    border-color: color-mix(in srgb, var(--toc-now) 65%, #3d5200);
-    background: var(--toc-now);
-    box-shadow: 0 0 0 4px color-mix(in srgb, var(--toc-now) 35%, transparent), 0 0 12px color-mix(in srgb, var(--toc-now) 65%, transparent);
-    transform: scale(1);
-    opacity: 1;
-  }
-
-  .toc-item > a {
-    display: block;
-    padding: 6px 0;
-    font-size: 0.84rem;
-    line-height: 1.35;
-    color: var(--ink-soft);
-    text-decoration: none;
-    transition: color 0.15s ease;
-  }
-
-  .toc-item.is-done > a {
-    color: var(--ink);
-  }
-
-  .toc-item.is-active > a {
-    color: var(--ink-strong);
-    font-weight: 600;
-  }
-
-  .toc-item > a:hover,
-  .toc-sub a:hover {
-    color: var(--link-text);
-  }
-
-  .toc-sub {
-    list-style: none;
-    margin: 0 0 6px;
-    padding: 0;
-  }
-
-  .toc-sub a {
-    display: block;
-    padding: 4px 0 4px 12px;
-    border-left: 1px solid var(--line);
-    font-size: 0.8rem;
+  .toc-list a {
+    display: flex;
+    gap: 10px;
+    padding: 7px 0;
+    font-size: 0.92rem;
     line-height: 1.4;
-    color: var(--ink-soft);
+    color: var(--ink);
     text-decoration: none;
   }
 
-  .toc-sub li.is-active a {
-    color: var(--link-text);
-    border-left-color: var(--violet);
+  .toc-n {
+    flex: none;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.75;
+    color: var(--violet);
   }
 
-  /* Desktop: sticky beside the article, subsections open only for the section being read. */
-  @media (min-width: 1100px) {
-    .toc {
-      position: sticky;
-      top: 88px;
-      max-height: calc(100vh - 112px);
-      overflow-y: auto;
-      scrollbar-width: thin;
-      padding-right: 4px;
-    }
-
-    .toc-sub {
-      display: none;
-    }
-
-    .toc-item.is-active .toc-sub {
-      display: block;
-    }
-
-    .toc[data-open='false'] .toc-list {
-      display: none;
-    }
+  .toc-list a:hover {
+    color: var(--ink-strong);
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
-  /* Mobile: a collapsible box between the cover and the text. */
-  @media (max-width: 1099px) {
-    .toc {
-      padding: 14px 18px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: var(--surface);
-    }
-
-    .toc .toc-list {
-      display: none;
-    }
-
-    .toc[data-open='true'] .toc-list {
-      display: block;
-      margin-left: 6px;
-    }
-
-    .toc:not([data-open='true']) .toc-head {
-      padding-bottom: 0;
-      margin-bottom: 0;
-      border-bottom: 0;
-    }
+  .toc[data-open='false'] .toc-list {
+    display: none;
   }
 
-  @media (min-width: 1100px) {
+  @media (min-width: 720px) {
     .toc:not([data-open]) .toc-toggle-show {
       display: none;
     }
   }
 
-  @media (max-width: 1099px) {
+  /* Celular: uma coluna e fechado até o leitor pedir. */
+  @media (max-width: 719px) {
+    .toc {
+      padding: 14px 18px;
+      margin-bottom: 32px;
+    }
+
+    .toc-list {
+      grid-template-columns: 1fr;
+    }
+
+    .toc:not([data-open='true']) .toc-list {
+      display: none;
+    }
+
     .toc:not([data-open]) .toc-toggle-hide {
       display: none;
     }
