@@ -6,7 +6,7 @@ category: "Tendências"
 date: 2026-11-17T07:00:00-03:00
 readingTime: "5 min"
 image: "./images/black-friday-2026-eletronicos.webp"
-imageAlt: "Smartphone, TV, notebook, fone Bluetooth e console com controle sobre um móvel de madeira"
+imageAlt: "Homem em uma loja de eletrônicos, cercado por cinco aparelhos em círculos verdes com etiquetas de preço borradas"
 tags: ["Black Friday", "Eletrônicos", "Histórico de preços", "Compras online"]
 related: ["review-galaxy-a57", "tcl-c6k-vale-a-pena", "nintendo-switch-2-vale-a-pena"]
 ---
