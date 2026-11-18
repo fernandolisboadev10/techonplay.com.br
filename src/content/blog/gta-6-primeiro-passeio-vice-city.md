@@ -3,7 +3,7 @@ title: "GTA 6 e a arte de se perder em Vice City"
 seoTitle: "GTA 6 sem spoilers: seu primeiro passeio por Vice City"
 description: "GTA 6 chega em 19 de novembro ao PS5 e Xbox Series X|S. Planeje um passeio sem spoilers para descobrir Vice City pelo rádio, pelas ruas e pelos desvios."
 category: "Jogos"
-date: 2026-11-17T07:00:00-03:00
+date: 2026-11-17T20:54:15-03:00
 readingTime: "5 min"
 image: "./images/gta-6-primeiro-passeio-vice-city.webp"
 imageAlt: "GTA 6 em neon colorido sobre uma avenida à beira-mar com palmeiras e um carro antigo ao pôr do sol"

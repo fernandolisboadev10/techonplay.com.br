@@ -79,7 +79,6 @@ const [main, ...side] = Astro.props.posts;
     flex-direction: column;
     gap: 12px;
     padding: 22px 0 0;
-    max-width: 44rem;
   }
 
   .top h2 {
@@ -88,14 +87,14 @@ const [main, ...side] = Astro.props.posts;
     letter-spacing: -0.025em;
     line-height: 1.02;
     color: var(--ink-strong);
-  }
-
-  .top h2 {
-    text-wrap: balance;
+    text-wrap: wrap;
+    text-wrap: pretty;
+    overflow-wrap: anywhere;
   }
 
   .top p {
     margin: 0;
+    max-width: 44rem;
     color: var(--ink-soft);
     font-size: 1.15rem;
     line-height: 1.5;
