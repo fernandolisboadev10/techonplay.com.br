@@ -1,9 +1,10 @@
 ---
 title: "10 prompts no estilo GTA 6 para transformar suas fotos"
 seoTitle: "10 prompts no estilo GTA 6 para usar no ChatGPT"
-description: "Escolha entre 10 atalhos da coleção MaestroPrompts e copie o texto para criar retratos, cenas na orla e capas para Stories com suas fotos no ChatGPT."
+description: "Use 10 prompts no ChatGPT para criar retratos, cenas na orla e capas para Stories com suas fotos, inspirados nas cores e paisagens de Vice City."
 category: "Inteligência Artificial"
 date: 2026-11-18T09:30:00-03:00
+updated: 2026-11-18T10:21:00-03:00
 readingTime: "4 min"
 image: "./images/prompts-estilo-gta-6.webp"
 imageAlt: "Ilustração de uma mulher encostada num conversível azul em um mirante à beira-mar, com palmeiras e fachadas art déco ao pôr do sol"
@@ -11,14 +12,14 @@ tags: ["GTA 6", "ChatGPT", "Prompts", "Imagens com IA"]
 related: ["comandos-do-chatgpt", "angulos-de-camera-prompt-ia", "comandos-iluminacao-ia-foto", "gta-6-primeiro-passeio-vice-city"]
 ---
 
-Uma selfie pode virar um retrato entre luzes rosa e azul numa loja de discos ou uma cena à beira-mar com um conversível e palmeiras refletidas na lataria. Da coleção de **100 atalhos no estilo GTA 6** do MaestroPrompts, selecionamos dez, um de cada categoria, e adaptamos os textos para você copiar e usar com suas fotos no ChatGPT.
+Uma selfie pode virar um retrato entre luzes rosa e azul numa loja de discos ou uma cena à beira-mar com um conversível e palmeiras refletidas na lataria. Os **dez prompts no estilo GTA 6** foram adaptados da coleção do MaestroPrompts para você copiar e usar com suas fotos no ChatGPT.
 
 A ideia segue a lógica dos [comandos do ChatGPT para imagens](/comandos-do-chatgpt/). Cada atalho identifica uma cena, e a descrição indica à IA o que criar. Se quiser controlar quanto do cenário aparece, veja também o guia de [ângulos de câmera para prompts de IA](/angulos-de-camera-prompt-ia/).
 
 ## Como usar os prompts com uma foto
 
 1. Anexe uma foto nítida no ChatGPT, com o rosto bem iluminado.
-2. Copie o texto completo de um dos blocos abaixo e envie junto com a foto. Cada código identifica a cena no catálogo.
+2. Use o botão **Copiar prompt** em um dos blocos abaixo e envie o texto junto com a foto.
 3. Confira o rosto e o enquadramento. Se a expressão mudar, peça para aproximá-la da foto de referência e indique qual detalhe ficou diferente.
 
 Para criar um personagem fictício, troque a menção à foto por uma descrição da pessoa. A escolha da cena ajuda a decidir a foto de partida. Um retrato frontal combina com o close bicolor, enquanto uma foto de corpo inteiro dá mais referências de postura para uma caminhada na avenida.
@@ -55,9 +56,11 @@ Use minha foto como referência para um retrato de meio corpo no convés de uma 
 Ilustre a pessoa da foto à mesa de um café junto à janela, em uma cena cinematográfica vertical 4:5. Ilumine o vapor da xícara com o primeiro raio de sol. Pela janela, mostre uma avenida costeira ainda vazia, com sombras azuladas e uma bicicleta encostada na calçada.
 ```
 
-## Onde ver as 100 cenas
+## Como Vice City inspira os prompts
 
-No [catálogo de atalhos do MaestroPrompts](https://gta.maestroprompts.chatgpt.site/), você pode buscar pelo nome da cena ou digitar o código sem a barra inicial. Também dá para filtrar por categoria e abrir a imagem de exemplo em tamanho maior. O botão **Copiar prompt** copia o texto completo da versão do catálogo.
+GTA 6 acompanha Jason e Lucia no estado fictício de Leonida, onde fica Vice City. A orla com palmeiras e as fachadas art déco inspiram cenas como **Conversível na orla** e **Boulevard Art Déco**. O [guia sem spoilers para o primeiro passeio por Vice City](/gta-6-primeiro-passeio-vice-city/) sugere como explorar a cidade pelas ruas e pelas estações de rádio.
+
+Se você joga no computador, veja [o que se sabe sobre GTA 6 no PC e os requisitos estimados](/requisitos-pc-gta-6-2026/).
 
 ## Cinco atalhos de ação, luz e enquadramento
 
