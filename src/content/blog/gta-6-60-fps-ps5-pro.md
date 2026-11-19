@@ -4,9 +4,10 @@ seoTitle: "GTA 6 roda a 60 FPS no PS5 Pro? Compare os consoles"
 description: "GTA 6 estreia com meta de 30 FPS. Compare resolução, nitidez e ray tracing no PS5 Slim, PS5 Pro e Xbox Series X|S e veja se vale pagar pelo Pro."
 category: "Jogos"
 date: 2026-11-19T18:41:00-03:00
+updated: 2026-11-19T18:58:00-03:00
 readingTime: "4 min"
 image: "./images/gta-6-60-fps-ps5-pro.webp"
-imageAlt: "Ilustração de um PS5 Pro num setup gamer com uma orla inspirada em Miami na tela"
+imageAlt: "Ilustração de um esportivo verde numa avenida à beira-mar inspirada em Vice City, com palmeiras e asfalto molhado ao pôr do sol"
 tags: ["GTA 6", "PS5 Pro", "PlayStation 5", "Xbox Series X", "Xbox Series S"]
 related: ["playstation-5-preco-review", "gta-6-primeiro-passeio-vice-city", "prompts-estilo-gta-6"]
 faq:
