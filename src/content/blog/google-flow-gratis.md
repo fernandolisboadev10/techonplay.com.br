@@ -1,6 +1,6 @@
 ---
-title: "Google Flow é grátis? Sim: 50 créditos por dia rendem 5 vídeos"
-description: "Sim, o Google Flow é grátis: 50 créditos por dia, sem assinatura, rendem até 5 vídeos no Veo 3.1 Lite. Veja os limites e os preços no Brasil."
+title: "Google Flow grátis: como criar vídeos sem assinatura"
+description: "Veja como criar seu primeiro vídeo no Google Flow grátis com 50 créditos por dia, quanto cada modelo consome e quais são os limites do plano."
 category: "Inteligência Artificial"
 date: 2026-09-29
 updated: 2026-10-27T18:01:00-03:00
@@ -9,7 +9,7 @@ image: "./images/Google-Flow.webp"
 imageAlt: "Criador de conteúdo editando vídeos no Google Flow, com cinco fichas luminosas representando os créditos diários"
 tags: ["Google Flow", "Veo 3.1", "IA de vídeo", "Google"]
 related: ["comandos-camera-google-flow", "google-ai-plus-para-estudantes", "plugin-higgsfield-chatgpt"]
-seoTitle: "Google Flow grátis: 50 créditos por dia rendem 5 vídeos"
+seoTitle: "Google Flow grátis: como criar vídeos sem assinatura"
 faq:
   - question: "O Google Flow é grátis?"
     answer: "Sim, com limites. Quem não assina nenhum plano recebe 50 créditos por dia, o bastante para até 5 vídeos no Veo 3.1 Lite ou 2 no Fast. Os planos pagos somam créditos mensais e liberam mais recursos."

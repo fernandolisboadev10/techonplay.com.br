@@ -1,6 +1,7 @@
 ---
-title: "DeepSeek V4: é grátis, o que mudou e quanto custa a API"
-description: "DeepSeek é grátis? Veja o que o V4 mudou, como ele se compara ao ChatGPT e ao Claude, o aumento de preços da API e o que pesar antes de usar no Brasil."
+title: "DeepSeek V4: como usar o chat grátis no site e no app"
+seoTitle: "DeepSeek V4: como usar o chat grátis no site e no app"
+description: "Veja como acessar o DeepSeek V4 pelo navegador ou pelo app oficial, o que mudou no V4.1 Flash e como funciona a cobrança da API por token."
 category: "Inteligência Artificial"
 date: 2026-10-03T11:13:00-03:00
 updated: 2026-10-18T10:30:00-03:00
