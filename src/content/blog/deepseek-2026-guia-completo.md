@@ -4,7 +4,7 @@ seoTitle: "DeepSeek V4: como usar o chat grátis no site e no app"
 description: "Veja como acessar o DeepSeek V4 pelo navegador ou pelo app oficial, o que mudou no V4.1 Flash e como funciona a cobrança da API por token."
 category: "Inteligência Artificial"
 date: 2026-10-03T11:13:00-03:00
-updated: 2026-10-18T10:30:00-03:00
+updated: 2026-11-20T11:38:00-03:00
 readingTime: "7 min"
 image: "./images/deepseek-2026-guia-completo.webp"
 imageAlt: "Celular exibindo a tela inicial do aplicativo DeepSeek sobre uma mesa cinza"

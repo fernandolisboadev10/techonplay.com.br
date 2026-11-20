@@ -3,7 +3,7 @@ title: "Google Flow grátis: como criar vídeos sem assinatura"
 description: "Veja como criar seu primeiro vídeo no Google Flow grátis com 50 créditos por dia, quanto cada modelo consome e quais são os limites do plano."
 category: "Inteligência Artificial"
 date: 2026-09-29
-updated: 2026-10-27T18:01:00-03:00
+updated: 2026-11-20T11:38:00-03:00
 readingTime: "5 min"
 image: "./images/Google-Flow.webp"
 imageAlt: "Criador de conteúdo editando vídeos no Google Flow, com cinco fichas luminosas representando os créditos diários"
