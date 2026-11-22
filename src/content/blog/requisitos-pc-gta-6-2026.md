@@ -11,7 +11,7 @@ tags: ["GTA 6", "Requisitos de PC", "Rockstar", "Jogos de PC"]
 related: ["steam-machine", "limpar-arquivos-temporarios-windows", "subway-surfers-em-alta"]
 ---
 
-A Rockstar confirmou GTA 6 apenas para PlayStation 5 e Xbox Series X|S, mas os requisitos de PC para GTA 6 já ocupam a cabeça de quem joga no computador. Ou seja, a resposta real é bem mais complicada do que qualquer tabela de specs que circula por aí.
+A Rockstar confirmou GTA 6 apenas para PlayStation 5 e [Xbox Series X|S](/xbox-series-x-ou-series-s/), mas os requisitos de PC para GTA 6 já ocupam a cabeça de quem joga no computador. Ou seja, a resposta real é bem mais complicada do que qualquer tabela de specs que circula por aí.
 
 ## Existe uma versão para PC confirmada?
 

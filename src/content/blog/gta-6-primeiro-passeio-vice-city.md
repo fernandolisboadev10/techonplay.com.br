@@ -13,7 +13,7 @@ related: ["requisitos-pc-gta-6-2026", "funcoes-smart-tv-que-voce-nao-usa"]
 
 Todo mundo tem um palpite sobre a primeira coisa que você deveria fazer em GTA 6. O problema é que, depois de tanta gente apontar o caminho, você corre o risco de chegar a Vice City já sabendo para onde virar. Minha proposta é guardar o primeiro passeio para quando o jogo liberar a exploração. Entre num carro, escolha uma referência na paisagem e tente chegar lá de memória.
 
-**GTA 6 tem lançamento marcado para 19 de novembro de 2026, no PlayStation 5 e no Xbox Series X|S.** A Rockstar ainda não anunciou data para PC. Se essa é sua plataforma, vale ler o que já se sabe e o que ainda é [estimativa sobre os requisitos de GTA 6 no PC](/requisitos-pc-gta-6-2026/). No console, dá para preparar a sala antes de abrir o jogo. O [guia de funções da smart TV](/funcoes-smart-tv-que-voce-nao-usa/) explica onde procurar o modo jogo.
+**GTA 6 tem lançamento marcado para 19 de novembro de 2026, no PlayStation 5 e no [Xbox Series X|S](/xbox-series-x-ou-series-s/).** A Rockstar ainda não anunciou data para PC. Se essa é sua plataforma, vale ler o que já se sabe e o que ainda é [estimativa sobre os requisitos de GTA 6 no PC](/requisitos-pc-gta-6-2026/). No console, dá para preparar a sala antes de abrir o jogo. O [guia de funções da smart TV](/funcoes-smart-tv-que-voce-nao-usa/) explica onde procurar o modo jogo.
 
 ## Escolha um lugar que você reconheceria de novo
 
