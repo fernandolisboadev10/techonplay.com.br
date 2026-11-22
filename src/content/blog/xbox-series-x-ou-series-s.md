@@ -6,7 +6,7 @@ category: "Reviews"
 date: 2026-11-22T19:55:00-03:00
 readingTime: "5 min"
 image: "./images/xbox-series-x-series-s-capa.webp"
-imageAlt: "Consoles Xbox Series X preto e Xbox Series S branco com seus controles"
+imageAlt: "Xbox Series X preto e Series S branco com seus controles em uma sala gamer iluminada em verde e roxo"
 tags: ["Xbox Series X", "Xbox Series S", "Xbox Game Pass", "Consoles"]
 related: ["playstation-5-preco-review", "gta-6-60-fps-ps5-pro", "tcl-c6k-vale-a-pena"]
 ---
@@ -15,7 +15,7 @@ O **Xbox Series S** é a melhor escolha para quem joga em Full HD, compra jogos 
 
 Os dois modelos rodam GTA 6. Se esse é o jogo que motivou a compra, veja [como GTA 6 roda nos consoles](/gta-6-60-fps-ps5-pro/) antes de decidir quanto pagar. Para comparar o Xbox com outros aparelhos na mesma faixa, confira também o nosso [review do PlayStation 5 com preços no Brasil](/playstation-5-preco-review/).
 
-*Análise baseada em fichas técnicas oficiais e preços do varejo, sem testes práticos próprios. Imagem de capa de divulgação da Microsoft.*
+*Análise baseada em fichas técnicas oficiais e preços do varejo, sem testes práticos próprios. As imagens são ilustrações geradas por IA.*
 
 ## O que muda entre o Xbox Series X e o Series S?
 
@@ -31,9 +31,9 @@ A resolução e a taxa de quadros dependem de cada jogo e do modo gráfico escol
 
 ## Quando vale comprar o Xbox Series S?
 
-![Xbox Series S branco de 512 GB ao lado do controle sem fio](./images/xbox-series-s-512gb.webp)
+![Xbox Series S branco e controle sem fio em uma mesa gamer com monitor e luz roxa](./images/xbox-series-s-512gb.webp)
 
-*O Series S de 512 GB é compacto e aceita jogos digitais. Imagem de divulgação da Microsoft.*
+*O Series S de 512 GB é compacto e aceita jogos digitais.*
 
 O Series S é uma boa compra para quem joga em **Full HD** e quer gastar menos no console. Ele roda títulos da geração Series X|S e ocupa pouco espaço. A ficha da Microsoft usa 1440p como referência. Em jogos mais exigentes, a resolução e os ajustes gráficos podem variar.
 
@@ -41,9 +41,9 @@ A escolha entre **512 GB e 1 TB** importa para quem alterna entre jogos grandes.
 
 ## Quando vale pagar mais pelo Xbox Series X?
 
-![Xbox Series X preto de 1 TB com leitor de disco e controle sem fio preto](./images/xbox-series-x-1tb.webp)
+![Xbox Series X preto com leitor de disco e controle sem fio em uma sala com iluminação verde](./images/xbox-series-x-1tb.webp)
 
-*O Series X Carbon Black de 1 TB tem leitor de discos. Imagem de divulgação da Microsoft.*
+*O Series X Carbon Black de 1 TB tem leitor de discos.*
 
 O Series X oferece mais potência gráfica para jogar em **4K**. A vantagem costuma importar mais para quem usa uma tela grande e joga títulos exigentes. Mesmo em Full HD, a diferença pode aparecer em jogos que oferecem modos gráficos distintos para cada modelo.
 
@@ -51,9 +51,9 @@ O **Series X com leitor** também é a escolha da linha para quem já tem discos
 
 ## Quick Resume, Game Pass e expansão do SSD
 
-![Menu do Quick Resume exibido na tela de uma TV conectada ao Xbox](./images/xbox-quick-resume.webp)
+![Controle preto do Xbox em primeiro plano e TV com uma paisagem de jogo ao fundo](./images/xbox-quick-resume.webp)
 
-*O Quick Resume guarda o progresso da sessão de jogos compatíveis para você retomar depois. Imagem de divulgação da Microsoft.*
+*O Quick Resume guarda o progresso da sessão de jogos compatíveis para você retomar depois.*
 
 O **Quick Resume** está nos dois consoles. Dá para alternar entre jogos compatíveis e voltar de onde você parou. É um recurso útil para quem joga em sessões curtas ou divide o console em casa. Títulos que dependem de conexão podem pedir que você se reconecte ao voltar.
 
