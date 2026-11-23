@@ -1,0 +1,68 @@
+{
+  "title": "DeepSeek V4 é grátis? Como usar no site e no app",
+  "description": "Descubra em 9 telas como usar o chat grátis do DeepSeek, o que mudou no V4.1 Flash e como a API é cobrada.",
+  "date": "2026-11-23T18:36:00-03:00",
+  "post": "deepseek-2026-guia-completo",
+  "poster": "/web-stories/deepseek-v4-gratis/poster-portrait.jpg",
+  "cover": "/web-stories/deepseek-v4-gratis/cover-bg.jpg",
+  "coverKicker": "Guia rápido",
+  "coverNumber": "É grátis?",
+  "coverTitle": "DeepSeek V4 no site e no app",
+  "coverAlt": "Ilustração fotográfica de um celular com balões de conversa azuis na tela",
+  "cta": "Ler o guia completo",
+  "pages": [
+    {
+      "kicker": "Uso pessoal",
+      "title": "Chat sem assinatura",
+      "text": "Dá para usar o chat grátis para tirar dúvidas, revisar textos e resumir documentos.",
+      "big": "R$ 0"
+    },
+    {
+      "kicker": "No navegador",
+      "title": "Comece pelo site oficial",
+      "text": "Entre em deepseek.com e abra o chat. Você pode testar direto no navegador, sem instalar nada.",
+      "bg": "/web-stories/deepseek-v4-gratis/slide-3.jpg",
+      "alt": "Notebook com balões de conversa na tela"
+    },
+    {
+      "kicker": "No celular",
+      "title": "Baixe o app oficial",
+      "text": "Use os links do site do DeepSeek para abrir a loja do celular e achar o app certo.",
+      "bg": "/web-stories/deepseek-v4-gratis/slide-4.jpg",
+      "alt": "Mão segurando um celular com um ícone de download na tela"
+    },
+    {
+      "kicker": "O que mudou",
+      "title": "Conheça o V4.1 Flash",
+      "text": "A atualização chegou ao site e ao app. A API também ganhou ferramentas para pesquisar na web e ler páginas.",
+      "bg": "/web-stories/deepseek-v4-gratis/slide-5.jpg",
+      "alt": "Processador sobre uma placa de circuito iluminada em azul"
+    },
+    {
+      "kicker": "Para desenvolvedores",
+      "title": "A API é cobrada por token",
+      "text": "Ao integrar o modelo a um app, você paga pelos tokens que ele recebe e gera.",
+      "big": "API"
+    },
+    {
+      "kicker": "DeepSeek × ChatGPT",
+      "title": "Compare com a mesma tarefa",
+      "text": "Peça aos dois para resumir o mesmo texto em português. Qual preserva melhor as informações que importam?",
+      "bg": "/web-stories/deepseek-v4-gratis/slide-7.jpg",
+      "alt": "Dois monitores lado a lado, cada um com uma interface de chat"
+    },
+    {
+      "kicker": "Privacidade",
+      "title": "Vai anexar um arquivo?",
+      "text": "Confira a política de privacidade antes de enviar documentos com dados pessoais ou informações do trabalho.",
+      "bg": "/web-stories/deepseek-v4-gratis/slide-8.jpg",
+      "alt": "Pasta de documentos e cadeado sobre uma mesa"
+    }
+  ],
+  "closing": {
+    "kicker": "Guia completo",
+    "title": "Vale a pena testar?",
+    "text": "Veja como começar, o que mudou nos modelos e como estimar o custo da API.",
+    "bg": "/web-stories/deepseek-v4-gratis/closing-bg.jpg"
+  }
+}
