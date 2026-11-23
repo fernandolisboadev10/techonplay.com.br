@@ -2,6 +2,7 @@
   "title": "DeepSeek V4 é grátis? Como usar no site e no app",
   "description": "Descubra em 9 telas como usar o chat grátis do DeepSeek, o que mudou no V4.1 Flash e como a API é cobrada.",
   "date": "2026-11-23T18:36:00-03:00",
+  "updated": "2026-11-23T19:06:00-03:00",
   "post": "deepseek-2026-guia-completo",
   "poster": "/web-stories/deepseek-v4-gratis/poster-portrait.jpg",
   "cover": "/web-stories/deepseek-v4-gratis/cover-bg.jpg",
@@ -15,7 +16,9 @@
       "kicker": "Uso pessoal",
       "title": "Chat sem assinatura",
       "text": "Dá para usar o chat grátis para tirar dúvidas, revisar textos e resumir documentos.",
-      "big": "R$ 0"
+      "big": "R$ 0",
+      "bg": "/web-stories/deepseek-v4-gratis/slide-2.jpg",
+      "alt": "Celular com uma conversa aberta ao lado de uma carteira vazia"
     },
     {
       "kicker": "No navegador",
@@ -42,7 +45,9 @@
       "kicker": "Para desenvolvedores",
       "title": "A API é cobrada por token",
       "text": "Ao integrar o modelo a um app, você paga pelos tokens que ele recebe e gera.",
-      "big": "API"
+      "big": "API",
+      "bg": "/web-stories/deepseek-v4-gratis/slide-6.jpg",
+      "alt": "Notebook conectado a um servidor por um cabo iluminado"
     },
     {
       "kicker": "DeepSeek × ChatGPT",
