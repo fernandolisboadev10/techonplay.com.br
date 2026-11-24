@@ -1,0 +1,70 @@
+{
+  "title": "Personagens de GTA 6: quem é quem em Leonida",
+  "description": "Conheça Jason, Lucia e outros sete personagens de GTA 6. Veja o papel de cada um em Leonida, sem spoilers das missões.",
+  "date": "2026-11-24T15:30:00-03:00",
+  "post": "personagens-gta-6",
+  "poster": "/web-stories/personagens-gta-6/poster-portrait.jpg",
+  "cover": "/web-stories/personagens-gta-6/cover-bg.jpg",
+  "coverKicker": "Sem spoilers",
+  "coverNumber": "GTA 6",
+  "coverTitle": "Quem é quem em Leonida",
+  "coverAlt": "Arte oficial da Rockstar Games com Jason, Lucia e cenas de Leonida",
+  "cta": "Ler o guia completo",
+  "pages": [
+    {
+      "kicker": "Protagonista",
+      "title": "Jason Duval",
+      "text": "Ex-militar, Jason quer uma vida mais tranquila. Por enquanto, é o trabalho para Brian Heder que garante seu teto nas Keys.",
+      "tile": "/web-stories/personagens-gta-6/tile-2.jpg",
+      "alt": "Ilustração de Jason na varanda de uma casa à beira-mar"
+    },
+    {
+      "kicker": "Protagonista",
+      "title": "Lucia Caminos",
+      "text": "Ao sair da prisão, Lucia quer decidir como vai viver. Ela vê em Jason a chance de construir a vida que sempre imaginou.",
+      "tile": "/web-stories/personagens-gta-6/tile-3.jpg",
+      "alt": "Ilustração de Lucia caminhando por uma rua com a penitenciária ao fundo"
+    },
+    {
+      "kicker": "Leonida Keys",
+      "title": "Brian Heder",
+      "text": "Veterano do contrabando, Brian oferece moradia a Jason em troca de serviços locais. Nas Keys, até um favor cria dívidas.",
+      "tile": "/web-stories/personagens-gta-6/tile-4.jpg",
+      "alt": "Ilustração de Brian de costas no estaleiro, diante de um barco"
+    },
+    {
+      "kicker": "Amigo de Jason",
+      "title": "Cal Hampton",
+      "text": "Cal também faz parte do círculo de Brian. Ele prefere ouvir a Guarda Costeira no rádio e alimentar suas teorias em casa.",
+      "tile": "/web-stories/personagens-gta-6/tile-5.jpg",
+      "alt": "Ilustração de Cal ajustando um rádio marítimo em uma sala escura"
+    },
+    {
+      "kicker": "Assaltante de bancos",
+      "title": "Raul Bautista",
+      "text": "Raul tem experiência e carisma para recrutar uma equipe. A imprudência dele aumenta o risco de cada golpe.",
+      "tile": "/web-stories/personagens-gta-6/tile-6.jpg",
+      "alt": "Ilustração de Raul de costas diante do cofre de um banco"
+    },
+    {
+      "kicker": "Only Raw Records",
+      "title": "Boobie Ike e Dre’Quan Priest",
+      "text": "Boobie investe em boate e estúdio. Dre’Quan conhece a cena musical e contrata as Real Dimez para a gravadora dos dois.",
+      "tile": "/web-stories/personagens-gta-6/tile-7.jpg",
+      "alt": "Ilustrações de Boobie na boate e de Dre’Quan na mesa de som do estúdio"
+    },
+    {
+      "kicker": "Rap de Vice City",
+      "title": "Real Dimez",
+      "text": "Bae-Luxe e Roxy Rashad são amigas desde o ensino médio. Depois de emplacar um hit, a dupla aposta na Only Raw Records.",
+      "tile": "/web-stories/personagens-gta-6/tile-8.jpg",
+      "alt": "Ilustrações de Bae-Luxe com um microfone e de Roxy gravando um vídeo"
+    }
+  ],
+  "closing": {
+    "kicker": "Guia completo",
+    "title": "O que liga esses personagens?",
+    "text": "Veja como os planos de Jason e Lucia se cruzam com o contrabando nas Keys e a vida noturna de Vice City.",
+    "bg": "/web-stories/personagens-gta-6/closing-bg.jpg"
+  }
+}
