@@ -3,6 +3,7 @@ title: "Akira Toriyama: 10 curiosidades que poucos fãs conhecem"
 description: "Do emprego em agência ao slime de Dragon Quest: veja 10 curiosidades sobre Akira Toriyama, o criador de Dragon Ball, que poucos fãs conhecem."
 category: "Curiosidades"
 date: 2026-10-13T18:20:00-03:00
+updated: 2026-11-24T08:59:00-03:00
 readingTime: "6 min"
 image: "./images/akira-toriyama-curiosidades.webp"
 imageAlt: "Ilustração gerada por IA de um desenhista japonês trabalhando à mesa de desenho, cercado de papéis e esboços de personagens de mangá"
@@ -12,7 +13,7 @@ related: ["nintendo-switch-2-vale-a-pena", "curiosidades-sobre-a-noruega", "urna
 
 Antes de criar Goku, Bulma e Vegeta, **Akira Toriyama** era um rapaz que desenhava cartazes em uma agência de publicidade, errava história atrás de história e quase desistiu do mangá. Ele morreu em 1º de março de 2024, aos 68 anos, e a notícia foi divulgada em 8 de março pelo Bird Studio, o estúdio dele. Para quem cresceu com Dragon Ball, foi como perder alguém da família. Veja 10 curiosidades sobre o criador que fez uma geração inteira se apaixonar por mangá e anime.
 
-*Ilustração gerada por IA, sem relação com foto real.*
+*A capa e as ilustrações dos personagens foram geradas por IA.*
 
 ## 1. Ele começou como desenhista de cartazes
 
@@ -26,9 +27,13 @@ A primeira obra publicada, *Wonder Island* (1978), ficou em último lugar na pes
 
 Quem apostou nele foi o editor Kazuhiko Torishima, da Shueisha. Ele pediu que Toriyama criasse uma protagonista feminina. Dessa tentativa saiu *Tomato the Cutesy Gumshoe* (1979) e, em seguida, *Dr. Slump*, a história da robô Arale. A série foi publicada de 1980 a 1984 e vendeu mais de 35 milhões de exemplares no Japão, de acordo com a Wikipédia.
 
+![Arale Norimaki, de Dr. Slump, corre com óculos redondos e boné rosa com asas](./images/akira-toriyama-arale.webp)
+
 ## 4. Dragon Ball nasceu de filmes de kung fu
 
 Torishima sabia que Toriyama gostava de filmes de kung fu e sugeriu uma história do gênero. Dela surgiu *Dragon Boy* (1983), que virou *Dragon Ball*. A trama se inspirou de forma livre no clássico chinês *Jornada ao Oeste*: Goku corresponde ao Rei Macaco, Sun Wukong. Toriyama também citou os filmes de Jackie Chan, em especial *Drunken Master*, e *Operação Dragão*, de Bruce Lee, como influências, conforme a página sobre o mangá na Wikipédia.
+
+![Goku, com cabelo preto espetado e uniforme laranja, descansa numa rocha à beira de um riacho](./images/akira-toriyama-goku.webp)
 
 ## 5. Ele quase não planejava a história
 
@@ -38,7 +43,15 @@ Outro detalhe: o mangá não foi um sucesso imediato. Só ganhou força depois q
 
 ## 6. Os nomes dos personagens são trocadilhos
 
-A família de Bulma recebeu nomes de roupas íntimas, e os saiyajins foram batizados com nomes ligados a vegetais, como Vegeta (de *vegetable*, "vegetal" em inglês). Já Freeza vem de *freezer*, e o grupo dele, as Forças Ginyu, tem nomes de alimentos guardados na geladeira. Essas explicações aparecem na lista de personagens de Dragon Ball da Wikipédia, que cita o livro oficial *Tenka Den*.
+A família de Bulma recebeu nomes de roupas íntimas.
+
+![Bulma, de cabelo azul e jaqueta amarela, examina o Radar do Dragão em sua oficina](./images/akira-toriyama-bulma.webp)
+
+Os saiyajins foram batizados com nomes ligados a vegetais, como Vegeta (de *vegetable*, "vegetal" em inglês).
+
+![Vegeta, com armadura branca e dourada sobre um traje azul, cruza os braços num planalto rochoso](./images/akira-toriyama-vegeta.webp)
+
+Já Freeza vem de *freezer*, e o grupo dele, as Forças Ginyu, tem nomes de alimentos guardados na geladeira. Essas explicações aparecem na lista de personagens de Dragon Ball da Wikipédia, que cita o livro oficial *Tenka Den*.
 
 ## 7. O cabelo loiro do Super Saiyajin tem motivo prático
 
@@ -47,6 +60,8 @@ A transformação surgiu na saga de Freeza. Segundo a Wikipédia, que cita os li
 ## 8. Ele desenhou o slime de Dragon Quest
 
 Toriyama foi o desenhista dos personagens de *Dragon Quest* desde o primeiro jogo, lançado em 27 de maio de 1986 no Japão, e participou de todos os jogos principais da série. O slime, aquela gotinha azul sorridente, é criação dele e virou o mascote da franquia. Yuji Horii, criador de Dragon Quest, escreveu uma homenagem a Toriyama quando ele morreu. O autor também desenhou personagens de outros jogos, como *Chrono Trigger* (1995) e *Blue Dragon* (2006). Para quem curte games, vale ver também [se o Nintendo Switch 2 vale a pena](/nintendo-switch-2-vale-a-pena/).
+
+![O Slime de Dragon Quest como um boneco azul de crochê em forma de gota, com um sorriso vermelho](./images/akira-toriyama-slime.webp)
 
 ## 9. Ele projetou um carro elétrico de um lugar só
 
