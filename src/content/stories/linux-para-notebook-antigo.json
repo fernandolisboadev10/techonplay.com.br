@@ -1,0 +1,62 @@
+{
+  "title": "3 distribuições Linux para testar no notebook antigo",
+  "description": "Mint Xfce, Xubuntu ou Lubuntu? Escolha por onde começar e teste Wi-Fi, vídeo e seus aplicativos pelo pendrive antes de instalar.",
+  "date": "2026-11-25T07:00:00-03:00",
+  "post": "linux-para-notebook-antigo",
+  "poster": "/web-stories/linux-para-notebook-antigo/poster-portrait.jpg",
+  "cover": "/web-stories/linux-para-notebook-antigo/cover-bg.jpg",
+  "coverKicker": "Teste pelo pendrive",
+  "coverNumber": "3",
+  "coverTitle": "distribuições Linux para o notebook antigo",
+  "coverAlt": "Notebook antigo com um pendrive laranja conectado e um pinguim de pelúcia ao lado",
+  "cta": "Ler o guia completo",
+  "pages": [
+    {
+      "kicker": "Antes de trocar",
+      "title": "O que ainda roda nele?",
+      "text": "Teste Linux pelo pendrive. Se o notebook ainda dá conta das tarefas que você faz todo dia, pode ganhar uma segunda função.",
+      "tile": "/web-stories/linux-para-notebook-antigo/tela.jpg",
+      "alt": "Detalhe da tela acesa de um notebook antigo"
+    },
+    {
+      "kicker": "Interface familiar",
+      "title": "Linux Mint Xfce",
+      "text": "Comece por aqui se você vem do Windows. A edição Xfce tem um painel simples e é mais leve que o Mint Cinnamon."
+    },
+    {
+      "kicker": "Base Ubuntu",
+      "title": "Xubuntu LTS",
+      "text": "Também usa Xfce. Vale testar se você quer o ecossistema Ubuntu com uma área de trabalho mais enxuta."
+    },
+    {
+      "kicker": "Desktop enxuto",
+      "title": "Lubuntu LTS",
+      "text": "Usa a interface LXQt. Experimente se até alternar janelas pesa e confira como ficam suas abas e seus vídeos."
+    },
+    {
+      "kicker": "Prepare o USB",
+      "title": "Comece sem instalar",
+      "text": "Baixe a ISO oficial e grave em um pendrive que possa ser apagado. Reinicie pelo USB e fique na sessão de teste, sem abrir o instalador.",
+      "tile": "/web-stories/linux-para-notebook-antigo/pendrive.jpg",
+      "alt": "Detalhe de um pendrive laranja conectado à lateral do notebook"
+    },
+    {
+      "kicker": "Teste de rotina",
+      "title": "Abra o que você usa",
+      "text": "Conecte o Wi-Fi, reproduza um vídeo, ligue a webcam e abra um arquivo seu. Repita as mesmas tarefas nas distribuições que comparar.",
+      "tile": "/web-stories/linux-para-notebook-antigo/teclado.jpg",
+      "alt": "Detalhe do teclado e do touchpad do notebook"
+    },
+    {
+      "kicker": "Hora de decidir",
+      "title": "Passou no seu teste?",
+      "text": "Se algo essencial só roda no Windows, mantenha o sistema atual. Se tudo funciona no Linux, faça backup antes de instalar."
+    }
+  ],
+  "closing": {
+    "kicker": "Seu primeiro teste",
+    "title": "Escolha pelo uso real",
+    "text": "Comece pelo Mint Xfce. Compare com Xubuntu ou Lubuntu para ver qual funciona melhor no seu notebook.",
+    "bg": "/web-stories/linux-para-notebook-antigo/cover-bg.jpg"
+  }
+}
