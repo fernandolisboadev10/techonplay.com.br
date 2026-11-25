@@ -56,6 +56,7 @@ p.t{margin:calc(${vh}*2) 0 0;font-size:calc(${vh}*2.7);line-height:1.38;color:#e
 .shade-bottom{width:100%;height:100%;background:linear-gradient(180deg,rgba(24,15,46,.45) 0%,rgba(24,15,46,0) 25%,rgba(24,15,46,.55) 55%,rgba(24,15,46,.95) 100%)}
 .hint{margin:0;font-size:calc(${vh}*2.4);font-weight:600;color:#c4b5fd;text-align:center}
 .shade{width:100%;height:100%;background:linear-gradient(180deg,rgba(24,15,46,.35),rgba(24,15,46,.92) 70%)}
+.credits{justify-self:start;margin-top:calc(${vh}*2);color:#ece8fb;font-size:max(12px,calc(${vh}*1.6));line-height:1.4}
 `;
 
 const analytics = JSON.stringify({
@@ -179,6 +180,7 @@ const analytics = JSON.stringify({
           <span class="kicker" animate-in="fly-in-left">{closing.kicker}</span>
           <h2 animate-in="fly-in-bottom" animate-in-delay="0.15s">{closing.title}</h2>
           <p class="t" animate-in="fade-in" animate-in-delay="0.5s">{closing.text}</p>
+          {closing.credits && <a class="credits" href={closing.credits} target="_blank" rel="noopener">Créditos das imagens</a>}
         </amp-story-grid-layer>
         <amp-story-page-outlink layout="nodisplay" cta-image={abs(poster)} theme="dark">
           <a href={postUrl}>{cta}</a>

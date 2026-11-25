@@ -1,0 +1,33 @@
+Créditos das imagens
+Web Story “3 distribuições Linux para testar no notebook antigo”
+
+Capa e pôster — ilustração do TechOnPlay.
+
+ThinkPad X220 — fotografia de Robert Kloosterhuis (Jemimus), via Wikimedia Commons. Redimensionada e recortada.
+Original: https://commons.wikimedia.org/wiki/File:ThinkPad_X220.jpg
+Licença CC BY 2.0: https://creativecommons.org/licenses/by/2.0/
+
+Linux Mint 22.2 Xfce — captura de Clement Lefebvre, via Wikimedia Commons.
+Original: https://commons.wikimedia.org/wiki/File:Linux_Mint_22.2_XFCE_eng.webp
+
+Xubuntu 26.04 LTS — captura da equipe Xubuntu, via Wikimedia Commons.
+Original: https://commons.wikimedia.org/wiki/File:Xubuntu_26.04_LTS_default_desktop_-_English.png
+
+Lubuntu 26.04 LTS — captura da equipe Lubuntu, via Wikimedia Commons.
+Original: https://commons.wikimedia.org/wiki/File:Lubuntu_26.04_LTS_default_desktop_-_English.jpg
+
+As três capturas foram redimensionadas e convertidas em JPEG, com margens para preservar toda a área de trabalho. Licença GNU GPL versão 2 ou posterior: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+Conexão do pendrive — fotografia de Kaboompics.
+https://www.pexels.com/photo/photo-of-a-person-s-hand-plugging-in-a-flash-drive-into-a-laptop-5882582/
+
+Aula no notebook — fotografia de Pavel Danilyuk.
+https://www.pexels.com/photo/a-person-using-a-laptop-7120897/
+
+Disco externo — fotografia de Arina Krasnikova.
+https://www.pexels.com/photo/portable-drive-connected-to-laptop-5951759/
+
+Notebook em uso — fotografia de Antoni Shkraba.
+https://www.pexels.com/photo/a-person-using-a-laptop-5244030/
+
+As quatro fotografias acima foram redimensionadas e recortadas para a Story. Licença Pexels: https://www.pexels.com/license/

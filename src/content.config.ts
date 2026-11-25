@@ -52,7 +52,7 @@ const stories = defineCollection({
         alt: z.string().optional(),
       }),
     ),
-    closing: z.object({ kicker: z.string(), title: z.string(), text: z.string(), bg: z.string() }),
+    closing: z.object({ kicker: z.string(), title: z.string(), text: z.string(), bg: z.string(), credits: z.string().optional() }),
   }),
 });
 
