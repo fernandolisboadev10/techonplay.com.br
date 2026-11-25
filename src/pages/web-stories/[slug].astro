@@ -43,6 +43,12 @@ const css = `
 amp-story{font-family:Inter,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:#fff}
 .pad{padding:calc(${vh}*6) 7%}
 .fillbg{width:100%;height:100%}
+.scene{position:relative;width:100%;height:100%;background:linear-gradient(160deg,#312047,#180f2e 72%)}
+.scene-frame{position:absolute;left:0;right:0;top:0;height:76%}
+.scene-frame amp-img img{object-fit:cover;object-position:center top}
+.scene-panorama .scene-frame{top:18%;left:5%;right:5%;height:43%}
+.scene-panorama .scene-frame amp-img img{object-fit:contain;object-position:center}
+.scene-panorama-shade{width:100%;height:100%;background:linear-gradient(180deg,rgba(24,15,46,.6),transparent 16%,transparent 58%,#180f2e 88%)}
 .brand{margin:0 0 calc(${vh}*2);font-size:calc(${vh}*1.9);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#c4b5fd}
 .brand b{color:#e060d0}
 .kicker{display:block;justify-self:start;width:fit-content;margin:0 0 calc(${vh}*1.6);padding:calc(${vh}*.8) calc(${vh}*1.8);border-radius:99px;background:#c026b4;font-size:calc(${vh}*2);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
@@ -124,10 +130,18 @@ const analytics = JSON.stringify({
           {p.bg ? (
             <>
               <amp-story-grid-layer template="fill">
-                <amp-img src={p.bg} width="720" height="1280" layout="fill" alt={p.alt ?? p.title}></amp-img>
+                {p.frame ? (
+                  <div class:list={['scene', { 'scene-panorama': p.frame === 'panorama' }]}>
+                    <div class="scene-frame">
+                      <amp-img src={p.bg} layout="fill" alt={p.alt ?? p.title}></amp-img>
+                    </div>
+                  </div>
+                ) : (
+                  <amp-img src={p.bg} width="720" height="1280" layout="fill" alt={p.alt ?? p.title}></amp-img>
+                )}
               </amp-story-grid-layer>
               <amp-story-grid-layer template="fill">
-                <div class="shade-bottom"></div>
+                <div class={p.frame === 'panorama' ? 'scene-panorama-shade' : 'shade-bottom'}></div>
               </amp-story-grid-layer>
               <amp-story-grid-layer template="vertical" class="pad" style="align-content:start">
                 <p class="brand">Tech<b>On</b>Play</p>

@@ -1,0 +1,100 @@
+{
+  "title": "10 prompts no estilo GTA 6 para transformar suas fotos",
+  "description": "Veja 10 exemplos ilustrados de prompts para transformar suas fotos no ChatGPT, do conversível na orla ao retrato neon.",
+  "date": "2026-11-25T00:00:00-03:00",
+  "post": "prompts-estilo-gta-6",
+  "poster": "/web-stories/prompts-estilo-gta-6/poster-portrait.jpg",
+  "cover": "/web-stories/prompts-estilo-gta-6/cover-bg.jpg",
+  "coverKicker": "Fotos com IA",
+  "coverNumber": "10",
+  "coverTitle": "prompts no estilo GTA 6 para suas fotos",
+  "coverAlt": "Rua à beira-mar ao pôr do sol com palmeiras, um conversível azul e fachadas art déco",
+  "cta": "Ver os 10 prompts para copiar",
+  "pages": [
+    {
+      "kicker": "/gtaconversivel",
+      "title": "Conversível na orla",
+      "text": "Apoie-se num conversível azul com o mar turquesa ao fundo. Peça um enquadramento na altura da janela para destacar os reflexos na lataria.",
+      "bg": "/web-stories/prompts-estilo-gta-6/01-gtaconversivel.jpg",
+      "alt": "Mulher apoiada em um conversível azul com vista para o mar",
+      "frame": "portrait"
+    },
+    {
+      "kicker": "/gtaneon",
+      "title": "Loja de discos neon",
+      "text": "Faça um retrato da cintura para cima entre os discos de vinil. A luz azul do corredor e a vitrine rosa dão cor à cena.",
+      "bg": "/web-stories/prompts-estilo-gta-6/02-gtaneon.jpg",
+      "alt": "Mulher em loja de discos iluminada por luz azul e rosa",
+      "frame": "portrait"
+    },
+    {
+      "kicker": "/gtaboulevard",
+      "title": "Boulevard Art Déco",
+      "text": "Use uma foto de corpo inteiro para se colocar numa avenida com fachadas coral e verde-água. Deixe a rua se estender ao fundo.",
+      "bg": "/web-stories/prompts-estilo-gta-6/03-gtaboulevard.jpg",
+      "alt": "Mulher atravessa avenida com palmeiras e fachadas art déco",
+      "frame": "portrait"
+    },
+    {
+      "kicker": "/gtamarina",
+      "title": "Marina dourada",
+      "text": "Vá para o convés de uma lancha atracada. Os reflexos dourados da água iluminam o rosto, com mastros ao fundo.",
+      "bg": "/web-stories/prompts-estilo-gta-6/04-gtamarina.jpg",
+      "alt": "Mulher no convés de uma lancha em uma marina iluminada pelo sol",
+      "frame": "portrait"
+    },
+    {
+      "kicker": "/gtacafeamanhecer",
+      "title": "Café ao amanhecer",
+      "text": "O primeiro raio de sol ilumina o vapor da xícara. Pela janela, aparecem a rua vazia e uma bicicleta na calçada.",
+      "bg": "/web-stories/prompts-estilo-gta-6/05-gtacafeamanhecer.jpg",
+      "alt": "Mulher junto a uma janela com uma xícara de café e uma bicicleta do lado de fora",
+      "frame": "portrait"
+    },
+    {
+      "kicker": "/gtaondasempausa",
+      "title": "Onda em pausa",
+      "text": "Congele as gotas de uma onda batendo na mureta. A luz lateral desenha o contorno da pessoa diante da espuma.",
+      "bg": "/web-stories/prompts-estilo-gta-6/06-gtaondasempausa.jpg",
+      "alt": "Mulher no calçadão com gotículas de uma onda suspensas no ar",
+      "frame": "portrait"
+    },
+    {
+      "kicker": "/gtarostobicolor",
+      "title": "Rosto bicolor",
+      "text": "Peça um close de frente com luz coral de um lado e ciano do outro. As palmeiras ficam desfocadas ao fundo.",
+      "bg": "/web-stories/prompts-estilo-gta-6/07-gtarostobicolor.jpg",
+      "alt": "Rosto iluminado em coral e ciano, com palmeiras desfocadas ao fundo",
+      "frame": "portrait"
+    },
+    {
+      "kicker": "/gtahoraazul",
+      "title": "Hora azul",
+      "text": "Retrate a rua logo após o pôr do sol. O céu índigo e as janelas âmbar criam contraste sem esconder as fachadas.",
+      "bg": "/web-stories/prompts-estilo-gta-6/08-gtahoraazul.jpg",
+      "alt": "Mulher em uma rua costeira ao anoitecer, diante de janelas com luz âmbar",
+      "frame": "portrait"
+    },
+    {
+      "kicker": "/gtapanoramico",
+      "title": "Panorâmica costeira",
+      "text": "Use o formato 16:9 para mostrar a curva da baía. A pessoa fica pequena no terço esquerdo, com a marina e a cidade ao fundo.",
+      "bg": "/web-stories/prompts-estilo-gta-6/09-gtapanoramico.jpg",
+      "alt": "Vista panorâmica de uma baía tropical, com uma pessoa à esquerda e uma marina ao fundo",
+      "frame": "panorama"
+    },
+    {
+      "kicker": "/gtacapatelefone",
+      "title": "Capa para Stories",
+      "text": "Centralize o rosto entre as palmeiras. Deixe espaço para o título no topo e para um link na base da imagem 9:16.",
+      "bg": "/web-stories/prompts-estilo-gta-6/10-gtacapatelefone.jpg",
+      "alt": "Mulher entre palmeiras, com um carro ao fundo e reflexos no asfalto"
+    }
+  ],
+  "closing": {
+    "kicker": "Experimente com sua foto",
+    "title": "Qual cena você quer testar?",
+    "text": "Abra o artigo, copie o prompt da sua cena favorita e envie junto com uma foto nítida no ChatGPT.",
+    "bg": "/web-stories/prompts-estilo-gta-6/cover-bg.jpg"
+  }
+}

@@ -23,7 +23,7 @@ const blog = defineCollection({
     }),
 });
 
-// Web Stories (AMP): 9 slides = capa + os itens de pages + fechamento com botão para o post.
+// Web Stories (AMP): capa + os itens de pages + fechamento com botão para o post.
 // post é o slug do artigo para onde o botão do último slide leva. Imagens ficam em public/web-stories/<slug>/.
 const stories = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/stories' }),
@@ -48,6 +48,7 @@ const stories = defineCollection({
         text: z.string(),
         tile: z.string().optional(),
         bg: z.string().optional(),
+        frame: z.enum(['portrait', 'panorama']).optional(),
         big: z.string().optional(),
         alt: z.string().optional(),
       }),
