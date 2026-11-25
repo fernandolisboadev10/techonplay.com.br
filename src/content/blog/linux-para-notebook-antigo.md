@@ -4,6 +4,7 @@ seoTitle: "3 distribuições Linux para testar em um notebook antigo"
 description: "Linux Mint Xfce, Xubuntu ou Lubuntu? Veja qual testar primeiro no notebook antigo e como conferir Wi-Fi, vídeo e seus aplicativos sem apagar o Windows."
 category: "Sistemas"
 date: 2026-11-25T07:00:00-03:00
+updated: 2026-11-25T15:21:00-03:00
 readingTime: "5 min"
 image: "./images/linux-para-notebook-antigo.webp"
 imageAlt: "Notebook antigo sobre uma mesa de madeira, com um pendrive conectado e um pinguim de pelúcia ao lado"
@@ -29,17 +30,29 @@ Se você ouviu falar de Linux pela primeira vez agora, vale conhecer [o que muda
 
 O Mint Xfce é um bom primeiro teste se você quer se orientar pelo menu de aplicativos, pelo painel e pelo gerenciador de arquivos. **Xfce é o nome da interface que você vê na tela.** O projeto Linux Mint oferece também a edição Cinnamon, com mais recursos visuais. Para um notebook que já sente o peso do sistema atual, a edição Xfce é o ponto de partida mais interessante entre as duas.
 
+![Área de trabalho do Linux Mint 22.2 Xfce com o menu de aplicativos aberto no canto inferior esquerdo](./images/linux-para-notebook-antigo-mint-xfce.webp)
+
+*Linux Mint 22.2 Xfce. O menu de aplicativos fica no canto inferior esquerdo. Captura de Clement Lefebvre.*
+
 Teste o que você costuma fazer sem pensar. Abra a pasta de downloads, conecte o fone e altere o brilho. Se essas ações fluírem e o navegador der conta da sua rotina, você já tem uma candidata para o uso diário.
 
 ### Xubuntu LTS para usar a base Ubuntu com Xfce
 
 O Xubuntu é uma edição oficial do Ubuntu que usa Xfce. A interface segue a mesma proposta de leveza do Mint Xfce, com as escolhas de aplicativos, painel e configurações do próprio Xubuntu. Uma edição LTS tem suporte de longo prazo. Confira o prazo da versão escolhida na página oficial de download.
 
+![Área de trabalho do Xubuntu 26.04 LTS com o painel no topo e atalhos à esquerda](./images/linux-para-notebook-antigo-xubuntu.webp)
+
+*Xubuntu 26.04 LTS. O painel do Xfce fica no topo da tela. Captura da equipe Xubuntu.*
+
 Como as duas opções usam Xfce, dê mais peso ao que perceber no seu notebook. Veja qual se conecta ao Wi-Fi, retoma depois de fechar a tampa e reconhece seus acessórios. Essas diferenças pesam mais no uso diário do que a aparência da tela inicial.
 
 ### Lubuntu LTS para experimentar o LXQt
 
 O Lubuntu também faz parte da família Ubuntu. Sua interface é o **LXQt**, que tem menus simples e poucos efeitos visuais. Vale testá-lo quando o notebook demora a responder até em ações básicas, como trocar entre duas janelas.
+
+![Área de trabalho do Lubuntu 26.04 LTS com atalhos à esquerda e o painel do LXQt na parte inferior](./images/linux-para-notebook-antigo-lubuntu.webp)
+
+*Lubuntu 26.04 LTS. O painel do LXQt fica na parte inferior da tela. Captura da equipe Lubuntu.*
 
 Em um aparelho com 4 GB de RAM, por exemplo, coloque o navegador à prova antes de decidir. Abra os sites que você usa juntos e rode um vídeo na qualidade que costuma assistir. Se a máquina só engasga durante a reprodução, o gargalo pode estar na decodificação do vídeo. Se o problema aparece ao acumular abas e aplicativos, a memória pode estar no limite.
 
@@ -68,3 +81,9 @@ Se as três distribuições tropeçarem na mesma tarefa, investigue o gargalo an
 - [Download e requisitos do Xubuntu](https://xubuntu.org/download/)
 - [Guia de instalação do Xubuntu](https://docs.xubuntu.org/user/C/installation.html)
 - [Lubuntu LTS e ambiente gráfico LXQt](https://lubuntu.me/downloads/)
+
+As capturas foram redimensionadas e convertidas para WebP. Os originais estão no Wikimedia Commons sob a [licença GNU GPL v2 ou posterior](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
+
+- [Captura original do Linux Mint 22.2 Xfce](https://commons.wikimedia.org/wiki/File:Linux_Mint_22.2_XFCE_eng.webp)
+- [Captura original do Xubuntu 26.04 LTS](https://commons.wikimedia.org/wiki/File:Xubuntu_26.04_LTS_default_desktop_-_English.png)
+- [Captura original do Lubuntu 26.04 LTS](https://commons.wikimedia.org/wiki/File:Lubuntu_26.04_LTS_default_desktop_-_English.jpg)
