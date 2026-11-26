@@ -34,4 +34,3 @@ export const educationalGames: EducationalGame[] = [
 export const gameHref = (slug: string) => `${educationalGamesHref}${slug}/`;
 export const gameFile = (slug: string) => `/jogos/${slug}/`;
 export const gameCover = (slug: string) => `/images/jogos/${slug}.webp`;
-export const gameVoteEvent = (slug: string) => `arcade_vote_${slug.replaceAll('-', '_')}`;
