@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://techonplay.com.br/categoria/jogos/jogos-educativos/desafio-geometrico-3d/">
+    <title>Desafio Geométrico 3D</title>
+<style>
+:root{--bg:#091426;--panel:#13243d;--panel2:#1a3151;--cyan:#52e0dc;--gold:#ffd166;--pink:#ff6b9a;--text:#f4f7ff;--muted:#a9bad2}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 20% 0%,#1b3b60 0,#091426 48%);font-family:system-ui,Segoe UI,sans-serif;color:var(--text);padding:22px}
+.wrap{max-width:1100px;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+h1{font-size:clamp(1.7rem,4vw,2.7rem);margin:0;letter-spacing:-1px}.sub{color:var(--muted);margin:5px 0 0}
+.pill{background:#203b5d;border:1px solid #35577d;border-radius:999px;padding:8px 13px;color:var(--cyan);font-weight:700}
+.panel{background:linear-gradient(145deg,rgba(26,49,81,.97),rgba(14,30,52,.97));border:1px solid #2c4a6d;border-radius:20px;padding:20px;box-shadow:0 16px 45px #0005}
+.setup{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;align-items:end}
+label{display:block;color:var(--muted);font-size:.9rem;margin-bottom:6px}input,select{width:100%;padding:12px;border-radius:11px;border:1px solid #466486;background:#0c1b30;color:white;font:inherit}
+button{border:0;border-radius:12px;padding:12px 17px;background:var(--cyan);color:#08202b;font-weight:800;font-size:1rem;cursor:pointer;transition:.15s}
+button:hover{transform:translateY(-2px);filter:brightness(1.08)}button:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.secondary{background:#294767;color:white;border:1px solid #4a6a8b}.gold{background:var(--gold);color:#332300}
+.scoreboard{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.player{padding:14px 17px;border-radius:15px;background:#10213a;border:2px solid transparent}.player.active{border-color:var(--cyan);box-shadow:0 0 0 3px #52e0dc20}
+.player strong{display:block;font-size:1.05rem}.points{font-size:1.8rem;font-weight:900;color:var(--gold)}
+.gamegrid{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(300px,1.2fr);gap:18px}
+.visual{min-height:300px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(circle,#24466b,#0d1c31 70%);border-radius:16px}
+.shape{position:relative;transform-style:preserve-3d;animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0) rotateX(-18deg) rotateY(-28deg)}50%{transform:translateY(-10px) rotateX(-18deg) rotateY(22deg)}}
+.cube{width:115px;height:115px;transform-style:preserve-3d}
+.face{position:absolute;width:115px;height:115px;border:2px solid #d9ffffaa;background:#52e0dc88;display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:900;color:#062b38;backface-visibility:visible}
+.front{transform:translateZ(57.5px)}.back{transform:rotateY(180deg) translateZ(57.5px)}.right{transform:rotateY(90deg) translateZ(57.5px);background:#ffbd6988}.left{transform:rotateY(-90deg) translateZ(57.5px);background:#ff6b9a88}.topf{transform:rotateX(90deg) translateZ(57.5px);background:#a78bfa88}.bottom{transform:rotateX(-90deg) translateZ(57.5px);background:#68d39188}
+.sphere{width:145px;height:145px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#52e0dc 18%,#13859a 65%,#092b49);box-shadow:inset -18px -18px 30px #001b35aa,0 20px 40px #0006}
+.cylinder{width:125px;height:145px;border-radius:50%/15%;background:linear-gradient(90deg,#8b5cf6,#c4b5fd 45%,#6d43c6);box-shadow:inset -18px 0 25px #29105a66}
+.cylinder:before,.cylinder:after{content:"";position:absolute;left:0;width:125px;height:38px;border-radius:50%;background:#c4b5fd;border:2px solid #eee8}
+.cylinder:before{top:-2px}.cylinder:after{bottom:-2px;background:#754bc4}
+.cone{width:0;height:0;border-left:75px solid transparent;border-right:75px solid transparent;border-bottom:150px solid #ff9f43;filter:drop-shadow(10px 15px 8px #0005);position:relative}
+.cone:after{content:"";position:absolute;left:-75px;top:137px;width:150px;height:34px;border-radius:50%;background:#ffd08b;border:2px solid #fff8}
+.pyramid{width:0;height:0;border-left:75px solid transparent;border-right:75px solid transparent;border-bottom:140px solid #ff6b9a;filter:drop-shadow(8px 10px 5px #0005)}
+.shapeName{position:absolute;bottom:13px;color:#d9eaff;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:.8rem}
+.questionbox h2{margin:2px 0 10px;font-size:1.35rem}.meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:13px}.tag{background:#284969;color:#c9f7ff;padding:5px 9px;border-radius:8px;font-size:.8rem;font-weight:700}
+.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:17px 0}.answer{background:#203b5d;color:white;border:1px solid #4b6a8c;text-align:left}.answer.correct{background:#176b53;border-color:#52e0a0}.answer.wrong{background:#7c2942;border-color:#ff789b}
+.feedback{min-height:48px;color:var(--muted);line-height:1.45}.feedback.good{color:#72efbd}.feedback.bad{color:#ff9bb5}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.hidden{display:none!important}
+.rules{color:var(--muted);line-height:1.55}.rules strong{color:white}
+@media(max-width:750px){.gamegrid{grid-template-columns:1fr}.visual{min-height:230px}.scoreboard{gap:8px}.player{padding:10px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+ <header class="top"><div><h1>🔷 Desafio Geométrico 3D</h1><p class="sub">Aprenda formas, áreas e volumes do 6º ao 9º ano — jogando em dupla!</p></div><div class="pill">2 JOGADORES · 3D · MATEMÁTICA</div></header>
+ <section id="setup" class="panel">
+  <h2>Prepare a partida</h2>
+  <div class="setup">
+   <div><label for="p1">Nome do jogador 1</label><input id="p1" value="Jogador 1" maxlength="18"></div>
+   <div><label for="p2">Nome do jogador 2</label><input id="p2" value="Jogador 2" maxlength="18"></div>
+   <div><label for="grade">Conteúdo escolar</label><select id="grade"><option value="6">6º ano — formas e perímetros</option><option value="7">7º ano — áreas e ângulos</option><option value="8">8º ano — áreas e sólidos</option><option value="9">9º ano — Pitágoras e volumes</option><option value="mix" selected>Todos os anos — misturado</option></select></div>
+   <div><label for="difficulty">Dificuldade</label><select id="difficulty"><option value="easy">Fácil</option><option value="hard">Difícil</option></select></div>
+   <div><label for="rounds">Perguntas por jogador</label><select id="rounds"><option>5</option><option selected>8</option><option>10</option></select></div>
+   <div><button id="start">Começar partida 🚀</button></div>
+  </div>
+  <div class="rules"><p><strong>Como jogar:</strong> dois jogadores se revezam. Na sua vez, leia a pergunta e escolha uma das quatro respostas. Cada acerto vale pontos; no modo difícil vale mais. Depois de responder, clique em “Próxima pergunta”. Vence quem fizer mais pontos!</p><p><strong>Dica:</strong> use papel e lápis para fazer os cálculos. As figuras são modelos 3D ilustrativos e podem ser giradas visualmente.</p></div>
+ </section>
+ <section id="game" class="hidden">
+  <div class="scoreboard">
+   <div class="player active" id="player0"><strong id="name0">Jogador 1</strong><span class="points" id="score0">0</span><span> pontos</span></div>
+   <div class="player" id="player1"><strong id="name1">Jogador 2</strong><span class="points" id="score1">0</span><span> pontos</span></div>
+  </div>
+  <div class="panel">
+   <div class="top"><div><span class="pill" id="turn">Vez do Jogador 1</span></div><div class="tag" id="progress">Pergunta 1</div></div>
+   <div class="gamegrid">
+    <div class="visual"><div id="shape" class="shape"><div class="sphere"></div></div><div class="shapeName" id="shapeName">Esfera</div></div>
+    <div class="questionbox">
+     <div class="meta"><span class="tag" id="gradeTag">6º ano</span><span class="tag" id="diffTag">Fácil</span><span class="tag" id="pointsTag">10 pontos</span></div>
+     <h2 id="question">Pergunta aparece aqui</h2>
+     <div class="answers" id="answers"></div>
+     <div id="feedback" class="feedback" aria-live="polite">Escolha uma resposta.</div>
+     <div class="actions"><button id="next" class="gold" disabled>Próxima pergunta →</button><button id="quit" class="secondary">Encerrar partida</button></div>
+    </div>
+   </div>
+  </div>
+ </section>
+ <section id="result" class="panel hidden" style="margin-top:18px;text-align:center">
+  <h2 id="winner">🏆 Resultado</h2><p id="summary" class="sub"></p><div class="scoreboard" id="finalScores"></div><button id="again">Jogar novamente</button>
+ </section>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+let names=[],scores=[0,0],turn=0,answered=0,total=8,questionIndex=0,current=null,locked=false,deck=[];
+const bank=[
+ {g:6,s:"Cubo",q:"Um quadrado tem lado de 5 cm. Qual é seu perímetro?",a:["10 cm","20 cm","25 cm","15 cm"],c:1,ex:"Perímetro = 4 × lado = 4 × 5 = 20 cm.",shape:"cube",topic:6},
+ {g:6,s:"Esfera",q:"Qual objeto lembra mais uma esfera?",a:["Dado","Lata","Bola","Casquinha"],c:2,ex:"A bola lembra uma esfera: superfície curva e sem faces planas.",shape:"sphere",topic:6},
+ {g:6,s:"Retângulo",q:"Um retângulo mede 8 cm por 3 cm. Qual é a área?",a:["11 cm²","22 cm²","24 cm²","16 cm²"],c:2,ex:"Área = base × altura = 8 × 3 = 24 cm².",shape:"cube",topic:6},
+ {g:6,s:"Triângulo",q:"Quantos lados tem um triângulo?",a:["2","3","4","5"],c:1,ex:"Triângulo é um polígono com 3 lados e 3 vértices.",shape:"pyramid",topic:6},
+ {g:7,s:"Quadrado",q:"Um quadrado tem lado de 7 cm. Qual é sua área?",a:["14 cm²","28 cm²","49 cm²","21 cm²"],c:2,ex:"Área do quadrado = lado × lado = 7 × 7 = 49 cm².",shape:"cube",topic:7},
+ {g:7,s:"Ângulos",q:"Um ângulo de 90° é chamado de:",a:["Agudo","Reto","Obtuso","Raso"],c:1,ex:"O ângulo reto mede exatamente 90 graus.",shape:"pyramid",topic:7},
+ {g:7,s:"Círculo",q:"Usando π ≈ 3,14, qual é o comprimento de uma circunferência de raio 2 cm?",a:["6,28 cm","12,56 cm","4 cm","9,42 cm"],c:1,ex:"C = 2 × π × r = 2 × 3,14 × 2 = 12,56 cm.",shape:"cylinder",topic:7},
+ {g:7,s:"Triângulo",q:"Um triângulo tem base 10 cm e altura 4 cm. Qual é a área?",a:["40 cm²","20 cm²","14 cm²","24 cm²"],c:1,ex:"Área = (base × altura) ÷ 2 = (10 × 4) ÷ 2 = 20 cm².",shape:"pyramid",topic:7},
+ {g:8,s:"Cubo",q:"Um cubo tem aresta de 3 cm. Qual é seu volume?",a:["9 cm³","18 cm³","27 cm³","36 cm³"],c:2,ex:"Volume do cubo = aresta³ = 3 × 3 × 3 = 27 cm³.",shape:"cube",topic:8},
+ {g:8,s:"Cilindro",q:"Qual sólido tem duas bases circulares iguais e paralelas?",a:["Cone","Pirâmide","Cilindro","Esfera"],c:2,ex:"O cilindro possui duas bases circulares paralelas e uma superfície lateral curva.",shape:"cylinder",topic:8},
+ {g:8,s:"Paralelepípedo",q:"Uma caixa mede 2 cm × 3 cm × 5 cm. Qual é o volume?",a:["10 cm³","30 cm³","20 cm³","15 cm³"],c:1,ex:"Volume = comprimento × largura × altura = 2 × 3 × 5 = 30 cm³.",shape:"cube",topic:8},
+ {g:8,s:"Cone",q:"Qual sólido tem uma base circular e uma ponta chamada vértice?",a:["Cubo","Cone","Esfera","Cilindro"],c:1,ex:"O cone tem uma base circular e um vértice.",shape:"cone",topic:8},
+ {g:9,s:"Pitágoras",q:"Em um triângulo retângulo, os catetos medem 3 cm e 4 cm. Quanto mede a hipotenusa?",a:["5 cm","6 cm","7 cm","8 cm"],c:0,ex:"Pelo teorema de Pitágoras: h² = 3² + 4² = 9 + 16 = 25; h = 5 cm.",shape:"pyramid",topic:9},
+ {g:9,s:"Cubo",q:"Um cubo tem aresta de 4 cm. Qual é a área total?",a:["16 cm²","64 cm²","96 cm²","48 cm²"],c:2,ex:"Área total = 6 × lado² = 6 × 16 = 96 cm².",shape:"cube",topic:9},
+ {g:9,s:"Cilindro",q:"Um cilindro tem raio 2 cm e altura 5 cm. Use π = 3. Qual é o volume?",a:["30 cm³","60 cm³","15 cm³","45 cm³"],c:1,ex:"V = π × r² × h = 3 × 2² × 5 = 60 cm³.",shape:"cylinder",topic:9},
+ {g:9,s:"Pitágoras",q:"A hipotenusa mede 13 cm e um cateto mede 5 cm. Quanto mede o outro cateto?",a:["8 cm","10 cm","12 cm","18 cm"],c:2,ex:"x² = 13² − 5² = 169 − 25 = 144; x = 12 cm.",shape:"pyramid",topic:9}
+];
+function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
+function makeShape(type){let el=$("shape");el.className="shape";el.innerHTML="";if(type==="cube"){el.innerHTML='<div class="cube"><div class="face front">A</div><div class="face back">B</div><div class="face right">C</div><div class="face left">D</div><div class="face topf">E</div><div class="face bottom">F</div></div>'}else{let d=document.createElement("div");d.className=type;el.appendChild(d)}}
+function start(){names=[$("p1").value.trim()||"Jogador 1",$("p2").value.trim()||"Jogador 2"];scores=[0,0];turn=0;answered=0;questionIndex=0;total=Number($("rounds").value)*2;let grade=$("grade").value;deck=shuffle(bank.filter(q=>(grade==="mix"||q.g==grade)&&($("difficulty").value==="easy"?q.topic<=8:true)));if(deck.length<total)deck=shuffle(bank.filter(q=>grade==="mix"||q.g==grade));deck=deck.slice(0,total);$("setup").classList.add("hidden");$("result").classList.add("hidden");$("game").classList.remove("hidden");names.forEach((n,i)=>$("name"+i).textContent=n);updateScores();showQuestion()}
+function updateScores(){scores.forEach((s,i)=>$("score"+i).textContent=s);$("player0").classList.toggle("active",turn===0);$("player1").classList.toggle("active",turn===1);$("turn").textContent="Vez de "+names[turn]}
+function showQuestion(){if(questionIndex>=deck.length){finish();return}locked=false;current=deck[questionIndex];$("next").disabled=true;$("feedback").className="feedback";$("feedback").textContent="Escolha uma resposta."; $("question").textContent=current.q;$("shapeName").textContent=current.s;makeShape(current.shape);$("gradeTag").textContent=current.g+"º ano";$("diffTag").textContent=$("difficulty").value==="easy"?"Fácil":"Difícil";let pts=$("difficulty").value==="easy"?10:20;$("pointsTag").textContent=pts+" pontos";$("progress").textContent="Pergunta "+(questionIndex+1)+" de "+deck.length;let opts=$("answers");opts.innerHTML="";current.a.forEach((a,i)=>{let b=document.createElement("button");b.className="answer";b.textContent=String.fromCharCode(65+i)+") "+a;b.onclick=()=>answer(i,b);opts.appendChild(b)})}
+function answer(i,btn){if(locked)return;locked=true;let correct=i===current.c;[...$("answers").children].forEach((b,j)=>{b.disabled=true;if(j===current.c)b.classList.add("correct");if(j===i&&!correct)b.classList.add("wrong")});let pts=$("difficulty").value==="easy"?10:20;if(correct){scores[turn]+=pts;$("feedback").className="feedback good";$("feedback").textContent="✅ Muito bem! +"+pts+" pontos. "+current.ex}else{$("feedback").className="feedback bad";$("feedback").textContent="❌ Não foi dessa vez. "+current.ex}updateScores();$("next").disabled=false;$("next").textContent=questionIndex===deck.length-1?"Ver resultado 🏆":"Próxima pergunta →"}
+function next(){if(!locked)return;questionIndex++;turn=1-turn;showQuestion();updateScores()}
+function finish(){ $("game").classList.add("hidden");$("result").classList.remove("hidden");let winner=scores[0]===scores[1]?"🤝 Empate!": "🏆 "+names[scores[0]>scores[1]?0:1]+" venceu!";$("winner").textContent=winner;$("summary").textContent="Partida concluída: "+deck.length+" perguntas respondidas."; $("finalScores").innerHTML=names.map((n,i)=>'<div class="player"><strong>'+escapeHtml(n)+'</strong><span class="points">'+scores[i]+'</span><span> pontos</span></div>').join("")}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+$("start").onclick=start;$("next").onclick=next;$("quit").onclick=finish;$("again").onclick=()=>{$("result").classList.add("hidden");$("setup").classList.remove("hidden");$("game").classList.add("hidden")}
+</script>
+</body></html>

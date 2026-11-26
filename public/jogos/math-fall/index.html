@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://techonplay.com.br/categoria/jogos/jogos-educativos/math-fall/">
+    <title>Math Fall - Corrida Matemática</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+  }
+
+  body {
+    background: linear-gradient(180deg, #87CEEB 0%, #98D8E8 40%, #7EC850 100%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  #game-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 100vh;
+    max-height: 800px;
+    background: linear-gradient(180deg, #87CEEB 0%, #B0E0E6 60%, #7EC850 100%);
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0,0,0,0.3);
+    border-radius: 12px;
+  }
+
+  .cloud {
+    position: absolute;
+    background: rgba(255,255,255,0.8);
+    border-radius: 50px;
+    opacity: 0.7;
+  }
+  .cloud::before, .cloud::after {
+    content: '';
+    position: absolute;
+    background: rgba(255,255,255,0.8);
+    border-radius: 50%;
+  }
+  .cloud1 { width: 80px; height: 30px; top: 10%; left: -20px; animation: drift 25s linear infinite; }
+  .cloud1::before { width: 40px; height: 40px; top: -15px; left: 10px; }
+  .cloud1::after { width: 30px; height: 30px; top: -10px; left: 40px; }
+  .cloud2 { width: 100px; height: 35px; top: 25%; right: -30px; animation: drift 35s linear infinite reverse; }
+  .cloud2::before { width: 50px; height: 50px; top: -20px; left: 15px; }
+  .cloud2::after { width: 35px; height: 35px; top: -12px; left: 55px; }
+  .cloud3 { width: 70px; height: 25px; top: 45%; left: 10px; animation: drift 40s linear infinite; }
+  .cloud3::before { width: 35px; height: 35px; top: -12px; left: 8px; }
+  .cloud3::after { width: 25px; height: 25px; top: -8px; left: 35px; }
+
+  @keyframes drift {
+    from { transform: translateX(-150px); }
+    to { transform: translateX(calc(500px + 150px)); }
+  }
+
+  #ground {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(180deg, #5aA040 0%, #3d7a2a 100%);
+    border-top: 4px solid #4a9030;
+    z-index: 5;
+  }
+
+  #player {
+    position: absolute;
+    bottom: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 80px;
+    z-index: 10;
+    transition: left 0.15s ease-out;
+  }
+
+  .head {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    background: radial-gradient(circle at 35% 35%, #ff5555, #cc0000);
+    border-radius: 50%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid #990000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    transition: background 0.3s;
+  }
+
+  #player.p2 .head { background: radial-gradient(circle at 35% 35%, #5599ff, #0055cc); border-color: #003399; }
+  #player.p2 .torso { background: linear-gradient(180deg, #3366ff, #0044cc); border-color: #003399; }
+  #player.p2 .arm { background: linear-gradient(180deg, #4477ff, #0044cc); border-color: #003399; }
+  #player.p2 .leg { background: linear-gradient(180deg, #0044cc, #003399); border-color: #002266; }
+  #player.p2 .mouth { border-bottom-color: #003399; }
+
+  .eye {
+    position: absolute;
+    width: 10px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    top: 12px;
+  }
+  .eye.left { left: 8px; }
+  .eye.right { right: 8px; }
+  .eye::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 6px;
+    background: #1a1a2e;
+    border-radius: 50%;
+    bottom: 2px;
+    left: 2px;
+    animation: blink 3s infinite;
+  }
+  @keyframes blink {
+    0%, 95%, 100% { transform: scaleY(1); }
+    97% { transform: scaleY(0.1); }
+  }
+
+  .mouth {
+    position: absolute;
+    width: 16px;
+    height: 8px;
+    border-bottom: 3px solid #660000;
+    border-radius: 0 0 10px 10px;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .torso {
+    position: absolute;
+    width: 34px;
+    height: 26px;
+    background: linear-gradient(180deg, #ff3333, #cc0000);
+    border-radius: 8px 8px 4px 4px;
+    top: 38px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid #990000;
+    transition: background 0.3s;
+  }
+
+  .arm {
+    position: absolute;
+    width: 10px;
+    height: 22px;
+    background: linear-gradient(180deg, #ff4444, #cc0000);
+    border-radius: 5px;
+    top: 42px;
+    border: 2px solid #990000;
+    transform-origin: top center;
+    transition: background 0.3s;
+  }
+  .arm.left { left: 2px; transform: rotate(12deg); }
+  .arm.right { right: 2px; transform: rotate(-12deg); }
+
+  .leg {
+    position: absolute;
+    width: 12px;
+    height: 18px;
+    background: linear-gradient(180deg, #cc0000, #990000);
+    border-radius: 3px;
+    top: 62px;
+    border: 2px solid #770000;
+    transition: background 0.3s;
+  }
+  .leg.left { left: 14px; }
+  .leg.right { right: 14px; }
+
+  @keyframes jump {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    40% { transform: translateX(-50%) translateY(-20px); }
+    60% { transform: translateX(-50%) translateY(-10px); }
+  }
+  .jump { animation: jump 0.5s ease; }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(-50%); }
+    20% { transform: translateX(-50%) rotate(-8deg); }
+    40% { transform: translateX(-50%) rotate(8deg); }
+    60% { transform: translateX(-50%) rotate(-5deg); }
+    80% { transform: translateX(-50%) rotate(5deg); }
+  }
+  .shake { animation: shake 0.4s ease; }
+
+  .falling-equation {
+    position: absolute;
+    padding: 8px 14px;
+    background: linear-gradient(135deg, #ffffff, #e0e0e0);
+    border: 3px solid #333;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #1a1a2e;
+    white-space: nowrap;
+    z-index: 8;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: none;
+    max-width: 95%;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  #answers {
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 10px;
+    z-index: 20;
+  }
+
+  .answer-btn {
+    flex: 1;
+    max-width: 110px;
+    padding: 14px 8px;
+    font-size: 22px;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: linear-gradient(180deg, #4a90d9, #2563eb);
+    color: white;
+    box-shadow: 0 4px 0 #1a4a8a, 0 6px 12px rgba(0,0,0,0.2);
+    transition: transform 0.1s, box-shadow 0.1s;
+    font-family: inherit;
+  }
+
+  .answer-btn:hover { background: linear-gradient(180deg, #5aa0e9, #3573fb); }
+  .answer-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #1a4a8a, 0 2px 6px rgba(0,0,0,0.2);
+  }
+  .answer-btn.correct { background: linear-gradient(180deg, #22c55e, #16a34a); box-shadow: 0 4px 0 #15803d, 0 6px 12px rgba(0,0,0,0.2); }
+  .answer-btn.wrong { background: linear-gradient(180deg, #ef4444, #dc2626); box-shadow: 0 4px 0 #991b1b, 0 6px 12px rgba(0,0,0,0.2); }
+  .answer-btn:disabled { cursor: not-allowed; opacity: 0.7; }
+
+  #hud {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+    z-index: 20;
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  }
+
+  .hud-box {
+    background: rgba(0,0,0,0.4);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 16px;
+    backdrop-filter: blur(4px);
+  }
+
+  .hud-box.p1-active { background: rgba(200,0,0,0.7); box-shadow: 0 0 12px rgba(255,50,50,0.8); }
+  .hud-box.p2-active { background: rgba(0,50,200,0.7); box-shadow: 0 0 12px rgba(50,100,255,0.8); }
+
+  #turn-indicator {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    z-index: 25;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: background 0.3s;
+    white-space: nowrap;
+  }
+  #turn-indicator.p1 { background: linear-gradient(180deg, #ff4444, #cc0000); }
+  #turn-indicator.p2 { background: linear-gradient(180deg, #4477ff, #0044cc); }
+
+  #timer-bar-container {
+    position: absolute;
+    top: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 12px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 6px;
+    overflow: hidden;
+    z-index: 20;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  #timer-bar {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #22c55e, #eab308, #ef4444);
+    border-radius: 6px;
+    transition: width 0.1s linear;
+  }
+
+  #overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    backdrop-filter: blur(6px);
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+
+  #overlay h1 { font-size: 36px; margin-bottom: 8px; text-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+  #overlay h2 { font-size: 26px; margin-bottom: 16px; color: #fbbf24; }
+  #overlay p { font-size: 16px; margin-bottom: 20px; opacity: 0.9; line-height: 1.6; max-width: 340px; }
+
+  #overlay button {
+    padding: 14px 40px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background: linear-gradient(180deg, #22c55e, #16a34a);
+    color: white;
+    box-shadow: 0 5px 0 #15803d, 0 8px 20px rgba(0,0,0,0.3);
+    transition: transform 0.1s;
+    font-family: inherit;
+    margin: 6px;
+  }
+  #overlay button:hover { transform: scale(1.05); }
+  #overlay button:active { transform: translateY(4px); box-shadow: 0 1px 0 #15803d; }
+
+  #overlay button.p1-btn { background: linear-gradient(180deg, #ff4444, #cc0000); box-shadow: 0 5px 0 #990000, 0 8px 20px rgba(0,0,0,0.3); }
+  #overlay button.p2-btn { background: linear-gradient(180deg, #4477ff, #0044cc); box-shadow: 0 5px 0 #003399, 0 8px 20px rgba(0,0,0,0.3); }
+  #overlay button.race-btn { background: linear-gradient(180deg, #f59e0b, #d97706); box-shadow: 0 5px 0 #b45309, 0 8px 20px rgba(0,0,0,0.3); }
+  #overlay button.bot-btn { background: linear-gradient(180deg, #8b5cf6, #7c3aed); box-shadow: 0 5px 0 #5b21b6, 0 8px 20px rgba(0,0,0,0.3); }
+
+  .mode-buttons { display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 320px; }
+  .mode-buttons button { width: 100%; }
+
+  .hidden { display: none !important; }
+
+  .particle {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 30;
+    animation: particleFly 0.6s ease-out forwards;
+  }
+  @keyframes particleFly {
+    to { transform: translate(var(--dx), var(--dy)) scale(0); opacity: 0; }
+  }
+
+  #flash {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 40;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+
+  #level-up {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-size: 40px;
+    font-weight: bold;
+    color: #fbbf24;
+    text-shadow: 0 0 20px rgba(251,191,36,0.8), 2px 2px 4px rgba(0,0,0,0.5);
+    z-index: 45;
+    pointer-events: none;
+    opacity: 0;
+    white-space: nowrap;
+  }
+  #level-up.show { animation: levelUpAnim 1.2s ease-out; }
+  @keyframes levelUpAnim {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+    30% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+    70% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1) translateY(-30px); opacity: 0; }
+  }
+
+  /* ============ MODO CORRIDA ============ */
+  #race-screen {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 15;
+    background: linear-gradient(180deg, #87CEEB 0%, #B0E0E6 60%, #7EC850 100%);
+  }
+
+  .race-header {
+    text-align: center;
+    padding: 12px 10px 6px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    font-weight: bold;
+    font-size: 18px;
+    background: rgba(0,0,0,0.25);
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .race-header .race-goal {
+    font-size: 13px;
+    font-weight: normal;
+    opacity: 0.9;
+    margin-top: 2px;
+  }
+
+  .race-back-btn {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .race-back-btn:hover { background: rgba(0,0,0,0.7); }
+
+  .race-lanes {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    padding: 8px;
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  .race-lane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255,255,255,0.35);
+    border-radius: 14px;
+    padding: 8px;
+    overflow-y: auto;
+    min-width: 0;
+    border: 3px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .race-lane.p1 { border-color: #cc0000; }
+  .race-lane.p2 { border-color: #0044cc; }
+  .race-lane.bot { border-color: #7c3aed; }
+
+  .race-lane-title {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 4px;
+    border-radius: 8px;
+    color: white;
+    margin-bottom: 6px;
+    flex-shrink: 0;
+  }
+  .race-lane.p1 .race-lane-title { background: #cc0000; }
+  .race-lane.p2 .race-lane-title { background: #0044cc; }
+  .race-lane.bot .race-lane-title { background: #7c3aed; }
+
+  .race-progress {
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 6px;
+    color: #1a1a2e;
+    font-weight: bold;
+    flex-shrink: 0;
+    line-height: 1.4;
+  }
+  .race-progress .race-score {
+    display: block;
+    font-size: 14px;
+    color: #15803d;
+  }
+  .race-progress .race-score.negative { color: #dc2626; }
+
+  .race-question {
+    background: white;
+    border: 2px solid #333;
+    border-radius: 10px;
+    padding: 8px 6px;
+    margin-bottom: 6px;
+    text-align: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+
+  .race-question .q-text {
+    font-size: 15px;
+    font-weight: bold;
+    color: #1a1a2e;
+    margin-bottom: 6px;
+    line-height: 1.2;
+    word-wrap: break-word;
+  }
+
+  .race-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+  }
+
+  .race-opt {
+    padding: 8px 4px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: linear-gradient(180deg, #4a90d9, #2563eb);
+    color: white;
+    box-shadow: 0 3px 0 #1a4a8a;
+    transition: transform 0.1s, box-shadow 0.1s;
+    font-family: inherit;
+  }
+  .race-opt:active { transform: translateY(3px); box-shadow: 0 0 0 #1a4a8a; }
+  .race-opt.correct { background: linear-gradient(180deg, #22c55e, #16a34a); box-shadow: 0 3px 0 #15803d; }
+  .race-opt.wrong { background: linear-gradient(180deg, #ef4444, #dc2626); box-shadow: 0 3px 0 #991b1b; }
+  .race-opt:disabled { cursor: not-allowed; }
+
+  .race-opt.bot-opt { cursor: default; opacity: 0.85; }
+  .race-opt.bot-opt.correct { opacity: 1; }
+
+  .race-finished {
+    text-align: center;
+    padding: 20px 8px;
+    font-weight: bold;
+    color: #1a1a2e;
+  }
+  .race-finished .trophy { font-size: 40px; display: block; margin-bottom: 6px; }
+  .race-finished .msg { font-size: 14px; line-height: 1.4; }
+
+  .race-winner {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 60;
+    color: white;
+    text-align: center;
+    padding: 24px;
+    backdrop-filter: blur(6px);
+  }
+  .race-winner h1 { font-size: 36px; margin-bottom: 12px; }
+  .race-winner h2 { font-size: 26px; margin-bottom: 16px; color: #fbbf24; }
+  .race-winner p { font-size: 15px; margin-bottom: 20px; line-height: 1.6; }
+  .race-winner button {
+    padding: 14px 36px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    background: linear-gradient(180deg, #22c55e, #16a34a);
+    color: white;
+    box-shadow: 0 5px 0 #15803d, 0 8px 20px rgba(0,0,0,0.3);
+    font-family: inherit;
+    margin: 6px;
+  }
+  .race-winner button.race-btn { background: linear-gradient(180deg, #f59e0b, #d97706); box-shadow: 0 5px 0 #b45309, 0 8px 20px rgba(0,0,0,0.3); }
+
+  .bot-config {
+    background: rgba(255,255,255,0.15);
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 320px;
+  }
+  .bot-config label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #fbbf24;
+  }
+  .bot-config .bot-options {
+    display: flex;
+    gap: 6px;
+  }
+  .bot-config .bot-opt-btn {
+    flex: 1;
+    padding: 8px 4px;
+    font-size: 12px;
+    font-weight: bold;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .bot-config .bot-opt-btn:hover { background: rgba(255,255,255,0.35); }
+  .bot-config .bot-opt-btn.selected {
+    background: #7c3aed;
+    border-color: #fbbf24;
+  }
+
+  /* Animação de perda de ponto */
+  @keyframes scoreDown {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); color: #ef4444; }
+    100% { transform: scale(1); }
+  }
+  .score-anim { animation: scoreDown 0.5s ease; }
+
+  @keyframes scoreUp {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); color: #22c55e; }
+    100% { transform: scale(1); }
+  }
+  .score-up-anim { animation: scoreUp 0.5s ease; }
+</style>
+</head>
+<body>
+<div id="game-container">
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+
+  <div id="ground"></div>
+
+  <div id="hud">
+    <div class="hud-box" id="score-box">⭐ <span id="score">0</span></div>
+    <div class="hud-box">❤️ <span id="lives">❤️❤️❤️</span></div>
+    <div class="hud-box">🏆 <span id="level">1</span></div>
+  </div>
+
+  <div id="turn-indicator" class="hidden">Jogador 1</div>
+
+  <div id="timer-bar-container">
+    <div id="timer-bar"></div>
+  </div>
+
+  <div id="player">
+    <div class="head">
+      <div class="eye left"></div>
+      <div class="eye right"></div>
+      <div class="mouth"></div>
+    </div>
+    <div class="torso"></div>
+    <div class="arm left"></div>
+    <div class="arm right"></div>
+    <div class="leg left"></div>
+    <div class="leg right"></div>
+  </div>
+
+  <div id="answers">
+    <button class="answer-btn" data-index="0">-</button>
+    <button class="answer-btn" data-index="1">-</button>
+    <button class="answer-btn" data-index="2">-</button>
+    <button class="answer-btn" data-index="3">-</button>
+  </div>
+
+  <div id="race-screen" class="hidden">
+    <div class="race-header">
+      <button class="race-back-btn" id="race-back">← Menu</button>
+      🏁 Corrida Matemática
+      <div class="race-goal" id="race-goal">Responda todas as contas o mais rápido que puder!</div>
+    </div>
+    <div class="race-lanes">
+      <div class="race-lane p1" id="race-lane-1">
+        <div class="race-lane-title" id="race-title-1">🔴 Jogador 1</div>
+        <div class="race-progress" id="race-progress-1">0 / 10</div>
+        <div id="race-questions-1"></div>
+      </div>
+      <div class="race-lane p2" id="race-lane-2">
+        <div class="race-lane-title" id="race-title-2">🔵 Jogador 2</div>
+        <div class="race-progress" id="race-progress-2">0 / 10</div>
+        <div id="race-questions-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="level-up"></div>
+  <div id="flash"></div>
+
+  <div id="overlay">
+    <h1>🔴 Math Fall</h1>
+    <p>Resolva a conta que está caindo <strong>RÁPIDO</strong>!<br>Você tem <strong>5 segundos</strong> por conta.<br>Começa fácil e vai ficando mais difícil a cada nível!</p>
+    <div class="mode-buttons">
+      <button id="start-1p">👤 1 Jogador</button>
+      <button id="start-2p" class="p2-btn">👥 2 Jogadores (turnos)</button>
+      <button id="start-race" class="race-btn">🏁 Corrida (2 jogadores)</button>
+      <button id="start-bot" class="bot-btn">🤖 Corrida vs Bot</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  const container = document.getElementById('game-container');
+  const player = document.getElementById('player');
+  const answerBtns = document.querySelectorAll('.answer-btn');
+  const answersEl = document.getElementById('answers');
+  const hudEl = document.getElementById('hud');
+  const timerBarContainer = document.getElementById('timer-bar-container');
+  const scoreEl = document.getElementById('score');
+  const livesEl = document.getElementById('lives');
+  const levelEl = document.getElementById('level');
+  const scoreBox = document.getElementById('score-box');
+  const turnIndicator = document.getElementById('turn-indicator');
+  const timerBar = document.getElementById('timer-bar');
+  const overlay = document.getElementById('overlay');
+  const flash = document.getElementById('flash');
+  const levelUpEl = document.getElementById('level-up');
+  const raceScreen = document.getElementById('race-screen');
+  const raceGoal = document.getElementById('race-goal');
+  const raceBackBtn = document.getElementById('race-back');
+
+  const TIME_LIMIT = 5;
+  const FALL_DURATION_BASE = 5000;
+  const FALL_DURATION_MIN = 2200;
+  const SPEED_PER_LEVEL = 350;
+  const ROUNDS_PER_PLAYER = 10;
+  const RACE_QUESTIONS = 10;
+  const RACE_DIFFICULTY = 3;
+
+  // ============ PONTUAÇÃO DA CORRIDA ============
+  const RACE_POINTS_PER_HIT = 1;
+  const RACE_PENALTY_PER_MISS = 1; // perde 1 ponto ao errar
+
+  const BOT_LEVELS = {
+    easy:   { name: '😊 Fácil',   minDelay: 2000, maxDelay: 3500, accuracy: 0.65 },
+    medium: { name: '😐 Médio',   minDelay: 1500, maxDelay: 2800, accuracy: 0.80 },
+    hard:   { name: '😈 Difícil', minDelay: 1000, maxDelay: 2000, accuracy: 0.92 }
+  };
+  let selectedBotLevel = 'medium';
+
+  let gameMode = 'menu';
+  let isMultiplayer = false;
+  let currentPlayer = 1;
+  let p1Score = 0, p2Score = 0;
+  let p1Lives = 3, p2Lives = 3;
+  let p1Rounds = 0, p2Rounds = 0;
+
+  let score = 0;
+  let lives = 3;
+  let level = 1;
+  let streak = 0;
+  let running = false;
+  let currentAnswer = null;
+  let fallingEl = null;
+  let fallStartTime = 0;
+  let fallAnimFrame = null;
+  let timerStart = 0;
+  let timerAnimFrame = null;
+  let answered = false;
+  let currentFallDuration = FALL_DURATION_BASE;
+
+  // Cada jogador tem um "score" próprio na corrida (pontos)
+  let race = {
+    p1: { questions: [], index: 0, correct: 0, points: 0, done: false, finishedTime: 0, isBot: false, botTimer: null },
+    p2: { questions: [], index: 0, correct: 0, points: 0, done: false, finishedTime: 0, isBot: false, botTimer: null },
+    active: false,
+    startTime: 0,
+    vsBot: false
+  };
+
+  function randInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function generateEquation(customLevel) {
+    const lvl = customLevel || level;
+    let types;
+    if (lvl === 1) types = ['soma', 'subtracao', 'dobro', 'metade'];
+    else if (lvl === 2) types = ['soma', 'subtracao', 'tabuada', 'dobro', 'metade'];
+    else if (lvl === 3) types = ['soma', 'subtracao', 'tabuada', 'divisao', 'dobro', 'metade'];
+    else if (lvl === 4) types = ['soma', 'subtracao', 'tabuada', 'divisao', 'dobro', 'metade'];
+    else if (lvl === 5) types = ['soma', 'subtracao', 'tabuada', 'divisao', 'dobro', 'triplo', 'metade'];
+    else types = ['soma', 'subtracao', 'tabuada', 'divisao', 'dobro', 'triplo', 'metade', 'problema'];
+
+    const type = types[Math.floor(Math.random() * types.length)];
+    let text, answer;
+
+    switch (type) {
+      case 'soma': {
+        let maxS;
+        if (lvl === 1) maxS = 10;
+        else if (lvl === 2) maxS = 20;
+        else if (lvl === 3) maxS = 40;
+        else if (lvl === 4) maxS = 60;
+        else if (lvl === 5) maxS = 99;
+        else maxS = 199;
+        const a = randInt(2, maxS);
+        const b = randInt(2, maxS);
+        text = `${a} + ${b}`;
+        answer = a + b;
+        break;
+      }
+      case 'subtracao': {
+        let maxS;
+        if (lvl === 1) maxS = 10;
+        else if (lvl === 2) maxS = 20;
+        else if (lvl === 3) maxS = 40;
+        else if (lvl === 4) maxS = 60;
+        else if (lvl === 5) maxS = 99;
+        else maxS = 199;
+        const a = randInt(10, maxS);
+        const b = randInt(2, a - 1);
+        text = `${a} − ${b}`;
+        answer = a - b;
+        break;
+      }
+      case 'tabuada': {
+        let maxT;
+        if (lvl === 2) maxT = 5;
+        else if (lvl === 3) maxT = 7;
+        else if (lvl === 4) maxT = 9;
+        else maxT = 10;
+        const a = randInt(2, maxT);
+        const b = randInt(1, 10);
+        text = Math.random() < 0.5 ? `${a} × ${b}` : `${b} × ${a}`;
+        answer = a * b;
+        break;
+      }
+      case 'divisao': {
+        let maxD;
+        if (lvl === 3) maxD = 5;
+        else if (lvl === 4) maxD = 7;
+        else maxD = 10;
+        const b = randInt(2, maxD);
+        const result = randInt(1, 10);
+        const a = b * result;
+        text = `${a} ÷ ${b}`;
+        answer = result;
+        break;
+      }
+      case 'dobro': {
+        let maxN;
+        if (lvl === 1) maxN = 10;
+        else if (lvl === 2) maxN = 20;
+        else if (lvl === 3) maxN = 30;
+        else if (lvl === 4) maxN = 40;
+        else maxN = 50;
+        const n = randInt(2, maxN);
+        text = `Dobro de ${n}`;
+        answer = n * 2;
+        break;
+      }
+      case 'triplo': {
+        const maxN = lvl >= 6 ? 30 : 15;
+        const n = randInt(2, maxN);
+        text = `Triplo de ${n}`;
+        answer = n * 3;
+        break;
+      }
+      case 'metade': {
+        let maxN;
+        if (lvl === 1) maxN = 10;
+        else if (lvl === 2) maxN = 20;
+        else if (lvl === 3) maxN = 30;
+        else if (lvl === 4) maxN = 40;
+        else maxN = 50;
+        const n = randInt(2, maxN) * 2;
+        text = `Metade de ${n}`;
+        answer = n / 2;
+        break;
+      }
+      case 'problema': {
+        const problemas = [
+          () => { const c = randInt(2, 5); const p = randInt(3, 8); return { text: `${c} caixas com ${p} frutas`, answer: c * p }; },
+          () => { const a = randInt(20, 80); const b = randInt(5, a - 1); return { text: `Tinha ${a} e gastei ${b}`, answer: a - b }; },
+          () => { const a = randInt(10, 30); const b = randInt(10, 30); return { text: `${a} + ${b} figurinhas`, answer: a + b }; },
+          () => { const amigos = randInt(2, 4); const cada = randInt(2, 6); return { text: `${amigos * cada} balas p/ ${amigos} amigos`, answer: cada }; }
+        ];
+        const p = problemas[randInt(0, problemas.length - 1)]();
+        text = p.text;
+        answer = p.answer;
+        break;
+      }
+    }
+    return { text, answer };
+  }
+
+  function generateOptions(correct) {
+    const options = new Set([correct]);
+    while (options.size < 4) {
+      let offset;
+      if (Math.abs(correct) > 50) offset = randInt(1, 20);
+      else if (Math.abs(correct) > 15) offset = randInt(1, 8);
+      else offset = randInt(1, 4);
+      let candidate = Math.random() < 0.5 ? correct + offset : correct - offset;
+      if (candidate >= 0 && candidate !== correct) options.add(candidate);
+    }
+    const arr = Array.from(options);
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  function getFallDuration() {
+    const dur = FALL_DURATION_BASE - (level - 1) * SPEED_PER_LEVEL;
+    return Math.max(FALL_DURATION_MIN, dur);
+  }
+
+  function showOnlyScreen(screen) {
+    const showFall = (screen === 'solo' || screen === 'versus');
+    hudEl.style.display = showFall ? '' : 'none';
+    timerBarContainer.style.display = showFall ? '' : 'none';
+    player.style.display = showFall ? '' : 'none';
+    answersEl.style.display = showFall ? '' : 'none';
+    document.getElementById('ground').style.display = showFall ? '' : 'none';
+    raceScreen.classList.toggle('hidden', screen !== 'race');
+  }
+
+  function updateTurnUI() {
+    if (gameMode === 'solo') {
+      turnIndicator.classList.add('hidden');
+      player.classList.remove('p2');
+      scoreBox.classList.remove('p1-active', 'p2-active');
+      return;
+    }
+    if (gameMode !== 'versus') return;
+    turnIndicator.classList.remove('hidden');
+    if (currentPlayer === 1) {
+      turnIndicator.textContent = `🔴 Jogador 1 (${p1Rounds}/${ROUNDS_PER_PLAYER})`;
+      turnIndicator.className = 'p1';
+      player.classList.remove('p2');
+      scoreBox.classList.add('p1-active');
+      scoreBox.classList.remove('p2-active');
+    } else {
+      turnIndicator.textContent = `🔵 Jogador 2 (${p2Rounds}/${ROUNDS_PER_PLAYER})`;
+      turnIndicator.className = 'p2';
+      player.classList.add('p2');
+      scoreBox.classList.add('p2-active');
+      scoreBox.classList.remove('p1-active');
+    }
+  }
+
+  function updateHUD() {
+    if (gameMode === 'versus') {
+      scoreEl.textContent = `${p1Score} × ${p2Score}`;
+      livesEl.textContent = `${'❤️'.repeat(Math.max(0, p1Lives))} | ${'💙'.repeat(Math.max(0, p2Lives))}`;
+      levelEl.textContent = level;
+    } else if (gameMode === 'solo') {
+      scoreEl.textContent = score;
+      livesEl.textContent = '❤️'.repeat(Math.max(0, lives));
+      levelEl.textContent = level;
+    }
+  }
+
+  function showLevelUp(newLevel) {
+    let msg = `Nível ${newLevel}!`;
+    if (newLevel === 2) msg = '⭐ Nível 2 — Tabuada!';
+    else if (newLevel === 3) msg = '⭐ Nível 3 — Divisão!';
+    else if (newLevel === 5) msg = '⭐ Nível 5 — Triplo!';
+    else if (newLevel === 6) msg = '🔥 Nível 6 — Problemas!';
+    else if (newLevel === 7) msg = '🔥 Nível 7 — Números grandes!';
+    else if (newLevel >= 8) msg = `🔥 Nível ${newLevel} — Difícil!`;
+    levelUpEl.textContent = msg;
+    levelUpEl.classList.remove('show');
+    void levelUpEl.offsetWidth;
+    levelUpEl.classList.add('show');
+  }
+
+  function newRound() {
+    if (!running) return;
+    answered = false;
+    cleanupFalling();
+    const eq = generateEquation();
+    currentAnswer = eq.answer;
+    currentFallDuration = getFallDuration();
+    fallingEl = document.createElement('div');
+    fallingEl.className = 'falling-equation';
+    fallingEl.textContent = eq.text + ' = ?';
+    if (eq.text.length > 22) {
+      fallingEl.style.fontSize = '15px';
+      fallingEl.style.whiteSpace = 'normal';
+      fallingEl.style.width = '200px';
+    }
+    const containerRect = container.getBoundingClientRect();
+    const maxLeft = Math.max(10, containerRect.width - 220 - 10);
+    fallingEl.style.left = Math.max(5, Math.random() * maxLeft) + 'px';
+    fallingEl.style.top = '-70px';
+    container.appendChild(fallingEl);
+    const options = generateOptions(eq.answer);
+    answerBtns.forEach((btn, i) => {
+      btn.textContent = options[i];
+      btn.disabled = false;
+      btn.className = 'answer-btn';
+      btn.dataset.value = options[i];
+    });
+    fallStartTime = performance.now();
+    animateFall();
+    timerStart = performance.now();
+    animateTimer();
+    updateTurnUI();
+  }
+
+  function animateFall() {
+    if (!running || !fallingEl || answered) return;
+    const elapsed = performance.now() - fallStartTime;
+    const progress = Math.min(elapsed / currentFallDuration, 1);
+    const containerHeight = container.clientHeight;
+    const startY = -70;
+    const endY = containerHeight - 140;
+    fallingEl.style.top = (startY + (endY - startY) * progress) + 'px';
+    if (progress >= 1) { onTimeout(); return; }
+    fallAnimFrame = requestAnimationFrame(animateFall);
+  }
+
+  function animateTimer() {
+    if (!running || answered) return;
+    const elapsed = performance.now() - timerStart;
+    const remaining = Math.max(0, 1 - elapsed / (TIME_LIMIT * 1000));
+    timerBar.style.width = (remaining * 100) + '%';
+    if (remaining > 0.5) timerBar.style.background = 'linear-gradient(90deg, #22c55e, #4ade80)';
+    else if (remaining > 0.25) timerBar.style.background = 'linear-gradient(90deg, #eab308, #facc15)';
+    else timerBar.style.background = 'linear-gradient(90deg, #ef4444, #f87171)';
+    if (remaining <= 0) { onTimeout(); return; }
+    timerAnimFrame = requestAnimationFrame(animateTimer);
+  }
+
+  function onTimeout() {
+    if (answered || !running) return;
+    answered = true;
+    cancelAnimations();
+    flashScreen('#ef4444', 0.3);
+    player.classList.add('shake');
+    setTimeout(() => player.classList.remove('shake'), 400);
+    answerBtns.forEach(btn => btn.disabled = true);
+    if (fallingEl) {
+      fallingEl.style.transition = 'opacity 0.3s';
+      fallingEl.style.opacity = '0';
+      setTimeout(() => { if (fallingEl) fallingEl.remove(); fallingEl = null; }, 300);
+    }
+    streak = 0;
+    if (gameMode === 'versus') {
+      if (currentPlayer === 1) { p1Lives = Math.max(0, p1Lives - 1); p1Rounds++; }
+      else { p2Lives = Math.max(0, p2Lives - 1); p2Rounds++; }
+      updateHUD();
+      if (p1Lives <= 0 || p2Lives <= 0) { setTimeout(gameOverVersus, 600); return; }
+      if (p1Rounds >= ROUNDS_PER_PLAYER && p2Rounds >= ROUNDS_PER_PLAYER) { setTimeout(gameOverVersus, 600); return; }
+      setTimeout(switchTurn, 800);
+    } else {
+      lives--;
+      updateHUD();
+      if (lives <= 0) setTimeout(gameOverSolo, 600);
+      else setTimeout(newRound, 800);
+    }
+  }
+
+  function handleAnswer(btn) {
+    if (answered || !running) return;
+    answered = true;
+    cancelAnimations();
+    const chosen = parseInt(btn.dataset.value);
+    const isCorrect = chosen === currentAnswer;
+    answerBtns.forEach(b => b.disabled = true);
+
+    if (isCorrect) {
+      btn.classList.add('correct');
+      const points = 10 + level * 3;
+      if (gameMode === 'versus') {
+        if (currentPlayer === 1) { p1Score += points; p1Rounds++; }
+        else { p2Score += points; p2Rounds++; }
+      } else { score += points; }
+      streak++;
+      if (streak > 0 && streak % 3 === 0 && level < 8) { level++; showLevelUp(level); }
+      updateHUD();
+      player.classList.add('jump');
+      setTimeout(() => player.classList.remove('jump'), 500);
+      spawnParticles(player.getBoundingClientRect(), '#22c55e');
+      flashScreen('#22c55e', 0.15);
+      if (fallingEl) {
+        fallingEl.style.transition = 'transform 0.4s, opacity 0.4s';
+        fallingEl.style.transform = 'scale(1.5)';
+        fallingEl.style.opacity = '0';
+        setTimeout(() => { if (fallingEl) fallingEl.remove(); fallingEl = null; }, 400);
+      }
+      if (gameMode === 'versus') {
+        if (p1Lives <= 0 || p2Lives <= 0) setTimeout(gameOverVersus, 700);
+        else if (p1Rounds >= ROUNDS_PER_PLAYER && p2Rounds >= ROUNDS_PER_PLAYER) setTimeout(gameOverVersus, 700);
+        else setTimeout(switchTurn, 500);
+      } else { setTimeout(newRound, 500); }
+    } else {
+      btn.classList.add('wrong');
+      answerBtns.forEach(b => { if (parseInt(b.dataset.value) === currentAnswer) b.classList.add('correct'); });
+      flashScreen('#ef4444', 0.25);
+      player.classList.add('shake');
+      setTimeout(() => player.classList.remove('shake'), 400);
+      streak = 0;
+      if (gameMode === 'versus') {
+        if (currentPlayer === 1) { p1Lives = Math.max(0, p1Lives - 1); p1Rounds++; }
+        else { p2Lives = Math.max(0, p2Lives - 1); p2Rounds++; }
+        updateHUD();
+      } else { lives--; updateHUD(); }
+      if (fallingEl) {
+        fallingEl.style.transition = 'opacity 0.4s';
+        fallingEl.style.opacity = '0';
+        setTimeout(() => { if (fallingEl) fallingEl.remove(); fallingEl = null; }, 400);
+      }
+      if (gameMode === 'versus') {
+        if (p1Lives <= 0 || p2Lives <= 0) setTimeout(gameOverVersus, 900);
+        else if (p1Rounds >= ROUNDS_PER_PLAYER && p2Rounds >= ROUNDS_PER_PLAYER) setTimeout(gameOverVersus, 900);
+        else setTimeout(switchTurn, 1000);
+      } else {
+        if (lives <= 0) setTimeout(gameOverSolo, 800);
+        else setTimeout(newRound, 1000);
+      }
+    }
+  }
+
+  function switchTurn() {
+    if (!running) return;
+    currentPlayer = currentPlayer === 1 ? 2 : 1;
+    updateTurnUI();
+    updateHUD();
+    newRound();
+  }
+
+  function spawnParticles(rect, color) {
+    for (let i = 0; i < 8; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.background = color;
+      p.style.left = (rect.left + rect.width / 2 - 5) + 'px';
+      p.style.top = (rect.top + rect.height / 2 - 5) + 'px';
+      const dx = (Math.random() - 0.5) * 120;
+      const dy = (Math.random() - 1) * 100 - 20;
+      p.style.setProperty('--dx', dx + 'px');
+      p.style.setProperty('--dy', dy + 'px');
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 700);
+    }
+  }
+
+  function flashScreen(color, opacity) {
+    flash.style.background = color;
+    flash.style.opacity = opacity;
+    setTimeout(() => { flash.style.opacity = '0'; }, 150);
+  }
+
+  function cancelAnimations() {
+    if (fallAnimFrame) { cancelAnimationFrame(fallAnimFrame); fallAnimFrame = null; }
+    if (timerAnimFrame) { cancelAnimationFrame(timerAnimFrame); timerAnimFrame = null; }
+  }
+
+  function cleanupFalling() {
+    if (fallingEl) { fallingEl.remove(); fallingEl = null; }
+    cancelAnimations();
+  }
+
+  function gameOverSolo() {
+    running = false;
+    cleanupFalling();
+    cancelAnimations();
+    overlay.classList.remove('hidden');
+    overlay.innerHTML = `
+      <h1>💀 Game Over!</h1>
+      <h2>Pontuação: ${score}</h2>
+      <p>Você chegou ao nível ${level} com ${score} pontos.<br>Tente novamente e bata seu recorde!</p>
+      <button id="restart-btn">🔄 JOGAR NOVAMENTE</button>
+    `;
+    document.getElementById('restart-btn').addEventListener('click', showMenu);
+  }
+
+  function gameOverVersus() {
+    running = false;
+    cleanupFalling();
+    cancelAnimations();
+    overlay.classList.remove('hidden');
+    let winner, msg;
+    if (p1Lives <= 0 && p2Lives <= 0) { msg = 'Os dois ficaram sem vidas!'; winner = p1Score > p2Score ? '🔴 Jogador 1' : (p2Score > p1Score ? '🔵 Jogador 2' : 'Empate!'); }
+    else if (p1Lives <= 0) { winner = '🔵 Jogador 2'; msg = 'Jogador 1 ficou sem vidas!'; }
+    else if (p2Lives <= 0) { winner = '🔴 Jogador 1'; msg = 'Jogador 2 ficou sem vidas!'; }
+    else { if (p1Score > p2Score) winner = '🔴 Jogador 1'; else if (p2Score > p1Score) winner = '🔵 Jogador 2'; else winner = 'Empate!'; msg = 'Fim das rodadas!'; }
+    overlay.innerHTML = `
+      <h1>🏆 Fim de Jogo!</h1>
+      <h2>Vencedor: ${winner}</h2>
+      <p><strong style="color:#ff6666">🔴 Jogador 1:</strong> ${p1Score} pontos<br>
+      <strong style="color:#6699ff">🔵 Jogador 2:</strong> ${p2Score} pontos<br><br>
+      ${msg}<br>Nível alcançado: ${level}</p>
+      <button id="restart-btn">🔄 JOGAR NOVAMENTE</button>
+    `;
+    document.getElementById('restart-btn').addEventListener('click', showMenu);
+  }
+
+  // ============ MODO CORRIDA ============
+  function buildRaceQuestion(difficulty) {
+    const eq = generateEquation(difficulty);
+    return {
+      text: eq.text,
+      answer: eq.answer,
+      options: generateOptions(eq.answer),
+      resolved: false
+    };
+  }
+
+  function clearBotTimer(playerNum) {
+    const lane = race['p' + playerNum];
+    if (lane && lane.botTimer) {
+      clearTimeout(lane.botTimer);
+      lane.botTimer = null;
+    }
+  }
+
+  function renderRaceLane(playerNum) {
+    const laneData = race['p' + playerNum];
+    if (!laneData) return;
+    const containerEl = document.getElementById('race-questions-' + playerNum);
+    const progressEl = document.getElementById('race-progress-' + playerNum);
+
+    // Mostra progresso e pontuação
+    const ptsClass = laneData.points < 0 ? 'negative' : '';
+    progressEl.innerHTML = `${laneData.index} / ${RACE_QUESTIONS} <span class="race-score ${ptsClass}">${laneData.points} pts</span>`;
+
+    containerEl.innerHTML = '';
+
+    if (laneData.done) {
+      const finishedDiv = document.createElement('div');
+      finishedDiv.className = 'race-finished';
+      finishedDiv.innerHTML = `
+        <span class="trophy">🏁</span>
+        <div class="msg">Terminou!<br>
+        Acertos: ${laneData.correct}/${RACE_QUESTIONS}<br>
+        Pontos: <strong>${laneData.points}</strong></div>
+      `;
+      containerEl.appendChild(finishedDiv);
+      return;
+    }
+
+    const q = laneData.questions[laneData.index];
+    if (!q) return;
+
+    const qDiv = document.createElement('div');
+    qDiv.className = 'race-question';
+
+    const textDiv = document.createElement('div');
+    textDiv.className = 'q-text';
+    textDiv.textContent = `${q.text} = ?`;
+
+    const optsDiv = document.createElement('div');
+    optsDiv.className = 'race-options';
+
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'race-opt';
+      if (laneData.isBot) btn.classList.add('bot-opt');
+      btn.textContent = opt;
+      if (!laneData.isBot) {
+        btn.addEventListener('click', () => handleRaceAnswer(playerNum, i, btn));
+      }
+      optsDiv.appendChild(btn);
+    });
+
+    qDiv.appendChild(textDiv);
+    qDiv.appendChild(optsDiv);
+    containerEl.appendChild(qDiv);
+
+    if (laneData.isBot && race.active) {
+      scheduleBotAnswer(playerNum);
+    }
+  }
+
+  function scheduleBotAnswer(playerNum) {
+    const laneData = race['p' + playerNum];
+    const cfg = BOT_LEVELS[selectedBotLevel];
+    if (!cfg || laneData.done || !race.active) return;
+
+    clearBotTimer(playerNum);
+
+    const delay = randInt(cfg.minDelay, cfg.maxDelay);
+    laneData.botTimer = setTimeout(() => {
+      if (!race.active || laneData.done) return;
+      const q = laneData.questions[laneData.index];
+      if (!q || q.resolved) return;
+
+      const willHit = Math.random() < cfg.accuracy;
+      let chosenIdx;
+      if (willHit) {
+        chosenIdx = q.options.findIndex(o => o === q.answer);
+      } else {
+        const wrongIdxs = [];
+        q.options.forEach((o, i) => { if (o !== q.answer) wrongIdxs.push(i); });
+        chosenIdx = wrongIdxs[randInt(0, wrongIdxs.length - 1)];
+      }
+      if (chosenIdx < 0) chosenIdx = 0;
+
+      const containerEl = document.getElementById('race-questions-' + playerNum);
+      const opts = containerEl.querySelectorAll('.race-opt');
+      if (opts[chosenIdx]) {
+        resolveRaceQuestion(playerNum, chosenIdx, opts);
+      }
+    }, delay);
+  }
+
+  function handleRaceAnswer(playerNum, optionIndex, btn) {
+    if (!race.active) return;
+    const laneData = race['p' + playerNum];
+    if (laneData.done || laneData.isBot) return;
+    const q = laneData.questions[laneData.index];
+    if (!q || q.resolved) return;
+    const opts = btn.parentElement.querySelectorAll('.race-opt');
+    resolveRaceQuestion(playerNum, optionIndex, opts);
+  }
+
+  function resolveRaceQuestion(playerNum, optionIndex, opts) {
+    const laneData = race['p' + playerNum];
+    const q = laneData.questions[laneData.index];
+    if (!q || q.resolved) return;
+    q.resolved = true;
+
+    clearBotTimer(playerNum);
+
+    const chosen = q.options[optionIndex];
+    const isCorrect = chosen === q.answer;
+
+    opts.forEach(b => b.disabled = true);
+
+    if (isCorrect) {
+      opts[optionIndex].classList.add('correct');
+      laneData.correct++;
+      laneData.points += RACE_POINTS_PER_HIT; // +1 ponto
+    } else {
+      opts[optionIndex].classList.add('wrong');
+      opts.forEach(b => {
+        if (parseInt(b.textContent) === q.answer) b.classList.add('correct');
+      });
+      laneData.points -= RACE_PENALTY_PER_MISS; // -1 ponto
+    }
+
+    // Atualiza a pontuação visível imediatamente com animação
+    const progressEl = document.getElementById('race-progress-' + playerNum);
+    if (progressEl) {
+      const ptsClass = laneData.points < 0 ? 'negative' : '';
+      progressEl.innerHTML = `${laneData.index} / ${RACE_QUESTIONS} <span class="race-score ${ptsClass}">${laneData.points} pts</span>`;
+      const scoreSpan = progressEl.querySelector('.race-score');
+      if (scoreSpan) {
+        scoreSpan.classList.add(isCorrect ? 'score-up-anim' : 'score-anim');
+      }
+    }
+
+    setTimeout(() => {
+      if (!race.active) return;
+      laneData.index++;
+      renderRaceLane(playerNum);
+      if (laneData.index >= RACE_QUESTIONS) {
+        laneData.done = true;
+        laneData.finishedTime = performance.now();
+        clearBotTimer(playerNum);
+        renderRaceLane(playerNum);
+        checkRaceWinner();
+      }
+    }, isCorrect ? 250 : 700);
+  }
+
+  function checkRaceWinner() {
+    if (!race.active) return;
+    const p1Done = race.p1.done;
+    const p2Done = race.p2.done;
+    if (!p1Done && !p2Done) return;
+
+    if (p1Done && p2Done) {
+      const t1 = race.p1.finishedTime - race.startTime;
+      const t2 = race.p2.finishedTime - race.startTime;
+      let winner, msg;
+      // Critério: mais PONTOS vence (não mais acertos)
+      if (race.p1.points > race.p2.points) {
+        winner = race.p1.isBot ? '🤖 Bot' : '🔴 Jogador 1';
+        msg = `Fez mais pontos! (${race.p1.points} × ${race.p2.points})`;
+      } else if (race.p2.points > race.p1.points) {
+        winner = race.p2.isBot ? '🤖 Bot' : '🔵 Jogador 2';
+        msg = `Fez mais pontos! (${race.p2.points} × ${race.p1.points})`;
+      } else {
+        if (t1 < t2) { winner = race.p1.isBot ? '🤖 Bot' : '🔴 Jogador 1'; msg = `Empate em pontos! Foi mais rápido!`; }
+        else if (t2 < t1) { winner = race.p2.isBot ? '🤖 Bot' : '🔵 Jogador 2'; msg = `Empate em pontos! Foi mais rápido!`; }
+        else { winner = 'Empate!'; msg = 'Empate total!'; }
+      }
+      showRaceWinner(winner, msg, t1, t2);
+    } else if (p1Done) {
+      raceGoal.textContent = `${race.p1.isBot ? '🤖 Bot' : '🔴 Jogador 1'} terminou! Aguardando o outro...`;
+    } else if (p2Done) {
+      raceGoal.textContent = `${race.p2.isBot ? '🤖 Bot' : '🔵 Jogador 2'} terminou! Aguardando o outro...`;
+    }
+  }
+
+  function showRaceWinner(winner, msg, t1, t2) {
+    race.active = false;
+    clearBotTimer(1);
+    clearBotTimer(2);
+    const winnerDiv = document.createElement('div');
+    winnerDiv.className = 'race-winner';
+    const fmt = (ms) => (ms / 1000).toFixed(1) + 's';
+    const name1 = race.p1.isBot ? '🤖 Bot' : '🔴 Jogador 1';
+    const name2 = race.p2.isBot ? '🤖 Bot' : '🔵 Jogador 2';
+    winnerDiv.innerHTML = `
+      <h1>🏁 Fim da Corrida!</h1>
+      <h2>Vencedor: ${winner}</h2>
+      <p>${msg}<br><br>
+      ${name1}: ${race.p1.points} pts (${race.p1.correct} acertos)<br>
+      ${name2}: ${race.p2.points} pts (${race.p2.correct} acertos)</p>
+      <button id="race-restart">🔄 NOVA CORRIDA</button>
+      <button id="race-menu" class="race-btn">🏠 MENU</button>
+    `;
+    container.appendChild(winnerDiv);
+    document.getElementById('race-restart').addEventListener('click', () => {
+      winnerDiv.remove();
+      const mode = race.vsBot ? 'bot' : 'human';
+      startRace(mode);
+    });
+    document.getElementById('race-menu').addEventListener('click', () => {
+      winnerDiv.remove();
+      showMenu();
+    });
+  }
+
+  function startRace(mode) {
+    gameMode = 'race';
+    isMultiplayer = false;
+    running = false;
+    cleanupFalling();
+    overlay.classList.add('hidden');
+    showOnlyScreen('race');
+
+    clearBotTimer(1);
+    clearBotTimer(2);
+
+    const isVsBot = (mode === 'bot');
+
+    race = {
+      p1: { questions: [], index: 0, correct: 0, points: 0, done: false, finishedTime: 0, isBot: false, botTimer: null },
+      p2: { questions: [], index: 0, correct: 0, points: 0, done: false, finishedTime: 0, isBot: isVsBot, botTimer: null },
+      active: true,
+      startTime: performance.now(),
+      vsBot: isVsBot
+    };
+
+    for (let i = 0; i < RACE_QUESTIONS; i++) {
+      race.p1.questions.push(buildRaceQuestion(RACE_DIFFICULTY));
+      race.p2.questions.push(buildRaceQuestion(RACE_DIFFICULTY));
+    }
+
+    const title1 = document.getElementById('race-title-1');
+    const title2 = document.getElementById('race-title-2');
+    const lane2 = document.getElementById('race-lane-2');
+    title1.textContent = '🔴 Jogador 1';
+    if (isVsBot) {
+      title2.textContent = '🤖 Bot (' + BOT_LEVELS[selectedBotLevel].name + ')';
+      lane2.className = 'race-lane bot';
+    } else {
+      title2.textContent = '🔵 Jogador 2';
+      lane2.className = 'race-lane p2';
+    }
+
+    raceGoal.textContent = isVsBot
+      ? `Você contra o bot! +1 por acerto, -1 por erro. Sem tempo limite.`
+      : `+1 por acerto, -1 por erro. Os dois respondem ${RACE_QUESTIONS} contas!`;
+
+    renderRaceLane(1);
+    renderRaceLane(2);
+  }
+
+  function showMenu() {
+    gameMode = 'menu';
+    running = false;
+    race.active = false;
+    clearBotTimer(1);
+    clearBotTimer(2);
+    cleanupFalling();
+    cancelAnimations();
+    overlay.classList.remove('hidden');
+    turnIndicator.classList.add('hidden');
+    player.classList.remove('p2');
+    scoreBox.classList.remove('p1-active', 'p2-active');
+    showOnlyScreen('menu');
+    hudEl.style.display = 'none';
+    timerBarContainer.style.display = 'none';
+    player.style.display = 'none';
+    answersEl.style.display = 'none';
+    document.getElementById('ground').style.display = 'none';
+    document.querySelectorAll('.race-winner').forEach(el => el.remove());
+
+    overlay.innerHTML = `
+      <h1>🔴 Math Fall</h1>
+      <p>Resolva a conta que está caindo <strong>RÁPIDO</strong>!</p>
+      <div class="mode-buttons">
+        <button id="start-1p">👤 1 Jogador</button>
+        <button id="start-2p" class="p2-btn">👥 2 Jogadores (turnos)</button>
+        <button id="start-race" class="race-btn">🏁 Corrida (2 jogadores)</button>
+        <button id="start-bot" class="bot-btn">🤖 Corrida vs Bot</button>
+      </div>
+    `;
+    document.getElementById('start-1p').addEventListener('click', () => startGame('solo'));
+    document.getElementById('start-2p').addEventListener('click', () => startGame('versus'));
+    document.getElementById('start-race').addEventListener('click', () => startRace('human'));
+    document.getElementById('start-bot').addEventListener('click', showBotSelect);
+  }
+
+  function showBotSelect() {
+    overlay.innerHTML = `
+      <h1>🤖 Corrida vs Bot</h1>
+      <p>Escolha a dificuldade do bot:<br><small>+1 ponto por acerto, −1 ponto por erro.</small></p>
+      <div class="bot-config">
+        <label>Dificuldade do Bot</label>
+        <div class="bot-options">
+          <button class="bot-opt-btn" data-bot="easy">😊 Fácil</button>
+          <button class="bot-opt-btn" data-bot="medium">😐 Médio</button>
+          <button class="bot-opt-btn" data-bot="hard">😈 Difícil</button>
+        </div>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; justify-content:center;">
+        <button id="bot-play">▶ JOGAR</button>
+        <button id="bot-cancel" style="background:linear-gradient(180deg,#6b7280,#4b5563); box-shadow:0 5px 0 #374151, 0 8px 20px rgba(0,0,0,0.3);">← Voltar</button>
+      </div>
+    `;
+    const botBtns = overlay.querySelectorAll('.bot-opt-btn');
+    function refreshBotSelection() {
+      botBtns.forEach(b => {
+        b.classList.toggle('selected', b.dataset.bot === selectedBotLevel);
+      });
+    }
+    refreshBotSelection();
+    botBtns.forEach(b => {
+      b.addEventListener('click', () => {
+        selectedBotLevel = b.dataset.bot;
+        refreshBotSelection();
+      });
+    });
+    document.getElementById('bot-play').addEventListener('click', () => startRace('bot'));
+    document.getElementById('bot-cancel').addEventListener('click', showMenu);
+  }
+
+  function startGame(mode) {
+    gameMode = mode;
+    isMultiplayer = (mode === 'versus');
+    score = 0; lives = 3; level = 1; streak = 0;
+    p1Score = 0; p2Score = 0;
+    p1Lives = 3; p2Lives = 3;
+    p1Rounds = 0; p2Rounds = 0;
+    currentPlayer = 1;
+    running = true;
+    answered = false;
+
+    updateHUD();
+    timerBar.style.width = '100%';
+    overlay.classList.add('hidden');
+    showOnlyScreen(mode);
+    hudEl.style.display = '';
+    timerBarContainer.style.display = '';
+    player.style.display = '';
+    answersEl.style.display = '';
+
+    answerBtns.forEach(b => {
+      b.disabled = false;
+      b.className = 'answer-btn';
+      b.textContent = '-';
+    });
+
+    cleanupFalling();
+    updateTurnUI();
+    newRound();
+  }
+
+  answerBtns.forEach(btn => {
+    btn.addEventListener('click', () => handleAnswer(btn));
+  });
+
+  raceBackBtn.addEventListener('click', () => {
+    if (race.active) {
+      if (confirm('Sair da corrida? O progresso será perdido.')) {
+        race.active = false;
+        clearBotTimer(1);
+        clearBotTimer(2);
+        showMenu();
+      }
+    } else {
+      showMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!running) return;
+    const idx = parseInt(e.key) - 1;
+    if (idx >= 0 && idx < 4) {
+      const btn = answerBtns[idx];
+      if (!btn.disabled) handleAnswer(btn);
+    }
+  });
+
+  document.addEventListener('dblclick', (e) => e.preventDefault());
+
+  showMenu();
+
+})();
+</script>
+</body>
+</html>

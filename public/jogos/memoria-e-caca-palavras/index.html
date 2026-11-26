@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://techonplay.com.br/categoria/jogos/jogos-educativos/memoria-e-caca-palavras/">
+    <title>Jogo da Memória + Caça-Palavras</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: #fff;
+  }
+  h1 { font-size: 1.6rem; margin-bottom: 10px; text-align: center; }
+  .status { margin-bottom: 15px; font-size: 1.1rem; }
+
+  .game-area {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  /* ---------- MEMÓRIA ---------- */
+  .board {
+    display: grid;
+    width: min(100%, 350px);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(5px, 2vw, 10px);
+  }
+  .card {
+    width: 100%; aspect-ratio: 1;
+    perspective: 600px;
+    cursor: pointer;
+  }
+  .card-inner {
+    position: relative;
+    width: 100%; height: 100%;
+    transition: transform 0.4s;
+    transform-style: preserve-3d;
+  }
+  .card.flipped .card-inner,
+  .card.matched .card-inner { transform: rotateY(180deg); }
+
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%; height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .card-back {
+    background: linear-gradient(145deg, #ff7e5f, #feb47b);
+    color: #fff;
+  }
+  .card-front {
+    background: #fff;
+    color: #333;
+    transform: rotateY(180deg);
+    font-size: clamp(.7rem, 2.6vw, 1.1rem);
+    overflow-wrap: anywhere;
+    padding: 4px;
+    text-align: center;
+  }
+  .card.matched .card-front { background: #c8f7c5; }
+
+  /* ---------- CAÇA-PALAVRAS ---------- */
+  .wordsearch-container {
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+    width: min(100%, 348px);
+  }
+  .wordsearch-container h2 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+    gap: 2px;
+    justify-content: center;
+  }
+  .cell {
+    width: 100%; aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: bold;
+    background: rgba(255,255,255,0.15);
+    border-radius: 4px;
+    transition: background 0.3s;
+  }
+  .cell.hidden-letter { color: transparent; }
+  .cell.revealed {
+    background: #ffd166;
+    color: #1e3c72;
+  }
+  .cell.found {
+    background: #06d6a0;
+    color: #fff;
+  }
+
+  .words-list {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    max-width: 340px;
+  }
+  .word-tag {
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.2);
+    font-size: 0.85rem;
+    transition: all 0.3s;
+  }
+  .word-tag.revealed { background: #ffd166; color: #1e3c72; font-weight: bold; }
+  .word-tag.found { background: #06d6a0; text-decoration: line-through; }
+
+  button {
+    margin-top: 20px;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 25px;
+    background: #ff7e5f;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  button:hover { transform: scale(1.05); }
+
+  .message {
+    margin-top: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffd166;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<h1>🧠 Jogo da Memória + 🔍 Caça-Palavras</h1>
+<div class="status" id="status">Pares encontrados: 0/6</div>
+
+<div class="game-area">
+  <!-- TABULEIRO DE MEMÓRIA -->
+  <div class="board" id="board"></div>
+
+  <!-- CAÇA-PALAVRAS -->
+  <div class="wordsearch-container">
+    <h2>🔍 Caça-Palavras</h2>
+    <div class="grid" id="grid"></div>
+    <div class="words-list" id="wordsList"></div>
+  </div>
+</div>
+
+<div class="message" id="message"></div>
+<button onclick="initGame()">🔄 Jogar Novamente</button>
+
+<script>
+/* ============================================================
+   CONFIGURAÇÃO
+   ============================================================ */
+const PAIRS = [
+  { word: 'GATO',   emoji: '🐱' },
+  { word: 'CACHORRO', emoji: '🐶' },
+  { word: 'LEAO',   emoji: '🦁' },
+  { word: 'PEIXE',  emoji: '🐟' },
+  { word: 'PASSARO', emoji: '🐦' },
+  { word: 'TARTARUGA', emoji: '🐢' }
+];
+
+const GRID_SIZE = 10;
+
+/* ============================================================
+   ESTADO
+   ============================================================ */
+let deck = [];
+let firstCard = null;
+let lockBoard = false;
+let matchedPairs = 0;
+let wsGrid = [];          // matriz do caça-palavras
+let wordPositions = {};   // posições de cada palavra
+let revealedWords = new Set();
+
+/* ============================================================
+   MEMÓRIA
+   ============================================================ */
+function buildDeck() {
+  deck = [];
+  PAIRS.forEach((p, idx) => {
+    deck.push({ id: idx, type: 'word',  content: p.word });
+    deck.push({ id: idx, type: 'emoji', content: p.emoji });
+  });
+  // embaralhar
+  for (let i = deck.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [deck[i], deck[j]] = [deck[j], deck[i]];
+  }
+}
+
+function renderBoard() {
+  const board = document.getElementById('board');
+  board.innerHTML = '';
+  deck.forEach((cardData, i) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.dataset.index = i;
+    card.innerHTML = `
+      <div class="card-inner">
+        <div class="card-back">?</div>
+        <div class="card-front">${cardData.content}</div>
+      </div>`;
+    card.addEventListener('click', () => flipCard(card, cardData));
+    board.appendChild(card);
+  });
+}
+
+function flipCard(card, cardData) {
+  if (lockBoard || card.classList.contains('flipped') || card.classList.contains('matched')) return;
+
+  card.classList.add('flipped');
+
+  if (!firstCard) {
+    firstCard = { card, cardData };
+    return;
+  }
+
+  lockBoard = true;
+  const second = { card, cardData };
+
+  if (firstCard.cardData.id === second.cardData.id &&
+      firstCard.cardData.type !== second.cardData.type) {
+    // PAR ENCONTRADO
+    setTimeout(() => {
+      firstCard.card.classList.add('matched');
+      second.card.classList.add('matched');
+      matchedPairs++;
+      updateStatus();
+
+      // revela a palavra no caça-palavras
+      revealWord(PAIRS[firstCard.cardData.id].word);
+
+      resetTurn();
+      checkWin();
+    }, 400);
+  } else {
+    // ERROU
+    setTimeout(() => {
+      firstCard.card.classList.remove('flipped');
+      second.card.classList.remove('flipped');
+      resetTurn();
+    }, 900);
+  }
+}
+
+function resetTurn() {
+  firstCard = null;
+  lockBoard = false;
+}
+
+function updateStatus() {
+  document.getElementById('status').textContent =
+    `Pares encontrados: ${matchedPairs}/${PAIRS.length}`;
+}
+
+function checkWin() {
+  if (matchedPairs === PAIRS.length) {
+    document.getElementById('message').textContent =
+      '🎉 Parabéns! Você encontrou todos os pares e completou o caça-palavras!';
+  }
+}
+
+/* ============================================================
+   CAÇA-PALAVRAS
+   ============================================================ */
+function createEmptyGrid() {
+  return Array.from({ length: GRID_SIZE }, () => Array(GRID_SIZE).fill(''));
+}
+
+function placeWordsInGrid() {
+  wsGrid = createEmptyGrid();
+  wordPositions = {};
+
+  const directions = [
+    [0, 1],   // horizontal →
+    [1, 0],   // vertical ↓
+    [1, 1],   // diagonal ↘
+  ];
+
+  PAIRS.forEach(({ word }) => {
+    let placed = false;
+    let attempts = 0;
+
+    while (!placed && attempts < 300) {
+      attempts++;
+      const dir = directions[Math.floor(Math.random() * directions.length)];
+      const maxRow = GRID_SIZE - (word.length - 1) * dir[0] - 1;
+      const maxCol = GRID_SIZE - (word.length - 1) * dir[1] - 1;
+
+      if (maxRow < 0 || maxCol < 0) continue;
+
+      const row = Math.floor(Math.random() * (maxRow + 1));
+      const col = Math.floor(Math.random() * (maxCol + 1));
+
+      // verifica se cabe
+      let fits = true;
+      for (let k = 0; k < word.length; k++) {
+        const r = row + k * dir[0];
+        const c = col + k * dir[1];
+        const cell = wsGrid[r][c];
+        if (cell !== '' && cell !== word[k]) { fits = false; break; }
+      }
+      if (!fits) continue;
+
+      // posiciona
+      const positions = [];
+      for (let k = 0; k < word.length; k++) {
+        const r = row + k * dir[0];
+        const c = col + k * dir[1];
+        wsGrid[r][c] = word[k];
+        positions.push([r, c]);
+      }
+      wordPositions[word] = positions;
+      placed = true;
+    }
+  });
+
+  // preenche vazios com letras aleatórias
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  for (let r = 0; r < GRID_SIZE; r++) {
+    for (let c = 0; c < GRID_SIZE; c++) {
+      if (wsGrid[r][c] === '') {
+        wsGrid[r][c] = letters[Math.floor(Math.random() * letters.length)];
+      }
+    }
+  }
+}
+
+function renderWordSearch() {
+  const gridEl = document.getElementById('grid');
+  gridEl.innerHTML = '';
+  for (let r = 0; r < GRID_SIZE; r++) {
+    for (let c = 0; c < GRID_SIZE; c++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell hidden-letter';
+      cell.dataset.row = r;
+      cell.dataset.col = c;
+      cell.textContent = wsGrid[r][c];
+      gridEl.appendChild(cell);
+    }
+  }
+}
+
+function renderWordsList() {
+  const list = document.getElementById('wordsList');
+  list.innerHTML = '';
+  PAIRS.forEach(({ word }) => {
+    const tag = document.createElement('span');
+    tag.className = 'word-tag hidden-word';
+    tag.dataset.word = word;
+    tag.textContent = word;
+    list.appendChild(tag);
+  });
+}
+
+function revealWord(word) {
+  if (revealedWords.has(word)) return;
+  revealedWords.add(word);
+
+  // atualiza tag
+  const tag = document.querySelector(`.word-tag[data-word="${word}"]`);
+  if (tag) {
+    tag.classList.remove('hidden-word');
+    tag.classList.add('revealed');
+  }
+
+  // revela letras no grid
+  const positions = wordPositions[word];
+  if (!positions) return;
+  positions.forEach(([r, c]) => {
+    const cell = document.querySelector(`.cell[data-row="${r}"][data-col="${c}"]`);
+    if (cell) {
+      cell.classList.remove('hidden-letter');
+      cell.classList.add('revealed');
+    }
+  });
+}
+
+/* ============================================================
+   INICIALIZAÇÃO
+   ============================================================ */
+function initGame() {
+  // reset estados
+  firstCard = null;
+  lockBoard = false;
+  matchedPairs = 0;
+  revealedWords = new Set();
+  document.getElementById('message').textContent = '';
+  updateStatus();
+
+  // memória
+  buildDeck();
+  renderBoard();
+
+  // caça-palavras
+  placeWordsInGrid();
+  renderWordSearch();
+  renderWordsList();
+}
+
+initGame();
+</script>
+</body>
+</html>

@@ -1,3 +1,5 @@
+import { educationalGames, educationalGamesHref } from './educationalGames';
+
 export interface Category {
   slug: string;
   name: string;
@@ -6,6 +8,7 @@ export interface Category {
   intro: string;
   // Temas (/tema/<slug>/) mostrados como subcategorias na página da categoria.
   subthemes?: string[];
+  subpages?: { name: string; href: string; count: number }[];
 }
 
 // Category pages are real, indexable URLs (/categoria/<slug>/). `name` must match the `category` field in the posts' frontmatter.
@@ -28,6 +31,7 @@ export const categories: Category[] = [
       'Lançamentos, requisitos de PC, hardware e novidades do mundo dos games, como Steam Machine, GTA 6 e Subway Surfers, com preço e data no Brasil.',
     intro:
       'Notícias e guias para quem joga no PC, no console e no celular: requisitos, preços em reais, ficha técnica de hardware e o que muda em cada atualização.',
+    subpages: [{ name: 'Jogos Educativos', href: educationalGamesHref, count: educationalGames.length }],
   },
   {
     slug: 'tutoriais',

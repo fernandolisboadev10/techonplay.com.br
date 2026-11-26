@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://techonplay.com.br/categoria/jogos/jogos-educativos/ping-pong-acert/">
+    <title>Ping Pong Acert 3D - Lógica 4º ano</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(145deg, #1a2a3a 0%, #0f1a24 100%);
+            perspective: 1200px;
+            padding: 16px;
+        }
+
+        .game-container {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(22, 40, 56, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 48px 48px 32px 32px;
+            box-shadow: 0 30px 40px rgba(0,0,0,0.7), inset 0 2px 4px rgba(255,255,255,0.1);
+            padding: 24px 24px 32px;
+            border: 1px solid rgba(120, 200, 255, 0.3);
+            transform-style: preserve-3d;
+            transition: transform 0.2s ease;
+        }
+
+        /* Cabeçalho 3D */
+        .header-3d {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 8px;
+            transform: translateZ(30px);
+        }
+
+        .title-3d {
+            font-size: 2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #d4f0ff;
+            text-shadow: 0 4px 0 #0a4b6e, 0 8px 12px black;
+            transform: rotateX(6deg) translateZ(20px);
+            background: linear-gradient(180deg, #ffffff, #8ad0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 6px 6px rgba(0,0,0,0.6));
+        }
+
+        .level-badge {
+            background: #1e3b4f;
+            padding: 10px 24px;
+            border-radius: 40px;
+            color: #b3e6ff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 0 #0a1e2b, 0 10px 20px black;
+            transform: rotateX(4deg) translateZ(10px);
+            border: 1px solid #3e7a9e;
+            text-shadow: 0 2px 0 #0a1e2b;
+            transition: all 0.3s;
+        }
+
+        /* Placar e status */
+        .score-panel {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 28, 40, 0.8);
+            padding: 16px 30px;
+            border-radius: 60px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 4px 8px rgba(0,0,0,0.6), 0 10px 15px rgba(0,0,0,0.5);
+            border: 1px solid #2c6f92;
+            transform: translateZ(20px);
+            backdrop-filter: blur(4px);
+        }
+
+        .score-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .score-label {
+            color: #9ac7e0;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .score-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #f0fcff;
+            text-shadow: 0 0 12px #2ab0ff, 0 4px 0 #0c3d55;
+            line-height: 1;
+        }
+
+        .question-area {
+            text-align: center;
+            background: linear-gradient(135deg, #0e2a3a, #143d53);
+            padding: 16px 10px;
+            border-radius: 40px;
+            margin-bottom: 16px;
+            border: 1px solid #3a8ab0;
+            box-shadow: 0 10px 0 #09222e, 0 12px 20px black;
+            transform: translateZ(10px);
+        }
+
+        .question-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ddf4ff;
+            text-shadow: 0 2px 0 #09455e;
+            letter-spacing: 1px;
+        }
+
+        /* Tabuleiro de respostas 3D */
+        .answer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin: 18px 0;
+            transform-style: preserve-3d;
+            perspective: 800px;
+        }
+
+        .answer-btn {
+            background: linear-gradient(145deg, #1e465a, #12303f);
+            border: none;
+            padding: 22px 12px;
+            border-radius: 30px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #e2f3ff;
+            text-shadow: 0 2px 0 #05202c;
+            box-shadow: 0 12px 0 #0b222d, 0 15px 25px rgba(0,0,0,0.7);
+            cursor: pointer;
+            transition: all 0.1s ease;
+            letter-spacing: 1px;
+            border: 1px solid #3683a8;
+            transform: rotateX(2deg) translateZ(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 90px;
+        }
+
+        .answer-btn:hover:not(:disabled) {
+            background: linear-gradient(145deg, #2b6380, #1b445a);
+            transform: rotateX(4deg) translateZ(15px) scale(1.02);
+            box-shadow: 0 10px 0 #0d3040, 0 20px 30px black;
+        }
+
+        .answer-btn:active:not(:disabled) {
+            transform: rotateX(2deg) translateZ(5px) translateY(6px);
+            box-shadow: 0 6px 0 #0b222d, 0 12px 20px black;
+        }
+
+        .answer-btn.correct {
+            background: linear-gradient(145deg, #1e8f5e, #0b6e44);
+            box-shadow: 0 8px 0 #06422a, 0 15px 25px black;
+            border-color: #5fe0a0;
+            color: white;
+        }
+
+        .answer-btn.wrong {
+            background: linear-gradient(145deg, #b13e3e, #8f2424);
+            box-shadow: 0 8px 0 #5e1515, 0 15px 25px black;
+            border-color: #f08080;
+        }
+
+        .answer-btn:disabled {
+            opacity: 0.8;
+            cursor: not-allowed;
+            transform: rotateX(0deg) translateZ(0);
+        }
+
+        /* Controles */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 20px;
+            transform: translateZ(15px);
+        }
+
+        .btn-control {
+            background: #2b4d63;
+            border: none;
+            padding: 16px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #d3edff;
+            box-shadow: 0 8px 0 #0e2532, 0 10px 20px black;
+            cursor: pointer;
+            transition: all 0.1s;
+            flex: 1;
+            border: 1px solid #4b8db0;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            transform: rotateX(1deg);
+        }
+
+        .btn-control:hover {
+            background: #3b6c88;
+            transform: translateY(-2px) rotateX(2deg);
+            box-shadow: 0 10px 0 #0e2532, 0 15px 25px black;
+        }
+
+        .btn-control:active {
+            transform: translateY(6px);
+            box-shadow: 0 4px 0 #0e2532, 0 10px 15px black;
+        }
+
+        .btn-control:disabled {
+            opacity: 0.4;
+            transform: translateY(0);
+            box-shadow: 0 4px 0 #0e2532, 0 8px 12px black;
+            pointer-events: none;
+        }
+
+        /* Feedback message */
+        .feedback {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-top: 12px;
+            min-height: 2.2rem;
+            color: #ffe484;
+            text-shadow: 0 2px 0 #6b4d00, 0 0 12px #ffbb00;
+            transform: translateZ(10px);
+            transition: 0.2s;
+        }
+
+        /* Efeito 3D extra */
+        .game-container::after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border-radius: 40px;
+            border: 1px solid rgba(100, 200, 255, 0.15);
+            pointer-events: none;
+            transform: translateZ(5px);
+        }
+
+        /* Responsivo */
+        @media (max-width: 600px) {
+            .title-3d { font-size: 1.3rem; letter-spacing: 2px; }
+            .question-text { font-size: 1.3rem; }
+            .answer-btn { font-size: 1.2rem; padding: 16px 6px; min-height: 70px; }
+            .score-value { font-size: 1.8rem; }
+            .btn-control { font-size: 1rem; padding: 12px 10px; }
+            .level-badge { font-size: 0.9rem; padding: 6px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="header-3d">
+            <div class="title-3d">🏓 PING PONG ACERT 3D</div>
+            <div class="level-badge" id="levelDisplay">FÁCIL</div>
+        </div>
+
+        <div class="score-panel">
+            <div class="score-item">
+                <span class="score-label">ACERTOS</span>
+                <span class="score-value" id="scoreValue">0</span>
+            </div>
+            <div class="score-item">
+                <span class="score-label">NÍVEL</span>
+                <span class="score-value" id="levelShort">1</span>
+            </div>
+            <div class="score-item">
+                <span class="score-label">SEQUÊNCIA</span>
+                <span class="score-value" id="streakValue">0</span>
+            </div>
+        </div>
+
+        <div class="question-area">
+            <div class="question-text" id="questionText">Carregando...</div>
+        </div>
+
+        <div class="answer-grid" id="answerGrid">
+            <!-- Botões de resposta gerados via JS -->
+        </div>
+
+        <div class="feedback" id="feedbackMessage">Escolha a resposta correta!</div>
+
+        <div class="controls">
+            <button class="btn-control" id="nextBtn" disabled>▶ PRÓXIMO</button>
+            <button class="btn-control" id="resetBtn">⟲ REINICIAR</button>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ==================== ELEMENTOS DOM ====================
+            const questionText = document.getElementById('questionText');
+            const answerGrid = document.getElementById('answerGrid');
+            const scoreValue = document.getElementById('scoreValue');
+            const streakValue = document.getElementById('streakValue');
+            const levelDisplay = document.getElementById('levelDisplay');
+            const levelShort = document.getElementById('levelShort');
+            const feedbackMessage = document.getElementById('feedbackMessage');
+            const nextBtn = document.getElementById('nextBtn');
+            const resetBtn = document.getElementById('resetBtn');
+
+            // ==================== ESTADO DO JOGO ====================
+            let currentLevel = 'facil';       // 'facil', 'medio', 'dificil'
+            let score = 0;
+            let streak = 0;
+            let currentQuestion = null;
+            let answered = false;
+            let correctAnswer = null;
+            let canProceed = false;
+
+            // ==================== BANCO DE PERGUNTAS DE LÓGICA (4º ANO) ====================
+            // Cada nível possui perguntas adequadas à complexidade.
+            const questionsDB = {
+                facil: [
+                    { question: "Quantos lados tem um triângulo?", options: ["3", "4", "5", "6"], answer: "3" },
+                    { question: "Qual é o próximo número? 2, 4, 6, 8, ...", options: ["9", "10", "11", "12"], answer: "10" },
+                    { question: "Se hoje é segunda-feira, amanhã será...", options: ["Domingo", "Terça-feira", "Quarta-feira", "Sábado"], answer: "Terça-feira" },
+                    { question: "Quantas patas tem uma aranha?", options: ["6", "8", "10", "12"], answer: "8" },
+                    { question: "Qual figura tem 4 lados iguais?", options: ["Quadrado", "Triângulo", "Círculo", "Estrela"], answer: "Quadrado" },
+                    { question: "Complete: 5 + 3 = ?", options: ["6", "7", "8", "9"], answer: "8" },
+                    { question: "Qual é o maior número?", options: ["15", "9", "21", "17"], answer: "21" },
+                    { question: "Se você tem 3 maçãs e ganha mais 2, quantas tem?", options: ["4", "5", "6", "3"], answer: "5" },
+                    { question: "O que vem depois do 10?", options: ["8", "11", "12", "9"], answer: "11" },
+                    { question: "Quantos meses tem um ano?", options: ["10", "11", "12", "13"], answer: "12" },
+                    { question: "Qual animal tem 4 patas?", options: ["Pato", "Cachorro", "Galinha", "Peixe"], answer: "Cachorro" },
+                    { question: "Complete a sequência: A, B, C, ...", options: ["E", "D", "F", "G"], answer: "D" }
+                ],
+                medio: [
+                    { question: "Qual é o próximo número? 1, 4, 9, 16, ...", options: ["20", "25", "24", "36"], answer: "25" },
+                    { question: "Se 10 - 4 = 6, então 6 + 4 = ?", options: ["8", "10", "12", "9"], answer: "10" },
+                    { question: "Quantos lados tem um hexágono?", options: ["5", "6", "7", "8"], answer: "6" },
+                    { question: "Qual é a metade de 20?", options: ["5", "10", "15", "8"], answer: "10" },
+                    { question: "Qual número é par?", options: ["7", "13", "8", "11"], answer: "8" },
+                    { question: "Complete: 7 x 2 = ?", options: ["12", "14", "16", "10"], answer: "14" },
+                    { question: "Se uma dúzia são 12, meia dúzia são...", options: ["5", "6", "7", "8"], answer: "6" },
+                    { question: "Qual é o resultado de 9 + 6?", options: ["13", "14", "15", "16"], answer: "15" },
+                    { question: "Quanto é 3 x 5?", options: ["10", "12", "15", "18"], answer: "15" },
+                    { question: "Se você tem 2 dezenas, quantas unidades tem?", options: ["10", "20", "12", "22"], answer: "20" },
+                    { question: "Qual é o próximo número? 20, 18, 16, 14, ...", options: ["13", "12", "11", "10"], answer: "12" },
+                    { question: "Qual figura tem 3 lados?", options: ["Quadrado", "Triângulo", "Retângulo", "Pentágono"], answer: "Triângulo" },
+                    { question: "Se 5 + 5 = 10, quanto é 10 - 5?", options: ["2", "5", "10", "15"], answer: "5" },
+                    { question: "Quantos dedos temos em duas mãos?", options: ["5", "8", "10", "12"], answer: "10" }
+                ],
+                dificil: [
+                    { question: "Qual é o próximo número? 2, 6, 12, 20, ...", options: ["28", "30", "32", "24"], answer: "30" },
+                    { question: "Se 3 x 4 = 12, então 4 x 3 = ?", options: ["12", "16", "10", "14"], answer: "12" },
+                    { question: "Qual é o resultado de 15 - 6 + 2?", options: ["9", "10", "11", "12"], answer: "11" },
+                    { question: "Quantos minutos tem meia hora?", options: ["20", "25", "30", "45"], answer: "30" },
+                    { question: "Qual é o próximo número? 100, 90, 80, ...", options: ["70", "75", "60", "85"], answer: "70" },
+                    { question: "Se um triângulo tem 3 lados, dois triângulos têm quantos lados?", options: ["5", "6", "7", "8"], answer: "6" },
+                    { question: "Quanto é 8 + 7 - 5?", options: ["8", "9", "10", "11"], answer: "10" },
+                    { question: "Qual é o dobro de 25?", options: ["30", "40", "50", "45"], answer: "50" },
+                    { question: "Qual número é ímpar?", options: ["14", "22", "17", "36"], answer: "17" },
+                    { question: "Se 10 + 10 = 20, quanto é 20 - 10?", options: ["5", "10", "15", "20"], answer: "10" },
+                    { question: "Qual é o próximo número? 1, 2, 4, 8, ...", options: ["10", "12", "16", "14"], answer: "16" },
+                    { question: "Quantos lados tem um octógono?", options: ["6", "7", "8", "9"], answer: "8" },
+                    { question: "Qual é o resultado de 6 x 3?", options: ["12", "15", "18", "21"], answer: "18" },
+                    { question: "Se uma semana tem 7 dias, duas semanas têm...", options: ["10", "12", "14", "16"], answer: "14" }
+                ]
+            };
+
+            // ==================== FUNÇÕES AUXILIARES ====================
+            function shuffleArray(arr) {
+                for (let i = arr.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                }
+                return arr;
+            }
+
+            // Atualiza os elementos de exibição de nível/placar
+            function updateUI() {
+                scoreValue.textContent = score;
+                streakValue.textContent = streak;
+                if (currentLevel === 'facil') {
+                    levelDisplay.textContent = 'FÁCIL';
+                    levelShort.textContent = '1';
+                } else if (currentLevel === 'medio') {
+                    levelDisplay.textContent = 'MÉDIO';
+                    levelShort.textContent = '2';
+                } else {
+                    levelDisplay.textContent = 'DIFÍCIL';
+                    levelShort.textContent = '3';
+                }
+            }
+
+            // Sorteia uma pergunta do nível atual, embaralha opções
+            function getRandomQuestion(level) {
+                const pool = questionsDB[level];
+                const randomIndex = Math.floor(Math.random() * pool.length);
+                const q = pool[randomIndex];
+                const shuffledOptions = shuffleArray([...q.options]);
+                return {
+                    question: q.question,
+                    options: shuffledOptions,
+                    answer: q.answer
+                };
+            }
+
+            // Renderiza a pergunta atual na tela
+            function renderQuestion() {
+                if (!currentQuestion) return;
+                questionText.textContent = currentQuestion.question;
+                answerGrid.innerHTML = '';
+
+                currentQuestion.options.forEach(option => {
+                    const btn = document.createElement('button');
+                    btn.classList.add('answer-btn');
+                    btn.textContent = option;
+                    btn.dataset.value = option;
+                    btn.addEventListener('click', () => handleAnswer(option, btn));
+                    answerGrid.appendChild(btn);
+                });
+
+                // Habilita/desabilita botão próximo conforme estado
+                nextBtn.disabled = true;
+                answered = false;
+                canProceed = false;
+                feedbackMessage.textContent = 'Escolha a resposta correta!';
+                feedbackMessage.style.color = '#ffe484';
+            }
+
+            // Processa a resposta do jogador
+            function handleAnswer(selected, btnElement) {
+                if (answered) return; // evita dupla resposta
+
+                answered = true;
+                const isCorrect = (selected === currentQuestion.answer);
+
+                // Desabilita todos os botões
+                const allBtns = document.querySelectorAll('.answer-btn');
+                allBtns.forEach(btn => {
+                    btn.disabled = true;
+                    // Marca a correta e a errada (se errou)
+                    if (btn.dataset.value === currentQuestion.answer) {
+                        btn.classList.add('correct');
+                    } else if (btn === btnElement && !isCorrect) {
+                        btn.classList.add('wrong');
+                    }
+                });
+
+                // Se acertou, também destaca o botão como correto (já feito acima)
+                if (isCorrect) {
+                    score++;
+                    streak++;
+                    feedbackMessage.textContent = '✔️ ACERTOU! Muito bem!';
+                    feedbackMessage.style.color = '#a0ffb0';
+                } else {
+                    streak = 0;
+                    feedbackMessage.textContent = `❌ ERROU! A resposta correta é ${currentQuestion.answer}`;
+                    feedbackMessage.style.color = '#ffa7a7';
+                }
+
+                // Atualiza a interface
+                updateUI();
+                // Habilita botão próximo
+                canProceed = true;
+                nextBtn.disabled = false;
+            }
+
+            // Avança para a próxima pergunta (mantendo o nível)
+            function nextQuestion() {
+                if (!canProceed) return;
+
+                // Se o streak for muito alto, podemos aumentar a dificuldade?
+                // Mas o nível é controlado manualmente pelos botões, então mantemos.
+                // Apenas sorteia nova pergunta do nível atual.
+                currentQuestion = getRandomQuestion(currentLevel);
+                renderQuestion();
+                // Reabilita botão próximo? já é desabilitado no render.
+                // Reseta o feedback visual dos botões
+            }
+
+            // Reinicia o jogo (mantendo o nível atual)
+            function resetGame() {
+                score = 0;
+                streak = 0;
+                answered = false;
+                canProceed = false;
+                updateUI();
+                currentQuestion = getRandomQuestion(currentLevel);
+                renderQuestion();
+                nextBtn.disabled = true;
+                feedbackMessage.textContent = 'Jogo reiniciado! Escolha a resposta.';
+                feedbackMessage.style.color = '#ffe484';
+            }
+
+            // Muda o nível de dificuldade
+            function setLevel(level) {
+                if (level === currentLevel) return;
+                currentLevel = level;
+                // Reinicia o placar? Manteremos o placar mas o nível muda.
+                // É mais educativo manter o placar, mas pode ficar estranho. Vamos zerar para evitar confusão.
+                score = 0;
+                streak = 0;
+                answered = false;
+                canProceed = false;
+                updateUI();
+                currentQuestion = getRandomQuestion(currentLevel);
+                renderQuestion();
+                nextBtn.disabled = true;
+                feedbackMessage.textContent = `Nível ${level === 'facil' ? 'Fácil' : level === 'medio' ? 'Médio' : 'Difícil'} selecionado!`;
+                feedbackMessage.style.color = '#b3e6ff';
+            }
+
+            // ==================== CRIA BOTÕES DE NÍVEL ====================
+            function createLevelButtons() {
+                // Vamos adicionar botões de nível no painel de controles?
+                // Melhor: modificar os controles para incluir três botões de nível.
+                // Como já temos dois botões (próximo e reiniciar), vamos recriar a área de controles
+                // Mas o layout pede apenas dois botões? Vamos adicionar um seletor extra.
+                // Solução: adicionar uma div extra antes dos controles com os botões de nível.
+                const controlsDiv = document.querySelector('.controls');
+                // Remove os botões existentes para recriar com os níveis? Melhor manter e adicionar acima.
+                // Vamos inserir uma nova div após o feedback.
+                const feedback = document.getElementById('feedbackMessage');
+                const levelSelector = document.createElement('div');
+                levelSelector.style.display = 'flex';
+                levelSelector.style.justifyContent = 'center';
+                levelSelector.style.gap = '12px';
+                levelSelector.style.marginTop = '16px';
+                levelSelector.style.transform = 'translateZ(15px)';
+                levelSelector.innerHTML = `
+                    <button class="btn-control" id="levelFacil" style="flex:1; background:#1e5f4b; box-shadow:0 8px 0 #0a3326;">FÁCIL</button>
+                    <button class="btn-control" id="levelMedio" style="flex:1; background:#7a5d1e; box-shadow:0 8px 0 #3f2e0a;">MÉDIO</button>
+                    <button class="btn-control" id="levelDificil" style="flex:1; background:#7a1e1e; box-shadow:0 8px 0 #3f0a0a;">DIFÍCIL</button>
+                `;
+                // Insere antes dos controles principais
+                controlsDiv.parentNode.insertBefore(levelSelector, controlsDiv);
+
+                // Adiciona eventos
+                document.getElementById('levelFacil').addEventListener('click', () => setLevel('facil'));
+                document.getElementById('levelMedio').addEventListener('click', () => setLevel('medio'));
+                document.getElementById('levelDificil').addEventListener('click', () => setLevel('dificil'));
+            }
+
+            // ==================== INICIALIZAÇÃO ====================
+            function initGame() {
+                // Cria os botões de nível
+                createLevelButtons();
+
+                // Define nível inicial
+                currentLevel = 'facil';
+                score = 0;
+                streak = 0;
+                updateUI();
+
+                // Primeira pergunta
+                currentQuestion = getRandomQuestion(currentLevel);
+                renderQuestion();
+
+                // Eventos dos botões principais
+                nextBtn.addEventListener('click', nextQuestion);
+                resetBtn.addEventListener('click', resetGame);
+
+                // Ajuste no reiniciar: também zera streak e score
+                // O resetGame já faz isso.
+            }
+
+            // Executa após carregar o DOM
+            window.addEventListener('DOMContentLoaded', initGame);
+        })();
+    </script>
+</body>
+</html>

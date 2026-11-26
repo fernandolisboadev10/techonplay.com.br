@@ -13,11 +13,14 @@ export async function getStaticPaths() {
     props: {
       category,
       posts: all.filter((p) => p.data.category === category.name),
-      subs: (category.subthemes ?? [])
-        .map((s) => themes.find((t) => t.slug === s))
-        .filter((t) => t)
-        .map((t) => ({ name: t.name, href: themeHref(t.slug), count: all.filter((p) => matchesTheme(t, p.id, p.data.tags ?? [])).length }))
-        .filter((s) => s.count >= MIN_THEME_POSTS),
+      subs: [
+        ...(category.subpages ?? []),
+        ...(category.subthemes ?? [])
+          .map((s) => themes.find((t) => t.slug === s))
+          .filter((t) => t)
+          .map((t) => ({ name: t.name, href: themeHref(t.slug), count: all.filter((p) => matchesTheme(t, p.id, p.data.tags ?? [])).length }))
+          .filter((s) => s.count >= MIN_THEME_POSTS),
+      ],
     },
   }));
 }

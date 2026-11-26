@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://techonplay.com.br/categoria/jogos/jogos-educativos/labirinto-epico/">
+    <link rel="stylesheet" href="../shared/game-question.css">
+    <title>Labirinto Épico</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    background: radial-gradient(circle at 50% 0%, #2a2a4a 0%, #0f0f1a 70%);
+    color: #fff; font-family: 'Segoe UI', Arial, sans-serif;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-height: 100vh; min-height: 100dvh; margin: 0; padding: 10px;
+  }
+  h1 { margin: 5px 0; font-size: 22px; color: #4fd1c5; text-shadow: 0 0 10px rgba(79,209,197,.6); letter-spacing: 2px; }
+  .ano-jogo { display: flex; align-items: center; gap: 8px; margin: 2px 0 8px; font-size: 13px; color: #d8eaf1; }
+  .ano-jogo select { min-height: 44px; padding: 0 8px; border: 1px solid #65d5ce; border-radius: 6px; background: #17283a; color: #f4fcff; font: inherit; color-scheme: dark; }
+  .ano-jogo select:disabled { opacity: 1; border-color: #63768a; color: #d1dbe5; }
+  #hud { display: flex; gap: 10px; margin-bottom: 8px; font-size: 13px; flex-wrap: wrap; justify-content: center; }
+  .hud-item { background: rgba(79,209,197,.15); padding: 5px 10px; border-radius: 6px; border: 1px solid rgba(79,209,197,.4); }
+  .hud-item .valor { color: #4fd1c5; font-weight: bold; }
+  canvas { background: #0a0a14; border: 3px solid #4fd1c5; border-radius: 8px; box-shadow: 0 0 25px rgba(79,209,197,.4); width: min(100%, 520px, 58vh); width: min(100%, 520px, 58dvh); height: auto; }
+  #mensagem { margin-top: 8px; font-size: 14px; min-height: 22px; text-align: center; font-weight: bold; }
+  #mensagem.ok { color: #4ade80; } #mensagem.erro { color: #f87171; } #mensagem.info { color: #fbbf24; }
+  .controles { margin: 0; font-size: 13px; color: #c7c7dd; text-align: center; }
+  .acoes { display: flex; flex-wrap: wrap; justify-content: center; }
+  button { min-height: 44px; margin: 4px; padding: 8px 12px; background: linear-gradient(180deg, #4fd1c5, #38b2ac); border: none; border-radius: 6px; color: #0f0f1a; font-weight: bold; cursor: pointer; font-size: 13px; }
+  button:hover { transform: scale(1.05); }
+  #direcoes { display: none; grid-template-columns: repeat(4, minmax(55px, 1fr)); gap: 6px; width: min(100%, 19rem); margin: 8px 0 2px; }
+  #direcoes button { min-height: 50px; margin: 0; padding: 0; font-size: 24px; touch-action: none; user-select: none; }
+  #direcoes button:active { background: #b8f6ed; transform: none; }
+  @media (any-pointer: coarse), (max-width: 640px) {
+    #direcoes { display: grid; }
+    canvas { width: min(100%, 520px, 54dvh); }
+    #hud { gap: 5px; }
+    .hud-item { padding: 4px 6px; }
+  }
+  @media (orientation: landscape) and (max-height: 500px) {
+    canvas { width: min(100%, 340px); }
+  }
+  #overlay { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none; align-items: center; justify-content: center; flex-direction: column; z-index: 100; text-align: center; padding: 20px; }
+  #overlay.show { display: flex; }
+  #overlay h2 { font-size: 28px; margin: 10px; color: #4fd1c5; }
+  #overlay p { font-size: 15px; color: #ccc; margin: 5px; white-space: pre-line; }
+</style>
+</head>
+<body>
+
+<h1>🌀 LABIRINTO ÉPICO</h1>
+
+<div class="ano-jogo">
+  <label for="ano-escolar">Ano escolar</label>
+  <select id="ano-escolar" aria-describedby="ano-ajuda">
+    <option value="4">4º ano</option>
+    <option value="5">5º ano</option>
+    <option value="6">6º ano</option>
+    <option value="7">7º ano</option>
+  </select>
+</div>
+
+<div id="hud">
+  <div class="hud-item">🏁 Fase <span class="valor" id="fase">1</span>/5</div>
+  <div class="hud-item">⏱️ <span class="valor" id="tempo">0.0</span>s</div>
+  <div class="hud-item">🪙 <span class="valor" id="moedas">0</span>/<span id="moedasTotal">0</span></div>
+  <div class="hud-item">❤️ <span id="vidas">3</span></div>
+  <div class="hud-item">🏆 Recorde: <span class="valor" id="recorde">-</span></div>
+  <div class="hud-item">Portal: <span class="valor" id="operacao">Adição</span></div>
+</div>
+
+<canvas id="canvas" width="520" height="520"></canvas>
+<div id="direcoes" role="group" aria-label="Mover no labirinto">
+  <button type="button" data-key="ArrowLeft" aria-label="Mover para a esquerda">←</button>
+  <button type="button" data-key="ArrowUp" aria-label="Mover para cima">↑</button>
+  <button type="button" data-key="ArrowDown" aria-label="Mover para baixo">↓</button>
+  <button type="button" data-key="ArrowRight" aria-label="Mover para a direita">→</button>
+</div>
+<div id="mensagem" class="info" role="status"></div>
+<p class="controles">Use as setas para mover. Colete as moedas e acerte a conta no portal.</p>
+<p class="controles" id="ano-ajuda">Escolha o ano antes de mover ou ao iniciar um novo jogo.</p>
+
+<div class="acoes">
+  <button type="button" id="pausar">Pausar</button>
+  <button type="button" id="reiniciar-fase">Reiniciar fase</button>
+  <button type="button" id="reiniciar-jogo">Novo jogo</button>
+</div>
+
+<div id="overlay">
+  <h2 id="overlayTitulo"></h2>
+  <p id="overlayTexto"></p>
+  <button id="overlayBtn">Continuar</button>
+</div>
+
+<script type="module">
+import { askGameQuestion } from '../shared/game-question.js';
+import { criarDesafioDoLabirinto, operacoesDoLabirinto } from '../shared/maze-math.js';
+
+// ========= CONFIG =========
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const TAM = 40, LINHAS = 13, COLUNAS = 13, MAX_VIDAS = 3;
+
+const elFase = document.getElementById('fase');
+const elTempo = document.getElementById('tempo');
+const elMoedas = document.getElementById('moedas');
+const elMoedasTotal = document.getElementById('moedasTotal');
+const elVidas = document.getElementById('vidas');
+const elRecorde = document.getElementById('recorde');
+const elOperacao = document.getElementById('operacao');
+const anoEscolar = document.getElementById('ano-escolar');
+const elMsg = document.getElementById('mensagem');
+const overlay = document.getElementById('overlay');
+const pausaBtn = document.getElementById('pausar');
+
+// ========= MAPAS =========
+// 1=parede, 0=livre. Início e portal são definidos explicitamente por posição.
+const FASES = [
+  { // Fase 1
+    mapa: [
+      [1,1,1,1,1,1,1,1,1,1,1,1,1],
+      [1,0,0,0,1,0,0,0,0,0,0,0,1],
+      [1,0,1,0,1,0,1,1,1,1,1,0,1],
+      [1,0,1,0,0,0,0,0,0,1,0,0,1],
+      [1,0,1,1,1,1,1,1,0,1,0,1,1],
+      [1,0,0,0,0,0,0,1,0,1,0,0,1],
+      [1,1,1,1,1,1,0,1,0,1,1,0,1],
+      [1,0,0,0,0,1,0,1,0,0,0,0,1],
+      [1,0,1,1,0,1,0,1,1,1,1,0,1],
+      [1,0,1,0,0,0,0,0,0,0,0,0,1],
+      [1,0,0,0,1,1,1,1,1,1,1,0,1],
+      [1,1,0,0,0,0,0,0,0,0,0,0,1],
+      [1,1,1,1,1,1,1,1,1,1,1,1,1]
+    ],
+    startPos: [1,1], portalPos: [11,11], tempoMax: 60, inimigos: [],
+    moedas: [[5,3],[9,3],[3,7],[7,9],[11,5]]
+  },
+  { // Fase 2
+    mapa: [
+      [1,1,1,1,1,1,1,1,1,1,1,1,1],
+      [1,0,0,0,1,0,0,0,0,0,0,0,1],
+      [1,0,1,0,1,0,1,1,1,0,1,0,1],
+      [1,0,1,0,0,0,0,0,1,0,1,0,1],
+      [1,0,1,1,1,0,1,0,1,0,1,0,1],
+      [1,0,0,0,1,0,1,0,0,0,1,0,1],
+      [1,1,1,0,1,0,1,1,1,1,1,0,1],
+      [1,0,0,0,1,0,0,0,0,0,0,0,1],
+      [1,0,1,1,1,1,1,1,1,1,1,0,1],
+      [1,0,0,0,0,0,0,0,0,0,1,0,1],
+      [1,1,1,1,1,1,0,1,1,1,1,0,1],
+      [1,0,0,0,0,0,0,1,0,0,0,0,1],
+      [1,1,1,1,1,1,1,1,1,1,1,1,1]
+    ],
+    startPos: [1,1], portalPos: [11,11], tempoMax: 70,
+    inimigos: [{linha:11, coluna:6, dir:'vertical', min:8, max:11}],
+    moedas: [[3,7],[7,3],[9,9],[5,5],[3,11],[9,1]]
+  },
+  { // Fase 3
+    mapa: [
+      [1,1,1,1,1,1,1,1,1,1,1,1,1],
+      [1,0,0,1,0,0,0,0,0,1,0,0,1],
+      [1,0,0,1,0,1,1,1,0,1,0,1,1],
+      [1,1,0,1,0,0,0,1,0,0,0,0,1],
+      [1,0,0,0,1,1,0,1,1,1,1,0,1],
+      [1,0,1,0,0,0,0,0,0,0,1,0,1],
+      [1,0,1,1,1,1,1,1,1,0,1,0,1],
+      [1,0,0,0,0,0,0,0,1,0,0,0,1],
+      [1,1,1,1,0,1,1,0,1,1,1,0,1],
+      [1,0,0,0,0,0,1,0,0,0,0,0,1],
+      [1,0,1,1,1,0,1,1,1,1,1,0,1],
+      [1,0,0,0,1,0,0,0,0,0,0,0,1],
+      [1,1,1,1,1,1,1,1,1,1,1,1,1]
+    ],
+    startPos: [1,1], portalPos: [11,11], tempoMax: 65,
+    inimigos: [
+      {linha:7, coluna:8, dir:'horizontal', min:4, max:11},
+      {linha:11, coluna:6, dir:'vertical', min:8, max:11}
+    ],
+    moedas: [[3,5],[7,5],[5,9],[9,7],[11,3],[3,11],[9,11]]
+  },
+  { // Fase 4
+    mapa: [
+      [1,1,1,1,1,1,1,1,1,1,1,1,1],
+      [1,0,0,0,1,0,0,0,1,0,0,0,1],
+      [1,0,1,0,1,0,1,0,1,0,1,0,1],
+      [1,0,1,0,0,0,1,0,0,0,1,0,1],
+      [1,0,1,1,1,1,1,1,1,1,1,0,1],
+      [1,0,0,0,0,0,0,0,0,0,0,0,1],
+      [1,1,1,0,1,1,1,1,1,1,1,0,1],
+      [1,0,0,0,1,0,0,0,0,0,1,0,1],
+      [1,0,1,1,1,0,1,1,1,0,1,0,1],
+      [1,0,0,0,0,0,1,0,0,0,1,0,1],
+      [1,1,1,1,1,0,1,0,1,1,1,0,1],
+      [1,0,0,0,1,0,0,0,1,0,0,0,1],
+      [1,1,1,1,1,1,1,1,1,1,1,1,1]
+    ],
+    startPos: [1,1], portalPos: [11,11], tempoMax: 60,
+    inimigos: [
+      {linha:5, coluna:3, dir:'horizontal', min:1, max:11},
+      {linha:7, coluna:6, dir:'horizontal', min:4, max:11},
+      {linha:11, coluna:9, dir:'vertical', min:8, max:11}
+    ],
+    moedas: [[3,1],[7,1],[9,3],[5,7],[11,5],[3,9],[9,9],[5,11]]
+  },
+  { // Fase 5
+    mapa: [
+      [1,1,1,1,1,1,1,1,1,1,1,1,1],
+      [1,0,0,1,0,0,0,1,0,0,0,0,1],
+      [1,0,0,1,0,1,0,1,0,1,1,0,1],
+      [1,1,0,0,0,1,0,0,0,0,1,0,1],
+      [1,0,0,1,1,1,1,1,1,0,1,0,1],
+      [1,0,1,0,0,0,0,0,1,0,0,0,1],
+      [1,0,1,0,1,1,1,0,1,1,1,0,1],
+      [1,0,0,0,1,0,0,0,0,0,1,0,1],
+      [1,1,1,1,1,0,1,1,1,0,1,0,1],
+      [1,0,0,0,0,0,1,0,0,0,0,0,1],
+      [1,0,1,1,1,1,1,0,1,1,1,0,1],
+      [1,0,0,0,0,0,0,0,1,0,0,0,1],
+      [1,1,1,1,1,1,1,1,1,1,1,1,1]
+    ],
+    startPos: [1,1], portalPos: [11,11], tempoMax: 55,
+    inimigos: [
+      {linha:3, coluna:5, dir:'horizontal', min:1, max:9},
+      {linha:5, coluna:9, dir:'vertical', min:3, max:9},
+      {linha:7, coluna:5, dir:'horizontal', min:4, max:11},
+      {linha:11, coluna:6, dir:'vertical', min:8, max:11}
+    ],
+    moedas: [[3,3],[9,1],[5,3],[7,3],[3,7],[11,5],[5,7],[11,7],[7,9],[3,11],[9,11]]
+  }
+];
+
+// ========= ESTADO =========
+let faseAtual = 0, mapa = [], jogador = {linha:1,coluna:1}, portal = {linha:11,coluna:11};
+let moedasRestantes = [], moedasColetadas = 0, moedasTotalFase = 0;
+let inimigos = [], vidas = MAX_VIDAS, tempoInicio = null, pausaDesde = null, tempoMaxFase = 60;
+let rodando = false, pausado = false, venceuFase = false, gameOver = false;
+let particulas = [], invulneravelAte = 0, ultimoMovimento = 0;
+const teclas = new Set();
+const toques = new Map();
+
+// ========= RECORDES (protegido para file://) =========
+let recordes = [];
+try {
+  const raw = localStorage.getItem('labirintoRecordes');
+  if (raw) { const p = JSON.parse(raw); if (Array.isArray(p)) recordes = p; }
+} catch(e) { recordes = []; }
+
+// ========= ÁUDIO =========
+let audioCtx = null;
+function initAudio() {
+  if (!audioCtx) { try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch(e) {} }
+}
+function tocarSom(freq, dur=0.1, tipo='square', vol=0.06) {
+  if (!audioCtx) return;
+  try {
+    const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+    osc.type = tipo; osc.frequency.value = freq;
+    gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+    osc.connect(gain); gain.connect(audioCtx.destination);
+    osc.start(); osc.stop(audioCtx.currentTime + dur);
+  } catch(e) {}
+}
+const SOM = {
+  moeda: () => { tocarSom(880,.08,'sine',.08); setTimeout(()=>tocarSom(1320,.1,'sine',.08),60); },
+  dano: () => tocarSom(200,.2,'sawtooth',.08),
+  vitoria: () => [523,659,784,1046].forEach((f,i)=>setTimeout(()=>tocarSom(f,.15,'sine',.07),i*90)),
+  passos: () => tocarSom(150,.03,'square',.02),
+  portal: () => [400,600,800].forEach((f,i)=>setTimeout(()=>tocarSom(f,.1,'triangle',.06),i*70))
+};
+
+// ========= HELPERS =========
+function encontrarCelulaLivre(l, c) {
+  for (let raio = 1; raio < 8; raio++) {
+    for (let dl = -raio; dl <= raio; dl++) {
+      for (let dc = -raio; dc <= raio; dc++) {
+        const nl = l+dl, nc = c+dc;
+        if (nl>=1 && nl<LINHAS-1 && nc>=1 && nc<COLUNAS-1 && mapa[nl][nc] === 0) return [nl, nc];
+      }
+    }
+  }
+  return [1, 1];
+}
+
+// ========= CARREGAR FASE =========
+function carregarFase(indice) {
+  const cfg = FASES[indice];
+  mapa = cfg.mapa.map(l => [...l]);
+  jogador = { linha: cfg.startPos[0], coluna: cfg.startPos[1] };
+  portal = { linha: cfg.portalPos[0], coluna: cfg.portalPos[1] };
+
+  // Se por acaso start/portal estiverem em parede, reposiciona
+  if (mapa[jogador.linha][jogador.coluna] !== 0) {
+    [jogador.linha, jogador.coluna] = encontrarCelulaLivre(jogador.linha, jogador.coluna);
+  }
+  if (mapa[portal.linha][portal.coluna] !== 0) {
+    [portal.linha, portal.coluna] = encontrarCelulaLivre(portal.linha, portal.coluna);
+  }
+
+  // Moedas - corrige automaticamente se estiverem sobre parede
+  moedasRestantes = cfg.moedas.map(([l, c]) => {
+    if (mapa[l][c] !== 0) { const [nl, nc] = encontrarCelulaLivre(l, c); return {linha:nl, coluna:nc, pega:false}; }
+    return {linha:l, coluna:c, pega:false};
+  });
+  moedasTotalFase = moedasRestantes.length;
+  moedasColetadas = 0;
+
+  inimigos = cfg.inimigos.map(i => ({
+    linha: i.linha, coluna: i.coluna, dir: i.dir,
+    min: i.min, max: i.max, sentido: 1, ultimoTick: 0
+  }));
+
+  tempoMaxFase = cfg.tempoMax;
+  tempoInicio = pausaDesde = null;
+  venceuFase = false; gameOver = false; pausado = false; rodando = true;
+  particulas = []; invulneravelAte = 0; ultimoMovimento = 0;
+  limparDirecoes();
+  pausaBtn.textContent = 'Pausar';
+  elTempo.textContent = tempoMaxFase.toFixed(1);
+  elTempo.style.color = '#4fd1c5';
+
+  elMsg.textContent = 'Colete todas as moedas para liberar a conta.';
+  elMsg.className = 'info';
+  atualizarHUD(); esconderOverlay();
+  desenhar();
+}
+
+function alternarPausa() {
+  if (!rodando) return;
+  pausado = !pausado;
+  if (pausado) {
+    pausaDesde = performance.now();
+    limparDirecoes();
+  } else if (tempoInicio !== null) {
+    tempoInicio += performance.now() - pausaDesde;
+  }
+  pausaBtn.textContent = pausado ? 'Retomar' : 'Pausar';
+  elMsg.textContent = pausado ? 'Jogo pausado.' : 'Encontre o portal com todas as moedas.';
+  elMsg.className = 'info';
+}
+
+// ========= HUD =========
+function atualizarHUD() {
+  elFase.textContent = faseAtual + 1;
+  elOperacao.textContent = operacoesDoLabirinto[faseAtual];
+  elMoedas.textContent = moedasColetadas;
+  elMoedasTotal.textContent = moedasTotalFase;
+  elVidas.textContent = '❤️'.repeat(vidas) + '🖤'.repeat(Math.max(0, MAX_VIDAS - vidas));
+  const r = recordes[faseAtual];
+  elRecorde.textContent = (typeof r === 'number') ? r.toFixed(1) + 's' : '-';
+}
+
+// ========= DESENHO =========
+function desenhar() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const t = performance.now() / 1000;
+
+  const grad = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 50, canvas.width/2, canvas.height/2, canvas.width);
+  grad.addColorStop(0, `hsl(${200 + Math.sin(t)*10}, 40%, 8%)`);
+  grad.addColorStop(1, '#0a0a14');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Mapa
+  for (let l = 0; l < LINHAS; l++) {
+    for (let c = 0; c < COLUNAS; c++) {
+      const x = c*TAM, y = l*TAM;
+      if (mapa[l][c] === 1) {
+        const g2 = ctx.createLinearGradient(x, y, x+TAM, y+TAM);
+        g2.addColorStop(0, '#3b3b5c'); g2.addColorStop(1, '#252540');
+        ctx.fillStyle = g2;
+        ctx.fillRect(x, y, TAM, TAM);
+        ctx.strokeStyle = 'rgba(79,209,197,.15)';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(x+1, y+1, TAM-2, TAM-2);
+      } else {
+        ctx.fillStyle = '#12121e';
+        ctx.fillRect(x, y, TAM, TAM);
+      }
+    }
+  }
+
+  // Portal
+  const px = portal.coluna*TAM + TAM/2;
+  const py = portal.linha*TAM + TAM/2;
+  const pulso = 1 + Math.sin(t*6)*0.15;
+  const pronto = moedasRestantes.every(m => m.pega);
+  ctx.save();
+  ctx.shadowColor = pronto ? '#4ade80' : '#fbbf24';
+  ctx.shadowBlur = 20;
+  ctx.strokeStyle = pronto ? '#4ade80' : '#fbbf24';
+  ctx.lineWidth = 3;
+  for (let i = 0; i < 3; i++) {
+    ctx.beginPath();
+    ctx.arc(px, py, (TAM/2 - 5 - i*4) * pulso, 0, Math.PI*2);
+    ctx.stroke();
+  }
+  ctx.fillStyle = pronto ? 'rgba(74,222,128,.3)' : 'rgba(251,191,36,.2)';
+  ctx.beginPath(); ctx.arc(px, py, TAM/2 - 8, 0, Math.PI*2); ctx.fill();
+  ctx.restore();
+
+  // Moedas
+  for (const m of moedasRestantes) {
+    if (m.pega) continue;
+    const mx = m.coluna*TAM + TAM/2;
+    const my = m.linha*TAM + TAM/2 + Math.sin(t*4 + m.coluna)*2;
+    ctx.save();
+    ctx.shadowColor = '#fbbf24'; ctx.shadowBlur = 10;
+    ctx.fillStyle = '#fbbf24';
+    ctx.beginPath(); ctx.arc(mx, my, 8, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#f59e0b';
+    ctx.beginPath(); ctx.arc(mx, my, 5, 0, Math.PI*2); ctx.fill();
+    ctx.restore();
+  }
+
+  // Inimigos
+  for (const ini of inimigos) {
+    const ix = ini.coluna*TAM + TAM/2, iy = ini.linha*TAM + TAM/2;
+    ctx.save();
+    ctx.shadowColor = '#f87171'; ctx.shadowBlur = 12;
+    ctx.fillStyle = '#f87171';
+    ctx.beginPath(); ctx.arc(ix, iy, TAM/2 - 8, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.beginPath(); ctx.arc(ix-4, iy-2, 3, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(ix+4, iy-2, 3, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#000';
+    ctx.beginPath(); ctx.arc(ix-4, iy-2, 1.5, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(ix+4, iy-2, 1.5, 0, Math.PI*2); ctx.fill();
+    ctx.restore();
+  }
+
+  // Jogador
+  const invuln = performance.now() < invulneravelAte;
+  if (!invuln || Math.floor(performance.now()/100) % 2 === 0) {
+    const jx = jogador.coluna*TAM + TAM/2, jy = jogador.linha*TAM + TAM/2;
+    ctx.save();
+    ctx.shadowColor = '#4fd1c5'; ctx.shadowBlur = 15;
+    ctx.fillStyle = '#4fd1c5';
+    ctx.beginPath(); ctx.arc(jx, jy, TAM/2 - 8, 0, Math.PI*2); ctx.fill();
+    ctx.fillStyle = '#0f0f1a';
+    ctx.beginPath(); ctx.arc(jx-5, jy-3, 3, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(jx+5, jy-3, 3, 0, Math.PI*2); ctx.fill();
+    ctx.strokeStyle = '#0f0f1a'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(jx, jy+2, 5, .2*Math.PI, .8*Math.PI); ctx.stroke();
+    ctx.restore();
+  }
+
+  // Partículas
+  for (let i = particulas.length-1; i >= 0; i--) {
+    const p = particulas[i];
+    p.x += p.vx; p.y += p.vy; p.vy += .15; p.vida--;
+    if (p.vida <= 0) { particulas.splice(i,1); continue; }
+    ctx.globalAlpha = p.vida / p.vidaMax;
+    ctx.fillStyle = p.cor;
+    ctx.beginPath(); ctx.arc(p.x, p.y, p.tam, 0, Math.PI*2); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+
+  // Cronômetro
+  if (rodando && !pausado && tempoInicio !== null) {
+    const restante = Math.max(0, tempoMaxFase - (performance.now()-tempoInicio)/1000);
+    elTempo.textContent = restante.toFixed(1);
+    elTempo.style.color = restante < 10 ? '#f87171' : '#4fd1c5';
+    if (restante <= 0) {
+      gameOver = true; rodando = false;
+      mostrarOverlay('⏰ Tempo Esgotado!', 'Você não conseguiu terminar a tempo.', 'Tentar Novamente', reiniciarFase);
+    }
+  }
+}
+
+// ========= PARTÍCULAS =========
+function emitirParticulas(x, y, cor, qtd=12) {
+  for (let i = 0; i < qtd; i++) {
+    const a = Math.random()*Math.PI*2, v = 1+Math.random()*3;
+    particulas.push({ x, y, vx: Math.cos(a)*v, vy: Math.sin(a)*v - 1,
+      vida: 20+Math.random()*15, vidaMax: 35, tam: 2+Math.random()*3, cor });
+  }
+}
+
+// ========= MOVIMENTO =========
+function podeMover(l, c) {
+  if (l < 0 || l >= LINHAS || c < 0 || c >= COLUNAS) return false;
+  return mapa[l][c] === 0;
+}
+
+function mover(dl, dc) {
+  if (!rodando || pausado || venceuFase || gameOver) return;
+  const nl = jogador.linha + dl, nc = jogador.coluna + dc;
+  if (!podeMover(nl, nc)) { if (Math.random()<.3) tocarSom(80,.05,'square',.03); return; }
+  if (tempoInicio === null) {
+    tempoInicio = performance.now();
+    anoEscolar.disabled = true;
+  }
+  jogador.linha = nl; jogador.coluna = nc;
+  SOM.passos();
+
+  for (const m of moedasRestantes) {
+    if (!m.pega && m.linha === jogador.linha && m.coluna === jogador.coluna) {
+      m.pega = true; moedasColetadas++;
+      SOM.moeda();
+      emitirParticulas(m.coluna*TAM+TAM/2, m.linha*TAM+TAM/2, '#fbbf24', 15);
+      atualizarHUD();
+      if (moedasRestantes.every(x => x.pega)) {
+        elMsg.textContent = 'Todas as moedas coletadas! Vá ao portal para resolver a conta.';
+        elMsg.className = 'ok'; SOM.portal();
+      }
+      break;
+    }
+  }
+
+  if (jogador.linha === portal.linha && jogador.coluna === portal.coluna) {
+    if (moedasRestantes.every(x => x.pega)) abrirDesafio();
+    else {
+      elMsg.textContent = 'Colete todas as moedas primeiro!';
+      elMsg.className = 'erro';
+    }
+  }
+  desenhar();
+}
+
+// ========= INIMIGOS =========
+function atualizarInimigos(agora) {
+  for (const ini of inimigos) {
+    if (agora - ini.ultimoTick < 500) continue;
+    ini.ultimoTick = agora;
+    let nl = ini.linha, nc = ini.coluna;
+    if (ini.dir === 'vertical') {
+      nl = ini.linha + ini.sentido;
+      if (nl < ini.min || nl > ini.max || !podeMover(nl, ini.coluna)) { ini.sentido *= -1; nl = ini.linha + ini.sentido; }
+    } else {
+      nc = ini.coluna + ini.sentido;
+      if (nc < ini.min || nc > ini.max || !podeMover(ini.linha, nc)) { ini.sentido *= -1; nc = ini.coluna + ini.sentido; }
+    }
+    if (podeMover(nl, nc)) { ini.linha = nl; ini.coluna = nc; }
+    else ini.sentido *= -1;
+
+    if (!(agora < invulneravelAte) && ini.linha === jogador.linha && ini.coluna === jogador.coluna) levarDano();
+  }
+}
+
+function levarDano() {
+  vidas--;
+  invulneravelAte = performance.now() + 1500;
+  SOM.dano();
+  emitirParticulas(jogador.coluna*TAM+TAM/2, jogador.linha*TAM+TAM/2, '#f87171', 20);
+  jogador.linha = FASES[faseAtual].startPos[0];
+  jogador.coluna = FASES[faseAtual].startPos[1];
+  atualizarHUD();
+  if (vidas <= 0) {
+    gameOver = true; rodando = false;
+    mostrarOverlay('💀 Game Over!', 'Suas vidas acabaram!', 'Tentar Novamente', reiniciarJogo);
+  } else {
+    elMsg.textContent = `Você levou dano! Vidas: ${vidas}`;
+    elMsg.className = 'erro';
+  }
+}
+
+// ========= CONCLUIR FASE =========
+function abrirDesafio() {
+  const tempo = (performance.now() - tempoInicio) / 1000;
+  rodando = false;
+  limparDirecoes();
+  askGameQuestion(criarDesafioDoLabirinto(Number(anoEscolar.value), faseAtual), () => concluirFase(tempo));
+}
+
+function concluirFase(tempo) {
+  venceuFase = true; rodando = false;
+  SOM.vitoria();
+  emitirParticulas(portal.coluna*TAM+TAM/2, portal.linha*TAM+TAM/2, '#4ade80', 40);
+
+  const rec = recordes[faseAtual];
+  if (typeof rec !== 'number' || tempo < rec) {
+    recordes[faseAtual] = tempo;
+    try { localStorage.setItem('labirintoRecordes', JSON.stringify(recordes)); } catch(e) {}
+  }
+  atualizarHUD();
+
+  if (faseAtual < FASES.length - 1) {
+    mostrarOverlay(`Fase ${faseAtual+1} Concluída!`,
+      `Tempo: ${tempo.toFixed(1)}s\nMoedas: ${moedasColetadas}/${moedasTotalFase}`,
+      'Próxima Fase ➡️', () => { faseAtual++; carregarFase(faseAtual); });
+  } else {
+    mostrarOverlay('🏆 VOCÊ VENCEU O JOGO!',
+      `Tempo final: ${tempo.toFixed(1)}s\nVocê resolveu os cinco desafios de matemática do ${anoEscolar.value}º ano!`,
+      '🎮 Jogar Novamente', reiniciarJogo);
+  }
+}
+
+// ========= OVERLAY =========
+function mostrarOverlay(titulo, texto, botao, cb) {
+  document.getElementById('overlayTitulo').textContent = titulo;
+  document.getElementById('overlayTexto').textContent = texto;
+  const btn = document.getElementById('overlayBtn');
+  btn.textContent = botao;
+  btn.onclick = () => { esconderOverlay(); cb(); };
+  overlay.classList.add('show');
+  btn.focus();
+}
+function esconderOverlay() { overlay.classList.remove('show'); }
+
+// ========= REINICIAR =========
+function reiniciarFase() { vidas = MAX_VIDAS; gameOver = false; carregarFase(faseAtual); }
+function reiniciarJogo() {
+  faseAtual = 0;
+  vidas = MAX_VIDAS;
+  gameOver = false;
+  anoEscolar.disabled = false;
+  carregarFase(0);
+}
+
+// ========= LOOP =========
+function loop(agora) {
+  try {
+    if (rodando && !pausado && tempoInicio !== null) atualizarInimigos(agora);
+    desenhar();
+  } catch(e) { console.error('Erro no loop:', e); }
+  requestAnimationFrame(loop);
+}
+
+// ========= CONTROLES =========
+const direcoes = new Map([
+  ['ArrowUp', [-1, 0]], ['ArrowDown', [1, 0]], ['ArrowLeft', [0, -1]], ['ArrowRight', [0, 1]],
+]);
+
+function limparDirecoes() {
+  teclas.clear();
+  toques.clear();
+}
+
+function moverNaDirecao(chave) {
+  initAudio();
+  ultimoMovimento = performance.now();
+  mover(...direcoes.get(chave));
+}
+
+document.addEventListener('keydown', (evento) => {
+  const { key, repeat, target } = evento;
+  if (!rodando || target === anoEscolar) return;
+  if (direcoes.has(key)) {
+    evento.preventDefault();
+    if (!repeat && !pausado) {
+      teclas.add(key);
+      moverNaDirecao(key);
+    }
+  } else if (!repeat && target.tagName !== 'BUTTON') {
+    if (key.toLowerCase() === 'r') reiniciarFase();
+    if (key === ' ') {
+      evento.preventDefault();
+      alternarPausa();
+    }
+  }
+});
+document.addEventListener('keyup', (evento) => teclas.delete(evento.key));
+window.addEventListener('blur', limparDirecoes);
+
+for (const botao of document.querySelectorAll('#direcoes button')) {
+  const { key } = botao.dataset;
+  botao.addEventListener('pointerdown', (evento) => {
+    if (evento.button !== 0 || !rodando || pausado) return;
+    botao.setPointerCapture(evento.pointerId);
+    toques.set(evento.pointerId, key);
+    moverNaDirecao(key);
+  });
+  for (const tipo of ['pointerup', 'pointercancel', 'lostpointercapture']) {
+    botao.addEventListener(tipo, (evento) => toques.delete(evento.pointerId));
+  }
+  botao.addEventListener('click', (evento) => {
+    if (evento.detail === 0) moverNaDirecao(key);
+  });
+}
+pausaBtn.addEventListener('click', alternarPausa);
+document.getElementById('reiniciar-fase').addEventListener('click', reiniciarFase);
+document.getElementById('reiniciar-jogo').addEventListener('click', reiniciarJogo);
+
+setInterval(() => {
+  if (!rodando || pausado || performance.now() - ultimoMovimento < 130) return;
+  const chave = toques.values().next().value ?? teclas.values().next().value;
+  if (chave) moverNaDirecao(chave);
+}, 30);
+
+// ========= INICIAR =========
+carregarFase(0);
+loop(0);
+</script>
+
+</body>
+</html>

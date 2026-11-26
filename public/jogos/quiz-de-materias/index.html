@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://techonplay.com.br/categoria/jogos/jogos-educativos/quiz-de-materias/">
+    <title>Quiz de Matérias</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #56ccf2 0%, #2f80ed 50%, #9b51e0 100%);
+    padding: 20px;
+  }
+
+  .container {
+    background: #fff;
+    border-radius: 22px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    padding: 35px;
+    width: 100%;
+    max-width: 700px;
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pop {
+    0% { transform: scale(0.85); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  .hidden { display: none !important; }
+
+  h1 {
+    text-align: center;
+    color: #2f80ed;
+    margin-bottom: 8px;
+    font-size: 1.9rem;
+  }
+
+  h2 {
+    text-align: center;
+    color: #2f80ed;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #888;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+  }
+
+  /* Tela inicial - escolha de matéria */
+  .start-screen p {
+    text-align: center;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-size: 1.05rem;
+  }
+
+  .subject-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 25px;
+  }
+
+  .subject-card {
+    background: #f8faff;
+    border: 2px solid #e0e6f0;
+    border-radius: 15px;
+    padding: 22px 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .subject-card:hover {
+    border-color: #2f80ed;
+    background: #eef4ff;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(47,128,237,0.2);
+  }
+
+  .subject-card .icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .subject-card .name {
+    font-weight: 700;
+    color: #2d2d44;
+    font-size: 1.05rem;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .subject-card .count {
+    font-size: 0.85rem;
+    color: #888;
+  }
+
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2f80ed, #9b51e0);
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(47,128,237,0.4);
+  }
+
+  .btn:active { transform: translateY(0); }
+
+  .btn-outline {
+    background: #fff;
+    color: #2f80ed;
+    border: 2px solid #2f80ed;
+  }
+
+  .btn-outline:hover {
+    background: #eef4ff;
+    box-shadow: 0 8px 20px rgba(47,128,237,0.2);
+  }
+
+  /* Barra de progresso */
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 12px;
+    background: #e8eef7;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 25px;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2f80ed, #9b51e0);
+    border-radius: 10px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  /* Pergunta */
+  .subject-badge {
+    display: inline-block;
+    background: #eef4ff;
+    color: #2f80ed;
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+  }
+
+  .question-text {
+    font-size: 1.2rem;
+    color: #2d2d44;
+    margin-bottom: 22px;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  /* Alternativas */
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 15px 18px;
+    border: 2px solid #e0e6f0;
+    border-radius: 12px;
+    cursor: pointer;
+    background: #fafbff;
+    transition: all 0.2s;
+    font-size: 1rem;
+    color: #333;
+    text-align: left;
+    font-family: inherit;
+  }
+
+  .option:hover:not(.disabled) {
+    border-color: #2f80ed;
+    background: #f0f5ff;
+    transform: translateX(4px);
+  }
+
+  .option .letter {
+    background: #2f80ed;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .option.correct {
+    border-color: #2ecc71;
+    background: #e8faf0;
+    animation: pop 0.4s ease;
+  }
+
+  .option.correct .letter { background: #2ecc71; }
+
+  .option.wrong {
+    border-color: #e74c3c;
+    background: #fdecea;
+    animation: pop 0.4s ease;
+  }
+
+  .option.wrong .letter { background: #e74c3c; }
+
+  .option.disabled { cursor: default; }
+
+  /* Botão próximo */
+  .next-btn {
+    margin-top: 22px;
+  }
+
+  /* Tela resultado */
+  .result-screen {
+    text-align: center;
+  }
+
+  .score-circle {
+    width: 155px;
+    height: 155px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px auto 25px;
+    background: conic-gradient(#2f80ed 0deg, #e8eef7 0deg);
+    position: relative;
+  }
+
+  .score-circle::before {
+    content: '';
+    position: absolute;
+    width: 124px;
+    height: 124px;
+    background: #fff;
+    border-radius: 50%;
+  }
+
+  .score-text {
+    position: relative;
+    z-index: 1;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #2f80ed;
+  }
+
+  .score-text small {
+    font-size: 0.95rem;
+    color: #888;
+    font-weight: 600;
+  }
+
+  .result-msg {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #2f80ed;
+    margin-bottom: 8px;
+  }
+
+  .result-sub {
+    color: #777;
+    margin-bottom: 25px;
+    font-size: 1rem;
+  }
+
+  .result-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Tela inicial: escolha de matéria -->
+  <div id="startScreen" class="start-screen">
+    <h1>🎯 Quiz de Matérias</h1>
+    <p class="subtitle">Escolha uma matéria para começar</p>
+    <div class="subject-grid" id="subjectGrid"></div>
+    <button class="btn btn-outline" onclick="startRandomMode()">🎲 Modo Aleatório (todas as matérias)</button>
+  </div>
+
+  <!-- Tela do quiz -->
+  <div id="quizScreen" class="hidden">
+    <div class="progress-info">
+      <span id="questionCounter">Pergunta 1 de 10</span>
+      <span id="scoreCounter">Acertos: 0</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <span class="subject-badge" id="subjectBadge">Matéria</span>
+    <h2 class="question-text" id="questionText">Pergunta aqui</h2>
+
+    <div class="options" id="optionsContainer"></div>
+
+    <button class="btn next-btn hidden" id="nextBtn" onclick="nextQuestion()">Próxima ➡</button>
+    <button class="btn btn-outline hidden" id="quitBtn" onclick="quitQuiz()" style="margin-top:10px;">🏠 Voltar ao Menu</button>
+  </div>
+
+  <!-- Tela de resultado -->
+  <div id="resultScreen" class="result-screen hidden">
+    <h1>Resultado</h1>
+    <div class="score-circle" id="scoreCircle">
+      <div class="score-text" id="finalScore">0/10</div>
+    </div>
+    <p class="result-msg" id="resultMsg"></p>
+    <p class="result-sub" id="resultSub"></p>
+    <div class="result-buttons">
+      <button class="btn" onclick="retrySameSubject()">🔄 Tentar Novamente</button>
+      <button class="btn btn-outline" onclick="restartQuiz()">🏠 Escolher Outra Matéria</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Banco de perguntas separado por matéria (10 cada)
+  const questionBank = {
+    portugues: {
+      name: "Português",
+      icon: "📖",
+      questions: [
+        {
+          question: "Na frase 'A menina correu alegremente pelo parque', a palavra 'alegremente' é um:",
+          options: ["Adjetivo", "Advérbio", "Substantivo", "Pronome"],
+          answer: 1
+        },
+        {
+          question: "Qual das palavras abaixo é um substantivo próprio?",
+          options: ["Cidade", "Menino", "Brasil", "Caderno"],
+          answer: 2
+        },
+        {
+          question: "Qual é o antônimo (contrário) da palavra 'generoso'?",
+          options: ["Bondoso", "Egoísta", "Simpático", "Amigável"],
+          answer: 1
+        },
+        {
+          question: "Qual é o plural correto da palavra 'cidadão'?",
+          options: ["Cidadãos", "Cidadões", "Cidadãs", "Cidadans"],
+          answer: 0
+        },
+        {
+          question: "Na frase 'O cachorro latiu', o sujeito é:",
+          options: ["O cachorro", "latiu", "cachorro latiu", "Não tem sujeito"],
+          answer: 0
+        },
+        {
+          question: "Qual palavra está escrita corretamente?",
+          options: ["Exceção", "Excessão", "Esceção", "Exeção"],
+          answer: 0
+        },
+        {
+          question: "Qual é o feminino da palavra 'ator'?",
+          options: ["Atora", "Atriz", "Atoresa", "Atore"],
+          answer: 1
+        },
+        {
+          question: "Em 'Ele comprou um livro novo', a palavra 'novo' é:",
+          options: ["Verbo", "Advérbio", "Adjetivo", "Substantivo"],
+          answer: 2
+        },
+        {
+          question: "Qual dessas palavras é um verbo?",
+          options: ["Bonito", "Correr", "Rápido", "Casa"],
+          answer: 1
+        },
+        {
+          question: "Qual é o coletivo de 'peixes'?",
+          options: ["Alcateia", "Cardume", "Matilha", "Enxame"],
+          answer: 1
+        }
+      ]
+    },
+    matematica: {
+      name: "Matemática",
+      icon: "🔢",
+      questions: [
+        {
+          question: "Quanto é 3/4 de 80?",
+          options: ["50", "55", "60", "65"],
+          answer: 2
+        },
+        {
+          question: "Se um caderno custa R$ 12,50, quanto custam 4 cadernos?",
+          options: ["R$ 45,00", "R$ 48,00", "R$ 50,00", "R$ 52,00"],
+          answer: 2
+        },
+        {
+          question: "Qual é o próximo número da sequência: 2, 4, 8, 16, ...?",
+          options: ["24", "28", "32", "36"],
+          answer: 2
+        },
+        {
+          question: "Quanto é 25% de 200?",
+          options: ["25", "40", "50", "75"],
+          answer: 2
+        },
+        {
+          question: "Qual é o resultado de 15 + 6 × 2?",
+          options: ["27", "32", "42", "21"],
+          answer: 0
+        },
+        {
+          question: "Se um triângulo tem lados 3, 4 e 5, qual é o seu perímetro?",
+          options: ["7", "10", "12", "15"],
+          answer: 2
+        },
+        {
+          question: "Quanto é 100 - 37?",
+          options: ["53", "63", "67", "73"],
+          answer: 1
+        },
+        {
+          question: "Qual é a metade de 1/4?",
+          options: ["1/2", "1/6", "1/8", "1/16"],
+          answer: 2
+        },
+        {
+          question: "Se hoje é segunda-feira, que dia será daqui a 10 dias?",
+          options: ["Quarta", "Quinta", "Sexta", "Sábado"],
+          answer: 1
+        },
+        {
+          question: "Um retângulo tem 8 cm de comprimento e 5 cm de largura. Qual é sua área?",
+          options: ["13 cm²", "26 cm²", "40 cm²", "80 cm²"],
+          answer: 2
+        }
+      ]
+    },
+    historia: {
+      name: "História",
+      icon: "🏛️",
+      questions: [
+        {
+          question: "Em que ano aconteceu a Proclamação da República no Brasil?",
+          options: ["1822", "1888", "1889", "1922"],
+          answer: 2
+        },
+        {
+          question: "Qual civilização antiga construiu as pirâmides de Gizé?",
+          options: ["Grega", "Romana", "Egípcia", "Maia"],
+          answer: 2
+        },
+        {
+          question: "Quem foi a princesa que assinou a Lei Áurea em 1888?",
+          options: ["Princesa Isabel", "Rainha Maria", "Princesa Leopoldina", "Rainha Vitória"],
+          answer: 0
+        },
+        {
+          question: "Em que ano o Brasil proclamou sua independência?",
+          options: ["1500", "1808", "1822", "1889"],
+          answer: 2
+        },
+        {
+          question: "Quem descobriu o Brasil em 1500?",
+          options: ["Cristóvão Colombo", "Pedro Álvares Cabral", "Dom Pedro I", "Tiradentes"],
+          answer: 1
+        },
+        {
+          question: "Qual foi o primeiro presidente do Brasil?",
+          options: ["Getúlio Vargas", "Deodoro da Fonseca", "Dom Pedro II", "Juscelino Kubitschek"],
+          answer: 1
+        },
+        {
+          question: "Qual povo antigo criou os Jogos Olímpicos?",
+          options: ["Romanos", "Egípcios", "Gregos", "Persas"],
+          answer: 2
+        },
+        {
+          question: "Qual foi o nome dado ao período em que o Brasil foi governado por militares (1964-1985)?",
+          options: ["Era Vargas", "Ditadura Militar", "República Velha", "Império"],
+          answer: 1
+        },
+        {
+          question: "Quem foi o líder da independência da Índia através da não-violência?",
+          options: ["Nelson Mandela", "Mahatma Gandhi", "Martin Luther King", "Che Guevara"],
+          answer: 1
+        },
+        {
+          question: "Qual dessas construções é uma das Sete Maravilhas do Mundo Antigo?",
+          options: ["Torre Eiffel", "Coliseu", "Grande Muralha da China", "Pirâmide de Gizé"],
+          answer: 3
+        }
+      ]
+    },
+    ciencias: {
+      name: "Ciências",
+      icon: "🔬",
+      questions: [
+        {
+          question: "Qual é o maior órgão do corpo humano?",
+          options: ["Fígado", "Cérebro", "Pele", "Pulmão"],
+          answer: 2
+        },
+        {
+          question: "Qual é a fórmula química da água?",
+          options: ["CO2", "H2O", "O2", "NaCl"],
+          answer: 1
+        },
+        {
+          question: "Qual é o processo pelo qual as plantas produzem seu próprio alimento?",
+          options: ["Respiração", "Fotossíntese", "Digestão", "Evaporação"],
+          answer: 1
+        },
+        {
+          question: "Qual é o maior planeta do Sistema Solar?",
+          options: ["Terra", "Marte", "Júpiter", "Saturno"],
+          answer: 2
+        },
+        {
+          question: "Quantas patas tem uma aranha?",
+          options: ["4", "6", "8", "10"],
+          answer: 2
+        },
+        {
+          question: "Qual gás as plantas absorvem durante a fotossíntese?",
+          options: ["Oxigênio", "Nitrogênio", "Gás carbônico", "Hidrogênio"],
+          answer: 2
+        },
+        {
+          question: "Qual desses animais é um mamífero?",
+          options: ["Tubarão", "Sapo", "Golfinho", "Pinguim"],
+          answer: 2
+        },
+        {
+          question: "Qual é o estado físico da água a 0°C?",
+          options: ["Líquido", "Gasoso", "Sólido", "Plasma"],
+          answer: 2
+        },
+        {
+          question: "Qual órgão bombeia o sangue pelo corpo?",
+          options: ["Pulmão", "Fígado", "Coração", "Rim"],
+          answer: 2
+        },
+        {
+          question: "Quantos ossos tem aproximadamente o corpo humano adulto?",
+          options: ["106", "156", "206", "306"],
+          answer: 2
+        }
+      ]
+    },
+    geografia: {
+      name: "Geografia",
+      icon: "🌍",
+      questions: [
+        {
+          question: "Qual é o rio mais extenso do Brasil?",
+          options: ["Rio São Francisco", "Rio Amazonas", "Rio Paraná", "Rio Tietê"],
+          answer: 1
+        },
+        {
+          question: "Qual é o continente onde fica o Brasil?",
+          options: ["Europa", "África", "América do Sul", "Ásia"],
+          answer: 2
+        },
+        {
+          question: "Quantos continentes existem no planeta Terra?",
+          options: ["5", "6", "7", "8"],
+          answer: 2
+        },
+        {
+          question: "Qual é a capital do Brasil?",
+          options: ["Rio de Janeiro", "São Paulo", "Brasília", "Salvador"],
+          answer: 2
+        },
+        {
+          question: "Qual é o maior oceano do mundo?",
+          options: ["Atlântico", "Índico", "Ártico", "Pacífico"],
+          answer: 3
+        },
+        {
+          question: "Qual é o maior estado do Brasil em área territorial?",
+          options: ["Minas Gerais", "Amazonas", "Bahia", "Mato Grosso"],
+          answer: 1
+        },
+        {
+          question: "Qual é a capital da Austrália?",
+          options: ["Sydney", "Melbourne", "Canberra", "Perth"],
+          answer: 2
+        },
+        {
+          question: "Qual desses países NÃO faz fronteira com o Brasil?",
+          options: ["Argentina", "Chile", "Peru", "Venezuela"],
+          answer: 1
+        },
+        {
+          question: "Qual é a linha imaginária que divide a Terra em hemisfério Norte e Sul?",
+          options: ["Meridiano de Greenwich", "Linha do Equador", "Trópico de Câncer", "Trópico de Capricórnio"],
+          answer: 1
+        },
+        {
+          question: "Qual é o deserto mais extenso do mundo?",
+          options: ["Saara", "Gobi", "Atacama", "Antártico"],
+          answer: 0
+        }
+      ]
+    }
+  };
+
+  let currentSubject = null;
+  let currentQuestions = [];
+  let currentQuestion = 0;
+  let score = 0;
+  let answered = false;
+  let isRandomMode = false;
+
+  const startScreen = document.getElementById('startScreen');
+  const quizScreen = document.getElementById('quizScreen');
+  const resultScreen = document.getElementById('resultScreen');
+  const subjectGrid = document.getElementById('subjectGrid');
+  const questionCounter = document.getElementById('questionCounter');
+  const scoreCounter = document.getElementById('scoreCounter');
+  const progressFill = document.getElementById('progressFill');
+  const subjectBadge = document.getElementById('subjectBadge');
+  const questionText = document.getElementById('questionText');
+  const optionsContainer = document.getElementById('optionsContainer');
+  const nextBtn = document.getElementById('nextBtn');
+  const quitBtn = document.getElementById('quitBtn');
+
+  const letters = ['A', 'B', 'C', 'D'];
+
+  // Cria os cards das matérias
+  function renderSubjectCards() {
+    subjectGrid.innerHTML = '';
+    Object.keys(questionBank).forEach(key => {
+      const subject = questionBank[key];
+      const card = document.createElement('div');
+      card.className = 'subject-card';
+      card.innerHTML = `
+        <span class="icon">${subject.icon}</span>
+        <span class="name">${subject.name}</span>
+        <span class="count">${subject.questions.length} perguntas</span>
+      `;
+      card.onclick = () => startSubject(key);
+      subjectGrid.appendChild(card);
+    });
+  }
+
+  function shuffle(array) {
+    const arr = [...array];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  function startSubject(key) {
+    isRandomMode = false;
+    currentSubject = questionBank[key];
+    currentQuestions = shuffle(currentSubject.questions);
+    beginQuiz();
+  }
+
+  function startRandomMode() {
+    isRandomMode = true;
+    currentSubject = null;
+    // Pega 2 perguntas de cada matéria
+    let all = [];
+    Object.keys(questionBank).forEach(key => {
+      const s = questionBank[key];
+      const picked = shuffle(s.questions).slice(0, 2);
+      picked.forEach(q => all.push({ ...q, subjectName: s.name, subjectIcon: s.icon }));
+    });
+    currentQuestions = shuffle(all);
+    beginQuiz();
+  }
+
+  function beginQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    startScreen.classList.add('hidden');
+    resultScreen.classList.add('hidden');
+    quizScreen.classList.remove('hidden');
+    quitBtn.classList.remove('hidden');
+    loadQuestion();
+  }
+
+  function loadQuestion() {
+    answered = false;
+    nextBtn.classList.add('hidden');
+
+    const q = currentQuestions[currentQuestion];
+    questionCounter.textContent = `Pergunta ${currentQuestion + 1} de ${currentQuestions.length}`;
+    scoreCounter.textContent = `Acertos: ${score}`;
+    progressFill.style.width = `${(currentQuestion / currentQuestions.length) * 100}%`;
+
+    if (isRandomMode) {
+      subjectBadge.textContent = `${q.subjectIcon} ${q.subjectName}`;
+    } else {
+      subjectBadge.textContent = `${currentSubject.icon} ${currentSubject.name}`;
+    }
+
+    questionText.textContent = q.question;
+
+    optionsContainer.innerHTML = '';
+    q.options.forEach((option, index) => {
+      const div = document.createElement('div');
+      div.className = 'option';
+      div.innerHTML = `<span class="letter">${letters[index]}</span><span>${option}</span>`;
+      div.onclick = () => selectAnswer(index);
+      optionsContainer.appendChild(div);
+    });
+  }
+
+  function selectAnswer(index) {
+    if (answered) return;
+    answered = true;
+
+    const q = currentQuestions[currentQuestion];
+    const optionEls = optionsContainer.querySelectorAll('.option');
+    optionEls.forEach(el => el.classList.add('disabled'));
+
+    if (index === q.answer) {
+      optionEls[index].classList.add('correct');
+      score++;
+    } else {
+      optionEls[index].classList.add('wrong');
+      optionEls[q.answer].classList.add('correct');
+    }
+
+    scoreCounter.textContent = `Acertos: ${score}`;
+
+    if (currentQuestion === currentQuestions.length - 1) {
+      nextBtn.textContent = 'Ver Resultado 🏁';
+    } else {
+      nextBtn.textContent = 'Próxima ➡';
+    }
+    nextBtn.classList.remove('hidden');
+  }
+
+  function nextQuestion() {
+    currentQuestion++;
+    if (currentQuestion < currentQuestions.length) {
+      loadQuestion();
+    } else {
+      showResult();
+    }
+  }
+
+  function showResult() {
+    quizScreen.classList.add('hidden');
+    resultScreen.classList.remove('hidden');
+
+    const total = currentQuestions.length;
+    const percent = (score / total) * 100;
+
+    document.getElementById('finalScore').innerHTML = `${score}<small>/${total}</small>`;
+
+    const circle = document.getElementById('scoreCircle');
+    const angle = (score / total) * 360;
+    circle.style.background = `conic-gradient(#2f80ed ${angle}deg, #e8eef7 ${angle}deg)`;
+
+    const msgEl = document.getElementById('resultMsg');
+    const subEl = document.getElementById('resultSub');
+
+    let subjectName = isRandomMode ? 'Modo Aleatório' : currentSubject.name;
+    document.querySelector('#resultScreen h1').textContent = `Resultado - ${subjectName}`;
+
+    if (percent === 100) {
+      msgEl.textContent = '🏆 Perfeito! Nota máxima!';
+      subEl.textContent = 'Você acertou tudo! Conhecimento impressionante!';
+    } else if (percent >= 80) {
+      msgEl.textContent = '🌟 Excelente desempenho!';
+      subEl.textContent = 'Você domina muito bem o conteúdo. Parabéns!';
+    } else if (percent >= 60) {
+      msgEl.textContent = '👍 Bom trabalho!';
+      subEl.textContent = 'Você está no caminho certo. Continue estudando!';
+    } else if (percent >= 40) {
+      msgEl.textContent = '📚 Precisa praticar mais';
+      subEl.textContent = 'Você acertou uma parte. Revise o conteúdo e tente de novo!';
+    } else {
+      msgEl.textContent = '💪 Não desanime!';
+      subEl.textContent = 'Estude um pouco mais e você vai melhorar bastante!';
+    }
+
+    progressFill.style.width = '100%';
+  }
+
+  function retrySameSubject() {
+    if (isRandomMode) {
+      startRandomMode();
+    } else {
+      const key = Object.keys(questionBank).find(k => questionBank[k] === currentSubject);
+      startSubject(key);
+    }
+  }
+
+  function quitQuiz() {
+    quizScreen.classList.add('hidden');
+    resultScreen.classList.add('hidden');
+    startScreen.classList.remove('hidden');
+  }
+
+  function restartQuiz() {
+    resultScreen.classList.add('hidden');
+    quizScreen.classList.add('hidden');
+    startScreen.classList.remove('hidden');
+  }
+
+  // Inicializa
+  renderSubjectCards();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2782 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://techonplay.com.br/categoria/jogos/jogos-educativos/laboratorio-sandbox/">
+    <title>🧪 Laboratório Sandbox</title>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+  :root {
+    --bg: #0a0a15; --panel: #14142a; --accent: #00d4ff; --accent2: #00ff88;
+    --accent3: #ff00c8; --gold: #ffd700; --danger: #ff4d6d;
+    --wood-dark: #3d2817; --wood-med: #5a3a1f; --wood-light: #7a5230; --wood-edge: #2a1a0f;
+  }
+  html, body { height: 100%; }
+  body { background: var(--bg); color: #fff; overflow: hidden; display: flex; transition: background 0.3s; }
+
+  /* ==========================================
+     BOTÃO DE CONFIGURAÇÕES (CANTO)
+     ========================================== */
+  .btn-config {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    z-index: 2000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(0,212,255,0.9), rgba(0,255,136,0.9));
+    border: 3px solid rgba(255,255,255,0.3);
+    color: #0a0a15;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,212,255,0.5), inset 0 2px 5px rgba(255,255,255,0.3);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .btn-config:hover {
+    transform: scale(1.1) rotate(45deg);
+    box-shadow: 0 6px 30px rgba(0,212,255,0.8), inset 0 2px 5px rgba(255,255,255,0.3);
+  }
+  .btn-config:active { transform: scale(0.95) rotate(45deg); }
+  .btn-config.girando { animation: girar-config 0.6s; }
+  @keyframes girar-config { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+  /* ==========================================
+     PAINEL DE CONFIGURAÇÕES
+     ========================================== */
+  .config-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(8px);
+    z-index: 1999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    animation: fadeIn 0.3s;
+  }
+  .config-overlay.show { display: flex; }
+
+  .config-panel {
+    background: linear-gradient(180deg, #1a1a2e, #0f0f1e);
+    border: 2px solid var(--accent);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0,212,255,0.5), 0 0 100px rgba(0,212,255,0.2);
+    animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(40px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+  .config-header {
+    padding: 20px 25px;
+    border-bottom: 1px solid rgba(0,212,255,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,212,255,0.05);
+  }
+  .config-header h2 {
+    font-size: 1.3em;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .config-fechar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,77,109,0.2);
+    border: 2px solid var(--danger);
+    color: var(--danger);
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    font-family: inherit;
+  }
+  .config-fechar:hover { background: var(--danger); color: #fff; transform: rotate(90deg); }
+
+  .config-abas {
+    display: flex;
+    padding: 15px 25px 0;
+    gap: 5px;
+    border-bottom: 1px solid rgba(0,212,255,0.15);
+  }
+  .config-aba {
+    flex: 1;
+    padding: 12px 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #888;
+    font-size: 0.9em;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .config-aba .aba-icone { font-size: 1.5em; }
+  .config-aba:hover { color: #ccc; }
+  .config-aba.ativa {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    background: rgba(0,212,255,0.05);
+    border-radius: 8px 8px 0 0;
+  }
+
+  .config-conteudo {
+    flex: 1;
+    overflow-y: auto;
+    padding: 25px;
+  }
+  .config-aba-conteudo { display: none; animation: fadeIn 0.3s; }
+  .config-aba-conteudo.show { display: block; }
+
+  /* ==========================================
+     ITENS DE CONFIGURAÇÃO
+     ========================================== */
+  .config-item {
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .config-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .config-item-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .config-item-label {
+    font-size: 0.95em;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .config-item-label .icone { font-size: 1.3em; }
+  .config-item-valor {
+    color: var(--accent2);
+    font-size: 0.85em;
+    font-weight: bold;
+    background: rgba(0,255,136,0.1);
+    padding: 2px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,255,136,0.3);
+  }
+  .config-item-desc {
+    font-size: 0.78em;
+    color: #888;
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  /* Slider */
+  .config-slider {
+    width: 100%;
+    height: 8px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    margin-top: 5px;
+    position: relative;
+  }
+  .config-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border: 2px solid #fff;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,212,255,0.6);
+    transition: transform 0.15s;
+  }
+  .config-slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+  .config-slider::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border: 2px solid #fff;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,212,255,0.6);
+  }
+
+  /* Toggle */
+  .config-toggle {
+    width: 52px;
+    height: 28px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s;
+    border: 2px solid rgba(255,255,255,0.2);
+    flex-shrink: 0;
+  }
+  .config-toggle::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  }
+  .config-toggle.ativo {
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    border-color: var(--accent2);
+  }
+  .config-toggle.ativo::after { transform: translateX(24px); }
+
+  /* Botões de opção (Qualidade, Idioma) */
+  .config-opcoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .config-opcao {
+    padding: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 2px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    color: #ccc;
+    font-size: 0.85em;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .config-opcao .op-icone { font-size: 1.5em; }
+  .config-opcao:hover {
+    background: rgba(0,212,255,0.15);
+    border-color: var(--accent);
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  .config-opcao.ativa {
+    background: linear-gradient(135deg, rgba(0,212,255,0.3), rgba(0,255,136,0.3));
+    border-color: var(--accent2);
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0,212,255,0.4);
+  }
+  .config-opcao.ativa::before {
+    content: '✓';
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    color: var(--accent2);
+    font-weight: bold;
+  }
+  .config-opcao { position: relative; }
+
+  /* Footer com botões */
+  .config-footer {
+    padding: 15px 25px;
+    border-top: 1px solid rgba(0,212,255,0.2);
+    display: flex;
+    gap: 10px;
+    background: rgba(0,0,0,0.3);
+  }
+  .config-btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    font-size: 0.9em;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .config-btn-aplicar {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    color: #0a0a15;
+  }
+  .config-btn-aplicar:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,212,255,0.5); }
+  .config-btn-restaurar {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.2);
+    flex: 0 0 auto;
+    padding: 12px 20px;
+  }
+  .config-btn-restaurar:hover { background: rgba(255,77,109,0.3); border-color: var(--danger); }
+
+  /* Preview de volume */
+  .config-volume-preview {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 8px;
+    height: 20px;
+  }
+  .config-volume-barra {
+    flex: 1;
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  .config-volume-preenchida {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 2px;
+    transition: width 0.15s;
+    box-shadow: 0 0 8px var(--accent2);
+  }
+
+  /* ==========================================
+     MENU PRINCIPAL
+     ========================================== */
+  .menu-principal {
+    position: fixed; inset: 0; z-index: 1000;
+    background: radial-gradient(circle at 50% 30%, #1a1a3e, #0a0a15 70%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 20px; overflow-y: auto;
+    transition: opacity 0.4s, transform 0.4s;
+  }
+  .menu-principal.escondido { opacity: 0; transform: scale(1.05); pointer-events: none; }
+  .menu-principal::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(0,212,255,0.08) 0%, transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(255,0,200,0.08) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .menu-titulo {
+    font-size: clamp(2em, 6vw, 3.5em); font-weight: bold; text-align: center;
+    background: linear-gradient(135deg, #00ff88, #00d4ff, #ff00c8, #ffd700);
+    background-size: 300% 300%;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    animation: gradiente-anim 4s ease infinite; margin-bottom: 8px; position: relative; z-index: 2;
+    filter: drop-shadow(0 0 30px rgba(0,212,255,0.3));
+  }
+  @keyframes gradiente-anim { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+  .menu-subtitulo { font-size: clamp(0.9em, 2vw, 1.1em); color: #aaa; text-align: center; margin-bottom: 40px; max-width: 600px; position: relative; z-index: 2; line-height: 1.5; }
+  .menu-subtitulo b { color: var(--accent); }
+
+  .menu-emoji-flutuante {
+    position: absolute; font-size: 2em; opacity: 0.15;
+    animation: flutuar 8s ease-in-out infinite; pointer-events: none; z-index: 1;
+  }
+  @keyframes flutuar { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-30px) rotate(15deg); } }
+
+  .menu-modos { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; max-width: 1100px; width: 100%; position: relative; z-index: 2; margin-bottom: 30px; }
+
+  .modo-card {
+    color: inherit; font: inherit;
+    display: flex; flex-direction: column; align-items: center;
+    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+    border: 2px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 28px 22px;
+    cursor: pointer; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative; overflow: hidden; text-align: center;
+  }
+  .modo-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 50% 0%, var(--modo-cor, #00d4ff) 0%, transparent 70%);
+    opacity: 0.15; transition: opacity 0.3s;
+  }
+  .modo-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--modo-cor, #00d4ff);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px var(--modo-cor, #00d4ff);
+  }
+  .modo-card:hover::before { opacity: 0.3; }
+  .modo-card > * { position: relative; z-index: 1; }
+
+  .modo-emoji { font-size: 3em; margin-bottom: 12px; display: block; filter: drop-shadow(0 0 20px var(--modo-cor, #00d4ff)); animation: flutuar 3s ease-in-out infinite; }
+  .modo-nome { font-size: 1.3em; font-weight: bold; color: #fff; margin-bottom: 8px; text-shadow: 0 0 20px var(--modo-cor, #00d4ff); }
+  .modo-desc { font-size: 0.85em; color: #bbb; line-height: 1.5; }
+  .modo-tag {
+    display: inline-block; margin-top: 12px; padding: 4px 12px;
+    background: rgba(255,255,255,0.1); border: 1px solid var(--modo-cor, #00d4ff);
+    border-radius: 20px; font-size: 0.72em; color: var(--modo-cor, #00d4ff);
+    font-weight: bold; text-transform: uppercase; letter-spacing: 1px;
+  }
+
+  .menu-footer { color: #666; font-size: 0.8em; text-align: center; position: relative; z-index: 2; }
+  .menu-footer b { color: var(--accent2); }
+
+  /* ==========================================
+     QUIZ
+     ========================================== */
+  .quiz-screen {
+    position: fixed; inset: 0; z-index: 900;
+    background: radial-gradient(circle at 50% 30%, #1a1a3e, #0a0a15 70%);
+    display: none; flex-direction: column; padding: 20px; overflow-y: auto;
+  }
+  .quiz-screen.show { display: flex; }
+
+  .quiz-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 15px 20px; background: rgba(0,0,0,0.4); border-radius: 15px;
+    border: 1px solid rgba(0,212,255,0.3); margin-bottom: 20px; flex-wrap: wrap; gap: 10px;
+  }
+  .quiz-hud { display: flex; gap: 20px; flex-wrap: wrap; }
+  .quiz-hud-item { display: flex; align-items: center; gap: 6px; font-size: 0.95em; }
+  .quiz-hud-item .val { color: var(--accent2); font-weight: bold; font-size: 1.2em; }
+
+  .quiz-btn-voltar {
+    background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2); color: #fff;
+    padding: 8px 16px; border-radius: 10px; cursor: pointer; font-size: 0.9em;
+    font-family: inherit; transition: all 0.15s;
+  }
+  .quiz-btn-voltar:hover { background: rgba(255,77,109,0.3); border-color: var(--danger); }
+
+  .quiz-conteudo { max-width: 800px; margin: 0 auto; width: 100%; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+
+  .quiz-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+    border: 2px solid rgba(0,212,255,0.3); border-radius: 20px; padding: 35px 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(0,212,255,0.15);
+  }
+  .quiz-categoria {
+    display: inline-block; padding: 4px 12px; background: rgba(0,212,255,0.15);
+    border: 1px solid var(--accent); border-radius: 20px; font-size: 0.8em;
+    color: var(--accent); margin-bottom: 20px; text-transform: uppercase;
+    letter-spacing: 1.5px; font-weight: bold;
+  }
+  .quiz-pergunta { font-size: clamp(1.1em, 2.5vw, 1.4em); line-height: 1.5; margin-bottom: 25px; color: #fff; font-weight: 500; }
+  .quiz-opcoes { display: flex; flex-direction: column; gap: 12px; }
+
+  .quiz-opcao {
+    background: rgba(255,255,255,0.06); border: 2px solid rgba(255,255,255,0.15);
+    color: #fff; padding: 15px 20px; border-radius: 12px; cursor: pointer;
+    font-size: 1em; text-align: left; transition: all 0.2s;
+    display: flex; align-items: center; gap: 12px; font-family: inherit; line-height: 1.3;
+  }
+  .quiz-opcao:hover:not(:disabled) { background: rgba(0,212,255,0.15); border-color: var(--accent); transform: translateX(6px); }
+  .quiz-opcao:disabled { cursor: not-allowed; }
+  .quiz-opcao .letra {
+    background: rgba(0,212,255,0.2); border: 1px solid var(--accent); color: var(--accent);
+    min-width: 32px; height: 32px; border-radius: 50%; display: flex;
+    align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;
+  }
+  .quiz-opcao.correta { background: rgba(0,255,136,0.25); border-color: var(--accent2); animation: pulse-correto 0.6s; }
+  .quiz-opcao.correta .letra { background: var(--accent2); color: #0a0a15; border-color: var(--accent2); }
+  .quiz-opcao.errada { background: rgba(255,77,109,0.25); border-color: var(--danger); animation: shake-quiz 0.5s; }
+  .quiz-opcao.errada .letra { background: var(--danger); color: #fff; border-color: var(--danger); }
+
+  @keyframes pulse-correto { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+  @keyframes shake-quiz { 0%, 100% { transform: translateX(0); } 20% { transform: translateX(-8px); } 60% { transform: translateX(8px); } 80% { transform: translateX(-4px); } }
+
+  .quiz-feedback { margin-top: 20px; padding: 18px 20px; border-radius: 12px; font-size: 0.95em; line-height: 1.5; display: none; }
+  .quiz-feedback.show { display: block; animation: fadeIn 0.3s; }
+  .quiz-feedback.ok { background: rgba(0,255,136,0.12); border-left: 4px solid var(--accent2); }
+  .quiz-feedback.err { background: rgba(255,77,109,0.12); border-left: 4px solid var(--danger); }
+  .quiz-feedback strong { color: var(--accent2); display: block; margin-bottom: 6px; font-size: 1.05em; }
+  .quiz-feedback.err strong { color: var(--danger); }
+  .quiz-feedback .recompensa {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,215,0,0.15); border: 1px solid var(--gold); color: var(--gold);
+    padding: 6px 12px; border-radius: 8px; margin-top: 10px; font-weight: bold; font-size: 0.9em;
+  }
+
+  .quiz-proximo {
+    background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #0a0a15;
+    border: none; padding: 14px 30px; border-radius: 12px; font-size: 1.1em;
+    font-weight: bold; cursor: pointer; margin-top: 20px; width: 100%;
+    display: none; font-family: inherit; transition: transform 0.2s;
+  }
+  .quiz-proximo.show { display: block; animation: fadeIn 0.3s; }
+  .quiz-proximo:hover { transform: translateY(-2px); }
+  .quiz-progresso-bar { height: 6px; background: rgba(0,0,0,0.3); border-radius: 3px; overflow: hidden; margin-bottom: 20px; }
+  .quiz-progresso-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); width: 0%; transition: width 0.4s ease; border-radius: 3px; }
+
+  .quiz-final { text-align: center; padding: 40px 20px; }
+  .quiz-final .result-emoji { font-size: 5em; margin-bottom: 20px; animation: flutuar 3s ease-in-out infinite; }
+  .quiz-final .result-titulo { font-size: 2em; margin-bottom: 15px; background: linear-gradient(135deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: bold; }
+  .quiz-final .result-pontos { font-size: 3.5em; font-weight: bold; color: var(--accent2); margin: 20px 0; text-shadow: 0 0 30px var(--accent2); }
+  .quiz-final .result-msg { color: #ccc; margin-bottom: 25px; font-size: 1.1em; }
+  .quiz-final .recompensas-list { background: rgba(0,0,0,0.3); border-radius: 12px; padding: 15px; margin-bottom: 25px; text-align: left; max-width: 400px; margin-left: auto; margin-right: auto; }
+  .quiz-final .recompensas-list h4 { color: var(--gold); margin-bottom: 10px; text-align: center; }
+  .quiz-final .recompensas-list .item { padding: 6px 0; color: #ccc; font-size: 0.9em; }
+  .quiz-final .recompensas-list .item:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .quiz-final button {
+    background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #0a0a15;
+    border: none; padding: 14px 30px; border-radius: 12px; font-size: 1.1em;
+    font-weight: bold; cursor: pointer; font-family: inherit; transition: transform 0.2s;
+  }
+  .quiz-final button:hover { transform: translateY(-2px); }
+
+  /* ==========================================
+     PAINEL ESQUERDO
+     ========================================== */
+  .sidebar {
+    width: 340px; background: linear-gradient(180deg, #1a1a2e, #0f0f1e);
+    border-right: 2px solid #00d4ff33; padding: 12px; overflow-y: auto; z-index: 10;
+    display: flex; flex-direction: column; flex-shrink: 0; position: relative;
+  }
+  .sidebar h1 {
+    font-size: 1.15em; text-align: center; margin-bottom: 4px;
+    background: linear-gradient(90deg, #00ff88, #00d4ff, #ff00c8);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .sidebar .sub { text-align: center; font-size: 0.7em; color: #888; margin-bottom: 10px; }
+
+  .btn-menu-principal {
+    background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.15);
+    color: #fff; padding: 8px 12px; border-radius: 10px; cursor: pointer;
+    font-size: 0.8em; font-family: inherit; margin-bottom: 10px;
+    transition: all 0.15s; width: 100%;
+  }
+  .btn-menu-principal:hover { background: rgba(0,212,255,0.2); border-color: var(--accent); }
+
+  .hud-top {
+    display: flex; justify-content: space-between; gap: 5px; margin-bottom: 8px;
+    padding: 8px; background: rgba(0,0,0,0.4); border-radius: 10px;
+    border: 1px solid rgba(0,212,255,0.2);
+  }
+  .hud-stat { flex: 1; text-align: center; font-size: 0.7em; }
+  .hud-stat .valor { display: block; font-size: 1.5em; font-weight: bold; color: var(--accent2); line-height: 1; }
+  .hud-stat .label { color: #888; font-size: 0.85em; }
+
+  .mesa {
+    position: relative; padding: 14px 10px 18px; margin-bottom: 10px; border-radius: 8px;
+    background:
+      repeating-linear-gradient(90deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 8px),
+      repeating-linear-gradient(0deg, transparent 0px, transparent 22px, rgba(0,0,0,0.12) 22px, rgba(0,0,0,0.12) 23px),
+      linear-gradient(180deg, var(--wood-light) 0%, var(--wood-med) 40%, var(--wood-dark) 100%);
+    border: 3px solid var(--wood-edge);
+    border-top: 4px solid var(--wood-light);
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.15), inset 0 -3px 0 rgba(0,0,0,0.4), 0 6px 0 var(--wood-edge), 0 10px 20px rgba(0,0,0,0.6);
+  }
+  .mesa::before {
+    content: ''; position: absolute; top: -3px; left: 8px; right: 8px; height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); border-radius: 2px;
+  }
+  .mesa-titulo {
+    text-align: center; font-size: 0.7em; color: #f0d9b5; text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+    margin-bottom: 8px; letter-spacing: 2px; font-weight: bold; text-transform: uppercase;
+  }
+  .mesa-titulo::before { content: '📜 '; }
+  .mesa-titulo::after { content: ' 📜'; }
+
+  .tabela { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; padding: 4px; background: rgba(0,0,0,0.25); border-radius: 6px; }
+
+  .elemento {
+    background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+    border: 2px solid var(--cor); border-radius: 6px; padding: 2px 3px; cursor: grab; text-align: center;
+    transition: transform 0.15s, box-shadow 0.15s; position: relative; aspect-ratio: 1;
+    display: flex; flex-direction: column; justify-content: space-between;
+    touch-action: manipulation; -webkit-user-drag: none; overflow: hidden;
+  }
+  .elemento::before { content: ''; position: absolute; inset: 0; background: var(--cor); opacity: 0.18; z-index: 0; }
+  .elemento:hover:not(.bloqueado) {
+    transform: translateY(-2px) scale(1.06);
+    box-shadow: 0 6px 16px var(--cor), 0 0 20px var(--cor); z-index: 3;
+  }
+  .elemento:active:not(.bloqueado) { cursor: grabbing; transform: scale(0.95); }
+  .elemento > * { position: relative; z-index: 1; }
+
+  .elemento .num-atomico { font-size: 0.45em; color: var(--cor); text-align: left; font-weight: bold; line-height: 1; text-shadow: 0 0 6px var(--cor); }
+  .elemento .simbolo { font-size: 1.1em; font-weight: bold; color: #fff; line-height: 1; text-shadow: 0 0 8px var(--cor), 0 2px 4px rgba(0,0,0,0.8); letter-spacing: 0.3px; }
+  .elemento .nome-tab { font-size: 0.42em; color: #ddd; line-height: 1; text-transform: uppercase; letter-spacing: 0.2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .elemento .massa { font-size: 0.38em; color: var(--cor); line-height: 1; opacity: 0.9; }
+  .elemento .icon-float { position: absolute; top: 1px; right: 2px; font-size: 0.75em; opacity: 0.9; z-index: 2; filter: drop-shadow(0 0 4px var(--cor)); }
+
+  .elemento.bloqueado { opacity: 0.3; filter: grayscale(1); cursor: not-allowed; border-color: #444 !important; }
+  .elemento.bloqueado::after {
+    content: '🔒'; position: absolute; inset: 0; display: flex;
+    align-items: center; justify-content: center; font-size: 1.3em; z-index: 2;
+  }
+  .elemento.bloqueado > * { visibility: hidden; }
+
+  .elemento.especial {
+    border-width: 2.5px;
+    box-shadow: 0 0 15px var(--cor), inset 0 0 15px var(--cor);
+  }
+  .elemento.especial::before { opacity: 0.35; animation: brilho-especial 2s infinite; }
+  @keyframes brilho-especial { 0%, 100% { opacity: 0.25; } 50% { opacity: 0.6; } }
+
+  .descoberta-card.novo { animation: brilho-novo 1.5s infinite; }
+  @keyframes brilho-novo { 50% { box-shadow: 0 0 12px var(--cor); } }
+
+  .legenda { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 10px; font-size: 0.6em; padding: 6px; background: rgba(0,0,0,0.3); border-radius: 8px; }
+  .legenda-item { display: flex; align-items: center; gap: 3px; color: #aaa; }
+  .legenda-item .dot { width: 8px; height: 8px; border-radius: 50%; box-shadow: 0 0 4px currentColor; }
+
+  /* ==========================================
+     PAINEL DIREITO
+     ========================================== */
+  .sidebar-right {
+    width: 200px; background: linear-gradient(180deg, #14142a, #0a0a15);
+    border-left: 2px solid #ff00c833; padding: 12px 8px; overflow-y: auto; z-index: 10;
+    display: flex; flex-direction: column; flex-shrink: 0;
+  }
+  .sidebar-right h2 { font-size: 0.85em; text-align: center; margin-bottom: 8px; color: var(--accent3); text-transform: uppercase; letter-spacing: 1.5px; font-weight: bold; }
+  .sidebar-right .subtitulo { text-align: center; font-size: 0.65em; color: #888; margin-bottom: 10px; }
+
+  .descobertas-lista { display: flex; flex-direction: column; gap: 4px; }
+
+  .descoberta-card {
+    display: flex; align-items: center; gap: 6px; padding: 5px 6px;
+    background: rgba(255,255,255,0.05); border: 1.5px solid var(--cor); border-radius: 6px;
+    cursor: grab; transition: all 0.15s; position: relative; overflow: hidden;
+    touch-action: manipulation; -webkit-user-drag: none;
+  }
+  .descoberta-card::before { content: ''; position: absolute; inset: 0; background: var(--cor); opacity: 0.12; z-index: 0; }
+  .descoberta-card:hover { transform: translateX(-3px); box-shadow: 0 4px 12px var(--cor), -4px 0 10px var(--cor); background: rgba(255,255,255,0.1); }
+  .descoberta-card:active { cursor: grabbing; transform: scale(0.96); }
+  .descoberta-card > * { position: relative; z-index: 1; }
+
+  .descoberta-card .card-simbolo { font-size: 1.1em; font-weight: bold; color: #fff; text-shadow: 0 0 6px var(--cor); min-width: 32px; text-align: center; }
+  .descoberta-card .card-info { flex: 1; min-width: 0; }
+  .descoberta-card .card-nome { display: block; font-size: 0.7em; color: #fff; font-weight: bold; line-height: 1.1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .descoberta-card .card-num { display: block; font-size: 0.55em; color: var(--cor); line-height: 1; }
+  .descoberta-card .card-icon { font-size: 1.1em; filter: drop-shadow(0 0 4px var(--cor)); }
+
+  /* ==========================================
+     ÁREA DO JOGO
+     ========================================== */
+  .sandbox-workspace:not([hidden]) {
+    display: grid; flex: 1; width: 100%; height: 100%; min-width: 0; min-height: 0;
+    grid-template: "cabecalho cabecalho cabecalho" auto "elementos jogo lista" minmax(0, 1fr)
+      / clamp(14rem, 24vw, 21rem) minmax(0, 1fr) clamp(9rem, 15vw, 12.5rem);
+    background: #0c101e;
+  }
+  .sandbox-header {
+    grid-area: cabecalho; display: grid; grid-template-columns: auto auto minmax(0, 1fr) auto;
+    align-items: center; gap: 8px 14px; padding: 8px 14px;
+    background: #181e34; border-bottom: 1px solid #30445d;
+  }
+  .sandbox-header h1 { font-size: clamp(1.05rem, 3vw, 1.4rem); color: #86f4ff; }
+  .sandbox-header .btn-menu-principal { margin: 0; min-height: 44px; width: auto; white-space: nowrap; }
+  .sandbox-header .hud-top { justify-self: end; margin: 0; min-width: min(16rem, 100%); }
+  .sandbox-header .hud-stat .label { color: #c0c9d9; }
+  .sandbox-header .btn-config { position: static; z-index: 1; width: 44px; height: 44px; box-shadow: none; }
+  .sandbox-workspace #sidebarLeft { grid-area: elementos; width: auto; height: auto; min-height: 0; }
+  .sandbox-workspace #sidebarRight { grid-area: lista; width: auto; height: auto; min-height: 0; }
+  .sandbox-workspace #sidebarLeft h2 { font-size: 1rem; color: #b8f7ff; }
+  .sandbox-search {
+    width: 100%; min-height: 44px; padding: 8px 9px; margin: 8px 0;
+    border: 1px solid #586e88; border-radius: 8px; background: #121b2e; color: #fff;
+    font-size: 1rem; user-select: text; -webkit-user-select: text;
+  }
+  .sandbox-search::placeholder { color: #c0cadd; }
+  .sandbox-empty { padding: 8px; color: #dbe4f3; font-size: .85rem; }
+  .sandbox-workspace .elemento.selecionado, .sandbox-workspace .descoberta-card.selecionado {
+    outline: 2px solid #a4ffdf; outline-offset: -3px;
+  }
+  .sandbox-workspace .elemento[hidden] { display: none; }
+  .sandbox-workspace :is(button, summary, input):focus-visible { outline: 3px solid #a8f4ff; outline-offset: -3px; }
+  .game-area { grid-area: jogo; min-width: 0; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr) auto auto; }
+  .bancada {
+    position: relative; min-height: 0; overflow: hidden; border-bottom: 1px solid #344a61;
+    background:
+      linear-gradient(#a4b7ef0e 1px, transparent 1px) 0 0 / 24px 24px,
+      linear-gradient(90deg, #a4b7ef0e 1px, transparent 1px) 0 0 / 24px 24px,
+      radial-gradient(circle at 50% 45%, #222942, #0d1221 85%);
+  }
+  .bancada-vazia { position: absolute; inset: 0; display: grid; place-items: center; color: #c8d9ef; font-size: .9rem; pointer-events: none; }
+  .bancada-vazia[hidden] { display: none; }
+  canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+
+  .instructions {
+    position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+    background: rgba(0,0,0,0.6); padding: 8px 16px; border-radius: 12px;
+    font-size: 0.8em; color: #ccc; pointer-events: none; text-align: center;
+    border: 1px solid rgba(0,212,255,0.3); z-index: 5; width: max-content; max-width: calc(100% - 16px);
+  }
+  .instructions b { color: var(--accent); }
+
+  .mistura {
+    padding: 8px clamp(8px, 2vw, 16px);
+    background: #172238; border-bottom: 1px solid #344a61;
+  }
+  .mistura-acoes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)) auto; gap: 6px; }
+  .mistura-acoes button {
+    min-height: 44px; padding: 5px 8px; border: 1px solid #65829f; border-radius: 9px;
+    background: #21344e; color: #f1f7ff; cursor: pointer; font-size: .83rem; font-weight: 650;
+    white-space: normal; overflow-wrap: anywhere; touch-action: manipulation;
+  }
+  .mistura-acoes button:disabled { color: #abbcd0; border-color: #4a5f76; cursor: default; }
+  .mistura-acoes .misturar:not(:disabled) { background: #78f4d5; color: #112d30; border-color: #aaffed; }
+  .mistura-status { display: block; min-height: 1.4em; margin-top: 6px; color: #d3e4f5; font-size: .8rem; }
+  .mistura-status[data-estado="sucesso"] { color: #9cffd1; }
+  .mistura-status[data-estado="erro"] { color: #ffd0a9; }
+
+  .tools {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px;
+    background: #101828; padding: 7px 8px;
+  }
+  .tool-btn {
+    background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.15); color: #fff;
+    min-height: 44px; padding: 4px 5px; border-radius: 9px; cursor: pointer; font-size: 0.82em;
+    display: flex; align-items: center; justify-content: center; gap: 4px; text-align: center;
+    touch-action: manipulation; overflow-wrap: anywhere;
+  }
+  .tool-btn:hover { background: rgba(0,212,255,0.2); border-color: var(--accent); }
+  .tool-btn.active { background: rgba(0,255,136,0.25); border-color: var(--accent2); }
+  .tools-more { position: relative; min-width: 0; }
+  .tools-more summary { list-style: none; }
+  .tools-more summary::-webkit-details-marker { display: none; }
+  .tools-extra {
+    position: absolute; bottom: calc(100% + 6px); right: 0; z-index: 25;
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px;
+    width: min(17rem, calc(100vw - 20px)); padding: 8px;
+    border: 1px solid #607c99; border-radius: 12px; background: #18243a; box-shadow: 0 8px 25px #000a;
+  }
+  .tools-more:not([open]) .tools-extra { display: none; }
+  .light-mode .bancada { background: radial-gradient(circle at 50% 50%, #596781, #28334c); }
+
+  /* ==========================================
+     TOOLTIP E TOAST
+     ========================================== */
+  .tooltip {
+    position: fixed; background: rgba(10,10,25,0.97); border: 2px solid var(--accent); border-radius: 10px;
+    padding: 10px 14px; font-size: 0.8em; pointer-events: none; z-index: 100; max-width: 260px;
+    display: none; box-shadow: 0 4px 20px rgba(0,212,255,0.4);
+  }
+  .tooltip.show { display: block; }
+  .tooltip h4 { color: var(--accent2); margin-bottom: 4px; font-size: 1em; }
+  .tooltip .tipo { display: inline-block; padding: 1px 6px; border-radius: 4px; font-size: 0.75em; margin-left: 4px; background: rgba(255,255,255,0.15); }
+  .tooltip p { color: #ccc; font-size: 0.9em; line-height: 1.4; margin-top: 4px; }
+  .tooltip .info-quimica { display: flex; gap: 8px; margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.15); font-size: 0.85em; }
+  .tooltip .info-quimica div { flex: 1; text-align: center; }
+  .tooltip .info-quimica .lbl { color: #888; font-size: 0.75em; display: block; }
+  .tooltip .info-quimica .val { color: var(--accent); font-weight: bold; }
+
+  .toast {
+    position: absolute; top: 70px; left: 50%; transform: translateX(-50%) translateY(-20px);
+    background: linear-gradient(135deg, rgba(0,255,136,0.95), rgba(0,212,255,0.95)); color: #0a0a15;
+    padding: 12px 24px; border-radius: 15px; font-weight: bold; font-size: 1em;
+    box-shadow: 0 8px 30px rgba(0,255,136,0.5); opacity: 0;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none; z-index: 50; text-align: center; max-width: 90%;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .toast .big { font-size: 1.3em; display: block; margin: 3px 0; }
+  .toast .small { font-size: 0.8em; opacity: 0.9; }
+  .toast.achievement { background: linear-gradient(135deg, rgba(255,215,0,0.95), rgba(255,170,0,0.95)); box-shadow: 0 8px 30px rgba(255,215,0,0.6); }
+
+  /* ==========================================
+     MODAL
+     ========================================== */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; justify-content: center; align-items: center; z-index: 1900; padding: 20px; backdrop-filter: blur(5px); }
+  .modal-overlay.show { display: flex; animation: fadeIn 0.3s; }
+  .modal {
+    background: linear-gradient(180deg, #1a1a2e, #0f0f1e); border: 2px solid var(--accent); border-radius: 20px;
+    max-width: 500px; width: 100%; max-height: min(85vh, 85dvh); overflow: hidden;
+    display: flex; flex-direction: column;
+    box-shadow: 0 20px 60px rgba(0,212,255,0.4);
+  }
+  .modal-top { padding: 10px 14px; display: flex; gap: 8px; align-items: center; justify-content: space-between; border-bottom: 1px solid #34445d; }
+  .modal h2 { color: var(--accent); font-size: clamp(1.1rem, 5vw, 1.5rem); }
+  .modal-scroll { padding: 10px 14px; overflow-y: auto; min-height: 0; }
+  .modal .close-btn {
+    background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #0a0a15; border: none;
+    width: 44px; height: 44px; flex: 0 0 44px; border-radius: 10px; font-size: 1.2em; font-weight: bold; cursor: pointer;
+  }
+  .modal .close-btn:hover { transform: translateY(-2px); }
+
+  .conquista-item {
+    display: flex; align-items: center; gap: 12px; padding: 12px; margin-bottom: 8px;
+    background: rgba(255,255,255,0.05); border-radius: 10px; border-left: 4px solid #333;
+  }
+  .conquista-item.desbloqueada { background: rgba(0,255,136,0.1); border-left-color: var(--accent2); }
+  .conquista-item .c-icon { font-size: 1.8em; }
+  .conquista-item .c-info { flex: 1; }
+  .conquista-item .c-nome { font-weight: bold; font-size: 0.95em; }
+  .conquista-item.desbloqueada .c-nome { color: var(--accent2); }
+  .conquista-item:not(.desbloqueada) .c-nome { color: #888; }
+  .conquista-item .c-desc { font-size: 0.8em; color: #aaa; margin-top: 2px; }
+
+  .receita-nota { margin: 0 0 12px; line-height: 1.45; font-size: 0.88em; color: #c4cfde; }
+  .receita-filtro { display: grid; gap: 5px; margin-bottom: 12px; font-size: 0.9em; }
+  .receita-filtro select {
+    width: 100%; padding: 8px; font: inherit; color: #edf5ff; background: #17243a;
+    border: 1px solid #637c98; border-radius: 8px;
+  }
+  .receita-item {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px;
+    margin-bottom: 6px; background: rgba(255,255,255,0.05); border-radius: 8px; font-size: 0.9em;
+  }
+  .receita-info { display: grid; gap: 3px; }
+  .receita-info span { color: #c4cfde; }
+  .receita-tipo { color: var(--accent2); text-align: right; font-size: 0.85em; }
+
+  .drag-ghost {
+    position: fixed; pointer-events: none; z-index: 9999; width: 70px; height: 70px; border-radius: 10px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transform: translate(-50%, -50%) scale(1); transition: transform 0.1s;
+    border: 3px solid currentColor; font-weight: bold; text-shadow: 0 0 8px currentColor;
+    box-shadow: 0 0 30px currentColor, inset 0 0 20px currentColor; background: rgba(0,0,0,0.75);
+  }
+  .drag-ghost .ghost-simbolo { font-size: 1.5em; line-height: 1; color: #fff; }
+  .drag-ghost .ghost-num { position: absolute; top: 4px; left: 6px; font-size: 0.7em; color: currentColor; }
+
+  /* ==========================================
+     QUALIDADE GRÁFICA
+     ========================================== */
+  body.qualidade-baixa .elemento { transition: none; }
+  body.qualidade-baixa .elemento::before { opacity: 0.1; }
+  body.qualidade-baixa canvas { image-rendering: pixelated; }
+
+  body.qualidade-ultra canvas { image-rendering: auto; }
+  body.qualidade-ultra .elemento:hover { box-shadow: 0 8px 24px var(--cor), 0 0 40px var(--cor); }
+
+  /* Sem efeitos */
+  body.sem-efeitos .toast { transition: none !important; }
+  body.sem-efeitos .menu-titulo { animation: none !important; }
+  body.sem-efeitos .modo-emoji { animation: none !important; }
+  body.sem-efeitos .elemento::before { animation: none !important; }
+
+  @media (max-width: 1100px) { .sidebar-right { width: 160px; } .sidebar { width: 300px; } }
+  @media (max-width: 900px) {
+    .sidebar { width: 260px; }
+    .sidebar-right { width: 140px; }
+    .descoberta-card .card-nome { font-size: 0.6em; }
+  }
+  @media (max-width: 700px) {
+    body { flex-direction: column; overflow-y: auto; }
+    .menu-principal { justify-content: safe center; }
+    .sidebar { width: 100%; height: 40vh; border-right: none; border-bottom: 2px solid #00d4ff33; }
+    .sidebar-right { width: 100%; height: 18vh; border-left: none; border-top: 2px solid #ff00c833; padding: 8px; }
+    .descobertas-lista { flex-direction: row; overflow-x: auto; }
+    .descoberta-card { min-width: 100px; flex-shrink: 0; }
+
+    .tabela { grid-template-columns: repeat(5, 1fr); }
+    .elemento .simbolo { font-size: 0.9em; }
+    .menu-principal { padding: 22px 12px; }
+    .menu-titulo { font-size: clamp(2rem, 8.4vw, 3.2rem); }
+    .menu-subtitulo { margin-bottom: 20px; font-size: 1rem; }
+    .menu-modos { grid-template-columns: 1fr; gap: 10px; margin-bottom: 16px; }
+    .modo-card {
+      display: grid; grid-template-columns: 44px minmax(0, 1fr); align-items: center;
+      column-gap: 12px; row-gap: 3px; padding: 12px; text-align: left;
+    }
+    .modo-card .modo-emoji { grid-row: span 2; margin: 0; font-size: 1.8rem; text-align: center; }
+    .modo-card .modo-nome { margin: 0; font-size: 1.1rem; }
+    .modo-card .modo-desc { font-size: .85rem; line-height: 1.35; }
+    .modo-card .modo-tag { display: none; }
+    .quiz-card { padding: 25px 20px; }
+    .quiz-screen { padding: 10px; }
+    .quiz-header { padding: 10px 54px 10px 10px; margin-bottom: 12px; }
+    .quiz-btn-voltar, .quiz-opcao { min-height: 44px; }
+    .quiz-hud { font-size: 0.85em; }
+
+    .config-panel { max-height: 95vh; }
+    .btn-config { width: 44px; height: 44px; font-size: 1.3em; top: 10px; right: 10px; }
+  }
+
+  @media (max-width: 820px), (any-pointer: coarse) and (max-width: 1024px) {
+    .sandbox-workspace:not([hidden]) {
+      height: 100vh; height: 100dvh; overflow: auto;
+      grid-template: "cabecalho" auto "jogo" auto "elementos" minmax(155px, 1fr) / minmax(0, 1fr);
+    }
+    .sandbox-header { grid-template-columns: auto minmax(0, 1fr) auto; gap: 6px 10px; padding: 7px 8px; }
+    .sandbox-header .hud-top { grid-area: 2 / 1 / 3 / -1; width: 100%; padding: 5px 8px; }
+    .sandbox-header .btn-config { grid-area: 1 / 3; }
+    .game-area { grid-template-rows: clamp(102px, 22dvh, 205px) auto auto; }
+    .mistura-acoes button, .tool-btn, .receita-filtro select, .modal .close-btn { min-height: 44px; }
+    .mistura-status { line-height: 1.4; overflow-wrap: anywhere; }
+    .modal .close-btn { min-width: 44px; }
+    .receita-filtro select { font-size: 1rem; }
+    .receita-info { min-width: 0; overflow-wrap: anywhere; }
+    .sandbox-workspace #sidebarLeft { padding: 7px 8px; border: 0; overflow: hidden; }
+    .sandbox-workspace #sidebarRight, .sandbox-workspace #sidebarLeft .legenda, .sandbox-workspace #sidebarLeft .sub,
+    .sandbox-workspace #sidebarLeft .mesa-titulo, .instructions { display: none; }
+    .sandbox-palette-heading { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+    .sandbox-workspace #sidebarLeft h2 { font-size: .9rem; }
+    .sandbox-search { flex: 1; min-width: 0; margin: 0; }
+    .sandbox-workspace #sidebarLeft .mesa {
+      overflow: auto; overscroll-behavior: contain; flex: 1; min-height: 0; margin: 0;
+      border: 1px solid #354d68; padding: 3px; background: #121b2b; box-shadow: none;
+    }
+    .sandbox-workspace #sidebarLeft .mesa::before { display: none; }
+    .sandbox-workspace .tabela { grid-template-columns: repeat(auto-fit, minmax(58px, 1fr)); gap: 5px; padding: 3px; background: none; }
+    .sandbox-workspace .elemento { aspect-ratio: auto; min-height: 55px; }
+    .sandbox-workspace .elemento .simbolo { font-size: 1rem; }
+    .sandbox-workspace .elemento .nome-tab { font-size: .63rem; text-transform: none; line-height: 1.1; }
+    .sandbox-workspace .elemento .massa { display: none; }
+    .sandbox-workspace .toast { top: 7px; padding: 6px 8px; width: max-content; font-size: .75rem; box-shadow: none; }
+    .config-overlay, .modal-overlay { padding: 8px; }
+    .config-panel { max-height: calc(100dvh - 16px); }
+  }
+
+  @media (min-width: 610px) and (max-width: 1024px) and (orientation: landscape) and (max-height: 540px) {
+    .sandbox-workspace:not([hidden]) {
+      grid-template: "cabecalho cabecalho" auto "jogo elementos" minmax(265px, 1fr) / minmax(0, 1.1fr) minmax(0, 1fr);
+    }
+    .sandbox-header { grid-template-columns: auto auto minmax(0, 1fr) auto; }
+    .sandbox-header .hud-top, .sandbox-header .btn-config { grid-area: auto; }
+    .sandbox-header .hud-top { width: auto; }
+    .sandbox-workspace #sidebarRight { display: none; }
+    .game-area { grid-template-rows: minmax(90px, 1fr) auto auto; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .menu-principal, .modo-card, .modo-emoji, .menu-emoji-flutuante, .toast,
+    .menu-titulo, .descoberta-card.novo { animation: none; transition: none; }
+  }
+
+  .sidebar::-webkit-scrollbar, .modal::-webkit-scrollbar, .sidebar-right::-webkit-scrollbar, .config-conteudo::-webkit-scrollbar { width: 6px; }
+  .sidebar::-webkit-scrollbar-thumb, .modal::-webkit-scrollbar-thumb, .sidebar-right::-webkit-scrollbar-thumb, .config-conteudo::-webkit-scrollbar-thumb { background: #00d4ff55; border-radius: 3px; }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+</style>
+</head>
+<body>
+
+<!-- BOTÃO DE CONFIGURAÇÕES -->
+<button class="btn-config" id="btnConfig" onclick="abrirConfig()" title="Configurações">⚙️</button>
+
+<!-- PAINEL DE CONFIGURAÇÕES -->
+<div class="config-overlay" id="configOverlay">
+  <div class="config-panel">
+    <div class="config-header">
+      <h2>⚙️ <span id="configTitulo">Configurações</span></h2>
+      <button class="config-fechar" onclick="fecharConfig()">✕</button>
+    </div>
+
+    <div class="config-abas">
+      <button class="config-aba ativa" onclick="mudarAba('graficos', this)">
+        <span class="aba-icone">🎨</span>
+        <span id="abaGraficos">Gráficos</span>
+      </button>
+      <button class="config-aba" onclick="mudarAba('audio', this)">
+        <span class="aba-icone">🔊</span>
+        <span id="abaAudio">Áudio</span>
+      </button>
+      <button class="config-aba" onclick="mudarAba('idioma', this)">
+        <span class="aba-icone">🌍</span>
+        <span id="abaIdioma">Idioma</span>
+      </button>
+    </div>
+
+    <div class="config-conteudo">
+      <!-- ABA GRÁFICOS -->
+      <div class="config-aba-conteudo show" id="abaConteudoGraficos">
+        <div class="config-item">
+          <div class="config-item-titulo">
+            <div class="config-item-label"><span class="icone">✨</span><span id="lblQualidade">Qualidade Gráfica</span></div>
+          </div>
+          <div class="config-opcoes" id="opcoesQualidade">
+            <button class="config-opcao" data-qual="baixa" onclick="setQualidade('baixa')">
+              <span class="op-icone">📱</span>
+              <span id="qualBaixa">Baixa</span>
+            </button>
+            <button class="config-opcao ativa" data-qual="media" onclick="setQualidade('media')">
+              <span class="op-icone">💻</span>
+              <span id="qualMedia">Média</span>
+            </button>
+            <button class="config-opcao" data-qual="alta" onclick="setQualidade('alta')">
+              <span class="op-icone">🖥️</span>
+              <span id="qualAlta">Alta</span>
+            </button>
+            <button class="config-opcao" data-qual="ultra" onclick="setQualidade('ultra')">
+              <span class="op-icone">🚀</span>
+              <span id="qualUltra">Ultra</span>
+            </button>
+          </div>
+          <div class="config-item-desc" id="descQualidade">Ajusta a resolução e detalhes visuais do jogo.</div>
+        </div>
+
+        <div class="config-item">
+          <div class="config-item-titulo">
+            <div class="config-item-label"><span class="icone">🌟</span><span id="lblEfeitos">Efeitos Visuais</span></div>
+            <div class="config-toggle ativo" id="toggleEfeitos" onclick="toggleConfig('efeitos')"></div>
+          </div>
+          <div class="config-item-desc" id="descEfeitos">Explosões, ondas de choque e animações.</div>
+        </div>
+
+        <div class="config-item">
+          <div class="config-item-titulo">
+            <div class="config-item-label"><span class="icone">✨</span><span id="lblParticulas">Partículas</span></div>
+            <div class="config-toggle ativo" id="toggleParticulas" onclick="toggleConfig('particulas')"></div>
+          </div>
+          <div class="config-item-desc" id="descParticulas">Mostra partículas de brilho e poeira.</div>
+        </div>
+
+        <div class="config-item">
+          <div class="config-item-titulo">
+            <div class="config-item-label"><span class="icone">📊</span><span id="lblFps">Mostrar FPS</span></div>
+            <div class="config-toggle" id="toggleFps" onclick="toggleConfig('fps')"></div>
+          </div>
+          <div class="config-item-desc" id="descFps">Exibe a taxa de quadros no canto da tela.</div>
+        </div>
+
+        <div class="config-item">
+          <div class="config-item-titulo">
+            <div class="config-item-label"><span class="icone">🎬</span><span id="lblAnimacoes">Animações</span></div>
+            <div class="config-toggle ativo" id="toggleAnimacoes" onclick="toggleConfig('animacoes')"></div>
+          </div>
+          <div class="config-item-desc" id="descAnimacoes">Transições e animações da interface.</div>
+        </div>
+      </div>
+
+      <!-- ABA ÁUDIO -->
+      <div class="config-aba-conteudo" id="abaConteudoAudio">
+        <div class="config-item">
+          <div class="config-item-titulo">
+            <div class="config-item-label"><span class="icone">🔊</span><span id="lblVolumeMaster">Volume Geral</span></div>
+            <div class="config-item-valor" id="volMasterValor">70%</div>
+          </div>
+          <input type="range" class="config-slider" id="sliderMaster" min="0" max="100" value="70" oninput="setVolume('master', this.value)">
+          <div class="config-item-desc" id="descVolMaster">Controla todo o áudio do jogo.</div>
+        </div>
+
+        <div class="config-item">
+          <div class="config-item-titulo">
+            <div class="config-item-label"><span class="icone">🎵</span><span id="lblVolumeMusica">Música</span></div>
+            <div class="config-item-valor" id="volMusicaValor">50%</div>
+          </div>
+          <input type="range" class="config-slider" id="sliderMusica" min="0" max="100" value="50" oninput="setVolume('musica', this.value)">
+          <div class="config-item-desc" id="descVolMusica">Volume da música de fundo.</div>
+        </div>
+
+        <div class="config-item">
+          <div class="config-item-titulo">
+            <div class="config-item-label"><span class="icone">🔔</span><span id="lblVolumeEfeitos">Efeitos Sonoros</span></div>
+            <div class="config-item-valor" id="volEfeitosValor">80%</div>
+          </div>
+          <input type="range" class="config-slider" id="sliderEfeitos" min="0" max="100" value="80" oninput="setVolume('efeitos', this.value)">
+          <div class="config-item-desc" id="descVolEfeitos">Volume dos sons de cliques, reações, etc.</div>
+        </div>
+
+        <div class="config-item">
+          <div class="config-item-titulo">
+            <div class="config-item-label"><span class="icone">🔇</span><span id="lblMudo">Silenciar Tudo</span></div>
+            <div class="config-toggle" id="toggleMudo" onclick="toggleConfig('mudo')"></div>
+          </div>
+          <div class="config-item-desc" id="descMudo">Desativa todos os sons do jogo.</div>
+        </div>
+
+        <div class="config-item">
+          <div class="config-item-titulo">
+            <div class="config-item-label"><span class="icone">🎧</span><span id="lblSomReacoes">Som de Reações</span></div>
+            <div class="config-toggle ativo" id="toggleSomReacoes" onclick="toggleConfig('somReacoes')"></div>
+          </div>
+          <div class="config-item-desc" id="descSomReacoes">Sons ao combinar elementos.</div>
+        </div>
+      </div>
+
+      <!-- ABA IDIOMA -->
+      <div class="config-aba-conteudo" id="abaConteudoIdioma">
+        <div class="config-item">
+          <div class="config-item-titulo">
+            <div class="config-item-label"><span class="icone">🌍</span><span id="lblIdioma">Idioma do Jogo</span></div>
+          </div>
+          <div class="config-opcoes" id="opcoesIdioma">
+            <button class="config-opcao ativa" data-lang="pt" onclick="setIdioma('pt')">
+              <span class="op-icone">🇧🇷</span>
+              <span>Português</span>
+            </button>
+            <button class="config-opcao" data-lang="en" onclick="setIdioma('en')">
+              <span class="op-icone">🇺🇸</span>
+              <span>English</span>
+            </button>
+            <button class="config-opcao" data-lang="es" onclick="setIdioma('es')">
+              <span class="op-icone">🇪🇸</span>
+              <span>Español</span>
+            </button>
+          </div>
+          <div class="config-item-desc" id="descIdioma">O jogo será traduzido imediatamente.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="config-footer">
+      <button class="config-btn config-btn-restaurar" id="btnRestaurar" onclick="restaurarConfig()">🔄 <span id="btnRestaurarTexto">Restaurar</span></button>
+      <button class="config-btn config-btn-aplicar" id="btnAplicar" onclick="fecharConfig()">✓ <span id="btnAplicarTexto">Aplicar</span></button>
+    </div>
+  </div>
+</div>
+
+<!-- MENU PRINCIPAL -->
+<div class="menu-principal" id="menuPrincipal">
+  <div class="menu-emoji-flutuante" style="top:10%;left:10%;animation-delay:0s">⚗️</div>
+  <div class="menu-emoji-flutuante" style="top:20%;right:15%;animation-delay:1s">🧬</div>
+  <div class="menu-emoji-flutuante" style="bottom:15%;left:20%;animation-delay:2s">⚛️</div>
+  <div class="menu-emoji-flutuante" style="bottom:20%;right:10%;animation-delay:3s">🔬</div>
+
+  <h1 class="menu-titulo" id="txtTitulo">🧪 Laboratório Sandbox</h1>
+  <p class="menu-subtitulo" id="txtSubtitulo">
+    Misture elementos reais, descubra compostos e ligas e teste seus conhecimentos de química.
+  </p>
+
+  <div class="menu-modos">
+    <button type="button" class="modo-card" style="--modo-cor:#00d4ff" onclick="abrirModo('sandbox')">
+      <span class="modo-emoji">🔬</span>
+      <span class="modo-nome" id="txtModoSandbox">Sandbox</span>
+      <span class="modo-desc" id="txtModoSandboxDesc">Explore os 118 elementos e misture dois na bancada.</span>
+      <span class="modo-tag" id="txtModoSandboxTag">Modo Livre</span>
+    </button>
+
+    <button type="button" class="modo-card" style="--modo-cor:#00ff88" onclick="abrirModo('quiz')">
+      <span class="modo-emoji">🎯</span>
+      <span class="modo-nome" id="txtModoQuiz">Modo Quiz</span>
+      <span class="modo-desc" id="txtModoQuizDesc">Responda perguntas de química e ganhe pontos e dicas de receitas.</span>
+      <span class="modo-tag" id="txtModoQuizTag">Perguntas</span>
+    </button>
+
+    <button type="button" class="modo-card" style="--modo-cor:#ff00c8" onclick="abrirModalReceitas()">
+      <span class="modo-emoji">📖</span>
+      <span class="modo-nome" id="txtModoReceitas">Livro de Receitas</span>
+      <span class="modo-desc" id="txtModoReceitasDesc">Consulte reações e ligas e filtre pelo elemento que quiser explorar.</span>
+      <span class="modo-tag" id="txtModoReceitasTag">Consulta</span>
+    </button>
+  </div>
+
+  <div class="menu-footer" id="txtFooter">💡 As suas descobertas ficam salvas neste navegador.</div>
+</div>
+
+<!-- QUIZ -->
+<div class="quiz-screen" id="quizScreen">
+  <div class="quiz-header">
+    <div class="quiz-hud">
+      <div class="quiz-hud-item">📊 <span id="txtQuestao">Questão</span> <span class="val" id="quizQuestaoNum">1</span>/<span id="quizTotal">5</span></div>
+      <div class="quiz-hud-item">✅ <span id="txtAcertos">Acertos</span>: <span class="val" id="quizAcertos">0</span></div>
+      <div class="quiz-hud-item">🏆 <span id="txtPontos">Pontos</span>: <span class="val" id="quizPontos">0</span></div>
+    </div>
+    <button class="quiz-btn-voltar" onclick="voltarMenu()" id="txtBtnMenu">← Menu</button>
+  </div>
+
+  <div class="quiz-conteudo">
+    <div class="quiz-progresso-bar">
+      <div class="quiz-progresso-fill" id="quizProgressoFill"></div>
+    </div>
+
+    <div id="quizPerguntaArea">
+      <div class="quiz-card">
+        <div class="quiz-categoria" id="quizCategoria">🧬 Biologia</div>
+        <div class="quiz-pergunta" id="quizPergunta">Carregando...</div>
+        <div class="quiz-opcoes" id="quizOpcoes"></div>
+        <div class="quiz-feedback" id="quizFeedback"></div>
+        <button class="quiz-proximo" id="quizProximo" onclick="proximaQuestao()"><span id="iconeProxima" aria-hidden="true">➡️</span> <span id="txtProxima">Próxima</span></button>
+      </div>
+    </div>
+
+    <div id="quizFinalArea" style="display:none">
+      <div class="quiz-card quiz-final">
+        <div class="result-emoji" id="quizFinalEmoji">🏆</div>
+        <div class="result-titulo" id="quizFinalTitulo">Quiz Completo!</div>
+        <div class="result-pontos" id="quizFinalPontos">0 pts</div>
+        <div class="result-msg" id="quizFinalMsg"></div>
+        <div class="recompensas-list" id="quizFinalRecompensas"></div>
+        <button onclick="voltarMenu()" id="txtBtnVoltarMenu">🏠 <span>Voltar ao Menu</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="sandbox-workspace" id="sandboxWorkspace" aria-labelledby="txtSandboxTitulo" hidden>
+<header class="sandbox-header" id="sandboxHeader">
+  <button type="button" class="btn-menu-principal" onclick="voltarMenu()" id="txtBtnMenuPrincipal">← Menu</button>
+  <h1 id="txtSandboxTitulo">Sandbox</h1>
+  <div class="hud-top">
+    <div class="hud-stat"><span class="valor" id="pontos">0</span><span class="label" id="txtHudPontos">🏆 Pontos</span></div>
+    <div class="hud-stat"><span class="valor" id="numElementos">118</span><span class="label" id="txtHudReacoes">🧪 Elementos</span></div>
+    <div class="hud-stat"><span class="valor" id="numConc">0</span><span class="label" id="txtHudConc">🎖️ Conc.</span></div>
+  </div>
+</header>
+
+<aside class="sidebar" id="sidebarLeft" aria-labelledby="txtTabTitulo">
+  <div class="sandbox-palette-heading">
+    <h2 id="txtTabTitulo">Elementos</h2>
+    <input type="search" class="sandbox-search" id="buscarElemento" placeholder="Buscar elemento" aria-label="Buscar elemento" autocomplete="off">
+  </div>
+  <p class="sub" id="txtTabSub">Escolha elementos para a bancada.</p>
+  <div class="mesa">
+    <div class="mesa-titulo" id="txtMesaTitulo">Tabela Periódica</div>
+    <div class="tabela" id="tabelaPeriodica"></div>
+    <p class="sandbox-empty" id="txtSemElementos" role="status" hidden>Nenhum elemento encontrado.</p>
+  </div>
+
+  <div class="legenda">
+    <div class="legenda-item"><span class="dot" style="color:#00d4ff;background:#00d4ff"></span><span id="txtLegLiq">Líquido</span></div>
+    <div class="legenda-item"><span class="dot" style="color:#aaddff;background:#aaddff"></span><span id="txtLegGas">Gás</span></div>
+    <div class="legenda-item"><span class="dot" style="color:#e8bb8e;background:#e8bb8e"></span><span id="txtLegSol">Sólido não metálico</span></div>
+    <div class="legenda-item"><span class="dot" style="color:#ffd700;background:#ffd700"></span><span id="txtLegMet">Metal</span></div>
+    <div class="legenda-item"><span class="dot" style="color:#ec8cff;background:#ec8cff"></span><span id="txtLegEsp">Estado pouco conhecido</span></div>
+  </div>
+</aside>
+
+<main class="game-area" id="gameArea">
+  <div class="bancada" id="bancadaSandbox">
+    <canvas id="canvas" aria-hidden="true"></canvas>
+    <p class="bancada-vazia" id="bancadaVazia" aria-hidden="true">🧪 Bancada</p>
+    <div class="instructions" id="instructions">
+      <b id="txtInstr1">Arraste</b> • <b id="txtInstr2">Solte sobre outro</b> <span id="txtInstr3">para combinar</span> • <b id="txtInstr4">Clique direito</b> <span id="txtInstr5">apaga</span>
+    </div>
+    <div class="toast" id="toast"></div>
+    <div class="tooltip" id="tooltip"></div>
+    <div id="fpsCounter" style="position:absolute;top:10px;right:10px;background:rgba(0,0,0,0.7);color:#0f0;padding:4px 8px;border-radius:6px;font-size:0.75em;font-family:monospace;display:none;z-index:100;">FPS: 60</div>
+  </div>
+  <div class="mistura">
+    <div class="mistura-acoes">
+      <button type="button" id="misturaPrimeiro" disabled>Elemento 1</button>
+      <button type="button" id="misturaSegundo" disabled>Elemento 2</button>
+      <button type="button" class="misturar" id="btnMisturar" disabled>Misturar</button>
+    </div>
+    <output class="mistura-status" id="misturaStatus" role="status">Escolha dois elementos e toque em Misturar.</output>
+  </div>
+  <div class="tools">
+    <button type="button" class="tool-btn" id="btnLimpar">🗑️ <span id="txtBtnLimpar">Limpar</span></button>
+    <button type="button" class="tool-btn" id="btnReceitas">📖 <span id="txtBtnRec">Receitas</span></button>
+    <details class="tools-more" id="sandboxMais">
+      <summary class="tool-btn">⋯ <span id="txtBtnMais">Mais</span></summary>
+      <div class="tools-extra">
+        <button type="button" class="tool-btn" id="btnPausar" aria-pressed="false"><span aria-hidden="true" id="iconePausa">⏸️</span> <span id="txtBtnPausar">Pausar</span></button>
+        <button type="button" class="tool-btn" id="btnConquistas">🎖️ <span id="txtBtnConc">Conquistas</span></button>
+        <button type="button" class="tool-btn" id="btnTema" aria-pressed="false">🌙 <span id="txtBtnTema">Tema</span></button>
+        <button type="button" class="tool-btn" id="btnSom" aria-pressed="true">🔊 <span id="txtBtnSom">Som</span></button>
+        <button type="button" class="tool-btn" id="btnReset">🔄 <span id="txtBtnReset">Reiniciar</span></button>
+      </div>
+    </details>
+  </div>
+</main>
+
+<aside class="sidebar-right" id="sidebarRight">
+  <h2 id="txtElemTitulo">🧬 Elementos</h2>
+  <p class="subtitulo" id="txtElemSub">Escolha ou arraste para a bancada</p>
+  <div class="descobertas-lista" id="descobertasLista"></div>
+</aside>
+</section>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalContent" role="dialog" aria-modal="true" aria-labelledby="modalTitulo"></div>
+</div>
+
+<script>
+/* ==========================================
+   TRADUÇÕES (PT / EN / ES)
+   ========================================== */
+const TRADUCOES = {
+  pt: {
+    configTitulo: 'Configurações', abaGraficos: 'Gráficos', abaAudio: 'Áudio', abaIdioma: 'Idioma',
+    lblQualidade: 'Qualidade Gráfica', qualBaixa: 'Baixa', qualMedia: 'Média', qualAlta: 'Alta', qualUltra: 'Ultra',
+    descQualidade: 'Ajusta a resolução e detalhes visuais do jogo.',
+    lblEfeitos: 'Efeitos Visuais', descEfeitos: 'Explosões, ondas de choque e animações.',
+    lblParticulas: 'Partículas', descParticulas: 'Mostra partículas de brilho e poeira.',
+    lblFps: 'Mostrar FPS', descFps: 'Exibe a taxa de quadros no canto da tela.',
+    lblAnimacoes: 'Animações', descAnimacoes: 'Transições e animações da interface.',
+    lblVolumeMaster: 'Volume Geral', descVolMaster: 'Controla todo o áudio do jogo.',
+    lblVolumeMusica: 'Música', descVolMusica: 'Volume da música de fundo.',
+    lblVolumeEfeitos: 'Efeitos Sonoros', descVolEfeitos: 'Volume dos sons de cliques, reações, etc.',
+    lblMudo: 'Silenciar Tudo', descMudo: 'Desativa todos os sons do jogo.',
+    lblSomReacoes: 'Som de Reações', descSomReacoes: 'Sons ao combinar elementos.',
+    lblIdioma: 'Idioma do Jogo', descIdioma: 'O jogo será traduzido imediatamente.',
+    btnRestaurarTexto: 'Restaurar', btnAplicarTexto: 'Aplicar',
+    txtTitulo: '🧪 Laboratório Sandbox',
+
+    txtSubtitulo: "Misture elementos reais, descubra compostos e ligas e teste seus conhecimentos de química.",
+    txtModoQuiz: "Modo Quiz", txtModoQuizDesc: "Responda perguntas de química e ganhe pontos e dicas de receitas.",
+    txtModoSandbox: 'Sandbox', txtModoSandboxDesc: "Explore os 118 elementos e misture dois na bancada.", txtModoSandboxTag: "Modo Livre",
+
+    txtModoReceitas: "Livro de Receitas", txtModoReceitasDesc: "Consulte reações e ligas e filtre pelo elemento que quiser explorar.", txtModoReceitasTag: "Consulta",
+    txtFooter: "💡 As suas descobertas ficam salvas neste navegador.",
+    txtQuestao: 'Questão', txtAcertos: 'Acertos', txtPontos: 'Pontos', txtBtnMenu: '← Menu',
+    txtProxima: 'Próxima', txtResultado: 'Ver resultado', txtBtnVoltarMenu: '🏠 Voltar ao Menu',
+    txtBtnMenuPrincipal: '← Menu', txtTabTitulo: 'Elementos', txtTabSub: 'Escolha elementos para a bancada.',
+    txtHudPontos: '🏆 Pontos', txtHudReacoes: '🧪 Elementos', txtHudConc: '🎖️ Conc.',
+    txtMesaTitulo: 'Tabela Periódica',
+    txtLegLiq: 'Líquido', txtLegGas: 'Gás', txtLegSol: 'Sólido não metálico', txtLegMet: 'Metal', txtLegEsp: "Estado pouco conhecido",
+    txtInstr1: 'Arraste', txtInstr2: 'Solte sobre outro', txtInstr3: 'para combinar', txtInstr4: 'Clique direito', txtInstr5: 'apaga',
+    txtBtnLimpar: 'Limpar', txtBtnPausar: 'Pausar', txtBtnConc: 'Conquistas', txtBtnRec: 'Receitas', txtBtnTema: 'Tema', txtBtnSom: 'Som', txtBtnReset: 'Reiniciar',
+    txtElemTitulo: '🧬 Elementos', txtElemSub: 'Escolha ou arraste para a bancada',
+
+  },
+  en: {
+    configTitulo: 'Settings', abaGraficos: 'Graphics', abaAudio: 'Audio', abaIdioma: 'Language',
+    lblQualidade: 'Graphics Quality', qualBaixa: 'Low', qualMedia: 'Medium', qualAlta: 'High', qualUltra: 'Ultra',
+    descQualidade: 'Adjusts resolution and visual details.',
+    lblEfeitos: 'Visual Effects', descEfeitos: 'Explosions, shockwaves and animations.',
+    lblParticulas: 'Particles', descParticulas: 'Shows glow and dust particles.',
+    lblFps: 'Show FPS', descFps: 'Displays frame rate on screen corner.',
+    lblAnimacoes: 'Animations', descAnimacoes: 'Interface transitions and animations.',
+    lblVolumeMaster: 'Master Volume', descVolMaster: 'Controls all game audio.',
+    lblVolumeMusica: 'Music', descVolMusica: 'Background music volume.',
+    lblVolumeEfeitos: 'Sound Effects', descVolEfeitos: 'Click and reaction sounds volume.',
+    lblMudo: 'Mute All', descMudo: 'Disables all game sounds.',
+    lblSomReacoes: 'Reaction Sounds', descSomReacoes: 'Sounds when combining elements.',
+    lblIdioma: 'Game Language', descIdioma: 'The game will be translated immediately.',
+    btnRestaurarTexto: 'Restore', btnAplicarTexto: 'Apply',
+    txtTitulo: '🧪 Sandbox Lab',
+
+    txtSubtitulo: "Mix real elements, discover compounds and alloys, and test your chemistry knowledge.",
+    txtModoQuiz: "Quiz Mode", txtModoQuizDesc: "Answer chemistry questions to earn points and recipe tips.",
+    txtModoSandbox: 'Sandbox', txtModoSandboxDesc: "Explore all 118 elements and mix two on the workbench.", txtModoSandboxTag: "Free Mode",
+
+    txtModoReceitas: "Recipe Book", txtModoReceitasDesc: "Browse reactions and alloys and filter by any element.", txtModoReceitasTag: "Reference",
+    txtFooter: "💡 Your discoveries are saved in this browser.",
+    txtQuestao: 'Question', txtAcertos: 'Correct', txtPontos: 'Points', txtBtnMenu: '← Menu',
+    txtProxima: 'Next', txtResultado: 'See results', txtBtnVoltarMenu: '🏠 Back to Menu',
+    txtBtnMenuPrincipal: '← Menu', txtTabTitulo: 'Elements', txtTabSub: 'Pick elements for the workbench.',
+    txtHudPontos: '🏆 Points', txtHudReacoes: '🧪 Elements', txtHudConc: '🎖️ Ach.',
+    txtMesaTitulo: 'Periodic Table',
+    txtLegLiq: 'Liquid', txtLegGas: 'Gas', txtLegSol: 'Nonmetallic solid', txtLegMet: 'Metal', txtLegEsp: "State poorly known",
+    txtInstr1: 'Drag', txtInstr2: 'Drop on another', txtInstr3: 'to combine', txtInstr4: 'Right click', txtInstr5: 'deletes',
+    txtBtnLimpar: 'Clear', txtBtnPausar: 'Pause', txtBtnConc: 'Achievements', txtBtnRec: 'Recipes', txtBtnTema: 'Theme', txtBtnSom: 'Sound', txtBtnReset: 'Reset',
+    txtElemTitulo: '🧬 Elements', txtElemSub: 'Pick or drag to the workbench',
+
+  },
+  es: {
+    configTitulo: 'Configuración', abaGraficos: 'Gráficos', abaAudio: 'Audio', abaIdioma: 'Idioma',
+    lblQualidade: 'Calidad Gráfica', qualBaixa: 'Baja', qualMedia: 'Media', qualAlta: 'Alta', qualUltra: 'Ultra',
+    descQualidade: 'Ajusta la resolución y detalles visuales.',
+    lblEfeitos: 'Efectos Visuales', descEfeitos: 'Explosiones, ondas de choque y animaciones.',
+    lblParticulas: 'Partículas', descParticulas: 'Muestra partículas de brillo y polvo.',
+    lblFps: 'Mostrar FPS', descFps: 'Muestra la tasa de fotogramas en pantalla.',
+    lblAnimacoes: 'Animaciones', descAnimaciones: 'Transiciones y animaciones de la interfaz.',
+    lblVolumeMaster: 'Volumen General', descVolMaster: 'Controla todo el audio del juego.',
+    lblVolumeMusica: 'Música', descVolMusica: 'Volumen de la música de fondo.',
+    lblVolumeEfeitos: 'Efectos de Sonido', descVolEfeitos: 'Volumen de clics y reacciones.',
+    lblMudo: 'Silenciar Todo', descMudo: 'Desactiva todos los sonidos del juego.',
+    lblSomReacoes: 'Sonido de Reacciones', descSomReacoes: 'Sonidos al combinar elementos.',
+    lblIdioma: 'Idioma del Juego', descIdioma: 'El juego se traducirá inmediatamente.',
+    btnRestaurarTexto: 'Restaurar', btnAplicarTexto: 'Aplicar',
+    txtTitulo: '🧪 Laboratorio Sandbox',
+
+    txtSubtitulo: "Mezcla elementos reales, descubre compuestos y aleaciones y pon a prueba tus conocimientos de química.",
+    txtModoQuiz: "Modo Quiz", txtModoQuizDesc: "Responde preguntas de química y gana puntos y pistas de recetas.",
+    txtModoSandbox: 'Sandbox', txtModoSandboxDesc: "Explora los 118 elementos y mezcla dos en la mesa.", txtModoSandboxTag: "Modo Libre",
+
+    txtModoReceitas: "Libro de Recetas", txtModoReceitasDesc: "Consulta reacciones y aleaciones y filtra por el elemento que quieras explorar.", txtModoReceitasTag: "Consulta",
+    txtFooter: "💡 Tus descubrimientos se guardan en este navegador.",
+    txtQuestao: 'Pregunta', txtAcertos: 'Aciertos', txtPontos: 'Puntos', txtBtnMenu: '← Menú',
+    txtProxima: 'Siguiente', txtResultado: 'Ver resultado', txtBtnVoltarMenu: '🏠 Volver al Menú',
+    txtBtnMenuPrincipal: '← Menú', txtTabTitulo: 'Elementos', txtTabSub: 'Elige elementos para la mesa.',
+    txtHudPontos: '🏆 Puntos', txtHudReacoes: '🧪 Elementos', txtHudConc: '🎖️ Logr.',
+    txtMesaTitulo: 'Tabla Periódica',
+    txtLegLiq: 'Líquido', txtLegGas: 'Gas', txtLegSol: 'Sólido no metálico', txtLegMet: 'Metal', txtLegEsp: "Estado poco conocido",
+    txtInstr1: 'Arrastra', txtInstr2: 'Suelta sobre otro', txtInstr3: 'para combinar', txtInstr4: 'Clic derecho', txtInstr5: 'borra',
+    txtBtnLimpar: 'Limpiar', txtBtnPausar: 'Pausar', txtBtnConc: 'Logros', txtBtnRec: 'Recetas', txtBtnTema: 'Tema', txtBtnSom: 'Sonido', txtBtnReset: 'Reiniciar',
+    txtElemTitulo: '🧬 Elementos', txtElemSub: 'Elige o arrastra a la mesa',
+
+  }
+};
+
+const TEXTOS_SANDBOX = {
+  pt: {
+    buscar: 'Buscar elemento', vazio: 'Nenhum elemento encontrado.', elemento: 'Elemento', remover: 'Remover',
+    misturar: 'Misturar', mais: 'Mais', continuar: 'Continuar', fechar: 'Fechar', bancada: 'Bancada',
+    escolher: 'Escolha dois elementos e toque em Misturar.', faltaUm: 'Escolha mais um elemento.',
+    pronta: 'Pronto para misturar.', pausado: 'A bancada está pausada.', semReacao: 'Esta dupla não tem receita no jogo.',
+  },
+  en: {
+    buscar: 'Find an element', vazio: 'No elements found.', elemento: 'Element', remover: 'Remove',
+    misturar: 'Mix', mais: 'More', continuar: 'Resume', fechar: 'Close', bancada: 'Workbench',
+    escolher: 'Pick two elements, then tap Mix.', faltaUm: 'Pick one more element.',
+    pronta: 'Ready to mix.', pausado: 'The workbench is paused.', semReacao: 'This pair has no recipe in the game.',
+  },
+  es: {
+    buscar: 'Buscar elemento', vazio: 'No se encontraron elementos.', elemento: 'Elemento', remover: 'Quitar',
+    misturar: 'Mezclar', mais: 'Más', continuar: 'Continuar', fechar: 'Cerrar', bancada: 'Mesa',
+    escolher: 'Elige dos elementos y toca Mezclar.', faltaUm: 'Elige un elemento más.',
+    pronta: 'Listo para mezclar.', pausado: 'La mesa está en pausa.', semReacao: 'Este par no tiene receta en el juego.',
+  },
+};
+
+/* ==========================================
+   CONFIGURAÇÕES
+   ========================================== */
+const CONFIG = {
+  graficos: {
+    qualidade: 'media',
+    efeitos: true,
+    particulas: true,
+    fps: false,
+    animacoes: true,
+  },
+  audio: {
+    master: 70,
+    musica: 50,
+    efeitos: 80,
+    mudo: false,
+    somReacoes: true,
+  },
+  idioma: 'pt',
+};
+
+function salvarConfig() {
+  try { localStorage.setItem('lab_config', JSON.stringify(CONFIG)); } catch (e) {}
+}
+function carregarConfig() {
+  try {
+    const d = localStorage.getItem('lab_config');
+    if (!d) return;
+    const parsed = JSON.parse(d);
+    Object.assign(CONFIG.graficos, parsed.graficos || {});
+    Object.assign(CONFIG.audio, parsed.audio || {});
+    CONFIG.idioma = parsed.idioma || 'pt';
+  } catch (e) {}
+}
+
+function abrirConfig() {
+  document.getElementById('configOverlay').classList.add('show');
+  document.getElementById('btnConfig').classList.add('girando');
+  setTimeout(() => document.getElementById('btnConfig').classList.remove('girando'), 600);
+  aplicarConfigUI();
+}
+
+function fecharConfig() {
+  document.getElementById('configOverlay').classList.remove('show');
+  salvarConfig();
+}
+
+function mudarAba(aba, botao) {
+  document.querySelectorAll('.config-aba').forEach(a => a.classList.remove('ativa'));
+  document.querySelectorAll('.config-aba-conteudo').forEach(a => a.classList.remove('show'));
+  botao.classList.add('ativa');
+  document.getElementById('abaConteudo' + aba.charAt(0).toUpperCase() + aba.slice(1)).classList.add('show');
+}
+
+function setQualidade(qual) {
+  CONFIG.graficos.qualidade = qual;
+  document.querySelectorAll('#opcoesQualidade .config-opcao').forEach(b => {
+    b.classList.toggle('ativa', b.dataset.qual === qual);
+  });
+  aplicarGraficos();
+  iniciarAnimacaoSandbox();
+  Som.tocar(700, 0.08);
+}
+
+function toggleConfig(chave) {
+  if (chave === 'mudo') {
+    CONFIG.audio.mudo = !CONFIG.audio.mudo;
+    document.getElementById('toggleMudo').classList.toggle('ativo', CONFIG.audio.mudo);
+    Som.ativado = !CONFIG.audio.mudo;
+    aplicarAudio();
+  } else if (chave === 'fps') {
+    CONFIG.graficos.fps = !CONFIG.graficos.fps;
+    document.getElementById('toggleFps').classList.toggle('ativo', CONFIG.graficos.fps);
+    document.getElementById('fpsCounter').style.display = CONFIG.graficos.fps ? 'block' : 'none';
+    iniciarAnimacaoSandbox();
+  } else if (chave === 'efeitos') {
+    CONFIG.graficos.efeitos = !CONFIG.graficos.efeitos;
+    document.getElementById('toggleEfeitos').classList.toggle('ativo', CONFIG.graficos.efeitos);
+  } else if (chave === 'particulas') {
+    CONFIG.graficos.particulas = !CONFIG.graficos.particulas;
+    document.getElementById('toggleParticulas').classList.toggle('ativo', CONFIG.graficos.particulas);
+  } else if (chave === 'animacoes') {
+    CONFIG.graficos.animacoes = !CONFIG.graficos.animacoes;
+    document.getElementById('toggleAnimacoes').classList.toggle('ativo', CONFIG.graficos.animacoes);
+    document.body.classList.toggle('sem-efeitos', !CONFIG.graficos.animacoes);
+  } else if (chave === 'somReacoes') {
+    CONFIG.audio.somReacoes = !CONFIG.audio.somReacoes;
+    document.getElementById('toggleSomReacoes').classList.toggle('ativo', CONFIG.audio.somReacoes);
+  }
+  atualizarInterfaceSandbox();
+  salvarConfig();
+}
+
+function setVolume(tipo, valor) {
+  CONFIG.audio[tipo] = parseInt(valor);
+  document.getElementById('vol' + tipo.charAt(0).toUpperCase() + tipo.slice(1) + 'Valor').textContent = valor + '%';
+  aplicarAudio();
+  salvarConfig();
+}
+
+function aplicarAudio() {
+  Som.ativado = !CONFIG.audio.mudo;
+  Som.volume = CONFIG.audio.master / 100;
+  Som.volumeEfeitos = CONFIG.audio.efeitos / 100;
+  if (Som.ctx) {
+    Som.ctx.resume?.();
+  }
+}
+
+function aplicarGraficos() {
+  document.body.classList.remove('qualidade-baixa', 'qualidade-media', 'qualidade-alta', 'qualidade-ultra');
+  document.body.classList.add('qualidade-' + CONFIG.graficos.qualidade);
+}
+
+function setIdioma(lang) {
+  CONFIG.idioma = lang;
+  document.querySelectorAll('#opcoesIdioma .config-opcao').forEach(b => {
+    b.classList.toggle('ativa', b.dataset.lang === lang);
+  });
+  aplicarTraducoes();
+  salvarConfig();
+}
+
+function aplicarTraducoes() {
+  const t = TRADUCOES[CONFIG.idioma] || TRADUCOES.pt;
+  // Config
+  document.getElementById('configTitulo').textContent = t.configTitulo;
+  document.getElementById('abaGraficos').textContent = t.abaGraficos;
+  document.getElementById('abaAudio').textContent = t.abaAudio;
+  document.getElementById('abaIdioma').textContent = t.abaIdioma;
+  // Gráficos
+  document.getElementById('lblQualidade').textContent = t.lblQualidade;
+  document.getElementById('qualBaixa').textContent = t.qualBaixa;
+  document.getElementById('qualMedia').textContent = t.qualMedia;
+  document.getElementById('qualAlta').textContent = t.qualAlta;
+  document.getElementById('qualUltra').textContent = t.qualUltra;
+  document.getElementById('descQualidade').textContent = t.descQualidade;
+  document.getElementById('lblEfeitos').textContent = t.lblEfeitos;
+  document.getElementById('descEfeitos').textContent = t.descEfeitos;
+  document.getElementById('lblParticulas').textContent = t.lblParticulas;
+  document.getElementById('descParticulas').textContent = t.descParticulas;
+  document.getElementById('lblFps').textContent = t.lblFps;
+  document.getElementById('descFps').textContent = t.descFps;
+  document.getElementById('lblAnimacoes').textContent = t.lblAnimacoes;
+  document.getElementById('descAnimacoes').textContent = t.descAnimacoes;
+  // Áudio
+  document.getElementById('lblVolumeMaster').textContent = t.lblVolumeMaster;
+  document.getElementById('descVolMaster').textContent = t.descVolMaster;
+  document.getElementById('lblVolumeMusica').textContent = t.lblVolumeMusica;
+  document.getElementById('descVolMusica').textContent = t.descVolMusica;
+  document.getElementById('lblVolumeEfeitos').textContent = t.lblVolumeEfeitos;
+  document.getElementById('descVolEfeitos').textContent = t.descVolEfeitos;
+  document.getElementById('lblMudo').textContent = t.lblMudo;
+  document.getElementById('descMudo').textContent = t.descMudo;
+  document.getElementById('lblSomReacoes').textContent = t.lblSomReacoes;
+  document.getElementById('descSomReacoes').textContent = t.descSomReacoes;
+  // Idioma
+  document.getElementById('lblIdioma').textContent = t.lblIdioma;
+  document.getElementById('descIdioma').textContent = t.descIdioma;
+  document.getElementById('btnRestaurarTexto').textContent = t.btnRestaurarTexto;
+  document.getElementById('btnAplicarTexto').textContent = t.btnAplicarTexto;
+  // Menu
+  document.getElementById('txtTitulo').textContent = t.txtTitulo;
+  document.getElementById('txtSubtitulo').innerHTML = t.txtSubtitulo;
+  document.getElementById('txtModoQuiz').textContent = t.txtModoQuiz;
+  document.getElementById('txtModoQuizDesc').textContent = t.txtModoQuizDesc;
+  document.getElementById('txtModoQuizTag').textContent = { pt: 'Perguntas', en: 'Questions', es: 'Preguntas' }[CONFIG.idioma] || 'Perguntas';
+  document.getElementById('txtModoSandbox').textContent = t.txtModoSandbox;
+  document.getElementById('txtModoSandboxDesc').textContent = t.txtModoSandboxDesc;
+  document.getElementById('txtModoSandboxTag').textContent = t.txtModoSandboxTag;
+
+  document.getElementById('txtModoReceitas').textContent = t.txtModoReceitas;
+  document.getElementById('txtModoReceitasDesc').textContent = t.txtModoReceitasDesc;
+  document.getElementById('txtModoReceitasTag').textContent = t.txtModoReceitasTag;
+  document.getElementById('txtFooter').innerHTML = t.txtFooter;
+  // Quiz
+  document.getElementById('txtQuestao').textContent = t.txtQuestao;
+  document.getElementById('txtAcertos').textContent = t.txtAcertos;
+  document.getElementById('txtPontos').textContent = t.txtPontos;
+  document.getElementById('txtBtnMenu').textContent = t.txtBtnMenu;
+  atualizarBotaoQuiz();
+  document.getElementById('txtBtnVoltarMenu').textContent = t.txtBtnVoltarMenu;
+  // Sidebar
+  document.getElementById('txtBtnMenuPrincipal').textContent = t.txtBtnMenuPrincipal;
+  document.getElementById('txtTabTitulo').textContent = t.txtTabTitulo;
+  document.getElementById('txtTabSub').textContent = t.txtTabSub;
+  document.getElementById('txtHudPontos').textContent = t.txtHudPontos;
+  document.getElementById('txtHudReacoes').textContent = t.txtHudReacoes;
+  document.getElementById('txtHudConc').textContent = t.txtHudConc;
+  document.getElementById('txtMesaTitulo').textContent = t.txtMesaTitulo;
+  document.getElementById('txtLegLiq').textContent = t.txtLegLiq;
+  document.getElementById('txtLegGas').textContent = t.txtLegGas;
+  document.getElementById('txtLegSol').textContent = t.txtLegSol;
+  document.getElementById('txtLegMet').textContent = t.txtLegMet;
+  document.getElementById('txtLegEsp').textContent = t.txtLegEsp;
+  document.getElementById('txtInstr1').textContent = t.txtInstr1;
+  document.getElementById('txtInstr2').textContent = t.txtInstr2;
+  document.getElementById('txtInstr3').textContent = t.txtInstr3;
+  document.getElementById('txtInstr4').textContent = t.txtInstr4;
+  document.getElementById('txtInstr5').textContent = t.txtInstr5;
+  document.getElementById('txtBtnLimpar').textContent = t.txtBtnLimpar;
+  document.getElementById('txtBtnConc').textContent = t.txtBtnConc;
+  document.getElementById('txtBtnRec').textContent = t.txtBtnRec;
+  document.getElementById('txtBtnTema').textContent = t.txtBtnTema;
+  document.getElementById('txtBtnSom').textContent = t.txtBtnSom;
+  document.getElementById('txtBtnReset').textContent = t.txtBtnReset;
+  document.getElementById('txtElemTitulo').textContent = t.txtElemTitulo;
+  document.getElementById('txtElemSub').textContent = t.txtElemSub;
+
+  if (estado.modoAtual === 'sandbox') renderizarDescobertas();
+  atualizarInterfaceSandbox();
+}
+
+function restaurarConfig() {
+  CONFIG.graficos = { qualidade: 'media', efeitos: true, particulas: true, fps: false, animacoes: true };
+  CONFIG.audio = { master: 70, musica: 50, efeitos: 80, mudo: false, somReacoes: true };
+  CONFIG.idioma = 'pt';
+  aplicarConfigUI();
+  aplicarGraficos();
+  aplicarAudio();
+  aplicarTraducoes();
+  salvarConfig();
+  Som.tocar(600, 0.15);
+}
+
+function aplicarConfigUI() {
+  // Gráficos
+  document.querySelectorAll('#opcoesQualidade .config-opcao').forEach(b => {
+    b.classList.toggle('ativa', b.dataset.qual === CONFIG.graficos.qualidade);
+  });
+  document.getElementById('toggleEfeitos').classList.toggle('ativo', CONFIG.graficos.efeitos);
+  document.getElementById('toggleParticulas').classList.toggle('ativo', CONFIG.graficos.particulas);
+  document.getElementById('toggleFps').classList.toggle('ativo', CONFIG.graficos.fps);
+  document.getElementById('toggleAnimacoes').classList.toggle('ativo', CONFIG.graficos.animacoes);
+  document.getElementById('fpsCounter').style.display = CONFIG.graficos.fps ? 'block' : 'none';
+  document.body.classList.toggle('sem-efeitos', !CONFIG.graficos.animacoes);
+  // Áudio
+  document.getElementById('sliderMaster').value = CONFIG.audio.master;
+  document.getElementById('volMasterValor').textContent = CONFIG.audio.master + '%';
+  document.getElementById('sliderMusica').value = CONFIG.audio.musica;
+  document.getElementById('volMusicaValor').textContent = CONFIG.audio.musica + '%';
+  document.getElementById('sliderEfeitos').value = CONFIG.audio.efeitos;
+  document.getElementById('volEfeitosValor').textContent = CONFIG.audio.efeitos + '%';
+  document.getElementById('toggleMudo').classList.toggle('ativo', CONFIG.audio.mudo);
+  document.getElementById('toggleSomReacoes').classList.toggle('ativo', CONFIG.audio.somReacoes);
+  // Idioma
+  document.querySelectorAll('#opcoesIdioma .config-opcao').forEach(b => {
+    b.classList.toggle('ativa', b.dataset.lang === CONFIG.idioma);
+  });
+  aplicarTraducoes();
+}
+
+/* ==========================================
+   SOM
+   ========================================== */
+const Som = {
+  ctx: null, ativado: true, volume: 0.7, volumeEfeitos: 0.8,
+  init() { if (!this.ctx) { try { this.ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {} } },
+  tocar(freq, dur, tipo = 'sine', vol = 0.15) {
+    if (!this.ativado || !this.ctx || CONFIG.audio.mudo) return;
+    try {
+      if (this.ctx.state === 'suspended') this.ctx.resume();
+      const v = vol * this.volume * this.volumeEfeitos;
+      const osc = this.ctx.createOscillator(); const gain = this.ctx.createGain();
+      osc.type = tipo; osc.frequency.value = freq;
+      gain.gain.setValueAtTime(v, this.ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + dur);
+      osc.connect(gain); gain.connect(this.ctx.destination);
+      osc.start(); osc.stop(this.ctx.currentTime + dur);
+    } catch (e) {}
+  },
+  colocar() { this.tocar(600, 0.08); },
+  reagir() { if (!CONFIG.audio.somReacoes) return; this.tocar(400, 0.05); setTimeout(() => this.tocar(800, 0.1), 40); },
+  descoberta() { [523, 659, 784, 1047].forEach((f, i) => setTimeout(() => this.tocar(f, 0.15, 'triangle', 0.12), i * 80)); },
+  conquista() { [523, 659, 784, 1047, 1319].forEach((f, i) => setTimeout(() => this.tocar(f, 0.2, 'square', 0.08), i * 100)); },
+  acerto() { [659, 784, 1047].forEach((f, i) => setTimeout(() => this.tocar(f, 0.15, 'sine', 0.15), i * 70)); },
+
+  erro() { this.tocar(150, 0.15, 'sawtooth', 0.1); },
+  apagar() { this.tocar(200, 0.1, 'sawtooth', 0.08); },
+};
+
+/* ==========================================
+   ELEMENTOS
+   ========================================== */
+// Nomes, símbolos e massas de referência: Tabela Periódica da SBQ (2025).
+const TABELA_ATOMICA = [
+  ["H","Hidrogênio","1,008"],
+  ["He","Hélio","4,0026"],
+  ["Li","Lítio","6,94"],
+  ["Be","Berílio","9,0122"],
+  ["B","Boro","10,81"],
+  ["C","Carbono","12,011"],
+  ["N","Nitrogênio","14,007"],
+  ["O","Oxigênio","15,999"],
+  ["F","Flúor","18,998"],
+  ["Ne","Neônio","20,180"],
+  ["Na","Sódio","22,990"],
+  ["Mg","Magnésio","24,305"],
+  ["Al","Alumínio","26,982"],
+  ["Si","Silício","28,085"],
+  ["P","Fósforo","30,974"],
+  ["S","Enxofre","32,06"],
+  ["Cl","Cloro","35,45"],
+  ["Ar","Argônio","39,95"],
+  ["K","Potássio","39,098"],
+  ["Ca","Cálcio","40,078"],
+  ["Sc","Escândio","44,956"],
+  ["Ti","Titânio","47,867"],
+  ["V","Vanádio","50,942"],
+  ["Cr","Crômio","51,996"],
+  ["Mn","Manganês","54,938"],
+  ["Fe","Ferro","55,845"],
+  ["Co","Cobalto","58,933"],
+  ["Ni","Níquel","58,693"],
+  ["Cu","Cobre","63,546"],
+  ["Zn","Zinco","65,38"],
+  ["Ga","Gálio","69,723"],
+  ["Ge","Germânio","72,630"],
+  ["As","Arsênio","74,922"],
+  ["Se","Selênio","78,971"],
+  ["Br","Bromo","79,904"],
+  ["Kr","Criptônio","83,798"],
+  ["Rb","Rubídio","85,468"],
+  ["Sr","Estrôncio","87,62"],
+  ["Y","Ítrio","88,906"],
+  ["Zr","Zircônio","91,222"],
+  ["Nb","Nióbio","92,906"],
+  ["Mo","Molibdênio","95,95"],
+  ["Tc","Tecnécio","[97]"],
+  ["Ru","Rutênio","101,07"],
+  ["Rh","Ródio","102,91"],
+  ["Pd","Paládio","106,42"],
+  ["Ag","Prata","107,87"],
+  ["Cd","Cádmio","112,41"],
+  ["In","Índio","114,82"],
+  ["Sn","Estanho","118,71"],
+  ["Sb","Antimônio","121,76"],
+  ["Te","Telúrio","127,60"],
+  ["I","Iodo","126,90"],
+  ["Xe","Xenônio","131,29"],
+  ["Cs","Césio","132,91"],
+  ["Ba","Bário","137,33"],
+  ["La","Lantânio","138,91"],
+  ["Ce","Cério","140,12"],
+  ["Pr","Praseodímio","140,91"],
+  ["Nd","Neodímio","144,24"],
+  ["Pm","Promécio","[145]"],
+  ["Sm","Samário","150,36"],
+  ["Eu","Európio","151,96"],
+  ["Gd","Gadolínio","157,25"],
+  ["Tb","Térbio","158,93"],
+  ["Dy","Disprósio","162,50"],
+  ["Ho","Hólmio","164,93"],
+  ["Er","Érbio","167,26"],
+  ["Tm","Túlio","168,93"],
+  ["Yb","Itérbio","173,05"],
+  ["Lu","Lutécio","174,97"],
+  ["Hf","Háfnio","178,49"],
+  ["Ta","Tântalo","180,95"],
+  ["W","Tungstênio","183,84"],
+  ["Re","Rênio","186,21"],
+  ["Os","Ósmio","190,23"],
+  ["Ir","Irídio","192,22"],
+  ["Pt","Platina","195,08"],
+  ["Au","Ouro","196,97"],
+  ["Hg","Mercúrio","200,59"],
+  ["Tl","Tálio","204,38"],
+  ["Pb","Chumbo","207,2"],
+  ["Bi","Bismuto","208,98"],
+  ["Po","Polônio","[209]"],
+  ["At","Astato","[210]"],
+  ["Rn","Radônio","[222]"],
+  ["Fr","Frâncio","[223]"],
+  ["Ra","Rádio","[226]"],
+  ["Ac","Actínio","[227]"],
+  ["Th","Tório","232,04"],
+  ["Pa","Protactínio","231,04"],
+  ["U","Urânio","238,03"],
+  ["Np","Neptúnio","[237]"],
+  ["Pu","Plutônio","[244]"],
+  ["Am","Amerício","[243]"],
+  ["Cm","Cúrio","[247]"],
+  ["Bk","Berquélio","[247]"],
+  ["Cf","Califórnio","[251]"],
+  ["Es","Einstênio","[252]"],
+  ["Fm","Férmio","[257]"],
+  ["Md","Mendelévio","[258]"],
+  ["No","Nobélio","[259]"],
+  ["Lr","Laurêncio","[262]"],
+  ["Rf","Rutherfórdio","[267]"],
+  ["Db","Dúbnio","[268]"],
+  ["Sg","Seabórgio","[269]"],
+  ["Bh","Bóhrio","[270]"],
+  ["Hs","Hássio","[269]"],
+  ["Mt","Meitnério","[277]"],
+  ["Ds","Darmstádio","[281]"],
+  ["Rg","Roentgênio","[281]"],
+  ["Cn","Copernício","[285]"],
+  ["Nh","Nihônio","[286]"],
+  ["Fl","Fleróvio","[289]"],
+  ["Mc","Moscóvio","[290]"],
+  ["Lv","Livermório","[293]"],
+  ["Ts","Tenesso","[294]"],
+  ["Og","Oganessônio","[294]"],
+];
+
+const gases = new Set(["H", "He", "N", "O", "F", "Ne", "Cl", "Ar", "Kr", "Xe", "Rn"]);
+const liquidos = new Set(["Br", "Hg"]);
+const solidosNaoMetalicos = new Set(["B", "C", "Si", "P", "S", "Ge", "As", "Se", "Sb", "Te", "I"]);
+const estadosPoucoConhecidos = new Set(["At", "Fr"]);
+const estilosElemento = {
+  gas: ["#aaddff", "💨"], liquido: ["#00d4ff", "💧"], solido: ["#e8bb8e", "◈"],
+  metal: ["#ffd700", "⚙️"], especial: ["#ec8cff", "⚛️"],
+};
+const ATOMOS = Object.fromEntries(TABELA_ATOMICA.map(([simbolo, nome, massa], indice) => {
+  const num = indice + 1;
+  let tipo = "metal";
+  if (gases.has(simbolo)) tipo = "gas";
+  else if (liquidos.has(simbolo)) tipo = "liquido";
+  else if (num >= 100 || estadosPoucoConhecidos.has(simbolo)) tipo = "especial";
+  else if (solidosNaoMetalicos.has(simbolo)) tipo = "solido";
+  const [cor, icon] = estilosElemento[tipo];
+  return [simbolo, { nome, simbolo, num, massa, tipo, cor, icon }];
+}));
+
+// As equações representam a formação de um produto, com condições e detalhes omitidos.
+const RECEITAS = [
+  ["H","O","Água","H₂O","2 H₂ + O₂ → 2 H₂O","liquido","#00d4ff","💧"],
+  ["Na","Cl","Cloreto de sódio","NaCl","2 Na + Cl₂ → 2 NaCl","solido","#ffd5a6","🧂"],
+  ["C","O","Dióxido de carbono","CO₂","C + O₂ → CO₂","gas","#aaddff","💨"],
+  ["N","H","Amônia","NH₃","N₂ + 3 H₂ ⇌ 2 NH₃","gas","#aaddff","💨"],
+  ["Ca","Cl","Cloreto de cálcio","CaCl₂","Ca + Cl₂ → CaCl₂","solido","#ffd5a6","🧪"],
+  ["Fe","S","Sulfeto de ferro(II)","FeS","Fe + S → FeS","solido","#ffd5a6","🧪"],
+  ["Mg","O","Óxido de magnésio","MgO","2 Mg + O₂ → 2 MgO","solido","#ffd5a6","🧪"],
+  ["Ca","O","Óxido de cálcio","CaO","2 Ca + O₂ → 2 CaO","solido","#ffd5a6","🧪"],
+  ["Al","O","Óxido de alumínio","Al₂O₃","4 Al + 3 O₂ → 2 Al₂O₃","solido","#ffd5a6","🧪"],
+  ["Si","O","Dióxido de silício","SiO₂","Si + O₂ → SiO₂","solido","#ffd5a6","🧪"],
+  ["Cu","O","Óxido de cobre(II)","CuO","2 Cu + O₂ → 2 CuO","solido","#ffd5a6","🧪"],
+  ["Zn","O","Óxido de zinco","ZnO","2 Zn + O₂ → 2 ZnO","solido","#ffd5a6","🧪"],
+  ["Li","O","Óxido de lítio","Li₂O","4 Li + O₂ → 2 Li₂O","solido","#ffd5a6","🧪"],
+  ["Sn","O","Dióxido de estanho","SnO₂","Sn + O₂ → SnO₂","solido","#ffd5a6","🧪"],
+  ["Ti","O","Dióxido de titânio","TiO₂","Ti + O₂ → TiO₂","solido","#ffd5a6","🧪"],
+  ["Zr","O","Dióxido de zircônio","ZrO₂","Zr + O₂ → ZrO₂","solido","#ffd5a6","🧪"],
+  ["Ce","O","Dióxido de cério","CeO₂","Ce + O₂ → CeO₂","solido","#ffd5a6","🧪"],
+  ["W","O","Trióxido de tungstênio","WO₃","2 W + 3 O₂ → 2 WO₃","solido","#ffd5a6","🧪"],
+  ["S","O","Dióxido de enxofre","SO₂","S + O₂ → SO₂","gas","#aaddff","💨"],
+  ["B","O","Óxido de boro","B₂O₃","4 B + 3 O₂ → 2 B₂O₃","solido","#ffd5a6","🧪"],
+  ["P","O","Pentóxido de fósforo","P₄O₁₀","P₄ + 5 O₂ → P₄O₁₀","solido","#ffd5a6","🧪"],
+  ["K","Cl","Cloreto de potássio","KCl","2 K + Cl₂ → 2 KCl","solido","#ffd5a6","🧪"],
+  ["Sr","Cl","Cloreto de estrôncio","SrCl₂","Sr + Cl₂ → SrCl₂","solido","#ffd5a6","🧪"],
+  ["Xe","F","Difluoreto de xenônio","XeF₂","Xe + F₂ → XeF₂","solido","#ffd5a6","🧪"],
+  ["Ag","I","Iodeto de prata","AgI","2 Ag + I₂ → 2 AgI","solido","#ffd5a6","🧪"],
+  ["Cu","Zn","Latão","Cu–Zn",null,"metal","#ffd700","🪙"],
+  ["Cu","Sn","Bronze","Cu–Sn",null,"metal","#ffd700","🪙"],
+  ["Cu","Ni","Cuproníquel","Cu–Ni",null,"metal","#ffd700","🪙"],
+  ["Au","Ag","Electro","Au–Ag",null,"metal","#ffd700","🪙"],
+].map(([a, b, nome, simbolo, equacao, tipo, cor, icon]) => ({ a, b, nome, simbolo, equacao, tipo, cor, icon }));
+
+const PRODUTOS = Object.fromEntries(RECEITAS.map(receita => [receita.simbolo, receita]));
+const ELEMENTOS = { ...ATOMOS, ...PRODUTOS };
+const combinacao = (a, b) => [a, b].sort().join("+");
+const receitasPorPar = new Map(RECEITAS.map(receita => [combinacao(receita.a, receita.b), receita]));
+
+const CONQUISTAS = [
+  { id: "primeira", nome: "Primeiros Passos", desc: "Descubra seu primeiro produto", icon: "🧪", check: (e) => e.descobertos.size >= 1 },
+  { id: "cientista", nome: "Cientista", desc: "Descubra 10 produtos diferentes", icon: "🔬", check: (e) => e.descobertos.size >= 10 },
+  { id: "ligas", nome: "Metalurgia", desc: "Descubra todas as ligas do livro", icon: "⚙️", check: (e) => RECEITAS.filter(r => !r.equacao).every(r => e.descobertos.has(r.simbolo)) },
+  { id: "colecao", nome: "Coleção Completa", desc: "Descubra todos os produtos do livro", icon: "🏆", check: (e) => e.descobertos.size === RECEITAS.length },
+];
+
+const QUIZ = [
+  ["Qual é a fórmula química da água?",["CO₂","H₂O","O₂","NaCl"],1,"Cada molécula tem dois átomos de hidrogênio e um de oxigênio.","H₂O"],
+  ["Qual elemento tem número atômico 6?",["Oxigênio","Carbono","Enxofre","Sódio"],1,"O carbono tem seis prótons.","CO₂"],
+  ["Que partículas determinam o número atômico?",["Nêutrons","Elétrons","Prótons","Moléculas"],2,"O número atômico é o número de prótons no núcleo.","MgO"],
+  ["Qual é o símbolo do ouro?",["Au","Ag","Al","Ar"],0,"Au vem de aurum, o nome latino do ouro.","Au–Ag"],
+  ["Qual é o nome do composto NaCl?",["Óxido de cálcio","Cloreto de potássio","Dióxido de carbono","Cloreto de sódio"],3,"O NaCl é o principal componente do sal de cozinha.","NaCl"],
+  ["Qual destas combinações forma o bronze comum?",["Cobre e zinco","Cobre e estanho","Ferro e enxofre","Alumínio e oxigênio"],1,"O bronze comum é uma liga de cobre e estanho.","Cu–Sn"],
+  ["Qual destes elementos é um gás nobre?",["Cloro","Nitrogênio","Xenônio","Flúor"],2,"O xenônio pertence ao grupo 18 da tabela periódica.","XeF₂"],
+  ["Que elemento aparece ao lado do nitrogênio na fórmula NH₃?",["Hélio","Hidrogênio","Háfnio","Hássio"],1,"H é o símbolo do hidrogênio.","NH₃"],
+  ["Qual destes símbolos representa o enxofre?",["Si","Sc","Se","S"],3,"S é o símbolo do enxofre e Si é o símbolo do silício.","FeS"],
+  ["Qual é a fórmula da sílica?",["SiO₂","SO₂","ZnO","CuO"],0,"A sílica, ou dióxido de silício, tem fórmula SiO₂.","SiO₂"],
+].map(([q, opcoes, correta, explica, dica]) => ({ q, opcoes, correta, explica, dica }));
+
+/* ==========================================
+   ESTADO
+   ========================================== */
+const estado = {
+  modoAtual: 'menu', pontos: 0,
+  descobertos: new Set(), novosElementos: new Set(), conquistas: new Set(),
+  particulas: [], arrastando: null,
+  mouseX: 0, mouseY: 0, pausado: false,
+};
+
+const quizEstado = { perguntas: [], indice: 0, acertos: 0, pontos: 0, dicas: new Set(), respondida: false };
+const sandboxWorkspace = document.getElementById('sandboxWorkspace');
+const sandboxHeader = document.getElementById('sandboxHeader');
+const botaoConfig = document.getElementById('btnConfig');
+
+/* ==========================================
+   MENU
+   ========================================== */
+function abrirModo(modo) {
+  document.getElementById('menuPrincipal').classList.add('escondido');
+  setTimeout(() => {
+    document.getElementById('menuPrincipal').style.display = 'none';
+    if (modo === 'quiz') {
+      document.getElementById('quizScreen').classList.add('show');
+      estado.modoAtual = 'quiz';
+      iniciarQuiz();
+    } else if (modo === 'sandbox') entrarSandbox();
+
+  }, 300);
+}
+
+function voltarMenu() {
+  document.getElementById('quizScreen').classList.remove('show');
+  sandboxWorkspace.hidden = true;
+  if (botaoConfig.parentElement === sandboxHeader) document.body.prepend(botaoConfig);
+  document.getElementById('sandboxMais').open = false;
+
+  estado.modoAtual = 'menu';
+  estado.arrastando = null;
+  document.getElementById('tooltip').classList.remove('show');
+  pararAnimacaoSandbox();
+  document.getElementById('menuPrincipal').style.display = 'flex';
+  setTimeout(() => document.getElementById('menuPrincipal').classList.remove('escondido'), 30);
+}
+
+function entrarSandbox() {
+  estado.modoAtual = 'sandbox';
+  sandboxWorkspace.hidden = false;
+  sandboxHeader.append(botaoConfig);
+  renderizarTabela();
+  renderizarDescobertas();
+  atualizarHUD();
+  atualizarInterfaceSandbox();
+  resizeCanvas();
+  iniciarAnimacaoSandbox();
+}
+
+/* ==========================================
+   QUIZ
+   ========================================== */
+function iniciarQuiz() {
+  quizEstado.perguntas = [...QUIZ].sort(() => Math.random() - 0.5).slice(0, 5);
+  quizEstado.indice = 0; quizEstado.acertos = 0; quizEstado.pontos = 0; quizEstado.dicas.clear();
+  document.getElementById('quizQuestaoNum').textContent = '1';
+  document.getElementById('quizTotal').textContent = quizEstado.perguntas.length;
+  document.getElementById('quizAcertos').textContent = '0';
+  document.getElementById('quizPontos').textContent = '0';
+  document.getElementById('quizPerguntaArea').style.display = 'block';
+  document.getElementById('quizFinalArea').style.display = 'none';
+  carregarQuestaoQuiz();
+}
+
+function carregarQuestaoQuiz() {
+  if (quizEstado.indice >= quizEstado.perguntas.length) { finalizarQuiz(); return; }
+  quizEstado.respondida = false;
+  const p = quizEstado.perguntas[quizEstado.indice];
+  document.getElementById('quizCategoria').textContent = '🧪 Química';
+  document.getElementById('quizPergunta').textContent = p.q;
+  document.getElementById('quizQuestaoNum').textContent = quizEstado.indice + 1;
+  const opcoesDiv = document.getElementById('quizOpcoes');
+  opcoesDiv.innerHTML = '';
+  p.opcoes.forEach((op, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-opcao';
+    btn.innerHTML = `<span class="letra">${String.fromCharCode(65 + i)}</span><span>${op}</span>`;
+    btn.onclick = () => responderQuiz(i);
+    opcoesDiv.appendChild(btn);
+  });
+  document.getElementById('quizFeedback').className = 'quiz-feedback';
+  document.getElementById('quizFeedback').innerHTML = '';
+  document.getElementById('quizProximo').classList.remove('show');
+  document.getElementById('quizProgressoFill').style.width = (quizEstado.indice / quizEstado.perguntas.length) * 100 + '%';
+}
+
+function responderQuiz(escolha) {
+  if (quizEstado.respondida) return;
+  quizEstado.respondida = true;
+  const p = quizEstado.perguntas[quizEstado.indice];
+  const acertou = escolha === p.correta;
+  const opcoes = document.querySelectorAll('.quiz-opcao');
+  opcoes.forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === p.correta) btn.classList.add('correta');
+    else if (i === escolha) btn.classList.add('errada');
+  });
+  const fb = document.getElementById('quizFeedback');
+  if (acertou) {
+    quizEstado.acertos++; quizEstado.pontos += 20; estado.pontos += 20;
+    Som.acerto();
+    const receita = PRODUTOS[p.dica];
+    quizEstado.dicas.add(receita);
+    fb.className = "quiz-feedback show ok";
+    fb.innerHTML = `<strong>✅ Correto! +20 pontos</strong>${p.explica}<div class="recompensa">💡 ${receita.nome} (${ATOMOS[receita.a].nome} + ${ATOMOS[receita.b].nome})</div>`;
+    salvar();
+  } else {
+    Som.erro();
+    fb.className = 'quiz-feedback show err';
+    fb.innerHTML = `<strong>❌ Errado!</strong>${p.explica}`;
+  }
+  document.getElementById('quizAcertos').textContent = quizEstado.acertos;
+  document.getElementById('quizPontos').textContent = quizEstado.pontos;
+  document.getElementById('quizProximo').classList.add('show');
+  atualizarBotaoQuiz();
+}
+
+function atualizarBotaoQuiz() {
+  const t = TRADUCOES[CONFIG.idioma] || TRADUCOES.pt;
+  const ultima = quizEstado.indice === quizEstado.perguntas.length - 1;
+  document.getElementById('iconeProxima').textContent = ultima ? '🏁' : '➡️';
+  document.getElementById('txtProxima').textContent = ultima ? t.txtResultado : t.txtProxima;
+}
+
+function proximaQuestao() { quizEstado.indice++; carregarQuestaoQuiz(); }
+
+function finalizarQuiz() {
+  document.getElementById('quizPerguntaArea').style.display = 'none';
+  document.getElementById('quizFinalArea').style.display = 'block';
+  const total = quizEstado.perguntas.length, acertos = quizEstado.acertos;
+  let emoji = '🏆', titulo = 'Quiz Completo!', msg = '';
+  if (acertos === total) { emoji = '🏆'; titulo = 'PERFEITO!'; msg = 'Gênio da ciência!'; }
+  else if (acertos >= total * 0.7) { emoji = '🎉'; titulo = 'Muito Bem!'; msg = 'Ótimo cientista!'; }
+  else if (acertos >= total * 0.4) { emoji = '👍'; titulo = 'Bom Trabalho!'; msg = 'Continue estudando!'; }
+  else { emoji = '🔬'; titulo = 'Continue Tentando!'; msg = 'A ciência é feita de tentativas.'; }
+  document.getElementById('quizFinalEmoji').textContent = emoji;
+  document.getElementById('quizFinalTitulo').textContent = titulo;
+  document.getElementById('quizFinalPontos').textContent = `${quizEstado.pontos} pts`;
+  document.getElementById('quizFinalMsg').textContent = `${msg} (${acertos}/${total} acertos)`;
+  const recDiv = document.getElementById('quizFinalRecompensas');
+  recDiv.innerHTML = quizEstado.dicas.size ? "<h4>💡 Dicas de receitas</h4>" +
+    [...quizEstado.dicas].map(r => `<div class="item">${r.nome} (${r.a} + ${r.b})</div>`).join("") : "";
+  Som.conquista();
+  salvar();
+}
+
+/* ==========================================
+   CANVAS SANDBOX
+   ========================================== */
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const bancada = document.getElementById('bancadaSandbox');
+const bancadaVazia = document.getElementById('bancadaVazia');
+const telaCompacta = matchMedia('(max-width: 820px), (any-pointer: coarse) and (max-width: 1024px)');
+const movimentoReduzido = matchMedia('(prefers-reduced-motion: reduce)');
+
+function resizeCanvas() {
+  const largura = bancada.clientWidth, altura = bancada.clientHeight;
+  if (!largura || !altura || (largura === canvas.width && altura === canvas.height)) return;
+  for (const p of estado.particulas) {
+    p.x *= largura / canvas.width;
+    p.y *= altura / canvas.height;
+  }
+  canvas.width = largura;
+  canvas.height = altura;
+  iniciarAnimacaoSandbox();
+}
+new ResizeObserver(resizeCanvas).observe(bancada);
+
+function efeitosReduzidos() {
+  return movimentoReduzido.matches || CONFIG.graficos.qualidade === 'baixa'
+    || (telaCompacta.matches && CONFIG.graficos.qualidade === 'media');
+}
+
+class Particula {
+  constructor(tipo, x, y) {
+    this.tipo = tipo; this.x = x; this.y = y;
+    this.vx = (Math.random() - 0.5) * 2;
+    this.vy = (Math.random() - 0.5) * 2;
+    this.raio = 24;
+    this.destruida = false;
+    this.escala = 0.3; this.spawnAnim = 0;
+    this.pulso = Math.random() * Math.PI * 2;
+    this.rotacao = Math.random() * Math.PI * 2;
+  }
+  update(dt) {
+    if (this.destruida) return;
+    this.spawnAnim = Math.min(1, this.spawnAnim + dt * 4);
+    this.escala = 0.3 + 0.7 * this.spawnAnim;
+    this.pulso += dt * 3; this.rotacao += dt * 1.5;
+    const el = ELEMENTOS[this.tipo];
+    if (!el) { this.destruida = true; return; }
+    if (el.tipo === 'gas') { this.vy -= 0.15; this.vx += (Math.random() - 0.5) * 0.4; }
+    else if (el.tipo === 'liquido') { this.vy += 0.28; this.vx *= 0.95; }
+    else if (el.tipo === 'solido') { this.vy += 0.18; this.vx *= 0.9; }
+    else if (el.tipo === 'metal') { this.vy += 0.3; this.vx *= 0.85; }
+    else if (el.tipo === 'especial') { this.vx += (Math.random() - 0.5) * 0.3; this.vy += (Math.random() - 0.5) * 0.3; }
+    if (estado.arrastando !== this) { this.x += this.vx * dt * 60; this.y += this.vy * dt * 60; }
+    else { this.x += (estado.mouseX - this.x) * 0.25; this.y += (estado.mouseY - this.y) * 0.25; }
+    this.vx *= 0.98;
+    const w = canvas.width, h = canvas.height;
+    if (this.x < this.raio) { this.x = this.raio; this.vx *= -0.5; }
+    if (this.x > w - this.raio) { this.x = w - this.raio; this.vx *= -0.5; }
+    if (this.y < this.raio) { this.y = this.raio; this.vy *= -0.5; }
+    if (this.y > h - this.raio) { this.y = h - this.raio; this.vy *= -0.5; }
+  }
+  draw(leves) {
+    if (this.destruida) return;
+    const el = ELEMENTOS[this.tipo];
+    if (!el) return;
+    const pulsoEscala = 1 + Math.sin(this.pulso) * 0.05;
+    const r = this.raio * this.escala * pulsoEscala;
+    if (leves) {
+      ctx.fillStyle = el.cor;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#dcecffaa';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+      ctx.font = `bold ${r}px 'Segoe UI', sans-serif`;
+      ctx.fillStyle = '#fff';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(el.simbolo, this.x, this.y, r * 1.75);
+      return;
+    }
+    const grad = ctx.createRadialGradient(this.x, this.y, r * 0.5, this.x, this.y, r * 2);
+    grad.addColorStop(0, el.cor + '99'); grad.addColorStop(1, el.cor + '00');
+    ctx.fillStyle = grad;
+    ctx.beginPath(); ctx.arc(this.x, this.y, r * 2, 0, Math.PI * 2); ctx.fill();
+    ctx.save(); ctx.translate(this.x, this.y); ctx.rotate(this.rotacao);
+    ctx.strokeStyle = el.cor + '66'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.ellipse(0, 0, r * 1.4, r * 0.5, 0, 0, Math.PI * 2); ctx.stroke();
+    ctx.rotate(Math.PI / 3);
+    ctx.beginPath(); ctx.ellipse(0, 0, r * 1.4, r * 0.5, 0, 0, Math.PI * 2); ctx.stroke();
+    ctx.restore();
+    ctx.save(); ctx.shadowColor = el.cor; ctx.shadowBlur = 20;
+    const gradInt = ctx.createRadialGradient(this.x - r * 0.3, this.y - r * 0.3, r * 0.1, this.x, this.y, r);
+    gradInt.addColorStop(0, el.cor + 'ff'); gradInt.addColorStop(1, el.cor + 'aa');
+    ctx.fillStyle = gradInt;
+    ctx.beginPath(); ctx.arc(this.x, this.y, r, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+    ctx.strokeStyle = 'rgba(255,255,255,0.6)'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(this.x, this.y, r * 0.85, 0, Math.PI * 2); ctx.stroke();
+    ctx.font = `bold ${r * 1.1}px 'Segoe UI', sans-serif`;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#fff';
+    ctx.shadowColor = 'rgba(0,0,0,0.8)'; ctx.shadowBlur = 4;
+    ctx.fillText(el.simbolo, this.x, this.y + 2, r * 1.75);
+    ctx.shadowBlur = 0;
+    ctx.font = `bold ${r * 0.4}px 'Segoe UI', sans-serif`;
+    ctx.textAlign = 'left'; ctx.fillStyle = el.cor;
+    if (el.num) ctx.fillText(el.num, this.x - r * 0.85, this.y - r * 0.75);
+    ctx.font = `${r * 0.5}px serif`; ctx.textAlign = 'right';
+    ctx.fillText(el.icon, this.x + r * 0.85, this.y + r * 0.75);
+  }
+}
+
+let efeitos = [];
+function criarExplosao(x, y, cor, qtd = 18) {
+  if (!CONFIG.graficos.efeitos || !CONFIG.graficos.particulas) return;
+  if (efeitosReduzidos()) qtd = Math.floor(qtd / 2);
+  for (let i = 0; i < qtd; i++) {
+    const ang = (Math.PI * 2 * i) / qtd + Math.random() * 0.5;
+    const vel = 2 + Math.random() * 6;
+    efeitos.push({ tipo: 'explosao', x, y, vx: Math.cos(ang) * vel, vy: Math.sin(ang) * vel, vida: 1, cor, tamanho: Math.random() * 4 + 2 });
+  }
+}
+function criarOnda(x, y, cor) {
+  if (!CONFIG.graficos.efeitos) return;
+  efeitos.push({ tipo: 'onda', x, y, raio: 10, raioMax: 80, vida: 1, cor });
+}
+function atualizarEfeitos(dt) {
+  efeitos.forEach(e => {
+    if (e.tipo === 'explosao') { e.x += e.vx; e.y += e.vy; e.vx *= 0.94; e.vy *= 0.94; e.vy += 0.1; e.vida -= dt * 1.8; }
+    else if (e.tipo === 'onda') { e.raio += (e.raioMax - e.raio) * dt * 5; e.vida -= dt * 2.5; }
+  });
+  efeitos = efeitos.filter(e => e.vida > 0);
+}
+function desenharEfeitos() {
+  efeitos.forEach(e => {
+    if (e.tipo === 'explosao') { ctx.globalAlpha = e.vida; ctx.fillStyle = e.cor; ctx.beginPath(); ctx.arc(e.x, e.y, e.tamanho, 0, Math.PI * 2); ctx.fill(); }
+    else if (e.tipo === 'onda') { ctx.globalAlpha = e.vida * 0.6; ctx.strokeStyle = e.cor; ctx.lineWidth = 3 * e.vida; ctx.beginPath(); ctx.arc(e.x, e.y, e.raio, 0, Math.PI * 2); ctx.stroke(); }
+    ctx.globalAlpha = 1;
+  });
+}
+
+let ultimoTempo = 0;
+let quadroSandbox = null;
+const fpsContador = { frames: 0, tempo: 0 };
+
+function iniciarAnimacaoSandbox() {
+  if (estado.modoAtual !== 'sandbox' || quadroSandbox !== null) return;
+  ultimoTempo = performance.now();
+  quadroSandbox = requestAnimationFrame(loop);
+}
+
+function pararAnimacaoSandbox() {
+  if (quadroSandbox !== null) cancelAnimationFrame(quadroSandbox);
+  quadroSandbox = null;
+}
+
+function loop(agora) {
+  quadroSandbox = null;
+  if (estado.modoAtual !== 'sandbox') return;
+
+  const dt = Math.min(0.05, Math.max(0, (agora - ultimoTempo) / 1000));
+  ultimoTempo = agora;
+  if (CONFIG.graficos.fps) {
+    fpsContador.frames++;
+    fpsContador.tempo += dt;
+    if (fpsContador.tempo >= 0.5) {
+      document.getElementById('fpsCounter').textContent = `FPS: ${Math.round(fpsContador.frames / fpsContador.tempo)}`;
+      fpsContador.frames = 0;
+      fpsContador.tempo = 0;
+    }
+  }
+
+  if (!estado.pausado) {
+    estado.particulas.forEach(p => p.update(dt));
+    estado.particulas = estado.particulas.filter(p => !p.destruida);
+    atualizarEfeitos(dt);
+  }
+  const haElementos = estado.particulas.some(p => !p.destruida);
+  bancadaVazia.hidden = haElementos;
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const leves = efeitosReduzidos();
+  estado.particulas.forEach(p => p.draw(leves));
+  desenharEfeitos();
+  if (estado.arrastando) {
+    ctx.strokeStyle = 'rgba(0,212,255,0.6)';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([5, 5]);
+    ctx.beginPath();
+    ctx.moveTo(estado.arrastando.x, estado.arrastando.y);
+    ctx.lineTo(estado.mouseX, estado.mouseY);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+  if ((!estado.pausado && (haElementos || efeitos.length > 0)) || CONFIG.graficos.fps) {
+    quadroSandbox = requestAnimationFrame(loop);
+  }
+}
+
+function executarMistura(a, b) {
+  const receita = receitasPorPar.get(combinacao(a.tipo, b.tipo));
+  if (receita) aplicarReceita(a, b, receita);
+  ultimaMistura = { resultado: receita };
+  renderizarMistura();
+  iniciarAnimacaoSandbox();
+  return Boolean(receita);
+}
+
+function aplicarReceita(a, b, receita) {
+  const resultado = receita.simbolo;
+  const cx = (a.x + b.x) / 2, cy = (a.y + b.y) / 2;
+  a.destruida = true; b.destruida = true;
+  const novo = new Particula(resultado, cx, cy);
+  novo.vx = (Math.random() - 0.5) * 4;
+  novo.vy = (Math.random() - 0.5) * 4;
+  estado.particulas.push(novo);
+  if (!estado.descobertos.has(resultado)) {
+    estado.descobertos.add(resultado);
+    estado.novosElementos.add(resultado);
+    estado.pontos += 10;
+    atualizarHUD();
+    renderizarDescobertas();
+    const el = ELEMENTOS[resultado];
+    mostrarToast(`✨ <strong>NOVO!</strong><span class="big">${el.simbolo} — ${el.nome}</span><span class="small">+10 pontos</span>`);
+    Som.descoberta();
+    setTimeout(() => { estado.novosElementos.delete(resultado); renderizarDescobertas(); }, 3500);
+  } else {
+    estado.pontos += 2;
+    atualizarHUD();
+    Som.reagir();
+  }
+  criarExplosao(cx, cy, ELEMENTOS[resultado].cor);
+  criarOnda(cx, cy, ELEMENTOS[resultado].cor);
+  verificarConquistas();
+  salvar();
+}
+
+function verificarConquistas() {
+  CONQUISTAS.forEach(c => {
+    if (!estado.conquistas.has(c.id) && c.check(estado)) {
+      estado.conquistas.add(c.id);
+      estado.pontos += 25;
+      atualizarHUD();
+      mostrarToast(`🎖️ <strong>CONQUISTA!</strong><span class="big">${c.icon} ${c.nome}</span><span class="small">${c.desc} • +25</span>`, true);
+      Som.conquista();
+      salvar();
+    }
+  });
+}
+
+function mostrarToast(html, conquista = false) {
+  const toast = document.getElementById('toast');
+  toast.innerHTML = html;
+  toast.className = 'toast show' + (conquista ? ' achievement' : '');
+  clearTimeout(toast._timeout);
+  toast._timeout = setTimeout(() => toast.classList.remove('show'), 3500);
+}
+
+function atualizarHUD() {
+  document.getElementById('numElementos').textContent = TABELA_ATOMICA.length;
+  document.getElementById('pontos').textContent = estado.pontos;
+  document.getElementById('numConc').textContent = estado.conquistas.size;
+}
+
+const tabelaDiv = document.getElementById('tabelaPeriodica');
+const descobertasListaDiv = document.getElementById('descobertasLista');
+const buscaElemento = document.getElementById('buscarElemento');
+const semElementos = document.getElementById('txtSemElementos');
+const misturaSlots = [document.getElementById('misturaPrimeiro'), document.getElementById('misturaSegundo')];
+const btnMisturar = document.getElementById('btnMisturar');
+const misturaStatus = document.getElementById('misturaStatus');
+const btnPausar = document.getElementById('btnPausar');
+const mistura = [];
+let ultimaMistura = null;
+
+function normalizarBusca(valor) {
+  return valor.normalize('NFD').replace(/\p{Mark}/gu, '').trim().toLowerCase();
+}
+
+function filtrarElementos() {
+  const termo = normalizarBusca(buscaElemento.value);
+  let encontrados = 0;
+  for (const botao of tabelaDiv.children) {
+    botao.hidden = /^\d+$/.test(termo) ? botao.dataset.numero !== termo : !botao.dataset.busca.includes(termo);
+    if (!botao.hidden) encontrados++;
+  }
+  semElementos.hidden = encontrados > 0 || !termo;
+}
+buscaElemento.addEventListener('input', filtrarElementos);
+
+function atualizarInterfaceSandbox() {
+  const t = TEXTOS_SANDBOX[CONFIG.idioma] || TEXTOS_SANDBOX.pt;
+  buscaElemento.placeholder = t.buscar;
+  buscaElemento.setAttribute('aria-label', t.buscar);
+  semElementos.textContent = t.vazio;
+  document.getElementById('txtBtnMais').textContent = t.mais;
+  bancadaVazia.textContent = `🧪 ${t.bancada}`;
+  btnMisturar.textContent = t.misturar;
+  btnPausar.classList.toggle('active', estado.pausado);
+  btnPausar.setAttribute('aria-pressed', String(estado.pausado));
+  document.getElementById('iconePausa').textContent = estado.pausado ? '▶️' : '⏸️';
+  document.getElementById('txtBtnPausar').textContent = estado.pausado ? t.continuar : (TRADUCOES[CONFIG.idioma] || TRADUCOES.pt).txtBtnPausar;
+  document.getElementById('btnSom').setAttribute('aria-pressed', String(!CONFIG.audio.mudo));
+  renderizarMistura();
+}
+
+function renderizarMistura() {
+  const t = TEXTOS_SANDBOX[CONFIG.idioma] || TEXTOS_SANDBOX.pt;
+  misturaSlots.forEach((botao, indice) => {
+    const el = ELEMENTOS[mistura[indice]];
+    botao.disabled = !el;
+    botao.textContent = el ? `${el.icon} ${el.nome}` : `${t.elemento} ${indice + 1}`;
+    if (el) botao.setAttribute('aria-label', `${t.remover} ${el.nome}`);
+    else botao.removeAttribute('aria-label');
+  });
+  btnMisturar.disabled = estado.pausado || mistura.length !== 2;
+  for (const botao of sandboxWorkspace.querySelectorAll('button[data-tipo]')) {
+    botao.classList.toggle('selecionado', mistura.includes(botao.dataset.tipo));
+  }
+  misturaStatus.dataset.estado = ultimaMistura?.resultado ? 'sucesso' : ultimaMistura ? 'erro' : '';
+  if (estado.pausado) {
+    misturaStatus.textContent = t.pausado;
+    misturaStatus.dataset.estado = '';
+  } else if (ultimaMistura) {
+    const { resultado } = ultimaMistura;
+    misturaStatus.textContent = resultado
+      ? `${resultado.nome} · ${linhaReceita(resultado)}`
+      : t.semReacao;
+  } else {
+    misturaStatus.textContent = [t.escolher, t.faltaUm, t.pronta][mistura.length];
+  }
+}
+
+function escolherElemento(tipo) {
+  mistura[Math.min(mistura.length, 1)] = tipo;
+  ultimaMistura = null;
+  renderizarMistura();
+}
+
+misturaSlots.forEach((botao, indice) => botao.addEventListener('click', () => {
+  mistura.splice(indice, 1);
+  ultimaMistura = null;
+  renderizarMistura();
+}));
+
+btnMisturar.addEventListener('click', () => {
+  if (estado.pausado || mistura.length !== 2) return;
+  const [a, b] = mistura;
+  Som.init();
+  resizeCanvas();
+  const x = canvas.width / 2, y = canvas.height / 2;
+  if (executarMistura(new Particula(a, x - 8, y), new Particula(b, x + 8, y))) {
+    mistura.length = 0;
+    renderizarMistura();
+  }
+});
+
+function configurarElemento(botao, tipo) {
+  const el = ELEMENTOS[tipo];
+  botao.type = 'button';
+  botao.dataset.tipo = tipo;
+  botao.setAttribute('aria-label', el.nome);
+  let arrastou = false;
+
+  botao.addEventListener('click', (e) => {
+    if (arrastou && e.detail !== 0) return;
+    escolherElemento(tipo);
+  });
+  botao.addEventListener('pointerdown', (e) => {
+    arrastou = false;
+    if (e.pointerType !== 'mouse' || e.button !== 0 || botao.disabled) return;
+    const sessao = new AbortController();
+    const opcoes = { signal: sessao.signal };
+    document.addEventListener('pointermove', (movimento) => {
+      if (movimento.pointerId !== e.pointerId || Math.hypot(movimento.clientX - e.clientX, movimento.clientY - e.clientY) < 6) return;
+      arrastou = true;
+      sessao.abort();
+      iniciarArrastePainel(tipo, movimento);
+    }, opcoes);
+    for (const evento of ['pointerup', 'pointercancel']) {
+      document.addEventListener(evento, (fim) => {
+        if (fim.pointerId === e.pointerId) sessao.abort();
+      }, opcoes);
+    }
+  });
+}
+
+function renderizarTabela() {
+  tabelaDiv.innerHTML = '';
+  for (const [key, el] of Object.entries(ATOMOS)) {
+    tabelaDiv.appendChild(criarElementoTabela(key, el));
+  }
+  filtrarElementos();
+  renderizarMistura();
+}
+
+function criarElementoTabela(key, el) {
+  const div = document.createElement('button');
+  div.className = 'elemento';
+  if (el.tipo === 'especial') div.classList.add('especial');
+  div.dataset.busca = normalizarBusca(`${el.nome} ${el.simbolo}`);
+  div.dataset.numero = el.num;
+  div.style.setProperty('--cor', el.cor);
+  div.innerHTML = `
+    <span class="num-atomico">${el.num}</span>
+    <span class="icon-float">${el.icon}</span>
+    <span class="simbolo">${el.simbolo}</span>
+    <span class="nome-tab">${el.nome}</span>
+    <span class="massa">${el.massa}</span>
+  `;
+  div.addEventListener('pointerenter', (e) => {
+    if (e.pointerType === 'mouse') mostrarTooltip(div, el);
+  });
+  div.addEventListener('pointerleave', () => document.getElementById('tooltip').classList.remove('show'));
+  configurarElemento(div, key);
+  return div;
+}
+
+function renderizarDescobertas() {
+  descobertasListaDiv.innerHTML = '';
+  const produtos = RECEITAS.filter(r => estado.descobertos.has(r.simbolo));
+  for (const el of [...produtos, ...Object.values(ATOMOS)]) {
+    const key = el.simbolo;
+    const div = document.createElement('button');
+    div.className = 'descoberta-card';
+    div.classList.toggle('novo', estado.novosElementos.has(key));
+    div.style.setProperty('--cor', el.cor);
+    div.innerHTML = `
+      <span class="card-simbolo">${el.simbolo}</span>
+      <span class="card-info">
+        <span class="card-nome">${el.nome}</span>
+        <span class="card-num">${el.num ? `Nº ${el.num}` : el.equacao ? textoQuimica().composto : textoQuimica().liga}</span>
+      </span>
+      <span class="card-icon">${el.icon}</span>
+    `;
+    div.addEventListener('pointerenter', (e) => {
+      if (e.pointerType === 'mouse') mostrarTooltip(div, el, true);
+    });
+    div.addEventListener('pointerleave', () => document.getElementById('tooltip').classList.remove('show'));
+    configurarElemento(div, key);
+    descobertasListaDiv.appendChild(div);
+  }
+  renderizarMistura();
+}
+
+function mostrarTooltip(div, el, painelDireito = false) {
+  const tooltip = document.getElementById('tooltip');
+  const t = textoQuimica();
+  const detalhe = el.num
+    ? `<div class="info-quimica">
+        <div><span class="lbl">${t.numero}</span><span class="val">${el.num}</span></div>
+        <div><span class="lbl">${el.massa.startsWith('[') ? t.numeroMassa : t.massa}</span><span class="val">${el.massa}</span></div>
+      </div>`
+    : `<p>${linhaReceita(el)}</p>`;
+  tooltip.innerHTML = `<h4>${el.icon} ${el.simbolo} · ${el.nome}</h4>${detalhe}`;
+  tooltip.classList.add('show');
+  const rect = div.getBoundingClientRect();
+  const x = painelDireito ? rect.left - tooltip.offsetWidth - 10 : rect.right + 10;
+  tooltip.style.left = Math.max(8, Math.min(x, window.innerWidth - tooltip.offsetWidth - 8)) + 'px';
+  tooltip.style.top = Math.max(8, Math.min(rect.top, window.innerHeight - tooltip.offsetHeight - 8)) + 'px';
+}
+
+function particulaNoPonto(x, y, ignorar = null) {
+  return estado.particulas.findLast(p => p !== ignorar && !p.destruida && Math.hypot(p.x - x, p.y - y) < p.raio);
+}
+
+function colocarNaBancada(tipo, x, y) {
+  if (estado.modoAtual !== 'sandbox') return;
+  const px = Math.max(24, Math.min(canvas.width - 24, x));
+  const py = Math.max(24, Math.min(canvas.height - 24, y));
+  estado.particulas.push(new Particula(tipo, px, py));
+  Som.init();
+  Som.colocar();
+  iniciarAnimacaoSandbox();
+}
+
+function iniciarArrastePainel(tipo, e) {
+  const el = ELEMENTOS[tipo];
+  const sessao = new AbortController();
+  const opcoes = { signal: sessao.signal };
+  const ghost = document.createElement('div');
+  ghost.className = 'drag-ghost';
+  ghost.style.color = el.cor;
+  ghost.style.borderColor = el.cor;
+  ghost.setAttribute('aria-hidden', 'true');
+  ghost.innerHTML = `<span class="ghost-num">${el.num ?? ""}</span><span class="ghost-simbolo">${el.simbolo}</span>`;
+  document.body.appendChild(ghost);
+  document.getElementById('tooltip').classList.remove('show');
+
+  function mover(evento) {
+    if (evento.pointerId !== e.pointerId) return;
+    ghost.style.left = evento.clientX + 'px';
+    ghost.style.top = evento.clientY + 'px';
+  }
+  function terminar(evento) {
+    if (evento.pointerId !== e.pointerId) return;
+    sessao.abort();
+    ghost.remove();
+    if (evento.type === 'pointercancel' || estado.modoAtual !== 'sandbox') return;
+    const rect = canvas.getBoundingClientRect();
+    const x = evento.clientX - rect.left, y = evento.clientY - rect.top;
+    if (x < 0 || y < 0 || x >= rect.width || y >= rect.height) return;
+    const alvo = particulaNoPonto(x, y);
+    if (alvo && !estado.pausado) {
+      executarMistura(new Particula(tipo, x, y), alvo);
+    } else {
+      colocarNaBancada(tipo, x, y);
+    }
+  }
+  mover(e);
+  document.addEventListener('pointermove', mover, opcoes);
+  document.addEventListener('pointerup', terminar, opcoes);
+  document.addEventListener('pointercancel', terminar, opcoes);
+}
+
+canvas.addEventListener('pointermove', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  estado.mouseX = e.clientX - rect.left;
+  estado.mouseY = e.clientY - rect.top;
+});
+
+canvas.addEventListener('pointerdown', (e) => {
+  if (e.button !== 0 || !e.isPrimary || estado.pausado) return;
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left, y = e.clientY - rect.top;
+  const p = particulaNoPonto(x, y);
+  if (!p) return;
+  estado.arrastando = p;
+  estado.mouseX = x;
+  estado.mouseY = y;
+  canvas.setPointerCapture(e.pointerId);
+});
+
+canvas.addEventListener('pointerup', (e) => {
+  if (!e.isPrimary || !estado.arrastando) return;
+  const p = estado.arrastando;
+  estado.arrastando = null;
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left, y = e.clientY - rect.top;
+  p.x = Math.max(p.raio, Math.min(canvas.width - p.raio, x));
+  p.y = Math.max(p.raio, Math.min(canvas.height - p.raio, y));
+  const alvo = particulaNoPonto(x, y, p);
+  if (alvo && !estado.pausado) executarMistura(p, alvo);
+});
+for (const evento of ['pointercancel', 'lostpointercapture']) {
+  canvas.addEventListener(evento, (e) => { if (e.isPrimary) estado.arrastando = null; });
+}
+
+canvas.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left, y = e.clientY - rect.top;
+  for (let i = estado.particulas.length - 1; i >= 0; i--) {
+    const p = estado.particulas[i];
+    if (Math.sqrt((p.x - x) ** 2 + (p.y - y) ** 2) < p.raio) {
+      p.destruida = true;
+      criarExplosao(p.x, p.y, ELEMENTOS[p.tipo].cor, 10);
+      Som.apagar();
+      iniciarAnimacaoSandbox();
+      break;
+    }
+  }
+});
+
+const modalOverlay = document.getElementById('modalOverlay');
+const modalContent = document.getElementById('modalContent');
+let focoAntesDoModal = null;
+function abrirModal(titulo, html) {
+  const t = TEXTOS_SANDBOX[CONFIG.idioma] || TEXTOS_SANDBOX.pt;
+  focoAntesDoModal = document.activeElement;
+  modalContent.innerHTML = `
+    <div class="modal-top">
+      <h2 id="modalTitulo">${titulo}</h2>
+      <button type="button" class="close-btn" aria-label="${t.fechar}">×</button>
+    </div>
+    <div class="modal-scroll" tabindex="0">${html}</div>`;
+  modalOverlay.classList.add('show');
+  const fechar = modalContent.querySelector('.close-btn');
+  fechar.addEventListener('click', fecharModal);
+  fechar.focus();
+}
+function fecharModal() {
+  modalOverlay.classList.remove('show');
+  focoAntesDoModal?.focus();
+  focoAntesDoModal = null;
+}
+modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) fecharModal(); });
+
+function abrirModalReceitas() {
+  const t = textoQuimica();
+  const opcoes = Object.values(ATOMOS).map(el =>
+    `<option value="${el.simbolo}">${el.num} · ${el.simbolo} · ${el.nome}</option>`).join('');
+  abrirModal(`📖 ${(TRADUCOES[CONFIG.idioma] || TRADUCOES.pt).txtModoReceitas}`, `
+    <p class="receita-nota">${t.simulacao}</p>
+    <label class="receita-filtro">${t.filtrar}
+      <select id="filtroReceitas"><option value="">${t.todos}</option>${opcoes}</select>
+    </label>
+    <p class="receita-nota">${estado.descobertos.size}/${RECEITAS.length} ${t.descobertos}</p>
+    <div id="listaReceitas" aria-live="polite"></div>
+  `);
+  const filtro = document.getElementById('filtroReceitas');
+  const lista = document.getElementById('listaReceitas');
+  function atualizarLista() {
+    const el = ATOMOS[filtro.value];
+    const receitas = el ? RECEITAS.filter(r => r.a === el.simbolo || r.b === el.simbolo) : RECEITAS;
+    lista.innerHTML = receitas.map(r => `
+      <div class="receita-item">
+        <div class="receita-info">
+          <strong>${r.nome}</strong>
+          <span>${linhaReceita(r)}</span>
+        </div>
+        <span class="receita-tipo">${estado.descobertos.has(r.simbolo) ? '✓ ' : ''}${r.equacao ? t.composto : t.liga}</span>
+      </div>`).join('') || `<p class="receita-nota">${el.nome} (${el.simbolo}) · ${t.semReceita}</p>`;
+  }
+  filtro.addEventListener('change', atualizarLista);
+  atualizarLista();
+}
+
+function linhaReceita(r) {
+  return r.equacao || `${ATOMOS[r.a].nome} + ${ATOMOS[r.b].nome} → ${r.simbolo}`;
+}
+
+const TEXTOS_QUIMICA = {
+  pt: { numero: 'Número atômico', massa: 'Peso atômico', numeroMassa: 'Número de massa', composto: 'Composto', liga: 'Liga metálica',
+    simulacao: 'As equações mostram os produtos em condições adequadas. As ligas são misturas de metais e têm composição variável.',
+    filtrar: 'Filtrar por elemento', todos: 'Todos os elementos', descobertos: 'produtos descobertos', semReceita: 'Sem receita cadastrada no jogo.' },
+  en: { numero: 'Atomic number', massa: 'Atomic weight', numeroMassa: 'Mass number', composto: 'Compound', liga: 'Alloy',
+    simulacao: 'Equations show the products under suitable conditions. Alloys are mixtures of metals with variable composition.',
+    filtrar: 'Filter by element', todos: 'All elements', descobertos: 'products discovered', semReceita: 'No recipe in the game.' },
+  es: { numero: 'Número atómico', massa: 'Peso atómico', numeroMassa: 'Número másico', composto: 'Compuesto', liga: 'Aleación',
+    simulacao: 'Las ecuaciones muestran los productos en condiciones adecuadas. Las aleaciones son mezclas de metales de composición variable.',
+    filtrar: 'Filtrar por elemento', todos: 'Todos los elementos', descobertos: 'productos descubiertos', semReceita: 'Sin receta registrada en el juego.' },
+};
+function textoQuimica() {
+  return TEXTOS_QUIMICA[CONFIG.idioma] || TEXTOS_QUIMICA.pt;
+}
+
+document.getElementById('btnConquistas').addEventListener('click', () => {
+  let html = '';
+  CONQUISTAS.forEach(c => {
+    const d = estado.conquistas.has(c.id);
+    html += `<div class="conquista-item ${d ? 'desbloqueada' : ''}"><div class="c-icon">${d ? c.icon : '🔒'}</div><div class="c-info"><div class="c-nome">${c.nome}</div><div class="c-desc">${c.desc}</div></div></div>`;
+  });
+  abrirModal(`🎖️ ${(TRADUCOES[CONFIG.idioma] || TRADUCOES.pt).txtBtnConc}`, html);
+});
+
+document.getElementById('btnReceitas').addEventListener('click', abrirModalReceitas);
+
+document.getElementById('btnLimpar').addEventListener('click', () => {
+  estado.particulas.forEach(p => criarExplosao(p.x, p.y, ELEMENTOS[p.tipo].cor, 8));
+  estado.particulas = [];
+  estado.arrastando = null;
+  mistura.length = 0;
+  ultimaMistura = null;
+  renderizarMistura();
+  Som.apagar();
+  iniciarAnimacaoSandbox();
+});
+btnPausar.addEventListener('click', () => {
+  estado.pausado = !estado.pausado;
+  atualizarInterfaceSandbox();
+  iniciarAnimacaoSandbox();
+});
+document.getElementById('btnTema').addEventListener('click', (e) => {
+  const claro = document.body.classList.toggle('light-mode');
+  e.currentTarget.setAttribute('aria-pressed', String(claro));
+});
+document.getElementById('btnSom').addEventListener('click', () => {
+  CONFIG.audio.mudo = !CONFIG.audio.mudo;
+  Som.ativado = !CONFIG.audio.mudo;
+  aplicarConfigUI();
+  atualizarInterfaceSandbox();
+  salvarConfig();
+});
+document.getElementById('btnReset').addEventListener('click', () => {
+  if (!confirm('⚠️ Reset?')) return;
+  estado.pontos = 0;
+  estado.conquistas.clear();
+  estado.descobertos.clear();
+  estado.novosElementos.clear();
+  estado.particulas = [];
+  estado.arrastando = null;
+  efeitos = [];
+  mistura.length = 0;
+  ultimaMistura = null;
+
+  atualizarHUD();
+  renderizarDescobertas();
+  salvar();
+  mostrarToast('🔄 Reiniciado!');
+  iniciarAnimacaoSandbox();
+});
+
+function salvar() {
+  try {
+    localStorage.setItem('lab_quimica_v1', JSON.stringify({
+      pontos: estado.pontos,
+      descobertos: [...estado.descobertos],
+      conquistas: [...estado.conquistas],
+    }));
+  } catch (e) {}
+}
+function carregar() {
+  try {
+    const data = localStorage.getItem('lab_quimica_v1');
+    if (!data) return;
+    const d = JSON.parse(data);
+    estado.pontos = d.pontos || 0;
+    if (Array.isArray(d.descobertos)) estado.descobertos = new Set(d.descobertos.filter(id => Object.hasOwn(PRODUTOS, id)));
+    estado.conquistas = new Set(d.conquistas || []);
+  } catch (e) {}
+}
+
+/* ==========================================
+   INICIALIZAÇÃO
+   ========================================== */
+carregarConfig();
+carregar();
+Som.init();
+Som.volume = CONFIG.audio.master / 100;
+Som.volumeEfeitos = CONFIG.audio.efeitos / 100;
+Som.ativado = !CONFIG.audio.mudo;
+aplicarGraficos();
+aplicarTraducoes();
+aplicarConfigUI();
+document.body.addEventListener('click', () => Som.init(), { once: true });
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  if (document.getElementById('configOverlay').classList.contains('show')) fecharConfig();
+  else if (modalOverlay.classList.contains('show')) fecharModal();
+  else document.getElementById('sandboxMais').open = false;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="canonical" href="https://techonplay.com.br/categoria/jogos/jogos-educativos/corrida-matematica/">
+    <title>Corrida Matemática 🏁 - 6 Fases de Multiplicação</title>
+    <style>
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            min-height: 100dvh;
+            padding: clamp(10px, 3vw, 26px);
+            display: grid;
+            place-items: center;
+            background: radial-gradient(ellipse at 50% 0%, #22364b, #0b1420 72%);
+            color: #eff6ff;
+            font-family: system-ui, sans-serif;
+        }
+
+        .game-container {
+            width: min(100%, 720px);
+            padding: clamp(16px, 4vw, 32px);
+            border: 1px solid #375063;
+            border-radius: clamp(20px, 5vw, 36px);
+            background: #1a2a3a;
+            box-shadow: 0 20px 48px #080f1866;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(1.45rem, 6vw, 2.45rem);
+            font-weight: 900;
+            letter-spacing: 0.015em;
+            color: #ffda72;
+            text-shadow: 0 3px 0 #95551c;
+        }
+
+        .intro {
+            margin: 6px 0 18px;
+            color: #c1d4e6;
+            font-size: clamp(0.85rem, 3vw, 1rem);
+        }
+
+        .track {
+            --race-progress: 0;
+            padding: clamp(10px, 3vw, 16px);
+            background: #101d2b;
+            border: 1px solid #3a5060;
+            border-radius: 18px;
+            margin-bottom: 14px;
+        }
+
+        .track-labels {
+            display: flex;
+            justify-content: space-between;
+            color: #d6e4f0;
+            font-size: 0.75rem;
+            font-weight: 750;
+            margin: 0 2px 7px;
+        }
+
+        .road {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            height: clamp(62px, 12vw, 88px);
+            border: 1px solid #607486;
+            border-radius: 9px;
+            background:
+                repeating-linear-gradient(90deg, #ffe18a 0 17px, transparent 17px 33px) center / 100% 2px no-repeat,
+                linear-gradient(180deg, #2e4253, #1e2f3e);
+        }
+
+        .road::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-block: 5px solid transparent;
+            border-image: repeating-linear-gradient(90deg, #f2e8da 0 12px, #bd493e 12px 24px) 1;
+        }
+
+        .finish-line {
+            position: absolute;
+            inset: 5px 0 5px auto;
+            width: clamp(16px, 4vw, 24px);
+            border-left: 1px solid #becbd5;
+            background: repeating-conic-gradient(#e6edf3 0% 25%, #20313d 0% 50%) 0 0 / 12px 12px;
+        }
+
+        .lane {
+            position: absolute;
+            inset: 0 2px 0 7px;
+            --car-length: clamp(52px, 14vw, 82px);
+        }
+
+        .car {
+            position: absolute;
+            left: calc(var(--race-progress) * (100% - var(--car-length)));
+            top: 50%;
+            width: var(--car-length);
+            height: calc(var(--car-length) * 0.43);
+            transform: translateY(-50%);
+            transition: left 440ms cubic-bezier(.24,.7,.3,1);
+            filter: drop-shadow(0 4px 2px #10141dc4);
+        }
+
+        .car-body, .car-window, .car-wheel, .car-wing {
+            position: absolute;
+            display: block;
+        }
+
+        .car-body {
+            inset: 29% 0 17%;
+            background: linear-gradient(180deg, #ff9477, #f45a48 55%, #c93638);
+            clip-path: polygon(2% 31%, 32% 31%, 42% 0, 62% 0, 70% 48%, 94% 59%, 100% 77%, 100% 100%, 0 100%);
+        }
+
+        .car-wing {
+            inset: 13% auto 49% 4%;
+            width: 12%;
+            border-left: 4px solid #fc5a52;
+            border-top: 3px solid #ffb69b;
+            transform: skewX(-10deg);
+        }
+
+        .car-window {
+            inset: 32% 36% 47% 43%;
+            background: #b9edfa;
+            clip-path: polygon(8% 0, 74% 0, 100% 100%, 0 100%);
+        }
+
+        .car-wheel {
+            bottom: 0;
+            width: 23%;
+            aspect-ratio: 1;
+            border: 2px solid #28303d;
+            border-radius: 50%;
+            background: radial-gradient(circle, #dae5f0 0 24%, #708396 26% 49%, #101721 52%);
+        }
+
+        .car-wheel.rear { left: 10%; }
+        .car-wheel.front { right: 9%; }
+
+        .progress-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            color: #c1d4e6;
+            font-size: 0.82rem;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .bar-bg {
+            position: relative;
+            flex: 1;
+            height: 8px;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #3d4c5c;
+        }
+
+        .bar-fill {
+            display: block;
+            height: 100%;
+            width: calc(100% * var(--race-progress));
+            border-radius: inherit;
+            background: #ffca64;
+            transition: width 440ms ease;
+        }
+
+        .question-panel {
+            padding: clamp(12px, 3vw, 22px);
+            border: 1px solid #354a5d;
+            border-radius: 18px;
+            background: #122131;
+        }
+
+        .phase-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background: #ffcc67;
+            color: #352310;
+            font-size: 0.78rem;
+            font-weight: 800;
+        }
+
+        .equation {
+            margin: 5px 0 10px;
+            font-size: clamp(1.85rem, 7vw, 3.2rem);
+            line-height: 1.2;
+            text-align: center;
+            font-weight: 900;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+        }
+
+        button {
+            min-height: 46px;
+            font: inherit;
+            font-weight: 750;
+            border-radius: 10px;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        button:focus-visible { outline: 3px solid #ffe294; outline-offset: 3px; }
+        button:disabled { cursor: default; }
+        button:active:not(:disabled) { transform: translateY(1px); }
+
+        .option-btn {
+            padding: 6px 8px;
+            border: 1px solid #587287;
+            background: #243c51;
+            color: #f0f7ff;
+            font-size: clamp(1.15rem, 4vw, 1.5rem);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .option-btn:not(:disabled):hover { background: #34546d; }
+        .option-btn:disabled:not(.correct):not(.wrong) { opacity: 0.65; }
+        .option-btn.correct { border-color: #62dc9f; background: #15573e; color: #e1fff0; }
+        .option-btn.wrong { border-color: #e48383; background: #472f3d; color: #ffe6e6; }
+
+        .feedback {
+            min-height: 3.3em;
+            margin: 12px 0 0;
+            color: #d2e3f1;
+            font-size: 0.92rem;
+            line-height: 1.45;
+        }
+
+        .feedback[data-state="correct"] { color: #a9f7cb; }
+        .feedback[data-state="wrong"] { color: #ffc4b7; }
+
+        .controls {
+            display: flex;
+            flex-wrap: wrap-reverse;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .controls button { padding: 7px 13px; }
+        .btn-reset { border: 1px solid #6b8498; background: #223647; color: #e5f0fa; }
+        .btn-next { border: 1px solid #ffe2a3; background: #ffd06e; color: #2a1f0f; }
+
+        @media (max-width: 380px) {
+            .controls button { flex: 1 1 auto; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .car, .bar-fill { transition: none; }
+        }
+    </style>
+</head>
+<body>
+<main class="game-container">
+    <h1>🏁 Corrida Matemática</h1>
+    <p class="intro">Acerte as multiplicações e avance até a bandeirada em 6 fases.</p>
+
+    <section class="track" id="track" aria-label="Pista da corrida">
+        <div class="track-labels" aria-hidden="true"><span>Largada</span><span>Chegada</span></div>
+        <div class="road" aria-hidden="true">
+            <div class="finish-line"></div>
+            <div class="lane">
+                <div class="car" id="car">
+                    <span class="car-wing"></span>
+                    <span class="car-body"></span>
+                    <span class="car-window"></span>
+                    <span class="car-wheel rear"></span>
+                    <span class="car-wheel front"></span>
+                </div>
+            </div>
+        </div>
+        <div class="progress-area">
+            <div class="bar-bg" id="progressBar" role="progressbar" aria-label="Acertos"
+                 aria-valuemin="0" aria-valuemax="6" aria-valuenow="0"><span class="bar-fill"></span></div>
+            <span id="progressText" aria-hidden="true">0 de 6 acertos</span>
+        </div>
+    </section>
+
+    <section class="question-panel" aria-labelledby="equation">
+        <span class="phase-badge" id="phaseLabel">Fase 1 de 6</span>
+        <h2 class="equation" id="equation" tabindex="-1">2 × 3 = ?</h2>
+        <div class="options" id="optionsContainer"></div>
+        <p class="feedback" id="feedback" role="status"></p>
+    </section>
+
+    <div class="controls">
+        <button type="button" class="btn-reset" id="resetBtn">Recomeçar</button>
+        <button type="button" class="btn-next" id="nextBtn" hidden>Próxima fase →</button>
+    </div>
+</main>
+
+<script>
+    (() => {
+        const phases = [
+            { groups: 2, size: 3, distractors: [5, 8, 4] },
+            { groups: 4, size: 5, distractors: [18, 24, 16] },
+            { groups: 6, size: 7, distractors: [36, 48, 40] },
+            { groups: 8, size: 9, distractors: [64, 81, 68] },
+            { groups: 7, size: 6, distractors: [36, 48, 45], reversed: true },
+            { groups: 9, size: 8, distractors: [64, 81, 76], reversed: true },
+        ];
+
+        const track = document.getElementById('track');
+        const progressBar = document.getElementById('progressBar');
+        const progressText = document.getElementById('progressText');
+        const phaseLabel = document.getElementById('phaseLabel');
+        const equation = document.getElementById('equation');
+        const options = document.getElementById('optionsContainer');
+        const feedback = document.getElementById('feedback');
+        const nextButton = document.getElementById('nextBtn');
+        const resetButton = document.getElementById('resetBtn');
+
+        let phaseIndex = 0;
+        let correctCount = 0;
+
+        function updateRace() {
+            track.style.setProperty('--race-progress', correctCount / phases.length);
+            progressBar.setAttribute('aria-valuenow', correctCount);
+            progressText.textContent = `${correctCount} de ${phases.length} acertos`;
+        }
+
+        function renderPhase() {
+            const { groups, size, distractors } = phases[phaseIndex];
+            phaseLabel.textContent = `Fase ${phaseIndex + 1} de ${phases.length}`;
+            equation.textContent = `${groups} × ${size} = ?`;
+            feedback.textContent = 'Escolha o resultado para avançar na pista.';
+            delete feedback.dataset.state;
+            nextButton.hidden = true;
+            resetButton.hidden = false;
+
+            const answers = [groups * size, ...distractors];
+            for (let i = answers.length - 1; i > 0; i--) {
+                const other = Math.floor(Math.random() * (i + 1));
+                [answers[i], answers[other]] = [answers[other], answers[i]];
+            }
+            options.replaceChildren(...answers.map((value) => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'option-btn';
+                button.textContent = value;
+                button.addEventListener('click', () => answer(value, button));
+                return button;
+            }));
+        }
+
+        function answer(value, button) {
+            if (correctCount !== phaseIndex || button.disabled) return;
+
+            const { groups, size, reversed } = phases[phaseIndex];
+            const product = groups * size;
+            const wasFocused = document.activeElement === button;
+
+            if (value !== product) {
+                button.disabled = true;
+                button.classList.add('wrong');
+                feedback.dataset.state = 'wrong';
+                feedback.textContent = reversed
+                    ? `Tente de novo. ${groups} × ${size} dá o mesmo resultado que ${size} × ${groups}, uma conta que você já resolveu nesta corrida.`
+                    : `Tente de novo. Imagine ${groups} grupos com ${size} em cada um e some os grupos.`;
+                if (wasFocused) options.querySelector('button:not(:disabled)').focus({ preventScroll: true });
+                return;
+            }
+
+            correctCount++;
+            updateRace();
+            button.classList.add('correct');
+            for (const choice of options.children) choice.disabled = true;
+            equation.textContent = `${groups} × ${size} = ${product}`;
+
+            const won = correctCount === phases.length;
+            const explanation = reversed
+                ? `Inverter a ordem dos fatores mantém o resultado. ${size} × ${groups} também dá ${product}.`
+                : `${Array(groups).fill(size).join(' + ')} = ${product}.`;
+            feedback.dataset.state = 'correct';
+            feedback.textContent = `${won ? 'Você chegou à bandeirada!' : 'Acertou!'} ${explanation}`;
+            if (won) phaseLabel.textContent = 'Corrida concluída';
+            resetButton.hidden = won;
+            nextButton.textContent = won ? 'Correr de novo' : 'Próxima fase →';
+            nextButton.hidden = false;
+            if (wasFocused) nextButton.focus({ preventScroll: true });
+        }
+
+        function resetGame() {
+            phaseIndex = 0;
+            correctCount = 0;
+            updateRace();
+            renderPhase();
+        }
+
+        nextButton.addEventListener('click', () => {
+            if (correctCount === phases.length) {
+                resetGame();
+            } else {
+                phaseIndex++;
+                renderPhase();
+            }
+            equation.focus({ preventScroll: true });
+        });
+        resetButton.addEventListener('click', () => {
+            resetGame();
+            equation.focus({ preventScroll: true });
+        });
+        resetGame();
+    })();
+</script>
+</body>
+</html>

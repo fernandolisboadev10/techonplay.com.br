@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import { categories as categoryList } from '../data/categories';
+import { categories as categoryList, type Category } from '../data/categories';
 import { themes, themeHref, matchesTheme, MIN_THEME_POSTS } from '../data/themes.mjs';
 import { isPublished } from '../utils/posts';
 
@@ -19,12 +19,14 @@ const categories = [
   { label: 'Educação', category: 'Educação' },
 ];
 
-// Subcategorias (temas) que abrem ao passar o mouse sobre a categoria.
-const subsOf = (cat?: { subthemes?: string[] }) =>
-  (cat?.subthemes ?? [])
+const subsOf = (cat?: Category) => {
+  const pages = (cat?.subpages ?? []).map((page) => ({ label: page.name, href: page.href }));
+  const topics = (cat?.subthemes ?? [])
     .map((s) => themes.find((x) => x.slug === s))
     .filter((x) => x && posts.filter((p) => matchesTheme(x, p.id, p.data.tags ?? [])).length >= MIN_THEME_POSTS)
     .map((x) => ({ label: x.name, href: themeHref(x.slug) }));
+  return [...pages, ...topics];
+};
 
 const nav = [
   { label: 'Início', href: '/', subs: [] },
@@ -35,6 +37,8 @@ const nav = [
 ];
 
 const currentHref = Astro.url.pathname + Astro.url.search;
+const hasCurrentSub = (subs: { href: string }[]) =>
+  subs.some((sub) => Astro.url.pathname.startsWith(sub.href));
 ---
 <div class="scroll-sentinel" aria-hidden="true"></div>
 <header class="site-header" id="site-header">
@@ -53,7 +57,7 @@ const currentHref = Astro.url.pathname + Astro.url.search;
       {nav.map((item) =>
         item.subs.length ? (
           <div class="dd">
-            <a href={item.href} class:list={{ active: item.href === currentHref }}>{item.label}</a>
+            <a href={item.href} class:list={{ active: item.href === currentHref || hasCurrentSub(item.subs) }}>{item.label}</a>
             <div class="dd-menu">
               {item.subs.map((s) => <a href={s.href}>{s.label}</a>)}
             </div>
@@ -96,8 +100,8 @@ const currentHref = Astro.url.pathname + Astro.url.search;
   <nav class="mobile-nav" id="mobile-nav">
     {nav.map((item) =>
       item.subs.length ? (
-        <div class:list={['m-group', { open: item.href === currentHref || item.subs.some((s) => s.href === currentHref) }]}>
-          <button type="button" class="m-toggle" aria-expanded={item.href === currentHref || item.subs.some((s) => s.href === currentHref) ? 'true' : 'false'}>
+        <div class:list={['m-group', { open: item.href === currentHref || hasCurrentSub(item.subs) }]}>
+          <button type="button" class="m-toggle" aria-expanded={item.href === currentHref || hasCurrentSub(item.subs) ? 'true' : 'false'}>
             <span>{item.label}</span>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg>
           </button>

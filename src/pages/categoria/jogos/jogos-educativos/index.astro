@@ -1,0 +1,273 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import { educationalGames, gameSubjects, gameHref, gameCover } from '../../../../data/educationalGames';
+
+const title = 'Jogos Educativos';
+const description = 'Jogue grátis no navegador e pratique matemática, ciências, lógica e linguagem. Escolha entre 13 jogos educativos da TechOnPlay.';
+const hero = '/images/arcade-educativo.webp';
+const catalogSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: title,
+  description,
+  inLanguage: 'pt-BR',
+  url: new URL(Astro.url.pathname, Astro.site).href,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: educationalGames.map((game, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: game.title,
+      url: new URL(gameHref(game.slug), Astro.site).href,
+    })),
+  },
+};
+---
+<BaseLayout title={title} description={description} image={hero}>
+  <script type="application/ld+json" set:html={JSON.stringify(catalogSchema)} />
+  <div class="arcade" data-arcade>
+    <div class="container arcade-inner">
+      <nav class="crumbs" aria-label="Localização">
+        <a href="/categoria/jogos/">Jogos</a><span aria-hidden="true">/</span><span aria-current="page">{title}</span>
+      </nav>
+
+      <section class="hero" aria-labelledby="arcade-title">
+        <div class="hero-art" aria-hidden="true">
+          <img src={hero} alt="" width="1280" height="853" fetchpriority="high" />
+        </div>
+        <div class="hero-copy">
+          <h1 id="arcade-title">Jogos<br /><em>Educativos</em></h1>
+          <p>Corra pelos trilhos, explore um laboratório ou desafie sua memória. Escolha um jogo gratuito e jogue direto no navegador.</p>
+          <a class="primary" href="#catalogo"><span aria-hidden="true">▶</span> Explorar jogos</a>
+        </div>
+      </section>
+
+      <section id="catalogo" class="catalog" aria-labelledby="catalog-title">
+        <div class="catalog-heading">
+          <div>
+            <h2 id="catalog-title">Escolha seu jogo</h2>
+            <p aria-live="polite" data-count>{educationalGames.length} jogos disponíveis</p>
+          </div>
+          <div class="tools" data-enhanced hidden>
+            <button type="button" data-random><span aria-hidden="true">⤨</span> Surpreenda-me</button>
+            <button type="button" data-sound aria-pressed="false" aria-label="Som do catálogo">
+              <span aria-hidden="true">♪</span> <span aria-hidden="true" data-sound-text>Som desligado</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="filters" role="group" aria-label="Filtrar por assunto" data-enhanced hidden>
+          <button type="button" data-filter="all" aria-pressed="true">Todos</button>
+          {Object.entries(gameSubjects).map(([key, subject]) => (
+            <button type="button" data-filter={key} aria-pressed="false">{subject.label}</button>
+          ))}
+        </div>
+
+        <div class="grid">
+          {educationalGames.map((game, index) => (
+            <article class="card" data-game={game.subject} style={`--accent: ${gameSubjects[game.subject].color}; --delay: ${Math.min(index, 5) * 35}ms`}>
+              <a href={gameHref(game.slug)}>
+                <div class="cover">
+                  <img src={gameCover(game.slug)} alt="" width="640" height="398" loading="lazy" decoding="async" />
+                  <span class="subject">{gameSubjects[game.subject].label}</span>
+                </div>
+                <div class="card-body">
+                  <h3>{game.title}</h3>
+                  <p>{game.description}</p>
+                  <span class="play">Jogar <span aria-hidden="true">↗</span></span>
+                </div>
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const arcade = document.querySelector<HTMLElement>('[data-arcade]');
+  if (arcade) {
+    const filters = [...arcade.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+    const cards = [...arcade.querySelectorAll<HTMLElement>('[data-game]')];
+    const count = arcade.querySelector<HTMLElement>('[data-count]')!;
+    const sound = arcade.querySelector<HTMLButtonElement>('[data-sound]')!;
+    const soundText = arcade.querySelector<HTMLElement>('[data-sound-text]')!;
+    const random = arcade.querySelector<HTMLButtonElement>('[data-random]')!;
+    const AudioEngine = window.AudioContext ?? (window as Window & { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+    let visible = cards;
+    let audio: AudioContext | undefined;
+    let soundOn = false;
+
+    try { soundOn = Boolean(AudioEngine) && localStorage.getItem('techonplay-arcade-sound') === 'on'; } catch {}
+
+    function updateSound() {
+      sound.setAttribute('aria-pressed', String(soundOn));
+      soundText.textContent = soundOn ? 'Som ligado' : 'Som desligado';
+    }
+
+    async function chime(notes: number[]) {
+      if (!soundOn || !AudioEngine) return;
+      try {
+        const engine = audio ??= new AudioEngine();
+        await engine.resume();
+        if (!soundOn) return;
+        const start = engine.currentTime;
+        notes.forEach((frequency, index) => {
+          const at = start + index * 0.075;
+          const tone = engine.createOscillator();
+          const volume = engine.createGain();
+          tone.type = 'triangle';
+          tone.frequency.value = frequency;
+          volume.gain.setValueAtTime(0.001, at);
+          volume.gain.exponentialRampToValueAtTime(0.075, at + 0.014);
+          volume.gain.exponentialRampToValueAtTime(0.001, at + 0.12);
+          tone.connect(volume).connect(engine.destination);
+          tone.start(at);
+          tone.stop(at + 0.13);
+        });
+      } catch {}
+    }
+
+    filters.forEach((button) => button.addEventListener('click', () => {
+      const subject = button.dataset.filter;
+      filters.forEach((filter) => filter.setAttribute('aria-pressed', String(filter === button)));
+      cards.forEach((card) => { card.hidden = subject !== 'all' && card.dataset.game !== subject; });
+      visible = cards.filter((card) => !card.hidden);
+      count.textContent = visible.length === 1 ? '1 jogo disponível' : `${visible.length} jogos disponíveis`;
+      chime([440, 660]);
+    }));
+
+    random.addEventListener('click', () => {
+      const link = visible[Math.floor(Math.random() * visible.length)]?.querySelector('a');
+      if (link) location.assign(link.href);
+    });
+
+    sound.addEventListener('click', () => {
+      soundOn = !soundOn;
+      updateSound();
+      try { localStorage.setItem('techonplay-arcade-sound', soundOn ? 'on' : 'off'); } catch {}
+      chime([523.25, 659.25, 783.99]);
+    });
+
+    updateSound();
+    arcade.querySelectorAll<HTMLElement>('[data-enhanced]').forEach((element) => { element.hidden = false; });
+    sound.hidden = !AudioEngine;
+  }
+</script>
+
+<style>
+  .arcade {
+    --lime: #d8fd76;
+    --muted: #c1b9d6;
+    --edge: #332951;
+    color-scheme: dark;
+    color: #f8f5ff;
+    background: radial-gradient(ellipse at 84% 3%, #241442 0, transparent 35rem), #0d0a17;
+  }
+
+  .arcade-inner { padding-block: 28px 76px; }
+  .arcade [hidden] { display: none; }
+  .arcade a { color: inherit; text-decoration: none; }
+  .arcade button { font: inherit; cursor: pointer; }
+  .arcade :is(a, button):focus-visible { outline: 2px solid var(--lime); outline-offset: 5px; }
+  .crumbs { display: flex; flex-wrap: wrap; gap: 10px; color: var(--muted); font-size: .85rem; margin-bottom: 18px; }
+  .crumbs a:hover { color: var(--lime); }
+
+  .hero {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    align-items: center;
+    min-height: clamp(370px, 44vw, 530px);
+    overflow: hidden;
+    border: 1px solid #4c3779;
+    border-radius: 25px;
+    background: #100922;
+  }
+
+  .hero-art { position: absolute; inset: 0 0 0 33%; z-index: -1; overflow: hidden; }
+  .hero-art img { width: 100%; height: 100%; object-fit: cover; animation: drift 10s ease-in-out infinite alternate; }
+  .hero-art::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #100922 0%, #100922d4 10%, transparent 48%); }
+  .hero-copy { padding: clamp(25px, 5vw, 70px); width: min(60%, 620px); }
+  .hero h1 { margin: 0; color: #fff; font-size: clamp(3rem, 7vw, 6.7rem); line-height: .91; letter-spacing: -.07em; }
+  .hero em { color: var(--lime); font-style: normal; }
+  .hero p { max-width: 36ch; margin: 24px 0; color: #e1d9f3; font-size: clamp(1rem, 1.45vw, 1.14rem); }
+
+  .arcade .primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 48px;
+    padding: 10px 20px;
+    border-radius: 9px;
+    background: var(--lime);
+    color: #17141e;
+    font-weight: 800;
+    transition: box-shadow .2s, transform .2s;
+  }
+
+  .primary span { font-size: .8em; }
+  .primary:hover { transform: translateY(-3px); box-shadow: 0 4px 25px #d8fd7655; }
+  .catalog { margin-top: clamp(40px, 7vw, 72px); scroll-margin-top: 90px; }
+  .catalog-heading, .tools, .filters { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; }
+  .catalog-heading { justify-content: space-between; gap: 16px; }
+  .catalog h2 { margin: 0; color: #fff; font-size: clamp(1.85rem, 4vw, 2.7rem); letter-spacing: -.045em; }
+  .catalog-heading p { color: var(--muted); margin: 5px 0 0; font-size: .9rem; }
+  .filters { margin-top: 20px; }
+  .filters button, .tools button {
+    min-height: 44px;
+    padding: 8px 14px;
+    border: 1px solid #483960;
+    border-radius: 8px;
+    background: #1d162e;
+    color: #ece4fa;
+    font-size: .88rem;
+    font-weight: 650;
+    transition: border-color .2s, background .2s;
+  }
+
+  .tools button span:first-child { color: var(--lime); margin-right: 4px; }
+  .filters button[aria-pressed="true"] { background: var(--lime); color: #17141e; border-color: var(--lime); }
+  .tools button[aria-pressed="true"], .tools button:hover, .filters button:hover { border-color: var(--lime); }
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 22px; }
+  .card { display: grid; border: 1px solid var(--edge); border-radius: 15px; background: #191226; animation: arrive .42s ease-out both; animation-delay: var(--delay); transition: border-color .22s, transform .22s, box-shadow .22s; }
+  .card:hover, .card:focus-within { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 8px 26px #0005; }
+  .card a { display: flex; flex-direction: column; border-radius: inherit; }
+  .cover { position: relative; overflow: hidden; aspect-ratio: 640/398; border-radius: 14px 14px 0 0; background: #251b3a; border-bottom: 1px solid var(--edge); }
+  .cover img { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .35s; }
+  .card:hover img { transform: scale(1.045); }
+  .subject { position: absolute; left: 12px; bottom: 12px; padding: 4px 8px; border-radius: 5px; color: #17141e; background: var(--accent); font: 700 .75rem var(--font-mono), monospace; }
+  .card-body { flex: 1; display: flex; flex-direction: column; padding: 16px 18px; }
+  .card h3 { margin: 0; color: #fff; font-size: 1.24rem; letter-spacing: -.025em; }
+  .card p { margin: 8px 0 17px; color: var(--muted); font-size: .92rem; }
+  .play { display: flex; justify-content: space-between; margin-top: auto; padding-top: 11px; border-top: 1px solid var(--edge); color: var(--accent); font-weight: 750; }
+
+  @keyframes arrive { from { opacity: .35; translate: 0 7px; } to { opacity: 1; translate: 0 0; } }
+  @keyframes drift { from { transform: scale(1); } to { transform: scale(1.065) translateX(1%); } }
+
+  @media (max-width: 850px) {
+    .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 640px) {
+    .arcade-inner { padding-block: 18px 48px; }
+    .hero { align-content: end; min-height: 0; padding-top: clamp(165px, 54vw, 280px); }
+    .hero-art { inset: 0 0 auto; height: clamp(225px, 68vw, 350px); }
+    .hero-art img { object-position: center 48%; }
+    .hero-art::after { background: linear-gradient(0deg, #100922, transparent 60%); }
+    .hero-copy { width: 100%; padding-top: 8px; }
+    .hero h1 { font-size: clamp(2.85rem, 11vw, 4.4rem); }
+    .hero p { margin: 14px 0 18px; }
+  }
+
+  @media (max-width: 490px) {
+    .grid { grid-template-columns: 1fr; }
+    .filters { gap: 6px; }
+    .filters button { padding-inline: 10px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .arcade *, .arcade *::after { animation: none !important; transition: none !important; }
+  }
+</style>

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://techonplay.com.br/categoria/jogos/jogos-educativos/sofia-na-escola/">
+    <title>Sofia na Escola 🎒</title>
+<style>
+  :root{
+    --accent:#2563eb;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:radial-gradient(circle at 50% 0%,#2b3a55,#121824 70%);
+    min-height:100vh;
+    display:flex;align-items:center;justify-content:center;
+    padding:14px;color:#1f2937;
+  }
+  #app{width:100%;max-width:760px;}
+
+  .screen{display:none;}
+  .screen.active{display:block;animation:fadeIn .45s ease;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+
+  .card{
+    background:#fff;border-radius:22px;overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,.45);
+  }
+
+  /* ---------- TELA INICIAL ---------- */
+  .start-card{padding:34px 26px;text-align:center;}
+  .start-girl{font-size:74px;line-height:1;animation:bob2 2s ease-in-out infinite;display:inline-block;}
+  @keyframes bob2{0%,100%{transform:translateY(0) rotate(-3deg);}50%{transform:translateY(-10px) rotate(3deg);}}
+  .start-card h1{
+    font-size:clamp(1.5rem,5vw,2.1rem);margin:14px 0 6px;
+    background:linear-gradient(90deg,#2563eb,#9333ea);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .start-card p.sub{color:#64748b;font-size:.98rem;line-height:1.5;margin-bottom:20px;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px;}
+  .chip{
+    background:#eef4ff;color:#1d4ed8;border:2px solid #dbeafe;
+    padding:6px 14px;border-radius:999px;font-size:.85rem;font-weight:600;
+  }
+  .btn{
+    border:none;cursor:pointer;font-family:inherit;font-weight:800;
+    font-size:1.05rem;color:#fff;padding:15px 40px;border-radius:999px;
+    background:linear-gradient(135deg,#2563eb,#7c3aed);
+    box-shadow:0 10px 24px rgba(37,99,235,.4);
+    transition:transform .15s, box-shadow .15s;
+  }
+  .btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(37,99,235,.5);}
+  .btn:active{transform:translateY(0);}
+
+  /* ---------- HUD ---------- */
+  .hud{
+    display:flex;justify-content:space-between;align-items:center;gap:10px;
+    padding:12px 16px;background:#fff;border-bottom:2px solid #eef2f7;
+  }
+  .room-label{font-weight:800;font-size:.95rem;color:#1e293b;}
+  .score-label{
+    font-weight:800;font-size:.9rem;color:#b45309;
+    background:#fef3c7;padding:5px 12px;border-radius:999px;white-space:nowrap;
+  }
+
+  /* ---------- CENA ---------- */
+  .scene{
+    position:relative;height:330px;overflow:hidden;
+    background:linear-gradient(180deg,#e3eeff,#bcd6f8);
+    transition:background .7s ease;
+  }
+  .floor{
+    position:absolute;left:0;right:0;bottom:0;height:64px;
+    background:repeating-linear-gradient(90deg,#c99a6b 0 44px,#bf8f60 44px 88px);
+    border-top:5px solid #a97c50;
+  }
+  .board{
+    position:absolute;left:4%;top:22px;width:60%;height:196px;
+    background:linear-gradient(160deg,#33594a,#22443a);
+    border:9px solid #8b5a2b;border-radius:8px;
+    box-shadow:inset 0 0 34px rgba(0,0,0,.55), 0 8px 16px rgba(0,0,0,.25);
+    color:#f2fbf5;padding:12px 14px;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;gap:8px;
+    font-size:clamp(.78rem,2.4vw,1rem);line-height:1.35;
+    overflow:auto;
+  }
+  .board-icon{font-size:clamp(1.1rem,3.4vw,1.5rem);opacity:.85;}
+  .qtext{font-weight:600;}
+  .qtext small{display:block;font-weight:400;opacity:.75;margin-top:6px;font-size:.85em;}
+
+  .door{
+    position:absolute;right:5%;bottom:64px;width:22%;max-width:96px;height:168px;
+    background:linear-gradient(100deg,#b98055,#8f5f3c);
+    border:4px solid #6d4529;border-bottom:none;
+    border-radius:44px 44px 0 0;
+    box-shadow:inset -8px 0 14px rgba(0,0,0,.22);
+    display:flex;align-items:flex-start;justify-content:center;
+  }
+  .door-sign{
+    margin-top:26px;background:#f8fafc;border:2px solid #cbd5e1;border-radius:8px;
+    width:56%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+    font-size:clamp(.8rem,2.6vw,1.15rem);
+    box-shadow:0 2px 5px rgba(0,0,0,.2);
+  }
+  .door-knob{
+    position:absolute;left:10px;bottom:64px;width:11px;height:11px;border-radius:50%;
+    background:radial-gradient(circle at 35% 35%,#fde68a,#b45309);
+  }
+
+  /* ---------- SOFIA DE CORPO INTEIRO ---------- */
+  .girl{
+    position:absolute;bottom:50px;left:50%;
+    width:96px;
+    z-index:3;
+    transform:translateX(-50%);
+    filter:drop-shadow(0 7px 6px rgba(0,0,0,.32));
+    transition:left .9s cubic-bezier(.4,0,.2,1), opacity .5s ease;
+    animation:bob 1.4s ease-in-out infinite;
+    will-change:left, transform;
+  }
+  .girl svg{display:block;width:100%;height:auto;overflow:visible;}
+  @keyframes bob{
+    0%,100%{transform:translateX(-50%) translateY(0) rotate(-2deg);}
+    50%{transform:translateX(-50%) translateY(-7px) rotate(2deg);}
+  }
+
+  /* ---------- PAINEL DE RESPOSTAS ---------- */
+  .panel{padding:14px 16px 18px;background:#fff;}
+  .dots{display:flex;gap:7px;justify-content:center;margin-bottom:12px;}
+  .dot{
+    width:11px;height:11px;border-radius:50%;background:#e2e8f0;
+    transition:background .3s, transform .3s;
+  }
+  .dot.on{background:var(--accent);transform:scale(1.25);}
+
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .option{
+    padding:13px 15px;border-radius:13px;border:2px solid #dbe3ef;background:#f8fafc;
+    font-family:inherit;font-size:.95rem;font-weight:600;color:#1f2937;
+    cursor:pointer;text-align:left;transition:.15s;
+  }
+  .option:hover:not(:disabled){background:#eef4ff;border-color:var(--accent);transform:translateY(-2px);}
+  .option:disabled{cursor:default;}
+  .option.correct{background:#d1fae5;border-color:#10b981;color:#065f46;}
+  .option.wrong{background:#fee2e2;border-color:#ef4444;color:#991b1b;}
+
+  /* ---------- TELA FINAL ---------- */
+  .end-card{padding:32px 24px;text-align:center;}
+  .end-emoji{font-size:64px;line-height:1;}
+  .end-card h1{font-size:1.6rem;margin:10px 0 4px;color:#1e293b;}
+  .end-score{
+    font-size:2.4rem;font-weight:900;margin:8px 0 4px;
+    background:linear-gradient(90deg,#2563eb,#9333ea);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .end-msg{color:#475569;font-size:1rem;margin-bottom:18px;}
+  .breakdown{
+    display:grid;grid-template-columns:1fr 1fr;gap:8px;
+    margin-bottom:22px;text-align:left;
+  }
+  .bd-item{
+    background:#f8fafc;border:2px solid #eef2f7;border-radius:12px;
+    padding:9px 12px;font-size:.86rem;font-weight:600;color:#334155;
+    display:flex;justify-content:space-between;align-items:center;gap:6px;
+  }
+  .bd-item span:last-child{color:#2563eb;font-weight:800;}
+
+  @media (max-width:520px){
+    .scene{height:300px;}
+    .board{height:172px;width:62%;border-width:7px;padding:10px;}
+    .door{width:24%;height:140px;right:4%;}
+    .girl{width:76px;bottom:46px;}
+    .options{grid-template-columns:1fr;}
+    .option{font-size:.92rem;padding:12px;}
+    .breakdown{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- ========== TELA INICIAL ========== -->
+  <section id="start-screen" class="screen active">
+    <div class="card start-card">
+      <div class="start-girl">👧</div>
+      <h1>Sofia na Escola</h1>
+      <p class="sub">Ajude a Sofia a atravessar as 5 salas da escola!<br>
+         Em cada sala há <strong>5 perguntas</strong> de uma matéria diferente.</p>
+      <div class="chips">
+        <span class="chip">🔢 Matemática</span>
+        <span class="chip">📚 Português</span>
+        <span class="chip">🔬 Ciências</span>
+        <span class="chip">🏛️ História</span>
+        <span class="chip">🌍 Geografia</span>
+      </div>
+      <button class="btn" id="btn-start">Começar a aula 🎒</button>
+    </div>
+  </section>
+
+  <!-- ========== TELA DO JOGO ========== -->
+  <section id="game-screen" class="screen">
+    <div class="card">
+      <div class="hud">
+        <div class="room-label" id="room-label">Sala 1/5</div>
+        <div class="score-label" id="score-label">⭐ 0/25</div>
+      </div>
+
+      <div class="scene" id="scene">
+        <div class="floor"></div>
+        <div class="door">
+          <div class="door-sign" id="door-sign">🔢</div>
+          <div class="door-knob"></div>
+        </div>
+        <div class="board" id="board"></div>
+
+        <!-- ==== SOFIA DE CORPO INTEIRO (SVG) ==== -->
+        <div class="girl" id="girl">
+          <svg viewBox="0 0 100 165" role="img" aria-label="Sofia, menina de uniforme escolar">
+            <!-- maria-chiquinhas (atrás) -->
+            <ellipse cx="25" cy="42" rx="9.5" ry="14" fill="#5b3a22"/>
+            <ellipse cx="75" cy="42" rx="9.5" ry="14" fill="#5b3a22"/>
+            <circle cx="25" cy="29" r="4.2" fill="#e35d6a"/>
+            <circle cx="75" cy="29" r="4.2" fill="#e35d6a"/>
+
+            <!-- cabeça -->
+            <circle cx="50" cy="34" r="19" fill="#f7d2b4"/>
+            <!-- franja -->
+            <path d="M31 31 Q31 12 50 12 Q69 12 69 31 Q62 21 50 21 Q38 21 31 31 Z" fill="#5b3a22"/>
+
+            <!-- olhos -->
+            <circle cx="43" cy="36" r="2.5" fill="#2d1b12"/>
+            <circle cx="57" cy="36" r="2.5" fill="#2d1b12"/>
+            <circle cx="43.9" cy="35.1" r="0.9" fill="#fff"/>
+            <circle cx="57.9" cy="35.1" r="0.9" fill="#fff"/>
+
+            <!-- bochechas -->
+            <ellipse cx="37" cy="42" rx="4.2" ry="2.6" fill="#f79a9a" opacity=".65"/>
+            <ellipse cx="63" cy="42" rx="4.2" ry="2.6" fill="#f79a9a" opacity=".65"/>
+
+            <!-- sorriso -->
+            <path d="M45 44 Q50 48.5 55 44" fill="none" stroke="#b3564a"
+                  stroke-width="1.7" stroke-linecap="round"/>
+
+            <!-- pescoço -->
+            <rect x="46" y="50" width="8" height="8" rx="3" fill="#eec3a3"/>
+
+            <!-- braços -->
+            <path d="M38 62 Q31 74 30 88" fill="none" stroke="#f7d2b4"
+                  stroke-width="7" stroke-linecap="round"/>
+            <path d="M62 62 Q69 74 70 88" fill="none" stroke="#f7d2b4"
+                  stroke-width="7" stroke-linecap="round"/>
+
+            <!-- camisa do uniforme -->
+            <rect x="36" y="56" width="28" height="38" rx="9"
+                  fill="#ffffff" stroke="#d8e2f0" stroke-width="1.5"/>
+
+            <!-- laço vermelho -->
+            <path d="M50 60 L43 54.5 L43 65.5 Z" fill="#e35d6a"/>
+            <path d="M50 60 L57 54.5 L57 65.5 Z" fill="#e35d6a"/>
+            <circle cx="50" cy="60" r="2.7" fill="#c94450"/>
+
+            <!-- saia -->
+            <path d="M35 92 H65 L70 120 H30 Z" fill="#3b5bdb"/>
+            <path d="M44 92 L40 120 M56 92 L60 120"
+                  stroke="#2f49b0" stroke-width="1.6" opacity=".7"/>
+
+            <!-- pernas -->
+            <rect x="42" y="118" width="7" height="26" fill="#f7d2b4"/>
+            <rect x="51" y="118" width="7" height="26" fill="#f7d2b4"/>
+
+            <!-- meias -->
+            <rect x="42" y="136" width="7" height="9" fill="#ffffff"/>
+            <rect x="51" y="136" width="7" height="9" fill="#ffffff"/>
+
+            <!-- sapatos -->
+            <rect x="39.5" y="145" width="12" height="8" rx="3.6" fill="#2f3542"/>
+            <rect x="48.5" y="145" width="12" height="8" rx="3.6" fill="#2f3542"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="dots" id="dots"></div>
+        <div class="options" id="options"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TELA FINAL ========== -->
+  <section id="end-screen" class="screen">
+    <div class="card end-card">
+      <div class="end-emoji">🎓</div>
+      <h1>Fim da jornada!</h1>
+      <p class="end-score" id="end-score">0 / 25</p>
+      <p class="end-msg" id="end-msg"></p>
+      <div class="breakdown" id="end-breakdown"></div>
+      <button class="btn" id="btn-restart">Jogar novamente 🔄</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* =====================================================
+   BANCO DE PERGUNTAS — 5 salas × 5 perguntas
+   ===================================================== */
+const ROOMS = [
+  {
+    subject: "Matemática", icon: "🔢", accent: "#2563eb",
+    wall: "linear-gradient(180deg,#e6efff,#b9d4f8)",
+    questions: [
+      { q:"Quanto é 7 × 8?", a:["54","56","64","48"], c:"56" },
+      { q:"Qual é o resultado de 144 ÷ 12?", a:["11","12","14","16"], c:"12" },
+      { q:"Quanto é 1/2 + 1/4?", a:["2/6","3/4","1/6","2/4"], c:"3/4" },
+      { q:"Um triângulo tem dois ângulos de 60°. Qual é o terceiro ângulo?", a:["30°","45°","60°","90°"], c:"60°" },
+      { q:"Qual é o perímetro de um quadrado com lado de 5 cm?", a:["10 cm","15 cm","20 cm","25 cm"], c:"20 cm" }
+    ]
+  },
+  {
+    subject: "Português", icon: "📚", accent: "#7c3aed",
+    wall: "linear-gradient(180deg,#f2e9ff,#d6c2f7)",
+    questions: [
+      { q:"Qual palavra está escrita corretamente?", a:["Excessão","Exceção","Exeção","Essessão"], c:"Exceção" },
+      { q:"Qual é o plural de “cidadão”?", a:["Cidadães","Cidadãos","Cidadões","Cidadans"], c:"Cidadãos" },
+      { q:"Na frase “A menina corre rápido”, qual é o verbo?", a:["menina","corre","rápido","A"], c:"corre" },
+      { q:"Qual é o antônimo de “generoso”?", a:["Bondoso","Egoísta","Simpático","Gentil"], c:"Egoísta" },
+      { q:"Quantas sílabas tem a palavra “escola”?", a:["2","3","4","5"], c:"3" }
+    ]
+  },
+  {
+    subject: "Ciências", icon: "🔬", accent: "#059669",
+    wall: "linear-gradient(180deg,#e4fbef,#b7ebd0)",
+    questions: [
+      { q:"Qual órgão é responsável por bombear o sangue pelo corpo?", a:["Pulmão","Coração","Fígado","Cérebro"], c:"Coração" },
+      { q:"Qual planeta é conhecido como “Planeta Vermelho”?", a:["Vênus","Júpiter","Marte","Saturno"], c:"Marte" },
+      { q:"A 0 °C, a água se encontra em qual estado físico?", a:["Líquido","Gasoso","Sólido","Plasma"], c:"Sólido" },
+      { q:"Qual gás as plantas absorvem para realizar a fotossíntese?", a:["Oxigênio","Gás carbônico","Nitrogênio","Hélio"], c:"Gás carbônico" },
+      { q:"Quantos ossos tem o corpo humano adulto?", a:["106","206","306","156"], c:"206" }
+    ]
+  },
+  {
+    subject: "História", icon: "🏛️", accent: "#ea580c",
+    wall: "linear-gradient(180deg,#fff0e2,#f7cfae)",
+    questions: [
+      { q:"Em que ano os portugueses chegaram ao Brasil?", a:["1492","1500","1822","1888"], c:"1500" },
+      { q:"Quem proclamou a Independência do Brasil em 1822?", a:["Dom Pedro II","Dom Pedro I","Dom João VI","Tiradentes"], c:"Dom Pedro I" },
+      { q:"Qual foi o primeiro nome dado ao Brasil pelos portugueses?", a:["Terra de Santa Cruz","Ilha de Vera Cruz","Pindorama","Nova Lusitânia"], c:"Ilha de Vera Cruz" },
+      { q:"Qual civilização antiga construiu as pirâmides de Gizé?", a:["Romanos","Gregos","Egípcios","Maias"], c:"Egípcios" },
+      { q:"Em que ano a escravidão foi abolida no Brasil?", a:["1822","1850","1888","1891"], c:"1888" }
+    ]
+  },
+  {
+    subject: "Geografia", icon: "🌍", accent: "#0891b2",
+    wall: "linear-gradient(180deg,#e2f7fb,#b3e6f0)",
+    questions: [
+      { q:"Qual é a capital do Brasil?", a:["Rio de Janeiro","São Paulo","Brasília","Salvador"], c:"Brasília" },
+      { q:"Qual é o maior oceano do mundo?", a:["Atlântico","Índico","Pacífico","Ártico"], c:"Pacífico" },
+      { q:"Qual é o maior estado brasileiro em extensão territorial?", a:["Pará","Mato Grosso","Amazonas","Minas Gerais"], c:"Amazonas" },
+      { q:"Qual linha imaginária divide a Terra em hemisférios Norte e Sul?", a:["Trópico de Câncer","Meridiano de Greenwich","Linha do Equador","Trópico de Capricórnio"], c:"Linha do Equador" },
+      { q:"Qual é o rio mais extenso do Brasil?", a:["Rio São Francisco","Rio Amazonas","Rio Paraná","Rio Tietê"], c:"Rio Amazonas" }
+    ]
+  }
+];
+
+const TOTAL_Q = ROOMS.reduce((s, r) => s + r.questions.length, 0);
+
+/* =====================================================
+   ELEMENTOS
+   ===================================================== */
+const el = {
+  startScreen:  document.getElementById('start-screen'),
+  gameScreen:   document.getElementById('game-screen'),
+  endScreen:    document.getElementById('end-screen'),
+  scene:        document.getElementById('scene'),
+  board:        document.getElementById('board'),
+  options:      document.getElementById('options'),
+  girl:         document.getElementById('girl'),
+  roomLabel:    document.getElementById('room-label'),
+  scoreLabel:   document.getElementById('score-label'),
+  dots:         document.getElementById('dots'),
+  doorSign:     document.getElementById('door-sign'),
+  endScore:     document.getElementById('end-score'),
+  endMsg:       document.getElementById('end-msg'),
+  endBreakdown: document.getElementById('end-breakdown'),
+  btnStart:     document.getElementById('btn-start'),
+  btnRestart:   document.getElementById('btn-restart')
+};
+
+/* =====================================================
+   ESTADO
+   ===================================================== */
+let state = {};
+
+function resetState() {
+  state = {
+    room: 0,
+    qIndex: 0,
+    score: 0,
+    answered: 0,
+    roomScore: ROOMS.map(() => 0),
+    locked: true
+  };
+}
+
+/* =====================================================
+   UTILIDADES
+   ===================================================== */
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+/* --- sons simples (WebAudio) --- */
+let audioCtx = null;
+function beep(freq, dur = 0.12, type = 'sine', vol = 0.1) {
+  try {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = type;
+    osc.frequency.value = freq;
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+    osc.start();
+    osc.stop(audioCtx.currentTime + dur);
+  } catch (e) { /* silencioso */ }
+}
+const sndCorrect = () => { beep(660, .11); setTimeout(() => beep(990, .16), 100); };
+const sndWrong   = () => beep(180, .28, 'sawtooth', .08);
+const sndStep    = () => beep(420, .09, 'triangle', .06);
+
+/* =====================================================
+   HUD
+   ===================================================== */
+function updateHUD() {
+  el.scoreLabel.textContent = `⭐ ${state.score}/${TOTAL_Q}`;
+}
+
+function renderDots() {
+  const room = ROOMS[state.room];
+  el.dots.innerHTML = '';
+  for (let i = 0; i < room.questions.length; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i < state.qIndex ? ' on' : '');
+    el.dots.appendChild(d);
+  }
+}
+
+/* =====================================================
+   FLUXO DO JOGO
+   ===================================================== */
+function startGame() {
+  resetState();
+  showScreen('game-screen');
+  enterRoom(0);
+}
+
+function enterRoom(index) {
+  state.room = index;
+  state.qIndex = 0;
+  state.locked = true;
+
+  const room = ROOMS[index];
+
+  /* tema visual */
+  el.scene.style.background = room.wall;
+  document.documentElement.style.setProperty('--accent', room.accent);
+
+  /* textos */
+  el.roomLabel.textContent = `Sala ${index + 1}/${ROOMS.length} · ${room.subject} ${room.icon}`;
+  const next = ROOMS[index + 1];
+  el.doorSign.textContent = next ? next.icon : '🏁';
+
+  /* quadro negro */
+  el.board.innerHTML =
+    `<div class="board-icon">${room.icon}</div>
+     <p class="qtext">Entrando na sala de ${room.subject}...</p>`;
+
+  el.options.innerHTML = '';
+  renderDots();
+  updateHUD();
+  sndStep();
+
+  /* Sofia entra andando pela esquerda */
+  el.girl.style.transition = 'none';
+  el.girl.style.left = '-20%';
+  el.girl.style.opacity = '0';
+
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    el.girl.style.transition = '';
+    el.girl.style.left = '50%';
+    el.girl.style.opacity = '1';
+  }));
+
+  setTimeout(() => {
+    state.locked = false;
+    showQuestion();
+  }, 950);
+}
+
+function showQuestion() {
+  const room = ROOMS[state.room];
+  const q = room.questions[state.qIndex];
+
+  /* pergunta no quadro negro */
+  el.board.innerHTML =
+    `<div class="board-icon">${room.icon}</div>
+     <p class="qtext">${q.q}</p>`;
+
+  /* alternativas embaralhadas */
+  el.options.innerHTML = '';
+  const opts = shuffle(q.a);
+
+  opts.forEach(text => {
+    const btn = document.createElement('button');
+    btn.className = 'option';
+    btn.type = 'button';
+    btn.textContent = text;
+    btn.addEventListener('click', () => answer(btn, text, q.c));
+    el.options.appendChild(btn);
+  });
+
+  renderDots();
+}
+
+function answer(btn, chosen, correct) {
+  if (state.locked) return;
+  state.locked = true;
+
+  const buttons = [...el.options.children];
+  buttons.forEach(b => b.disabled = true);
+
+  if (chosen === correct) {
+    btn.classList.add('correct');
+    state.score++;
+    state.roomScore[state.room]++;
+    sndCorrect();
+  } else {
+    btn.classList.add('wrong');
+    const right = buttons.find(b => b.textContent === correct);
+    if (right) right.classList.add('correct');
+    sndWrong();
+  }
+
+  state.answered++;
+  state.qIndex++;
+  updateHUD();
+  renderDots();
+
+  setTimeout(() => {
+    state.locked = false;
+    if (state.qIndex < ROOMS[state.room].questions.length) {
+      showQuestion();
+    } else {
+      finishRoom();
+    }
+  }, 1150);
+}
+
+function finishRoom() {
+  const room = ROOMS[state.room];
+  const acertos = state.roomScore[state.room];
+
+  el.board.innerHTML =
+    `<div class="board-icon">✅</div>
+     <p class="qtext">Sala de ${room.subject} concluída!<br>
+     <small>${acertos} de ${room.questions.length} acertos</small></p>`;
+  el.options.innerHTML = '';
+  renderDots();
+
+  const isLast = state.room === ROOMS.length - 1;
+
+  if (isLast) {
+    setTimeout(showEnd, 1400);
+    return;
+  }
+
+  /* Sofia caminha até a porta e sai */
+  setTimeout(() => {
+    sndStep();
+    el.girl.style.left = '112%';
+    el.girl.style.opacity = '0';
+  }, 700);
+
+  setTimeout(() => enterRoom(state.room + 1), 1650);
+}
+
+function showEnd() {
+  showScreen('end-screen');
+
+  el.endScore.textContent = `${state.score} / ${TOTAL_Q}`;
+
+  let msg;
+  const pct = state.score / TOTAL_Q;
+  if (pct === 1)        msg = "Perfeito! Você acertou TUDO! A Sofia é uma verdadeira gênia! 🏆";
+  else if (pct >= 0.8)  msg = "Uau, muito bem! A Sofia aprendeu bastante hoje! 🌟";
+  else if (pct >= 0.6)  msg = "Bom trabalho! Com mais um pouco de estudo fica perfeito! 💪";
+  else if (pct >= 0.4)  msg = "Você está no caminho! Vamos revisar e tentar de novo? 📖";
+  else                  msg = "Não desista! Toda grande estudante começou assim. Tente novamente! 🎒";
+
+  el.endMsg.textContent = msg;
+
+  /* placar por matéria */
+  el.endBreakdown.innerHTML = '';
+  ROOMS.forEach((r, i) => {
+    const item = document.createElement('div');
+    item.className = 'bd-item';
+    item.innerHTML = `<span>${r.icon} ${r.subject}</span>
+                      <span>${state.roomScore[i]}/${r.questions.length}</span>`;
+    el.endBreakdown.appendChild(item);
+  });
+
+  /* comemoração sonora */
+  [523, 659, 784, 1047].forEach((f, i) =>
+    setTimeout(() => beep(f, .18, 'sine', .09), i * 130)
+  );
+}
+
+/* =====================================================
+   EVENTOS
+   ===================================================== */
+el.btnStart.addEventListener('click', startGame);
+el.btnRestart.addEventListener('click', () => {
+  showScreen('start-screen');
+  resetState();
+});
+</script>
+</body>
+</html>

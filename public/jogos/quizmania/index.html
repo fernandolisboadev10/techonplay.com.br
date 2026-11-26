@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0f1530">
+<link rel="canonical" href="https://techonplay.com.br/categoria/jogos/jogos-educativos/quizmania/">
+    <title>Quizmania — Quiz Educativo</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+:root{ --theme:#6c5ce7; }
+html,body{height:100%;}
+body{
+  font-family:'Trebuchet MS','Segoe UI',system-ui,sans-serif;
+  background:#0f1530;
+  background-image:
+    radial-gradient(circle at 15% 8%, rgba(108,92,231,.4), transparent 45%),
+    radial-gradient(circle at 85% 92%, rgba(0,184,255,.3), transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(162,155,254,.15), transparent 60%);
+  color:#fff;overflow-x:hidden;min-height:100dvh;
+  touch-action:manipulation;
+}
+button{font-family:inherit;cursor:pointer;touch-action:manipulation;}
+#bg{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
+.bg-item{position:absolute;bottom:-15vh;opacity:.14;font-weight:800;animation-name:floatUp;animation-timing-function:linear;animation-iteration-count:infinite;will-change:transform;user-select:none;}
+@keyframes floatUp{0%{transform:translateY(0) rotate(0deg) scale(1);}50%{transform:translateY(-60vh) rotate(180deg) scale(1.15);}100%{transform:translateY(-125vh) rotate(360deg) scale(1);}}
+.screen{display:none;position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:26px 18px 70px;animation:fadeIn .45s cubic-bezier(.4,.2,.2,1);}
+.screen.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.logo{text-align:center;font-size:clamp(2.8rem,10vw,5rem);font-weight:900;letter-spacing:3px;margin-top:10px;text-shadow:0 8px 0 rgba(0,0,0,.4);line-height:1;}
+.logo span{background:linear-gradient(90deg,#ffd166,#ff6b6b,#4ecdc4,#a29bfe,#ffd166);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 20px rgba(255,209,102,.6));animation:shine 4s linear infinite;}
+@keyframes shine{to{background-position:200% center;}}
+.tagline{text-align:center;color:#c9d2f0;font-size:clamp(.95rem,3vw,1.15rem);margin:12px 0 34px;letter-spacing:.5px;}
+.mode-home-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;}
+@media(max-width:600px){.mode-home-grid{grid-template-columns:1fr;gap:14px;}}
+.mode-home-card{position:relative;min-height:160px;padding:24px 22px;border-radius:24px;border:2px solid rgba(255,255,255,.18);cursor:pointer;text-align:left;color:#fff;transition:transform .25s cubic-bezier(.4,.2,.2,1), box-shadow .25s, border-color .25s;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;background:var(--card-bg);isolation:isolate;}
+.mode-home-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 100% 0%, rgba(255,255,255,.15), transparent 60%);z-index:-1;}
+.mode-home-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:4px;background:var(--card-glow);opacity:.8;box-shadow:0 0 20px var(--card-glow);}
+.mode-home-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 22px 55px rgba(0,0,0,.55), 0 0 40px var(--card-glow);border-color:var(--card-glow);}
+.mode-home-card:active{transform:translateY(-2px) scale(.99);}
+.mode-home-card .mode-icon{font-size:3.2rem;position:absolute;top:20px;right:22px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.5));transition:transform .3s;}
+.mode-home-card:hover .mode-icon{transform:scale(1.15) rotate(-6deg);}
+.mode-home-card .mode-num{font-size:.72rem;font-weight:900;letter-spacing:2.5px;opacity:.75;margin-bottom:4px;color:var(--card-glow);}
+.mode-home-card .mode-title{font-size:1.55rem;font-weight:900;margin-bottom:8px;line-height:1.1;text-shadow:0 2px 8px rgba(0,0,0,.4);}
+.mode-home-card .mode-desc{font-size:.85rem;opacity:.85;line-height:1.45;}
+.top-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px;flex-wrap:wrap;}
+.top-bar h2{font-size:clamp(1.4rem,4vw,1.9rem);font-weight:900;}
+.btn-back{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.22);color:#fff;padding:10px 22px;border-radius:50px;font-weight:800;font-size:.92rem;transition:.2s;display:inline-flex;align-items:center;gap:6px;}
+.btn-back:hover{background:rgba(255,255,255,.18);transform:translateX(-3px);}
+.subjects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px;}
+@media(max-width:480px){.subjects-grid{grid-template-columns:repeat(2,1fr);gap:12px;}}
+.subject-card{background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.13);border-radius:20px;padding:22px 14px;cursor:pointer;text-align:center;transition:transform .2s, box-shadow .2s, background .2s, border-color .2s;color:#fff;font-family:inherit;}
+.subject-card:hover{transform:translateY(-6px) scale(1.02);background:rgba(255,255,255,.14);border-color:var(--card-color);box-shadow:0 14px 30px rgba(0,0,0,.45), 0 0 24px var(--card-color);}
+.subject-card:active{transform:translateY(-2px) scale(.99);}
+.subject-card .ico{font-size:2.6rem;display:block;margin-bottom:8px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.4));}
+.subject-card .nm{font-size:1.02rem;font-weight:800;}
+.subject-card .ds{font-size:.74rem;color:#b9c2e0;margin-top:4px;}
+.city-scene{position:relative;min-height:560px;border-radius:28px;overflow:hidden;padding:20px;border:3px solid rgba(255,255,255,.2);background:linear-gradient(to bottom,#87ceeb 0%,#b0e0e6 30%,#e0f6ff 55%,#a8e063 55%,#56ab2f 100%);box-shadow:inset 0 -30px 60px rgba(0,0,0,.15), 0 20px 50px rgba(0,0,0,.4);}
+@media(max-width:600px){.city-scene{min-height:480px;}}
+.city-sun{position:absolute;top:22px;right:36px;font-size:4rem;animation:sunPulse 3s ease-in-out infinite;filter:drop-shadow(0 0 30px #ffd166);}
+@keyframes sunPulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 20px #ffd166);}50%{transform:scale(1.1);filter:drop-shadow(0 0 40px #ffd166);}}
+.city-cloud{position:absolute;font-size:3rem;opacity:.95;animation:cloudFloat 25s linear infinite;filter:drop-shadow(0 4px 8px rgba(0,0,0,.15));}
+@keyframes cloudFloat{from{transform:translateX(-100px);}to{transform:translateX(calc(100vw + 100px));}}
+.city-ground{position:absolute;bottom:0;left:0;right:0;height:40px;background:repeating-linear-gradient(90deg,#3d3d3d 0 40px,#4d4d4d 40px 80px);box-shadow:inset 0 4px 0 #222;}
+.city-buildings{position:absolute;bottom:40px;left:0;right:0;display:flex;justify-content:space-around;align-items:flex-end;padding:0 16px;gap:8px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}
+.city-buildings::-webkit-scrollbar{display:none;}
+.city-building{flex-shrink:0;width:110px;min-height:150px;border-radius:10px 10px 0 0;background:var(--building-color);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:10px 8px;cursor:pointer;position:relative;transition:transform .25s cubic-bezier(.4,.2,.2,1), box-shadow .25s;box-shadow:inset -8px 0 0 rgba(0,0,0,.2), 0 6px 20px rgba(0,0,0,.35);border:none;font-family:inherit;color:#fff;}
+.city-building::before{content:'';position:absolute;top:12px;left:12px;right:12px;height:50%;background:repeating-linear-gradient(180deg, rgba(255,255,255,.35) 0 10px, transparent 10px 20px);border-radius:4px;pointer-events:none;}
+.city-building:hover{transform:translateY(-10px);box-shadow:inset -8px 0 0 rgba(0,0,0,.2), 0 16px 40px rgba(0,0,0,.55), 0 0 30px var(--building-color);}
+.city-building .b-icon{font-size:2.4rem;margin-bottom:8px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.5));z-index:1;}
+.city-building .b-label{background:rgba(255,255,255,.95);color:#0f1530;padding:4px 8px;border-radius:6px;font-size:.68rem;font-weight:900;text-align:center;width:100%;z-index:1;line-height:1.15;text-transform:uppercase;letter-spacing:.3px;}
+@media(max-width:480px){.city-building{width:90px;min-height:130px;}.city-building .b-icon{font-size:2rem;}.city-building .b-label{font-size:.6rem;}}
+.freeplay-wrap{position:relative;border-radius:28px;border:3px solid rgba(162,155,254,.4);background:radial-gradient(circle at 30% 30%, #4a3d9e, #1a1450 60%, #0a0520);overflow:hidden;min-height:560px;box-shadow:0 20px 50px rgba(0,0,0,.5), inset 0 0 60px rgba(162,155,254,.2);cursor:pointer;user-select:none;}
+@media(max-width:600px){.freeplay-wrap{min-height:480px;}}
+.freeplay-title{position:absolute;top:20px;left:0;right:0;text-align:center;font-size:clamp(1rem,3.5vw,1.3rem);font-weight:900;color:#c4bcff;padding:0 20px;text-shadow:0 0 20px rgba(162,155,254,.8);pointer-events:none;z-index:2;letter-spacing:.5px;line-height:1.3;}
+.freeplay-sub{position:absolute;top:60px;left:0;right:0;text-align:center;font-size:.85rem;color:#a29bfe;opacity:.85;pointer-events:none;z-index:2;}
+.freeplay-bubble{position:absolute;width:74px;height:74px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.9rem;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:floatBubble 4s ease-in-out infinite;cursor:pointer;transition:transform .2s, background .2s, box-shadow .2s;z-index:3;box-shadow:0 8px 24px rgba(0,0,0,.4), inset 0 0 20px rgba(255,255,255,.1);}
+.freeplay-bubble:hover, .freeplay-bubble:active{transform:scale(1.2);background:rgba(255,255,255,.28);box-shadow:0 8px 24px rgba(0,0,0,.4), 0 0 30px rgba(162,155,254,.9), inset 0 0 20px rgba(255,255,255,.2);}
+@keyframes floatBubble{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+@media(max-width:480px){.freeplay-bubble{width:60px;height:60px;font-size:1.5rem;}}
+.mode-wrap{max-width:640px;margin:40px auto;text-align:center;}
+.mode-wrap h2{font-size:clamp(1.5rem,5vw,2rem);margin-bottom:8px;}
+.mode-wrap p{color:#c9d2f0;margin-bottom:28px;}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:520px){.modes{grid-template-columns:1fr;}}
+.mode-card{font-family:inherit;color:#fff;cursor:pointer;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.15);border-radius:20px;padding:26px 14px;font-size:1.2rem;font-weight:800;transition:.2s;}
+.mode-card small{display:block;font-weight:400;font-size:.8rem;color:#b9c2e0;margin-top:6px;}
+.mode-card:hover{background:var(--theme);border-color:#fff;transform:translateY(-5px);box-shadow:0 12px 28px rgba(0,0,0,.45);}
+.quiz-header{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;}
+.quiz-info{display:flex;gap:14px;flex-wrap:wrap;font-weight:700;font-size:.95rem;color:#d6ddf5;align-items:center;}
+#quiz-subject{color:var(--theme);}
+.timer{font-variant-numeric:tabular-nums;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.18);padding:6px 16px;border-radius:50px;font-weight:800;}
+.timer.danger{color:#ff6b6b;border-color:#ff6b6b;background:rgba(255,107,107,.12);animation:pulse .9s infinite;}
+@keyframes pulse{50%{transform:scale(1.08);}}
+.progress-bar{height:10px;border-radius:50px;background:rgba(255,255,255,.1);overflow:hidden;margin:14px 0 26px;}
+#progress-fill{height:100%;width:0%;border-radius:50px;background:linear-gradient(90deg,#ffd166,#4ecdc4);transition:width .4s ease;}
+.question-card{background:rgba(255,255,255,.06);border:2px solid rgba(255,255,255,.12);border-radius:24px;padding:26px 20px;box-shadow:0 18px 40px rgba(0,0,0,.35);}
+#question-text,#race-question-text,#math-question{font-size:clamp(1.05rem,3.5vw,1.28rem);font-weight:800;line-height:1.45;margin-bottom:22px;text-align:center;}
+.options{display:grid;gap:12px;}
+.option{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.15);border-radius:16px;padding:14px 18px;color:#fff;font-family:inherit;font-size:clamp(.95rem,3vw,1.02rem);font-weight:600;cursor:pointer;text-align:left;transition:.2s;}
+.option:hover:not(:disabled){background:rgba(255,255,255,.16);border-color:var(--theme);transform:translateX(8px);}
+.option .badge{flex-shrink:0;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--theme);font-weight:900;font-size:.9rem;color:#fff;}
+.option.correct{background:rgba(46,213,115,.3);border-color:#2ed573;}
+.option.correct .badge{background:#2ed573;}
+.option.wrong{background:rgba(255,71,87,.3);border-color:#ff4757;}
+.option.wrong .badge{background:#ff4757;}
+.option:disabled{cursor:default;}
+.recipe-box{background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.14);border-radius:18px;padding:14px 18px;text-align:center;margin-bottom:16px;}
+.recipe-box p{font-size:1.05rem;}
+#recipe-name{color:#ffd166;}
+#recipe-formula{color:#4ecdc4;font-weight:800;}
+.recipe-need{margin-top:6px;font-size:.9rem;color:#c9d2f0;}
+.sandbox-banner{background:linear-gradient(135deg,rgba(162,155,254,.3),rgba(78,205,196,.2));border:3px solid #a29bfe;border-radius:18px;padding:16px 18px;text-align:center;margin-bottom:16px;box-shadow:0 0 30px rgba(162,155,254,.35);}
+.sandbox-banner .big{font-size:1.2rem;font-weight:900;color:#c4bcff;}
+.sandbox-banner .small{font-size:.85rem;color:#c9d2f0;margin-top:4px;}
+.periodic-scroll{overflow-x:auto;padding:8px 0 14px;-webkit-overflow-scrolling:touch;}
+.periodic-table{display:grid;grid-template-columns:repeat(18,34px);grid-auto-rows:34px;gap:3px;min-width:max-content;margin:0 auto;justify-content:center;}
+.element{position:relative;display:flex;align-items:center;justify-content:center;border-radius:6px;font-weight:900;font-size:.62rem;color:#0f1530;cursor:grab;user-select:none;transition:transform .15s, box-shadow .15s;}
+.element:hover{transform:scale(1.28);z-index:5;box-shadow:0 0 14px rgba(255,255,255,.7);}
+.element:active{cursor:grabbing;}
+.element.dragging{opacity:.4;}
+.element .z{position:absolute;top:0;left:2px;font-size:.42rem;font-weight:700;opacity:.7;}
+.cat-nonmetal{background:#45b7d1;} .cat-noble{background:#a29bfe;}
+.cat-alkali{background:#ff7675;} .cat-alkaline{background:#fdcb6e;}
+.cat-metalloid{background:#74b9ff;} .cat-halogen{background:#ff9ff3;}
+.cat-transition{background:#dfe6e9;} .cat-post{background:#b2bec3;}
+.cat-lanth{background:#fab1a0;} .cat-actin{background:#e17055;}
+@media(max-width:760px){.periodic-table{grid-template-columns:repeat(18,36px);grid-auto-rows:36px;gap:3px;}.element{font-size:.75rem;border-radius:5px;}.element .z{display:none;}}
+.mix-area{margin-top:10px;}
+.mixing-box{min-height:92px;border:3px dashed rgba(255,255,255,.3);border-radius:18px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center;padding:14px;background:rgba(255,255,255,.05);transition:.2s;}
+.mixing-box.over{border-color:var(--theme);background:rgba(255,255,255,.14);transform:scale(1.02);box-shadow:0 0 26px var(--theme);}
+.box-hint{color:#8e99c0;font-size:.92rem;text-align:center;}
+.atom-chip{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:#0f1530;background:linear-gradient(145deg,#ffffff,#cfe9ff);box-shadow:0 4px 14px rgba(0,0,0,.4);cursor:pointer;animation:pop .25s ease;}
+@keyframes pop{from{transform:scale(0);}to{transform:scale(1);}}
+.mix-buttons{display:flex;gap:12px;justify-content:center;margin-top:16px;flex-wrap:wrap;}
+.btn-primary,.btn-secondary{font-family:inherit;font-weight:800;font-size:.95rem;padding:13px 30px;border-radius:50px;cursor:pointer;border:none;transition:.2s;}
+.btn-primary{background:linear-gradient(135deg,#ffd166,#ff9f43);color:#2b1a00;box-shadow:0 8px 22px rgba(255,159,67,.4);}
+.btn-primary:hover{transform:translateY(-3px) scale(1.04);}
+.btn-secondary{background:rgba(255,255,255,.1);color:#fff;border:2px solid rgba(255,255,255,.25);}
+.btn-secondary:hover{background:rgba(255,255,255,.2);}
+.btn-sandbox{background:linear-gradient(135deg,#a29bfe,#6c5ce7);color:#fff;box-shadow:0 8px 22px rgba(162,155,254,.5);}
+.found-list{display:none;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px;}
+.found-chip{background:rgba(46,213,115,.18);border:1px solid rgba(46,213,115,.5);color:#bff5d5;padding:5px 12px;border-radius:50px;font-size:.8rem;font-weight:700;animation:pop .3s ease;}
+#reaction{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .25s;padding:16px;}
+#reaction.show{opacity:1;}
+.reaction-card{background:linear-gradient(150deg,#ffffff,#d9fff2);color:#06251a;text-align:center;padding:28px 44px 26px;border-radius:30px;max-width:92vw;min-width:240px;box-shadow:0 0 80px rgba(78,205,196,.9), 0 20px 50px rgba(0,0,0,.5);animation:boom .5s cubic-bezier(.2,1.6,.5,1);border:4px solid #2ed573;position:relative;overflow:hidden;}
+.reaction-card::before{content:'';position:absolute;inset:-50%;z-index:-1;background:conic-gradient(from 0deg,#2ed573,#4ecdc4,#a29bfe,#ffd166,#2ed573);animation:spin 4s linear infinite;opacity:.25;}
+@keyframes spin{to{transform:rotate(360deg);}}
+@keyframes boom{from{transform:scale(.3) rotate(-8deg);}to{transform:scale(1) rotate(0);}}
+.reaction-emoji{font-size:5rem;line-height:1;margin-bottom:8px;display:inline-block;animation:bounceEmoji 1.2s infinite;filter:drop-shadow(0 6px 12px rgba(0,0,0,.25));}
+@keyframes bounceEmoji{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-8px) scale(1.08);}}
+.reaction-title{font-size:1.65rem;font-weight:900;margin-bottom:2px;letter-spacing:.5px;}
+.reaction-formula{font-size:1.35rem;font-weight:800;color:#0a7a5a;margin-bottom:6px;}
+.reaction-desc{font-size:.92rem;color:#0a4d3a;opacity:.85;max-width:260px;margin:0 auto;line-height:1.35;}
+.reaction-tag{display:inline-block;margin-top:10px;padding:3px 12px;border-radius:50px;font-size:.72rem;font-weight:800;letter-spacing:.5px;background:#2ed573;color:#06251a;}
+.reaction-card.mystery{background:linear-gradient(150deg,#2a2260,#1a1450);color:#fff;border-color:#a29bfe;box-shadow:0 0 80px rgba(108,92,231,.85), 0 20px 50px rgba(0,0,0,.5);}
+.reaction-card.mystery::before{background:conic-gradient(from 0deg,#6c5ce7,#a29bfe,#4ecdc4,#ffd166,#6c5ce7);}
+.reaction-card.mystery .reaction-formula{color:#c4bcff;}
+.reaction-card.mystery .reaction-desc{color:#cfc9ff;opacity:.9;}
+.reaction-card.mystery .reaction-tag{background:#a29bfe;color:#1a1450;}
+.reaction-card.atom{background:linear-gradient(150deg,#1e3a5f,#0d1f3a);color:#fff;border-color:#4ecdc4;box-shadow:0 0 80px rgba(78,205,196,.7),0 20px 50px rgba(0,0,0,.5);}
+.reaction-card.atom::before{background:conic-gradient(from 0deg,#4ecdc4,#45b7d1,#a29bfe,#4ecdc4);}
+.reaction-card.atom .reaction-formula{color:#4ecdc4;}
+.reaction-card.atom .reaction-desc{color:#b9e6ff;opacity:.9;}
+.reaction-card.atom .reaction-tag{background:#4ecdc4;color:#06251a;}
+.result-card{max-width:560px;margin:60px auto;text-align:center;background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.14);border-radius:26px;padding:40px 24px;box-shadow:0 20px 50px rgba(0,0,0,.45);}
+#result-emoji{font-size:4.5rem;animation:pulse 1.4s infinite;}
+#result-title{font-size:1.7rem;margin:14px 0 12px;}
+#result-msg{color:#c9d2f0;font-size:1.05rem;line-height:1.6;}
+.result-actions{display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap;}
+.race-track{position:relative;height:92px;margin:16px 0 24px;background:linear-gradient(to bottom,#1e2a3a,#0b1024);border-radius:18px;border:2px solid rgba(255,255,255,.12);overflow:hidden;}
+.race-track::before{content:'';position:absolute;top:50%;left:24px;right:24px;height:6px;background:repeating-linear-gradient(90deg,#ffd166 0 16px,transparent 16px 32px);transform:translateY(-50%);border-radius:4px;opacity:.8;}
+.race-runner{position:absolute;top:50%;left:2%;transform:translateY(-50%);font-size:2.4rem;transition:left .6s cubic-bezier(.3,1.4,.5,1);filter:drop-shadow(0 0 10px rgba(255,209,102,.7));z-index:2;}
+.race-flag{position:absolute;top:50%;transform:translateY(-50%);font-size:1.8rem;z-index:1;opacity:.9;}
+.race-flag.start{left:8px;}
+.race-flag.finish{right:8px;}
+.race-subject-badge{display:inline-block;padding:4px 14px;border-radius:50px;font-size:.8rem;font-weight:700;margin-bottom:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:#c9d2f0;}
+.race-question-wrap{text-align:center;}
+.puzzle-instruction{text-align:center;color:#b9c2e0;font-size:.95rem;max-width:520px;margin:0 auto 20px;line-height:1.5;}
+.puzzle-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:330px;margin:0 auto;background:rgba(255,255,255,.05);padding:8px;border-radius:20px;border:2px solid rgba(255,255,255,.12);}
+.puzzle-tile{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:900;border-radius:12px;background:linear-gradient(145deg,#ffd166,#ff9f43);color:#2b1a00;cursor:pointer;transition:transform .15s, box-shadow .15s;user-select:none;box-shadow:0 4px 12px rgba(0,0,0,.3);}
+.puzzle-tile:hover:not(.empty){transform:scale(1.06);box-shadow:0 0 18px rgba(255,209,102,.6);}
+.puzzle-tile.empty{background:rgba(255,255,255,.04);cursor:default;box-shadow:inset 0 0 18px rgba(0,0,0,.4);}
+.memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:440px;margin:0 auto;}
+@media(max-width:420px){.memory-grid{grid-template-columns:repeat(4,1fr);gap:6px;}}
+.memory-card{aspect-ratio:1;perspective:700px;cursor:pointer;}
+.memory-card-inner{position:relative;width:100%;height:100%;transition:transform .5s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d;}
+.memory-card.flipped .memory-card-inner{transform:rotateY(180deg);}
+.memory-card-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:2rem;border:2px solid rgba(255,255,255,.15);}
+.memory-card-back{background:linear-gradient(145deg,#6c5ce7,#a29bfe);font-size:1.5rem;color:rgba(255,255,255,.8);}
+.memory-card-front{background:#fff;transform:rotateY(180deg);}
+.memory-card.matched .memory-card-front{background:linear-gradient(145deg,#2ed573,#26c281);box-shadow:0 0 20px rgba(46,213,115,.6);}
+.memory-card.matched{pointer-events:none;}
+.hangman-drawing{font-size:5rem;text-align:center;margin:14px 0;line-height:1;}
+.hangman-word{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:20px 0;font-size:clamp(1.4rem,5vw,2rem);font-weight:900;}
+.hangman-letter{min-width:32px;padding:6px 4px;border-bottom:4px solid #ffd166;text-align:center;color:transparent;}
+.hangman-letter.revealed{color:#ffd166;}
+.hangman-hint{text-align:center;color:#b9c2e0;font-style:italic;margin-bottom:14px;}
+.hangman-keyboard{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:16px;}
+.hangman-key{width:38px;height:38px;border-radius:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;font-weight:800;cursor:pointer;font-family:inherit;}
+.hangman-key:hover:not(:disabled){background:rgba(255,255,255,.25);}
+.hangman-key.correct{background:#2ed573;border-color:#2ed573;color:#06251a;}
+.hangman-key.wrong{background:#ff4757;border-color:#ff4757;}
+.hangman-key:disabled{opacity:.5;cursor:default;}
+.ws-grid{display:grid;gap:3px;justify-content:center;margin:16px auto;max-width:420px;}
+.ws-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:6px;font-weight:800;cursor:pointer;user-select:none;font-size:.95rem;transition:.15s;}
+.ws-cell:hover{background:rgba(255,255,255,.18);}
+.ws-cell.selected{background:#ffd166;color:#2b1a00;}
+.ws-cell.found{background:#2ed573;color:#06251a;}
+.ws-words{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:14px 0;}
+.ws-word{padding:5px 14px;background:rgba(255,255,255,.08);border-radius:50px;font-size:.85rem;font-weight:700;}
+.ws-word.found{background:rgba(46,213,115,.3);text-decoration:line-through;}
+.math-big{text-align:center;font-size:clamp(2rem,7vw,3rem);font-weight:900;margin:20px 0;color:#ffd166;}
+.antonyms{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:520px;margin:20px auto;}
+.ant-column{display:flex;flex-direction:column;gap:8px;}
+.ant-word{padding:12px;border-radius:10px;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.15);color:#fff;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s;}
+.ant-word:hover:not(:disabled){background:rgba(255,255,255,.18);}
+.ant-word.selected{border-color:#ffd166;background:rgba(255,209,102,.2);}
+.ant-word.matched{background:rgba(46,213,115,.3);border-color:#2ed573;opacity:.6;}
+.ant-word:disabled{cursor:default;}
+.seq-display{text-align:center;font-size:clamp(1.4rem,5vw,2rem);font-weight:900;margin:24px 0;letter-spacing:6px;color:#ffd166;word-spacing:10px;}
+.seq-progress{text-align:center;color:#b9c2e0;margin-bottom:16px;}
+.stat-bar{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;font-weight:700;color:#d6ddf5;font-size:.95rem;}
+.stat-pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:6px 16px;border-radius:50px;}
+</style>
+</head>
+<body>
+
+<div id="bg"></div>
+<div id="reaction"></div>
+
+<!-- ============ HOME ============ -->
+<section id="screen-home" class="screen active">
+  <h1 class="logo">Quiz<span>mania</span></h1>
+  <p class="tagline">🎓 Escolha um modo e comece a jogar</p>
+  <div class="mode-home-grid" id="mode-home-grid"></div>
+</section>
+
+<!-- ============ SUBJECT LIST ============ -->
+<section id="screen-subjects" class="screen">
+  <header class="top-bar">
+    <button class="btn-back" id="btn-back-subjects">← Voltar</button>
+    <h2 id="subjects-title">Matérias</h2>
+    <span style="width:100px"></span>
+  </header>
+  <div class="subjects-grid" id="subjects-list"></div>
+</section>
+
+<!-- ============ CIDADE ============ -->
+<section id="screen-city" class="screen">
+  <header class="top-bar">
+    <button class="btn-back" id="btn-back-city">← Voltar</button>
+    <h2>🏙️ Modo Cidade</h2>
+    <span style="width:100px"></span>
+  </header>
+  <p class="puzzle-instruction">Clique em um prédio para visitar a matéria!</p>
+  <div class="city-scene" id="city-scene">
+    <div class="city-sun">☀️</div>
+    <div class="city-cloud" style="top:40px;left:8%;animation-duration:22s">☁️</div>
+    <div class="city-cloud" style="top:100px;left:55%;animation-duration:30s">☁️</div>
+    <div class="city-cloud" style="top:20px;left:75%;animation-duration:26s">☁️</div>
+    <div class="city-ground"></div>
+    <div class="city-buildings" id="city-buildings"></div>
+  </div>
+</section>
+
+<!-- ============ MODO LIVRE ============ -->
+<section id="screen-freeplay" class="screen">
+  <header class="top-bar">
+    <button class="btn-back" id="btn-back-freeplay">← Voltar</button>
+    <h2>🎲 Modo Livre</h2>
+    <span style="width:100px"></span>
+  </header>
+  <div class="freeplay-wrap" id="freeplay-wrap">
+    <div class="freeplay-title">Clique em qualquer lugar para jogar! 🎲</div>
+    <div class="freeplay-sub">Cada clique escolhe uma matéria ou jogo aleatório</div>
+  </div>
+</section>
+
+<!-- ============ MODO ============ -->
+<section id="screen-mode" class="screen">
+  <div class="mode-wrap">
+    <h2 id="mode-title">Matéria</h2>
+    <p>Escolha o modo de jogo</p>
+    <div class="modes">
+      <button class="mode-card" data-mode="tempo">⏱️ Modo Tempo<small>2 minutos por pergunta</small></button>
+      <button class="mode-card" data-mode="livre">🕊️ Modo Livre<small>Sem tempo, jogue tranquilo</small></button>
+    </div>
+    <button class="btn-back" id="btn-back-mode">← Voltar</button>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section id="screen-quiz" class="screen">
+  <header class="quiz-header">
+    <div class="quiz-info"><span id="quiz-subject">Matéria</span><span id="quiz-progress">Pergunta 1/10</span></div>
+    <div id="timer" class="timer">⏱ 2:00</div>
+  </header>
+  <div class="progress-bar"><div id="progress-fill"></div></div>
+  <div class="question-card"><p id="question-text"></p><div id="options" class="options"></div></div>
+</section>
+
+<!-- ============ TABELA ============ -->
+<section id="screen-table" class="screen">
+  <header class="quiz-header">
+    <div class="quiz-info"><span id="tbl-subject">⚛️ Tabela Periódica</span><span id="tbl-progress">—</span></div>
+    <div id="tbl-timer" class="timer">⏱ 2:00</div>
+  </header>
+  <div class="recipe-box" id="recipe-box">
+    <p>🎯 Forme: <strong id="recipe-name">—</strong> <span id="recipe-formula"></span></p>
+    <p class="recipe-need" id="recipe-need"></p>
+  </div>
+  <div class="sandbox-banner" id="sandbox-banner" style="display:none">
+    <div class="big">🧪 Modo Sandbox — Explore à vontade!</div>
+    <div class="small">Sem tempo · Sem objetivos · Sem perder · Até 20 átomos por mistura</div>
+  </div>
+  <div class="periodic-scroll"><div class="periodic-table" id="periodic-table"></div></div>
+  <div class="mix-area">
+    <div class="mixing-box" id="mixing-box"><span class="box-hint">Toque nos elementos da tabela para adicioná-los 🧪</span></div>
+    <div class="mix-buttons">
+      <button class="btn-primary" id="btn-mix">💥 Misturar!</button>
+      <button class="btn-secondary" id="btn-clear">🧹 Limpar</button>
+      <button class="btn-secondary btn-sandbox" id="btn-sandbox-reset" style="display:none">🗑️ Limpar descobertas</button>
+      <button class="btn-secondary" id="btn-exit">← Sair</button>
+    </div>
+    <div class="found-list" id="found-list"></div>
+  </div>
+</section>
+
+<!-- ============ CORRIDA ============ -->
+<section id="screen-race" class="screen">
+  <header class="quiz-header">
+    <div class="quiz-info"><span>🏁 Corrida das Matérias</span><span id="race-progress">0/10</span></div>
+    <div id="race-timer" class="timer">⏱ 1:00</div>
+  </header>
+  <div class="race-track">
+    <span class="race-flag start">🏁</span>
+    <span class="race-runner" id="race-runner">🏃</span>
+    <span class="race-flag finish">🏆</span>
+  </div>
+  <div class="question-card">
+    <div class="race-question-wrap"><div class="race-subject-badge" id="race-subject-badge">📖</div></div>
+    <p id="race-question-text"></p>
+    <div id="race-options" class="options"></div>
+  </div>
+</section>
+
+<!-- ============ PUZZLE ============ -->
+<section id="screen-puzzle" class="screen">
+  <header class="quiz-header">
+    <div class="quiz-info"><span>🧩 Quebra-Cabeça</span></div>
+    <div class="stat-bar"><span class="stat-pill" id="puzzle-moves">Jogadas: 0</span><span class="stat-pill" id="puzzle-time">⏱ 0:00</span></div>
+  </header>
+  <p class="puzzle-instruction">Ordene os números de <strong>1 a 8</strong>. Clique em uma peça vizinha do espaço vazio.</p>
+  <div class="puzzle-grid" id="puzzle-grid"></div>
+  <div class="mix-buttons">
+    <button class="btn-primary" id="btn-puzzle-restart">🔄 Reiniciar</button>
+    <button class="btn-secondary" id="btn-puzzle-exit">← Sair</button>
+  </div>
+</section>
+
+<!-- ============ MEMÓRIA ============ -->
+<section id="screen-memory" class="screen">
+  <header class="quiz-header">
+    <div class="quiz-info"><span>🐼 Jogo da Memória</span></div>
+    <div class="stat-bar"><span class="stat-pill" id="memory-moves">Jogadas: 0</span></div>
+  </header>
+  <p class="puzzle-instruction">Encontre todos os pares de animais! 🐶🐱🐭🐹🐰🦊🐻🐼</p>
+  <div class="memory-grid" id="memory-grid"></div>
+  <div class="mix-buttons">
+    <button class="btn-primary" id="btn-memory-restart">🔄 Reiniciar</button>
+    <button class="btn-secondary" id="btn-memory-exit">← Sair</button>
+  </div>
+</section>
+
+<!-- ============ FORCA ============ -->
+<section id="screen-hangman" class="screen">
+  <header class="quiz-header">
+    <div class="quiz-info"><span>🪢 Jogo da Forca</span></div>
+    <div class="stat-bar"><span class="stat-pill" id="hangman-lives">❤️❤️❤️❤️❤️❤️</span></div>
+  </header>
+  <div class="question-card">
+    <div class="hangman-drawing" id="hangman-drawing">😀</div>
+    <div class="hangman-word" id="hangman-word"></div>
+    <div class="hangman-hint" id="hangman-hint"></div>
+    <div class="hangman-keyboard" id="hangman-keyboard"></div>
+    <div class="mix-buttons"><button class="btn-secondary" id="btn-hangman-exit">← Sair</button></div>
+  </div>
+</section>
+
+<!-- ============ CAÇA-PALAVRAS ============ -->
+<section id="screen-wordsearch" class="screen">
+  <header class="quiz-header">
+    <div class="quiz-info"><span>🔍 Caça-Palavras</span><span id="ws-progress">0/6</span></div>
+  </header>
+  <p class="puzzle-instruction">Clique na primeira e na última letra de cada palavra (horizontal ou vertical).</p>
+  <div class="ws-grid" id="ws-grid"></div>
+  <div class="ws-words" id="ws-words"></div>
+  <div class="mix-buttons"><button class="btn-secondary" id="btn-ws-exit">← Sair</button></div>
+</section>
+
+<!-- ============ RELÂMPAGO ============ -->
+<section id="screen-mathsprint" class="screen">
+  <header class="quiz-header">
+    <div class="quiz-info"><span>⚡ Relâmpago Matemático</span><span id="math-score">✅ 0</span></div>
+    <div id="math-timer" class="timer">⏱ 1:00</div>
+  </header>
+  <div class="question-card">
+    <div class="math-big" id="math-question">—</div>
+    <div id="math-options" class="options"></div>
+  </div>
+</section>
+
+<!-- ============ OPOSTOS ============ -->
+<section id="screen-antonyms" class="screen">
+  <header class="quiz-header">
+    <div class="quiz-info"><span>🔗 Jogo dos Opostos</span></div>
+    <div class="stat-bar"><span class="stat-pill" id="ant-progress">0/5 pares</span></div>
+  </header>
+  <p class="puzzle-instruction">Clique em uma palavra da esquerda e depois no seu oposto na direita.</p>
+  <div class="antonyms">
+    <div class="ant-column" id="ant-left"></div>
+    <div class="ant-column" id="ant-right"></div>
+  </div>
+  <div class="mix-buttons"><button class="btn-secondary" id="btn-ant-exit">← Sair</button></div>
+</section>
+
+<!-- ============ SEQUÊNCIA ============ -->
+<section id="screen-sequence" class="screen">
+  <header class="quiz-header"><div class="quiz-info"><span>🧠 Sequência Lógica</span></div></header>
+  <div class="question-card">
+    <div class="seq-progress" id="seq-progress">Sequência 1/10</div>
+    <div class="seq-display" id="seq-display">—</div>
+    <div id="seq-options" class="options"></div>
+    <div class="mix-buttons"><button class="btn-secondary" id="btn-seq-exit">← Sair</button></div>
+  </div>
+</section>
+
+<!-- ============ RESULTADO ============ -->
+<section id="screen-result" class="screen">
+  <div class="result-card">
+    <div id="result-emoji">🎉</div>
+    <h2 id="result-title">Resultado</h2>
+    <p id="result-msg"></p>
+    <div class="result-actions">
+      <button class="btn-primary" id="btn-retry">🔄 Jogar de novo</button>
+      <button class="btn-secondary" id="btn-menu">🏠 Menu</button>
+    </div>
+  </div>
+</section>
+
+<script>
+/* ======================= DADOS ======================= */
+const SUBJECTS = [
+  {id:'portugues',name:'Português',icon:'📖',color:'#e84393',items:['A','B','C','D','E','Ç','Ã','Õ','!','?','á','é','ó','ú','L','R','S','T','M','P','N'],questions:[
+    {q:'Qual dessas palavras é um substantivo PRÓPRIO?',options:['cidade','Brasil','menino','rio'],answer:1},
+    {q:'Qual palavra está escrita CORRETAMENTE?',options:['excessão','esceção','exceção','exeção'],answer:2},
+    {q:'Em "O menino correu rapidamente", "rapidamente" é:',options:['substantivo','advérbio','adjetivo','verbo'],answer:1},
+    {q:'Qual é o plural de "pão"?',options:['pãos','pães','pões','pans'],answer:1},
+    {q:'Qual é o ANTÔNIMO de "feliz"?',options:['alegre','contente','triste','animado'],answer:2},
+    {q:'Em "Ana comprou um livro", quem é o SUJEITO?',options:['um livro','comprou','Ana','livro'],answer:2},
+    {q:'Qual dessas palavras é um VERBO?',options:['correr','cadeira','bonito','rapidamente'],answer:0},
+    {q:'Quantas sílabas tem "borboleta"?',options:['2','3','4','5'],answer:2},
+    {q:'Qual é o SINÔNIMO de "bonito"?',options:['feio','belo','grande','rápido'],answer:1},
+    {q:'Em "O gato dorme no sofá", "gato" é:',options:['verbo','adjetivo','substantivo','advérbio'],answer:2}
+  ]},
+  {id:'matematica',name:'Matemática',icon:'🔢',color:'#0984e3',items:['1','2','3','4','5','6','7','8','9','0','+','−','×','÷','=','%','½','¼','π','∞'],questions:[
+    {q:'Quanto é 25 + 37?',options:['52','62','63','72'],answer:1},
+    {q:'Quanto é 8 × 7?',options:['48','54','56','64'],answer:2},
+    {q:'Quanto é 144 ÷ 12?',options:['10','11','12','14'],answer:2},
+    {q:'Quanto é 100 − 45?',options:['45','55','65','75'],answer:1},
+    {q:'Qual fração representa a METADE?',options:['1/3','1/4','1/2','2/3'],answer:2},
+    {q:'Quantos lados tem um hexágono?',options:['5','6','7','8'],answer:1},
+    {q:'Quanto é 3/4 de 20?',options:['10','12','15','18'],answer:2},
+    {q:'Perímetro de um quadrado de lado 5 cm:',options:['10 cm','15 cm','20 cm','25 cm'],answer:2},
+    {q:'Quanto é 2³?',options:['6','8','9','12'],answer:1},
+    {q:'Qual desses números é PRIMO?',options:['4','6','9','7'],answer:3}
+  ]},
+  {id:'ciencias',name:'Ciências',icon:'🔬',color:'#00b894',items:['🧪','🔬','🌿','🧬','💧','🌡️','🦠','⚗️','🌱','🫀','🪐','🧲'],questions:[
+    {q:'Qual órgão bombeia o sangue?',options:['pulmão','coração','fígado','estômago'],answer:1},
+    {q:'Água no estado SÓLIDO é chamada de:',options:['vapor','gelo','orvalho','chuva'],answer:1},
+    {q:'Processo em que as plantas produzem alimento:',options:['respiração','fotossíntese','digestão','evaporação'],answer:1},
+    {q:'Planeta mais próximo do Sol:',options:['Vênus','Terra','Marte','Mercúrio'],answer:3},
+    {q:'Principal fonte de energia da Terra:',options:['a Lua','o Sol','o vento','a água'],answer:1},
+    {q:'Gás que precisamos respirar para viver:',options:['gás carbônico','oxigênio','hélio','nitrogênio'],answer:1},
+    {q:'Maior órgão do corpo humano:',options:['cérebro','fígado','pele','pulmão'],answer:2},
+    {q:'Animais que mamam quando filhotes:',options:['répteis','aves','mamíferos','anfíbios'],answer:2},
+    {q:'A que temperatura a água ferve?',options:['50 °C','80 °C','100 °C','120 °C'],answer:2},
+    {q:'Quantos ossos tem um adulto?',options:['106','206','306','406'],answer:1}
+  ]},
+  {id:'historia',name:'História',icon:'🏛️',color:'#e17055',items:['📜','🏛️','⚔️','👑','🗿','🏺','🕰️','📯','🎭','🐎','🏰','🪶'],questions:[
+    {q:'Quem chegou ao Brasil em 1500?',options:['Cristóvão Colombo','Pedro Álvares Cabral','Dom Pedro I','Vasco da Gama'],answer:1},
+    {q:'Ano da Independência do Brasil:',options:['1500','1822','1888','1889'],answer:1},
+    {q:'Quem proclamou a República?',options:['Dom Pedro II','Princesa Isabel','Deodoro da Fonseca','Tiradentes'],answer:2},
+    {q:'Quem assinou a Lei Áurea?',options:['Princesa Isabel','Dom Pedro I','Getúlio Vargas','Tiradentes'],answer:0},
+    {q:'Ano da abolição da escravidão:',options:['1822','1850','1888','1922'],answer:2},
+    {q:'Primeiro produto muito explorado no Brasil colonial:',options:['café','pau-brasil','cana-de-açúcar','ouro'],answer:1},
+    {q:'As pirâmides de Gizé foram construídas no:',options:['Egito','Brasil','Japão','México'],answer:0},
+    {q:'Quem foi Tiradentes?',options:['um navegador','líder da Inconfidência Mineira','um imperador','um pintor'],answer:1},
+    {q:'Qual dessas civilizações é da ANTIGUIDADE?',options:['Roma','Estados Unidos','Império do Brasil','União Europeia'],answer:0},
+    {q:'Quem vivia no Brasil antes dos portugueses?',options:['os africanos','os indígenas','os espanhóis','os holandeses'],answer:1}
+  ]},
+  {id:'geografia',name:'Geografia',icon:'🌍',color:'#00cec9',items:['🌍','🗺️','⛰️','🏔️','🌊','🧭','🌋','🏝️','☀️','🌧️','🛰️','📍'],questions:[
+    {q:'Capital do Brasil:',options:['Rio de Janeiro','São Paulo','Brasília','Salvador'],answer:2},
+    {q:'Maior continente do mundo:',options:['África','Ásia','Europa','América'],answer:1},
+    {q:'Maior rio do Brasil:',options:['Rio São Francisco','Rio Tietê','Rio Amazonas','Rio Paraná'],answer:2},
+    {q:'Oceano que banha o Brasil:',options:['Pacífico','Índico','Atlântico','Ártico'],answer:2},
+    {q:'Maior floresta tropical do mundo:',options:['Mata Atlântica','Floresta Amazônica','Cerrado','Pantanal'],answer:1},
+    {q:'Quantos estados o Brasil possui?',options:['20','24','26','30'],answer:2},
+    {q:'Instrumento para se orientar:',options:['bússola','lupa','termômetro','régua'],answer:0},
+    {q:'Linha que divide a Terra em HN e HS:',options:['Trópico de Câncer','Linha do Equador','Meridiano de Greenwich','Trópico de Capricórnio'],answer:1},
+    {q:'Maior país da América do Sul:',options:['Argentina','Peru','Brasil','Colômbia'],answer:2},
+    {q:'Clima predominante no Norte do Brasil:',options:['polar','desértico','equatorial','temperado'],answer:2}
+  ]},
+  {id:'tabela',name:'Tabela Periódica',icon:'⚛️',color:'#a29bfe',items:['⚛️','H','O','Na','Cl','C','N','Fe','Cu','Au','Ag','He','⚡','🔵'],questions:[]}
+];
+
+const SUBJECTS_6 = [
+  {id:'6-portugues',name:'Português',icon:'📖',color:'#e84393',items:['A','B','C','D','E','Ç','Ã','Õ','!','?','á','é','ó','ú','L','R','S','T','M','P','N'],questions:[
+    {q:'Sujeito de "Os alunos estudaram muito":',options:['estudaram','muito','Os alunos','alunos'],answer:2},
+    {q:'Qual palavra é um adjetivo?',options:['correr','inteligente','casa','rapidamente'],answer:1},
+    {q:'Verbo transitivo é aquele que:',options:['não precisa de complemento','precisa de complemento','fica no passado','fica no futuro'],answer:1},
+    {q:'Plural de "cidadão":',options:['cidadões','cidadãos','cidadans','cidadães'],answer:1},
+    {q:'Figura de linguagem em "forte como um touro":',options:['metáfora','comparação','hipérbole','personificação'],answer:1},
+    {q:'Antônimo de "generoso":',options:['bondoso','egoísta','gentil','caridoso'],answer:1},
+    {q:'Em "flores para sua mãe", "para sua mãe" é:',options:['sujeito','obj. direto','obj. indireto','predicativo'],answer:2},
+    {q:'Feminino de "ator":',options:['atora','atriz','atrizes','atresa'],answer:1},
+    {q:'Quantas sílabas tem "extraordinário"?',options:['4','5','6','7'],answer:2},
+    {q:'Coletivo de lobos:',options:['matilha','alcateia','cardume','manada'],answer:1}
+  ]},
+  {id:'6-matematica',name:'Matemática',icon:'🔢',color:'#0984e3',items:['1','2','3','4','5','6','7','8','9','0','+','−','×','÷','=','%','½','¼','π','∞'],questions:[
+    {q:'Quanto é 3/4 + 1/2?',options:['4/6','5/4','1','3/8'],answer:1},
+    {q:'Área de um retângulo 8×5 cm:',options:['13 cm²','26 cm²','40 cm²','80 cm²'],answer:2},
+    {q:'Quanto é 15% de 200?',options:['15','30','45','60'],answer:1},
+    {q:'MMC de 4 e 6:',options:['8','10','12','24'],answer:2},
+    {q:'Quanto é 2,5 × 4?',options:['8','9','10','12'],answer:2},
+    {q:'(-3) + (-5) =',options:['-8','-2','2','8'],answer:0},
+    {q:'Simplifique 18/24:',options:['2/3','3/4','4/5','9/12'],answer:1},
+    {q:'Soma dos ângulos de um triângulo:',options:['90°','180°','270°','360°'],answer:1},
+    {q:'Valor de x em 2x+5=15:',options:['3','5','7','10'],answer:1},
+    {q:'Quanto é 144 ÷ 12?',options:['10','11','12','14'],answer:2}
+  ]},
+  {id:'6-ciencias',name:'Ciências',icon:'🔬',color:'#00b894',items:['🧪','🔬','🌿','🧬','💧','🌡️','🦠','⚗️','🌱','🫀','🪐','🧲'],questions:[
+    {q:'Unidade básica da vida:',options:['átomo','célula','tecido','órgão'],answer:1},
+    {q:'Transformação de lagarta em borboleta:',options:['metamorfose','fotossíntese','respiração','digestão'],answer:0},
+    {q:'Estados físicos da água:',options:['sólido, líquido, gasoso','frio, morno, quente','doce, salgada, potável','nenhuma'],answer:0},
+    {q:'Planeta Vermelho:',options:['Vênus','Marte','Júpiter','Saturno'],answer:1},
+    {q:'Sistema da digestão:',options:['respiratório','circulatório','digestório','nervoso'],answer:2},
+    {q:'Fotossíntese é:',options:['produção de alimento pelas plantas','respiração animal','evaporação','movimento das nuvens'],answer:0},
+    {q:'Maior planeta do sistema solar:',options:['Terra','Saturno','Júpiter','Netuno'],answer:2},
+    {q:'Gás que respiramos:',options:['nitrogênio','oxigênio','hélio','hidrogênio'],answer:1},
+    {q:'Rocha formada a partir do magma:',options:['sedimentar','metamórfica','ígnea','arenosa'],answer:2},
+    {q:'Decompõem matéria orgânica:',options:['fungos e bactérias','plantas','peixes','aves'],answer:0}
+  ]},
+  {id:'6-historia',name:'História',icon:'🏛️',color:'#e17055',items:['📜','🏛️','⚔️','👑','🗿','🏺','🕰️','📯','🎭','🐎','🏰','🪶'],questions:[
+    {q:'Primeira civilização com escrita:',options:['Egípcios','Sumérios','Gregos','Romanos'],answer:1},
+    {q:'Rio da civilização egípcia:',options:['Tigre','Eufrates','Nilo','Amazonas'],answer:2},
+    {q:'Primeiro imperador romano:',options:['Júlio César','Augusto','Nero','Constantino'],answer:1},
+    {q:'Idade Média:',options:['entre queda de Roma e Renascimento','antes de Cristo','século XX','Idade da Pedra'],answer:0},
+    {q:'Feudalismo foi:',options:['sistema econômico e social da Idade Média','movimento artístico','religião antiga','tipo de governo'],answer:0},
+    {q:'Chegou ao Brasil em 1500:',options:['Pedro Álvares Cabral','Cristóvão Colombo','Vasco da Gama','Dom Pedro I'],answer:0},
+    {q:'Construiu Machu Picchu:',options:['Maia','Asteca','Inca','Olmeca'],answer:2},
+    {q:'Renascimento foi:',options:['movimento cultural dos séculos XIV-XVI','guerra','religião','tipo de governo'],answer:0},
+    {q:'Alexandre, o Grande foi:',options:['rei da Macedônia que conquistou vasto império','imperador romano','faraó egípcio','rei persa'],answer:0},
+    {q:'Primeiro grande império da América:',options:['Inca','Asteca','Maia','Tolteca'],answer:1}
+  ]},
+  {id:'6-geografia',name:'Geografia',icon:'🌍',color:'#00cec9',items:['🌍','🗺️','⛰️','🏔️','🌊','🧭','🌋','🏝️','☀️','🌧️','🛰️','📍'],questions:[
+    {q:'Camada mais externa da Terra:',options:['manto','núcleo','crosta terrestre','litosfera'],answer:2},
+    {q:'Maior oceano do mundo:',options:['Atlântico','Índico','Pacífico','Ártico'],answer:2},
+    {q:'Bioma brasileiro com maior biodiversidade:',options:['Cerrado','Amazônia','Pantanal','Caatinga'],answer:1},
+    {q:'Quantos continentes existem?',options:['4','5','6','8'],answer:2},
+    {q:'Capital da França:',options:['Londres','Paris','Roma','Berlim'],answer:1},
+    {q:'Maior deserto quente do mundo:',options:['Gobi','Saara','Atacama','Kalahari'],answer:1},
+    {q:'Movimento que determina dias e noites:',options:['translação','rotação','revolução','precessão'],answer:1},
+    {q:'Divide a Terra em HN e HS:',options:['Trópico de Câncer','Linha do Equador','Meridiano de Greenwich','Trópico de Capricórnio'],answer:1},
+    {q:'Rio mais extenso (critério tradicional):',options:['Amazonas','Nilo','Yangtzé','Mississippi'],answer:1},
+    {q:'Sol mais próximo da Terra:',options:['periélio','afélio','eclipse','solstício'],answer:0}
+  ]},
+  {id:'6-ingles',name:'Inglês',icon:'🇬🇧',color:'#6c5ce7',items:['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T'],questions:[
+    {q:'Como se diz "livro" em inglês?',options:['pen','book','table','door'],answer:1},
+    {q:'Tradução de "I am a student":',options:['Eu sou um professor','Eu sou um estudante','Eu tenho um livro','Eu quero estudar'],answer:1},
+    {q:'Plural de "child":',options:['childs','childes','children','childrens'],answer:2},
+    {q:'Como se diz "obrigado"?',options:['please','sorry','thank you','hello'],answer:2},
+    {q:'Tradução de "cat":',options:['cachorro','gato','pássaro','peixe'],answer:1},
+    {q:'"She ___ a teacher"',options:['am','is','are','be'],answer:1},
+    {q:'Tradução de "beautiful":',options:['feio','bonito','grande','pequeno'],answer:1},
+    {q:'Como se diz "bom dia"?',options:['good night','good morning','good afternoon','good evening'],answer:1},
+    {q:'Tradução de "water":',options:['fogo','terra','água','ar'],answer:2},
+    {q:'"They ___ playing"',options:['is','am','are','be'],answer:2}
+  ]}
+];
+
+const SUBJECTS_EM = [
+  {id:'em-portugues',name:'Português e Literatura',icon:'📚',color:'#e84393',items:['📚','✍️','📖','🖋️','📝','🎭','📜','✒️','📔','🎬','🎨','🔤'],questions:[
+    {q:'Quem escreveu "Dom Casmurro"?',options:['José de Alencar','Machado de Assis','Graciliano Ramos','Carlos Drummond'],answer:1},
+    {q:'Movimento de "Os Lusíadas":',options:['Romantismo','Classicismo/Renascimento','Modernismo','Realismo'],answer:1},
+    {q:'Figura em "Morri de rir":',options:['metáfora','hipérbole','eufemismo','ironia'],answer:1},
+    {q:'Quem escreveu "Vidas Secas"?',options:['Graciliano Ramos','Jorge Amado','Clarice Lispector','Guimarães Rosa'],answer:0},
+    {q:'Foco narrativo de "Dom Casmurro":',options:['primeira pessoa (Bento Santiago)','terceira pessoa','narrador onisciente','narrador observador'],answer:0},
+    {q:'Modernismo brasileiro:',options:['movimento literário iniciado em 1922','escola do século XIX','movimento europeu medieval','escola do Renascimento'],answer:0},
+    {q:'Carlos Drummond foi:',options:['poeta modernista brasileiro','romancista português','dramaturgo espanhol','poeta romântico'],answer:0},
+    {q:'Gênero de "O Cortiço":',options:['romance naturalista','poema épico','teatro clássico','conto de fadas'],answer:0},
+    {q:'Principal obra de Camões:',options:['Os Lusíadas','Dom Quixote','A Divina Comédia','Ilíada'],answer:0},
+    {q:'Quem escreveu "Grande Sertão: Veredas"?',options:['Guimarães Rosa','Jorge Amado','Machado de Assis','Raquel de Queiroz'],answer:0}
+  ]},
+  {id:'em-matematica',name:'Matemática',icon:'🔢',color:'#0984e3',items:['∑','∫','π','√','∞','≠','≤','≥','±','∂','Δ','λ','θ','μ','σ','Ω'],questions:[
+    {q:'Derivada de x²:',options:['x','2x','x²','2'],answer:1},
+    {q:'Quanto é log₂(8)?',options:['2','3','4','8'],answer:1},
+    {q:'Ângulos internos de um octógono:',options:['720°','900°','1080°','1260°'],answer:2},
+    {q:'Solução de x²-5x+6=0:',options:['x=1 ou x=6','x=2 ou x=3','x=-2 ou x=-3','x=5 ou x=6'],answer:1},
+    {q:'sen(30°):',options:['√3/2','1/2','√2/2','1'],answer:1},
+    {q:'Área do círculo:',options:['2πr','πr²','πd','4πr²'],answer:1},
+    {q:'Quanto é 2⁵?',options:['10','16','25','32'],answer:3},
+    {q:'Det [[1,2],[3,4]]:',options:['-2','2','4','10'],answer:0},
+    {q:'Prob. de tirar 6 no dado:',options:['1/2','1/3','1/6','1/12'],answer:2},
+    {q:'Reta por (0,0) e (1,1):',options:['y = 2x','y = x','y = x + 1','y = -x'],answer:1}
+  ]},
+  {id:'em-fisica',name:'Física',icon:'⚛️',color:'#00b894',items:['⚛️','⚡','🔭','🧲','🌡️','💡','⚙️','🔋','📡','🌀','🌊','☢️'],questions:[
+    {q:'Unidade de força no SI:',options:['Joule','Newton','Watt','Pascal'],answer:1},
+    {q:'Velocidade média:',options:['v = d × t','v = Δs/Δt','v = m × a','v = F/d'],answer:1},
+    {q:'Lei "ação e reação":',options:['1ª lei','2ª lei','3ª lei','4ª lei'],answer:2},
+    {q:'Unidade de energia no SI:',options:['Newton','Joule','Watt','Ampère'],answer:1},
+    {q:'Gravidade na Terra:',options:['5,8 m/s²','9,8 m/s²','15 m/s²','20 m/s²'],answer:1},
+    {q:'Energia cinética:',options:['mv²/2','mgh','Fd','mv'],answer:0},
+    {q:'Corrente elétrica é:',options:['fluxo de elétrons','força gravitacional','tipo de onda','temperatura'],answer:0},
+    {q:'Unidade de potência:',options:['Joule','Newton','Watt','Volt'],answer:2},
+    {q:'Velocidade da luz:',options:['~300.000 km/s','~150.000 km/s','~1.000 km/s','~30.000 km/s'],answer:0},
+    {q:'Gravitação universal:',options:['Einstein','Galileu','Isaac Newton','Kepler'],answer:2}
+  ]},
+  {id:'em-quimica',name:'Química',icon:'🧪',color:'#a29bfe',items:['🧪','⚗️','🧬','🔬','💧','🔥','⚡','☢️','🧫','🌡️','💊','🔭'],questions:[
+    {q:'Símbolo do ouro:',options:['Ag','Au','Fe','Cu'],answer:1},
+    {q:'Número atômico do carbono:',options:['4','6','8','12'],answer:1},
+    {q:'Ligação covalente:',options:['compartilhamento de elétrons','transferência de elétrons','atração iônica','ligação metálica'],answer:0},
+    {q:'pH da água pura:',options:['5','6','7','8'],answer:2},
+    {q:'Fórmula da água:',options:['HO','H₂O','H₂O₂','OH'],answer:1},
+    {q:'Gás nobre mais abundante na atmosfera:',options:['Hélio','Neônio','Argônio','Criptônio'],answer:2},
+    {q:'Oxirredução é:',options:['transferência de elétrons','neutralização','precipitação','combustão'],answer:0},
+    {q:'Massa molar da água:',options:['16','17','18','20'],answer:2},
+    {q:'Elemento mais eletronegativo:',options:['Oxigênio','Cloro','Flúor','Nitrogênio'],answer:2},
+    {q:'Ácido de Arrhenius:',options:['libera H⁺ em água','libera OH⁻ em água','não ioniza','libera O₂'],answer:0}
+  ]},
+  {id:'em-biologia',name:'Biologia',icon:'🧬',color:'#00b894',items:['🧬','🧫','🌿','🦠','🫀','🐾','🌱','🔬','🩺','🧪','🦋','🐟'],questions:[
+    {q:'Unidade da hereditariedade:',options:['célula','gene','cromossomo','núcleo'],answer:1},
+    {q:'Divisão que forma gametas:',options:['mitose','meiose','fissão','brotamento'],answer:1},
+    {q:'Pigmento verde das plantas:',options:['hemoglobina','clorofila','melanina','caroteno'],answer:1},
+    {q:'Troca de gases:',options:['digestório','respiratório','circulatório','nervoso'],answer:1},
+    {q:'DNA é:',options:['ácido desoxirribonucleico','ácido ribonucleico','proteína','lipídio'],answer:0},
+    {q:'Pai da genética:',options:['Darwin','Mendel','Lamarck','Pasteur'],answer:1},
+    {q:'Produção de energia nas células:',options:['fotossíntese','respiração celular','digestão','osmose'],answer:1},
+    {q:'Cinco reinos:',options:['Monera, Protista, Fungi, Plantae, Animalia','Animal, Vegetal, Mineral','Vertebrados e invertebrados','Unicelulares e pluricelulares'],answer:0},
+    {q:'Maior órgão do corpo humano:',options:['fígado','cérebro','pele','pulmão'],answer:2},
+    {q:'Autotróficos:',options:['produzem seu próprio alimento','consomem outros seres','decompõem matéria','parasitas'],answer:0}
+  ]},
+  {id:'em-historia',name:'História',icon:'🏛️',color:'#e17055',items:['📜','🏛️','⚔️','👑','🗿','🏺','🕰️','📯','🎭','📰','🏰','🪶'],questions:[
+    {q:'Início da Idade Moderna:',options:['Queda de Constantinopla (1453)','Descobrimento da América','Revolução Francesa','Revolução Industrial'],answer:0},
+    {q:'Napoleão Bonaparte foi:',options:['imperador francês','rei inglês','general romano','presidente americano'],answer:0},
+    {q:'Revolução Industrial começou em:',options:['França','Inglaterra','Alemanha','Estados Unidos'],answer:1},
+    {q:'Karl Marx foi:',options:['filósofo e economista alemão','general francês','rei inglês','cientista italiano'],answer:0},
+    {q:'Ano da Revolução Francesa:',options:['1776','1789','1804','1848'],answer:1},
+    {q:'Guerra Fria foi:',options:['tensão entre EUA e URSS','guerra na Europa','conflito religioso','guerra civil americana'],answer:0},
+    {q:'Getúlio Vargas foi:',options:['presidente brasileiro','imperador do Brasil','general argentino','rei português'],answer:0},
+    {q:'Ditadura militar no Brasil:',options:['1930-1945','1964-1985','1985-2000','1945-1964'],answer:1},
+    {q:'Iluminismo foi:',options:['movimento filosófico do século XVIII','movimento artístico medieval','guerra religiosa','revolução agrícola'],answer:0},
+    {q:'Adolf Hitler foi:',options:['líder nazista alemão','presidente americano','rei inglês','general soviético'],answer:0}
+  ]},
+  {id:'em-geografia',name:'Geografia',icon:'🌍',color:'#00cec9',items:['🌍','🗺️','🌐','📊','🏙️','🌡️','💧','🌪️','🛰️','📈','📍','🌊'],questions:[
+    {q:'Globalização é:',options:['integração econômica e cultural mundial','isolamento dos países','guerra comercial','fim das fronteiras'],answer:0},
+    {q:'IDH é:',options:['Índice de Desenvolvimento Humano','Índice de Desigualdade Humana','Índice Demográfico','Índice de Doenças'],answer:0},
+    {q:'Urbanização é:',options:['crescimento das cidades','aumento do campo','desmatamento','poluição'],answer:0},
+    {q:'Efeito estufa é:',options:['retenção de calor na atmosfera','resfriamento global','chuva ácida','buraco na camada de ozônio'],answer:0},
+    {q:'ONU é:',options:['Organização das Nações Unidas','Organização do Norte','União Europeia','Banco Mundial'],answer:0},
+    {q:'Bloco da América do Sul:',options:['Mercosul','União Europeia','Nafta','Apec'],answer:0},
+    {q:'Migração é:',options:['deslocamento de pessoas','crescimento populacional','urbanização','globalização'],answer:0},
+    {q:'Clima do Nordeste brasileiro:',options:['semiárido','tropical úmido','equatorial','subtropical'],answer:0},
+    {q:'Amazônia Legal é:',options:['área de proteção ambiental','região industrial','zona de mineração','área militar'],answer:0},
+    {q:'Maior economia do mundo hoje:',options:['China','Estados Unidos','Japão','Alemanha'],answer:1}
+  ]},
+  {id:'em-filosofia',name:'Filosofia',icon:'🤔',color:'#fdcb6e',items:['🤔','📜','💭','🏛️','📖','🔍','💡','🕯️','🧠','📝','🗿','⚖️'],questions:[
+    {q:'Sócrates foi:',options:['filósofo grego','imperador romano','rei egípcio','poeta italiano'],answer:0},
+    {q:'Ética é:',options:['estudo da moral','estudo do ser','estudo da beleza','estudo da lógica'],answer:0},
+    {q:'Escreveu "A República":',options:['Platão','Aristóteles','Sócrates','Kant'],answer:0},
+    {q:'Empirismo é:',options:['corrente que valoriza a experiência','corrente que nega a experiência','doutrina religiosa','tipo de governo'],answer:0},
+    {q:'Kant foi:',options:['filósofo alemão do Iluminismo','imperador romano','filósofo grego','rei francês'],answer:0},
+    {q:'Existencialismo é:',options:['corrente filosófica do século XX','escola medieval','religião antiga','tipo de arte'],answer:0},
+    {q:'Nietzsche foi:',options:['filósofo alemão','general francês','cientista inglês','poeta grego'],answer:0},
+    {q:'Lógica é:',options:['estudo do raciocínio válido','estudo da beleza','estudo da moral','estudo do ser'],answer:0},
+    {q:'Aristóteles foi:',options:['filósofo grego, discípulo de Platão','imperador romano','poeta latino','rei espartano'],answer:0},
+    {q:'Método socrático é:',options:['questionamento para chegar à verdade','memorização','oração','cálculo matemático'],answer:0}
+  ]},
+  {id:'em-sociologia',name:'Sociologia',icon:'👥',color:'#a29bfe',items:['👥','🌐','📊','🏙️','⚖️','🗳️','📰','🎭','💬','🌍','📈','🤝'],questions:[
+    {q:'Pai da sociologia:',options:['Auguste Comte','Karl Marx','Max Weber','Durkheim'],answer:0},
+    {q:'Cultura é:',options:['conjunto de costumes e tradições de um povo','tipo de governo','sistema econômico','classe social'],answer:0},
+    {q:'Escreveu "A Ética Protestante...":',options:['Max Weber','Karl Marx','Durkheim','Comte'],answer:0},
+    {q:'Desigualdade social é:',options:['diferença de acesso a recursos','igualdade de direitos','sistema político','tipo de família'],answer:0},
+    {q:'Émile Durkheim foi:',options:['sociólogo francês','filósofo grego','imperador romano','presidente americano'],answer:0},
+    {q:'Mobilidade social é:',options:['mudança de classe social','troca de emprego','mudança de cidade','alteração de renda'],answer:0},
+    {q:'Cidadania é:',options:['conjunto de direitos e deveres','tipo de governo','classe social','sistema econômico'],answer:0},
+    {q:'Karl Marx foi:',options:['filósofo e sociólogo alemão','presidente russo','imperador francês','poeta inglês'],answer:0},
+    {q:'Preconceito é:',options:['julgamento prévio sem conhecimento','opinião formada','análise crítica','reflexão'],answer:0},
+    {q:'Globalização cultural é:',options:['difusão de costumes pelo mundo','isolamento cultural','guerra cultural','perda de identidade'],answer:0}
+  ]}
+];
+
+const EXTRAS = [
+  {id:'race',name:'Corrida das Matérias',icon:'🏁',color:'#ffd166',ds:'10 perguntas misturadas'},
+  {id:'puzzle',name:'Quebra-Cabeça',icon:'🧩',color:'#ff6b6b',ds:'Ordene os números'},
+  {id:'memory',name:'Memória com Animais',icon:'🐼',color:'#4ecdc4',ds:'Encontre os pares'},
+  {id:'hangman',name:'Jogo da Forca',icon:'🪢',color:'#a29bfe',ds:'Adivinhe a palavra'},
+  {id:'wordsearch',name:'Caça-Palavras',icon:'🔍',color:'#00b894',ds:'Ache as palavras'},
+  {id:'mathsprint',name:'Relâmpago Matemático',icon:'⚡',color:'#e84393',ds:'Resolva rápido!'},
+  {id:'antonyms',name:'Jogo dos Opostos',icon:'🔗',color:'#fdcb6e',ds:'Encontre os contrários'},
+  {id:'sequence',name:'Sequência Lógica',icon:'🧠',color:'#00cec9',ds:'Complete a sequência'}
+];
+
+const EXTRA_BGS = {
+  race:['🏁','🏃','🏆','🏎️','⚡','🥇','🚀','⭐','🎯','🏅'],
+  puzzle:['🧩','🎲','🧠','🔢','✨','🎯','💡','🔷','🔶','⭐'],
+  memory:['🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼','🐨','🐯','🦁','🐮'],
+  hangman:['🪢','🔤','📝','✏️','💡','🎯','🔠','🤔','🎓','⭐'],
+  wordsearch:['🔍','📝','🔤','🅰️','📖','✏️','🔠','🎯','💡','🎓'],
+  mathsprint:['⚡','➕','➖','✖️','➗','🔢','🧮','💯','🎯','⭐'],
+  antonyms:['🔗','↔️','📖','✨','🎯','💡','🔀','🔄','🎓','⭐'],
+  sequence:['🔢','🧠','➡️','✨','🎯','💡','🧩','🔷','⭐','🎓']
+};
+
+const SANDBOX_BG = ['⚛️','🧪','⚗️','💧','🔥','🧂','💨','🎈','💎','🔬','🌡️','☢️','🫁','🔋','🏆','✨'];
+
+const ELEMENTS = [
+  ['H','Hidrogênio',1,1,1,'nonmetal'],['He','Hélio',2,1,18,'noble'],
+  ['Li','Lítio',3,2,1,'alkali'],['Be','Berílio',4,2,2,'alkaline'],
+  ['B','Boro',5,2,13,'metalloid'],['C','Carbono',6,2,14,'nonmetal'],
+  ['N','Nitrogênio',7,2,15,'nonmetal'],['O','Oxigênio',8,2,16,'nonmetal'],
+  ['F','Flúor',9,2,17,'halogen'],['Ne','Neônio',10,2,18,'noble'],
+  ['Na','Sódio',11,3,1,'alkali'],['Mg','Magnésio',12,3,2,'alkaline'],
+  ['Al','Alumínio',13,3,13,'post'],['Si','Silício',14,3,14,'metalloid'],
+  ['P','Fósforo',15,3,15,'nonmetal'],['S','Enxofre',16,3,16,'nonmetal'],
+  ['Cl','Cloro',17,3,17,'halogen'],['Ar','Argônio',18,3,18,'noble'],
+  ['K','Potássio',19,4,1,'alkali'],['Ca','Cálcio',20,4,2,'alkaline'],
+  ['Sc','Escândio',21,4,3,'transition'],['Ti','Titânio',22,4,4,'transition'],
+  ['V','Vanádio',23,4,5,'transition'],['Cr','Cromo',24,4,6,'transition'],
+  ['Mn','Manganês',25,4,7,'transition'],['Fe','Ferro',26,4,8,'transition'],
+  ['Co','Cobalto',27,4,9,'transition'],['Ni','Níquel',28,4,10,'transition'],
+  ['Cu','Cobre',29,4,11,'transition'],['Zn','Zinco',30,4,12,'transition'],
+  ['Ga','Gálio',31,4,13,'post'],['Ge','Germânio',32,4,14,'metalloid'],
+  ['As','Arsênio',33,4,15,'metalloid'],['Se','Selênio',34,4,16,'nonmetal'],
+  ['Br','Bromo',35,4,17,'halogen'],['Kr','Criptônio',36,4,18,'noble'],
+  ['Rb','Rubídio',37,5,1,'alkali'],['Sr','Estrôncio',38,5,2,'alkaline'],
+  ['Y','Ítrio',39,5,3,'transition'],['Zr','Zircônio',40,5,4,'transition'],
+  ['Nb','Nióbio',41,5,5,'transition'],['Mo','Molibdênio',42,5,6,'transition'],
+  ['Tc','Tecnécio',43,5,7,'transition'],['Ru','Rutênio',44,5,8,'transition'],
+  ['Rh','Ródio',45,5,9,'transition'],['Pd','Paládio',46,5,10,'transition'],
+  ['Ag','Prata',47,5,11,'transition'],['Cd','Cádmio',48,5,12,'transition'],
+  ['In','Índio',49,5,13,'post'],['Sn','Estanho',50,5,14,'post'],
+  ['Sb','Antimônio',51,5,15,'metalloid'],['Te','Telúrio',52,5,16,'metalloid'],
+  ['I','Iodo',53,5,17,'halogen'],['Xe','Xenônio',54,5,18,'noble'],
+  ['Cs','Césio',55,6,1,'alkali'],['Ba','Bário',56,6,2,'alkaline'],
+  ['Hf','Háfnio',72,6,4,'transition'],['Ta','Tântalo',73,6,5,'transition'],
+  ['W','Tungstênio',74,6,6,'transition'],['Re','Rênio',75,6,7,'transition'],
+  ['Os','Ósmio',76,6,8,'transition'],['Ir','Irídio',77,6,9,'transition'],
+  ['Pt','Platina',78,6,10,'transition'],['Au','Ouro',79,6,11,'transition'],
+  ['Hg','Mercúrio',80,6,12,'transition'],['Tl','Tálio',81,6,13,'post'],
+  ['Pb','Chumbo',82,6,14,'post'],['Bi','Bismuto',83,6,15,'post'],
+  ['Po','Polônio',84,6,16,'post'],['At','Astato',85,6,17,'halogen'],
+  ['Rn','Radônio',86,6,18,'noble'],
+  ['Fr','Frâncio',87,7,1,'alkali'],['Ra','Rádio',88,7,2,'alkaline'],
+  ['Rf','Ruterfórdio',104,7,4,'transition'],['Db','Dúbnio',105,7,5,'transition'],
+  ['Sg','Seabórgio',106,7,6,'transition'],['Bh','Bóhrio',107,7,7,'transition'],
+  ['Hs','Hássio',108,7,8,'transition'],['Mt','Meitnério',109,7,9,'transition'],
+  ['Ds','Darmstádio',110,7,10,'transition'],['Rg','Roentgênio',111,7,11,'transition'],
+  ['Cn','Copernício',112,7,12,'transition'],['Nh','Nihônio',113,7,13,'post'],
+  ['Fl','Fleróvio',114,7,14,'post'],['Mc','Moscóvio',115,7,15,'post'],
+  ['Lv','Livermório',116,7,16,'post'],['Ts','Tenesso',117,7,17,'halogen'],
+  ['Og','Oganessônio',118,7,18,'noble'],
+  ['La','Lantânio',57,9,3,'lanth'],['Ce','Cério',58,9,4,'lanth'],
+  ['Pr','Praseodímio',59,9,5,'lanth'],['Nd','Neodímio',60,9,6,'lanth'],
+  ['Pm','Promécio',61,9,7,'lanth'],['Sm','Samário',62,9,8,'lanth'],
+  ['Eu','Európio',63,9,9,'lanth'],['Gd','Gadolínio',64,9,10,'lanth'],
+  ['Tb','Térbio',65,9,11,'lanth'],['Dy','Disprósio',66,9,12,'lanth'],
+  ['Ho','Hólmio',67,9,13,'lanth'],['Er','Érbio',68,9,14,'lanth'],
+  ['Tm','Túlio',69,9,15,'lanth'],['Yb','Itérbio',70,9,16,'lanth'],
+  ['Lu','Lutécio',71,9,17,'lanth'],
+  ['Ac','Actínio',89,10,3,'actin'],['Th','Tório',90,10,4,'actin'],
+  ['Pa','Protactínio',91,10,5,'actin'],['U','Urânio',92,10,6,'actin'],
+  ['Np','Netúnio',93,10,7,'actin'],['Pu','Plutônio',94,10,8,'actin'],
+  ['Am','Amerício',95,10,9,'actin'],['Cm','Cúrio',96,10,10,'actin'],
+  ['Bk','Berquélio',97,10,11,'actin'],['Cf','Califórnio',98,10,12,'actin'],
+  ['Es','Einstênio',99,10,13,'actin'],['Fm','Férmio',100,10,14,'actin'],
+  ['Md','Mendelévio',101,10,15,'actin'],['No','Nobélio',102,10,16,'actin'],
+  ['Lr','Laurêncio',103,10,17,'actin']
+];
+
+const RECIPES = [
+  {formula:'H₂O',name:'Água',need:{H:2,O:1},emoji:'💧',desc:'Líquido essencial à vida'},
+  {formula:'NaCl',name:'Sal de Cozinha',need:{Na:1,Cl:1},emoji:'🧂',desc:'Tempero usado todos os dias'},
+  {formula:'CO₂',name:'Gás Carbônico',need:{C:1,O:2},emoji:'💨',desc:'Gás liberado na respiração'},
+  {formula:'NH₃',name:'Amônia',need:{N:1,H:3},emoji:'🧴',desc:'Usada em produtos de limpeza'},
+  {formula:'O₂',name:'Gás Oxigênio',need:{O:2},emoji:'🫁',desc:'Gás que respiramos'},
+  {formula:'CH₄',name:'Metano',need:{C:1,H:4},emoji:'🔥',desc:'Gás natural inflamável'},
+  {formula:'HCl',name:'Ácido Clorídrico',need:{H:1,Cl:1},emoji:'🧪',desc:'Ácido do estômago'},
+  {formula:'CaO',name:'Cal',need:{Ca:1,O:1},emoji:'🧱',desc:'Usada na construção civil'},
+  {formula:'H₂',name:'Gás Hidrogênio',need:{H:2},emoji:'🎈',desc:'Gás leve usado em balões'},
+  {formula:'H₂S',name:'Gás Sulfídrico',need:{H:2,S:1},emoji:'🥚',desc:'Gás com cheiro de ovo podre'}
+];
+
+const COMPOUNDS = [
+  {f:'H₂O',n:'Água',need:{H:2,O:1},emoji:'💧',desc:'Líquido essencial à vida'},
+  {f:'NaCl',n:'Sal de Cozinha',need:{Na:1,Cl:1},emoji:'🧂',desc:'Tempero usado todos os dias'},
+  {f:'CO₂',n:'Gás Carbônico',need:{C:1,O:2},emoji:'💨',desc:'Gás liberado na respiração'},
+  {f:'NH₃',n:'Amônia',need:{N:1,H:3},emoji:'🧴',desc:'Usada em produtos de limpeza'},
+  {f:'O₂',n:'Gás Oxigênio',need:{O:2},emoji:'🫁',desc:'Gás que respiramos'},
+  {f:'CH₄',n:'Metano',need:{C:1,H:4},emoji:'🔥',desc:'Gás natural inflamável'},
+  {f:'HCl',n:'Ácido Clorídrico',need:{H:1,Cl:1},emoji:'🧪',desc:'Ácido do estômago'},
+  {f:'CaO',n:'Cal',need:{Ca:1,O:1},emoji:'🧱',desc:'Usada na construção civil'},
+  {f:'H₂',n:'Gás Hidrogênio',need:{H:2},emoji:'🎈',desc:'Gás leve usado em balões'},
+  {f:'H₂S',n:'Gás Sulfídrico',need:{H:2,S:1},emoji:'🥚',desc:'Gás com cheiro de ovo podre'},
+  {f:'N₂',n:'Gás Nitrogênio',need:{N:2},emoji:'💨',desc:'78% do ar que respiramos'},
+  {f:'Cl₂',n:'Gás Cloro',need:{Cl:2},emoji:'🏊',desc:'Usado em piscinas'},
+  {f:'CO',n:'Monóxido de Carbono',need:{C:1,O:1},emoji:'☠️',desc:'Gás tóxico da combustão'},
+  {f:'SO₂',n:'Dióxido de Enxofre',need:{S:1,O:2},emoji:'🌫️',desc:'Poluente da queima de carvão'},
+  {f:'H₂SO₄',n:'Ácido Sulfúrico',need:{H:2,S:1,O:4},emoji:'⚗️',desc:'Usado em baterias de carro'},
+  {f:'HNO₃',n:'Ácido Nítrico',need:{H:1,N:1,O:3},emoji:'🧴',desc:'Usado em fertilizantes'},
+  {f:'NaOH',n:'Hidróxido de Sódio',need:{Na:1,O:1,H:1},emoji:'🧼',desc:'Soda cáustica (sabão)'},
+  {f:'KOH',n:'Hidróxido de Potássio',need:{K:1,O:1,H:1},emoji:'🧼',desc:'Base forte usada em sabões'},
+  {f:'MgO',n:'Óxido de Magnésio',need:{Mg:1,O:1},emoji:'💊',desc:'Suplemento mineral'},
+  {f:'Al₂O₃',n:'Óxido de Alumínio',need:{Al:2,O:3},emoji:'💎',desc:'Base do rubi e safira'},
+  {f:'SiO₂',n:'Areia',need:{Si:1,O:2},emoji:'🏖️',desc:'Dióxido de silício'},
+  {f:'Fe₂O₃',n:'Ferrugem',need:{Fe:2,O:3},emoji:'🟤',desc:'Óxido de ferro'},
+  {f:'CaCO₃',n:'Carbonato de Cálcio',need:{Ca:1,C:1,O:3},emoji:'🪨',desc:'Mármore, giz e conchas'},
+  {f:'NaHCO₃',n:'Bicarbonato de Sódio',need:{Na:1,H:1,C:1,O:3},emoji:'🥄',desc:'Usado em receitas e limpeza'},
+  {f:'CaCl₂',n:'Cloreto de Cálcio',need:{Ca:1,Cl:2},emoji:'🧂',desc:'Usado para derreter gelo'},
+  {f:'KCl',n:'Cloreto de Potássio',need:{K:1,Cl:1},emoji:'🧂',desc:'Substituto do sal'}
+];
+
+const ELEMENT_INFO = {
+  'H':{emoji:'💨',desc:'Gás leve e inflamável'},'He':{emoji:'🎈',desc:'Gás dos balões'},
+  'Li':{emoji:'🔋',desc:'Metal das baterias'},'Be':{emoji:'💎',desc:'Metal leve e raro'},
+  'B':{emoji:'🔷',desc:'Usado em vidros especiais'},'C':{emoji:'⚫',desc:'Base de toda vida orgânica'},
+  'N':{emoji:'💨',desc:'78% do ar atmosférico'},'O':{emoji:'🫁',desc:'Gás essencial à respiração'},
+  'F':{emoji:'🦷',desc:'Usado em cremes dentais'},'Ne':{emoji:'💡',desc:'Gás de letreiros luminosos'},
+  'Na':{emoji:'🧂',desc:'Metal alcalino (sal)'},'Mg':{emoji:'🔆',desc:'Metal leve e brilhante'},
+  'Al':{emoji:'🥫',desc:'Metal das latas'},'Si':{emoji:'💻',desc:'Base dos chips de computador'},
+  'P':{emoji:'🔥',desc:'Sólido inflamável'},'S':{emoji:'🌋',desc:'Sólido amarelo (enxofre)'},
+  'Cl':{emoji:'🏊',desc:'Gás usado em piscinas'},'Ar':{emoji:'💨',desc:'Gás nobre da atmosfera'},
+  'K':{emoji:'🍌',desc:'Presente na banana'},'Ca':{emoji:'🦴',desc:'Metal dos ossos e dentes'},
+  'Fe':{emoji:'🔩',desc:'Metal usado em construções'},'Cu':{emoji:'🟠',desc:'Metal condutor de eletricidade'},
+  'Zn':{emoji:'🛡️',desc:'Usado em galvanização'},'Ag':{emoji:'🥈',desc:'Metal precioso (prata)'},
+  'Au':{emoji:'🏆',desc:'Metal precioso (ouro)'},'Hg':{emoji:'🌡️',desc:'Metal líquido (mercúrio)'},
+  'Pb':{emoji:'🔋',desc:'Metal pesado (chumbo)'},'U':{emoji:'☢️',desc:'Combustível nuclear'},
+  'Ti':{emoji:'⚙️',desc:'Metal resistente'},'Cr':{emoji:'✨',desc:'Metal brilhante (cromo)'},
+  'Ni':{emoji:'🪙',desc:'Usado em moedas'},'Pt':{emoji:'💎',desc:'Metal precioso (platina)'}
+};
+
+const MYSTERY_NAMES = ['Substância Misteriosa','Poção Secreta','Mistura Maluca','Composto Desconhecido','Elixir do Laboratório','Massa Esquisita','Poção Borbulhante','Mistura Alienígena'];
+const ANIMALS = ['🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼'];
+const HANGMAN_WORDS = [
+  {w:'BORBOLETA',h:'Inseto colorido que voa'},{w:'ELEFANTE',h:'Animal grande com tromba'},
+  {w:'MONTANHA',h:'Grande elevação de terra'},{w:'BIBLIOTECA',h:'Lugar cheio de livros'},
+  {w:'PLANETA',h:'Corpo celeste que gira em torno do Sol'},{w:'GIRASSOL',h:'Flor que segue o Sol'},
+  {w:'OCEANO',h:'Grande massa de água salgada'},{w:'COMPUTADOR',h:'Máquina usada para processar dados'},
+  {w:'XILOFONE',h:'Instrumento musical de percussão'},{w:'BICICLETA',h:'Veículo de duas rodas'},
+  {w:'FOGUETE',h:'Veículo espacial'},{w:'PIPOCA',h:'Milho estourado'},
+  {w:'JANELA',h:'Abertura para luz e ar'},{w:'GELADEIRA',h:'Eletrodoméstico que conserva alimentos'},
+  {w:'ARARA',h:'Ave colorida da Amazônia'}
+];
+const WS_WORDS = ['GATO','PEIXE','PATO','RATO','SAPO','GALO'];
+const WS_SIZE = 10;
+const ANTONYM_PAIRS = [
+  ['quente','frio'],['grande','pequeno'],['alto','baixo'],['dia','noite'],['rápido','lento'],
+  ['feliz','triste'],['claro','escuro'],['novo','velho'],['dentro','fora'],['doce','salgado'],
+  ['forte','fraco'],['longe','perto']
+];
+
+/* ======================= ESTADO ======================= */
+const state = {
+  subject:null, extraGame:null, mode:'livre', sandbox:false,
+  qIndex:0, recipeIndex:0, mix:[], found:[], foundKeys:new Set(),
+  raceQuestions:[], raceIndex:0, raceCorrect:0,
+  puzzleBoard:[], puzzleMoves:0, puzzleStart:0, puzzleTimer:null,
+  memoryCards:[], memoryFlipped:[], memoryLocked:false, memoryMoves:0,
+  hangmanWord:'', hangmanHint:'', hangmanGuessed:new Set(), hangmanLives:6,
+  wsGrid:null, wsPlaced:[], wsFound:[], wsWords:[], wsStart:null, wsSize:WS_SIZE,
+  mathScore:0, mathTotal:0, mathCurrent:null,
+  antonymsPairs:[], antonymsLeft:[], antonymsRight:[], antonymsSelectedLeft:null,
+  antonymsMatchedLeft:new Set(), antonymsMatchedRight:new Set(),
+  seqQuestions:[], seqIndex:0, seqCorrect:0, seqCurrent:null
+};
+let timerHandle = null;
+let reactionTimeout = null;
+
+/* ======================= UTILS ======================= */
+const bgEl = document.getElementById('bg');
+const screens = document.querySelectorAll('.screen');
+const DEFAULT_ITEMS = ['🎓','⭐','🧠','📚','✨','🎈','🏆','🔢','🌍','🔬','🎯','💡'];
+
+function showScreen(id){ screens.forEach(s => s.classList.toggle('active', s.id === id)); window.scrollTo({top:0,behavior:'smooth'}); }
+function setBackground(subject){
+  const items = subject ? subject.items : DEFAULT_ITEMS;
+  const color = subject ? subject.color : '#6c5ce7';
+  document.documentElement.style.setProperty('--theme', color);
+  bgEl.innerHTML = '';
+  for (let i = 0; i < 26; i++){
+    const el = document.createElement('div');
+    el.className = 'bg-item';
+    el.textContent = items[Math.floor(Math.random()*items.length)];
+    el.style.left = (Math.random()*98) + '%';
+    el.style.fontSize = (1.3 + Math.random()*2.6) + 'rem';
+    el.style.animationDuration = (12 + Math.random()*16) + 's';
+    el.style.animationDelay = '-' + (Math.random()*28) + 's';
+    el.style.color = color;
+    bgEl.appendChild(el);
+  }
+}
+function setExtraBackground(gameId, color){ setBackground({items: EXTRA_BGS[gameId], color}); }
+function shuffle(arr){ for (let i = arr.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+function startTimer(seconds, el, onEnd){
+  stopTimer();
+  let t = seconds;
+  const fmt = s => Math.floor(s/60) + ':' + String(s%60).padStart(2,'0');
+  el.textContent = '⏱ ' + fmt(t); el.classList.remove('danger');
+  timerHandle = setInterval(() => {
+    t--; el.textContent = '⏱ ' + fmt(t);
+    if (t <= 20) el.classList.add('danger');
+    if (t <= 0){ clearInterval(timerHandle); timerHandle = null; onEnd(); }
+  }, 1000);
+}
+function stopTimer(){ if (timerHandle) clearInterval(timerHandle); timerHandle = null; }
+function needText(need){ return Object.entries(need).map(([k,v]) => v + ' ' + k).join(' + '); }
+const SUB_DIGITS = ['₀','₁','₂','₃','₄','₅','₆','₇','₈','₉'];
+function toSub(n){ return String(n).split('').map(d => SUB_DIGITS[+d]).join(''); }
+function countsFromMix(mix){ const c = {}; mix.forEach(s => c[s] = (c[s] || 0) + 1); return c; }
+function countsKey(counts){ return Object.keys(counts).sort().map(k => k + counts[k]).join('|'); }
+function formulaFromCounts(counts){ return Object.keys(counts).sort().map(k => k + (counts[k] > 1 ? toSub(counts[k]) : '')).join(''); }
+const COMP_MAP = {};
+COMPOUNDS.forEach(c => { COMP_MAP[countsKey(c.need)] = c; });
+
+/* ======================= HOME ======================= */
+function renderHome(){
+  const grid = document.getElementById('mode-home-grid');
+  grid.innerHTML = '';
+  const modes = [
+    {id:'1',icon:'📚',num:'MODO 1',title:'5º Ano',desc:'Português, Matemática, Ciências, História, Geografia e Tabela Periódica',
+     bg:'linear-gradient(135deg,#e84393 0%,#b42e73 100%)',glow:'#ff6bb5'},
+    {id:'2',icon:'🎮',num:'MODO 2',title:'Jogos Extras',desc:'Forca, Caça-Palavras, Memória, Quebra-Cabeça, Relâmpago e mais',
+     bg:'linear-gradient(135deg,#ffd166 0%,#e17055 100%)',glow:'#ffe066'},
+    {id:'3',icon:'📗',num:'MODO 3',title:'6º Ano',desc:'Português, Matemática, Ciências, História, Geografia e Inglês',
+     bg:'linear-gradient(135deg,#00b894 0%,#00997a 100%)',glow:'#2ed573'},
+    {id:'4',icon:'🎓',num:'MODO 4',title:'Ensino Médio',desc:'Português, Matemática, Física, Química, Biologia, História e mais',
+     bg:'linear-gradient(135deg,#0984e3 0%,#0652b8 100%)',glow:'#4ecdc4'},
+    {id:'city',icon:'🏙️',num:'MODO CIDADE',title:'Explore a Cidade',desc:'Visite prédios e descubra matérias escondidas pela cidade',
+     bg:'linear-gradient(135deg,#a29bfe 0%,#6c5ce7 100%)',glow:'#c4bcff'},
+    {id:'free',icon:'🎲',num:'MODO LIVRE',title:'Jogue Livremente',desc:'Clique em qualquer lugar para começar um jogo aleatório',
+     bg:'linear-gradient(135deg,#e17055 0%,#c0392b 100%)',glow:'#ff9f43'},
+    {id:'sandbox',icon:'🧪',num:'MODO SANDBOX',title:'Tabela Periódica Livre',desc:'Misture qualquer elemento · até 20 átomos · sem tempo e sem perder',
+     bg:'linear-gradient(135deg,#4ecdc4 0%,#6c5ce7 100%)',glow:'#7ce8e0'}
+  ];
+  modes.forEach(m => {
+    const card = document.createElement('button');
+    card.className = 'mode-home-card';
+    card.style.setProperty('--card-bg', m.bg);
+    card.style.setProperty('--card-glow', m.glow);
+    card.innerHTML = `
+      <span class="mode-icon">${m.icon}</span>
+      <span class="mode-num">${m.num}</span>
+      <span class="mode-title">${m.title}</span>
+      <span class="mode-desc">${m.desc}</span>`;
+    card.addEventListener('click', () => openMode(m.id));
+    grid.appendChild(card);
+  });
+}
+
+function openMode(id){
+  if (id === '1') renderSubjectList(SUBJECTS, '📚 Modo 1 — 5º Ano');
+  else if (id === '2') renderExtrasList();
+  else if (id === '3') renderSubjectList(SUBJECTS_6, '📗 Modo 3 — 6º Ano');
+  else if (id === '4') renderSubjectList(SUBJECTS_EM, '🎓 Modo 4 — Ensino Médio');
+  else if (id === 'city') openCity();
+  else if (id === 'free') openFreeplay();
+  else if (id === 'sandbox') openSandbox();
+}
+
+function renderSubjectList(list, title){
+  state.extraGame = null; state.sandbox = false;
+  document.getElementById('subjects-title').textContent = title;
+  const grid = document.getElementById('subjects-list');
+  grid.innerHTML = '';
+  list.forEach(s => {
+    const c = document.createElement('button');
+    c.className = 'subject-card';
+    c.style.setProperty('--card-color', s.color);
+    c.innerHTML = `<span class="ico">${s.icon}</span>
+                   <span class="nm">${s.name}</span>
+                   <span class="ds">${s.id === 'tabela' ? 'Tabela completa' : '10 perguntas'}</span>`;
+    c.addEventListener('click', () => openSubject(s.id));
+    grid.appendChild(c);
+  });
+  showScreen('screen-subjects');
+}
+
+function renderExtrasList(){
+  state.extraGame = null; state.sandbox = false;
+  document.getElementById('subjects-title').textContent = '🎮 Modo 2 — Jogos Extras';
+  const grid = document.getElementById('subjects-list');
+  grid.innerHTML = '';
+  EXTRAS.forEach(e => {
+    const c = document.createElement('button');
+    c.className = 'subject-card';
+    c.style.setProperty('--card-color', e.color);
+    c.innerHTML = `<span class="ico">${e.icon}</span>
+                   <span class="nm">${e.name}</span>
+                   <span class="ds">${e.ds}</span>`;
+    c.addEventListener('click', () => openExtra(e.id));
+    grid.appendChild(c);
+  });
+  showScreen('screen-subjects');
+}
+
+function findSubject(id){
+  return SUBJECTS.find(s => s.id === id) ||
+         SUBJECTS_6.find(s => s.id === id) ||
+         SUBJECTS_EM.find(s => s.id === id);
+}
+
+function openSubject(id){
+  state.subject = findSubject(id);
+  state.extraGame = null; state.sandbox = false;
+  setBackground(state.subject);
+  document.getElementById('mode-title').textContent = state.subject.icon + ' ' + state.subject.name;
+  showScreen('screen-mode');
+}
+
+/* ======================= SANDBOX ======================= */
+function openSandbox(){
+  state.sandbox = true;
+  state.extraGame = null;
+  state.mode = 'livre';
+  state.subject = {id:'sandbox', name:'Sandbox', icon:'🧪', color:'#4ecdc4', items: SANDBOX_BG};
+  setBackground({items: SANDBOX_BG, color:'#4ecdc4'});
+  startTableGame();
+}
+
+/* ======================= CIDADE ======================= */
+function openCity(){
+  state.extraGame = null; state.sandbox = false;
+  setBackground({items:['🏙️','🏢','🏦','🏥','🏛️','🏭','☀️','☁️','🌳','🚦'], color:'#a29bfe'});
+  showScreen('screen-city');
+  const blds = document.getElementById('city-buildings');
+  blds.innerHTML = '';
+  const cityItems = [
+    {subjId:'portugues', building:'📖', color:'#e84393', height:170},
+    {subjId:'matematica', building:'🏦', color:'#0984e3', height:200},
+    {subjId:'ciencias', building:'🏥', color:'#00b894', height:190},
+    {subjId:'historia', building:'🏛️', color:'#e17055', height:160},
+    {subjId:'geografia', building:'✈️', color:'#00cec9', height:180},
+    {subjId:'tabela', building:'🏭', color:'#a29bfe', height:210}
+  ];
+  cityItems.forEach(item => {
+    const subj = SUBJECTS.find(s => s.id === item.subjId);
+    if (!subj) return;
+    const b = document.createElement('button');
+    b.className = 'city-building';
+    b.style.setProperty('--building-color', item.color);
+    b.style.height = item.height + 'px';
+    b.innerHTML = `
+      <span class="b-icon">${item.building}</span>
+      <span class="b-label">${subj.name}</span>`;
+    b.addEventListener('click', () => {
+      state.subject = subj;
+      state.extraGame = null; state.sandbox = false;
+      setBackground(subj);
+      document.getElementById('mode-title').textContent = subj.icon + ' ' + subj.name;
+      showScreen('screen-mode');
+    });
+    blds.appendChild(b);
+  });
+}
+
+/* ======================= MODO LIVRE ======================= */
+function openFreeplay(){
+  state.extraGame = null; state.sandbox = false;
+  setBackground({items:['🎲','⭐','🎯','✨','🎈','🎮','🚀','💎','🌟','🎨'], color:'#e17055'});
+  showScreen('screen-freeplay');
+  const wrap = document.getElementById('freeplay-wrap');
+  wrap.querySelectorAll('.freeplay-bubble').forEach(b => b.remove());
+
+  const allItems = [...SUBJECTS.filter(s => s.id !== 'tabela'), ...EXTRAS];
+  const cols = 4, rows = Math.ceil(allItems.length / cols);
+  const cellW = 100 / cols, cellH = 100 / rows;
+
+  allItems.forEach((item, i) => {
+    const col = i % cols;
+    const row = Math.floor(i / cols);
+    const x = col * cellW + cellW / 2 + (Math.random() - 0.5) * 8;
+    const y = row * cellH + cellH / 2 + (Math.random() - 0.5) * 8;
+    const bubble = document.createElement('button');
+    bubble.className = 'freeplay-bubble';
+    bubble.textContent = item.icon;
+    bubble.title = item.name;
+    bubble.style.left = `calc(${x}% - 37px)`;
+    bubble.style.top = `calc(${y}% - 37px)`;
+    bubble.style.animationDelay = (Math.random() * 4) + 's';
+    bubble.addEventListener('click', (e) => {
+      e.stopPropagation();
+      startFreeplayItem(item);
+    });
+    wrap.appendChild(bubble);
+  });
+
+  wrap.onclick = (e) => {
+    if (e.target === wrap || e.target.classList.contains('freeplay-title') || e.target.classList.contains('freeplay-sub')){
+      startRandomGame();
+    }
+  };
+}
+
+function startFreeplayItem(item){
+  if (item.questions !== undefined){
+    state.subject = item;
+    state.extraGame = null; state.sandbox = false;
+    setBackground(item);
+    document.getElementById('mode-title').textContent = item.icon + ' ' + item.name;
+    showScreen('screen-mode');
+  } else {
+    openExtra(item.id);
+  }
+}
+
+function startRandomGame(){
+  const all = [...SUBJECTS, ...SUBJECTS_6, ...SUBJECTS_EM, ...EXTRAS];
+  const pick = all[Math.floor(Math.random() * all.length)];
+  startFreeplayItem(pick);
+}
+
+/* ======================= QUIZ ======================= */
+function startQuiz(){
+  state.qIndex = 0;
+  document.getElementById('quiz-subject').textContent = state.subject.icon + ' ' + state.subject.name;
+  showScreen('screen-quiz');
+  renderQuestion();
+}
+function renderQuestion(){
+  const subj = state.subject;
+  if (state.qIndex >= subj.questions.length){ endGame(true); return; }
+  const q = subj.questions[state.qIndex];
+  document.getElementById('quiz-progress').textContent = 'Pergunta ' + (state.qIndex+1) + '/' + subj.questions.length;
+  document.getElementById('progress-fill').style.width = ((state.qIndex) / subj.questions.length * 100) + '%';
+  document.getElementById('question-text').textContent = q.q;
+  const opts = document.getElementById('options'); opts.innerHTML = '';
+  q.options.forEach((o, i) => {
+    const b = document.createElement('button'); b.className = 'option';
+    b.innerHTML = `<span class="badge">${'ABCD'[i]}</span><span>${o}</span>`;
+    b.addEventListener('click', () => answerQuestion(i, b)); opts.appendChild(b);
+  });
+  const timerEl = document.getElementById('timer');
+  if (state.mode === 'tempo'){ timerEl.style.display = ''; startTimer(120, timerEl, () => endGame(false, '⏰ O tempo acabou! Tente novamente.')); }
+  else { stopTimer(); timerEl.style.display = 'none'; }
+}
+function answerQuestion(index, btn){
+  const q = state.subject.questions[state.qIndex];
+  stopTimer();
+  document.querySelectorAll('#options .option').forEach(b => b.disabled = true);
+  if (index === q.answer){
+    btn.classList.add('correct'); state.qIndex++;
+    setTimeout(() => { if (state.qIndex >= state.subject.questions.length) endGame(true); else renderQuestion(); }, 850);
+  } else {
+    btn.classList.add('wrong');
+    document.querySelectorAll('#options .option')[q.answer].classList.add('correct');
+    setTimeout(() => endGame(false, '❌ Resposta correta: <strong>' + q.options[q.answer] + '</strong>'), 1500);
+  }
+}
+
+/* ======================= TABELA / SANDBOX ======================= */
+function startTableGame(){
+  state.recipeIndex = 0; state.mix = []; state.found = []; state.foundKeys = new Set();
+  const recipeBox = document.getElementById('recipe-box');
+  const sandboxBanner = document.getElementById('sandbox-banner');
+  const timerEl = document.getElementById('tbl-timer');
+  const foundList = document.getElementById('found-list');
+  const sandboxReset = document.getElementById('btn-sandbox-reset');
+
+  if (state.sandbox){
+    document.getElementById('tbl-subject').textContent = '🧪 Modo Sandbox';
+    recipeBox.style.display = 'none';
+    sandboxBanner.style.display = 'block';
+    timerEl.style.display = 'none';
+    foundList.style.display = 'flex';
+    sandboxReset.style.display = '';
+    document.getElementById('tbl-progress').textContent = '🧪 Descobertas: 0';
+    stopTimer();
+  } else if (state.mode === 'livre'){
+    document.getElementById('tbl-subject').textContent = '⚛️ Tabela Periódica';
+    recipeBox.style.display = 'none';
+    sandboxBanner.style.display = 'none';
+    timerEl.style.display = 'none';
+    foundList.style.display = 'flex';
+    sandboxReset.style.display = 'none';
+    document.getElementById('tbl-progress').textContent = '🕊️ Modo Livre';
+    stopTimer();
+  } else {
+    document.getElementById('tbl-subject').textContent = '⚛️ Tabela Periódica';
+    recipeBox.style.display = '';
+    sandboxBanner.style.display = 'none';
+    timerEl.style.display = '';
+    foundList.style.display = 'none';
+    sandboxReset.style.display = 'none';
+  }
+
+  showScreen('screen-table');
+  renderPeriodicTable();
+  if (state.sandbox || state.mode === 'livre') renderBox();
+  else renderRecipe();
+}
+
+function renderPeriodicTable(){
+  const tbl = document.getElementById('periodic-table'); tbl.innerHTML = '';
+  ELEMENTS.forEach(el => {
+    const [sym, name, z, period, group, cat] = el;
+    const d = document.createElement('div');
+    d.className = 'element cat-' + cat;
+    d.style.gridRow = period; d.style.gridColumn = group;
+    d.title = name + ' (Z=' + z + ')';
+    d.innerHTML = `<span class="z">${z}</span>${sym}`;
+    d.draggable = true;
+    d.addEventListener('dragstart', ev => { ev.dataTransfer.setData('text/plain', sym); ev.dataTransfer.effectAllowed = 'copy'; d.classList.add('dragging'); });
+    d.addEventListener('dragend', () => d.classList.remove('dragging'));
+    d.addEventListener('click', () => addAtom(sym));
+    tbl.appendChild(d);
+  });
+}
+
+function renderRecipe(){
+  const r = RECIPES[state.recipeIndex];
+  document.getElementById('recipe-name').textContent = r.name;
+  document.getElementById('recipe-formula').textContent = '(' + r.formula + ')';
+  document.getElementById('recipe-need').textContent = 'Você precisa de: ' + needText(r.need);
+  document.getElementById('tbl-progress').textContent = 'Mistura ' + (state.recipeIndex+1) + '/' + RECIPES.length;
+  state.mix = []; renderBox();
+  const timerEl = document.getElementById('tbl-timer');
+  if (state.mode === 'tempo'){ timerEl.style.display = ''; startTimer(120, timerEl, () => endGame(false, '⏰ O tempo acabou! Tente novamente.')); }
+}
+
+function renderBox(){
+  const box = document.getElementById('mixing-box');
+  if (state.mix.length === 0){
+    let hint;
+    if (state.sandbox) hint = '🧪 Toque ou clique nos elementos. Explore até <strong>20 átomos</strong>!';
+    else hint = 'Toque ou clique nos elementos da tabela para adicioná-los 🧪';
+    box.innerHTML = '<span class="box-hint">' + hint + '</span>';
+    return;
+  }
+  box.innerHTML = '';
+  state.mix.forEach((sym, i) => {
+    const chip = document.createElement('div'); chip.className = 'atom-chip'; chip.textContent = sym; chip.title = 'Clique para remover';
+    chip.addEventListener('click', () => { state.mix.splice(i, 1); renderBox(); });
+    box.appendChild(chip);
+  });
+}
+
+function addAtom(sym){
+  const limit = state.sandbox ? 20 : 12;
+  if (state.mix.length >= limit) return;
+  state.mix.push(sym); renderBox();
+}
+
+function checkMix(){
+  if (state.mix.length === 0) return;
+  if (state.sandbox || state.mode === 'livre') return freeMix();
+
+  const r = RECIPES[state.recipeIndex];
+  const have = countsFromMix(state.mix);
+  const keys = new Set([...Object.keys(r.need), ...Object.keys(have)]);
+  let ok = true;
+  keys.forEach(k => { if ((r.need[k] || 0) !== (have[k] || 0)) ok = false; });
+  if (ok){
+    stopTimer();
+    showReaction({name: r.name, formula: r.formula, emoji: r.emoji, desc: r.desc, type: 'known'});
+    setTimeout(() => {
+      state.recipeIndex++;
+      if (state.recipeIndex >= RECIPES.length) endGame(true);
+      else renderRecipe();
+    }, 2200);
+  } else {
+    stopTimer();
+    endGame(false, '❌ Essa mistura não formou <strong>' + r.name + '</strong>!<br>Era preciso: <strong>' + needText(r.need) + '</strong>');
+  }
+}
+
+function freeMix(){
+  const counts = countsFromMix(state.mix);
+  const key = countsKey(counts);
+  const found = COMP_MAP[key];
+  const total = state.mix.length;
+  let name, formula, emoji, desc, type;
+
+  if (found){
+    name = found.n; formula = found.f; emoji = found.emoji; desc = found.desc; type = 'known';
+    if (!state.foundKeys.has(key)){
+      state.foundKeys.add(key);
+      state.found.push(found.n + ' (' + found.f + ')');
+      renderFound();
+    }
+  } else if (total === 1){
+    const sym = state.mix[0];
+    const el = ELEMENTS.find(e => e[0] === sym);
+    const info = ELEMENT_INFO[sym] || {emoji:'⚛️', desc:'Elemento químico'};
+    name = 'Átomo de ' + (el ? el[1] : sym); formula = sym; emoji = info.emoji; desc = info.desc; type = 'atom';
+  } else {
+    name = MYSTERY_NAMES[Math.floor(Math.random() * MYSTERY_NAMES.length)];
+    formula = formulaFromCounts(counts); emoji = '🧪';
+    desc = 'Composto misterioso que ninguém conhece'; type = 'mystery';
+  }
+  showReaction({name, formula, emoji, desc, type});
+  state.mix = []; renderBox();
+}
+
+function renderFound(){
+  const list = document.getElementById('found-list'); list.innerHTML = '';
+  state.found.forEach(f => {
+    const chip = document.createElement('span'); chip.className = 'found-chip'; chip.textContent = '✅ ' + f; list.appendChild(chip);
+  });
+  const prefix = state.sandbox ? '🧪' : '🕊️';
+  document.getElementById('tbl-progress').textContent = prefix + ' Descobertas: ' + state.found.length;
+}
+
+function showReaction(info){
+  const el = document.getElementById('reaction');
+  el.innerHTML = `<div class="reaction-card ${info.type}">
+      <div class="reaction-emoji">${info.emoji}</div>
+      <div class="reaction-title">${info.name}</div>
+      <div class="reaction-formula">${info.formula}</div>
+      <div class="reaction-desc">${info.desc}</div>
+      <div class="reaction-tag">${info.type === 'known' ? '✅ SUBSTÂNCIA REAL' : info.type === 'atom' ? '⚛️ ELEMENTO' : '❓ MISTURA DESCONHECIDA'}</div>
+    </div>`;
+  el.classList.add('show');
+  clearTimeout(reactionTimeout);
+  reactionTimeout = setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+function resetSandboxDiscoveries(){
+  state.found = [];
+  state.foundKeys = new Set();
+  state.mix = [];
+  renderFound();
+  renderBox();
+}
+
+/* ======================= CORRIDA ======================= */
+function startRace(){
+  setExtraBackground('race', '#ffd166');
+  const all = [];
+  SUBJECTS.forEach(s => { if (s.id === 'tabela') return; s.questions.forEach(q => all.push({q: q.q, options: q.options, answer: q.answer, subjectName: s.name, subjectIcon: s.icon, subjectColor: s.color})); });
+  shuffle(all);
+  state.raceQuestions = all.slice(0, 10);
+  state.raceIndex = 0; state.raceCorrect = 0;
+  showScreen('screen-race');
+  renderRaceQuestion();
+}
+function updateRaceRunner(){ document.getElementById('race-runner').style.left = (2 + state.raceCorrect * 8) + '%'; }
+function renderRaceQuestion(){
+  if (state.raceIndex >= state.raceQuestions.length){
+    endGame(true, null, '🏁 Você cruzou a linha de chegada! Completou a corrida com <strong>' + state.raceCorrect + ' acertos</strong>!');
+    return;
+  }
+  const q = state.raceQuestions[state.raceIndex];
+  document.getElementById('race-progress').textContent = state.raceCorrect + '/10';
+  document.getElementById('race-question-text').textContent = q.q;
+  const badge = document.getElementById('race-subject-badge');
+  badge.textContent = q.subjectIcon + ' ' + q.subjectName;
+  badge.style.color = q.subjectColor; badge.style.borderColor = q.subjectColor;
+  badge.style.background = q.subjectColor + '22';
+  const opts = document.getElementById('race-options'); opts.innerHTML = '';
+  q.options.forEach((o, i) => {
+    const b = document.createElement('button'); b.className = 'option';
+    b.innerHTML = `<span class="badge">${'ABCD'[i]}</span><span>${o}</span>`;
+    b.addEventListener('click', () => answerRace(i, b)); opts.appendChild(b);
+  });
+  updateRaceRunner();
+  startTimer(60, document.getElementById('race-timer'), () => endGame(false, '⏰ O tempo acabou! A corrida terminou.'));
+}
+function answerRace(index, btn){
+  const q = state.raceQuestions[state.raceIndex];
+  stopTimer();
+  document.querySelectorAll('#race-options .option').forEach(b => b.disabled = true);
+  if (index === q.answer){
+    btn.classList.add('correct'); state.raceCorrect++; state.raceIndex++;
+    updateRaceRunner();
+    setTimeout(() => renderRaceQuestion(), 800);
+  } else {
+    btn.classList.add('wrong');
+    document.querySelectorAll('#race-options .option')[q.answer].classList.add('correct');
+    setTimeout(() => endGame(false, '❌ Resposta correta: <strong>' + q.options[q.answer] + '</strong><br>A corrida terminou!'), 1500);
+  }
+}
+
+/* ======================= PUZZLE ======================= */
+function getNeighbors(idx){
+  const r = Math.floor(idx / 3), c = idx % 3;
+  const n = [];
+  if (r > 0) n.push(idx - 3);
+  if (r < 2) n.push(idx + 3);
+  if (c > 0) n.push(idx - 1);
+  if (c < 2) n.push(idx + 1);
+  return n;
+}
+function shufflePuzzle(moves){
+  for (let i = 0; i < moves; i++){
+    const emptyIdx = state.puzzleBoard.indexOf(0);
+    const neighbors = getNeighbors(emptyIdx);
+    const target = neighbors[Math.floor(Math.random() * neighbors.length)];
+    [state.puzzleBoard[emptyIdx], state.puzzleBoard[target]] = [state.puzzleBoard[target], state.puzzleBoard[emptyIdx]];
+  }
+}
+function isPuzzleSolved(){ for (let i = 0; i < 8; i++) if (state.puzzleBoard[i] !== i + 1) return false; return state.puzzleBoard[8] === 0; }
+function updatePuzzleTime(){
+  if (!state.puzzleStart) return;
+  const secs = Math.floor((Date.now() - state.puzzleStart) / 1000);
+  const el = document.getElementById('puzzle-time');
+  if (el) el.textContent = '⏱ ' + Math.floor(secs/60) + ':' + String(secs%60).padStart(2,'0');
+}
+function renderPuzzle(){
+  const grid = document.getElementById('puzzle-grid'); grid.innerHTML = '';
+  state.puzzleBoard.forEach((val, i) => {
+    const tile = document.createElement('div');
+    tile.className = 'puzzle-tile' + (val === 0 ? ' empty' : '');
+    tile.textContent = val === 0 ? '' : val;
+    if (val !== 0) tile.addEventListener('click', () => clickPuzzleTile(i));
+    grid.appendChild(tile);
+  });
+  document.getElementById('puzzle-moves').textContent = 'Jogadas: ' + state.puzzleMoves;
+}
+function clickPuzzleTile(i){
+  const emptyIdx = state.puzzleBoard.indexOf(0);
+  if (!getNeighbors(emptyIdx).includes(i)) return;
+  [state.puzzleBoard[emptyIdx], state.puzzleBoard[i]] = [state.puzzleBoard[i], state.puzzleBoard[emptyIdx]];
+  state.puzzleMoves++; renderPuzzle();
+  if (isPuzzleSolved()){
+    if (state.puzzleTimer){ clearInterval(state.puzzleTimer); state.puzzleTimer = null; }
+    const secs = Math.floor((Date.now() - state.puzzleStart) / 1000);
+    setTimeout(() => endGame(true, null, '🧩 Resolveu o quebra-cabeça em <strong>' + state.puzzleMoves + '</strong> jogadas e <strong>' + secs + 's</strong>!'), 500);
+  }
+}
+function startPuzzle(){
+  setExtraBackground('puzzle', '#ff6b6b');
+  state.puzzleBoard = [1,2,3,4,5,6,7,8,0];
+  shufflePuzzle(120);
+  state.puzzleMoves = 0;
+  state.puzzleStart = Date.now();
+  if (state.puzzleTimer) clearInterval(state.puzzleTimer);
+  state.puzzleTimer = setInterval(updatePuzzleTime, 1000);
+  showScreen('screen-puzzle');
+  renderPuzzle(); updatePuzzleTime();
+}
+
+/* ======================= MEMÓRIA ======================= */
+function updateMemoryUI(){
+  state.memoryCards.forEach(card => {
+    if (!card.el) return;
+    card.el.classList.toggle('flipped', card.flipped || card.matched);
+    card.el.classList.toggle('matched', card.matched);
+  });
+  document.getElementById('memory-moves').textContent = 'Jogadas: ' + state.memoryMoves;
+}
+function renderMemoryGrid(){
+  const grid = document.getElementById('memory-grid'); grid.innerHTML = '';
+  state.memoryCards.forEach((card, i) => {
+    const el = document.createElement('div'); el.className = 'memory-card';
+    el.innerHTML = `<div class="memory-card-inner">
+      <div class="memory-card-face memory-card-back">❓</div>
+      <div class="memory-card-face memory-card-front">${card.emoji}</div>
+    </div>`;
+    el.addEventListener('click', () => clickMemoryCard(i));
+    grid.appendChild(el); card.el = el;
+  });
+}
+function clickMemoryCard(i){
+  if (state.memoryLocked) return;
+  const card = state.memoryCards[i];
+  if (card.matched || card.flipped) return;
+  card.flipped = true;
+  state.memoryFlipped.push(i);
+  updateMemoryUI();
+  if (state.memoryFlipped.length === 2){
+    state.memoryMoves++;
+    state.memoryLocked = true;
+    const [a, b] = state.memoryFlipped;
+    if (state.memoryCards[a].emoji === state.memoryCards[b].emoji){
+      state.memoryCards[a].matched = true;
+      state.memoryCards[b].matched = true;
+      state.memoryFlipped = []; state.memoryLocked = false;
+      updateMemoryUI();
+      if (state.memoryCards.every(c => c.matched)){
+        setTimeout(() => endGame(true, null, '🐼 Encontrou todos os pares em <strong>' + state.memoryMoves + '</strong> jogadas!'), 500);
+      }
+    } else {
+      setTimeout(() => {
+        state.memoryCards[a].flipped = false;
+        state.memoryCards[b].flipped = false;
+        state.memoryFlipped = []; state.memoryLocked = false;
+        updateMemoryUI();
+      }, 1000);
+    }
+  }
+}
+function startMemory(){
+  setExtraBackground('memory', '#4ecdc4');
+  const deck = [...ANIMALS, ...ANIMALS];
+  shuffle(deck);
+  state.memoryCards = deck.map(emoji => ({emoji, matched:false, flipped:false, el:null}));
+  state.memoryFlipped = []; state.memoryLocked = false; state.memoryMoves = 0;
+  renderMemoryGrid(); showScreen('screen-memory'); updateMemoryUI();
+}
+
+/* ======================= FORCA ======================= */
+function startHangman(){
+  setExtraBackground('hangman', '#a29bfe');
+  const w = HANGMAN_WORDS[Math.floor(Math.random() * HANGMAN_WORDS.length)];
+  state.hangmanWord = w.w; state.hangmanHint = w.h;
+  state.hangmanGuessed = new Set(); state.hangmanLives = 6;
+  showScreen('screen-hangman'); renderHangman();
+}
+function renderHangman(){
+  const wordEl = document.getElementById('hangman-word'); wordEl.innerHTML = '';
+  [...state.hangmanWord].forEach(letter => {
+    const span = document.createElement('span');
+    const revealed = state.hangmanGuessed.has(letter);
+    span.className = 'hangman-letter' + (revealed ? ' revealed' : '');
+    span.textContent = revealed ? letter : '?';
+    wordEl.appendChild(span);
+  });
+  document.getElementById('hangman-lives').textContent = '❤️'.repeat(state.hangmanLives) + '🖤'.repeat(6 - state.hangmanLives);
+  const faces = ['💀','😱','😨','😰','😟','😐','😀'];
+  document.getElementById('hangman-drawing').textContent = faces[state.hangmanLives];
+  document.getElementById('hangman-hint').textContent = '💡 Dica: ' + state.hangmanHint;
+  const kb = document.getElementById('hangman-keyboard'); kb.innerHTML = '';
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(letter => {
+    const b = document.createElement('button');
+    b.className = 'hangman-key'; b.textContent = letter;
+    if (state.hangmanGuessed.has(letter)){
+      b.classList.add(state.hangmanWord.includes(letter) ? 'correct' : 'wrong');
+      b.disabled = true;
+    }
+    b.addEventListener('click', () => guessHangman(letter));
+    kb.appendChild(b);
+  });
+}
+function guessHangman(letter){
+  if (state.hangmanGuessed.has(letter)) return;
+  state.hangmanGuessed.add(letter);
+  if (!state.hangmanWord.includes(letter)) state.hangmanLives--;
+  const won = [...state.hangmanWord].every(l => state.hangmanGuessed.has(l));
+  renderHangman();
+  if (won) setTimeout(() => endGame(true, null, '🪢 Você acertou a palavra <strong>' + state.hangmanWord + '</strong>!'), 600);
+  else if (state.hangmanLives <= 0) setTimeout(() => endGame(false, '💀 A palavra era <strong>' + state.hangmanWord + '</strong>'), 600);
+}
+
+/* ======================= CAÇA-PALAVRAS ======================= */
+function buildWordSearch(){
+  const words = [...WS_WORDS].sort((a, b) => b.length - a.length);
+  const size = WS_SIZE;
+  const grid = Array.from({length: size}, () => Array(size).fill(''));
+  const placed = [];
+  words.forEach(word => {
+    let attempts = 0, done = false;
+    while (attempts < 200 && !done){
+      attempts++;
+      const dir = Math.random() < 0.5 ? 'h' : 'v';
+      let r, c;
+      if (dir === 'h'){ r = Math.floor(Math.random() * size); c = Math.floor(Math.random() * (size - word.length + 1)); }
+      else { r = Math.floor(Math.random() * (size - word.length + 1)); c = Math.floor(Math.random() * size); }
+      let fits = true;
+      const cells = [];
+      for (let i = 0; i < word.length; i++){
+        const rr = dir === 'h' ? r : r + i;
+        const cc = dir === 'h' ? c + i : c;
+        if (grid[rr][cc] !== '' && grid[rr][cc] !== word[i]){ fits = false; break; }
+        cells.push({r: rr, c: cc});
+      }
+      if (fits){
+        cells.forEach((cell, i) => grid[cell.r][cell.c] = word[i]);
+        placed.push({word, cells}); done = true;
+      }
+    }
+  });
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  for (let r = 0; r < size; r++) for (let c = 0; c < size; c++) if (grid[r][c] === '') grid[r][c] = letters[Math.floor(Math.random() * 26)];
+  return {grid, placed, words};
+}
+function cellsMatch(a, b){ if (a.length !== b.length) return false; return a.every((cell, i) => cell.r === b[i].r && cell.c === b[i].c); }
+function startWordSearch(){
+  setExtraBackground('wordsearch', '#00b894');
+  const data = buildWordSearch();
+  state.wsGrid = data.grid; state.wsPlaced = data.placed;
+  state.wsWords = data.words; state.wsFound = []; state.wsStart = null; state.wsSize = WS_SIZE;
+  showScreen('screen-wordsearch'); renderWordSearch();
+}
+function renderWordSearch(){
+  const gridEl = document.getElementById('ws-grid'); const size = state.wsSize;
+  gridEl.style.gridTemplateColumns = `repeat(${size}, 1fr)`; gridEl.innerHTML = '';
+  const foundCells = new Set();
+  state.wsFound.forEach(w => w.cells.forEach(c => foundCells.add(c.r + ',' + c.c)));
+  for (let r = 0; r < size; r++){
+    for (let c = 0; c < size; c++){
+      const cell = document.createElement('div'); cell.className = 'ws-cell';
+      cell.textContent = state.wsGrid[r][c];
+      if (foundCells.has(r + ',' + c)) cell.classList.add('found');
+      if (state.wsStart && state.wsStart.r === r && state.wsStart.c === c) cell.classList.add('selected');
+      cell.addEventListener('click', () => clickWsCell(r, c));
+      gridEl.appendChild(cell);
+    }
+  }
+  const listEl = document.getElementById('ws-words'); listEl.innerHTML = '';
+  state.wsWords.forEach(word => {
+    const w = document.createElement('div');
+    w.className = 'ws-word' + (state.wsFound.some(f => f.word === word) ? ' found' : '');
+    w.textContent = word; listEl.appendChild(w);
+  });
+  document.getElementById('ws-progress').textContent = state.wsFound.length + '/' + state.wsWords.length;
+}
+function clickWsCell(r, c){
+  if (!state.wsStart){ state.wsStart = {r, c}; renderWordSearch(); return; }
+  const start = state.wsStart; state.wsStart = null;
+  if (start.r === r && start.c === c){ renderWordSearch(); return; }
+  if (start.r !== r && start.c !== c){ renderWordSearch(); return; }
+  const cells = [];
+  if (start.r === r){
+    const [a, b] = start.c <= c ? [start.c, c] : [c, start.c];
+    for (let cc = a; cc <= b; cc++) cells.push({r, c: cc});
+  } else {
+    const [a, b] = start.r <= r ? [start.r, r] : [r, start.r];
+    for (let rr = a; rr <= b; rr++) cells.push({r: rr, c});
+  }
+  const letters = cells.map(cell => state.wsGrid[cell.r][cell.c]).join('');
+  const reversed = [...letters].reverse().join('');
+  const match = state.wsPlaced.find(p =>
+    !state.wsFound.some(f => f.word === p.word) &&
+    ((p.word === letters && cellsMatch(p.cells, cells)) ||
+     (p.word === reversed && cellsMatch(p.cells, [...cells].reverse())))
+  );
+  if (match){
+    state.wsFound.push(match); renderWordSearch();
+    if (state.wsFound.length === state.wsWords.length){
+      setTimeout(() => endGame(true, null, '🔍 Você encontrou todas as ' + state.wsWords.length + ' palavras!'), 500);
+    }
+  } else renderWordSearch();
+}
+
+/* ======================= RELÂMPAGO ======================= */
+function generateMathQuestion(){
+  const ops = ['+','-','×'];
+  const op = ops[Math.floor(Math.random() * 3)];
+  let a, b, answer;
+  if (op === '+'){ a = Math.floor(Math.random()*50)+1; b = Math.floor(Math.random()*50)+1; answer = a + b; }
+  else if (op === '-'){ a = Math.floor(Math.random()*50)+20; b = Math.floor(Math.random()*(a-10))+1; answer = a - b; }
+  else { a = Math.floor(Math.random()*10)+2; b = Math.floor(Math.random()*10)+2; answer = a * b; }
+  const wrongs = new Set();
+  while (wrongs.size < 3){
+    const delta = Math.floor(Math.random()*10)+1;
+    const w = answer + (Math.random() < 0.5 ? -delta : delta);
+    if (w > 0 && w !== answer) wrongs.add(w);
+  }
+  const options = shuffle([answer, ...wrongs]);
+  return {q: `${a} ${op} ${b} = ?`, options, answer: options.indexOf(answer)};
+}
+function startMathSprint(){
+  setExtraBackground('mathsprint', '#e84393');
+  state.mathScore = 0; state.mathTotal = 0;
+  showScreen('screen-mathsprint');
+  nextMathQuestion();
+  startTimer(60, document.getElementById('math-timer'), () => {
+    endGame(true, null, '⚡ Você acertou <strong>' + state.mathScore + '</strong> de <strong>' + state.mathTotal + '</strong> perguntas!');
+  });
+}
+function nextMathQuestion(){
+  const q = generateMathQuestion();
+  state.mathCurrent = q;
+  document.getElementById('math-question').textContent = q.q;
+  document.getElementById('math-score').textContent = '✅ ' + state.mathScore;
+  const opts = document.getElementById('math-options'); opts.innerHTML = '';
+  q.options.forEach((o, i) => {
+    const b = document.createElement('button'); b.className = 'option';
+    b.innerHTML = `<span class="badge">${'ABCD'[i]}</span><span>${o}</span>`;
+    b.addEventListener('click', () => answerMath(i, b)); opts.appendChild(b);
+  });
+}
+function answerMath(i, btn){
+  const q = state.mathCurrent;
+  state.mathTotal++;
+  document.querySelectorAll('#math-options .option').forEach(b => b.disabled = true);
+  if (i === q.answer){
+    btn.classList.add('correct'); state.mathScore++;
+    document.getElementById('math-score').textContent = '✅ ' + state.mathScore;
+  } else {
+    btn.classList.add('wrong');
+    document.querySelectorAll('#math-options .option')[q.answer].classList.add('correct');
+  }
+  setTimeout(() => {
+    if (timerHandle && document.getElementById('screen-mathsprint').classList.contains('active')) nextMathQuestion();
+  }, 500);
+}
+
+/* ======================= OPOSTOS ======================= */
+function startAntonyms(){
+  setExtraBackground('antonyms', '#fdcb6e');
+  const pairs = shuffle([...ANTONYM_PAIRS]).slice(0, 5);
+  state.antonymsPairs = pairs;
+  state.antonymsLeft = shuffle(pairs.map(p => p[0]));
+  state.antonymsRight = shuffle(pairs.map(p => p[1]));
+  state.antonymsSelectedLeft = null;
+  state.antonymsMatchedLeft = new Set();
+  state.antonymsMatchedRight = new Set();
+  showScreen('screen-antonyms'); renderAntonyms();
+}
+function renderAntonyms(){
+  const leftEl = document.getElementById('ant-left');
+  const rightEl = document.getElementById('ant-right');
+  leftEl.innerHTML = '';
+  state.antonymsLeft.forEach(word => {
+    const b = document.createElement('button'); b.className = 'ant-word'; b.textContent = word;
+    if (state.antonymsMatchedLeft.has(word)) b.classList.add('matched');
+    if (state.antonymsSelectedLeft === word) b.classList.add('selected');
+    b.disabled = state.antonymsMatchedLeft.has(word);
+    b.addEventListener('click', () => { state.antonymsSelectedLeft = word; renderAntonyms(); });
+    leftEl.appendChild(b);
+  });
+  rightEl.innerHTML = '';
+  state.antonymsRight.forEach(word => {
+    const b = document.createElement('button'); b.className = 'ant-word'; b.textContent = word;
+    if (state.antonymsMatchedRight.has(word)) b.classList.add('matched');
+    b.disabled = state.antonymsMatchedRight.has(word);
+    b.addEventListener('click', () => selectRightAntonym(word));
+    rightEl.appendChild(b);
+  });
+  document.getElementById('ant-progress').textContent = state.antonymsMatchedLeft.size + '/' + state.antonymsPairs.length + ' pares';
+}
+function selectRightAntonym(word){
+  if (!state.antonymsSelectedLeft) return;
+  const left = state.antonymsSelectedLeft;
+  const pair = state.antonymsPairs.find(p => (p[0] === left && p[1] === word) || (p[1] === left && p[0] === word));
+  if (pair){
+    state.antonymsMatchedLeft.add(left);
+    state.antonymsMatchedRight.add(word);
+    state.antonymsSelectedLeft = null;
+    renderAntonyms();
+    if (state.antonymsMatchedLeft.size === state.antonymsPairs.length){
+      setTimeout(() => endGame(true, null, '🔗 Você encontrou todos os opostos!'), 500);
+    }
+  } else { state.antonymsSelectedLeft = null; renderAntonyms(); }
+}
+
+/* ======================= SEQUÊNCIA ======================= */
+function generateSequence(){
+  const type = Math.floor(Math.random() * 4);
+  let seq = [], answer;
+  if (type === 0){
+    const start = Math.floor(Math.random()*5)+1;
+    const step = Math.floor(Math.random()*4)+2;
+    seq = [start, start+step, start+step*2, start+step*3]; answer = start+step*4;
+  } else if (type === 1){
+    const start = Math.floor(Math.random()*3)+1;
+    const mult = Math.floor(Math.random()*2)+2;
+    seq = [start, start*mult, start*mult**2, start*mult**3]; answer = start*mult**4;
+  } else if (type === 2){
+    const start = Math.floor(Math.random()*5)+1;
+    seq = [start, start+1, start+3, start+6, start+10]; answer = start+15;
+  } else {
+    const start = Math.floor(Math.random()*5)+1;
+    seq = [start, start*2, start*4, start*8]; answer = start*16;
+  }
+  const wrongs = new Set();
+  while (wrongs.size < 3){
+    const delta = Math.floor(Math.random()*10)+1;
+    const w = answer + (Math.random() < 0.5 ? -delta : delta);
+    if (w > 0 && w !== answer) wrongs.add(w);
+  }
+  const options = shuffle([answer, ...wrongs]);
+  return {seq, answer, options};
+}
+function startSequence(){
+  setExtraBackground('sequence', '#00cec9');
+  state.seqIndex = 0; state.seqCorrect = 0; state.seqQuestions = [];
+  for (let i = 0; i < 10; i++) state.seqQuestions.push(generateSequence());
+  showScreen('screen-sequence'); renderSequence();
+}
+function renderSequence(){
+  if (state.seqIndex >= state.seqQuestions.length){
+    endGame(true, null, '🧠 Você acertou <strong>' + state.seqCorrect + '</strong> de 10 sequências!');
+    return;
+  }
+  const q = state.seqQuestions[state.seqIndex];
+  state.seqCurrent = q;
+  document.getElementById('seq-display').textContent = q.seq.join('   ') + '   ?';
+  document.getElementById('seq-progress').textContent = 'Sequência ' + (state.seqIndex+1) + '/10 · ✅ ' + state.seqCorrect;
+  const opts = document.getElementById('seq-options'); opts.innerHTML = '';
+  q.options.forEach((o, i) => {
+    const b = document.createElement('button'); b.className = 'option';
+    b.innerHTML = `<span class="badge">${'ABCD'[i]}</span><span>${o}</span>`;
+    b.addEventListener('click', () => answerSequence(i, b)); opts.appendChild(b);
+  });
+}
+function answerSequence(i, btn){
+  const q = state.seqCurrent;
+  document.querySelectorAll('#seq-options .option').forEach(b => b.disabled = true);
+  if (q.options[i] === q.answer){ btn.classList.add('correct'); state.seqCorrect++; }
+  else {
+    btn.classList.add('wrong');
+    document.querySelectorAll('#seq-options .option')[q.options.indexOf(q.answer)].classList.add('correct');
+  }
+  state.seqIndex++;
+  setTimeout(() => { if (document.getElementById('screen-sequence').classList.contains('active')) renderSequence(); }, 900);
+}
+
+/* ======================= FIM DE JOGO ======================= */
+function endGame(win, extra, customMsg){
+  stopTimer();
+  if (state.puzzleTimer){ clearInterval(state.puzzleTimer); state.puzzleTimer = null; }
+  const emoji = document.getElementById('result-emoji');
+  const title = document.getElementById('result-title');
+  const msg = document.getElementById('result-msg');
+  if (win){
+    emoji.textContent = '🏆';
+    title.textContent = 'Parabéns! Você venceu!';
+    msg.innerHTML = customMsg || ('Você completou <strong>' + (state.subject ? state.subject.name : 'o desafio') + '</strong> sem errar! 🎉');
+  } else {
+    emoji.textContent = '💔';
+    title.textContent = 'Que pena! Você perdeu.';
+    msg.innerHTML = extra || 'Você errou uma pergunta.';
+  }
+  showScreen('screen-result');
+}
+function goHome(){
+  stopTimer();
+  if (state.puzzleTimer){ clearInterval(state.puzzleTimer); state.puzzleTimer = null; }
+  state.sandbox = false;
+  setBackground(null);
+  showScreen('screen-home');
+}
+function retry(){
+  if (state.sandbox) { openSandbox(); return; }
+  if (state.extraGame === 'race') startRace();
+  else if (state.extraGame === 'puzzle') startPuzzle();
+  else if (state.extraGame === 'memory') startMemory();
+  else if (state.extraGame === 'hangman') startHangman();
+  else if (state.extraGame === 'wordsearch') startWordSearch();
+  else if (state.extraGame === 'mathsprint') startMathSprint();
+  else if (state.extraGame === 'antonyms') startAntonyms();
+  else if (state.extraGame === 'sequence') startSequence();
+  else if (state.subject && state.subject.id === 'tabela') startTableGame();
+  else if (state.subject) startQuiz();
+  else goHome();
+}
+
+/* ======================= EVENTOS ======================= */
+document.querySelectorAll('.mode-card').forEach(btn => {
+  btn.addEventListener('click', () => {
+    state.mode = btn.dataset.mode;
+    state.sandbox = false;
+    if (state.subject.id === 'tabela') startTableGame();
+    else startQuiz();
+  });
+});
+const mixingBox = document.getElementById('mixing-box');
+mixingBox.addEventListener('dragover', ev => { ev.preventDefault(); ev.dataTransfer.dropEffect = 'copy'; mixingBox.classList.add('over'); });
+mixingBox.addEventListener('dragleave', () => mixingBox.classList.remove('over'));
+mixingBox.addEventListener('drop', ev => {
+  ev.preventDefault(); mixingBox.classList.remove('over');
+  const sym = ev.dataTransfer.getData('text/plain');
+  if (sym) addAtom(sym);
+});
+document.getElementById('btn-mix').addEventListener('click', checkMix);
+document.getElementById('btn-clear').addEventListener('click', () => { state.mix = []; renderBox(); });
+document.getElementById('btn-exit').addEventListener('click', goHome);
+document.getElementById('btn-back-mode').addEventListener('click', goHome);
+document.getElementById('btn-retry').addEventListener('click', retry);
+document.getElementById('btn-menu').addEventListener('click', goHome);
+document.getElementById('btn-back-subjects').addEventListener('click', goHome);
+document.getElementById('btn-back-city').addEventListener('click', goHome);
+document.getElementById('btn-back-freeplay').addEventListener('click', goHome);
+document.getElementById('btn-sandbox-reset').addEventListener('click', resetSandboxDiscoveries);
+document.getElementById('btn-puzzle-restart').addEventListener('click', startPuzzle);
+document.getElementById('btn-puzzle-exit').addEventListener('click', goHome);
+document.getElementById('btn-memory-restart').addEventListener('click', startMemory);
+document.getElementById('btn-memory-exit').addEventListener('click', goHome);
+document.getElementById('btn-hangman-exit').addEventListener('click', goHome);
+document.getElementById('btn-ws-exit').addEventListener('click', goHome);
+document.getElementById('btn-ant-exit').addEventListener('click', goHome);
+document.getElementById('btn-seq-exit').addEventListener('click', goHome);
+
+/* ======================= INICIALIZAÇÃO ======================= */
+renderHome();
+setBackground(null);
+</script>
+</body>
+</html>

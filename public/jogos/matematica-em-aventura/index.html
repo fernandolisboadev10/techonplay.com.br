@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://techonplay.com.br/categoria/jogos/jogos-educativos/matematica-em-aventura/">
+    <title>🎲 Matemática em Aventura — Baú Mágico</title>
+<style>
+  :root{
+    --card:#241a44; --card2:#150e2b; --line:#4b3a8a;
+    --accent:#8b5cf6; --ok:#3ddc84; --bad:#ff5c7a;
+  }
+  *{box-sizing:border-box;}
+  [hidden]{display:none !important;}
+  body{
+    margin:0; min-height:100vh;
+    font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+    background:radial-gradient(circle at 20% 0%,#2a1a4a,#120a22 55%,#08040f);
+    color:#eae6ff; padding:16px;
+  }
+  .screen{max-width:1000px;margin:0 auto;}
+  h1{
+    text-align:center; font-size:clamp(22px,4vw,38px); margin:12px 0 4px;
+    background:linear-gradient(90deg,#a78bfa,#22d3ee,#f472b6);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .sub{text-align:center;opacity:.7;margin:0 0 22px;font-size:15px;}
+  .panel{
+    background:linear-gradient(160deg,var(--card),var(--card2));
+    border:2px solid var(--line); border-radius:18px;
+    padding:18px; margin-bottom:16px;
+  }
+  .panel h2{font-size:16px;margin:0 0 12px;color:#c4b5fd;}
+  .hint{font-size:12px;opacity:.65;margin:10px 0 0;}
+  .counts{display:flex;gap:10px;flex-wrap:wrap;}
+  .count-btn{
+    flex:1; min-width:90px; padding:14px 10px; font-size:16px; font-weight:800; cursor:pointer;
+    background:#2a1f52; color:#eae6ff; border:2px solid var(--line);
+    border-radius:14px; transition:.15s; font-family:inherit;
+  }
+  .count-btn:hover{background:#3b2c72;}
+  .count-btn.active{background:linear-gradient(135deg,#7c3aed,#22d3ee);border-color:#a78bfa;color:#fff;}
+
+  .chars{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;}
+  .char-card{
+    position:relative; text-align:center; cursor:pointer; padding:14px 10px;
+    background:#1c1438; border:2px solid var(--line); border-radius:16px;
+    color:#eae6ff; font-family:inherit; transition:.18s;
+  }
+  .char-card:hover:not(:disabled){transform:translateY(-4px);border-color:var(--c);box-shadow:0 8px 24px rgba(0,0,0,.5);}
+  .char-card:disabled{opacity:.35;cursor:not-allowed;}
+  .char-card.locked{opacity:.4;border-style:dashed;}
+  .char-emoji{font-size:40px;line-height:1;}
+  .char-name{font-weight:800;margin:8px 0 2px;color:var(--c);font-size:15px;}
+  .char-power{font-size:12px;font-weight:700;opacity:.9;}
+  .char-desc{font-size:11px;opacity:.6;margin-top:6px;line-height:1.35;}
+  .owner{
+    position:absolute;top:6px;right:6px;font-size:10px;font-weight:800;
+    background:#7c3aed;padding:2px 7px;border-radius:99px;
+  }
+
+  .big-btn{
+    width:100%; padding:16px; font-size:17px; font-weight:800; cursor:pointer;
+    border:none; border-radius:16px; font-family:inherit; color:#fff;
+    background:linear-gradient(135deg,#7c3aed,#a855f7);
+    box-shadow:0 6px 0 #4c1d95, 0 10px 24px rgba(124,58,237,.35);
+    transition:.12s;
+  }
+  .big-btn:hover:not(:disabled){filter:brightness(1.12);}
+  .big-btn:active:not(:disabled){transform:translateY(4px);box-shadow:0 2px 0 #4c1d95;}
+  .big-btn:disabled{opacity:.4;cursor:not-allowed;box-shadow:none;}
+  .big-btn.power{background:linear-gradient(135deg,#0891b2,#22d3ee);box-shadow:0 6px 0 #155e75,0 10px 24px rgba(34,211,238,.3);margin-top:10px;}
+  .big-btn.alt{background:linear-gradient(135deg,#15803d,#22c55e);box-shadow:0 6px 0 #14532d,0 10px 24px rgba(34,197,94,.3);margin-top:10px;}
+  .link-btn{background:none;border:none;color:#a78bfa;cursor:pointer;font-size:13px;text-decoration:underline;font-family:inherit;margin-top:12px;}
+
+  /* ---------- GAME ---------- */
+  .players-bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+  .pcard{
+    display:flex;align-items:center;gap:10px;padding:10px 14px;
+    background:linear-gradient(160deg,#241a44,#150e2b);
+    border:2px solid var(--line); border-radius:14px; flex:1; min-width:150px;
+    transition:.2s;
+  }
+  .pcard.current{border-color:var(--c);box-shadow:0 0 0 2px var(--c),0 0 22px -4px var(--c);transform:translateY(-2px);}
+  .pc-emoji{font-size:26px;}
+  .pc-name{font-weight:800;font-size:13px;}
+  .pc-stats{font-size:12px;opacity:.75;}
+  .fase-badge{
+    display:inline-block;font-size:10px;font-weight:800;padding:1px 7px;
+    border-radius:99px;margin-left:4px;color:#0b0616;
+  }
+
+  .fase-bar{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+  .fase-chip{
+    flex:1;min-width:70px;text-align:center;padding:8px 4px;border-radius:12px;
+    font-size:12px;font-weight:800;background:#1c1438;border:2px solid #2c2154;
+    color:#8b83b8;transition:.2s;
+  }
+  .fase-chip .fc-sub{display:block;font-size:13px;font-weight:600;margin-top:2px;min-height:18px;}
+  .fase-chip.has-player{color:#eae6ff;border-color:var(--fc);}
+  .fase-chip.current{
+    color:#fff;background:linear-gradient(160deg,#241a44,#150e2b);
+    box-shadow:0 0 0 2px var(--fc),0 0 18px -4px var(--fc);transform:translateY(-2px);
+  }
+
+  .game-main{display:flex;gap:16px;align-items:flex-start;}
+  .board-wrap{flex:1;min-width:0;}
+  .board{
+    display:grid; grid-template-columns:repeat(6,1fr); grid-template-rows:repeat(5,1fr);
+    gap:clamp(4px,0.8vw,9px); aspect-ratio:6/5; width:100%; max-width:720px;
+  }
+  .tile{
+    position:relative; border-radius:12px; padding:5px 5px 3px;
+    background:linear-gradient(160deg,#2b2050,#1a1233);
+    border:2px solid #3a2d66; display:flex; flex-direction:column;
+    justify-content:space-between; overflow:hidden; transition:.2s;
+  }
+  .fase-strip{position:absolute;top:0;left:0;right:0;height:3px;opacity:.9;}
+  .tile-head{display:flex;justify-content:space-between;align-items:flex-start;font-size:clamp(8px,1.3vw,11px);font-weight:800;margin-top:2px;}
+  .tile-num{opacity:.55;}
+  .tile-icon{font-size:clamp(9px,1.5vw,13px);}
+  .tile.start{background:linear-gradient(160deg,#14532d,#052e16);border-color:#22c55e;}
+  .tile.end{background:linear-gradient(160deg,#713f12,#422006);border-color:#facc15;}
+  .tile.checkpoint{border-color:#fbbf24;border-style:dashed;}
+  .tile.turbo{border-color:#f59e0b;}
+  .tile.trap{border-color:#ef4444;}
+  .tile.bonus{border-color:#22d3ee;}
+  .tile.active-turn{box-shadow:0 0 0 3px #a78bfa,0 0 24px -2px #a78bfa;transform:scale(1.04);z-index:2;}
+  .tile.flash{animation:tileflash .7s ease;}
+  @keyframes tileflash{
+    0%{box-shadow:0 0 0 0 rgba(251,191,36,.9);}
+    60%{box-shadow:0 0 0 12px rgba(251,191,36,0);}
+    100%{box-shadow:0 0 0 0 rgba(251,191,36,0);}
+  }
+  .tokens{display:flex;flex-wrap:wrap;gap:2px;justify-content:center;min-height:22px;}
+  .token{
+    width:clamp(16px,2.6vw,24px);height:clamp(16px,2.6vw,24px);border-radius:50%;
+    display:grid;place-items:center;font-size:clamp(10px,1.7vw,14px);
+    box-shadow:0 0 0 2px rgba(255,255,255,.3),0 2px 6px rgba(0,0,0,.6);
+    animation:pop .3s ease;
+  }
+  @keyframes pop{from{transform:scale(.2);}to{transform:scale(1);}}
+
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;opacity:.7;margin-top:12px;}
+
+  .side{width:280px;flex-shrink:0;display:flex;flex-direction:column;gap:12px;}
+  .turn-info{
+    display:flex;align-items:center;gap:12px;padding:14px;
+    background:linear-gradient(160deg,#241a44,#150e2b);
+    border:2px solid var(--line);border-radius:16px;
+  }
+  .ti-emoji{font-size:34px;}
+  .ti-name{font-weight:800;font-size:15px;}
+  .ti-char{font-size:11px;opacity:.65;}
+  .dice{
+    font-size:44px;text-align:center;padding:6px;
+    background:#1c1438;border:2px solid var(--line);border-radius:16px;
+    line-height:1.1;
+  }
+  .log{
+    background:#100a22;border:2px solid #2c2154;border-radius:14px;
+    padding:10px;height:180px;overflow-y:auto;font-size:12px;line-height:1.5;
+  }
+  .log-line{padding:4px 0;border-bottom:1px solid #1e1738;opacity:.9;}
+  .log-line:last-child{border:none;}
+
+  /* ---------- MODAL ---------- */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(6,3,15,.85);backdrop-filter:blur(6px);
+    display:grid;place-items:center;z-index:100;padding:16px;
+  }
+  .modal{
+    background:linear-gradient(160deg,#241a44,#150e2b);
+    border:2px solid var(--line);border-radius:22px;padding:26px;
+    max-width:540px;width:100%;box-shadow:0 24px 70px rgba(0,0,0,.7);
+    animation:rise .25s ease;
+  }
+  @keyframes rise{from{transform:translateY(20px) scale(.96);opacity:0;}to{transform:none;opacity:1;}}
+  .q-label{font-size:12px;font-weight:800;letter-spacing:.5px;color:#22d3ee;text-align:center;margin-bottom:10px;text-transform:uppercase;}
+  .q-text{font-size:clamp(30px,7vw,46px);font-weight:900;text-align:center;margin-bottom:22px;letter-spacing:2px;}
+  .options{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .opt{
+    padding:18px;font-size:clamp(18px,4vw,26px);font-weight:900;cursor:pointer;
+    border-radius:14px;border:2px solid var(--line);background:#2a1f52;color:#eae6ff;
+    font-family:inherit;transition:.15s;
+  }
+  .opt:hover:not(:disabled){background:#3b2c72;transform:translateY(-2px);}
+  .opt.correct{background:#15803d;border-color:var(--ok);}
+  .opt.wrong{background:#7f1d1d;border-color:var(--bad);}
+  .opt.removed{opacity:.2;text-decoration:line-through;}
+  .opt:disabled{cursor:default;}
+  .feedback{text-align:center;font-weight:800;margin-top:16px;min-height:22px;font-size:15px;}
+  .feedback.ok{color:var(--ok);}
+  .feedback.bad{color:var(--bad);}
+  .win{text-align:center;}
+  .win-emoji{font-size:70px;animation:pop .5s;}
+  .win h2{margin:8px 0;font-size:26px;background:linear-gradient(90deg,#facc15,#f472b6);-webkit-background-clip:text;background-clip:text;color:transparent;}
+
+  /* ---------- BAÚ DE MOEDAS + CONFETE ---------- */
+  .chest-overlay{
+    position:fixed; inset:0; z-index:200; overflow:hidden;
+    background:radial-gradient(circle at 50% 42%, rgba(72,36,120,.97), rgba(6,3,15,.99) 70%);
+    display:grid; place-items:center; padding:16px;
+  }
+  #confettiCanvas{
+    position:absolute; inset:0; width:100%; height:100%;
+    pointer-events:none; z-index:5;
+  }
+  .chest-stage{
+    position:relative; z-index:10; text-align:center; width:100%; max-width:560px;
+  }
+  .chest-title{
+    font-size:clamp(21px,4.4vw,33px); margin:0 0 6px; font-weight:900;
+    background:linear-gradient(90deg,#facc15,#f472b6,#22d3ee);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    filter:drop-shadow(0 4px 16px rgba(244,114,182,.35));
+  }
+  .chest-sub{opacity:.85; margin:0 0 14px; font-size:14px;}
+
+  .chest-wrap{
+    position:relative; width:250px; height:210px; margin:0 auto 6px;
+    display:flex; align-items:flex-end; justify-content:center;
+    cursor:pointer; transition:.2s;
+  }
+  .chest-wrap.open{cursor:default;}
+  .chest-rays{
+    position:absolute; inset:-70px; border-radius:50%; pointer-events:none;
+    background:conic-gradient(from 0deg,
+      rgba(250,204,21,.42), transparent 22%,
+      rgba(250,204,21,.42) 50%, transparent 72%,
+      rgba(250,204,21,.42));
+    filter:blur(8px); opacity:0; transition:opacity .6s;
+    animation:spin 14s linear infinite;
+  }
+  .chest-wrap.open .chest-rays{opacity:1;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .chest{
+    position:relative; width:200px; height:150px;
+    perspective:800px; transition:transform .3s;
+  }
+  .chest-wrap:hover:not(.open) .chest{transform:translateY(-8px) scale(1.04);}
+
+  .chest-base{
+    position:absolute; bottom:0; left:0; right:0; height:92px;
+    background:linear-gradient(180deg,#c2410c,#7c2d12);
+    border:5px solid #431407; border-radius:0 0 16px 16px;
+    box-shadow:
+      inset 0 8px 0 rgba(255,200,120,.25),
+      inset 0 -14px 22px rgba(0,0,0,.45),
+      0 18px 38px rgba(0,0,0,.65);
+  }
+  .chest-base::before{
+    content:''; position:absolute; left:50%; top:-4px; transform:translateX(-50%);
+    width:14px; height:72%; border-radius:3px;
+    background:linear-gradient(90deg,#f59e0b,#fde047,#f59e0b);
+    box-shadow:0 0 12px rgba(251,191,36,.7);
+  }
+  .chest-lid{
+    position:absolute; top:0; left:0; right:0; height:64px;
+    background:linear-gradient(180deg,#d97706,#9a3412);
+    border:5px solid #431407; border-radius:16px 16px 4px 4px;
+    transform-origin:bottom center;
+    transition:transform .85s cubic-bezier(.34,1.4,.64,1);
+    box-shadow:
+      inset 0 6px 0 rgba(255,220,150,.3),
+      0 8px 18px rgba(0,0,0,.55);
+    z-index:3;
+  }
+  .chest-wrap.open .chest-lid{transform:rotateX(-115deg);}
+
+  .chest-lock{
+    position:absolute; left:50%; bottom:56px; transform:translateX(-50%);
+    width:36px; height:36px; border-radius:9px; z-index:4;
+    background:linear-gradient(160deg,#fde047,#f59e0b,#b45309);
+    border:3px solid #78350f; display:grid; place-items:center;
+    font-size:16px; transition:opacity .35s, transform .35s;
+    box-shadow:0 2px 12px rgba(0,0,0,.55);
+  }
+  .chest-wrap.open .chest-lock{opacity:0; transform:translateX(-50%) scale(.3) translateY(14px);}
+
+  .chest-coins{position:absolute; inset:0; z-index:2; pointer-events:none;}
+  .coin{
+    position:absolute; left:50%; bottom:86px; font-size:24px;
+    opacity:0; transform:translateX(-50%);
+    will-change:transform,opacity;
+  }
+  .chest-wrap.open .coin{
+    animation:coinFly 1.3s cubic-bezier(.2,.7,.4,1) forwards;
+  }
+  @keyframes coinFly{
+    0%{opacity:0; transform:translate(-50%,0) scale(.4);}
+    25%{opacity:1;}
+    70%{opacity:1;}
+    100%{opacity:0; transform:translate(calc(-50% + var(--dx)), -150px) scale(1.15) rotate(var(--rot));}
+  }
+
+  .chest-hint{
+    font-size:13px; font-weight:800; color:#fde047; margin:0 0 6px;
+    animation:pulse 1.2s ease-in-out infinite;
+  }
+  .chest-wrap.open + .chest-hint{display:none;}
+  @keyframes pulse{0%,100%{opacity:.5;transform:scale(.98);}50%{opacity:1;transform:scale(1.04);}}
+
+  .chest-reveal{animation:revealPop .65s cubic-bezier(.34,1.56,.64,1);}
+  @keyframes revealPop{
+    from{opacity:0; transform:scale(.55) translateY(28px);}
+    to{opacity:1; transform:none;}
+  }
+  .reveal-card{
+    position:relative; max-width:330px; margin:0 auto 18px;
+    padding:26px 20px 20px; border-radius:22px;
+    background:linear-gradient(160deg,#2a1f52,#150e2b);
+    border:3px solid var(--c);
+    box-shadow:0 0 46px -6px var(--c), 0 22px 54px rgba(0,0,0,.65);
+  }
+  .reveal-badge{
+    position:absolute; top:-15px; left:50%; transform:translateX(-50%);
+    white-space:nowrap; font-size:11px; font-weight:900; letter-spacing:1px;
+    padding:6px 16px; border-radius:99px; color:#1a0b2e;
+    background:linear-gradient(90deg,#facc15,#f472b6);
+    box-shadow:0 6px 18px rgba(250,204,21,.55);
+  }
+  .reveal-card .char-emoji{font-size:58px; animation:bounceIn 1s ease;}
+  @keyframes bounceIn{
+    0%{transform:scale(0) rotate(-30deg);}
+    60%{transform:scale(1.25) rotate(8deg);}
+    100%{transform:scale(1) rotate(0);}
+  }
+
+  @media (max-width:820px){
+    .game-main{flex-direction:column;}
+    .side{width:100%;}
+    .board{max-width:100%;}
+    .log{height:120px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= SETUP ================= -->
+<section id="screen-setup" class="screen">
+  <h1>🎲 Matemática em Aventura</h1>
+  <p class="sub">3 tabuleiros · 5 fases cada · personagens com poderes · baú secreto!</p>
+
+  <div class="panel">
+    <h2>1️⃣ Escolha o tabuleiro (nível)</h2>
+    <div class="counts" id="levelBtns"></div>
+    <p class="hint" id="levelDesc"></p>
+  </div>
+
+  <div class="panel">
+    <h2>2️⃣ Quantos jogadores?</h2>
+    <div class="counts" id="countBtns"></div>
+  </div>
+
+  <div class="panel">
+    <h2 id="pickTitle">3️⃣ Jogador 1, escolha seu personagem</h2>
+    <div class="chars" id="charGrid"></div>
+    <button class="link-btn" id="resetPick">↺ Recomeçar escolhas</button>
+    <p class="hint">🔒 Personagens secretos são desbloqueados dentro do baú ao vencer uma partida!</p>
+  </div>
+
+  <button id="startBtn" class="big-btn" disabled>Começar Jogo ▶</button>
+</section>
+
+<!-- ================= GAME ================= -->
+<section id="screen-game" class="screen" hidden>
+  <div class="players-bar" id="playersBar"></div>
+  <div class="fase-bar" id="faseBar"></div>
+  <div class="game-main">
+    <div class="board-wrap">
+      <div class="board" id="board"></div>
+      <div class="legend">
+        <span>🚩 Fim de fase = +15 pts</span>
+        <span>🚀 Turbo = 20 pts</span>
+        <span>⚠️ Armadilha = erro custa 5 casas</span>
+        <span>💎 Bônus = +15 pts grátis</span>
+      </div>
+    </div>
+    <aside class="side">
+      <div class="turn-info" id="turnInfo"></div>
+      <div class="dice" id="dice">🎲</div>
+      <button id="rollBtn" class="big-btn">🎲 Rolar Dado</button>
+      <button id="powerBtn" class="big-btn power">✨ Poder</button>
+      <div class="log" id="log"></div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= QUESTION MODAL ================= -->
+<div class="modal-overlay" id="modal" hidden>
+  <div class="modal">
+    <div class="q-label" id="qLabel"></div>
+    <div class="q-text" id="qText"></div>
+    <div class="options" id="qOptions"></div>
+    <div class="feedback" id="qFeedback"></div>
+  </div>
+</div>
+
+<!-- ================= BAÚ DE MOEDAS ================= -->
+<div class="chest-overlay" id="chestModal" hidden>
+  <canvas id="confettiCanvas"></canvas>
+  <div class="chest-stage">
+    <h2 class="chest-title" id="chestTitle"></h2>
+    <p class="chest-sub" id="chestSub"></p>
+
+    <div class="chest-wrap" id="chestWrap">
+      <div class="chest-rays"></div>
+      <div class="chest">
+        <div class="chest-base"></div>
+        <div class="chest-coins">
+          <span class="coin" style="--dx:-95px;--rot:-220deg;animation-delay:.02s">🪙</span>
+          <span class="coin" style="--dx:-58px;--rot:-140deg;animation-delay:.10s">🪙</span>
+          <span class="coin" style="--dx:-20px;--rot:-260deg;animation-delay:.18s">🪙</span>
+          <span class="coin" style="--dx: 18px;--rot: 200deg;animation-delay:.06s">🪙</span>
+          <span class="coin" style="--dx: 62px;--rot: 150deg;animation-delay:.14s">🪙</span>
+          <span class="coin" style="--dx: 98px;--rot: 250deg;animation-delay:.22s">🪙</span>
+          <span class="coin" style="--dx:-42px;--rot:-180deg;animation-delay:.26s">💎</span>
+          <span class="coin" style="--dx: 46px;--rot: 170deg;animation-delay:.30s">💎</span>
+        </div>
+        <div class="chest-lid"></div>
+        <div class="chest-lock">🔒</div>
+      </div>
+    </div>
+    <p class="chest-hint" id="chestHint">👆 Toque no baú para abrir!</p>
+
+    <div class="chest-reveal" id="chestReveal" hidden></div>
+  </div>
+</div>
+
+<!-- ================= WIN MODAL ================= -->
+<div class="modal-overlay" id="winModal" hidden>
+  <div class="modal win">
+    <div class="win-emoji" id="winEmoji">🏆</div>
+    <h2 id="winTitle"></h2>
+    <p id="winSub"></p>
+    <button class="big-btn" id="againBtn">Jogar de Novo 🔄</button>
+    <button class="big-btn alt" id="nextLevelBtn" hidden>Próximo Nível ▶</button>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   NÍVEIS (TABULEIROS) — cada um tem 5 FASES
+   ========================================================= */
+const LEVELS = {
+  facil: {
+    key:'facil', name:'Fácil', emoji:'🌱', color:'#22c55e',
+    desc:'Somar e subtrair até 20. Perfeito para começar.',
+    fases:[1,1,2,2,2]
+  },
+  medio: {
+    key:'medio', name:'Médio', emoji:'⚡', color:'#fbbf24',
+    desc:'Tabuada, somas maiores e subtrações. Já dá um desafio!',
+    fases:[1,2,2,3,3]
+  },
+  dificil: {
+    key:'dificil', name:'Difícil', emoji:'🔥', color:'#f87171',
+    desc:'Multiplicação grande, divisão e contas de dois passos.',
+    fases:[2,3,3,4,4]
+  }
+};
+const LEVEL_ORDER = ['facil','medio','dificil'];
+const FASE_COLORS = ['#22c55e','#38bdf8','#a78bfa','#fbbf24','#f87171'];
+
+/* =========================================================
+   PERSONAGENS
+   ========================================================= */
+const CHARACTERS = [
+  { id:'dragao',    emoji:'🐉', name:'Dragão',    power:'Sopro de Fogo',  color:'#ff6b6b',
+    desc:'O adversário que está na frente volta 3 casas.' },
+  { id:'unicornio', emoji:'🦄', name:'Unicórnio', power:'Salto Arco-Íris',color:'#f8a5c2',
+    desc:'Avança 3 casas na hora, sem responder pergunta.' },
+  { id:'mago',      emoji:'🧙', name:'Mago',      power:'Bola de Cristal',color:'#7b68ee',
+    desc:'Elimina 2 alternativas erradas da sua próxima pergunta.' },
+  { id:'lobo',      emoji:'🐺', name:'Lobo',      power:'Faro Fino',      color:'#94a3b8',
+    desc:'Se errar a próxima pergunta, não perde nenhuma casa.' },
+  { id:'raposa',    emoji:'🦊', name:'Raposa',    power:'Roubo Esperto',  color:'#e67e22',
+    desc:'Rouba 15 pontos do jogador com mais pontos.' },
+  { id:'tartaruga', emoji:'🐢', name:'Tartaruga', power:'Casco Firme',    color:'#27ae60',
+    desc:'Passivo: nunca volta mais de 1 casa ao errar.' },
+];
+
+/* Personagens SECRETOS — só aparecem depois de abrir o baú */
+const SECRET_CHARACTERS = [
+  { id:'fenix',   emoji:'🦅', name:'Fênix',   power:'Renascer',  color:'#fb923c',
+    desc:'Ao errar, não volta casas e ainda ganha 10 pontos.' },
+  { id:'grifo',   emoji:'🐲', name:'Grifo',   power:'Voo Real',  color:'#38bdf8',
+    desc:'Avança 5 casas de uma vez, sem responder pergunta.' },
+  { id:'estrela', emoji:'🌟', name:'Estrela', power:'Supernova', color:'#facc15',
+    desc:'Ganha 30 pontos na hora, direto no placar.' },
+];
+
+/* =========================================================
+   PERSISTÊNCIA (personagens desbloqueados)
+   ========================================================= */
+const STORAGE_KEY = 'matAventura_unlocked_v1';
+let unlockedSecrets = [];
+try{
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if(raw) unlockedSecrets = JSON.parse(raw) || [];
+}catch(e){ unlockedSecrets = []; }
+
+function saveUnlocked(){
+  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(unlockedSecrets)); }catch(e){}
+}
+
+function allCharacters(){
+  return [...CHARACTERS, ...SECRET_CHARACTERS.filter(c => unlockedSecrets.includes(c.id))];
+}
+
+/* =========================================================
+   TABULEIRO — 30 casas = 5 fases × 6 casas
+   ========================================================= */
+const TOTAL = 30;
+const TILE_TYPES = {
+  3:'bonus', 4:'turbo',
+  8:'trap', 10:'bonus',
+  13:'turbo', 15:'trap',
+  19:'bonus', 21:'trap',
+  25:'turbo', 27:'trap', 28:'bonus'
+};
+const CHECKPOINTS = new Set([5,11,17,23]);
+const FINISH = TOTAL - 1;
+
+/* =========================================================
+   ESTADO
+   ========================================================= */
+const S = { numPlayers:2, players:[], turn:0, busy:false, finished:false };
+let levelKey = 'facil';
+let chosen = [];
+let pickIndex = 0;
+let pendingWin = null;
+let chestOpened = false;
+
+const el   = id => document.getElementById(id);
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const rnd   = (a,b) => Math.floor(Math.random()*(b-a+1))+a;
+const shuffle = a => { for(let i=a.length-1;i>0;i--){const j=rnd(0,i);[a[i],a[j]]=[a[j],a[i]];} return a; };
+const playerFase = p => Math.min(5, Math.floor(p.pos/6)+1);
+
+/* =========================================================
+   SETUP
+   ========================================================= */
+function renderLevels(){
+  const box = el('levelBtns'); box.innerHTML = '';
+  Object.values(LEVELS).forEach(L=>{
+    const b = document.createElement('button');
+    b.className = 'count-btn' + (L.key===levelKey ? ' active':'');
+    b.innerHTML = `${L.emoji} ${L.name}`;
+    b.onclick = ()=>{ levelKey = L.key; renderLevels(); };
+    box.appendChild(b);
+  });
+  el('levelDesc').textContent =
+    LEVELS[levelKey].desc + ' — 5 fases: ' +
+    LEVELS[levelKey].fases.map((f,i)=>`F${i+1}`).join(' · ');
+}
+
+function renderCounts(){
+  const box = el('countBtns'); box.innerHTML = '';
+  [2,3,4].forEach(n=>{
+    const b = document.createElement('button');
+    b.className = 'count-btn' + (n===S.numPlayers ? ' active':'');
+    b.textContent = n + ' 👥';
+    b.onclick = ()=>{ S.numPlayers = n; chosen=[]; pickIndex=0; renderCounts(); renderChars(); };
+    box.appendChild(b);
+  });
+}
+
+function renderChars(){
+  el('pickTitle').textContent = pickIndex < S.numPlayers
+    ? `3️⃣ Jogador ${pickIndex+1}, escolha seu personagem`
+    : '✅ Todos escolheram! Bora jogar!';
+
+  const grid = el('charGrid'); grid.innerHTML = '';
+
+  // personagens disponíveis (base + desbloqueados)
+  allCharacters().forEach(c=>{
+    const owner = chosen.indexOf(c.id);
+    const taken = owner !== -1;
+    const card = document.createElement('button');
+    card.className = 'char-card';
+    card.style.setProperty('--c', c.color);
+    card.disabled = taken || pickIndex >= S.numPlayers;
+    card.innerHTML = `
+      ${taken ? `<div class="owner">Jogador ${owner+1}</div>` : ''}
+      <div class="char-emoji">${c.emoji}</div>
+      <div class="char-name">${c.name}</div>
+      <div class="char-power">${c.power}</div>
+      <div class="char-desc">${c.desc}</div>`;
+    card.onclick = ()=>{
+      if(pickIndex >= S.numPlayers) return;
+      chosen.push(c.id); pickIndex++; renderChars();
+    };
+    grid.appendChild(card);
+  });
+
+  // personagens secretos ainda bloqueados (silhueta)
+  SECRET_CHARACTERS.filter(c => !unlockedSecrets.includes(c.id)).forEach(c=>{
+    const card = document.createElement('div');
+    card.className = 'char-card locked';
+    card.style.setProperty('--c', '#6b7280');
+    card.innerHTML = `
+      <div class="char-emoji" style="filter:grayscale(1)">🔒</div>
+      <div class="char-name" style="color:#8b83b8">???</div>
+      <div class="char-power" style="opacity:.6">Secreto</div>
+      <div class="char-desc">Abra o baú de moedas vencendo uma partida!</div>`;
+    grid.appendChild(card);
+  });
+
+  el('startBtn').disabled = pickIndex < S.numPlayers;
+  el('startBtn').textContent = pickIndex < S.numPlayers
+    ? `Faltam ${S.numPlayers - pickIndex} jogador(es) escolher...`
+    : 'Começar Jogo ▶';
+}
+
+el('resetPick').onclick = ()=>{ chosen=[]; pickIndex=0; renderChars(); };
+
+/* =========================================================
+   INÍCIO DO JOGO
+   ========================================================= */
+el('startBtn').onclick = startGame;
+
+function startGame(){
+  S.players = chosen.map((cid,i)=>{
+    const c = allCharacters().find(x=>x.id===cid);
+    return { idx:i, char:c, name:`Jogador ${i+1}`, pos:0, points:0,
+             powerUsed:false, shield:false, crystal:false, phoenix:false };
+  });
+  S.turn = 0; S.busy = false; S.finished = false;
+  el('screen-setup').hidden = true;
+  el('screen-game').hidden = false;
+  el('log').innerHTML = '';
+  el('dice').textContent = '🎲';
+  buildBoard();
+  renderAll();
+  log(`🎮 Nível ${LEVELS[levelKey].emoji} ${LEVELS[levelKey].name} — 5 fases!`);
+  log(`Vez de ${S.players[0].name} (${S.players[0].char.name}).`);
+}
+
+/* =========================================================
+   TABULEIRO
+   ========================================================= */
+function buildBoard(){
+  const board = el('board'); board.innerHTML = '';
+  for(let i=0;i<TOTAL;i++){
+    const row = Math.floor(i/6);
+    const col0 = i % 6;
+    const col = (row % 2 === 0) ? col0 : 5 - col0;
+    const fase = Math.min(5, Math.floor(i/6)+1);
+
+    const t = document.createElement('div');
+    t.className = 'tile';
+    t.dataset.index = i;
+    t.style.gridRow = row + 1;
+    t.style.gridColumn = col + 1;
+
+    if(i === 0) t.classList.add('start');
+    if(i === FINISH) t.classList.add('end');
+    if(CHECKPOINTS.has(i)) t.classList.add('checkpoint');
+    const type = TILE_TYPES[i];
+    if(type) t.classList.add(type);
+
+    let icon = '';
+    if(i === FINISH) icon = '🏆';
+    else if(CHECKPOINTS.has(i)) icon = '🚩';
+    else if(type === 'turbo') icon = '🚀';
+    else if(type === 'trap') icon = '⚠️';
+    else if(type === 'bonus') icon = '💎';
+
+    const label = i === 0 ? 'INÍCIO' : i === FINISH ? 'FIM' : i;
+    t.innerHTML = `
+      <div class="fase-strip" style="background:${FASE_COLORS[fase-1]}"></div>
+      <div class="tile-head">
+        <span class="tile-num">${label}</span>
+        <span class="tile-icon">${icon}</span>
+      </div>
+      <div class="tokens"></div>`;
+    board.appendChild(t);
+  }
+}
+
+function flashTile(i){
+  const t = document.querySelector(`.tile[data-index="${i}"]`);
+  if(!t) return;
+  t.classList.add('flash');
+  setTimeout(()=>t.classList.remove('flash'), 750);
+}
+
+/* =========================================================
+   RENDERIZAÇÃO
+   ========================================================= */
+function renderAll(){ renderPlayers(); renderTokens(); renderFaseBar(); renderTurn(); }
+
+function renderPlayers(){
+  const bar = el('playersBar'); bar.innerHTML = '';
+  S.players.forEach((p,i)=>{
+    const d = document.createElement('div');
+    d.className = 'pcard' + (i===S.turn && !S.finished ? ' current' : '');
+    d.style.setProperty('--c', p.char.color);
+    const badges = (p.crystal?'🔮':'') + (p.shield?'🛡️':'') + (p.phoenix?'🦅':'');
+    const f = playerFase(p);
+    d.innerHTML = `
+      <div class="pc-emoji">${p.char.emoji}</div>
+      <div class="pc-info">
+        <div class="pc-name">${p.name} ${badges}
+          <span class="fase-badge" style="background:${FASE_COLORS[f-1]}">F${f}</span>
+        </div>
+        <div class="pc-stats">🏁 ${p.pos} casas · ⭐ ${p.points} pts</div>
+      </div>`;
+    bar.appendChild(d);
+  });
+}
+
+function renderTokens(){
+  document.querySelectorAll('.tile .tokens').forEach(x => x.innerHTML = '');
+  S.players.forEach(p=>{
+    const box = document.querySelector(`.tile[data-index="${p.pos}"] .tokens`);
+    if(!box) return;
+    const chip = document.createElement('div');
+    chip.className = 'token';
+    chip.style.background = p.char.color;
+    chip.textContent = p.char.emoji;
+    chip.title = p.name;
+    box.appendChild(chip);
+  });
+  document.querySelectorAll('.tile').forEach(t => t.classList.remove('active-turn'));
+  const cur = S.players[S.turn];
+  if(cur && !S.finished){
+    document.querySelector(`.tile[data-index="${cur.pos}"]`)?.classList.add('active-turn');
+  }
+}
+
+function renderFaseBar(){
+  const bar = el('faseBar'); bar.innerHTML = '';
+  const cur = S.players[S.turn];
+  for(let f=1; f<=5; f++){
+    const chip = document.createElement('div');
+    chip.className = 'fase-chip';
+    chip.style.setProperty('--fc', FASE_COLORS[f-1]);
+    const here = S.players.filter(p => playerFase(p) === f);
+    if(here.length) chip.classList.add('has-player');
+    if(cur && playerFase(cur) === f && !S.finished) chip.classList.add('current');
+    chip.innerHTML = `Fase ${f}<span class="fc-sub">${here.map(p=>p.char.emoji).join('') || '—'}</span>`;
+    bar.appendChild(chip);
+  }
+}
+
+function renderTurn(){
+  const p = S.players[S.turn];
+  if(!p) return;
+  const f = playerFase(p);
+  const L = LEVELS[levelKey];
+  el('turnInfo').innerHTML = `
+    <div class="ti-emoji">${p.char.emoji}</div>
+    <div>
+      <div class="ti-name">Vez de ${p.name}</div>
+      <div class="ti-char">${p.char.name} · ${L.emoji} ${L.name} · <b style="color:${FASE_COLORS[f-1]}">Fase ${f}/5</b></div>
+    </div>`;
+
+  const btn = el('powerBtn');
+  const passive = p.char.id === 'tartaruga';
+  if(passive){
+    btn.textContent = '🐢 Casco Firme (passivo)';
+    btn.disabled = true;
+  } else {
+    btn.textContent = p.powerUsed ? '✨ Poder já usado' : `✨ ${p.char.power}`;
+    btn.disabled = p.powerUsed || S.busy || S.finished;
+  }
+  el('rollBtn').disabled = S.busy || S.finished;
+}
+
+function log(msg){
+  const box = el('log');
+  const d = document.createElement('div');
+  d.className = 'log-line';
+  d.textContent = msg;
+  box.prepend(d);
+  while(box.children.length > 40) box.lastChild.remove();
+}
+
+/* =========================================================
+   GERADOR DE PERGUNTAS
+   ========================================================= */
+function makeQuestion(diff){
+  let text, answer;
+  const r = Math.random();
+
+  if(diff <= 1){
+    if(r < 0.55){
+      const a = rnd(1,20), b = rnd(1,20);
+      text = `${a} + ${b}`; answer = a + b;
+    } else {
+      const a = rnd(5,25), b = rnd(1,a);
+      text = `${a} − ${b}`; answer = a - b;
+    }
+  } else if(diff === 2){
+    if(r < 0.45){
+      const a = rnd(2,10), b = rnd(2,10);
+      text = `${a} × ${b}`; answer = a * b;
+    } else if(r < 0.80){
+      const a = rnd(20,90), b = rnd(5,40);
+      text = `${a} + ${b}`; answer = a + b;
+    } else {
+      const a = rnd(30,99), b = rnd(10,a);
+      text = `${a} − ${b}`; answer = a - b;
+    }
+  } else if(diff === 3){
+    if(r < 0.40){
+      const a = rnd(6,12), b = rnd(4,12);
+      text = `${a} × ${b}`; answer = a * b;
+    } else if(r < 0.72){
+      const a = rnd(3,9), b = rnd(3,9), c = rnd(2,20);
+      text = `${a} × ${b} + ${c}`; answer = a * b + c;
+    } else {
+      const b = rnd(2,9), q = rnd(2,12);
+      text = `${b*q} ÷ ${b}`; answer = q;
+    }
+  } else {
+    if(r < 0.35){
+      const a = rnd(11,25), b = rnd(3,9);
+      text = `${a} × ${b}`; answer = a * b;
+    } else if(r < 0.65){
+      const a = rnd(4,12), b = rnd(4,12);
+      const c = rnd(5, Math.max(6, Math.floor(a*b*0.6)));
+      text = `${a} × ${b} − ${c}`; answer = a * b - c;
+    } else if(r < 0.85){
+      const b = rnd(3,12), q = rnd(6,15);
+      text = `${b*q} ÷ ${b}`; answer = q;
+    } else {
+      const a = rnd(200,900), b = rnd(100,400);
+      text = `${a} + ${b}`; answer = a + b;
+    }
+  }
+  return { text, answer, options: makeOptions(answer) };
+}
+
+function makeOptions(answer){
+  const set = new Set([answer]);
+  const mag = Math.max(1, Math.round(Math.abs(answer) * 0.15));
+  const offs = [1,-1,2,-2,3,-3,mag,-mag,mag+1,-(mag+1),mag+2,-(mag+2)];
+  let guard = 0;
+  while(set.size < 4 && guard++ < 400){
+    const v = answer + offs[rnd(0, offs.length-1)];
+    if(v >= 0) set.add(v);
+  }
+  let extra = mag + 4;
+  while(set.size < 4) set.add(answer + extra++);
+  return shuffle([...set]);
+}
+
+/* =========================================================
+   MODAL DE PERGUNTA
+   ========================================================= */
+function askQuestion(q, label, player){
+  return new Promise(resolve=>{
+    const modal = el('modal');
+    el('qLabel').textContent = label;
+    el('qText').textContent = q.text + ' = ?';
+    el('qFeedback').textContent = '';
+    el('qFeedback').className = 'feedback';
+
+    const opts = el('qOptions');
+    opts.innerHTML = '';
+
+    const killCrystal = player && player.crystal;
+
+    q.options.forEach(v=>{
+      const b = document.createElement('button');
+      b.className = 'opt';
+      b.textContent = v;
+      b.onclick = ()=>pick(b);
+      opts.appendChild(b);
+    });
+
+    if(killCrystal){
+      player.crystal = false;
+      const wrongs = [...opts.children].filter(b => Number(b.textContent) !== q.answer);
+      shuffle(wrongs).slice(0,2).forEach(b=>{
+        b.disabled = true;
+        b.classList.add('removed');
+      });
+      log(`🔮 Bola de Cristal: 2 alternativas eliminadas!`);
+    }
+
+    function pick(btn){
+      const val = Number(btn.textContent);
+      const correct = val === q.answer;
+      [...opts.children].forEach(b => b.disabled = true);
+
+      if(correct){
+        btn.classList.add('correct');
+        el('qFeedback').textContent = '✅ Acertou!';
+        el('qFeedback').className = 'feedback ok';
+      } else {
+        btn.classList.add('wrong');
+        [...opts.children].forEach(b=>{
+          if(Number(b.textContent) === q.answer) b.classList.add('correct');
+        });
+        el('qFeedback').textContent = `❌ Errou! A resposta era ${q.answer}.`;
+        el('qFeedback').className = 'feedback bad';
+      }
+
+      setTimeout(()=>{ modal.hidden = true; resolve(correct); }, correct ? 900 : 1700);
+    }
+
+    modal.hidden = false;
+  });
+}
+
+/* =========================================================
+   MOVIMENTO
+   ========================================================= */
+async function movePlayer(p, steps){
+  const target = Math.min(FINISH, p.pos + steps);
+  while(p.pos < target){
+    p.pos++;
+    renderTokens(); renderPlayers(); renderFaseBar();
+    if(CHECKPOINTS.has(p.pos)){
+      p.points += 15;
+      const f = Math.floor(p.pos/6) + 1;
+      log(`🚩 ${p.name} completou a FASE ${f}! +15 pontos.`);
+      flashTile(p.pos);
+      renderPlayers();
+      await sleep(320);
+    }
+    await sleep(120);
+  }
+}
+
+/* =========================================================
+   ROLAR O DADO
+   ========================================================= */
+el('rollBtn').onclick = rollDice;
+
+async function rollDice(){
+  if(S.busy || S.finished) return;
+  S.busy = true;
+  renderTurn();
+
+  const p = S.players[S.turn];
+  const d = rnd(1,6);
+  const faces = ['⚀','⚁','⚂','⚃','⚄','⚅'];
+
+  for(let i=0;i<10;i++){
+    el('dice').textContent = faces[rnd(0,5)];
+    await sleep(60);
+  }
+  el('dice').textContent = faces[d-1];
+  log(`🎲 ${p.name} tirou ${d}.`);
+
+  await movePlayer(p, d);
+  await handleLanding(p);
+}
+
+/* =========================================================
+   O QUE ACONTECE AO CAIR NA CASA
+   ========================================================= */
+async function handleLanding(p){
+  const L = LEVELS[levelKey];
+
+  if(p.pos === FINISH){
+    log(`🏁 ${p.name} chegou ao FIM da Fase 5! Pergunta final valendo a vitória!`);
+    await sleep(400);
+    const q = makeQuestion(L.fases[4]);
+    const ok = await askQuestion(q, '🏆 PERGUNTA FINAL — VALE A VITÓRIA!', p);
+    if(ok){ winGame(p); return; }
+    p.pos = Math.max(0, p.pos - 3);
+    log(`❌ ${p.name} errou a pergunta final e voltou 3 casas.`);
+    renderAll();
+    endTurn();
+    return;
+  }
+
+  const type = TILE_TYPES[p.pos];
+  const fase = playerFase(p);
+
+  if(type === 'bonus'){
+    p.points += 15;
+    log(`💎 ${p.name} caiu numa casa BÔNUS e ganhou 15 pontos!`);
+    renderAll();
+    await sleep(600);
+    endTurn();
+    return;
+  }
+
+  const diff = L.fases[fase - 1];
+  let label = `FASE ${fase}/5 · ${L.emoji} ${L.name} — responda a conta!`;
+  if(type === 'turbo') label = `FASE ${fase}/5 · 🚀 CASA TURBO — vale 20 pontos!`;
+  if(type === 'trap')  label = `FASE ${fase}/5 · ⚠️ CASA ARMADILHA — erro custa 5 casas!`;
+
+  const q = makeQuestion(diff);
+  const ok = await askQuestion(q, label, p);
+
+  if(ok){
+    const pts = type === 'turbo' ? 20 : 10;
+    p.points += pts;
+    log(`✅ ${p.name} acertou (fase ${fase}) e ganhou ${pts} pontos!`);
+  } else {
+    let back = type === 'trap' ? 5 : 3;
+    if(p.char.id === 'tartaruga') back = Math.min(back, 1);
+
+    if(p.phoenix){
+      p.phoenix = false;
+      back = 0;
+      p.points += 10;
+      log(`🦅 ${p.name} renasceu: nenhuma casa perdida e +10 pontos!`);
+    } else if(p.shield){
+      p.shield = false;
+      back = 0;
+      log(`🐺 ${p.name} usou Faro Fino: nenhuma casa perdida!`);
+    } else {
+      log(`❌ ${p.name} errou e voltou ${back} casa(s).`);
+    }
+    p.pos = Math.max(0, p.pos - back);
+  }
+
+  renderAll();
+  endTurn();
+}
+
+/* =========================================================
+   PODERES
+   ========================================================= */
+el('powerBtn').onclick = usePower;
+
+async function usePower(){
+  const p = S.players[S.turn];
+  if(S.busy || S.finished || p.powerUsed || p.char.id === 'tartaruga') return;
+
+  p.powerUsed = true;
+  S.busy = true;
+  renderAll();
+
+  const id = p.char.id;
+
+  if(id === 'dragao'){
+    const rivals = S.players.filter(x => x !== p);
+    const target = rivals.reduce((a,b) => a.pos >= b.pos ? a : b);
+    const back = Math.min(3, target.pos);
+    target.pos -= back;
+    log(`🐉 ${p.name} usou SOPRO DE FOGO! ${target.name} voltou ${back} casas!`);
+
+  } else if(id === 'unicornio'){
+    const from = p.pos;
+    log(`🦄 ${p.name} usou SALTO ARCO-ÍRIS!`);
+    renderAll();
+    await sleep(400);
+    await movePlayer(p, 3);
+    log(`🦄 ${p.name} saltou da casa ${from} para a ${p.pos}.`);
+
+  } else if(id === 'mago'){
+    p.crystal = true;
+    log(`🧙 ${p.name} usou BOLA DE CRISTAL! A próxima pergunta terá 2 opções eliminadas.`);
+
+  } else if(id === 'lobo'){
+    p.shield = true;
+    log(`🐺 ${p.name} usou FARO FINO! Se errar a próxima pergunta, não perde casas.`);
+
+  } else if(id === 'raposa'){
+    const others = S.players.filter(x => x !== p);
+    const target = others.reduce((a,b) => a.points >= b.points ? a : b);
+    const steal = Math.min(15, target.points);
+    target.points -= steal;
+    p.points += steal;
+    log(`🦊 ${p.name} usou ROUBO ESPERTO e levou ${steal} pontos de ${target.name}!`);
+
+  } else if(id === 'fenix'){
+    p.phoenix = true;
+    log(`🦅 ${p.name} usou RENASCER! Se errar a próxima pergunta, não perde casas e ganha 10 pontos.`);
+
+  } else if(id === 'grifo'){
+    const from = p.pos;
+    log(`🐲 ${p.name} usou VOO REAL!`);
+    renderAll();
+    await sleep(400);
+    await movePlayer(p, 5);
+    log(`🐲 ${p.name} voou da casa ${from} para a ${p.pos}.`);
+
+  } else if(id === 'estrela'){
+    p.points += 30;
+    log(`🌟 ${p.name} usou SUPERNOVA e ganhou 30 pontos na hora!`);
+  }
+
+  renderAll();
+  await sleep(700);
+
+  if(p.pos === FINISH){
+    S.busy = false;
+    await handleLanding(p);
+    return;
+  }
+
+  S.busy = false;
+  renderAll();
+}
+
+/* =========================================================
+   TURNO / VITÓRIA
+   ========================================================= */
+function endTurn(){
+  if(S.finished) return;
+  S.turn = (S.turn + 1) % S.players.length;
+  S.busy = false;
+  renderAll();
+}
+
+function winGame(p){
+  S.finished = true;
+  S.busy = true;
+  renderAll();
+  const L = LEVELS[levelKey];
+  log(`🏆 ${p.name} VENCEU o nível ${L.name} com ${p.points} pontos!`);
+  pendingWin = p;
+  setTimeout(()=> openChest(p), 500);
+}
+
+/* =========================================================
+   CONFETE (canvas)
+   ========================================================= */
+const CONFETTI_COLORS = ['#facc15','#f472b6','#22d3ee','#a78bfa','#4ade80','#fb923c','#f87171','#ffffff'];
+const confettiCanvas = el('confettiCanvas');
+const cctx = confettiCanvas.getContext('2d');
+let confettiParticles = [];
+let confettiRunning = false;
+
+function resizeConfetti(){
+  confettiCanvas.width = window.innerWidth;
+  confettiCanvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeConfetti);
+
+function burstConfetti(count, originX, originY){
+  for(let i=0;i<count;i++){
+    const angle = Math.random()*Math.PI*2;
+    const speed = 5 + Math.random()*14;
+    confettiParticles.push({
+      x: originX * confettiCanvas.width,
+      y: originY * confettiCanvas.height,
+      vx: Math.cos(angle)*speed,
+      vy: Math.sin(angle)*speed - 7,
+      size: 6 + Math.random()*9,
+      color: CONFETTI_COLORS[(Math.random()*CONFETTI_COLORS.length)|0],
+      rot: Math.random()*Math.PI*2,
+      vr: (Math.random()-0.5)*0.32,
+      life: 1,
+      gravity: 0.22 + Math.random()*0.14,
+      shape: Math.random() < 0.28 ? 'circle' : 'rect'
+    });
+  }
+  if(!confettiRunning){
+    confettiRunning = true;
+    requestAnimationFrame(updateConfetti);
+  }
+}
+
+function updateConfetti(){
+  cctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
+  confettiParticles = confettiParticles.filter(p => p.life > 0 && p.y < confettiCanvas.height + 60);
+
+  confettiParticles.forEach(p=>{
+    p.vy += p.gravity;
+    p.vx *= 0.995;
+    p.x += p.vx;
+    p.y += p.vy;
+    p.rot += p.vr;
+    p.life -= 0.0045;
+
+    cctx.save();
+    cctx.translate(p.x, p.y);
+    cctx.rotate(p.rot);
+    cctx.globalAlpha = Math.max(0, Math.min(1, p.life));
+    cctx.fillStyle = p.color;
+    if(p.shape === 'circle'){
+      cctx.beginPath();
+      cctx.arc(0,0,p.size/2,0,Math.PI*2);
+      cctx.fill();
+    } else {
+      cctx.fillRect(-p.size/2, -p.size/3, p.size, p.size*0.66);
+    }
+    cctx.restore();
+  });
+
+  if(confettiParticles.length > 0){
+    requestAnimationFrame(updateConfetti);
+  } else {
+    confettiRunning = false;
+    cctx.clearRect(0,0,confettiCanvas.width,confettiCanvas.height);
+  }
+}
+
+/* =========================================================
+   BAÚ DE MOEDAS
+   ========================================================= */
+function openChest(p){
+  const L = LEVELS[levelKey];
+  el('chestTitle').textContent = `🏆 ${p.name} venceu o nível ${L.emoji} ${L.name}!`;
+  el('chestSub').textContent = 'Um baú de moedas apareceu do nada...';
+  el('chestWrap').classList.remove('open');
+  el('chestWrap').style.cursor = 'pointer';
+  el('chestHint').style.display = '';
+  el('chestReveal').hidden = true;
+  el('chestReveal').innerHTML = '';
+  chestOpened = false;
+  confettiParticles = [];
+  resizeConfetti();
+  el('chestModal').hidden = false;
+}
+
+el('chestWrap').onclick = async ()=>{
+  if(chestOpened) return;
+  chestOpened = true;
+
+  el('chestWrap').classList.add('open');
+  el('chestWrap').style.cursor = 'default';
+  el('chestHint').style.display = 'none';
+
+  const r = el('chestWrap').getBoundingClientRect();
+  const ox = (r.left + r.width/2) / window.innerWidth;
+  const oy = (r.top + r.height/2) / window.innerHeight;
+
+  burstConfetti(170, ox, oy);
+  setTimeout(()=> burstConfetti(110, 0.25, 0.42), 260);
+  setTimeout(()=> burstConfetti(110, 0.75, 0.42), 430);
+
+  await sleep(950);
+  showReward();
+};
+
+function showReward(){
+  const box = el('chestReveal');
+  const locked = SECRET_CHARACTERS.filter(c => !unlockedSecrets.includes(c.id));
+
+  if(locked.length === 0){
+    // já desbloqueou tudo → recompensa em moedas
+    box.innerHTML = `
+      <div class="reveal-card" style="--c:#facc15">
+        <div class="reveal-badge">🎉 RECOMPENSA</div>
+        <div class="char-emoji">🪙</div>
+        <div class="char-name">+100 moedas!</div>
+        <div class="char-desc">Você já desbloqueou todos os personagens secretos. Que lenda!</div>
+      </div>
+      <button class="big-btn" id="chestContinue">Continuar ▶</button>`;
+  } else {
+    const c = locked[(Math.random()*locked.length)|0];
+    unlockedSecrets.push(c.id);
+    saveUnlocked();
+
+    box.innerHTML = `
+      <div class="reveal-card" style="--c:${c.color}">
+        <div class="reveal-badge">✨ NOVO PERSONAGEM!</div>
+        <div class="char-emoji">${c.emoji}</div>
+        <div class="char-name">${c.name}</div>
+        <div class="char-power">${c.power}</div>
+        <div class="char-desc">${c.desc}</div>
+      </div>
+      <button class="big-btn" id="chestContinue">Continuar ▶</button>`;
+  }
+
+  box.hidden = false;
+  el('chestSub').textContent = '🎊 Parabéns! Você ganhou uma recompensa!';
+  el('chestContinue').onclick = ()=>{
+    el('chestModal').hidden = true;
+    showWinModal(pendingWin);
+  };
+
+  burstConfetti(120, 0.5, 0.5);
+  setTimeout(()=> burstConfetti(90, 0.35, 0.55), 300);
+  setTimeout(()=> burstConfetti(90, 0.65, 0.55), 500);
+}
+
+/* =========================================================
+   MODAL DE VITÓRIA (resultado final)
+   ========================================================= */
+function showWinModal(p){
+  const L = LEVELS[levelKey];
+  el('winEmoji').textContent = p.char.emoji;
+  el('winTitle').textContent = `${p.name} venceu! 🏆`;
+  el('winSub').textContent =
+    `${p.char.name} completou as 5 fases do nível ${L.emoji} ${L.name} com ${p.points} pontos.`;
+
+  const i = LEVEL_ORDER.indexOf(levelKey);
+  const next = i < LEVEL_ORDER.length - 1 ? LEVEL_ORDER[i+1] : null;
+  const nb = el('nextLevelBtn');
+  if(next){
+    nb.hidden = false;
+    nb.textContent = `Jogar nível ${LEVELS[next].emoji} ${LEVELS[next].name} ▶`;
+    nb.onclick = ()=> resetGame(next);
+  } else {
+    nb.hidden = true;
+  }
+
+  el('winModal').hidden = false;
+}
+
+el('againBtn').onclick = ()=> resetGame(null);
+
+function resetGame(newLevel){
+  el('winModal').hidden = true;
+  el('chestModal').hidden = true;
+  el('screen-game').hidden = true;
+  el('screen-setup').hidden = false;
+  el('log').innerHTML = '';
+  el('dice').textContent = '🎲';
+  S.players = []; S.turn = 0; S.busy = false; S.finished = false;
+  if(newLevel) levelKey = newLevel;
+  chosen = []; pickIndex = 0;
+  pendingWin = null;
+  chestOpened = false;
+  renderLevels(); renderCounts(); renderChars();
+}
+
+/* =========================================================
+   BOOT
+   ========================================================= */
+renderLevels();
+renderCounts();
+renderChars();
+resizeConfetti();
+</script>
+</body>
+</html>
