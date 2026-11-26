@@ -1,0 +1,139 @@
+---
+import { educationalGames } from '../data/educationalGames';
+---
+<section id="votacao" class="game-vote" aria-labelledby="vote-title">
+  <h2 id="vote-title">Qual foi o melhor jogo?</h2>
+  <p>Vote no seu favorito. Vale um voto por sessão do navegador.</p>
+  <form data-game-vote hidden>
+    <fieldset>
+      <legend class="sr-only">Escolha um jogo</legend>
+      <div class="choices">
+        {educationalGames.map((game) => (
+          <label>
+            <input type="radio" name="game" value={game.slug} required />
+            <span>{game.title}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+    <button type="submit" disabled>Confirmar voto</button>
+  </form>
+  <p data-vote-status role="status"></p>
+  <noscript><p>Ative o JavaScript para votar.</p></noscript>
+</section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-game-vote]');
+  const status = document.querySelector<HTMLElement>('[data-vote-status]');
+
+  if (form && status) {
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const fieldset = form.querySelector('fieldset')!;
+    const choices = [...form.querySelectorAll<HTMLInputElement>('input[name="game"]')];
+    const cookieName = 'techonplay_arcade_vote';
+    const pagePath = '/categoria/jogos/jogos-educativos/';
+    const analytics = window as Window & { gtag?: (...args: unknown[]) => void };
+    let pending = false;
+
+    function getVote() {
+      const prefix = `${cookieName}=`;
+      const value = document.cookie.split('; ').find((cookie) => cookie.startsWith(prefix))?.slice(prefix.length);
+      return choices.find((choice) => choice.value === value);
+    }
+
+    function refresh() {
+      const vote = getVote();
+      if (vote) {
+        vote.checked = true;
+        status!.textContent = `Você votou em ${vote.labels?.[0]?.textContent?.trim()} nesta sessão.`;
+      }
+      fieldset.disabled = Boolean(vote);
+      button.disabled = pending || Boolean(vote) || !choices.some((choice) => choice.checked);
+      button.hidden = Boolean(vote);
+    }
+
+    function voteFor(choice: HTMLInputElement) {
+      if (getVote()) return;
+      if (typeof analytics.gtag !== 'function') {
+        status!.textContent = 'A votação está indisponível agora. Tente novamente.';
+        return;
+      }
+      const secure = location.protocol === 'https:' ? '; Secure' : '';
+      document.cookie = `${cookieName}=${choice.value}; Path=${pagePath}; SameSite=Lax${secure}`;
+      if (!getVote()) {
+        status!.textContent = 'Permita os cookies do site para votar nesta sessão.';
+        return;
+      }
+      analytics.gtag('event', `arcade_vote_${choice.value.replaceAll('-', '_')}`);
+    }
+
+    form.addEventListener('change', refresh);
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const choice = choices.find((option) => option.checked);
+      if (pending || !choice) return;
+      pending = true;
+      refresh();
+      try {
+        if (navigator.locks) await navigator.locks.request(cookieName, () => voteFor(choice));
+        else voteFor(choice);
+      } finally {
+        pending = false;
+        refresh();
+      }
+    });
+    window.addEventListener('pageshow', refresh);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
+    form.hidden = false;
+    refresh();
+  }
+</script>
+
+<style>
+  .game-vote {
+    margin-top: 54px;
+    padding: clamp(18px, 4vw, 36px);
+    scroll-margin-top: 90px;
+    background: #191226;
+    border: 1px solid var(--edge);
+    border-radius: 18px;
+  }
+  h2 { margin: 0; color: #fff; font-size: clamp(1.75rem, 4vw, 2.45rem); letter-spacing: -.04em; }
+  p { margin: 6px 0 0; color: var(--muted); }
+  fieldset { margin: 20px 0 0; padding: 0; border: 0; min-inline-size: 0; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  label {
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border: 1px solid #483960;
+    border-radius: 8px;
+    color: #f8f5ff;
+    background: #21182f;
+    cursor: pointer;
+  }
+  fieldset:disabled label { cursor: default; }
+  input { flex: none; width: 18px; height: 18px; margin: 0; accent-color: var(--lime); }
+  label:is(:has(:checked), :focus-within), fieldset:enabled label:hover { border-color: var(--lime); }
+  label:has(:checked) { background: #30283c; }
+  button {
+    min-height: 44px;
+    margin-top: 18px;
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 8px;
+    color: #17141e;
+    background: var(--lime);
+    font: inherit;
+    font-weight: 750;
+    cursor: pointer;
+  }
+  button:disabled { opacity: .55; cursor: default; }
+  button:focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; }
+  [hidden], [data-vote-status]:empty { display: none; }
+  [data-vote-status] { margin-top: 14px; color: var(--lime); }
+  @media (max-width: 670px) { .choices { grid-template-columns: 1fr; } }
+</style>

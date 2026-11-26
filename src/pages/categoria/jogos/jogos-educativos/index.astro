@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import EducationalGameVote from '../../../../components/EducationalGameVote.astro';
 import { educationalGames, gameSubjects, gameHref, gameCover } from '../../../../data/educationalGames';
 
 const title = 'Jogos Educativos';
@@ -81,6 +82,7 @@ const catalogSchema = {
           ))}
         </div>
       </section>
+      <EducationalGameVote />
     </div>
   </div>
 </BaseLayout>
