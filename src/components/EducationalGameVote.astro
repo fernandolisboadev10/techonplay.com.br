@@ -1,19 +1,27 @@
 ---
 import { educationalGames } from '../data/educationalGames';
+
+const initialVotes: Partial<Record<string, number>> = { 'neon-rails': 1 };
 ---
 <section id="votacao" class="game-vote" aria-labelledby="vote-title">
   <h2 id="vote-title">Qual foi o melhor jogo?</h2>
-  <p>Vote no seu favorito. Sua escolha fica neste navegador durante a sessão.</p>
+  <p>Vote no seu favorito. Os totais são salvos neste navegador, com um voto por sessão.</p>
   <form data-game-vote hidden>
     <fieldset>
       <legend class="sr-only">Escolha um jogo</legend>
       <div class="choices">
-        {educationalGames.map((game) => (
-          <label>
-            <input type="radio" name="game" value={game.slug} required />
-            <span>{game.title}</span>
-          </label>
-        ))}
+        {educationalGames.map((game) => {
+          const initial = initialVotes[game.slug] ?? 0;
+          return (
+            <label>
+              <input type="radio" name="game" value={game.slug} required />
+              <span data-game-name>{game.title}</span>
+              <span class="vote-count" data-vote-count={game.slug} data-initial-votes={initial}>
+                {initial} {initial === 1 ? 'voto' : 'votos'}
+              </span>
+            </label>
+          );
+        })}
       </div>
     </fieldset>
     <button type="submit" disabled>Confirmar voto</button>
@@ -30,7 +38,9 @@ import { educationalGames } from '../data/educationalGames';
     const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
     const fieldset = form.querySelector('fieldset')!;
     const choices = [...form.querySelectorAll<HTMLInputElement>('input[name="game"]')];
+    const counters = [...form.querySelectorAll<HTMLElement>('[data-vote-count]')];
     const cookieName = 'techonplay_arcade_vote';
+    const totalsKey = 'techonplay_arcade_vote_totals';
     const pagePath = '/categoria/jogos/jogos-educativos/';
     let pending = false;
 
@@ -40,11 +50,35 @@ import { educationalGames } from '../data/educationalGames';
       return choices.find((choice) => choice.value === value);
     }
 
+    function getTotals(): Record<string, number> {
+      try {
+        const totals = JSON.parse(localStorage.getItem(totalsKey) ?? '{}');
+        return totals && typeof totals === 'object' && !Array.isArray(totals) ? totals : {};
+      } catch {
+        return {};
+      }
+    }
+
+    function localCount(totals: Record<string, number>, slug: string) {
+      const count = totals[slug];
+      return Number.isSafeInteger(count) && count >= 0 ? count : 0;
+    }
+
+    function renderTotals() {
+      const totals = getTotals();
+      counters.forEach((counter) => {
+        const count = Number(counter.dataset.initialVotes) + localCount(totals, counter.dataset.voteCount!);
+        counter.textContent = `${count.toLocaleString('pt-BR')} ${count === 1 ? 'voto' : 'votos'}`;
+      });
+    }
+
     function refresh() {
+      renderTotals();
       const vote = getVote();
       if (vote) {
         vote.checked = true;
-        status!.textContent = `Você votou em ${vote.labels?.[0]?.textContent?.trim()} nesta sessão.`;
+        const game = vote.labels?.[0]?.querySelector('[data-game-name]')?.textContent;
+        status!.textContent = `Você votou em ${game} nesta sessão.`;
       }
       fieldset.disabled = Boolean(vote);
       button.disabled = pending || Boolean(vote) || !choices.some((choice) => choice.checked);
@@ -54,10 +88,19 @@ import { educationalGames } from '../data/educationalGames';
     function voteFor(choice: HTMLInputElement) {
       if (getVote()) return;
       const secure = location.protocol === 'https:' ? '; Secure' : '';
-      document.cookie = `${cookieName}=${choice.value}; Path=${pagePath}; SameSite=Lax${secure}`;
+      const cookieOptions = `Path=${pagePath}; SameSite=Lax${secure}`;
+      document.cookie = `${cookieName}=${choice.value}; ${cookieOptions}`;
       if (!getVote()) {
         status!.textContent = 'Permita os cookies do site para votar nesta sessão.';
         return;
+      }
+      try {
+        const totals = getTotals();
+        totals[choice.value] = localCount(totals, choice.value) + 1;
+        localStorage.setItem(totalsKey, JSON.stringify(totals));
+      } catch {
+        document.cookie = `${cookieName}=; ${cookieOptions}; Max-Age=0`;
+        status!.textContent = 'O navegador bloqueou o armazenamento do voto. Tente novamente após habilitá-lo.';
       }
     }
 
@@ -77,6 +120,7 @@ import { educationalGames } from '../data/educationalGames';
       }
     });
     window.addEventListener('pageshow', refresh);
+    window.addEventListener('storage', (event) => { if (event.key === totalsKey || event.key === null) refresh(); });
     document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
     form.hidden = false;
     refresh();
@@ -111,6 +155,17 @@ import { educationalGames } from '../data/educationalGames';
   }
   fieldset:disabled label { cursor: default; }
   input { flex: none; width: 18px; height: 18px; margin: 0; accent-color: var(--lime); }
+  .vote-count {
+    flex: none;
+    margin-left: auto;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: #342943;
+    color: var(--lime);
+    font-size: .85rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
   label:is(:has(:checked), :focus-within), fieldset:enabled label:hover { border-color: var(--lime); }
   label:has(:checked) { background: #30283c; }
   button {
