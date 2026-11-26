@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: '23 */6 * * *'
 
 permissions:
   contents: read
@@ -16,6 +18,7 @@ concurrency:
 
 jobs:
   build:
+    if: github.event_name != 'schedule' || vars.GA4_PROPERTY_ID != ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,6 +27,9 @@ jobs:
       - name: Datar atualizações dos artigos pelo Git
         run: node scripts/derive-updated.mjs
       - uses: withastro/action@v3
+        env:
+          GA4_PROPERTY_ID: ${{ vars.GA4_PROPERTY_ID }}
+          GA4_RANKING_CREDENTIALS: ${{ secrets.GA4_RANKING_CREDENTIALS }}
         with:
           node-version: '22'
   deploy:

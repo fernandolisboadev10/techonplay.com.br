@@ -1,25 +1,31 @@
 ---
-import { educationalGames } from '../data/educationalGames';
+import { educationalGames, gameVoteEvent } from '../data/educationalGames';
+import EducationalGameRanking from './EducationalGameRanking.astro';
 ---
 <section id="votacao" class="game-vote" aria-labelledby="vote-title">
   <h2 id="vote-title">Qual foi o melhor jogo?</h2>
   <p>Vote no seu favorito. Vale um voto por sessão do navegador.</p>
-  <form data-game-vote hidden>
-    <fieldset>
-      <legend class="sr-only">Escolha um jogo</legend>
-      <div class="choices">
-        {educationalGames.map((game) => (
-          <label>
-            <input type="radio" name="game" value={game.slug} required />
-            <span>{game.title}</span>
-          </label>
-        ))}
-      </div>
-    </fieldset>
-    <button type="submit" disabled>Confirmar voto</button>
-  </form>
-  <p data-vote-status role="status"></p>
-  <noscript><p>Ative o JavaScript para votar.</p></noscript>
+  <div class="voting-layout">
+    <div>
+      <form data-game-vote hidden>
+        <fieldset>
+          <legend class="sr-only">Escolha um jogo</legend>
+          <div class="choices">
+            {educationalGames.map((game) => (
+              <label>
+                <input type="radio" name="game" value={game.slug} data-vote-event={gameVoteEvent(game.slug)} required />
+                <span>{game.title}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+        <button type="submit" disabled>Confirmar voto</button>
+      </form>
+      <p data-vote-status role="status"></p>
+      <noscript><p>Ative o JavaScript para votar.</p></noscript>
+    </div>
+    <EducationalGameRanking />
+  </div>
 </section>
 
 <script>
@@ -64,7 +70,7 @@ import { educationalGames } from '../data/educationalGames';
         status!.textContent = 'Permita os cookies do site para votar nesta sessão.';
         return;
       }
-      analytics.gtag('event', `arcade_vote_${choice.value.replaceAll('-', '_')}`);
+      analytics.gtag('event', choice.dataset.voteEvent);
     }
 
     form.addEventListener('change', refresh);
@@ -100,7 +106,8 @@ import { educationalGames } from '../data/educationalGames';
   }
   h2 { margin: 0; color: #fff; font-size: clamp(1.75rem, 4vw, 2.45rem); letter-spacing: -.04em; }
   p { margin: 6px 0 0; color: var(--muted); }
-  fieldset { margin: 20px 0 0; padding: 0; border: 0; min-inline-size: 0; }
+  .voting-layout { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 20px; margin-top: 20px; }
+  fieldset { margin: 0; padding: 0; border: 0; min-inline-size: 0; }
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   label {
@@ -135,5 +142,6 @@ import { educationalGames } from '../data/educationalGames';
   button:focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; }
   [hidden], [data-vote-status]:empty { display: none; }
   [data-vote-status] { margin-top: 14px; color: var(--lime); }
-  @media (max-width: 670px) { .choices { grid-template-columns: 1fr; } }
+  @media (max-width: 920px) { .voting-layout { grid-template-columns: 1fr; } }
+  @media (max-width: 550px) { .choices { grid-template-columns: 1fr; } }
 </style>
